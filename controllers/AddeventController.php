@@ -28,7 +28,10 @@ class AddeventController
         echo '</pre>';
 
         if (isset($_POST)) {
-            if (!empty($_POST['title']) && !empty($_POST['short_content']) && !empty($_POST['content'])) {
+            if (!empty($_POST['nazva_org_event']) && !empty($_POST['status_event']) && !empty($_POST['name_event']) &&
+                !empty($_POST['date_event_begin']) && !empty($_POST['date_event_end']) && !empty($_POST['place_event']) &&
+                !empty($_POST['country_event']) && !empty($_POST['judge_event']) && !empty($_POST['skrut_event']) &&
+                !empty($_POST['add_info_event'])){
                 $resulting = (integer) Addevent::createEvent();
                 echo $resulting . ' is the result';
             } else {
