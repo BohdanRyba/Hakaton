@@ -34,7 +34,7 @@ class LoginController
     {
 
         unset($_SESSION['user_access']);
-        header('Location: ' . PATH . 'home');
+        header('Location: ' . CORE_PATH . 'home');
 
         return true;
     }

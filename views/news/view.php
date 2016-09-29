@@ -15,7 +15,7 @@ $single_news = str_replace('[title]', $newsItem['title'], $single_news);
 $single_news = str_replace('[content]', $newsItem['content'], $single_news);
 $single_news = str_replace('[date]', $newsItem['date'], $single_news);
 $single_news = str_replace('[author_name]', $newsItem['author_name'], $single_news);
-$single_news = str_replace('[get_back_ref]', PATH . 'news', $single_news);
+$single_news = str_replace('[get_back_ref]', CORE_PATH . 'news', $single_news);
 $content = str_replace('[single_news]', $single_news, $content);
 
 echo $content;

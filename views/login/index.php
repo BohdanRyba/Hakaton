@@ -11,4 +11,4 @@ $content = str_replace('[navigation]', $nav_content, $content);
 
 echo $content;*/
 
-header('Location: '. PATH. $_POST['redirect']);
+header('Location: '. CORE_PATH. $_POST['redirect']);

@@ -38,7 +38,7 @@ class AddeventController
                 echo 'NooooO!';
             }
         }
-//        header('Location: ' . PATH . $_POST['redirect']);
+//        header('Location: ' . CORE_PATH . $_POST['redirect']);
 
         return true;
     }
