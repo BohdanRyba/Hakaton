@@ -54,7 +54,9 @@ class Router
                     $actionName = 'action' . ucfirst(array_shift($segments));
 
                     $parameters = $segments;
-
+//                    echo '<pre>';
+//                    var_export($parameters);
+//                    echo '</pre>';
 
                     $controllerFile = ROOT . 'controllers/' . $controllerName . '.php';
                     if (file_exists($controllerFile)) {

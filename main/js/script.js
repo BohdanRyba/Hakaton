@@ -120,22 +120,6 @@ $(function(){
         }
     });
 
-    /*var $cont=$('.info_container');
-    // var $h=$infoContainer.offset();
-    $('html, body').add(window).add(document).scroll(function (e) {
-        var $s = $('html body').scrollTop()+ $(window).height() + 4*$('#ppp').height();
-        console.log($cont.offset().top);
-        if ($s > $cont.offset().top) {
-            $cont.animate({marginTop:"50px"},700)
-        }
-<<<<<<< HEAD:main/js/script.js
-    })
- $( function() {
-    $( "#date_event_begin" ).datepicker();
-    $( "#date_event_end" ).datepicker();
-  } );
-    })*/
-
 	$('.form_in label').hover(function(){
 		$(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
 		$(this).css('transition','box-shadow 0.2s');
@@ -254,10 +238,5 @@ $(function(){
   $('a.remove-part').click(function(){
     $(this).parents('.part').slideUp(300);
   });
-
-
-
-// >>>>>>> 8c34fc909867ff6be9cc5552939d6d57745bcb0b:service-to-create-events-2016/main/js/script.js
-
 
 });
