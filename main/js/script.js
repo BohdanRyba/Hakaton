@@ -39,7 +39,7 @@ $(function(){
     });
 
 
-    $('.log_in_form').click(function(){
+    $('.form_log').click(function(){
         $('.form_log').show(1000);
         $('#overlay_log').show(400);
     });
