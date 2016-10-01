@@ -2,12 +2,12 @@
 
 class Login
 {
-    public static function getUserFromBase($user)
+    public static function getUserFromBase($user_email)
     {
         $db = Db::getConnection();
         $db->query("SET NAMES 'utf8'");
 
-        $result = $db->query("SELECT * FROM `users` WHERE `login` = '$user'");
+        $result = $db->query("SELECT * FROM `users` WHERE `email` = '$user_email'");
         $get_user = $result->fetch_assoc();
 
         $db->close();
