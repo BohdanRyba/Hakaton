@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Sep 29, 2016 at 01:45 
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Хост: 127.0.0.1
+-- Время создания: Окт 04 2016 г., 08:13
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hakaton`
+-- База данных: `hakaton`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 CREATE TABLE `news` (
@@ -38,7 +38,7 @@ CREATE TABLE `news` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Дамп данных таблицы `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_name`, `preview`, `type`) VALUES
@@ -53,28 +53,29 @@ INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_n
 (9, 'Breaking news', '2016-09-20', 'The wolf has gone crazy!', 'This one wolf is really out of his mind! He has said wooooooooooo to the moon!', 'Roma Slobodeniuk', 'images/news/vPWn2BYuQ3Q.jpg', 'article'),
 (10, 'Экстренные новости!', '2016-09-21', 'Ассассин убивает Тамплиеров!', 'Ассассин убил Тамплиера прям среди бегого дня на площади!', 'Roma Slobodeniuk', 'images/news/2762.jpg', 'article'),
 (11, 'Новости на западе!', '2016-09-21', 'Они свободно разгуливают улицами городов...', 'Пик влияния хашшашинов приходится на конец XII века. Это связано с возвышением государства турок-мамлюков во главе с султаном Юсуфом ибн Айюбом по прозвищу «Салах ад-Дин»[16]. С лёгкостью захватив прогнивший Фатимидский халифат, с которым у крестоносцев был заключён длительный мирный договор, Салах ад-Дин объявил себя единственным истинным защитником ислама. Отныне ближневосточным христианским государствам крестоносцев угрожала опасность с юга. Длительные переговоры с Салах ад-Дином, который видел своё предназначение в том, чтобы изгнать христиан с мусульманского Востока, не привели к существенным результатам. С 1171 года для крестоносцев начинается тяжелейший период войн с Салах ад-Дином. На этот раз над Иерусалимом, оплотом христианства на Ближнем Востоке, нависла неминуемая угроза…', 'Roma Slobodeniuk', 'images/news/243763.jpg', 'article'),
-(12, 'Наконец-то дождались!', '2016-09-21', 'Госслужащие получили зарплату !', 'Госслужащие получили крошечную зарплату!', 'Roma Slobodeniuk', 'images/news/10-dollary-makro-oboi-1366x768.jpg', 'article');
+(12, 'Наконец-то дождались!', '2016-09-21', 'Госслужащие получили зарплату !', 'Госслужащие получили крошечную зарплату!', 'Roma Slobodeniuk', 'images/news/10-dollary-makro-oboi-1366x768.jpg', 'article'),
+(13, 'Pakistan cinemas ban Indian movies', '2016-10-03', 'Pakistan''s major cinemas have banned Indian movies in Pakistan''s biggest cities.', 'India and Pakistan do not have very good relations at the moment. The two countries have argued for many years over where the borders should be in Kashmir. There is also the possibility that India could limit the amount of water Pakistan gets from the Indus River. The latest disagreement is over movies and actors. Pakistan''s major cinemas have banned Indian movies in Pakistan''s biggest cities - Lahore, Karachi and Islamabad. The cinema owners say the ban is to show support for Pakistani soldiers who are risking their lives in Kashmir. The ban comes after a group of Indian moviemakers banned Pakistani actors from working in India''s famous Bollywood movie studios in Mumbai.', 'Roma Slobodeniuk', 'images/news/161002-indian-movies.jpg', 'article');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `short_content` (`short_content`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

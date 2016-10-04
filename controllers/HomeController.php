@@ -6,8 +6,7 @@ class HomeController
 {
     public function actionIndex()
     {
-
-        $home_content = Home::getHomeContent();
+        $nav_content = Home::getNavHomeContent('home');
 
         require_once(ROOT . 'views/home/index.php');
 

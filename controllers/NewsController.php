@@ -5,10 +5,11 @@ include_once(ROOT . 'models/News.php');
 class NewsController
 {
 
-    public function actionIndex()
+    public function actionIndex($Cpag)
     {
 
         $newsList = News::getNewsList();
+        $nav_content = News::getNavNewsContent($Cpag);
 
         require_once(ROOT . 'views/news/index.php');
 
@@ -20,7 +21,7 @@ class NewsController
     {
         if ($id) {
             $newsItem = News::getNewsItemById($id);
-
+            $nav_content = News::getNavNewsContent($id);
             require_once(ROOT . 'views/news/view.php');
 
             return true;

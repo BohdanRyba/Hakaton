@@ -2,6 +2,16 @@
 
 class News
 {
+    public static function getNavNewsContent($Cpag = '', $id =''){
+        $navigation = new Navigation();
+        $nav_content = '';
+        if($Cpag !== ''){
+            $nav_content = $navigation->createNavContent("news/page/1", $Cpag);
+        } elseif ($id !== '') {
+            $nav_content = $navigation->createNavContent("news/single/", $id);
+        }
+        return $nav_content;
+    }
 
     public static function getNewsItemById($id)
     {

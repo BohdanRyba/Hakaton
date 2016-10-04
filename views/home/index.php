@@ -1,19 +1,3 @@
-<?php
-
-
-//$file = ROOT.'templates/home/template.html';
-//$content = file_get_contents($file);
-//
-//$navigation = new Navigation();
-//$nav_content = $navigation->createNavContent('home', '');
-//$content = str_replace('[navigation]', $nav_content, $content);
-//
-//$content = str_replace('[description]', $home_content, $content);
-//
-//echo $content;
-
-?>
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -92,8 +76,6 @@ desired effect
                     <a href="#" class="navbar-brand">Brand</a></div>
 
                 <?php
-                $navigation = new Navigation();
-                $nav_content = $navigation->createNavContent('home', '');
                 echo $nav_content;
                 ?>
 
@@ -135,7 +117,7 @@ desired effect
                                 <li><a href="#"></a></li>
                             </ul>
                         </div>
-                        The body of the box
+
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>

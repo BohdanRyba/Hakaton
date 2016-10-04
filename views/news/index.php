@@ -1,159 +1,333 @@
-<!--
-
-$file = ROOT.'templates/news/template.html';
-
-$content = file_get_contents($file);
-$navigation = new Navigation();
-
-$nav_content = $navigation->createNavContent('news', '');
-
-$content = str_replace('[navigation]', $nav_content, $content);
-
-
-//echo '<pre>';
-//var_export($newsList);
-//echo '</pre>';
-
-$count = 0;
-foreach ($newsList as $news){
-    $tpl = file_get_contents(ROOT.'templates/news/news.tpl');
-    $tpl = str_replace('[src]', $news['preview'], $tpl);
-    $tpl = str_replace('[title]', $news['title'], $tpl);
-    $tpl = str_replace('[short_content]', $news['short_content'], $tpl);
-    $tpl = str_replace('[author_name]', $news['author_name'], $tpl);
-    $tpl = str_replace('[date]', $news['date'], $tpl);
-    $tpl = str_replace('[read_more_ref]', CORE_PATH.'news/'.$news['id'], $tpl);
-    $content = str_replace("[text{$count}]", $tpl, $content);
-    $count++;
-}
-
-echo $content; -->
-
 <!DOCTYPE html>
-<html lang="en">
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Все новости</title>
-    <link type="text/css" rel="stylesheet" href="main/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="main/css/style.css">
-    <script src="main/js/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Главная</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../main/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../main/css/AdminLTE.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="../../main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" type="text/css" href="../../main/css/style.css">
+    <script src="../../main/js/jquery.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-<div id="wrap">
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-    <!--    [navigation]-->
+    <!-- Main Header -->
+    <header class="main-header">
 
-    <?php
-    $navigation = new Navigation();
-    $nav_content = $navigation->createNavContent('news', '');
-    echo $nav_content;
-    $count_news = count($newsList);
-    const NEWS_PER_PAGE = 4;
-    echo 'COUNT: ' . $count_news;
+        <!-- Logo -->
 
-    $stat = 0;
-    $end = $count_news / NEWS_PER_PAGE;
 
-    echo '<pre>';
-    var_export($newsList);
-    echo '</pre>';
-    ?>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="collapsed navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar "></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand">Brand</a>
+                </div>
 
-    <div class="resize">
-        <div class="slider">
-            <!--<button id="prev"><img src="main/img/left.png" alt=""></button>-->
-            <div id="circle">
-<!--                --><?php //for(){
-//
-//                } ?>
-                <div class="go">
-                    <?php foreach ($newsList as $news): ?>
-                        <?php static $count_news = 1;
-                        if ($count_news == 5) {
-                            break;
-                        } ?>
-                        <section>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="image_news">
-                                        <img src="<?php echo $news['preview'] ?>" alt="news_image" width="100%">
+                <?php echo $nav_content; ?>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- Your Page Content Here -->
+
+            <div class="container">
+                <div class="col-sm-12">
+                    <div class="row">
+
+                        <?php
+                        define('CURRENT_PAGE', 1);
+                        define('PER_PAGE', 4);
+
+                        if (isset($Cpag) and is_numeric($Cpag)) {
+                            $current = $Cpag;
+                        } else {
+                            $current = CURRENT_PAGE;
+                        }
+                        $per_page = PER_PAGE;
+
+                        $pagination = function ($all) use ($per_page, $current) {
+                            $pag = '<ul class="pagination">';
+                            for ($i = 0, $j = 0; $i < count($all); $i += $per_page, $j++) {
+                                if ($current == $j + 1) {
+                                    $pag .= '<li class="active"><span>' . ($j + 1) . '</span></li>';
+                                } else {
+                                    $pag .= '<li><a href="' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
+                                }
+                            }
+                            $pag .= '</ul>';
+                            return $pag;
+                        };
+
+                        $all_count = count($newsList);
+                        $start = ($current - 1) * $per_page;
+                        $end = (($current * $per_page) < $all_count) ? $current * $per_page : $all_count;
+                        for ($i = $start;
+                             $i < $end;
+                             $i++): ?>
+                            <?php $news = $newsList[$i]; ?>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="<?php echo '../../' . $news['preview'] ?>" alt="news_image">
+                                    <div class="caption">
+                                        <h3><?php echo $news['title'] ?></h3>
+                                        <p><?php echo $news['short_content'] ?></p>
+                                        <p>Автор: <?php echo $news['author_name'] ?></p>
+                                        <h4>Дата: <?php echo $news['date'] ?></h4>
+                                        <p><a href="<?php echo CORE_PATH . 'news/single/' . $news['id'] ?>"
+                                              class="btn btn-primary" role="button">Читать
+                                                далее...</a>
                                     </div>
-                                    <h3><?php echo $news['title'] ?></h3>
-                                    <p><?php echo $news['short_content'] ?></p>
-                                    <p>Автор: <?php echo $news['author_name'] ?></p>
-                                    <h4>Дата: <?php echo $news['date'] ?></h4>
-                                    <a href="<?php echo CORE_PATH . 'news/' . $news['id'] ?>">Читать далее...</a>
                                 </div>
                             </div>
-                        </section>
-                        <?php $count_news++;
-                    endforeach; ?>
+                        <?php endfor; ?>
+
+                    </div>
                 </div>
-                <!--                <div class="go">-->
-                <!--                    <section>[text0]</section>-->
-                <!--                    <section>[text1]</section>-->
-                <!--                    <section>[text2]</section>-->
-                <!--                    <section>[text3]</section>-->
-                <!--                </div>-->
-                <!--                <div class="go">-->
-                <!--                    <section>[text4]</section>-->
-                <!--                    <section>[text5]</section>-->
-                <!--                    <section>[text6]</section>-->
-                <!--                    <section>[text7]</section>-->
-                <!--                </div>-->
-                <!--                <div class="go">-->
-                <!--                    <section>[text8]</section>-->
-                <!--                    <section>[text9]</section>-->
-                <!--                    <section>[text10]</section>-->
-                <!--                    <section>[text11]</section>-->
-                <!--                </div>-->
-                <!--            </div>-->
             </div>
-            <!-- log in -->
+            <div class="row">
+                <?php echo $pagination($newsList); ?>
+            </div>
+
+            <!--popap about us-->
+            <div class="us_info col-md-4">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Как с нами связатся</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="kontakt_tel">
+                            <p>+380-999-911-111</p>
+                            <p>e-mail: hakaton@gmail.com</p>
+                        </div>
+                        <div class="soc_icon">
+                            <ul>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                            </ul>
+                        </div>
+
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+            <!--popap log in-->
             <div id="overlay_log"></div>
-            <div class="form_log">
-                <form method="POST" action="login">
-                    <label for="login_in"><input name="log_in" id="login_in" type="login"
-                                                 placeholder="Введите логин"></label>
-                    <label for="password_in"><input name="pass_in" id="password_in" type="password"
-                                                    placeholder="Введите пароль"></label>
-                    <label><input name="login_sub" id="login_sub" type="submit" value="Войти"></label>
-                    <input name="redirect" type="hidden" value="news">
-                    <a href="home#registration_form" class="reg">Зарегистрироватся</a>
+            <div class="col-md-8 form_log">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Horizontal Form</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal" method="post" action="../../login">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+
+                                <div class="col-sm-10">
+                                    <input name="email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                                <div class="col-sm-10">
+                                    <input name="pass_in" type="password" class="form-control" id="inputPassword3"
+                                           placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-default">Cancel</button>
+                            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                        </div>
+                        <!-- /.box-footer -->
+                        <input type="hidden" name="redirect" value="news/page/<?php echo $Cpag?>">
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane active" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">Recent Activity</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript::;">
+                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                <p>Will be 23 on April 24th</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript::;">
+                            <h4 class="control-sidebar-subheading">
+                                Custom Template Design
+                                <span class="pull-right-container">
+                  <span class="label label-danger pull-right">70%</span>
+                </span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
                 </form>
             </div>
-            <!-- popup -->
-            <div id="overlay"></div>
-            <div id="popup">
-                <div class="header"><h2>Наши контакты</h2></div>
-                <div class="content">
-                    <div class="kontakt_tel">
-                        <p>+380-999-911-111</p>
-                        <p>e-mail: hakaton@gmail.com</p>
-                    </div>
-                    <div class="soc_icon">
-                        <ul>
-                            <li><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+            <!-- /.tab-pane -->
         </div>
-    </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
 
-    <a href="#" class="prev"><img src="main/img/left.png"></a>
-    <a href="#" class="next"><img src="main/img/right.png"></a>
-    <!--POP-UP--><!--
-<div id="overlay1"></div>
-<div id="popup-news">
-    <div class="header">Заголовок новости</div>
-    <div class="text">Текст новости</div>
-    <p class="buttons"><a href="#">Ok</a></p>
-</div>-->
+<!-- REQUIRED JS SCRIPTS -->
 
-    <script type="text/javascript" src="main/js/script.js"></script>
+<!-- jQuery 2.2.3 -->
+<script src="../../main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../main/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../main/js/app.min.js"></script>
+<script src="../../main/js/script.js"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
 </body>
 </html>

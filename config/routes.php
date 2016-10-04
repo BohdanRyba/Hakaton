@@ -2,8 +2,8 @@
 
 return array(
     'index.php' => 'home/index',
-    'news/([0-9]+)' => 'news/view/$1',
-    'news' => 'news/index',
+    'news/page/([0-9]+)' => 'news/index/$1',
+    'news/single/([0-9]+)' => 'news/view/$1',
     'home' => 'home/index',
     'login' => 'login/index',
     'registration' => 'login/registration',

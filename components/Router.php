@@ -23,8 +23,9 @@ class Router
     {
 
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/news
-            $this->uri = preg_replace("/^(.*)Hakaton/", '', $_SERVER['REQUEST_URI']); // /php/students/Slobodeniuk/news
-            $this->uri = trim($this->uri, '/');// php/students/Slobodeniuk
+            $this->uri = preg_replace("/Hakaton/", '', $_SERVER['REQUEST_URI']); // /news
+//            $this->uri = preg_replace("/^(.*)Hakaton/", '', $_SERVER['REQUEST_URI']); // /news
+            $this->uri = trim($this->uri, '/');// news
             return $this->uri;
         }
     }
@@ -33,7 +34,10 @@ class Router
     public function run()
     {
 //        session_start();
-
+//        echo '<pre>';
+//        var_export($_SERVER);
+//        echo '</pre>';
+//        die;
         $uri = $this->getURI();
 //        var_dump($this->routes);
 //        echo $uri;

@@ -6,9 +6,9 @@ error_reporting(E_ALL);
 
 define('ROOT', __DIR__.'/');
 //define('PATH', 'http://localhost/Hakaton/');
-define('CORE_PATH', implode('/', explode('/',$_SERVER['PHP_SELF'], -1)).'/');
-//echo ROOT;
-//$_SESSION['user_access'] = 1;
+define('CORE_PATH', str_replace('index.php', '', implode('/', explode('/',$_SERVER['PHP_SELF'], -1)).'/'));
+//echo CORE_PATH;
+//$_1SESSION['user_access'] = 1;
 //unset($_SESSION['user_access']);
 require_once (ROOT.'components/admin/Admin.php');
 require_once (ROOT.'components/Db.php');
