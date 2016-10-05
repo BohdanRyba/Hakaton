@@ -75,9 +75,7 @@ desired effect
                     </button>
                     <a href="#" class="navbar-brand">Brand</a></div>
 
-                <?php
-                echo $nav_content;
-                ?>
+                <?php echo $nav_content; ?>
 
             </div>
         </nav>
@@ -137,7 +135,8 @@ desired effect
                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 
                                 <div class="col-sm-10">
-                                    <input name="email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input name="email" type="email" class="form-control" id="inputEmail3"
+                                           placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group">

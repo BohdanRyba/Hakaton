@@ -77,6 +77,7 @@ desired effect
                 </div>
 
                 <?php echo $nav_content; ?>
+
             </div>
         </nav>
     </header>
@@ -100,35 +101,33 @@ desired effect
                     <div class="row">
 
                         <?php
-                        define('CURRENT_PAGE', 1);
-                        define('PER_PAGE', 4);
-
-                        if (isset($Cpag) and is_numeric($Cpag)) {
-                            $current = $Cpag;
-                        } else {
-                            $current = CURRENT_PAGE;
-                        }
-                        $per_page = PER_PAGE;
-
-                        $pagination = function ($all) use ($per_page, $current) {
-                            $pag = '<ul class="pagination">';
-                            for ($i = 0, $j = 0; $i < count($all); $i += $per_page, $j++) {
-                                if ($current == $j + 1) {
-                                    $pag .= '<li class="active"><span>' . ($j + 1) . '</span></li>';
-                                } else {
-                                    $pag .= '<li><a href="' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
-                                }
-                            }
-                            $pag .= '</ul>';
-                            return $pag;
-                        };
-
-                        $all_count = count($newsList);
-                        $start = ($current - 1) * $per_page;
-                        $end = (($current * $per_page) < $all_count) ? $current * $per_page : $all_count;
-                        for ($i = $start;
-                             $i < $end;
-                             $i++): ?>
+//                        define('CURRENT_PAGE', 1);
+//                        define('PER_PAGE', 4);
+//
+//                        if (isset($Cpag) and is_numeric($Cpag)) {
+//                            $current = $Cpag;
+//                        } else {
+//                            $current = CURRENT_PAGE;
+//                        }
+//                        $per_page = PER_PAGE;
+//
+//                        $pagination = function ($all) use ($per_page, $current) {
+//                            $pag = '<ul class="pagination">';
+//                            for ($i = 0, $j = 0; $i < count($all); $i += $per_page, $j++) {
+//                                if ($current == $j + 1) {
+//                                    $pag .= '<li class="active"><span>' . ($j + 1) . '</span></li>';
+//                                } else {
+//                                    $pag .= '<li><a href="' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
+//                                }
+//                            }
+//                            $pag .= '</ul>';
+//                            return $pag;
+//                        };
+//
+//                        $all_count = count($newsList);
+//                        $start = ($current - 1) * $per_page;
+//                        $end = (($current * $per_page) < $all_count) ? $current * $per_page : $all_count;
+                        for ($i = $start; $i < $end; $i++): ?>
                             <?php $news = $newsList[$i]; ?>
                             <div class="col-sm-6 col-md-3">
                                 <div class="thumbnail">
@@ -150,7 +149,7 @@ desired effect
                 </div>
             </div>
             <div class="row">
-                <?php echo $pagination($newsList); ?>
+                <?php echo $pagination; ?>
             </div>
 
             <!--popap about us-->
