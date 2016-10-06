@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Регистрация 2х2</title>
+  <title>Организация ХОАСБТ</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -16,26 +16,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="../views/main/plugins/daterangepicker/daterangepicker.css">
-  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="../views/main/plugins/datepicker/datepicker3.css">
-  <!-- iCheck for checkboxes and radio inputs -->
-  <link rel="stylesheet" href="../views/main/plugins/iCheck/all.css">
-  <!-- Bootstrap Color Picker -->
-  <link rel="stylesheet" href="../views/main/plugins/colorpicker/bootstrap-colorpicker.min.css">
-  <!-- Bootstrap time Picker -->
-  <link rel="stylesheet" href="../views/main/plugins/timepicker/bootstrap-timepicker.min.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="../views/main/plugins/select2/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../views/main/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="../views/main/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" type="text/css" href="../views/main/css/skins/skin-blue.min.css">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect.
+  -->
+  <link rel="stylesheet" href="../views/main/css/skins/skin-blue.min.css">
   <link rel="stylesheet" type="text/css" href="../views/main/css/style.css">
-  <link rel="stylesheet" type="text/css" href="../views/main/fixis.css">
+  <link rel="stylesheet" href="../views/main/css/fixis.css">
   <script src="../views/main/js/jquery.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -206,126 +195,46 @@ desired effect
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-
-
     </section>
-
-    <!-- Main content -->
     <section class="content">
       <!-- Your Page Content Here -->
-      <div class="content_box col-md-4">
+      <div class="content_box col-md-10">
         <div class="box box-info">
           <div class="box-header with-border">
-            <h2 class="box-title">Регистрация 2x2</h2>
+            <h2 class="box-title col-sm-4">организация ХОАСБТ</h2>
+            <li>
+              <span class="button-reg glyphicon glyphicon-pencil"></span>
+            </li>
           </div>
-          <!-- /.box-header -->
-          <!-- form start -->
-          <form class="form-horizontal">
-            <div class="box-body">
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Город</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputEmail3" placeholder="Город">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Тренер">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Телефон</label>
-                <div class="col-sm-10">
-                <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-phone"></i>
-                  </div>
-                  <input class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" type="text">
-                </div>
-              </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Адрес електроной почты</label>
-                <div class="col-sm-10">
-                  <input type="e-mail" class="form-control" id="inputPassword3" placeholder="e-mail">
-                </div>
-              </div>
-              <!-- part1-->
-              <div class="part">
-                <label for="" class="lb_part">Участник №1</label>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Имя</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Имя">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Фамилия</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Фамилия">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Отчество</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Отчество">
-                </div>
-              </div>
-              <div class="form-group ">
-                <label class="col-sm-2 control-label">Date masks:</label>
-                <div class="col-sm-10">
-                  <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input class=" form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
-                </div>
-                </div>
-              </div>
-              <!-- part2-->
-              <div class="part">
-                <label for="" class="lb_part">Участник №2</label>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Имя</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Имя">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Фамилия</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Фамилия">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Отчество</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPassword3" placeholder="Отчество">
-                </div>
-              </div>
 
-              <div class="form-group ">
-                <label class="col-sm-2 control-label">Date masks:</label>
-                <div class="col-sm-10">
-                  <div class="input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input class=" form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
-                </div>
-                </div>
-              </div>
-              </div>
+          <div class="cont-box clear">
+            <div class="button-box clr">
+              <ul class="button-org-add">
+                <li class="button-list"><span>Список событий</span></li>
+                <li class="btn-plus"><span class="glyphicon glyphicon-plus"></span></li>
+              </ul>
             </div>
-          </form>
-          <form action="" class="form_in">
-              <label class="" for=""><input name="reg_participant" type="submit" value="Заповнити заявку на участь"></label>
-          </form>
+            <div class="button-box clr">
+              <ul class="button-org-add">
+                <li class="button-list"><span>Танц категории</span></li>
+                <li class="btn-plus"><span class="glyphicon glyphicon-plus"></span></li>
+              </ul>
+            </div>
+            <div class="button-box clr">
+              <ul class="button-org-add">
+                <li class="button-list"><span>Клубы</span></li>
+                <li class="btn-plus"><span class="glyphicon glyphicon-plus"></span></li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
+
+
+    <!-- Main content -->
+
     <!-- /.content -->
-  </div>
   </div>
   <!-- /.content-wrapper -->
 
@@ -500,101 +409,29 @@ desired effect
 <script src="../views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../views/main/bootstrap/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="../views/main/plugins/select2/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="../views/main/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../views/main/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../views/main/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="../views/main/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../views/main/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="../views/main/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="../views/main/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="../views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="../views/main/plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="../views/main/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../views/main/js/app.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../views/main/js/demo.js"></script>
+<script src="../views/main/js/app.min.js"></script>
 <script src="../views/main/js/script.js"></script>
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $(".select2").select2();
-
-    //Datemask dd/mm/yyyy
-    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-    //Datemask2 mm/dd/yyyy
-    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-    //Money Euro
-    $("[data-mask]").inputmask();
-
-    //Date range picker
-    $('#reservation').daterangepicker();
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-        {
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
-    );
-
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    });
-
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass: 'iradio_minimal-blue'
-    });
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass: 'iradio_minimal-red'
-    });
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass: 'iradio_flat-green'
-    });
-
-    //Colorpicker
-    $(".my-colorpicker1").colorpicker();
-    //color picker with addon
-    $(".my-colorpicker2").colorpicker();
-
-    //Timepicker
-    $(".timepicker").timepicker({
-      showInputs: false
+<script>function funcBefore(){
+  $('.button-list span').text('data before....');
+}
+function funcSuccess(data){
+    $('.box').append(data);
+}
+  $(function(){
+    $('.btn-plus').bind('click', function (){
+      var admin=5;
+      $.ajax({
+        url:'content.php',
+        type:'POST',
+        data:({name:admin,number:5}),
+        dataType:'html',
+        beforeSend:funcBefore,
+        success: funcSuccess
+      });
     });
   });
-</script>
-
-
+  </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
