@@ -226,6 +226,9 @@ desired effect
                 <li class="btn-plus"><span class="glyphicon glyphicon-plus"></span></li>
               </ul>
             </div>
+            </div>
+            <div class="cont-box1 clear"></div>
+            <div class="cont-box content-in" id="loading"></div>
           </div>
         </div>
       </div>
@@ -411,20 +414,42 @@ desired effect
 <script src="../views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../views/main/js/app.min.js"></script>
+<script src="../views/main/js/spin.min.js"></script>
 <script src="../views/main/js/script.js"></script>
-<script>function funcBefore(){
-  $('.button-list span').text('data before....');
+<script>
+function funcBefore(){
+  $('.content-in').css('height','200px');
+  var opts = {
+    lines: 13, // Число линий для рисования
+    length: 4, // Длина каждой линии
+    width: 5, // Толщина линии
+    radius: 20, // Радиус внутреннего круга
+    corners: 1, // Скругление углов (0..1)
+    rotate: 0, // Смещение вращения
+    direction: 1, // 1: по часовой стрелке, -1: против часовой стрелки
+    color: '#00c0ef', // #rgb или #rrggbb или массив цветов
+    speed: 2.2, // Кругов в секунду
+    trail: 17, // Послесвечение
+    shadow: false, // Тень(true - да; false - нет)
+    hwaccel: false, // Аппаратное ускорение
+    className: 'spinner', // CSS класс
+    zIndex: 2e9, // z-index (по-умолчанию 2000000000)
+    top: '60%', // Положение сверху относительно родителя
+    left: '50%' // Положение слева относительно родителя
+   };
+   var target = document.getElementById('loading');
+   var spinner = new Spinner(opts).spin(target);
 }
 function funcSuccess(data){
-    $('.box').append(data);
+  $('#loading').remove();
+    $('.cont-box1').append(data);
 }
   $(function(){
-    $('.btn-plus').bind('click', function (){
-      var admin=5;
+    $('.btn-plus').on('click', function (){
       $.ajax({
         url:'content.php',
         type:'POST',
-        data:({name:admin,number:5}),
+        data:({name:1,number:5}),
         dataType:'html',
         beforeSend:funcBefore,
         success: funcSuccess

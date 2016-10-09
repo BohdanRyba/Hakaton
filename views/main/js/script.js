@@ -170,6 +170,8 @@ $(function(){
 
 
 
+
+
 	$('#jereb_run').on('click',function(){
 		var kilcPar=$('.one_team li');
 		var numReserve = [];
