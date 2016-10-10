@@ -23,7 +23,7 @@ class Router
     {
 
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/news
-            $this->uri = preg_replace("/Hakaton/", '', $_SERVER['REQUEST_URI']); // /news
+            $this->uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /news
 //            $this->uri = preg_replace("/^(.*)Hakaton/", '', $_SERVER['REQUEST_URI']); // /news
             $this->uri = trim($this->uri, '/');// news
             return $this->uri;
@@ -33,14 +33,15 @@ class Router
 
     public function run()
     {
-//        session_start();
 //        echo '<pre>';
 //        var_export($_SERVER);
 //        echo '</pre>';
 //        die;
         $uri = $this->getURI();
 //        var_dump($this->routes);
+//        echo '<br>';
 //        echo $uri;
+//        die;
         if ($uri == 'admin') {
             $admin = new Admin();
             $admin->runAdmin();
@@ -66,7 +67,8 @@ class Router
                     if (file_exists($controllerFile)) {
                         include_once("$controllerFile");
                     }
-
+//                    echo $actionName;
+//                    die;
                     $controllerObject = new $controllerName;
                     $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
