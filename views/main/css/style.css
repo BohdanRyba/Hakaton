@@ -629,3 +629,15 @@ b {
 	font-weight:600;
 }
 
+.box-body .cabinet-info p{
+	font-size: 16px;
+	margin-top: 15px;
+}
+.box-body .cabinet-info span{
+	font-weight: 700;
+}
+.box-body .cabinet-info .user-event{
+	border: 1px solid black;
+	width: 100%;
+	font-size: 14px;
+}
