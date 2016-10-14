@@ -654,6 +654,9 @@ b{
 .button-box:last-child{
 	margin-right:0;
 }
+.button-org-add{
+	padding:0;
+}
 .button-org-add li{
 	padding:15px 10px;
 	height:100%;
