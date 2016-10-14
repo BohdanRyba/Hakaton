@@ -24,7 +24,6 @@ class Router
 
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/news
             $this->uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /news
-//            $this->uri = preg_replace("/^(.*)Hakaton/", '', $_SERVER['REQUEST_URI']); // /news
             $this->uri = trim($this->uri, '/');// news
             return $this->uri;
         }
@@ -43,7 +42,7 @@ class Router
 //        echo $uri;
 //        die;
         if ($uri == 'admin') {
-            $admin = new Admin();
+            $admin = new AdminRouter();
             $admin->runAdmin();
         } else {
             foreach ($this->routes as $uriPattern => $path) {
