@@ -636,8 +636,27 @@ b {
 .box-body .cabinet-info span{
 	font-weight: 700;
 }
-.box-body .cabinet-info .user-event{
+.box-body .cabinet-info .user-event, .club-event{
 	border: 1px solid black;
 	width: 100%;
 	font-size: 14px;
+}
+
+.club-users table{
+	width:100%;
+	margin-bottom: 50px;
+}
+.club-users th{
+	text-align: center;
+	padding: 5px 0;
+}
+.club-users td{
+	text-align: center;
+	padding: 5px 0;
+}
+.club-users tr:nth-child(2n){
+	background-color: #dfdfdf;
+}
+.club-users tr:nth-child(2n+3){
+	background-color: #cfcfcf
 }

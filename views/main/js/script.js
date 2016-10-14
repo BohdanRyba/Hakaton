@@ -150,11 +150,11 @@ $(function(){
   				if (numReserve[i] === randomNumber){
    				found = true;
    				break;
-  				};
-  			};
+  				}
+  			}
   			if (!found) { numReserve[numReserve.length]=randomNumber; }
-		};
-		console.table(numReserve)
+		}
+		console.table(numReserve);
 		var masTwo=[0];
 		$('.two_team li').each(function(i){
 			masTwo[i+1]= $(this).html();
@@ -165,7 +165,7 @@ $(function(){
  		for(i=0;i<kilcPar.length;i++){
  			let a=numReserve[i];
 			masRand[i]=masTwo[a];
-		};
+		}
 		console.table(masRand);
 		kilcPar.each(function(i){
 			$(this).append(' - '+masRand[i])
@@ -238,5 +238,11 @@ $(function(){
   $('a.remove-part').click(function(){
     $(this).parents('.part').slideUp(300);
   });
-
+// DATAPICKER
+	$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+	$.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+	$( function() {
+		$( "#event_begin").datepicker();
+		$( "#event_end").datepicker();
+	} );
 });
