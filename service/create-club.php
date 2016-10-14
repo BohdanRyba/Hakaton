@@ -1,5 +1,5 @@
 <?php
-    sleep(2);
+    sleep(1);
 ?>
 <div class="box-header with-border">
   <h2 class="box-title">Заполните онформацию о клубе</h2>
@@ -21,30 +21,14 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Страна</label>
         <div class="col-sm-10">
-            <select class="form-control select2" style="width: 100%;">
-              <option selected="selected">Украина</option>
-              <option>Россия</option>
-              <option>США</option>
-              <option>Польша</option>
-              <option>Германия</option>
-              <option>Франция</option>
-              <option>Китай</option>
-            </select>
-          </div>
+          <input type="text" class="form-control" id="inputPassword3" placeholder="Страна">
         </div>
+      </div>
         <div class="form-group">
           <label class="col-sm-2 control-label">Город</label>
           <div class="col-sm-10">
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">Хмельницкий</option>
-                <option>Киев</option>
-                <option>Харковь</option>
-                <option>Днепропетровск</option>
-                <option>Донецк</option>
-                <option>Львов</option>
-                <option>Житомер</option>
-              </select>
-            </div>
+            <input type="text" class="form-control" id="inputPassword3" placeholder="Город">
+          </div>
           </div>
     <div class="form-group">
       <label for="inputPassword3" class="col-sm-2 control-label">Руководитель клуба</label>
@@ -82,8 +66,8 @@
         <input type="e-mail" class="form-control" id="inputPassword3" placeholder="e-mail">
       </div>
     </div>
+    <div class="form_in">
+        <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
+    </div>
   </div>
-</form>
-<form action="" class="form_in">
-    <label class="" for=""><input name="reg_participant" type="submit" value="Заповнити заявку на участь"></label>
 </form>

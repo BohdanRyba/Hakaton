@@ -60,23 +60,6 @@ $(function(){
       $('.form_log').hide(400);
     })
 
-
-    $('.form_log label').hover(function(){
-        $(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-        $(this).css('transition','box-shadow 0.2s');
-    }, function(){
-        $(this).css('box-shadow',' none');
-        $(this).css('transition','box-shadow 0.2s');
-    });
-
-    $('.form_in label').hover(function(){
-        $(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-        $(this).css('transition','box-shadow 0.2s');
-    }, function(){
-        $(this).css('box-shadow',' none');
-        $(this).css('transition','box-shadow 0.2s');
-    });
-
     $('.button-reg').hover(function(){
       $(this).css('border-right','2px solid #1E90FF');
       $(this).css('cursor','pointer');
@@ -92,13 +75,6 @@ $(function(){
       $(this).css('background','white');
     });
 
-    $('.button-list').hover(function(){
-      $(this).css('background','#f4f4f4');
-      $(this).css('transition','background 0.6s')
-      $(this).css('cursor','pointer');
-    },function(){
-      $(this).css('background','white');
-    });
 
     var numberArray=[],
         emailRegular=/^[A-Za-z0-9]\.?([`\w-]\.?)+@[a-z]+(\.[a-z]+)+$/g,
@@ -149,28 +125,6 @@ $(function(){
             $cont.animate({marginTop:"50px"},700)
         }
     })*/
-
-	$('.form_in label').hover(function(){
-		$(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-		$(this).css('transition','box-shadow 0.2s');
-
-	}, function(){
-		$(this).css('box-shadow',' none');
-		$(this).css('transition','box-shadow 0.2s');
-	});
-
-		$('.form_math label').hover(function(){
-		$(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-		$(this).css('transition','box-shadow 0.2s');
-
-	}, function(){
-		$(this).css('box-shadow',' none');
-		$(this).css('transition','box-shadow 0.2s');
-	});
-
-
-
-
 
 	$('#jereb_run').on('click',function(){
 		var kilcPar=$('.one_team li');
