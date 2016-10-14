@@ -148,7 +148,7 @@ desired effect
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row text-center">
                 <?php echo $pagination; ?>
             </div>
 

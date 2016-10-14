@@ -39,7 +39,7 @@ $(function(){
     });
 
 
-    $('.log_in_form').click(function(){
+    $('.log_animate').click(function(){
         $('.form_log').show(1000);
         $('#overlay_log').show(400);
     });
@@ -47,7 +47,7 @@ $(function(){
         $(this).hide(400);
         $('.form_log').hide(400);
     });
-    $('.contact_us').click(function(){
+    $('.connect').click(function(){
         $('#overlay_log').show(600);
         $('.us_info').show(1000);
     });
