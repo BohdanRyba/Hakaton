@@ -39,7 +39,7 @@ $(function(){
     });
 
 
-    $('.log_animate').click(function(){
+    $('.log_in_form').click(function(){
         $('.form_log').show(1000);
         $('#overlay_log').show(400);
     });
@@ -47,7 +47,7 @@ $(function(){
         $(this).hide(400);
         $('.form_log').hide(400);
     });
-    $('.connect').click(function(){
+    $('.contact_us').click(function(){
         $('#overlay_log').show(600);
         $('.us_info').show(1000);
     });
@@ -60,23 +60,19 @@ $(function(){
       $('.form_log').hide(400);
     })
 
-
-    $('.form_log label').hover(function(){
-        $(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-        $(this).css('transition','box-shadow 0.2s');
-
-    }, function(){
-        $(this).css('box-shadow',' none');
-        $(this).css('transition','box-shadow 0.2s');
+    $('.button-reg').hover(function(){
+      $(this).css('border-right','2px solid #1E90FF');
+      $(this).css('cursor','pointer');
+    },function(){
+      $(this).css('border-right','none');
     });
 
-    $('.form_in label').hover(function(){
-        $(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-        $(this).css('transition','box-shadow 0.2s');
-
-    }, function(){
-        $(this).css('box-shadow',' none');
-        $(this).css('transition','box-shadow 0.2s');
+    $('.btn-plus').hover(function(){
+      $(this).css('background','#00c0ef');
+      $(this).css('transition','background 0.6s')
+      $(this).css('cursor','pointer');
+    },function(){
+      $(this).css('background','white');
     });
 
 
@@ -120,25 +116,15 @@ $(function(){
         }
     });
 
-	$('.form_in label').hover(function(){
-		$(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-		$(this).css('transition','box-shadow 0.2s');
-
-	}, function(){
-		$(this).css('box-shadow',' none');
-		$(this).css('transition','box-shadow 0.2s');
-	});
-
-		$('.form_math label').hover(function(){
-		$(this).css('box-shadow',' 5px 5px 10px rgba(0,0,0,0.7)');
-		$(this).css('transition','box-shadow 0.2s');
-
-	}, function(){
-		$(this).css('box-shadow',' none');
-		$(this).css('transition','box-shadow 0.2s');
-	});
-
-
+    /*var $cont=$('.info_container');
+    // var $h=$infoContainer.offset();
+    $('html, body').add(window).add(document).scroll(function (e) {
+        var $s = $('html body').scrollTop()+ $(window).height() + 4*$('#ppp').height();
+        console.log($cont.offset().top);
+        if ($s > $cont.offset().top) {
+            $cont.animate({marginTop:"50px"},700)
+        }
+    })*/
 
 	$('#jereb_run').on('click',function(){
 		var kilcPar=$('.one_team li');
@@ -150,11 +136,11 @@ $(function(){
   				if (numReserve[i] === randomNumber){
    				found = true;
    				break;
-  				};
-  			};
+  				}
+  			}
   			if (!found) { numReserve[numReserve.length]=randomNumber; }
-		};
-		console.table(numReserve)
+		}
+		console.table(numReserve);
 		var masTwo=[0];
 		$('.two_team li').each(function(i){
 			masTwo[i+1]= $(this).html();
@@ -165,7 +151,7 @@ $(function(){
  		for(i=0;i<kilcPar.length;i++){
  			let a=numReserve[i];
 			masRand[i]=masTwo[a];
-		};
+		}
 		console.table(masRand);
 		kilcPar.each(function(i){
 			$(this).append(' - '+masRand[i])
@@ -228,7 +214,7 @@ $(function(){
 
 
 		$('.part').nextAll('.part').hide();
-    window.a=0;
+    window.a=1;
 	$('#add_part').on('click',function(){
 		$('.part'+window.a).slideDown(400);
 		var dist= $(this).offset().top;
@@ -238,5 +224,11 @@ $(function(){
   $('a.remove-part').click(function(){
     $(this).parents('.part').slideUp(300);
   });
-
+// DATAPICKER
+	$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+	$.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+	$( function() {
+		$( "#event_begin").datepicker();
+		$( "#event_end").datepicker();
+	});
 });
