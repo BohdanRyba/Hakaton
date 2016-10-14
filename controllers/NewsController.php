@@ -10,6 +10,10 @@ class NewsController
 
         $newsList = News::getNewsList();
         $nav_content = News::getNavNewsContent($Cpag);
+        $start_end_pagination_array = News::getPaginationContent($Cpag);
+        $start = $start_end_pagination_array[0];
+        $end = $start_end_pagination_array[1];
+        $pagination = $start_end_pagination_array[2];
 
         require_once(ROOT . 'views/news/index.php');
 

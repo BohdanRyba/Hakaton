@@ -214,9 +214,6 @@ a:hover { color:#00ff00;}
 	margin:0 auto;
 	background-color:#1E90FF;
 }
-#wrap{
-
-}
 body, p{
 	font: 13px/1.5 Helvetica, sans-serif;
 	color:#000;
@@ -705,4 +702,34 @@ b{
 	width:30%;
 	border:1px outset #00c0ef;
 	border-top-right-radius:100px;
+}
+.box-body .cabinet-info p{
+	font-size: 16px;
+	margin-top: 15px;
+}
+.box-body .cabinet-info span{
+	font-weight: 700;
+}
+.box-body .cabinet-info .user-event, .club-event{
+	border: 1px solid black;
+	width: 100%;
+	font-size: 14px;
+
+.club-users table{
+	width:100%;
+	margin-bottom: 50px;
+}
+.club-users th{
+	text-align: center;
+	padding: 5px 0;
+}
+.club-users td{
+	text-align: center;
+	padding: 5px 0;
+}
+.club-users tr:nth-child(2n){
+	background-color: #dfdfdf;
+}
+.club-users tr:nth-child(2n+3){
+	background-color: #cfcfcf
 }
