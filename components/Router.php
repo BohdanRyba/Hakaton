@@ -6,7 +6,7 @@ class Router
     public $uri;
     public $result;
 
-    /*
+    /**
      * include file "routes.php" from folder "config" with array inside
      * */
     public function __construct()
@@ -16,15 +16,15 @@ class Router
     }
 
 
-    /*
+    /**
      * return String from request field
      * */
     public function getURI()
     {
 
-        if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/news
-            $this->uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /news
-            $this->uri = trim($this->uri, '/');// news
+        if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/admin
+            $this->uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
+            $this->uri = trim($this->uri, '/');// admin
             return $this->uri;
         }
     }
@@ -32,17 +32,11 @@ class Router
 
     public function run()
     {
-//        echo '<pre>';
-//        var_export($_SERVER);
-//        echo '</pre>';
-//        die;
+
         $uri = $this->getURI();
-//        var_dump($this->routes);
-//        echo '<br>';
-//        echo $uri;
-//        die;
+
         if ($uri == 'admin') {
-            $admin = new AdminRouter();
+            $admin = new Admin();
             $admin->runAdmin();
         } else {
             foreach ($this->routes as $uriPattern => $path) {
@@ -58,31 +52,21 @@ class Router
                     $actionName = 'action' . ucfirst(array_shift($segments));
 
                     $parameters = $segments;
-//                    echo '<pre>';
-//                    var_export($parameters);
-//                    echo '</pre>';
 
                     $controllerFile = ROOT . 'controllers/' . $controllerName . '.php';
                     if (file_exists($controllerFile)) {
                         include_once("$controllerFile");
                     }
-//                    echo $actionName;
-//                    die;
+
                     $controllerObject = new $controllerName;
                     $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
                     if ($this->result !== '') {
                         break;
                     }
-
-
                 }
-//            echo $uriPattern.'<br>';
-//            echo $path.'<br><hr>';
             }
         }
-
-
     }
 
 }

@@ -15,4 +15,3 @@ return array(
     'create_event' => 'addevent/create',
     '' => 'home/index',
 );
-//    '' => 'home/index',
