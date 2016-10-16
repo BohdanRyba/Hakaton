@@ -38,7 +38,6 @@ $(function(){
         $(this).css('transition','background 0.6s');
     });
 
-
     $('.log_in_form').click(function(){
         $('.form_log').show(1000);
         $('#overlay_log').show(400);
@@ -59,22 +58,6 @@ $(function(){
       $('#overlay_log').hide(400);
       $('.form_log').hide(400);
     })
-
-    $('.button-reg').hover(function(){
-      $(this).css('border-right','2px solid #1E90FF');
-      $(this).css('cursor','pointer');
-    },function(){
-      $(this).css('border-right','none');
-    });
-
-    $('.btn-plus').hover(function(){
-      $(this).css('background','#00c0ef');
-      $(this).css('transition','background 0.6s')
-      $(this).css('cursor','pointer');
-    },function(){
-      $(this).css('background','white');
-    });
-
 
     var numberArray=[],
         emailRegular=/^[A-Za-z0-9]\.?([`\w-]\.?)+@[a-z]+(\.[a-z]+)+$/g,
@@ -231,4 +214,18 @@ $(function(){
 		$( "#event_begin").datepicker();
 		$( "#event_end").datepicker();
 	});
+
+    $('.button-list-club').on('click', function(){
+        $('.search-wrapp').toggle(400);
+        $('.list-information').slideUp(400);
+    });
+    $('.btn-search').on('click', function(){
+        $('.list-information').slideToggle(400);
+    });
+
+
+
+
+
+
 });

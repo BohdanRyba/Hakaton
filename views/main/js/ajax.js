@@ -1,5 +1,6 @@
 function funcBefore(){
   $('.content-in').css('height','200px');
+  $('body').css('cursor','progress');
   var opts = {
     lines: 13, // Число линий для рисования
     length: 4, // Длина каждой линии
@@ -9,7 +10,7 @@ function funcBefore(){
     rotate: 0, // Смещение вращения
     direction: 1, // 1: по часовой стрелке, -1: против часовой стрелки
     color: '#00c0ef', // #rgb или #rrggbb или массив цветов
-    speed: 2.2, // Кругов в секунду
+    speed: 2.0, // Кругов в секунду
     trail: 17, // Послесвечение
     shadow: false, // Тень(true - да; false - нет)
     hwaccel: false, // Аппаратное ускорение
@@ -22,9 +23,12 @@ function funcBefore(){
    var spinner = new Spinner(opts).spin(target);
 }
 function funcSuccess(data){
+  $('body').css('cursor','default');
   $('#loading>').remove();
+  $('#loading').css('height','0px')
   $('.content-in').css('height','0');
   $('.cont-box1').append(data);
+  $('body').trigger('mask_aj ax');
 }
   $(function(){
     $('.btn-plus-event').on('click', function (){

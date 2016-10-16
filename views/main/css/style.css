@@ -662,16 +662,35 @@ b{
 	height:100%;
 	display:block;
 	float:left;
-	border:1px solid #f4f4f4;
 }
-.button-org-add li:first-child{
-	width:70%;
+.button-org-add .button-list{
+	width:75%;
+	border:1px solid #D2D6DE;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	-moz-transition:all 0.4s;
+	-webkit-transition:all 0.4s;
 }
-.button-org-add li:last-child{
+.button-org-add .btn-plus{
 	text-align:center;
-	width:30%;
+	width:25%;
 	border:1px outset #00c0ef;
-	border-top-right-radius:100px;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+	transition:all 0.4s;
+	-moz-transition:all 0.4s;
+	-webkit-transition:all 0.4s;
+}
+.button-org-add .button-list:hover{
+	border:1px solid #367FAA;
+}
+.button-org-add .btn-plus:hover{
+	background:#00c0ef;
+	border-top-right-radius:100%;
+	color:#fff;
+	-moz-transition:all 0.4s;
+	-webkit-transition:all 0.4s;
+	cursor:crosshair;
 }
 .box-body .cabinet-info p{
 	font-size: 16px;
@@ -684,7 +703,7 @@ b{
 	border: 1px solid black;
 	width: 100%;
 	font-size: 14px;
-
+}
 .club-users table{
 	width:100%;
 	margin-bottom: 50px;
@@ -702,4 +721,65 @@ b{
 }
 .club-users tr:nth-child(2n+3){
 	background-color: #cfcfcf
+}
+.list-data{
+	padding:5px;
+}
+.search-wrapp{
+	position:relative;
+	display:none;
+}
+.list-information{
+	position:absolute;
+	z-index:100;
+	display:none;
+}
+.list-information ul{
+	max-width:100%;
+	background:#fff;
+}
+.list-search-button .line-search input[type="submit"]{
+	height:40px;
+	width:40px;
+	margin-top:-5px;
+	border-radius:100%;
+	background: #00c0ef;
+	border:none;
+}
+.list-search-button .form-group input{
+	float:left;
+}
+.list-search-button .form-group input:first-child{
+	width:70%;
+}
+.list-search-button .form-group input:last-child{
+	width:20%;
+	margin-left:10px;
+}
+.list-data{
+	border-left:1px solid #00c0ef;
+	border-right:1px solid #00c0ef;
+}
+.list-search{
+	max-height:61px;
+	padding:5px 0;
+	border-bottom:1px solid #D2D6DE;
+	overflow:hidden;
+	transition:all 0.4s;
+	-moz-transition:all 0.4s;
+	-webkit-transition:all 0.4s;
+}
+.list-search:hover{
+	box-shadow:2px 2px 2px rgba(0,0,0,0.7);
+	cursor:pointer;
+	transition:all 0.4s;
+	-moz-transition:all 0.4s;
+	-webkit-transition:all 0.4s;
+}
+.list-search img{
+	float:left;
+	width:50px;
+	height:50px;
+	margin-right:5px;
+	border-radius:80%;
 }
