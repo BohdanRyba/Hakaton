@@ -214,13 +214,25 @@ $(function(){
 		$( "#event_begin").datepicker();
 		$( "#event_end").datepicker();
 	});
-
-    $('.button-list-club').on('click', function(){
-        $('.search-wrapp').toggle(400);
-        $('.list-information').slideUp(400);
+    // button on page: organization for create eveny, reg club, dance 
+    
+    $('.button-list').each(function(){
+        $(this).on('click', function(){
+            $('.search-wrapp').hide(300);
+            $('.list-information').slideUp(400);
+            $(this).parent('.button-org-add').nextAll('.search-wrapp').show(400);
+            $('.button-list').removeClass('btn-list-focus');
+            $(this).addClass('btn-list-focus');
+        });
     });
+
+
     $('.btn-search').on('click', function(){
         $('.list-information').slideToggle(400);
+    });
+    $('.btn-plus').on('click', function(){
+        $('.btn-plus').removeClass('btn-plus-focus');
+        $(this).addClass('btn-plus-focus');
     });
 
 

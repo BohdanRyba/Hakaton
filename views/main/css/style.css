@@ -261,17 +261,6 @@ body, p{
 	box-shadow:3px 3px 8px rgba(0,0,0,0.5);
 	transition:box-shadow 0.3s;
 }
-.button-list{
-	background:#fff;
-	border:1px solid #f4f4f4;
-	transition: background 0.4s;
-}
-.button-list:hover{
-	border:1px solid #00c0ef;
-	transition:border 0.4s;
-	cursor:pointer;
-}
-
 .form_log{
 	color:black;
 	z-index: 995;
@@ -671,6 +660,9 @@ b{
 	-moz-transition:all 0.4s;
 	-webkit-transition:all 0.4s;
 }
+.btn-list-focus{
+	border:1px solid #367FAA;
+}
 .button-org-add .btn-plus{
 	text-align:center;
 	width:25%;
@@ -681,8 +673,16 @@ b{
 	-moz-transition:all 0.4s;
 	-webkit-transition:all 0.4s;
 }
+.btn-plus-focus{
+	background:#00c0ef;
+	color:#fff;
+	transition:all 0.4s;
+	-moz-transition:all 0.4s;
+	-webkit-transition:all 0.4s;
+}
 .button-org-add .button-list:hover{
 	border:1px solid #367FAA;
+	cursor:pointer;
 }
 .button-org-add .btn-plus:hover{
 	background:#00c0ef;
@@ -721,6 +721,16 @@ b{
 }
 .club-users tr:nth-child(2n+3){
 	background-color: #cfcfcf
+}
+.box-avatar-cab img{
+	width:100%;
+	max-width:200px;
+	max-height:200px;
+	margin-bottom:10px;
+}
+.cabinet-info p{
+	padding-bottom:5px;
+	border-bottom:1px solid #D2D6DE;
 }
 .list-data{
 	padding:5px;
