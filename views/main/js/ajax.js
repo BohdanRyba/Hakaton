@@ -18,9 +18,9 @@ function funcBefore(){
     zIndex: 2e9, // z-index (по-умолчанию 2000000000)
     top: '60%', // Положение сверху относительно родителя
     left: '50%' // Положение слева относительно родителя
-   };
-   var target = document.getElementById('loading');
-   var spinner = new Spinner(opts).spin(target);
+  };
+  var target = document.getElementById('loading');
+  var spinner = new Spinner(opts).spin(target);
 }
 function funcSuccess(data){
   $('body').css('cursor','default');
@@ -28,52 +28,52 @@ function funcSuccess(data){
   $('#loading').css('height','0px')
   $('.content-in').css('height','0');
   $('.cont-box1').append(data);
-  $('body').trigger('mask_aj ax');
+  $('body').trigger('mask_ajax');
 }
-  $(function(){
-    $('.btn-plus-event').on('click', function (){
-      $('.cont-box1>').remove();
-      $.ajax({
-        url:'create-event.php',
-        type:'POST',
-        data:({name:1,number:5}),
-        dataType:'html',
-        beforeSend:funcBefore,
-        success: funcSuccess
-      });
-    });
-    $('.btn-plus-category').on('click', function (){
-      $('.cont-box1>').remove();
-      $.ajax({
-        url:'create-category.php',
-        type:'POST',
-        data:({name:1,number:5}),
-        dataType:'html',
-        beforeSend:funcBefore,
-        success: funcSuccess
-      });
-    });
-    $('.btn-plus-club').on('click', function (){
-      $('.cont-box1>').remove();
-      $.ajax({
-        url:'create-club.php',
-        type:'POST',
-        data:({name:1,number:5}),
-        dataType:'html',
-        beforeSend:funcBefore,
-        success: funcSuccess
-      });
-    });
-
-    $('.list-search').on('click', function(){
-        $('.cont-box1>').remove();
-        $.ajax({
-          url:'club-cubinet-for-adm.php',
-          type:'POST',
-          data:({}),
-          dataType:'html',
-          beforeSend: funcBefore,
-          success: funcSuccess
-        });
+$(function(){
+  $('.btn-plus-event').on('click', function (){
+    $('.cont-box1>').remove();
+    $.ajax({
+      url:'create-event.php',
+      type:'POST',
+      data:({name:1,number:5}),
+      dataType:'html',
+      beforeSend:funcBefore,
+      success: funcSuccess
     });
   });
+  $('.btn-plus-category').on('click', function (){
+    $('.cont-box1>').remove();
+    $.ajax({
+      url:'create-category.php',
+      type:'POST',
+      data:({name:1,number:5}),
+      dataType:'html',
+      beforeSend:funcBefore,
+      success: funcSuccess
+    });
+  });
+  $('.btn-plus-club').on('click', function (){
+    $('.cont-box1>').remove();
+    $.ajax({
+      url:'create-club.php',
+      type:'POST',
+      data:({name:1,number:5}),
+      dataType:'html',
+      beforeSend:funcBefore,
+      success: funcSuccess
+    });
+  });
+
+  $('.list-search').on('click', function(){
+    $('.cont-box1>').remove();
+    $.ajax({
+      url:'club-cubinet-for-adm.php',
+      type:'POST',
+      data:({}),
+      dataType:'html',
+      beforeSend: funcBefore,
+      success: funcSuccess
+    });
+  });
+});
