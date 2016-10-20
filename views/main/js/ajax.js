@@ -23,6 +23,7 @@ function funcBefore(){
   var spinner = new Spinner(opts).spin(target);
 }
 function funcSuccess(data){
+  console.log(data);
   $('body').css('cursor','default');
   $('#loading>').remove();
   $('#loading').css('height','0px')
@@ -36,7 +37,6 @@ $(function(){
     $.ajax({
       url:'create-event.php',
       type:'POST',
-      data:({name:1,number:5}),
       dataType:'html',
       beforeSend:funcBefore,
       success: funcSuccess
@@ -47,7 +47,6 @@ $(function(){
     $.ajax({
       url:'create-category.php',
       type:'POST',
-      data:({name:1,number:5}),
       dataType:'html',
       beforeSend:funcBefore,
       success: funcSuccess
@@ -58,7 +57,6 @@ $(function(){
     $.ajax({
       url:'create-club.php',
       type:'POST',
-      data:({name:1,number:5}),
       dataType:'html',
       beforeSend:funcBefore,
       success: funcSuccess

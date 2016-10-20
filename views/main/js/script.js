@@ -234,10 +234,6 @@ $( function() {
         $(this).addClass('btn-plus-focus');
     });
 
-    $('.sorting_1').each(function(i){
-      $(this).text(i+1);
-    })
-
 
 
 
