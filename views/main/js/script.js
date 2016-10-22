@@ -201,7 +201,7 @@ $('#jereb_run').off('click');
   $('#add_part').on('click',function(){
       $('.part'+window.a).slideDown(400);
       var dist= $(this).offset().top;
-      $('body,html').animate({scrollTop: dist}, 300);
+      $('body,html').animate({scrollTop: dist}, 500);
       window.a++;
   });
   $('a.remove-part').click(function(){

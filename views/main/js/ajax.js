@@ -24,6 +24,7 @@ function funcBefore(){
 }
 function funcSuccess(data){
   console.log(data);
+
   $('body').css('cursor','default');
   $('#loading>').remove();
   $('#loading').css('height','0px')
@@ -74,4 +75,5 @@ $(function(){
       success: funcSuccess
     });
   });
+
 });
