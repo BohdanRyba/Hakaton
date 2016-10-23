@@ -19,7 +19,7 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" href="fixis.css">
+    <link rel="stylesheet" href="fixis_admin_page.css">
     <link rel="stylesheet/less" type="text/less" href="adminPage.less">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -153,14 +153,16 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a></li>
-                        <li><a href="#" class="delete-org">Удалить<span class="pull-right-container"><i class="fa fa-minus"></i></span></a></li>
                     </ul>
 
                 </li>
                 <li>
                     <a href="#">
-                        <span>Another Link</span>
+                        <span>Танцевальные групы</span>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a></li>
+                    </ul>
                 </li>
                 <li class="treeview">
                     <a href="#">
@@ -189,17 +191,33 @@
         <!-- Main content -->
         <section class="content">
 
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary text-capitalize deletion-submit">удалить!</button>
+                            <button type="button" class="btn btn-secondary text-capitalize deletion-cancel" data-dismiss="modal">отмена</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-xs-12 col-md-6 pull-left">
 
-                    <div class="col-xs-12 col-md-6">
-
-                        <div class="container box flat box-solid box-primary organization-list notdeletable">
+                        <div class="container box flat box-solid box-primary organization-list">
                             <div class="row box-header">
                                 <h3 class="box-title text-uppercase">
-                                    название организации
+                                    название организации222
                                 </h3>
-                                <button class="btn btn-box-tool pull-right org-del-btn display-none" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                <button type="button" class="btn btn-primary pull-right org-del-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-times"></i></button>
                             </div>
                             <div class="row box-body">
                                 <div class="col-md-4 col-xs-12">
@@ -217,6 +235,9 @@
                                             <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <a href="#" class="gogogo text-center">редактировать</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -227,14 +248,14 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-12 col-md-6 pull-left">
 
-                        <div class="container box flat box-solid box-primary organization-list notdeletable">
+                        <div class="container box flat box-solid box-primary organization-list">
                             <div class="row box-header">
                                 <h3 class="box-title text-uppercase">
-                                    название организации
+                                    название организации222
                                 </h3>
-                                <button class="btn btn-box-tool pull-right org-del-btn display-none" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                <button type="button" class="btn btn-primary pull-right org-del-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-times"></i></button>
                             </div>
                             <div class="row box-body">
                                 <div class="col-md-4 col-xs-12">
@@ -253,38 +274,117 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-xs-12">
+                                    <a href="#" class="gogogo text-center">редактировать</a>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 full-info-container">
-                                    <form class="text-capitalize org-full-info" action="">
-                                        <div class="col-xs-12">
-                                            <label>название организации:<br><input disabled type="text" value="название организации"></label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 pull-left">
+
+                        <div class="container box flat box-solid box-primary organization-list">
+                            <div class="row box-header">
+                                <h3 class="box-title text-uppercase">
+                                    название организации33333
+                                </h3>
+                                <button type="button" class="btn btn-primary pull-right org-del-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-times"></i></button>
+                            </div>
+                            <div class="row box-body">
+                                <div class="col-md-4 col-xs-12">
+                                    <img class="org-img" src="http://placehold.it/150x150">
+                                </div>
+                                <div class="col-md-8 col-xs-12 pull-left">
+                                    <div class="org-info-wrapper">
+                                        <dl>
+                                            <dt class="organization-title-president-name">Президент организации:</dt><dd class="organization-info-president-name">Имя Фамилия</dd>
+                                            <dt class="organization-title-president-phone">Мобильный номер:</dt><dd class="organization-info-president-phone"><a href="tel:+380685557777">+38 (067) 555-77-77</a></dd>
+                                            <dt class="organization-title-president-email">Электронный адрес:</dt><dd class="organization-info-president-email"><a href="mailto:example@gmail.com" target="_blank">example@gmail.com</a></dd>
+                                        </dl>
+                                        <div class="btn-group-xs specialX">
+                                            <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                            <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <label>сокращенное название организации:<br><input disabled type="text" value="название организации"></label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <a href="#" class="gogogo text-center">редактировать</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 full-info-container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 pull-left">
+
+                        <div class="container pull-left box flat box-solid box-primary organization-list">
+                            <div class="row box-header">
+                                <h3 class="box-title text-uppercase">
+                                    название организации
+                                </h3>
+                                <button type="button" class="btn btn-primary pull-right org-del-btn" data-toggle="modal" data-target="#myModal"><i class="fa fa-times"></i></button>
+                            </div>
+                            <div class="row box-body">
+                                <div class="col-md-4 col-xs-12">
+                                    <img class="org-img" src="http://placehold.it/150x150">
+                                </div>
+                                <div class="col-md-8 col-xs-12 pull-left">
+                                    <div class="org-info-wrapper">
+                                        <dl>
+                                            <dt class="organization-title-president-name">Президент организации:</dt><dd class="organization-info-president-name">Имя Фамилия</dd>
+                                            <dt class="organization-title-president-phone">Мобильный номер:</dt><dd class="organization-info-president-phone"><a href="tel:+380685557777">+38 (067) 555-77-77</a></dd>
+                                            <dt class="organization-title-president-email">Электронный адрес:</dt><dd class="organization-info-president-email"><a href="mailto:example@gmail.com" target="_blank">example@gmail.com</a></dd>
+                                        </dl>
+                                        <div class="btn-group-xs specialX">
+                                            <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                            <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                         </div>
-                                        <div class="col-xs-12">
-                                            <label>руководитель организации:<br><input disabled type="text" value="название организации"></label>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <label>город:<br><input disabled type="text" value="название организации"></label>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <label>страна:<br><input disabled type="text" value="название организации"></label>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <label>e-mail:<br><input disabled type="text" value="название организации"></label>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <label>номер телефона:<br><input disabled type="text" value="название организации"></label>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <input class="save-org-info" type="submit" value="сохранить">
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <input classtype="button" value="отменить">
-                                        </div>
-                                    </form>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <a href="#" class="gogogo text-center">редактировать</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 full-info-container">
+                                    <!--<form class="text-capitalize org-full-info" action="">-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>название организации:<br><input class="org-info-input" disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>сокращенное название организации:<br><input disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>руководитель организации:<br><input disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>город:<br><input disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>страна:<br><input disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>e-mail:<br><input disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-12">-->
+                                            <!--<label>номер телефона:<br><input disabled type="text" value="название организации"></label>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-6">-->
+                                            <!--<input disabled class="save-org-info" type="submit" value="сохранить">-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-6">-->
+                                            <!--<input disabled class="dontsave-org-info" type="button" value="отменить">-->
+                                        <!--</div>-->
+                                    <!--</form>-->
                                 </div>
                             </div>
                         </div>
