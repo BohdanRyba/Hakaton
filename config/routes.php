@@ -12,6 +12,6 @@ return array(
     'record' => 'addnews/record',
     'events' => 'events/index',
     'admin/organizations/event_add' => 'admin/event_add',
-    'admin/organizations' => 'admin/index',
+    'admin/organizations/([0-9]+)' => 'admin/index/$1',
     '' => 'home/index',
 );
