@@ -1,6 +1,6 @@
 <?php
 
-class Login
+class LoginModel
 {
     public static function getUserFromBase($user_email)
     {

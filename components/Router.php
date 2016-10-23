@@ -35,38 +35,32 @@ class Router
 
         $uri = $this->getURI();
 
-        if ($uri == 'admin') {
-            $admin = new Admin();
-            $admin->runAdmin();
-        } else {
-            foreach ($this->routes as $uriPattern => $path) {
-                if (preg_match("~$uriPattern~", $uri)) {
+        foreach ($this->routes as $uriPattern => $path) {
+            if (preg_match("~$uriPattern~", $uri)) {
 
-                    $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
-                    $segments = explode('/', $internalRoute);
+                $segments = explode('/', $internalRoute);
 
-                    $controllerName = array_shift($segments) . 'Controller';
-                    $controllerName = ucfirst($controllerName);
+                $controllerName = array_shift($segments) . 'Controller';
+                $controllerName = ucfirst($controllerName);
 
-                    $actionName = 'action' . ucfirst(array_shift($segments));
+                $actionName = 'action' . ucfirst(array_shift($segments));
 
-                    $parameters = $segments;
+                $parameters = $segments;
 
-                    $controllerFile = ROOT . 'controllers/' . $controllerName . '.php';
-                    if (file_exists($controllerFile)) {
-                        include_once("$controllerFile");
-                    }
+                $controllerFile = ROOT . 'controllers/' . $controllerName . '.php';
+                if (file_exists($controllerFile)) {
+                    include_once("$controllerFile");
+                }
 
-                    $controllerObject = new $controllerName;
-                    $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                $controllerObject = new $controllerName;
+                $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
 
-                    if ($this->result !== '') {
-                        break;
-                    }
+                if ($this->result !== '') {
+                    break;
                 }
             }
         }
     }
-
 }

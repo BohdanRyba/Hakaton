@@ -1,6 +1,6 @@
 <?php
 
-include_once(ROOT . 'models/News.php');
+include_once(ROOT . 'models/NewsModel.php');
 
 class NewsController
 {
@@ -8,9 +8,9 @@ class NewsController
     public function actionIndex($Cpag)
     {
 
-        $newsList = News::getNewsList();
-        $nav_content = News::getNavNewsContent($Cpag);
-        $start_end_pagination_array = News::getPaginationContent($Cpag);
+        $newsList = NewsModel::getNewsList();
+        $nav_content = NewsModel::getNavNewsContent($Cpag);
+        $start_end_pagination_array = NewsModel::getPaginationContent($Cpag);
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
@@ -24,8 +24,8 @@ class NewsController
     public function actionView($id)
     {
         if ($id) {
-            $newsItem = News::getNewsItemById($id);
-            $nav_content = News::getNavNewsContent($id);
+            $newsItem = NewsModel::getNewsItemById($id);
+            $nav_content = NewsModel::getNavNewsContent($id);
             require_once(ROOT . 'views/news/view.php');
 
             return true;

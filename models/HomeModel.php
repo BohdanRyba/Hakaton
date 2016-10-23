@@ -1,6 +1,6 @@
 <?php
 
-class Home
+class HomeModel
 {
     public static function getNavHomeContent($page)
     {
