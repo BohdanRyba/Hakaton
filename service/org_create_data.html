@@ -215,11 +215,12 @@ desired effect
                     <form method="GET" action="" class="line-search">
                       <div class="input-group input-group-sm">
                         <input class="form-control" type="text" placeholder="Поиск по событиям">
-                        <span class="input-group-btn">
-                          <button type="button" class="btn-search btn btn-info btn-flat">Go!</button>
+                        <span class="btn-search input-group-btn">
+                          <button type="button" class="btn btn-info btn-flat">Go!</button>
                         </span>
                       </div>
                     </form>
+
                   </div>
                   <div class="list-information col-sm-12">
                     <ul class="list-data">
@@ -551,9 +552,9 @@ desired effect
      <script>
       $(function () {
         $('body').on('mask_ajax', function(){
-            $('.sorting_1').each(function(i){
-              $(this).text(i+1);
-            });
+          $('.sorting_1').each(function(i){
+            $(this).text(i+1);
+          });
 
     //Initialize Select2 Elements
     $(".select2").select2();
