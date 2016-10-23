@@ -1,6 +1,6 @@
 <?php
 
-class News
+class NewsModel
 {
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;

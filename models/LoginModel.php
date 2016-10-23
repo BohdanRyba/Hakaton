@@ -1,11 +1,10 @@
 <?php
 
-class Login
+class LoginModel
 {
     public static function getUserFromBase($user_email)
     {
         $db = Db::getConnection();
-        $db->query("SET NAMES 'utf8'");
 
         $result = $db->query("SELECT * FROM `users` WHERE `email` = '$user_email'");
         $get_user = $result->fetch_assoc();
@@ -17,7 +16,6 @@ class Login
     public static function getUserEmailFromBase($email)
     {
         $db = Db::getConnection();
-        $db->query("SET NAMES 'utf8'");
 
         $result = $db->query("SELECT * FROM `users` WHERE `email` = '$email'");
         $email = $result->fetch_assoc();
@@ -29,7 +27,6 @@ class Login
     public static function insertUser()
     {
         $db = Db::getConnection();
-        $db->query("SET NAMES 'utf8'");
 
         $result = $db->query("INSERT INTO `users`
                         SET `login` = '{$_POST['user_login']}',

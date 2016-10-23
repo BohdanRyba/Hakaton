@@ -1,12 +1,12 @@
 <?php
 
-include_once(ROOT . 'models/Home.php');
+include_once(ROOT . 'models/HomeModel.php');
 
 class HomeController
 {
     public function actionIndex()
     {
-        $nav_content = Home::getNavHomeContent('home');
+        $nav_content = HomeModel::getNavHomeContent('home');
 
         require_once(ROOT . 'views/home/index.php');
 

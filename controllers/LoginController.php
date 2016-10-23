@@ -1,6 +1,6 @@
 <?php
 
-include_once(ROOT . 'models/Login.php');
+include_once(ROOT . 'models/LoginModel.php');
 
 class LoginController
 {
@@ -16,7 +16,7 @@ class LoginController
 //                echo '</pre>';
 //die;
         if (isset($_POST['email']) && isset($_POST['pass_in'])) {
-            $user = Login::getUserFromBase($_POST['email']);
+            $user = LoginModel::getUserFromBase($_POST['email']);
             if ($_POST['email'] == $user['email'] && !empty($user)) {
                 if (md5($_POST['pass_in']) == $user['password']) {
                     $_SESSION['user_access'] = $user['grant'];
@@ -52,10 +52,10 @@ class LoginController
                 !empty($_POST['user_email']) && !empty($_POST['user_country']) &&
                 !empty($_POST['user_phone'])
             ) {
-                $user = Login::getUserFromBase($_POST['user_login']);
-                $user_email = Login::getUserEmailFromBase($_POST['user_email']);
+                $user = LoginModel::getUserFromBase($_POST['user_login']);
+                $user_email = LoginModel::getUserEmailFromBase($_POST['user_email']);
                 if (empty($user) && empty($user_email)) {
-                    $insertion = Login::insertUser();
+                    $insertion = LoginModel::insertUser();
                     if ($insertion) {
 
                         echo '<h1>SUCCESS!</h1>';
