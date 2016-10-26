@@ -5,16 +5,19 @@ class Router
     private $routes;
     public $uri;
     public $result;
+    public static $permalink;
 
     /**
      * include file "routes.php" from folder "config" with array inside
      * */
     public function __construct()
     {
+        $project = pathinfo($_SERVER['PHP_SELF']);
+        $root_path = rtrim( '//' . $_SERVER['HTTP_HOST'] . $project['dirname'], '/' ) . '/';
+        self::$permalink = $root_path;
         $routesPath = ROOT . 'config/routes.php';
         $this->routes = include($routesPath);
     }
-
 
     /**
      * return String from request field
@@ -29,10 +32,8 @@ class Router
         }
     }
 
-
     public function run()
     {
-
         $uri = $this->getURI();
 
         foreach ($this->routes as $uriPattern => $path) {

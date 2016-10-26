@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 14 2016 г., 15:35
+-- Время создания: Окт 23 2016 г., 16:48
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -51,7 +51,7 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (6, 'Выход', 'out', 'without_popup', 1, 1, ''),
 (10, 'Профиль', 'profile', 'without_popup', 1, 1, ''),
 (9, 'Регистрация', 'home#registration_form', 'without_popup', 0, 1, ''),
-(11, 'Админ панель', 'admin/', 'without_popup', 1, 4, '');
+(11, 'Админ панель', 'admin/organizations/page/1', 'without_popup', 1, 4, '');
 
 --
 -- Индексы сохранённых таблиц
