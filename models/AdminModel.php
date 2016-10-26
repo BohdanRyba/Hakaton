@@ -7,33 +7,8 @@ class AdminModel
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
 
-    static function getAllOrganizations()
+    public static function getPaginationContent($Cpag)
     {
-        if($db = Db::getConnection(Db::ADMIN_BASE)){
-            $query = "SELECT * FROM `organizations` ORDER BY id DESC";
-            $result = $db->query($query);
-
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $organizationsList[$i]['id'] = $row['id'];
-                $organizationsList[$i]['org_name'] = $row['org_name'];
-                $organizationsList[$i]['org_abbreviation'] = $row['org_abbreviation'];
-                $organizationsList[$i]['org_head_fio'] = $row['org_head_fio'];
-                $organizationsList[$i]['org_city'] = $row['org_city'];
-                $organizationsList[$i]['org_country'] = $row['org_country'];
-                $organizationsList[$i]['org_phone'] = $row['org_phone'];
-                $organizationsList[$i]['org_email'] = $row['org_email'];
-                $organizationsList[$i]['org_pic_path'] = $row['org_pic_path'];
-                $i++;
-            }
-            $db->close();
-
-        };
-
-        return $organizationsList;
-    }
-
-    public static function getPaginationContent($Cpag){
 
         if (isset($Cpag) and is_numeric($Cpag)) {
             $current = $Cpag;
@@ -65,8 +40,62 @@ class AdminModel
         return $start_end_pagination_array;
     }
 
+    static function getAllOrganizations()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `organizations` ORDER BY id DESC";
+            $result = $db->query($query);
 
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $organizationsList[$i]['id'] = $row['id'];
+                $organizationsList[$i]['org_name'] = $row['org_name'];
+                $organizationsList[$i]['org_abbreviation'] = $row['org_abbreviation'];
+                $organizationsList[$i]['org_head_fio'] = $row['org_head_fio'];
+                $organizationsList[$i]['org_city'] = $row['org_city'];
+                $organizationsList[$i]['org_country'] = $row['org_country'];
+                $organizationsList[$i]['org_phone'] = $row['org_phone'];
+                $organizationsList[$i]['org_email'] = $row['org_email'];
+                $organizationsList[$i]['org_pic_path'] = $row['org_pic_path'];
+                $i++;
+            }
+            $db->close();
 
+        };
+
+        return $organizationsList;
+    }
+
+    public static function recordOrganization()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+
+            if ($_FILES['org_image']['error'] == 0) {
+                $file_destination = ROOT . 'views/main/img/org_image/' . $_FILES['org_image']['name'];
+                move_uploaded_file($_FILES['org_image']['tmp_name'], $file_destination);
+            }
+
+            $result = $db->query("INSERT INTO `organizations`
+                        SET `org_name` = '{$_POST['org_name']}',
+                            `org_abbreviation` = '{$_POST['org_abbreviation']}',
+                            `org_head_fio` = '{$_POST['org_head_fio']}',
+                            `org_city` = '{$_POST['org_city']}',
+                            `org_country` = '{$_POST['org_country']}',
+                            `org_phone` = '{$_POST['org_phone']}',
+                            `org_email` = '{$_POST['org_email']}',
+                            `org_pic_path` = 'views/main/img/org_image/{$_FILES['org_image']['name']}'");
+            return $result;
+        }
+        $db->close();
+    }
+
+    public static function addSlashes($element)
+    {
+        if (preg_match('/\'/', $element, $result)) {
+            $element = str_replace('\'', '\\\'', $element);
+            return $element;
+        } else return $element;
+    }
 
     static function events_all($link)
     {
@@ -87,21 +116,25 @@ class AdminModel
         return $events;
     }
 
-    static  function  event_by_id($link,$event_id){
-        $query = sprintf("SELECT * FROM events WHERE id=%d",(int)$event_id);
-        $result = mysqli_query($link,$query);
-        $event=array();
-        if (!$result){
+    static function event_by_id($link, $event_id)
+    {
+        $query = sprintf("SELECT * FROM events WHERE id=%d", (int)$event_id);
+        $result = mysqli_query($link, $query);
+        $event = array();
+        if (!$result) {
             die(mysqli_error($link));
         }
         $event = mysqli_fetch_assoc($result);
         return $event;
     }
-    static function event_add($link,$sobytie,$organization,$status,$name_meroprijatia,$date_begin,$date_end,
-                              $city,$country,$main_sudia,$skutiner,$afisha/*,$image*/){
 
-        if (is_null( $organization)|| is_null($status)|| is_null($name_meroprijatia)|| is_null($date_begin)|| is_null($date_end)||
-            is_null($city)|| is_null($country)|| is_null($main_sudia)|| is_null($skutiner)|| is_null($afisha) /*and $image=''*/){
+    static function event_add($link, $sobytie, $organization, $status, $name_meroprijatia, $date_begin, $date_end,
+                              $city, $country, $main_sudia, $skutiner, $afisha/*,$image*/)
+    {
+
+        if (is_null($organization) || is_null($status) || is_null($name_meroprijatia) || is_null($date_begin) || is_null($date_end) ||
+            is_null($city) || is_null($country) || is_null($main_sudia) || is_null($skutiner) || is_null($afisha) /*and $image=''*/
+        ) {
             return false;
         }
         $sobytie = trim($sobytie);
@@ -118,79 +151,81 @@ class AdminModel
         //$image=trim($image);
 
 
-
         $t = " INSERT INTO events (sobytie,organization,status,name_meroprijatia,date_begin,date_end,city,country,main_sudia,skutiner,afisha)
   VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');";
         $query = sprintf($t,
-            mysqli_real_escape_string($link,$sobytie),
-            mysqli_real_escape_string($link,$organization),
-            mysqli_real_escape_string($link,$status),
-            mysqli_real_escape_string($link,$name_meroprijatia),
-            mysqli_real_escape_string($link,$date_begin),
-            mysqli_real_escape_string($link,$date_end),
-            mysqli_real_escape_string($link,$city),
-            mysqli_real_escape_string($link,$country),
-            mysqli_real_escape_string($link,$main_sudia),
-            mysqli_real_escape_string($link,$skutiner),
-            mysqli_real_escape_string($link,$afisha)
+            mysqli_real_escape_string($link, $sobytie),
+            mysqli_real_escape_string($link, $organization),
+            mysqli_real_escape_string($link, $status),
+            mysqli_real_escape_string($link, $name_meroprijatia),
+            mysqli_real_escape_string($link, $date_begin),
+            mysqli_real_escape_string($link, $date_end),
+            mysqli_real_escape_string($link, $city),
+            mysqli_real_escape_string($link, $country),
+            mysqli_real_escape_string($link, $main_sudia),
+            mysqli_real_escape_string($link, $skutiner),
+            mysqli_real_escape_string($link, $afisha)
         /*,mysqli_real_escape_string($link,$image)*/
         );
-        $result = mysqli_query($link,$query);
-        if (!$result){
+        $result = mysqli_query($link, $query);
+        if (!$result) {
             mysqli_error($link);
         }
-        return $result="successful";
+        return $result = "successful";
     }
-    static function event_edit($link,$id,$sobytie,$organization,$status,$name_meroprijatia,$date_begin,$date_end,
-                               $city,$country,$main_sudia,$skutiner,$afisha)
+
+    static function event_edit($link, $id, $sobytie, $organization, $status, $name_meroprijatia, $date_begin, $date_end,
+                               $city, $country, $main_sudia, $skutiner, $afisha)
     {
-        if (is_null( $organization)|| is_null($status)|| is_null($name_meroprijatia)|| is_null($date_begin)|| is_null($date_end)||
-            is_null($city)|| is_null($country)|| is_null($main_sudia)|| is_null($skutiner)|| is_null($afisha) /*and $image=''*/){
+        if (is_null($organization) || is_null($status) || is_null($name_meroprijatia) || is_null($date_begin) || is_null($date_end) ||
+            is_null($city) || is_null($country) || is_null($main_sudia) || is_null($skutiner) || is_null($afisha) /*and $image=''*/
+        ) {
             return false;
         }
-        $sobytie=trim($sobytie);
-        $organization=trim($organization);
-        $status=trim($status);
-        $name_meroprijatia=trim($name_meroprijatia);
-        $date_begin=trim($date_begin);
-        $date_end=trim($date_end);
-        $city=trim($city);
-        $country=trim($country);
-        $main_sudia=trim($main_sudia);
-        $skutiner=trim($skutiner);
-        $afisha=trim($afisha);
+        $sobytie = trim($sobytie);
+        $organization = trim($organization);
+        $status = trim($status);
+        $name_meroprijatia = trim($name_meroprijatia);
+        $date_begin = trim($date_begin);
+        $date_end = trim($date_end);
+        $city = trim($city);
+        $country = trim($country);
+        $main_sudia = trim($main_sudia);
+        $skutiner = trim($skutiner);
+        $afisha = trim($afisha);
 
         $sql = "UPDATE events SET sobytie='%s', organization='%s', status='%s', name_meroprijatia='%s', date_begin='%s',date_end='%s', city='%s', country='%s', main_sudia='%s' ,skutiner='%s', afisha='%s' WHERE id='%d'";
         $query = sprintf(
             $sql,
-            mysqli_real_escape_string($link,$sobytie),
-            mysqli_real_escape_string($link,$organization),
-            mysqli_real_escape_string($link,$status),
-            mysqli_real_escape_string($link,$name_meroprijatia),
-            mysqli_real_escape_string($link,$date_begin),
-            mysqli_real_escape_string($link,$date_end),
-            mysqli_real_escape_string($link,$city),
-            mysqli_real_escape_string($link,$country),
-            mysqli_real_escape_string($link,$main_sudia),
-            mysqli_real_escape_string($link,$skutiner),
-            mysqli_real_escape_string($link,$afisha),
+            mysqli_real_escape_string($link, $sobytie),
+            mysqli_real_escape_string($link, $organization),
+            mysqli_real_escape_string($link, $status),
+            mysqli_real_escape_string($link, $name_meroprijatia),
+            mysqli_real_escape_string($link, $date_begin),
+            mysqli_real_escape_string($link, $date_end),
+            mysqli_real_escape_string($link, $city),
+            mysqli_real_escape_string($link, $country),
+            mysqli_real_escape_string($link, $main_sudia),
+            mysqli_real_escape_string($link, $skutiner),
+            mysqli_real_escape_string($link, $afisha),
             $id
         );
-        $result = mysqli_query($link,$query);
-        if (!$result){
+        $result = mysqli_query($link, $query);
+        if (!$result) {
             die(mysqli_error($link));
         }
         return mysqli_affected_rows($link);
     }
 
-    static function event_delete($link,$id){
-        if ($id==''){
+    static function event_delete($link, $id)
+    {
+        if ($id == '') {
             return false;
         }
         $id = (int)$id;
-        $query = sprintf("DELETE FROM events WHERE id='%d'",$id);
-        $result = mysqli_query($link,$query);
-        if (!$result){
+        $query = sprintf("DELETE FROM events WHERE id='%d'", $id);
+        $result = mysqli_query($link, $query);
+        if (!$result) {
             die(mysqli_error($link));
         }
         return mysqli_affected_rows($link);
