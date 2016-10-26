@@ -20,197 +20,220 @@ jQuery(function($) {
 
 
 
-
-
-
-
-
-
     //      виведення інформації по організації
 
-        var $infoButton=$('button.btn-info>i.fa-info').parent(),
-            $editButton=$('button.btn-success>i.fa-edit').parent(),
-            $orgForm='<form class="text-capitalize org-full-info" action=""><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" value="название организации"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" value="название организации"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" value="название организации"></label></div> <div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" value="название организации"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" value="название организации"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" value="название организации"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" value="название организации"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
+    var $infoButton=$('button.btn-info>i.fa-info').parent(),
+        $editButton=$('button.btn-success>i.fa-edit').parent(),
+        $orgForm='<form class="text-capitalize org-full-info" action=""><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" name="org-name"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" name="org-short-name"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" name="org-leader"></label></div><div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" name="org-city"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" name="org-country"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" name="org-email"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" name="org-phone"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
 
-        // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
-        function addOrgFullInfo($infoContainer, $orgList, $orgForm, dataInput ) {
-
-            $infoContainer.append($orgForm).css('display', 'none');
-
-            $orgList.find('.full-info-container').slideDown(200);
-
-            if (dataInput=='active') {$orgList.find('.org-full-info').find('input[type="text"]').each(function () {
-
-                $(this).prop('disabled', false);
-
-            });}
-
-            $orgList.find('.org-full-info').attr({'data-input':dataInput, 'data-visibility':'true'});
-        }
-
-        function switchOrgInfo($orgList, dataInput) {
-
-            $orgList.find('.org-full-info').removeAttr('data-input');
-
-            var propStatus;
-
-            if (dataInput == 'disabled') {
-                propStatus = true;
-            } else if (dataInput == 'active') {
-                propStatus = false;
+    //AJAX FUNCTIONS
+    function getFullInfoAjax($infoContainer, $orgList) {
+        var id=$orgList.attr('data-id');
+        $.ajax({
+            type:"POST",
+            url:'new.php',
+            data: 'id='+id,
+            success: function (msg) {
+                console.log(msg);
+                var orgFullInfo = JSON.parse(msg);
+                $infoContainer.find('input[name="org-name"]').val(orgFullInfo.name);
+                $infoContainer.find('input[name="org-short-name"]').val(orgFullInfo.shortName);
+                $infoContainer.find('input[name="org-leader"]').val(orgFullInfo.leader);
+                $infoContainer.find('input[name="org-city"]').val(orgFullInfo.city);
+                $infoContainer.find('input[name="org-country"]').val(orgFullInfo.country);
+                $infoContainer.find('input[name="org-email"]').val(orgFullInfo.email);
+                $infoContainer.find('input[name="org-phone"]').val(orgFullInfo.phone);
+            },
+            error: function (msg) {
+                console.log(msg);
             }
+        });
+    }
+    //AJAX FUNCTIONS
 
-            ($orgList.find('.org-full-info').find('input[type="text"]').each(function () {
-                $(this).prop('disabled', propStatus);
-            }));
+    // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
+    function addOrgFullInfo($infoContainer, $orgList, $orgForm, dataInput ) {
 
-            $orgList.find('.org-full-info').attr('data-input', dataInput);
+        $infoContainer.append($orgForm).css('display', 'none');
 
+        getFullInfoAjax($infoContainer, $orgList);
+
+        $orgList.find('.full-info-container').slideDown(200);
+
+        if (dataInput=='active') {$orgList.find('.org-full-info').find('input[type="text"]').each(function () {
+
+            $(this).prop('disabled', false);
+
+        });}
+
+        $orgList.find('.org-full-info').attr({'data-input':dataInput, 'data-visibility':'true'});
+    }
+
+    function switchOrgInfo($orgList, dataInput) {
+
+        $orgList.find('.org-full-info').removeAttr('data-input');
+
+        var propStatus;
+
+        if (dataInput == 'disabled') {
+            propStatus = true;
+        } else if (dataInput == 'active') {
+            propStatus = false;
         }
 
-        function hideOrgInfo($orgList, $infoContainer) {
+        ($orgList.find('.org-full-info').find('input[type="text"]').each(function () {
+            $(this).prop('disabled', propStatus);
+        }));
 
-            $orgList.find('.full-info-container').slideUp(200);
+        $orgList.find('.org-full-info').attr('data-input', dataInput);
 
-            $infoContainer.empty();
+    }
 
-        }
+    function hideOrgInfo($orgList, $infoContainer) {
 
-        function toggleButtons($orgList, toggleStatus) {
+        $orgList.find('.full-info-container').slideUp(200);
 
-            var $saveBtn=$orgList.find('.save-org-info'),
-                $dontSaveBtn=$orgList.find('.dontsave-org-info');
+        $infoContainer.empty();
 
-            $saveBtn.toggle(toggleStatus);
-            $dontSaveBtn.toggle(toggleStatus);
+    }
 
-        }
+    function toggleButtons($orgList, toggleStatus) {
 
-        function infoChangeTrigger($orgList, $infoContainer) {
+        var $saveBtn=$orgList.find('.save-org-info'),
+            $dontSaveBtn=$orgList.find('.dontsave-org-info');
 
-            $infoContainer.find('input[type="text"]').on('keydown', function () {
-                $orgList.trigger('infoChange');
-            })
+        $saveBtn.toggle(toggleStatus);
+        $dontSaveBtn.toggle(toggleStatus);
 
-        }
+    }
 
-        function infoChange($orgList, $infoContainer) {
+    function infoChangeTrigger($orgList, $infoContainer) {
 
-            $orgList.on('infoChange', function () {
+        $infoContainer.find('input[type="text"]').on('keydown', function () {
+            $orgList.trigger('infoChange');
+        })
 
-                var $saveBtn = $orgList.find('.save-org-info'),
-                    $dontSaveBtn = $orgList.find('.dontsave-org-info');
+    }
 
-                $saveBtn.prop('disabled', false);
-                $dontSaveBtn.prop('disabled', false);
+    function infoChange($orgList, $infoContainer) {
 
-            });
+        $orgList.on('infoChange', function () {
 
-        }
-        // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
+            var $saveBtn = $orgList.find('.save-org-info'),
+                $dontSaveBtn = $orgList.find('.dontsave-org-info');
 
-        //КНОПКА ІНФОРМАЦІЇ
-        $infoButton.on('click', function () {
-
-           var $orgList=$(this).parents('.box.organization-list'),
-               $infoContainer=$orgList.find('.full-info-container');
-
-            $orgList.trigger('onClick');
-
-            if ($infoContainer.children().length==0) {
-
-                addOrgFullInfo($infoContainer, $orgList, $orgForm, 'disabled');
-
-                toggleButtons($orgList, false);
-
-            } else if ($infoContainer.children().eq(0).attr('data-input')=='active') {
-
-                switchOrgInfo($orgList, 'disabled');
-
-                toggleButtons($orgList, false);
-
-            } else if ($infoContainer.children().eq(0).attr('data-visibility')=='true') {
-
-                hideOrgInfo($orgList, $infoContainer);
-
-            }
+            $saveBtn.prop('disabled', false);
+            $dontSaveBtn.prop('disabled', false);
 
         });
-        //КНОПКА ІНФОРМАЦІЇ
 
-        //КНОПКА РЕДАГУВАННЯ ІНФОРМАЦІЇ
-        $editButton.on('click', function () {
+    }
+    // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
 
-            var $orgList=$(this).parents('.box.organization-list'),
-                $infoContainer=$orgList.find('.full-info-container');
+    //КНОПКА ІНФОРМАЦІЇ
+    $infoButton.on('click', function () {
 
-            $orgList.trigger('onClick');
+       var $orgList=$(this).parents('.box.organization-list'),
+           $infoContainer=$orgList.find('.full-info-container');
 
-            if ($infoContainer.children().length==0) {
+        $orgList.trigger('onClick');
 
-                addOrgFullInfo($infoContainer, $orgList, $orgForm, 'active');
+        if ($infoContainer.children().length==0) {
 
-                infoChangeTrigger($orgList, $infoContainer);
+            addOrgFullInfo($infoContainer, $orgList, $orgForm, 'disabled');
 
-                infoChange($orgList, $infoContainer);
+            toggleButtons($orgList, false);
 
-            } else if ($infoContainer.children().eq(0).attr('data-input')=='disabled') {
+        } else if ($infoContainer.children().eq(0).attr('data-input')=='active') {
 
-                switchOrgInfo($orgList,'active');
+            switchOrgInfo($orgList, 'disabled');
 
-                toggleButtons($orgList, true);
+            toggleButtons($orgList, false);
 
-                infoChangeTrigger($orgList, $infoContainer);
+        } else if ($infoContainer.children().eq(0).attr('data-visibility')=='true') {
 
-                infoChange($orgList, $infoContainer);
+            hideOrgInfo($orgList, $infoContainer);
 
-            } else if ($infoContainer.children().eq(0).attr('data-visibility')=='true') {
+        }
 
-                hideOrgInfo($orgList, $infoContainer);
+    });
+    //КНОПКА ІНФОРМАЦІЇ
 
-                infoChangeTrigger($orgList, $infoContainer);
+    //КНОПКА РЕДАГУВАННЯ ІНФОРМАЦІЇ
+    $editButton.on('click', function () {
 
-            }
+        var $orgList=$(this).parents('.box.organization-list'),
+            $infoContainer=$orgList.find('.full-info-container');
 
+        $orgList.trigger('onClick');
+
+        if ($infoContainer.children().length==0) {
+
+            addOrgFullInfo($infoContainer, $orgList, $orgForm, 'active');
+
+            infoChangeTrigger($orgList, $infoContainer);
+
+            infoChange($orgList, $infoContainer);
+
+        } else if ($infoContainer.children().eq(0).attr('data-input')=='disabled') {
+
+            switchOrgInfo($orgList,'active');
+
+            toggleButtons($orgList, true);
+
+            infoChangeTrigger($orgList, $infoContainer);
+
+            infoChange($orgList, $infoContainer);
+
+        } else if ($infoContainer.children().eq(0).attr('data-visibility')=='true') {
+
+            hideOrgInfo($orgList, $infoContainer);
+
+            infoChangeTrigger($orgList, $infoContainer);
+
+        }
+
+    });
+    //КНОПКА РЕДАГУВАННЯ ІНФОРМАЦІЇ
+
+    //ПОКАЗАТИ ІНФОРМАЦІЮ ЛИШЕ ПО ОДНІЙ ОРГАНІЗАЦІЇ
+    var $orgs=$('.organization-list');
+
+    $orgs.on('onClick', function () {
+        $orgs.each(function () {
+            $(this).removeClass('active');
         });
-        //КНОПКА РЕДАГУВАННЯ ІНФОРМАЦІЇ
-
-        //ПОКАЗАТИ ІНФОРМАЦІЮ ЛИШЕ ПО ОДНІЙ ОРГАНІЗАЦІЇ
-        var $orgs=$('.organization-list');
-
-        $orgs.on('onClick', function () {
-            $orgs.each(function () {
-                $(this).removeClass('active');
-            });
-            $(this).addClass('active');
-            $orgs.not('.active').each(function (){
-                var $infoContainer=$(this).find('.full-info-container');
-                hideOrgInfo($(this), $infoContainer);
-            })
-        });
-        //ПОКАЗАТИ ІНФОРМАЦІЮ ЛИШЕ ПО ОДНІЙ ОРГАНІЗАЦІЇ
+        $(this).addClass('active');
+        $orgs.not('.active').each(function (){
+            var $infoContainer=$(this).find('.full-info-container');
+            hideOrgInfo($(this), $infoContainer);
+        })
+    });
+    //ПОКАЗАТИ ІНФОРМАЦІЮ ЛИШЕ ПО ОДНІЙ ОРГАНІЗАЦІЇ
 
     //    ВИДАЛЕННЯ ОРГАНІЗАЦІЇ
-        var $delBtn=$('button.org-del-btn'),
-            $delSub=$('button.deletion-submit'),
-            $delCncl=$('button.deletion-cancel');
+    var $delBtn=$('button.org-del-btn'),
+        $delSub=$('button.deletion-submit'),
+        $delCncl=$('button.deletion-cancel');
 
+    $delBtn.on('click', function () {
+        var $orgOnDel=$(this).parents('.box.organization-list');
+        $orgOnDel.attr('data-deletion', 'ready');
+       // console.log($orgOnDel); $('[data-deletion=true]')
+    });
 
+    $delSub.on('click', function () {
+        var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
 
-        $delBtn.on('click', function () {
-            var $orgOnDel=$(this).parents('.box.organization-list');
+        $orgOnDel.parent().remove();
 
-            $orgOnDel.attr('data-deletion', 'ready');
-           // console.log($orgOnDel); $('[data-deletion=true]')
-        });
+        $delCncl.trigger('click');
+    });
 
-        $delSub.on('click', function () {
-            var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
-
-            $orgOnDel.parent().remove();
-
-            $delCncl.trigger('click');
-        });
+    $delCncl.on('click', function () {
+        var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
+        $orgOnDel.removeAttr('data-deletion');
+    });
     //    ВИДАЛЕННЯ ОРГАНІЗАЦІЇ
 
     //      виведення інформації по організації
