@@ -13,10 +13,6 @@ class AdminController
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
 
-//        echo '<pre>';
-//        var_export($organizationsList);
-//        echo '</pre>';
-
         require_once('views/admin/organizations/organizations_list.php');
         return true;
     }
@@ -61,6 +57,25 @@ class AdminController
 
         return true;
     }
+
+    public function actionAjax_showOrgInf(){
+
+        $org_info = array();
+        $org_info = AdminModel::getOrganizationById($_POST['id']);
+
+        echo json_encode($org_info);
+    }
+
+    public function actionUpdateOrg(){
+
+        echo '<pre>';
+        var_export($_POST);
+        echo '</pre>';
+
+
+
+    }
+
 
 
     public function actionEvent_add()

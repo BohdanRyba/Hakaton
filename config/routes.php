@@ -15,5 +15,7 @@ return array(
     'admin/organizations/org_reg' => 'admin/org_reg',
     'admin/organizations/org_add' => 'admin/org_add',
     'admin/organizations/page/([0-9]+)' => 'admin/index/$1',
+    'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
+    'admin/organizations/page/updateOrg' => 'admin/updateOrg',
     '' => 'home/index',
 );

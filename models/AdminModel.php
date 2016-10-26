@@ -66,6 +66,18 @@ class AdminModel
         return $organizationsList;
     }
 
+    static function getOrganizationById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `organizations` WHERE `id` = '{$id}'";
+            $result = $db->query($query);
+
+            $row = $result->fetch_assoc();
+            return $row;
+        }
+        $db->close();
+    }
+
     public static function recordOrganization()
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -96,6 +108,11 @@ class AdminModel
             return $element;
         } else return $element;
     }
+
+
+
+
+
 
     static function events_all($link)
     {
