@@ -11,8 +11,8 @@ return array(
     'addnews' => 'addnews/index',
     'record' => 'addnews/record',
     'events' => 'events/index',
-    'addevent' => 'addevent/index',
-    'create_event' => 'addevent/create',
+//    'admin/organizations/event_add' => 'admin/event_add',
+    'admin/organizations/org_add' => 'admin/org_add',
+    'admin/organizations/page/([0-9]+)' => 'admin/index/$1',
     '' => 'home/index',
 );
-//    '' => 'home/index',

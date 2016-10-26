@@ -11,20 +11,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="../../views/main/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../views/main/css/AdminLTE.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/AdminLTE.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="../../views/main/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" type="text/css" href="../../views/main/css/style.css">
-    <script src="../../views/main/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=Router::$permalink?>views/main/css/style.css">
+    <script src="<?=Router::$permalink?>views/main/js/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -100,34 +100,7 @@ desired effect
                 <div class="col-sm-12">
                     <div class="row">
 
-                        <?php
-//                        define('CURRENT_PAGE', 1);
-//                        define('PER_PAGE', 4);
-//
-//                        if (isset($Cpag) and is_numeric($Cpag)) {
-//                            $current = $Cpag;
-//                        } else {
-//                            $current = CURRENT_PAGE;
-//                        }
-//                        $per_page = PER_PAGE;
-//
-//                        $pagination = function ($all) use ($per_page, $current) {
-//                            $pag = '<ul class="pagination">';
-//                            for ($i = 0, $j = 0; $i < count($all); $i += $per_page, $j++) {
-//                                if ($current == $j + 1) {
-//                                    $pag .= '<li class="active"><span>' . ($j + 1) . '</span></li>';
-//                                } else {
-//                                    $pag .= '<li><a href="' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
-//                                }
-//                            }
-//                            $pag .= '</ul>';
-//                            return $pag;
-//                        };
-//
-//                        $all_count = count($newsList);
-//                        $start = ($current - 1) * $per_page;
-//                        $end = (($current * $per_page) < $all_count) ? $current * $per_page : $all_count;
-                        for ($i = $start; $i < $end; $i++): ?>
+                        <?php for ($i = $start; $i < $end; $i++): ?>
                             <?php $news = $newsList[$i]; ?>
                             <div class="col-sm-6 col-md-3">
                                 <div class="thumbnail">
@@ -148,7 +121,7 @@ desired effect
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row text-center">
                 <?php echo $pagination; ?>
             </div>
 
@@ -318,12 +291,12 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../../views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../../views/main/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../views/main/js/app.min.js"></script>
-<script src="../../views/main/js/script.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
