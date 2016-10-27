@@ -216,15 +216,20 @@
 
             <div class="container-fluid">
                 <div class="row">
+                    <?php if (isset($this->message)) {
+                        echo $this->message;
+                    }
+                    ?>
+
                     <?php for ($i = $start; $i < $end; $i++): ?>
-                        <?php $organizationsList = $organizationsList[$i]; ?>
+                        <?php $organization = $organizationsList[$i]; ?>
                         <div class="col-xs-12 col-md-6 pull-left">
 
-                            <div data-id="<?php echo $organizationsList['id']; ?>"
+                            <div data-id="<?php echo $organization['id']; ?>"
                                  class="container box flat box-solid box-primary organization-list">
                                 <div class="row box-header">
                                     <h3 class="box-title text-uppercase">
-                                        <?php echo $organizationsList['org_name']; ?>
+                                        <?php echo $organization['org_name']; ?>
                                     </h3>
                                     <button type="button" class="btn btn-primary pull-right org-del-btn"
                                             data-toggle="modal"
@@ -232,22 +237,22 @@
                                 </div>
                                 <div class="row box-body">
                                     <div class="col-md-4 col-xs-12">
-                                        <img class="org-img" src="http://placehold.it/150x150">
+                                        <img class="org-img" src="<?php echo Router::$permalink.$organization['org_pic_path']?>">
                                     </div>
                                     <div class="col-md-8 col-xs-12 pull-left">
                                         <div class="org-info-wrapper">
                                             <dl>
                                                 <dt class="organization-title-president-name">Президент организации:
                                                 </dt>
-                                                <dd class="organization-info-president-name"><?php echo $organizationsList['org_head_fio']; ?></dd>
+                                                <dd class="organization-info-president-name"><?php echo $organization['org_head_fio']; ?></dd>
                                                 <dt class="organization-title-president-phone">Мобильный номер:</dt>
                                                 <dd class="organization-info-president-phone"><a
-                                                        href="tel:+380685557777"><?php echo $organizationsList['org_phone']; ?></a>
+                                                        href="tel:+380685557777"><?php echo $organization['org_phone']; ?></a>
                                                 </dd>
                                                 <dt class="organization-title-president-email">Электронный адрес:</dt>
                                                 <dd class="organization-info-president-email"><a
                                                         href="mailto:example@gmail.com"
-                                                        target="_blank"><?php echo $organizationsList['org_email']; ?></a>
+                                                        target="_blank"><?php echo $organization['org_email']; ?></a>
                                                 </dd>
                                             </dl>
                                             <div class="btn-group-xs specialX">
