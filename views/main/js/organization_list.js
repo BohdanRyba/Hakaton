@@ -31,7 +31,7 @@ jQuery(function($) {
         var id=$orgList.attr('data-id');
         $.ajax({
             type:"POST",
-            url:'new.php',
+            url:'showOrgInf',
             data: 'id='+id,
             success: function (msg) {
                 console.log(msg);
