@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 27 2016 г., 20:37
+-- Время создания: Окт 28 2016 г., 08:42
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -48,7 +48,8 @@ INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio
 (3, 'Third Organization', 'THO', 'Emilia Clarck', 'City of the Dragon', 'Mifia', 80256485232, 'dragons@gmail.com', 'views/main/img/org_image/pic.jpg'),
 (4, 'Julia Roberts Organization', 'JRO', 'Julia Roberts', 'San-Francisko', 'USA', 448852135135, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
 (5, 'Оля Корпорейшен', 'ОК', 'Гордова Ольга', 'Нежин', 'Украина', 80654735535, 'olia@gmail.com', 'views/main/img/org_image/Olia.jpg'),
-(6, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 4845616516186, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg');
+(6, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 4845616516186, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
+(7, 'Mime Organization', 'MO', 'Teodor Crack', 'Paris', 'France', 2535516816, 'mime@gmk.com', 'views/main/img/org_image/Mime-150x150.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -69,7 +70,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT для таблицы `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
