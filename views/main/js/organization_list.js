@@ -50,6 +50,22 @@ jQuery(function($) {
             }
         });
     }
+
+    function delOrgAjax($orgOnDel,$delCncl) {
+        var id=$orgOnDel.attr('data-id');
+        $.ajax({
+            type:"POST",
+            url:'ajax_delOrg',
+            data: 'id='+id,
+            success: function () {
+                $orgOnDel.parent().remove();
+                $delCncl.trigger('click');
+            },
+            error: function (msg) {
+                console.log(msg);
+            }
+        });
+    }
     //AJAX FUNCTIONS
 
     // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
@@ -129,6 +145,15 @@ jQuery(function($) {
         });
 
     }
+
+    function cancelInfoChange($orgList, $infoContainer) {
+
+        var $dontSaveBtn=$orgList.find('.dontsave-org-info');
+
+        $dontSaveBtn.on('click', function (){
+            hideOrgInfo($orgList, $infoContainer);
+        });
+    }
     // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
 
     //КНОПКА ІНФОРМАЦІЇ
@@ -176,6 +201,9 @@ jQuery(function($) {
 
             infoChange($orgList, $infoContainer);
 
+            cancelInfoChange($orgList, $infoContainer);
+
+
         } else if ($infoContainer.children().eq(0).attr('data-input')=='disabled') {
 
             switchOrgInfo($orgList,'active');
@@ -185,6 +213,8 @@ jQuery(function($) {
             infoChangeTrigger($orgList, $infoContainer);
 
             infoChange($orgList, $infoContainer);
+
+            cancelInfoChange($orgList, $infoContainer);
 
         } else if ($infoContainer.children().eq(0).attr('data-visibility')=='true') {
 
@@ -196,6 +226,8 @@ jQuery(function($) {
 
     });
     //КНОПКА РЕДАГУВАННЯ ІНФОРМАЦІЇ
+
+
 
     //ПОКАЗАТИ ІНФОРМАЦІЮ ЛИШЕ ПО ОДНІЙ ОРГАНІЗАЦІЇ
     var $orgs=$('.organization-list');
@@ -218,17 +250,15 @@ jQuery(function($) {
         $delCncl=$('button.deletion-cancel');
 
     $delBtn.on('click', function () {
-        var $orgOnDel=$(this).parents('.box.organization-list');
+        var $orgOnDel=$(this).parents('.box.organization-list'),
+            $modalBody=$('#myModal').find('.modal-body p');
         $orgOnDel.attr('data-deletion', 'ready');
-       // console.log($orgOnDel); $('[data-deletion=true]')
+        $modalBody.text('Вы действительно хотите удалить '+$orgOnDel.find('h3.box-title').text()+'?');
     });
 
     $delSub.on('click', function () {
         var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
-
-        $orgOnDel.parent().remove();
-
-        $delCncl.trigger('click');
+        delOrgAjax($orgOnDel,$delCncl)
     });
 
     $delCncl.on('click', function () {
