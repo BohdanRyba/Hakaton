@@ -115,7 +115,7 @@ class AdminController
 
     public function actionEvent_add()
     {
-
+        echo "Hi, Bodia!";
 
     }
 
