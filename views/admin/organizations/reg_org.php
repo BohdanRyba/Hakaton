@@ -204,6 +204,10 @@ desired effect
             <!-- Your Page Content Here -->
             <div class="content_box col-md-4">
                 <div class="box box-info">
+                    <?php if (isset($this->message)) {
+                        echo $this->message;
+                    }
+                    ?>
                     <div class="box-header with-border">
                         <h2 class="box-title">Заполните онформацию об организации</h2>
                     </div>
@@ -260,6 +264,7 @@ desired effect
                             <div class="form_in">
                                 <label class="" for=""><input type="submit" value="Заповнити заявку на участь"></label>
                             </div>
+                            <input name="redirect" type="hidden" value="admin/organizations/org_add">
                         </div>
                     </form>
                 </div>

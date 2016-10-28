@@ -109,6 +109,23 @@ class AdminModel
         } else return $element;
     }
 
+    public static function updateOrganization(){ // end this method;
+
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+//            if()
+            $result = $db->query("UPDATE `organizations`
+                        SET `org_name` = '{$_POST['org_name']}',
+                            `org_abbreviation` = '{$_POST['org_abbreviation']}',
+                            `org_head_fio` = '{$_POST['org_head_fio']}',
+                            `org_city` = '{$_POST['org_city']}',
+                            `org_country` = '{$_POST['org_country']}',
+                            `org_phone` = '{$_POST['org_phone']}',
+                            `org_email` = '{$_POST['org_email']}'");
+            return $result;
+        }
+        $db->close();
+    }
+
 
 
 

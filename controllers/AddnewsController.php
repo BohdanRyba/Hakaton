@@ -58,7 +58,7 @@ class AddnewsController
                 echo 'NooooO!';
             }
         }
-//        header('Location: '. CORE_PATH. $_POST['redirect']);
+        header('Location: '. CORE_PATH. $_POST['redirect']);
         return true;
     }
 }

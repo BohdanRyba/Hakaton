@@ -216,6 +216,11 @@
 
             <div class="container-fluid">
                 <div class="row">
+                    <?php if (isset($this->message)) {
+                        echo $this->message;
+                    }
+                    ?>
+
                     <?php for ($i = $start; $i < $end; $i++): ?>
                         <?php $organization = $organizationsList[$i]; ?>
                         <div class="col-xs-12 col-md-6 pull-left">
