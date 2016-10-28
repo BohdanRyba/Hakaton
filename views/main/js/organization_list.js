@@ -24,7 +24,7 @@ jQuery(function($) {
 
     var $infoButton=$('button.btn-info>i.fa-info').parent(),
         $editButton=$('button.btn-success>i.fa-edit').parent(),
-        $orgForm='<form method="post" class="text-capitalize org-full-info" action="updateOrg"><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" name="org-name"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" name="org-short-name"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" name="org-leader"></label></div><div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" name="org-city"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" name="org-country"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" name="org-email"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" name="org-phone"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><input name="redirect" type="hidden" value="admin/organizations/page/1"><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
+        $orgForm='<form method="post" class="text-capitalize org-full-info" action="updateOrg"><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" name="org-name"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" name="org-short-name"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" name="org-leader"></label></div><div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" name="org-city"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" name="org-country"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" name="org-email"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" name="org-phone"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><input name="redirect" type="hidden" value="admin/organizations/page/1"><input name="id" type="hidden"><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
 
     //AJAX FUNCTIONS
     function getFullInfoAjax($infoContainer, $orgList) {
@@ -44,6 +44,22 @@ jQuery(function($) {
                 $infoContainer.find('input[name="org-country"]').val(orgFullInfo.org_country);
                 $infoContainer.find('input[name="org-email"]').val(orgFullInfo.org_email);
                 $infoContainer.find('input[name="org-phone"]').val(orgFullInfo.org_phone);
+            },
+            error: function (msg) {
+                console.log(msg);
+            }
+        });
+    }
+
+    function delOrgAjax($orgOnDel,$delCncl) {
+        var id=$orgOnDel.attr('data-id');
+        $.ajax({
+            type:"POST",
+            url:'ajax_delOrg',
+            data: 'id='+id,
+            success: function () {
+                $orgOnDel.parent().remove();
+                $delCncl.trigger('click');
             },
             error: function (msg) {
                 console.log(msg);
@@ -129,6 +145,25 @@ jQuery(function($) {
         });
 
     }
+
+    function cancelInfoChange($orgList, $infoContainer) {
+
+        var $dontSaveBtn=$orgList.find('.dontsave-org-info');
+
+        $dontSaveBtn.on('click', function (){
+            hideOrgInfo($orgList, $infoContainer);
+        });
+    }
+
+    function addOrgId($orgList, $infoContainer){
+
+        var $saveBtn=$orgList.find('.save-org-info');
+
+        $saveBtn.on('click', function (){
+            $infoContainer.find('input[name=id]').val($orgList.attr('data-id'));
+        });
+
+    }
     // ФУНКЦІЇ ПО ВИВЕДЕННЮ ІНФОРМАЦІЇ
 
     //КНОПКА ІНФОРМАЦІЇ
@@ -176,6 +211,10 @@ jQuery(function($) {
 
             infoChange($orgList, $infoContainer);
 
+            cancelInfoChange($orgList, $infoContainer);
+
+            addOrgId($orgList, $infoContainer);
+
         } else if ($infoContainer.children().eq(0).attr('data-input')=='disabled') {
 
             switchOrgInfo($orgList,'active');
@@ -185,6 +224,10 @@ jQuery(function($) {
             infoChangeTrigger($orgList, $infoContainer);
 
             infoChange($orgList, $infoContainer);
+
+            cancelInfoChange($orgList, $infoContainer);
+
+            addOrgId($orgList, $infoContainer);
 
         } else if ($infoContainer.children().eq(0).attr('data-visibility')=='true') {
 
@@ -196,6 +239,8 @@ jQuery(function($) {
 
     });
     //КНОПКА РЕДАГУВАННЯ ІНФОРМАЦІЇ
+
+
 
     //ПОКАЗАТИ ІНФОРМАЦІЮ ЛИШЕ ПО ОДНІЙ ОРГАНІЗАЦІЇ
     var $orgs=$('.organization-list');
@@ -218,17 +263,15 @@ jQuery(function($) {
         $delCncl=$('button.deletion-cancel');
 
     $delBtn.on('click', function () {
-        var $orgOnDel=$(this).parents('.box.organization-list');
+        var $orgOnDel=$(this).parents('.box.organization-list'),
+            $modalBody=$('#myModal').find('.modal-body p');
         $orgOnDel.attr('data-deletion', 'ready');
-       // console.log($orgOnDel); $('[data-deletion=true]')
+        $modalBody.text('Вы действительно хотите удалить '+$orgOnDel.find('h3.box-title').text()+'?');
     });
 
     $delSub.on('click', function () {
         var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
-
-        $orgOnDel.parent().remove();
-
-        $delCncl.trigger('click');
+        delOrgAjax($orgOnDel,$delCncl)
     });
 
     $delCncl.on('click', function () {
