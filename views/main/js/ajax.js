@@ -39,7 +39,6 @@ $(function(){
       url:'view_add_part.php',
       type:'POST',
       dataType:'html',
-      data:"img"+img+"&name"+name+"&"
       beforeSend:funcBefore,
       success:function(data){
         $('.form-horizontal').prepend(data);
@@ -105,7 +104,7 @@ $(function(){
       data:form_date,
       dataType:'html',
       success:function(){
-        alert('Круто, клуб сохранен в базе даных')
+        alert('Круто, клуб сохранен в базе даных');
       }
 
 

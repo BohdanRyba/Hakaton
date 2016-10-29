@@ -195,12 +195,10 @@ sleep(1);
 					</div>
 				</div>
 				<!-- /.box-body -->
-				
+
 				<div class="box-footer">
 					<form class="form-horizontal">
-						<div class="box-body">
 							<a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
-						</div>
 					</form>
 				</div>
 			</div>
