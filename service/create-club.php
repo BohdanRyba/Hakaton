@@ -10,40 +10,40 @@ sleep(1);
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="">
     <div class="box-body">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Название клуба</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputEmail3" placeholder="Название клуба">
+          <input name="club_name" type="text" class="form-control" id="inputEmail3" placeholder="Название клуба">
         </div>
       </div>
       <div class="file_dw form-group">
         <label for="exampleInputFile">Загрузите логотип клуба</label>
-        <input id="exampleInputFile" type="file">
+        <input name="club_logo" id="exampleInputFile" type="file">
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Страна</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Страна">
+          <input name="club_country" type="text" class="form-control" id="inputPassword3" placeholder="Страна">
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Город</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Город">
+          <input name="club_city" type="text" class="form-control" id="inputPassword3" placeholder="Город">
         </div>
       </div>
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Руководитель клуба</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Руководитель клуба">
+          <input name="club_head" type="text" class="form-control" id="inputPassword3" placeholder="Руководитель клуба">
         </div>
       </div>
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" placeholder="Тренер №1">
+          <input name="club_traine" type="text" class="form-control" id="inputPassword3" placeholder="Тренер №1">
         </div>
       </div>
       <div class="form-group">
@@ -61,13 +61,13 @@ sleep(1);
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Номер телефона</label>
         <div class="col-sm-10">
-          <input type="tel" class="form-control" id="inputPassword3" placeholder="Номер телефона">
+          <input name="club_phone" type="tel" class="form-control" id="inputPassword3" placeholder="Номер телефона">
         </div>
       </div>
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">Електроная почта</label>
         <div class="col-sm-10">
-          <input type="e-mail" class="form-control" id="inputPassword3" placeholder="e-mail">
+          <input name="club_email" type="e-mail" class="form-control" id="inputPassword3" placeholder="e-mail">
         </div>
       </div>
       <div class="form_in">
