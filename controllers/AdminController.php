@@ -70,7 +70,7 @@ class AdminController
         echo json_encode($org_info);
     }
 
-    public function actionAjax_delOrg() // End this method!
+    public function actionDelOrg() // End this method!
     {
 
         echo '<pre>';

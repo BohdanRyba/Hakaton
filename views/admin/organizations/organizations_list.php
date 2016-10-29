@@ -205,11 +205,14 @@
                             <p></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary text-capitalize deletion-submit">удалить!
-                            </button>
-                            <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
-                                    data-dismiss="modal">отмена
-                            </button>
+                            <form method="post" action="delOrg">
+                                <input type="submit" name="delete_org"
+                                       class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
+                                <input type="hidden" name="delete_org_id">
+                                <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
+                                        data-dismiss="modal">отмена
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
