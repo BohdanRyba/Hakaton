@@ -1,8 +1,10 @@
 <?php
 
+require_once(ROOT . 'components/Traits.php');
 
 class AdminModel
 {
+    use messagesOperations;
 
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
@@ -96,6 +98,7 @@ class AdminModel
                             `org_phone` = '{$_POST['org_phone']}',
                             `org_email` = '{$_POST['org_email']}',
                             `org_pic_path` = 'views/main/img/org_image/{$_FILES['org_image']['name']}'");
+
             return $result;
         }
         $db->close();
@@ -109,26 +112,43 @@ class AdminModel
         } else return $element;
     }
 
-    public static function updateOrganization(){ // end this method;
+    public static function updateOrganization()
+    { // end this method;
 
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-//            if()
+            $organizanization = AdminModel::getOrganizationById($_POST['id']);
+            if ($_POST['org_name'] !== $organizanization['org_name']) {
+                $result = $db->query("UPDATE `organizations`
+                                      SET `org_name` = '{$_POST['org_name']}'
+                                      WHERE `id` = {$_POST['id']}");
+            }
             $result = $db->query("UPDATE `organizations`
-                        SET `org_name` = '{$_POST['org_name']}',
-                            `org_abbreviation` = '{$_POST['org_abbreviation']}',
-                            `org_head_fio` = '{$_POST['org_head_fio']}',
-                            `org_city` = '{$_POST['org_city']}',
-                            `org_country` = '{$_POST['org_country']}',
-                            `org_phone` = '{$_POST['org_phone']}',
-                            `org_email` = '{$_POST['org_email']}'");
+                                  SET `org_abbreviation` = '{$_POST['org_abbreviation']}',
+                                    `org_head_fio` = '{$_POST['org_head_fio']}',
+                                    `org_city` = '{$_POST['org_city']}',
+                                    `org_country` = '{$_POST['org_country']}',
+                                    `org_phone` = '{$_POST['org_phone']}',
+                                    `org_email` = '{$_POST['org_email']}'
+                                    WHERE `id` = {$_POST['id']}");
+            if ($result){
+                $message = json_encode([
+                    'status' => 'success',
+                    'message' => 'Изменения успешно сохранены!'
+                ]);
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'Изменения сохранить не удалось! Пожалуйста, проверьте правильность ввода данных! Номер телефона должен состоять из цифер!'
+                ]);
+
+            }
+            self::saveMessage($message);
+
+            $db->close();
             return $result;
         }
-        $db->close();
+        else return 'db.connect false';
     }
-
-
-
-
 
 
     static function events_all($link)
