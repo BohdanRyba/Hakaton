@@ -89,12 +89,12 @@ $(function(){
     $(this).parents('.part').slideUp(300);
   });
 // DATAPICKER
-$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
-$.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
-$( function() {
-  $( "#event_begin").datepicker();
-  $( "#event_end").datepicker();
-});
+// $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+// $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+// $( function() {
+//   $( "#event_begin").datepicker();
+//   $( "#event_end").datepicker();
+//});
     // button on page: organization for create eveny, reg club, dance 
     
     $('.button-list').each(function(){

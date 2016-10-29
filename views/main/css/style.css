@@ -133,7 +133,7 @@ a:hover { color:#00ff00;}
 
 .mainpage_background {
 
-	background: url('../../images/main_img.jpg') center center no-repeat fixed;
+	background: url('../img/main_img.jpg') center center no-repeat fixed;
 	background-size: cover;
 	height:800px;
 
@@ -504,7 +504,6 @@ body, p{
 	display:block;
 	width:80%;
 	margin-bottom:10px;
-	display:block;
 	color:#1E90FF;
 	cursor:pointer;
 	background:white;
@@ -791,8 +790,14 @@ b{
 	margin-right:5px;
 	border-radius:80%;
 }
-
+.box-avatar-cab{
+	text-align: center;
+}
 /*menu_event*/
+#ev_menu{
+	margin: 20px;
+	font-size: 36px;
+}
 .tabs{
 	padding:0;
 }
@@ -803,18 +808,33 @@ b{
 	font-size: 18px;
 	text-align: center;
 }
+.tabs li.active{
+	 background-color: grey;
+	 color:white;
+ }
 .tabs li a{
 	display: block;
 	height: 100%;
 	padding: 10px 0;
-}
-
-.tabs li.active{
-	background-color: grey;
-	color:white;
+	transition: background 200ms linear, color 200ms linear;
+	font-size: 16px;
+	line-height: 18px;
+	font-stretch: normal;
+	background: white;
+	outline: solid 3px #3c8dbc;
+	color: #3c8dbc;
 }
 .tabs li.active a{
-	color:white;
+	transition:all 200ms linear;
+	box-shadow: none;
+	/*background-color: #B8263D;*/
+}
+.tabs li a:hover{
+	transition:all 200ms linear;
+	background: #3c8dbc;
+	color: white;
+	box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+	-5px 5px 5px 0 rgba(122, 122, 122, 0.5);
 }
 
 #event_info div div{padding-top: 50px}
