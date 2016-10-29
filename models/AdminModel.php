@@ -109,7 +109,7 @@ class AdminModel
         } else return $element;
     }
 
-    public static function updateOrganization(){
+    public static function updateOrganization(){ // end this method;
 
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
 //            if()
