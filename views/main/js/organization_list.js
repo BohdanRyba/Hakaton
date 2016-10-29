@@ -17,14 +17,16 @@ jQuery(function($) {
 
     //      Центрування блоків організацій при вузькому екрані
 
-
+    var aaa=window.location.href;
+    aaa=aaa.split('/');
+    aaa=aaa[aaa.length-1];
 
 
     //      виведення інформації по організації
 
     var $infoButton=$('button.btn-info>i.fa-info').parent(),
         $editButton=$('button.btn-success>i.fa-edit').parent(),
-        $orgForm='<form method="post" class="text-capitalize org-full-info" action="updateOrg"><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" name="org-name"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" name="org-short-name"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" name="org-leader"></label></div><div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" name="org-city"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" name="org-country"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" name="org-email"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" name="org-phone"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><input name="redirect" type="hidden" value="admin/organizations/page/1"><input name="id" type="hidden"><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
+        $orgForm='<form method="post" class="text-capitalize org-full-info" action="updateOrg"><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" name="org_name"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" name="org_abbreviation"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" name="org_head_fio"></label></div><div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" name="org_city"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" name="org_country"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" name="org_phone"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" name="org_email"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><input name="redirect" type="hidden" value="admin/organizations/page/'+aaa+'"><input name="id" type="hidden"><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
 
     //AJAX FUNCTIONS
     function getFullInfoAjax($infoContainer, $orgList) {
@@ -37,13 +39,13 @@ jQuery(function($) {
 
                 console.log(msg);
                 var orgFullInfo = JSON.parse(msg);
-                $infoContainer.find('input[name="org-name"]').val(orgFullInfo.org_name);
-                $infoContainer.find('input[name="org-short-name"]').val(orgFullInfo.org_abbreviation);
-                $infoContainer.find('input[name="org-leader"]').val(orgFullInfo.org_head_fio);
-                $infoContainer.find('input[name="org-city"]').val(orgFullInfo.org_city);
-                $infoContainer.find('input[name="org-country"]').val(orgFullInfo.org_country);
-                $infoContainer.find('input[name="org-email"]').val(orgFullInfo.org_email);
-                $infoContainer.find('input[name="org-phone"]').val(orgFullInfo.org_phone);
+                $infoContainer.find('input[name="org_name"]').val(orgFullInfo.org_name);
+                $infoContainer.find('input[name="org_abbreviation"]').val(orgFullInfo.org_abbreviation);
+                $infoContainer.find('input[name="org_head_fio"]').val(orgFullInfo.org_head_fio);
+                $infoContainer.find('input[name="org_city"]').val(orgFullInfo.org_city);
+                $infoContainer.find('input[name="org_country"]').val(orgFullInfo.org_country);
+                $infoContainer.find('input[name="org_phone"]').val(orgFullInfo.org_phone);
+                $infoContainer.find('input[name="org_email"]').val(orgFullInfo.org_email);
             },
             error: function (msg) {
                 console.log(msg);
@@ -272,7 +274,6 @@ jQuery(function($) {
     $delSub.on('click', function () {
         var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
         $('input[name="delete_org_id"]').val($orgOnDel.attr('data-id'));
-        //delOrgAjax($orgOnDel,$delCncl);
     });
 
     $delCncl.on('click', function () {

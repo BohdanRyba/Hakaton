@@ -9,13 +9,17 @@ class AdminController
 
     public function actionIndex($Cpag)
     {
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
         $organizationsList = AdminModel::getAllOrganizations();
         $start_end_pagination_array = AdminModel::getPaginationContent($Cpag);
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
 
-        require_once('views/admin/organizations/organizations_list.php');
+        require_once('views/admin/organizations/organizations_list.php'); // here in view file we show the message;
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
         return true;
     }
 
@@ -32,16 +36,6 @@ class AdminController
 
     public function actionOrg_reg()
     {
-
-
-        echo '<pre>';
-        var_export($_POST);
-        echo '</pre>';
-
-        echo '<pre>';
-        var_export($_FILES);
-        echo '</pre>';
-
         $_POST = array_map("AdminModel::addSlashes", $_POST);
 
         if (isset($_POST)) {
@@ -51,18 +45,18 @@ class AdminController
             ) {
                 $resulting = (integer)AdminModel::recordOrganization();
                 echo $resulting . ' is the result';
-                $this->message = json_encode([
+                $message = json_encode([
                     'status' => 'success',
                     'message' => 'Организация успешно сохранена в базе данных!'
                 ]);
             } else {
                 echo 'NooooO!';
-                $this->message = json_encode([
+                $message = json_encode([
                     'status' => 'error',
                     'message' => 'Организацию сохранить не удалось! Пожалуйста, заполните все обязательные поля.'
                 ]);
             }
-            $this->saveMessage($this->message);
+            self::saveMessage($message);
         }
 
         header('Location: ' . Router::$permalink . $_POST['redirect']);
@@ -71,20 +65,26 @@ class AdminController
 
     public function actionAjax_showOrgInf()
     {
-
-        $org_info = array();
         $org_info = AdminModel::getOrganizationById($_POST['id']);
 
         echo json_encode($org_info);
     }
 
-    public function actionUpdateOrg()
+    public function actionAjax_delOrg() // End this method!
     {
 
         echo '<pre>';
         var_export($_POST);
         echo '</pre>';
 
+//        $org_info = array();
+//        $org_info = AdminModel::getOrganizationById($_POST['id']);
+//
+//        echo json_encode($org_info);
+    }
+
+    public function actionUpdateOrg()
+    {
         $_POST = array_map("AdminModel::addSlashes", $_POST);
 
         if (isset($_POST)) {
@@ -94,28 +94,21 @@ class AdminController
             ) {
                 $resulting = (integer)AdminModel::updateOrganization();
                 echo $resulting . ' is the result';
-                $this->message = json_encode([
-                    'status' => 'success',
-                    'message' => 'Изменения сохранены успешно!'
-                ]);
             } else {
                 echo 'NooooO!';
-                $this->message = json_encode([
-                    'status' => 'error',
-                    'message' => 'Данные обновить не удалось!'
-                ]);
             }
-            $this->saveMessage($this->message);
         }
-
-//        header('Location: '. Router::$permalink . $_POST['redirect']);
+        echo '<pre>';
+        var_export($_SERVER);
+        echo '</pre>';
+        header('Location: '. Router::$permalink . $_POST['redirect']);
         return true;
     }
 
 
     public function actionEvent_add()
     {
-
+        echo "Hi, Bodia!";
 
     }
 

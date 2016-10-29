@@ -5,7 +5,7 @@ trait messagesOperations
 
     public $message;
 
-    public function saveMessage($data = null)
+    public static function saveMessage($data = null)
     {
         if (isset($data)) {
             $_SESSION['messages'] = $data;
