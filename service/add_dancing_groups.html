@@ -237,21 +237,20 @@
                             </div>
                             <!--DANCE GROUP INFO BLOCK-->
 
-
                             <div class="row dance-group-info" id="dance-programs">
                                 <div class="container-fluid">
                                     <!--ADD INFO-->
                                     <div class="row separation-line">
-                                        <div class="col-xs-6">
-                                            <div class="dgi-add-info">
+                                        <div class="col-xs-7">
+                                            <div class="dance-group-add-info">
                                                 <p class="text-capitalize">танцевальная программа</p>
                                                 <form action="">
                                                     <div>
                                                         <label>Название:
-                                                            <input type="text" name="dance-program-name" class="input-standard">
+                                                            <input type="text" name="dance-program-name-new" class="input-standard">
                                                         </label>
                                                         <label>Код:
-                                                            <input type="text" name="dance-program-code" class="input-standard dancing-group-info-code">
+                                                            <input type="text" name="dance-program-code-new" class="input-standard dancing-group-info-code">
                                                         </label>
                                                     </div>
                                                     <a href="#" class="save-org-info">сохранить</a>
@@ -259,81 +258,191 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <!--SEE INFO-->
                                     <div class="row">
-                                        <ul class="dgi-show-info">
-                                            <li>
-                                                <form action="">
-                                                    <div>
-                                                        <label>Название:
-                                                            <input type="text" name="dance-program-name" class="input-standard">
-                                                        </label>
-                                                        <label>Код:
-                                                            <input type="text" name="dance-program-code" class="input-standard dancing-group-info-code">
-                                                        </label>
+                                        <!--<div class="col-xs-12">-->
+                                            <form class="dance-group-show-info">
+                                                <div>
+                                                    <span class="text-bold">1.</span>
+                                                    <div class="btn-group-sm flat" role="group">
+                                                        <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                        <button type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                                                     </div>
-                                                    <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                                                </form>
-
-                                            </li>
-                                            <li>
-                                                <form action="">
-                                                    <div>
-                                                        <label>Название:
-                                                            <input type="text" name="dance-program-name" class="input-standard">
-                                                        </label>
-                                                        <label>Код:
-                                                            <input type="text" name="dance-program-code" class="input-standard dancing-group-info-code">
-                                                        </label>
-                                                    </div>
-                                                </form>
-                                            </li>
-                                        </ul>
-
-
+                                                    <!--<span><button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button></span>-->
+                                                    <label>Название:
+                                                        <input disabled type="text" name="dance-program-name" class="input-standard" value="sakjdsafahkbjhabfsahb">
+                                                    </label>
+                                                    <label>Код:
+                                                        <input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                    </label>
+                                                </div>
+                                            </form>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--<div class="row" id="age-categories">-->
-                                <!--<div class="container-fluid">-->
-                                    <!--&lt;!&ndash;ADD INFO&ndash;&gt;-->
-                                    <!--<div class="row">-->
+                            <div class="row" id="age-categories">
+                                <div class="container-fluid">
+                                    <!--ADD INFO-->
+                                    <div class="row separation-thick-line">
+                                        <div class="col-xs-12 col-md-7">
+                                            <div class="dance-group-add-info-extended">
+                                                <p class="text-capitalize">возрастная категория</p>
+                                                <form action="">
+                                                    <div>
+                                                        <label>Название:
+                                                            <input type="text" name="age-category-name-new" class="input-standard">
+                                                        </label>
+                                                        <label>Код:
+                                                            <input type="text" name="age-category-code-new" class="input-standard dancing-group-info-code">
+                                                        </label>
+                                                        <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
+                                                    </div>
+                                                    <div class="age-restrictions">
+                                                        <label>Год рождения от:
+                                                            <input type="text" name="age-category-rule-age-min-new" class="input-standard">
+                                                        </label>
+                                                        <label>Год рождения до:
+                                                            <input type="text" name="age-category-rule-age-max-new" class="input-standard">
+                                                        </label>
+                                                    </div>
+                                                    <a href="#" class="save-org-info">сохранить</a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--SEE INFO-->
+                                    <div class="row">
+                                        <form class="dance-group-show-info-extended">
+                                            <div>
+                                                <span class="text-bold">1.</span>
+                                                <div class="btn-group-sm flat" role="group">
+                                                    <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                                <!--<span><button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button></span>-->
+                                                <label>Название:
+                                                    <input disabled type="text" name="age-category-name" class="input-standard" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>Код:
+                                                    <input disabled type="text" name="age-category-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>От:
+                                                    <input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>До:
+                                                    <input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash;SEE INFO&ndash;&gt;-->
-                                    <!--<div class="row">-->
+                            <div class="row" id="nominations">
+                                <div class="container-fluid">
+                                    <!--ADD INFO-->
+                                    <div class="row separation-thick-line">
+                                        <div class="col-xs-12 col-md-7">
+                                            <div class="dance-group-add-info-extended">
+                                                <p class="text-capitalize">номинация выступления</p>
+                                                <form action="">
+                                                    <div>
+                                                        <label>Название:
+                                                            <input type="text" name="nomination-name-new" class="input-standard">
+                                                        </label>
+                                                        <label>Код:
+                                                            <input type="text" name="nomination-code-new" class="input-standard dancing-group-info-code">
+                                                        </label>
+                                                        <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
+                                                    </div>
+                                                    <div class="nomination-rule">
+                                                        <label>Количество учасников:
+                                                            <input type="text" name="nomination-rule-participants-number-new" class="input-standard">
+                                                        </label>
+                                                    </div>
+                                                    <a href="#" class="save-org-info">сохранить</a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--SEE INFO-->
+                                    <div class="row">
+                                        <form class="dance-group-show-info-extended">
+                                            <div>
+                                                <span class="text-bold">1.</span>
+                                                <div class="btn-group-sm flat" role="group">
+                                                    <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                                <!--<span><button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button></span>-->
+                                                <label>Название:
+                                                    <input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>Код:
+                                                    <input disabled type="text" name="nomination-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>Кол-во учасников:
+                                                    <input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="row" id="nominations">-->
-                                <!--<div class="container-fluid">-->
-                                    <!--&lt;!&ndash;ADD INFO&ndash;&gt;-->
-                                    <!--<div class="row">-->
-
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash;SEE INFO&ndash;&gt;-->
-                                    <!--<div class="row">-->
-
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="row" id="leagues">-->
-                                <!--<div class="container-fluid">-->
-                                    <!--&lt;!&ndash;ADD INFO&ndash;&gt;-->
-                                    <!--<div class="row">-->
-
-                                    <!--</div>-->
-                                    <!--&lt;!&ndash;SEE INFO&ndash;&gt;-->
-                                    <!--<div class="row">-->
-
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
+                            <div class="row" id="leagues">
+                                <div class="container-fluid">
+                                    <!--ADD INFO-->
+                                    <div class="row separation-thick-line">
+                                        <div class="col-xs-12 col-md-7">
+                                            <div class="dance-group-add-info-extended">
+                                                <p class="text-capitalize">лига</p>
+                                                <form action="">
+                                                    <div>
+                                                        <label>Название:
+                                                            <input type="text" name="league-name-new" class="input-standard">
+                                                        </label>
+                                                        <label>Код:
+                                                            <input type="text" name="league-code-new" class="input-standard dancing-group-info-code">
+                                                        </label>
+                                                        <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
+                                                    </div>
+                                                    <div class="nomination-rule">
+                                                        <label>Лет выступлений:
+                                                            <input type="text" name="league-rule-participation-years-new" class="input-standard">
+                                                        </label>
+                                                    </div>
+                                                    <a href="#" class="save-org-info">сохранить</a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--SEE INFO-->
+                                    <div class="row">
+                                        <form class="dance-group-show-info-extended">
+                                            <div>
+                                                <span class="text-bold">1.</span>
+                                                <div class="btn-group-sm flat" role="group">
+                                                    <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                                <!--<span><button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button></span>-->
+                                                <!--<span class="del-info"><a href=""><i class="fa fa-trash"></i></a></span>-->
+                                                <label>Название:
+                                                    <input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>Код:
+                                                    <input disabled type="text" name="league-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                                <label>Лет выступлений:
+                                                    <input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">
+                                                </label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

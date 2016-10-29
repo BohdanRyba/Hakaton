@@ -5,6 +5,9 @@
 .separation-line{
   border-bottom: 1px solid @highlight-color;
 }
+.separation-thick-line{
+  border-bottom: 2px solid @main-color;
+}
 
 .input-standard {
   margin: 5px;
@@ -68,85 +71,27 @@
   }
 }
 
-.dance-group-info {
-  .dgi-add-info {
-    margin: 20px 0;
-    padding: 15px;
-    border: 8px solid @highlight-color;
-    position: relative;
-    p {
-      position: absolute;
-      top: -16px;
-      left:15px;
-      color: @main-color;
-      font-weight: bold;
-      background: white;
-      display: inline-block;
-      box-shadow: 10px 7px 10px 0 white,
-      -10px 7px 10px 0 white;
-    }
-    form {
-      width: 100%;
-      & > div {
-        display: table;
-        label {
-          display: table-cell;
-          padding: 5px 0;
-          &:nth-child(1) {
-            width: 75%;
-            padding-right: 5px;
-          }
-          input {
-            width: 100%;
-            margin: 5px 0;
-          }
-        }
-      }
-      .save-org-info {
-        display: block;
-        text-align: center;
-        transition: background 200ms linear, color 200ms linear, box-shadow 200ms linear;
-        color: #00a65a;
-        width: 100%;
-        background: white;
-        border: solid 5px #00a65a;
-        font-weight: bold;
-        padding: 5px 0;
-        margin: 0 auto;
-        outline: none;
-        &:active {
-          transition: box-shadow 200ms linear;
-          box-shadow: none;
-        }
-        &:not(:disabled):hover {
-          transition: all 200ms linear;
-          color: white;
-          background: #00a65a;
-          box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
-          -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
-        }
-        &:disabled {
-          color: fade(#00a65a, 40%);
-          border: solid 5px fade(#00a65a, 40%);
-        }
-      }
-    }
-  }
 
-}
 
-.dgi-show-info {
-  list-style: decimal;
-  margin: 40px 0 10px;
-  li {
-    margin: 30px 0;
-    //background: red;
-  button.btn {
-    float: left;
+
+.dance-group-add-info {
+  margin: 20px 0;
+  padding: 15px;
+  border: 8px solid @highlight-color;
+  position: relative;
+  p {
+    position: absolute;
+    top: -16px;
+    left:15px;
+    color: @main-color;
+    font-weight: bold;
+    background: white;
+    display: inline-block;
+    box-shadow: 10px 7px 10px 0 white,
+    -10px 7px 10px 0 white;
   }
   form {
-    margin-top: -50px;
-    width: 90%;
+    width: 100%;
     & > div {
       display: table;
       label {
@@ -162,54 +107,258 @@
         }
       }
     }
-  }
-}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.dance-group-name {
-    position: relative;
-    padding-left: 30px;
-  .btn {
-    position: absolute;
-    top:0;
-    left:0;
-  }
-  form {
-    label {
+    .save-org-info {
+      display: block;
+      text-align: center;
+      transition: background 200ms linear, color 200ms linear, box-shadow 200ms linear;
+      color: #00a65a;
       width: 100%;
-      padding:  0;
-      font-size: 15px;
-    }
-    input[type="text"] {
-      margin: 0 1px;
-      float: left;
-      width: 100%;
-      padding: 5px;
+      background: white;
+      border: solid 5px #00a65a;
+      font-weight: bold;
+      padding: 5px 0;
+      margin: 0 auto;
       outline: none;
-      font-size: 14px;
-      border: solid 2px @highlight-color;
-      color: @main-color;
-      &:focus {
-        border: 2px solid @main-color;
+      &:active {
+        transition: box-shadow 200ms linear;
+        box-shadow: none;
+      }
+      &:not(:disabled):hover {
+        transition: all 200ms linear;
+        color: white;
+        background: #00a65a;
+        box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+        -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
       }
       &:disabled {
-        background: @highlight-color;
-        border: none;
-        padding: 7px;
-        color: @main-color;
+        color: fade(#00a65a, 40%);
+        border: solid 5px fade(#00a65a, 40%);
       }
     }
   }
 }
+
+.dance-group-show-info {
+  margin: 20px 0 10px;
+  width: 100%;
+  & > div {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    &:nth-child(odd) {
+      background: @highlight-color;
+    }
+    & > div {
+      display: table-cell;
+      padding: 0 10px;
+      width: 90px;
+      vertical-align: middle;
+    }
+    & > span {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 18px;
+      &:nth-child(2) {
+        width: 40px;
+        padding-right: 10px;
+      }
+    }
+    label {
+      display: table-cell;
+      padding: 4px 0;
+      &:nth-child(3) {
+        width: 65%;
+        padding-right: 5px;
+      }
+      input {
+        width: 100%;
+        margin:  0;
+        &:disabled {
+          background: white;
+          border:solid 2px @highlight-color;
+          padding: 5px;
+          color: @main-color;
+        }
+      }
+    }
+  }
+}
+
+#dance-programs {
+  display: none;
+}
+#age-categories{
+  display: none;
+}
+#nominations{
+  display: none;
+}
+#leagues{
+  //display: none;
+}
+
+.dance-group-add-info-extended {
+  margin: 20px 0;
+  padding: 15px;
+  border: 8px solid @highlight-color;
+  position: relative;
+  p {
+    position: absolute;
+    top: -16px;
+    left:15px;
+    color: @main-color;
+    font-weight: bold;
+    background: white;
+    display: inline-block;
+    box-shadow: 10px 7px 10px 0 white,
+    -10px 7px 10px 0 white;
+  }
+  form {
+    width: 100%;
+    & > div {
+      display: table;
+      & > span {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 16px;
+        padding-left: 5px;
+        a{
+          display: inline-block;
+          margin-top: 21px;
+          border: solid 2px @main-color;
+          padding: 4px 10px;
+          transition: background 200ms linear, color 200ms linear;
+          background: white;
+          color: @main-color;
+          &:hover {
+            transition:all 200ms linear;
+            background: @main-color;
+            color: white;
+            box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+            -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+          }
+          &:active {
+            transition:all 200ms linear;
+            box-shadow: none;
+          }
+        }
+      }
+      label {
+        display: table-cell;
+        padding: 5px 0;
+        &:nth-child(1) {
+          width: 70%;
+          padding-right: 5px;
+        }
+        input {
+          width: 100%;
+          margin: 5px 0;
+        }
+      }
+      &.age-restrictions {
+        width: 100%;
+        margin-bottom: 10px;
+        label {
+          width:50%;
+        }
+      }
+      &.nomination-rule {
+        width: 100%;
+        margin-bottom: 10px;
+        label {
+          width:100%;
+          input {
+            margin: 0 10px;
+            width: 150px;
+          }
+        }
+      }
+    }
+    .save-org-info {
+      display: block;
+      text-align: center;
+      transition: background 200ms linear, color 200ms linear, box-shadow 200ms linear;
+      color: #00a65a;
+      width: 100%;
+      background: white;
+      border: solid 5px #00a65a;
+      font-weight: bold;
+      padding: 5px 0;
+      margin: 0 auto;
+      outline: none;
+      &:active {
+        transition: box-shadow 200ms linear;
+        box-shadow: none;
+      }
+      &:not(:disabled):hover {
+        transition: all 200ms linear;
+        color: white;
+        background: #00a65a;
+        box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+        -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+      }
+      &:disabled {
+        color: fade(#00a65a, 40%);
+        border: solid 5px fade(#00a65a, 40%);
+      }
+    }
+  }
+}
+
+.dance-group-show-info-extended {
+  margin: 20px 0 10px;
+  width: 100%;
+  & > div {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    &:nth-child(odd) {
+      background: @highlight-color;
+    }
+    & > span {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 18px;
+      &:nth-child(2) {
+        width: 40px;
+        padding: 0 10px 0 5px;
+      }
+    }
+    & > div {
+      display: table-cell;
+      padding: 0 10px;
+      width: 90px;
+      vertical-align: middle;
+    }
+    label {
+      display: table-cell;
+      padding: 4px 2px;
+      &:nth-child(3) {
+        width: 55%;
+        padding-right: 5px;
+      }
+
+      input {
+        width: 100%;
+        margin:  0;
+        &:disabled {
+          background: white;
+          border:solid 2px @highlight-color;
+          padding: 5px;
+          color: @main-color;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -271,7 +271,8 @@ jQuery(function($) {
 
     $delSub.on('click', function () {
         var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
-        delOrgAjax($orgOnDel,$delCncl)
+        $('input[name="delete_org_id"]').val($orgOnDel.attr('data-id'));
+        //delOrgAjax($orgOnDel,$delCncl);
     });
 
     $delCncl.on('click', function () {
