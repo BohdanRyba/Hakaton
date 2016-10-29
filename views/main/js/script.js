@@ -56,12 +56,11 @@ $(function(){
     $('#overlay_log').click(function(){
       $(this).hide(400);
       $('.form_log').hide(400);
-    })
+    });
 
     $('.connect').click(function(){
         $('#overlay_log').show(600);
         $('.us_info').show(1000);
-
     });
     $('#overlay_log').click(function(){
       $(this).hide(400);
@@ -85,7 +84,7 @@ $(function(){
     $('body,html').animate({scrollTop: dist}, 500);
     window.a++;
   });
-  $('a.remove-part').click(function(){
+  $('body').on('click', 'a.remove-part', function(){
     $(this).parents('.part').slideUp(300);
   });
 // DATAPICKER

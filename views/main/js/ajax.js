@@ -22,17 +22,35 @@ function funcBefore(){
   var target = document.getElementById('loading');
   var spinner = new Spinner(opts).spin(target);
 }
+
 function funcSuccess(data){
   console.log(data);
 
   $('body').css('cursor','default');
   $('#loading>').remove();
-  $('#loading').css('height','0px')
+  $('#loading').css('height','0px');
   $('.content-in').css('height','0');
   $('.cont-box1').append(data);
   $('body').trigger('mask_ajax');
 }
 $(function(){
+  $('body').on('click', '#add_part', function(){
+    $.ajax({
+      url:'view_add_part.php',
+      type:'POST',
+      dataType:'html',
+      beforeSend:funcBefore,
+      success:function(data){
+        $('.form-horizontal').prepend(data);
+        var dist= $('#add_part').offset().top;
+        $('body,html').animate({scrollTop: dist}, 400);
+        $('body').css('cursor','default');
+        $('#loading>').remove();
+        $('#loading').css('height','0px');
+        $('.content-in').css('height','0');
+      }
+    });
+  });
   $('.btn-plus-event').on('click', function (){
     $('.cont-box1>').remove();
     $.ajax({
@@ -75,5 +93,6 @@ $(function(){
       success: funcSuccess
     });
   });
+  $()
 
 });
