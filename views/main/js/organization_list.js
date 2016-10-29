@@ -269,11 +269,7 @@ jQuery(function($) {
             $modalBody=$('#myModal').find('.modal-body p');
         $orgOnDel.attr('data-deletion', 'ready');
         $modalBody.text('Вы действительно хотите удалить '+$orgOnDel.find('h3.box-title').text()+'?');
-    });
-
-    $delSub.on('click', function () {
-        var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
-        $('input[name="delete_org_id"]').val($orgOnDel.attr('data-id'));
+        $('input[name="delete_org_id"]').val($('.box.organization-list[data-deletion=ready]').attr('data-id'));
     });
 
     $delCncl.on('click', function () {
