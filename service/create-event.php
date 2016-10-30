@@ -10,12 +10,13 @@ sleep(1);
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form class="form-horizontal">
+  <form class="form-horizontal" method="post">
     <div class="box-body">
       <div class="form-group">
         <label for="event_name" class="col-sm-2 control-label">Название события</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="event_name" placeholder="Введите информацию">
+          <input type="hidden" name="action" value="event">
+          <input type="text" class="form-control" name="event_name" id="event_name" placeholder="Введите информацию">
         </div>
       </div>
       <div class="file_dw form-group">

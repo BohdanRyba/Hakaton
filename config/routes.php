@@ -11,11 +11,16 @@ return array(
     'addnews' => 'addnews/index',
     'record' => 'addnews/record',
     'events' => 'events/index',
-//    'admin/organizations/event_add' => 'admin/event_add',
+    'admin/organizations/org_settings' => 'admin/org_settings',
+    'admin/organizations/org_settings([.*]+)' => 'admin/org_settings',
+    'admin/organizations/ajax_club_add' => 'admin/ajaxClub_add',
+    'admin/organizations/ajax_create_category' => 'admin/ajaxCategory_add',
+    'admin/organizations/create-event' => 'admin/ajaxCreate_event',
     'admin/organizations/org_reg' => 'admin/org_reg',
     'admin/organizations/org_add' => 'admin/org_add',
     'admin/organizations/page/([0-9]+)' => 'admin/index/$1',
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
     '' => 'home/index',
+
 );

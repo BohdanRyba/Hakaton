@@ -113,28 +113,37 @@ class AdminController
     }
 
 
-    public function actionEvent_add()
+    public function actionOrg_settings()
     {
-
+        include 'views/admin/SettingsOrg/org_settings.php';
+        if ($_POST['action']=='club'){$this->addClub();}
+        elseif ($_POST['action']=='event'){$this->addEvent();   }
+        echo '<pre>';
+        var_export($_POST);
+        echo '</pre>';
 
     }
 
-    public function actionAll_events()
-    {
-
-
+    public function addClub(){
+        AdminModel::event_add($_POST);
+    }
+    public function addEvent(){
+        echo 'world';
     }
 
-    public function actionEdit_event()
+    public  function actionAjaxClub_add()
     {
-
-
+        include 'service/create-club.php';
     }
 
-    public function actionOne_event()
+    public function actionAjaxCategory_add()
     {
+        include 'service/create-category.php';
+    }
 
-
+    public function actionAjaxCreate_event()
+    {
+        include 'service/create-event.php';
     }
 
 }
