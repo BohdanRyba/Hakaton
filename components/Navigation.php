@@ -5,9 +5,9 @@ class Navigation
     public function getLink($data, $current = '', $id = '')
     {
         if ($id !== '') {
-            $link = ($current == $data['link']) ? '#' : (($data['description'] == 'popup') ? $id . $data['link'] : CORE_PATH . $data['link']);
+            $link = ($current == $data['link']) ? '' : (($data['description'] == 'popup') ? $id . $data['link'] : CORE_PATH . $data['link']);
         } else {
-            $link = ($current == $data['link']) ? '#' : (($data['description'] == 'popup') ? $current . $data['link'] : CORE_PATH . $data['link']);
+            $link = ($current == $data['link']) ? '' : (($data['description'] == 'popup') ? $current . $data['link'] : CORE_PATH . $data['link']);
         }
         $class = ($data['class'] !== '') ? ' class="' . $data['class'] . '"' : ' class=""';
 

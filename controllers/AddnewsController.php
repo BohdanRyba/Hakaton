@@ -27,7 +27,6 @@ class AddnewsController
 //        echo '<pre>';
 //        var_export($_SESSION);
 //        echo '</pre>';
-
         $array_for_post_replace = array();
 
         foreach ($_POST as $post_string) {
@@ -59,7 +58,7 @@ class AddnewsController
                 echo 'NooooO!';
             }
         }
-//        header('Location: '. CORE_PATH. $_POST['redirect']);
+        header('Location: '. CORE_PATH. $_POST['redirect']);
         return true;
     }
 }

@@ -195,14 +195,17 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <h4 class="modal-title text-uppercase" id="myModalLabel">удаление организации</h4>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <p></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary text-capitalize deletion-submit">удалить!</button>
-                            <button type="button" class="btn btn-secondary text-capitalize deletion-cancel" data-dismiss="modal">отмена</button>
+                            <form action="">
+                                <input type="submit" name="delete_org"  class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
+                                <input type="hidden" name="delete_org_id">
+                                <button type="button" class="btn btn-secondary text-capitalize deletion-cancel" data-dismiss="modal">отмена</button>
+                            </form>
                         </div>
                     </div>
                 </div>

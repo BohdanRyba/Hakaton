@@ -12,6 +12,11 @@ return array(
     'record' => 'addnews/record',
     'events' => 'events/index',
     'admin/organizations/event_add' => 'admin/event_add',
-    'admin/organizations/([0-9]+)' => 'admin/index/$1',
+    'admin/organizations/org_reg' => 'admin/org_reg',
+    'admin/organizations/org_add' => 'admin/org_add',
+    'admin/organizations/page/([0-9]+)' => 'admin/index/$1',
+    'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
+    'admin/organizations/page/delOrg' => 'admin/delOrg',
+    'admin/organizations/page/updateOrg' => 'admin/updateOrg',
     '' => 'home/index',
 );
