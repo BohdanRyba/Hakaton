@@ -430,6 +430,7 @@ desired effect
     immediately after the control sidebar -->
     <footer class="main-footer">
         <!-- To the right -->
+        <input type="hidden" name="action" value="start">
         <div class="pull-right hidden-xs">
             Anything you want
         </div>

@@ -116,16 +116,17 @@ class AdminController
     public function actionOrg_settings()
     {
         include 'views/admin/SettingsOrg/org_settings.php';
-        if ($_POST['action']=='club'){$this->addClub();}
-        elseif ($_POST['action']=='event'){$this->addEvent();   }
-        echo '<pre>';
-        var_export($_POST);
-        echo '</pre>';
-
+        if($_POST) {
+            if ($_POST['action'] == 'club') {
+                $this->addClub();
+            } elseif ($_POST['action'] == 'event') {
+                $this->addEvent();
+            }
+        }
     }
 
     public function addClub(){
-        AdminModel::event_add($_POST);
+        AdminModel::club_add($_POST);
     }
     public function addEvent(){
         echo 'world';
@@ -133,17 +134,17 @@ class AdminController
 
     public  function actionAjaxClub_add()
     {
-        include 'service/create-club.php';
+        include 'views/admin/SettingsOrg/create-club.php';
     }
 
     public function actionAjaxCategory_add()
     {
-        include 'service/create-category.php';
+        include 'views/admin/SettingsOrg/create-category.php';
     }
 
     public function actionAjaxCreate_event()
     {
-        include 'service/create-event.php';
+        include 'views/admin/SettingsOrg/create-event.php';
     }
 
 }

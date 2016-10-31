@@ -145,7 +145,7 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active treeview">
                     <a href="#">
@@ -167,12 +167,12 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#">
-                        <span>Multilevel</span>
+                    <a href="<?=Router::$permalink?>admin/SettingsOrg/org_settings">
+                        <span>Settings</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="<?=Router::$permalink?>admin/organizations/org_settings">Organizations Settings</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>

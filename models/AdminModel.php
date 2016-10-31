@@ -165,6 +165,34 @@ class AdminModel
         return $event;
     }
 
+    static function club_add($a)
+
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+
+            if ($_FILES['club_image']['error'] == 0) {
+                $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
+                move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
+            }
+
+            $result = $db->query("INSERT INTO `clubs`
+                        SET `club_name`       = '{$a['club_name']}',
+                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_country`        = '{$a['club_country']}',
+                        `club_city`           = '{$a['club_city']}',
+                        `club_shief`          = '{$a['club_shief']}',
+                        `club_first_trener`   = '{$a['club_first_trener']}',
+                        `club_second_trener`  = '{$a['club_second_trener']}',
+                        `club_third_trener`   = '{$a['club_third_trener']}',
+                        `club_number`         = '{$a['club_number']}',
+                        `club_mail`           = '{$a['club_mail']}'
+                        ");
+
+            return $result;
+        }
+        $db->close();
+        return true;
+    }
     static function event_add($a)
 
     {
