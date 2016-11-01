@@ -70,18 +70,12 @@ class AdminController
         echo json_encode($org_info);
     }
 
-    public function actionDelOrg() // End this method!
-    {
-
+    public function actionDelOrg(){
         echo '<pre>';
         var_export($_POST);
         echo '</pre>';
+    } // End this method!
 
-//        $org_info = array();
-//        $org_info = AdminModel::getOrganizationById($_POST['id']);
-//
-//        echo json_encode($org_info);
-    }
 
     public function actionUpdateOrg()
     {
@@ -98,13 +92,9 @@ class AdminController
                 echo 'NooooO!';
             }
         }
-        echo '<pre>';
-        var_export($_SERVER);
-        echo '</pre>';
-        header('Location: '. Router::$permalink . $_POST['redirect']);
+        header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
     }
-
 
     public function actionEvent_add()
     {
@@ -112,22 +102,41 @@ class AdminController
 
     }
 
-    public function actionAll_events()
+    public function actionOrg_settings()
     {
-
-
+        include 'views/admin/SettingsOrg/org_settings.php';
+        if ($_POST) {
+            if ($_POST['action'] == 'club') {
+                $this->addClub();
+            } elseif ($_POST['action'] == 'event') {
+                $this->addEvent();
+            }
+        }
     }
 
-    public function actionEdit_event()
+    public function addClub()
     {
-
-
+        AdminModel::club_add($_POST);
     }
 
-    public function actionOne_event()
+    public function addEvent()
     {
+        echo 'world';
+    }
 
+    public function actionAjaxClub_add()
+    {
+        include 'views/admin/SettingsOrg/create-club.php';
+    }
 
+    public function actionAjaxCategory_add()
+    {
+        include 'views/admin/SettingsOrg/create-category.php';
+    }
+
+    public function actionAjaxCreate_event()
+    {
+        include 'views/admin/SettingsOrg/create-event.php';
     }
 
 }

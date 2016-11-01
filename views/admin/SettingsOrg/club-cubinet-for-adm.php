@@ -14,7 +14,7 @@ sleep(1);
 	<div class="box-body">
 
 		<div class="col-sm-4 box-avatar-cab">
-			<img src="../views/main/img/Button-power-icon.png">
+			<img src="../../main/img/Button-power-icon.png">
 			<p class="telef">Контактный телефон:<span>+38 099 999 99 </span></p>
 			<p class="e-mail">Адрес електроной почты: <span>goo@home.now </span></p>
 		</div>

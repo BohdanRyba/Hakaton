@@ -2,7 +2,6 @@
 
 trait messagesOperations
 {
-
     public $message;
 
     public static function saveMessage($data = null)
@@ -33,4 +32,5 @@ MESSAGE;
         }
         return $message;
     }
+
 }

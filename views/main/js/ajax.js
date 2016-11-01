@@ -36,7 +36,7 @@ $(function(){
   $('.btn-plus-event').on('click', function (){
     $('.cont-box1>').remove();
     $.ajax({
-      url:'create-event.php',
+      url:'create-event',
       type:'POST',
       dataType:'html',
       beforeSend:funcBefore,
@@ -46,7 +46,7 @@ $(function(){
   $('.btn-plus-category').on('click', function (){
     $('.cont-box1>').remove();
     $.ajax({
-      url:'create-category.php',
+      url:'ajax_create_category',
       type:'POST',
       dataType:'html',
       beforeSend:funcBefore,
@@ -56,7 +56,7 @@ $(function(){
   $('.btn-plus-club').on('click', function (){
     $('.cont-box1>').remove();
     $.ajax({
-      url:'create-club.php',
+      url:'ajax_club_add',
       type:'POST',
       dataType:'html',
       beforeSend:funcBefore,
