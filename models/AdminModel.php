@@ -133,37 +133,59 @@ class AdminModel
         $db->close();
     }
 
+    public static function ShowClubs(){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` ORDER BY id DESC";
+            $result = $db->query($query);
 
-    static function events_all($link)
-    {
-        $query = "SELECT * FROM events ORDER BY id DESC";
-        $result = mysqli_query($link, $query);
-        if (!$result) {
-            die(mysqli_error($link));
-        }
-        $n = mysqli_num_rows($result);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $clubsList[$i]['id'] = $row['id'];
+                $clubsList[$i]['club_name'] = $row['club_name'];
+                $clubsList[$i]['club_country'] = $row['club_country'];
+                $clubsList[$i]['club_city'] = $row['club_city'];
+                $clubsList[$i]['club_shief'] = $row['club_shief'];
+                $clubsList[$i]['club_first_trener'] = $row['club_first_trener'];
+                $clubsList[$i]['club_second_trener'] = $row['club_second_trener'];
+                $clubsList[$i]['club_third_trener'] = $row['club_third_trener'];
+                $clubsList[$i]['club_number'] = $row['club_number'];
+                $clubsList[$i]['club_mail'] = $row['club_mail'];
+                $i++;
+            }
+            $db->close();
 
-        $events = array();
+        };
 
-        for ($i = 0; $i < $n; $i++) {
-            $row = mysqli_fetch_assoc($result);
-            $events[] = $row;
-        }
-
-        return $events;
+        return $clubsList;
     }
 
-    static function event_by_id($link, $event_id)
-    {
-        $query = sprintf("SELECT * FROM events WHERE id=%d", (int)$event_id);
-        $result = mysqli_query($link, $query);
-        $event = array();
-        if (!$result) {
-            die(mysqli_error($link));
-        }
-        $event = mysqli_fetch_assoc($result);
-        return $event;
+    public static function ShowEvents(){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `events` ORDER BY id DESC";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $eventsList[$i]['id'] = $row['id'];
+                $eventsList[$i]['event_name'] = $row['event_name'];
+                $eventsList[$i]['event_image'] = $row['event_image'];
+                $eventsList[$i]['event_status'] = $row['event_status'];
+                $eventsList[$i]['event_start'] = $row['event_start'];
+                $eventsList[$i]['event_end'] = $row['event_end'];
+                $eventsList[$i]['event_city'] = $row['event_city'];
+                $eventsList[$i]['event_country'] = $row['event_country'];
+                $eventsList[$i]['event_referee'] = $row['event_referee'];
+                $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
+                $i++;
+            }
+            $db->close();
+
+        };
+
+        return $eventsList;
     }
+
+
 
     static function club_add($a)
 
@@ -193,33 +215,63 @@ class AdminModel
         $db->close();
         return true;
     }
+
     static function event_add($a)
 
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
 
-            if ($_FILES['club_image']['error'] == 0) {
-                $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
-                move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
+            if ($_FILES['event_image']['error'] == 0) {
+                $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
+                move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
 
-            $result = $db->query("INSERT INTO `clubs`
-                        SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
-                        `club_country`        = '{$a['club_country']}',
-                        `club_city`           = '{$a['club_city']}',
-                        `club_shief`          = '{$a['club_shief']}',
-                        `club_first_trener`   = '{$a['club_first_trener']}',
-                        `club_second_trener`  = '{$a['club_second_trener']}',
-                        `club_third_trener`   = '{$a['club_third_trener']}',
-                        `club_number`         = '{$a['club_number']}',
-                        `club_mail`           = '{$a['club_mail']}'
+            $result = $db->query("INSERT INTO `events`
+                        SET `event_name`       = '{$a['event_name']}',
+                        `event_image`          = 'views/main/img/event_img/{$_FILES['event_image']['name']}',
+                        `event_status`        = '{$a['event_status']}',
+                        `event_start`           = '{$a['event_start']}',
+                        `event_end`          = '{$a['event_end']}',
+                        `event_city`   = '{$a['event_city']}',
+                        `event_country`  = '{$a['event_country']}',
+                        `event_referee`   = '{$a['event_referee']}',
+                        `event_skutiner`         = '{$a['event_skutiner']}'
                         ");
 
             return $result;
         }
         $db->close();
         return true;
+    }
+
+    static function events_all($link)
+    {
+        $query = "SELECT * FROM events ORDER BY id DESC";
+        $result = mysqli_query($link, $query);
+        if (!$result) {
+            die(mysqli_error($link));
+        }
+        $n = mysqli_num_rows($result);
+
+        $events = array();
+
+        for ($i = 0; $i < $n; $i++) {
+            $row = mysqli_fetch_assoc($result);
+            $events[] = $row;
+        }
+
+        return $events;
+    }
+    static function event_by_id($link, $event_id)
+    {
+        $query = sprintf("SELECT * FROM events WHERE id=%d", (int)$event_id);
+        $result = mysqli_query($link, $query);
+        $event = array();
+        if (!$result) {
+            die(mysqli_error($link));
+        }
+        $event = mysqli_fetch_assoc($result);
+        return $event;
     }
     static function event_edit($link, $id, $sobytie, $organization, $status, $name_meroprijatia, $date_begin, $date_end,
                                $city, $country, $main_sudia, $skutiner, $afisha)

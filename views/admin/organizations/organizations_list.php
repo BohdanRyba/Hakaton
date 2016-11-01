@@ -264,7 +264,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                        <a href="#" class="gogogo text-center">редактировать</a>
+                                        <a href="<?=Router::$permalink?>admin/organizations/org_settings" class="gogogo text-center">Настройки Организации</a>
                                     </div>
                                 </div>
                                 <div class="row">

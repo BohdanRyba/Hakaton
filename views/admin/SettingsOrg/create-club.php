@@ -72,7 +72,7 @@ sleep(1);
         </div>
       </div>
       <div class="form_in">
-        <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
+        <label for=""><input name="reg_participant" type="submit" value="Принять"></label>
       </div>
     </div>
   </form>

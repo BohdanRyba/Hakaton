@@ -129,7 +129,7 @@ class AdminController
         AdminModel::club_add($_POST);
     }
     public function addEvent(){
-        echo 'world';
+        AdminModel::event_add($_POST);
     }
 
     public  function actionAjaxClub_add()
@@ -137,6 +137,14 @@ class AdminController
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
+    public  function actionAjax_clubShow()
+    {
+        echo  json_encode(AdminModel::ShowClubs()) ;
+    }
+    public  function actionAjax_eventShow()
+    {
+        echo  json_encode(AdminModel::ShowEvents()) ;
+    }
     public function actionAjaxCategory_add()
     {
         include 'views/admin/SettingsOrg/create-category.php';

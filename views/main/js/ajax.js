@@ -76,4 +76,31 @@ $(function(){
     });
   });
 
+    $('.btn-flat').on('click', function(){
+        $('.cont-box1>').remove();
+        $.ajax({
+            url:'ajax_clubShow',
+            type:'POST',
+            dataType:'html',
+            beforeSend: funcBefore,
+            success: funcSuccess
+        });
+    });
+
+    /*
+  $('body').on('button', '.form-horizontal', function(event){
+    event.preventDefault();
+    var form_date= $(this).serialize();
+    $.ajax({
+      url:'AdminController.php',
+      type:'POST',
+      data:'a='+form_date,
+      dataType:'html',
+      beforeSend: funcBefore,
+      success: function(){
+        alert('complayte!!!!');
+      }
+    });
+  });
+*/
 });
