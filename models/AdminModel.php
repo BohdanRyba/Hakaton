@@ -228,7 +228,7 @@ class AdminModel
 
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
-                        `event_image`          = 'views/main/img/event_img/{$_FILES['event_image']['name']}',
+                        `event_image`          = '../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
                         `event_start`           = '{$a['event_start']}',
                         `event_end`          = '{$a['event_end']}',

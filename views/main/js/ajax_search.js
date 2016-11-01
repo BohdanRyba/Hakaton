@@ -34,7 +34,7 @@ search.onkeyup = function () {
         var render = function(list) {
             var nameList = list.map(function (element) {
                 console.log(element.event_name);
-                var node= '<li><div class="list-search clr"><div><img class="bg_event_avatar" src="75phone.png" alt="wtf"/></div><div><span>Событие: ' + element.event_name + '</span></div></div></li>';
+                var node= '<li><div class="list-search clr"><div><img class="bg_event_avatar" src="'+element.event_image+'" alt="wtf"/></div><div><span>Событие: ' + element.event_name + '</span></div></div></li>';
 
                 return node;
             });
