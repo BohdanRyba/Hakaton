@@ -24,5 +24,4 @@ return array(
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
     '' => 'home/index',
-
 );

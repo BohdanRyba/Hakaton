@@ -58,7 +58,6 @@ class AdminController
             }
             self::saveMessage($message);
         }
-
         header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
     }
@@ -75,7 +74,6 @@ class AdminController
         var_export($_POST);
         echo '</pre>';
     } // End this method!
-
 
     public function actionUpdateOrg()
     {
@@ -94,12 +92,6 @@ class AdminController
         }
         header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
-    }
-
-    public function actionEvent_add()
-    {
-        echo "Hi, Bodia!";
-
     }
 
     public function actionOrg_settings()

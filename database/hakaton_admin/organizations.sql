@@ -7,7 +7,11 @@
 -- Время создания: Окт 29 2016 г., 19:37
 =======
 -- Время создания: Окт 28 2016 г., 08:42
+<<<<<<< HEAD
 >>>>>>> origin/AgurSoft
+=======
+>>>>>>> 17191729b31ed5dce03a90a18560cd06fdbb9b9c
+>>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -65,7 +69,11 @@ INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio
 (5, 'Оля Корпорейшен', 'ОК', 'Гордова Ольга', 'Нежин', 'Украина', 80654735535, 'olia@gmail.com', 'views/main/img/org_image/Olia.jpg'),
 (6, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 4845616516186, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
 (7, 'Mime Organization', 'MO', 'Teodor Crack', 'Paris', 'France', 2535516816, 'mime@gmk.com', 'views/main/img/org_image/Mime-150x150.jpg');
+<<<<<<< HEAD
 >>>>>>> origin/AgurSoft
+=======
+>>>>>>> 17191729b31ed5dce03a90a18560cd06fdbb9b9c
+>>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
 
 --
 -- Индексы сохранённых таблиц
@@ -90,7 +98,11 @@ ALTER TABLE `organizations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 =======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+<<<<<<< HEAD
 >>>>>>> origin/AgurSoft
+=======
+>>>>>>> 17191729b31ed5dce03a90a18560cd06fdbb9b9c
+>>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

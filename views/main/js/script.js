@@ -56,12 +56,11 @@ $(function(){
     $('#overlay_log').click(function(){
       $(this).hide(400);
       $('.form_log').hide(400);
-    })
+    });
 
     $('.connect').click(function(){
         $('#overlay_log').show(600);
         $('.us_info').show(1000);
-
     });
     $('#overlay_log').click(function(){
       $(this).hide(400);
@@ -85,16 +84,16 @@ $(function(){
     $('body,html').animate({scrollTop: dist}, 500);
     window.a++;
   });
-  $('a.remove-part').click(function(){
+  $('body').on('click', 'a.remove-part', function(){
     $(this).parents('.part').slideUp(300);
   });
 // DATAPICKER
-$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+/*$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
 $( function() {
   $( "#event_begin").datepicker();
   $( "#event_end").datepicker();
-});
+});*/
     // button on page: organization for create eveny, reg club, dance 
     
     $('.button-list').each(function(){
@@ -114,4 +113,24 @@ $( function() {
       $(this).addClass('btn-plus-focus');
     });
 
+    window.summ=0;
+    $('tbody>').each(function(i){
+      $(this).children(':first').text(i+1);
+      var price= parseInt($(this).children().eq(1).text());
+      window.summ= window.summ+price;
+    });
+    $('tfoot tr').children().eq(1).text('Сума: '+window.summ+'грн');
+    $('thead tr').children().eq(1).text('Сума: '+window.summ+'грн');
+
+    $('.bg-opacity').on('click', function(){
+        $(this).hide();
+        $('.popup-control').hide(200);
+    });
+    $('tbody>tr').each(function(){
+      $(this).on('click', function(){
+        $('.bg-opacity').show(200);
+        
+        $('.popup-control').show(200);
+      });
+    });
   });

@@ -151,7 +151,7 @@ class AdminModel
     }
 
     public  static function deleteOrganization(){
-
+        //end this method;
     }
 
     static function events_all($link)
