@@ -130,7 +130,7 @@ class AdminModel
                                     `org_phone` = '{$_POST['org_phone']}',
                                     `org_email` = '{$_POST['org_email']}'
                                     WHERE `id` = {$_POST['id']}");
-            if ($result){
+            if ($result) {
                 $message = json_encode([
                     'status' => 'success',
                     'message' => 'Изменения успешно сохранены!'
@@ -146,12 +146,83 @@ class AdminModel
 
             $db->close();
             return $result;
-        }
-        else return 'db.connect false';
+        } else return 'db.connect false';
     }
 
-    public  static function deleteOrganization(){
-        //end this method;
+    public static function deleteOrganization($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $organizanization = AdminModel::getOrganizationById($id);
+
+            $result = $db->query("DELETE FROM `organizations` WHERE `id` = {$id}");
+            $tmp_arr_with_pic_path = explode("/", $organizanization['org_pic_path']); // we create temp array for pulling out the picture name;
+            echo '<br>';
+            echo 'Path to picture in database: '.$organizanization['org_pic_path'];
+            echo '<br>';
+
+            echo '<br><pre>Temp array with path:<br>';
+            var_export($tmp_arr_with_pic_path);
+            echo '<br></pre>';
+
+
+            $image_name = array_pop($tmp_arr_with_pic_path); // then we are pulling that picture name;
+            echo '<br>';
+            echo 'Image name from the temp array: '. $image_name;
+            echo '<br>';
+
+            $pic_folder = implode("/", $tmp_arr_with_pic_path) . '/'; // after that we glue all the components to create a folder path with pictures;
+            echo '<br>';
+            echo 'Folder name where lay all the pictures: '. $pic_folder;
+            echo '<br>';
+
+            $old = getcwd(); // Save the current directory
+            echo '<br>';
+            echo 'Current directory path: '. $old;
+            echo '<br>';
+
+            chdir(ROOT. $pic_folder); // change the dir where lays the organization's picture;
+            echo '<br>';
+            echo 'Path to the folder where lay all the pictures: '. ROOT. $pic_folder;
+            echo '<br>';
+
+            echo '<br>';
+            echo 'Full path to the picture which we want to delete: '. ROOT. $pic_folder. $image_name;
+            echo '<br>';
+            $delete_picture_result = unlink(ROOT. $pic_folder. $image_name); // then delete the picture;
+            chdir($old); // Restore the old working directory;
+
+            if ($result == true && $delete_picture_result == true) {
+                $message = json_encode([
+                    'status' => 'success',
+                    'message' => 'ОРГАНИЗАЦИЯ и ЛОГОТИП успешно удалены!'
+                ]);
+            } elseif ($result == true && $delete_picture_result == false) {
+                $message = json_encode([
+                    'status' => 'warning',
+                    'message' => ' ЛОГОТИП организации удалить не удалось ( но сама организация удалена из базы данных успешно)!'
+                ]);
+            } elseif ($result == false && $delete_picture_result == true) {
+                $message = json_encode([
+                    'status' => 'warning',
+                    'message' => 'Не удалось удалить ОРГАНИЗАЦИЮ из базы данных (но сам логотип удален успешно)!'
+                ]);
+            } elseif ($result == false && $delete_picture_result == false) {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'ОРГАНИЗАЦИЮ и ЛОГОТИП удалить не удалось!'
+                ]);
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'Организацию удалить не удалось!'
+                ]);
+            }
+
+            self::saveMessage($message);
+
+            $db->close();
+            return $result;
+        } else return 'db.connect false';
     }
 
     static function events_all($link)

@@ -3,15 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
-<<<<<<< HEAD
--- Время создания: Окт 29 2016 г., 19:37
-=======
--- Время создания: Окт 28 2016 г., 08:42
-<<<<<<< HEAD
->>>>>>> origin/AgurSoft
-=======
->>>>>>> 17191729b31ed5dce03a90a18560cd06fdbb9b9c
->>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
+-- Время создания: Ноя 02 2016 г., 16:01
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -51,29 +43,17 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio`, `org_city`, `org_country`, `org_phone`, `org_email`, `org_pic_path`) VALUES
-<<<<<<< HEAD
-(1, 'First Organization', 'FO', 'Head of the first organizations', 'Kiev', 'Ukraine', 2147483647, 'first@gmail.com', 'views\\main\\img\\org_image\\Dancing-300x300.jpg'),
-(2, 'Second Organization''s name', 'SO', 'Michael Jackson', 'Rio-de-Janejro', 'Brasil', 2147483647, 'michael_jackson@gmail.com', 'views\\main\\img\\org_image\\Blues-Dancing-300x300.jpg'),
-(3, 'Third Organization', 'THO', 'Emilia Clarck', 'City of the Dragon', 'Mifia', 2147483647, 'dragons@gmail.com', 'views/main/img/org_image/pic.jpg'),
-(4, 'Julia Roberts Organization', 'JROrg', 'Julia Roberts', 'San-Francisko', 'USA', 77747483647, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
-(5, 'Оля Корпорейшен', 'ОК', 'Гордова Ольгаadsf', 'Нежин', 'Украина', 515, 'olia@gmailcom', 'views/main/img/org_image/Olia.jpg'),
-(6, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 2147483647, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
-(7, 'Mime Organization', 'MIM', 'Teodor Crack', 'Parisss', 'Francer', 2147483647, 'mime@gmddk.com', 'views/main/img/org_image/Mime-150x150.jpg'),
-(9, 'New ORG', 'NOW', 'Admiral', 'Town', 'Country', 815313135, 'toekk@jjj.com', 'views/main/img/org_image/new150x150.jpg'),
-(10, 'SAAAAAAAAAAAasdf', 'sdfadsf', 'dasfds', 'sadf', 'sdaf', 231651, 'afasdf@df.comdsf', 'views/main/img/org_image/WEZPMsB6iYQ.jpg');
-=======
-(1, 'First Organization', 'FO', 'Head of the first organization', 'Kiev', 'Ukraine', 804424735265, 'first@gmail.com', 'views\\main\\img\\org_image\\Dancing-300x300.jpg'),
-(2, 'Second Organization''s name', 'SO', 'Michael Jackson', 'Rio-de-Janejro', 'Brasil', 38067382258, 'michael_jackson@gmail.com', 'views\\main\\img\\org_image\\Blues-Dancing-300x300.jpg'),
-(3, 'Third Organization', 'THO', 'Emilia Clarck', 'City of the Dragon', 'Mifia', 80256485232, 'dragons@gmail.com', 'views/main/img/org_image/pic.jpg'),
-(4, 'Julia Roberts Organization', 'JRO', 'Julia Roberts', 'San-Francisko', 'USA', 448852135135, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
-(5, 'Оля Корпорейшен', 'ОК', 'Гордова Ольга', 'Нежин', 'Украина', 80654735535, 'olia@gmail.com', 'views/main/img/org_image/Olia.jpg'),
-(6, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 4845616516186, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
-(7, 'Mime Organization', 'MO', 'Teodor Crack', 'Paris', 'France', 2535516816, 'mime@gmk.com', 'views/main/img/org_image/Mime-150x150.jpg');
-<<<<<<< HEAD
->>>>>>> origin/AgurSoft
-=======
->>>>>>> 17191729b31ed5dce03a90a18560cd06fdbb9b9c
->>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
+(1, 'First Organization', 'FO', 'Head of the first organizations', 'Kiev', 'Ukraine', 4835554447111, 'first@gmail.com', 'views\\main\\img\\org_image\\Dancing-300x300.jpg'),
+(2, 'Third Organization', 'THO', 'Emilia Clarck', 'City of the Dragon', 'Mifia', 2147483647, 'dragons@gmail.com', 'views/main/img/org_image/pic.jpg'),
+(3, 'Julia Roberts Organization', 'JROrg', 'Julia Roberts', 'San-Francisko', 'USA', 77747483647, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
+(4, 'Оля Корпорейшен', 'ОК', 'Гордова Ольгаadsf', 'Нежин', 'Украина', 51551831, 'olia@gmailcom', 'views/main/img/org_image/Olia.jpg'),
+(5, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 2147483647, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
+(6, 'Mime Organization', 'MIM', 'Teodor Crack', 'Parisss', 'Francer', 2147483647, 'mime@gmddk.com', 'views/main/img/org_image/Mime-150x150.jpg'),
+(7, 'Indian''s dances', 'IDNS', 'Harbit Tin', 'Deli', 'Indiya', 780256485232, 'indi@gmai.com', 'views/main/img/org_image/161002-indian-movies.jpg'),
+(8, 'Blues-Dancing', 'BD', 'Mario la Belle', 'Rome', 'Italy', 5468465468, 'blues_dances@gmail.com', 'views/main/img/org_image/Blues-Dancing-300x300.jpg'),
+(9, 'Club Music Dances', 'CMD', 'Ron Dig', 'New Solt', 'Canada', 77777888886, 'clubik@gmailik.com', 'views/main/img/org_image/new150x150.jpg'),
+(10, 'Moon dances', 'MDCS', 'Hulio Vendorio', 'Moonlight-city', 'Moonplace', 99999944445, 'dances_in_the_moon@i.ua', 'views/main/img/org_image/vPWn2BYuQ3Q.jpg'),
+(11, 'Poetry dances', 'POETD', 'Agata Milina', 'Sunset-town', 'Geodoria', 8153518543, 'sunny_place@i.com', 'views/main/img/org_image/WEZPMsB6iYQ.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -94,15 +74,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT для таблицы `organizations`
 --
 ALTER TABLE `organizations`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-<<<<<<< HEAD
->>>>>>> origin/AgurSoft
-=======
->>>>>>> 17191729b31ed5dce03a90a18560cd06fdbb9b9c
->>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

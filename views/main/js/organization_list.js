@@ -27,10 +27,6 @@ jQuery(function($) {
     var $infoButton=$('button.btn-info>i.fa-info').parent(),
         $editButton=$('button.btn-success>i.fa-edit').parent(),
         $orgForm='<form method="post" class="text-capitalize org-full-info" action="updateOrg"><div class="col-xs-12"><label>название организации:<br><input disabled class="org-info-input" type="text" name="org_name"></label></div><div class="col-xs-12"><label>сокращенное название организации:<br><input class="org-info-input" disabled type="text" name="org_abbreviation"></label></div><div class="col-xs-12"><label>руководитель организации:<br><input class="org-info-input" disabled type="text" name="org_head_fio"></label></div><div class="col-xs-12"><label>город:<br><input class="org-info-input" disabled type="text" name="org_city"></label></div><div class="col-xs-12"><label>страна:<br><input class="org-info-input" disabled type="text" name="org_country"></label></div><div class="col-xs-12"><label>номер телефона:<br><input class="org-info-input" disabled type="text" name="org_phone"></label></div><div class="col-xs-12"><label>e-mail:<br><input class="org-info-input" disabled type="text" name="org_email"></label></div><div class="col-xs-6"><input disabled class="save-org-info org-info-input" type="submit" value="сохранить"></div><input name="redirect" type="hidden" value="admin/organizations/page/'+aaa+'"><input name="id" type="hidden"><div class="col-xs-6"><input  disabled class="dontsave-org-info org-info-input" type="button" value="отменить"></div></form>';
-<<<<<<< HEAD
-
-=======
->>>>>>> 2abac4d8ced2b34ae352a4aac999b08b12289ab6
 
     //AJAX FUNCTIONS
     function getFullInfoAjax($infoContainer, $orgList) {

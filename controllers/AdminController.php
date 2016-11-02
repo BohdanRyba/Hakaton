@@ -70,9 +70,17 @@ class AdminController
     }
 
     public function actionDelOrg(){
-        echo '<pre>';
-        var_export($_POST);
-        echo '</pre>';
+
+        if (isset($_POST)) {
+            if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
+                $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
+                echo $resulting . ' is the result';
+            } else {
+                echo 'One of the POST\'s components didn\'t pass the checking clause!';
+            }
+        }
+//        header('Location: ' . Router::$permalink . $_POST['redirect']);
+        return true;
     } // End this method!
 
     public function actionUpdateOrg()
