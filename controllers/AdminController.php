@@ -104,8 +104,12 @@ class AdminController
 
     public function actionOrg_settings()
     {
+//        self::showArray($_POST);
+        if(isset($_POST['org_id'])){
+            $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
+        }
         include 'views/admin/SettingsOrg/org_settings.php';
-        if ($_POST) {
+        if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
                 $this->addClub();
             } elseif ($_POST['action'] == 'event') {
@@ -128,12 +132,12 @@ class AdminController
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
-    public  function actionAjax_clubShow()
+    public function actionAjax_clubShow()
     {
         echo  json_encode(AdminModel::ShowClubs()) ;
     }
 
-    public  function actionAjax_eventShow()
+    public function actionAjax_eventShow()
     {
         echo  json_encode(AdminModel::ShowEvents()) ;
     }
@@ -145,6 +149,7 @@ class AdminController
 
     public function actionAjaxCreate_event()
     {
+//        echo "it's create-event";
         include 'views/admin/SettingsOrg/create-event.php';
     }
 

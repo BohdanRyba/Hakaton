@@ -2,7 +2,6 @@
 
 trait messagesOperations
 {
-
     public $message;
 
     public static function saveMessage($data = null)
@@ -37,5 +36,11 @@ MESSAGE;
             $message = $data;
         }
         return $message;
+    }
+
+    public static function showArray($array){
+        echo '<hr><br><pre>';
+        var_export($array);
+        echo '</pre><br><hr>';
     }
 }

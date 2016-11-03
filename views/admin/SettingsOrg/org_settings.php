@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Организация ХОАСБТ</title>
+    <title>Организация <?php echo $current_org_name['org_name'];?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -173,7 +173,7 @@ desired effect
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="<?=Router::$permalink?>admin/organizations/page/1"><i class="fa fa-link"></i> <span>Организации</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
+                <li><a href="<?=Router::$permalink?>admin/organizations/org_settings/create-event"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                         <span class="pull-right-container">
@@ -198,7 +198,9 @@ desired effect
             <div class="content_box col-md-10">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h2 class="box-title col-sm-4">организация ХОАСБТ</h2>
+                        <h2 class="box-title col-sm-4">организация <?php if(!empty($current_org_name['org_name'])){
+                            echo $current_org_name['org_name'];
+                            }?> </h2>
                         <li>
                             <span class="button-reg glyphicon glyphicon-pencil"></span>
                         </li>
