@@ -94,25 +94,55 @@ $(function(){
     });
   });
 
+// <<<<<<< HEAD
+//
+//   $('form').on('button', function(event){
+//     event.preventDefault();
+//     var form_date= $(this).serialize();
+//     $.ajax({
+//       url:'',
+//       type:'POST',
+//       data:form_date,
+//       dataType:'html',
+//       success:function(){
+//         alert('Круто, клуб сохранен в базе даных');
+//       }
+//
+//
+//     });
+//
+//   });
+//
+//
+//
+//
+// =======
+    $('.btn-flat').on('click', function(){
+        $('.cont-box1>').remove();
+        $.ajax({
+            url:'ajax_clubShow',
+            type:'POST',
+            dataType:'html',
+            beforeSend: funcBefore,
+            success: funcSuccess
+        });
+    });
 
-  $('form').on('button', function(event){
+    /*
+  $('body').on('button', '.form-horizontal', function(event){
     event.preventDefault();
     var form_date= $(this).serialize();
     $.ajax({
-      url:'',
+      url:'AdminController.php',
       type:'POST',
-      data:form_date,
+      data:'a='+form_date,
       dataType:'html',
-      success:function(){
-        alert('Круто, клуб сохранен в базе даных');
+      beforeSend: funcBefore,
+      success: function(){
+        alert('complayte!!!!');
       }
-
-
     });
-
   });
-
-
-
-
+*/
+// >>>>>>> origin/AgurSoft
 });

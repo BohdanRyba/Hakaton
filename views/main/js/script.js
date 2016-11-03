@@ -104,6 +104,13 @@ $( function() {
        $(this).addClass('btn-list-focus');
      });
     });
+
+    $('body').on('dow_search_list', function(){
+      $(this).children('.list-information').slideUp(400);
+      $(this).parent('.button-org-add').nextAll('.search-wrapp').toggle(400);
+      $('.button-list').removeClass('btn-list-focus');
+      $(this).addClass('btn-list-focus');
+    });
     $('.btn-search').on('click', function(){
       $(this).parents('.list-search-button').nextAll('.list-information').slideToggle(400);
     });
