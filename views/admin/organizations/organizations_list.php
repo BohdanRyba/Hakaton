@@ -168,12 +168,13 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="<?=Router::$permalink?>admin/SettingsOrg/org_settings">
+                    <a href="<?= Router::$permalink ?>admin/SettingsOrg/org_settings">
                         <span>Settings</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?=Router::$permalink?>admin/organizations/org_settings">Organizations Settings</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings">Organizations
+                                Settings</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
@@ -269,7 +270,10 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                        <a href="#" class="gogogo text-center">редактировать</a>
+                                        <form method="post" action="../org_settings/<?php echo $organization['id']; ?>">
+                                            <input name="org_id" type="hidden" value="<?php echo $organization['id']; ?>">
+                                            <a><input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"></a>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="row">

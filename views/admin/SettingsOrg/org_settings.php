@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Организация ХОАСБТ</title>
+    <title>Организация <?php echo $current_org_name['org_name'];?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         -->
     <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" type="text/css" href="<?=Router::$permalink?>views/main/css/style.css">
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis_admin_page.css">
     <script src="<?=Router::$permalink?>views/main/js/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -172,8 +172,8 @@ desired effect
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Организации</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+                <li class="active"><a href="<?=Router::$permalink?>admin/organizations/page/1"><i class="fa fa-link"></i> <span>Организации</span></a></li>
+                <li><a href="<?=Router::$permalink?>admin/organizations/org_settings/create-event"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
                         <span class="pull-right-container">
@@ -198,7 +198,9 @@ desired effect
             <div class="content_box col-md-10">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h2 class="box-title col-sm-4">организация ХОАСБТ</h2>
+                        <h2 class="box-title col-sm-4">организация <?php if(!empty($current_org_name['org_name'])){
+                            echo $current_org_name['org_name'];
+                            }?> </h2>
                         <li>
                             <span class="button-reg glyphicon glyphicon-pencil"></span>
                         </li>
@@ -214,40 +216,17 @@ desired effect
                                 <div class="list-search-button">
                                     <form method="GET" action="" class="line-search">
                                         <div class="input-group input-group-sm">
-                                            <input class="form-control" type="text" placeholder="Поиск по событиям">
+                                            <input class="form-control search_event" type="search" placeholder="Поиск по событиям">
                                             <span class="btn-search input-group-btn">
-                          <button type="button" class="btn btn-info btn-flat">Go!</button>
+                          <button type="button" class="btn btn-info btn-flat-event">Go!</button>
                         </span>
                                         </div>
                                     </form>
 
                                 </div>
                                 <div class="list-information col-sm-12">
-                                    <ul class="list-data">
-                                        <li>
-                                            <div class="list-search clr">
-                                                <div><img src="" alt=""></div>
-                                                <div><span>Событие: бала бла блааал крю</span></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="list-search clr">
-                                                <div><img src="" alt=""></div>
-                                                <div><span>Событие: бала бла блааал крю</span></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="list-search clr">
-                                                <div><img src="" alt=""></div>
-                                                <div><span>Событие: бала бла блааал крю</span></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="list-search clr">
-                                                <div><img src="" alt=""></div>
-                                                <div><span>Событие: бала бла блааал крю</span></div>
-                                            </div>
-                                        </li>
+                                    <ul class="list_data">
+
                                     </ul>
                                 </div>
                             </div>
@@ -347,7 +326,13 @@ desired effect
                             </div>
                         </div>
                     </div>
-                    <div class="cont-box1 clear"></div>
+                    <div class="cont-box1 clear">
+                        <div class="list-group">
+                            <div>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="cont-box content-in" id="loading"></div>
                 </div>
             </div>
@@ -595,5 +580,8 @@ desired effect
         });
     });
 </script>
+
+<script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js"></script>
 </body>
 </html>
