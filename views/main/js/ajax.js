@@ -87,7 +87,6 @@ $(function () {
         $.ajax({
             url: 'club-cubinet-for-adm.php',
             type: 'POST',
-            data: ({}),
             dataType: 'html',
             beforeSend: funcBefore,
             success: funcSuccess
