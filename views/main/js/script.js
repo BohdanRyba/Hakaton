@@ -102,7 +102,6 @@ $( function() {
     });
 
 
-x
 
     window.summ=0;
     $('tbody>').each(function(i){

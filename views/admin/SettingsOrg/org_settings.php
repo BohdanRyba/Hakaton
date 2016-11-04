@@ -209,14 +209,14 @@ desired effect
                     <div class="cont-box clear">
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                                <li class="button-list event_data_list"><span>Список событий</span></li>
+                                <li class="button-list event_data_list"><span>События</span></li>
                                 <li class="btn-plus btn-plus-event"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                                <li class="button-list"><span>Танц категории</span></li>
+                                <li class="button-list"><span>Категории</span></li>
                                 <li class="btn-plus btn-plus-category"><span class="glyphicon glyphicon-plus">  </span></li>
                             </ul>
                         </div>
