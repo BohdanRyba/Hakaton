@@ -4,7 +4,7 @@ var search = document.querySelector('input[type="search"]');
 
 
 search.onkeyup = function () {
-
+    $('.list_information').slideDown(300);
 
 
     function  funcSearch(data) {

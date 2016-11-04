@@ -738,6 +738,10 @@ b{
 	padding-bottom:5px;
 	border-bottom:1px solid #D2D6DE;
 }
+.search_wrap{
+	margin:0 auto;
+	width:96%;
+}
 .list-data{
 	padding:5px;
 }
@@ -754,14 +758,6 @@ b{
 	max-width:100%;
 	background:#fff;
 }
-.list-search-button .line-search input[type="submit"]{
-	height:40px;
-	width:40px;
-	margin-top:-5px;
-	border-radius:100%;
-	background: #00c0ef;
-	border:none;
-}
 .list-search-button .form-group input{
 	float:left;
 }
@@ -772,24 +768,28 @@ b{
 	width:20%;
 	margin-left:10px;
 }
-.list-data{
+.list_data{
+	padding:0 15px;
 	border-left:1px solid #00c0ef;
 	border-right:1px solid #00c0ef;
 }
-.list-search{
-	max-height:61px;
-	padding:5px 0;
-	border-bottom:1px solid #D2D6DE;
-	overflow:hidden;
-	transition:all 0.4s;
+.list_data li{
+	padding:5px;
+	border-bottom:1px solid #aaa;
+}
+.list_data li:hover{
+	cursor:pointer;
+
+	box-shadow:3px 3px 5px rgba(0,0,0, 0.7);
+		transition:all 0.4s;
 	-o-transition:all 0.4s;
 	-ms-transition:all 0.4s;
 	-moz-transition:all 0.4s;
 	-webkit-transition:all 0.4s;
 }
-.list-search:hover{
-	box-shadow:2px 2px 2px rgba(0,0,0,0.7);
-	cursor:pointer;
+.list-search{
+	padding:5px 0;
+	overflow:hidden;
 	transition:all 0.4s;
 	-o-transition:all 0.4s;
 	-ms-transition:all 0.4s;

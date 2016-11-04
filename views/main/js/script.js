@@ -50,8 +50,8 @@ $(function(){
     });
 
     $('.log_animate').click(function(){
-        $('.form_log').show(1000);
-        $('#overlay_log').show(400);
+      $('.form_log').show(1000);
+      $('#overlay_log').show(400);
     });
     $('#overlay_log').click(function(){
       $(this).hide(400);
@@ -59,8 +59,8 @@ $(function(){
     });
 
     $('.connect').click(function(){
-        $('#overlay_log').show(600);
-        $('.us_info').show(1000);
+      $('#overlay_log').show(600);
+      $('.us_info').show(1000);
     });
     $('#overlay_log').click(function(){
       $(this).hide(400);
@@ -96,29 +96,13 @@ $( function() {
 });*/
     // button on page: organization for create eveny, reg club, dance 
     
-    $('.button-list').each(function(){
-      $(this).on('click', function(){
-       $(this).children('.list-information').slideUp(400);
-       $(this).parent('.button-org-add').nextAll('.search-wrapp').toggle(400);
-       $('.button-list').removeClass('btn-list-focus');
-       $(this).addClass('btn-list-focus');
-     });
+    $('.event_data_list').on('click', function(){
+      $('.search-wrapp').toggle(400);
+      console.log("bbb");
     });
 
-    $('body').on('dow_search_list', function(){
-      $(this).children('.list-information').slideUp(400);
-      $(this).parent('.button-org-add').nextAll('.search-wrapp').toggle(400);
-      $('.button-list').removeClass('btn-list-focus');
-      $(this).addClass('btn-list-focus');
-    });
-    $('.btn-search').on('click', function(){
-      $(this).parents('.list-search-button').nextAll('.list-information').slideToggle(400);
-    });
 
-    $('.btn-plus').on('click', function(){
-      $('.btn-plus').removeClass('btn-plus-focus');
-      $(this).addClass('btn-plus-focus');
-    });
+x
 
     window.summ=0;
     $('tbody>').each(function(i){
@@ -130,13 +114,12 @@ $( function() {
     $('thead tr').children().eq(1).text('Сума: '+window.summ+'грн');
 
     $('.bg-opacity').on('click', function(){
-        $(this).hide();
-        $('.popup-control').hide(200);
+      $(this).hide();
+      $('.popup-control').hide(200);
     });
     $('tbody>tr').each(function(){
       $(this).on('click', function(){
         $('.bg-opacity').show(200);
-        
         $('.popup-control').show(200);
       });
     });
