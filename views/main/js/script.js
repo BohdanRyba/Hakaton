@@ -96,10 +96,25 @@ $( function() {
 });*/
     // button on page: organization for create eveny, reg club, dance 
     
+
+
     $('.event_data_list').on('click', function(){
-      $('.search-wrapp').toggle(400);
-      console.log("bbb");
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_event').toggle(400);
     });
+    $('.category_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_category').toggle(400);
+    });
+    $('.club_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_club').toggle(400);
+    });
+
+
 
 
 

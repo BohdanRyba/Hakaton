@@ -4,24 +4,27 @@ let search = document.querySelector('input[type="search"]');
 
 
 search.onkeyup = function () {
-    $('.list_information').slideDown(300);
-
+    $('.list_information').show();
     $('body').trigger('dow_search_list');
+    let id= $('#organization').attr('data-id');
+    id= parseInt(id);
+
+
     $.ajax({
         url: 'ajax_eventShow',
         type: 'POST',
+        data:'id='+id,
         dataType: 'html',
         success:funcSearch
     });
 };
 
-function  funcSearch(data) {      //function collects node 
+function  funcSearch(data) {      //function collection node with the search result    
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
     let render = function(list) {
         let nameList = list.map(function (element) {
-            console.log(element.event_name);
             let node =  '<li>'
                             +'<div class="list-search clr">'
                                 +'<div>'
@@ -32,6 +35,7 @@ function  funcSearch(data) {      //function collects node
                                 +'</div>'
                             +'</div>'
                         +'</li>';
+                        console.log(element.event_image);
             return node;
         });
         return nameList;

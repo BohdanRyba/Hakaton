@@ -206,7 +206,7 @@ desired effect
                         </li>
                     </div>
 
-                    <div class="cont-box clear">
+                    <div id="organization" data-id="1" class="cont-box clear">
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
                                 <li class="button-list event_data_list"><span>События</span></li>
@@ -216,19 +216,19 @@ desired effect
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                                <li class="button-list"><span>Категории</span></li>
+                                <li class="button-list category_data_list"><span>Категории</span></li>
                                 <li class="btn-plus btn-plus-category"><span class="glyphicon glyphicon-plus">  </span></li>
                             </ul>
                         </div>
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                                <li class="button-list button-list-club"><span>Клубы</span></li>
+                            <li class="button-list club_data_list"><span>Клубы</span></li>
                                 <li class="btn-plus btn-plus-club"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="search_wrap">
+                    <div class="search_wrap  search_wrap_event" data-type-search="event">
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
@@ -244,92 +244,124 @@ desired effect
                             </ul>
                         </div>
                     </div>
-
-                <div class="cont-box1 clear">
-                    <div class="list-group">
-                        <div>
-                            <span></span>
+                    <div class="search_wrap search_wrap_category" data-type-search="category">
+                        <div class="list-search event_search_box">
+                            <form method="GET" action="" class="line-search">
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control search_event" type="search" placeholder="Поиск по категориям">
+                                    <span class="btn-search input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list_information col-sm-12">
+                            <ul class="list_data">
+                            </ul>
                         </div>
                     </div>
+                    <div class="search_wrap search_wrap_club" data-type-search="club">
+                        <div class="list-search event_search_box">
+                            <form method="GET" action="" class="line-search">
+                                <div class="input-group input-group-sm">
+                                    <input class="form-control search_event" type="search" placeholder="Поиск по клубам">
+                                    <span class="btn-search input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list_information col-sm-12">
+                            <ul class="list_data">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="cont-box1 clear">
+                        <div class="list-group">
+                            <div>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont-box content-in" id="loading"></div>
                 </div>
-                <div class="cont-box content-in" id="loading"></div>
             </div>
-        </div>
-    </section>
-</div>
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-        <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <!-- Home tab content -->
-        <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript::;">
-                        <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                            <p>Will be 23 on April 24th</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.control-sidebar-menu -->
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript::;">
-                        <h4 class="control-sidebar-subheading">
-                            Custom Template Design
-                            <span class="pull-right-container">
-                                <span class="label label-danger pull-right">70%</span>
-                            </span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-            <!-- /.control-sidebar-menu -->
-
-        </div>
-        <!-- /.tab-pane -->
-        <!-- Stats tab content -->
-        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-        <!-- /.tab-pane -->
-        <!-- Settings tab content -->
-        <div class="tab-pane" id="control-sidebar-settings-tab">
-            <form method="post">
-                <h3 class="control-sidebar-heading">General Settings</h3>
-
-                <div class="form-group">
-                    <label class="control-sidebar-subheading">
-                        Report panel usage
-                        <input type="checkbox" class="pull-right" checked>
-                    </label>
-
-                    <p>
-                        Some information about this general settings option
-                    </p>
-                </div>
-                <!-- /.form-group -->
-            </form>
-        </div>
-        <!-- /.tab-pane -->
+        </section>
     </div>
-</aside>
-<!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+            <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <!-- Home tab content -->
+            <div class="tab-pane active" id="control-sidebar-home-tab">
+                <h3 class="control-sidebar-heading">Recent Activity</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript::;">
+                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                            <div class="menu-info">
+                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                <p>Will be 23 on April 24th</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+                <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                <ul class="control-sidebar-menu">
+                    <li>
+                        <a href="javascript::;">
+                            <h4 class="control-sidebar-subheading">
+                                Custom Template Design
+                                <span class="pull-right-container">
+                                    <span class="label label-danger pull-right">70%</span>
+                                </span>
+                            </h4>
+
+                            <div class="progress progress-xxs">
+                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.control-sidebar-menu -->
+
+            </div>
+            <!-- /.tab-pane -->
+            <!-- Stats tab content -->
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+            <!-- /.tab-pane -->
+            <!-- Settings tab content -->
+            <div class="tab-pane" id="control-sidebar-settings-tab">
+                <form method="post">
+                    <h3 class="control-sidebar-heading">General Settings</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Report panel usage
+                            <input type="checkbox" class="pull-right" checked>
+                        </label>
+
+                        <p>
+                            Some information about this general settings option
+                        </p>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
+            </div>
+            <!-- /.tab-pane -->
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
     immediately after the control sidebar -->
     <footer class="main-footer">
@@ -376,11 +408,11 @@ desired effect
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                 <span class="label label-danger pull-right">70%</span>
-                             </span>
-                         </h4>
+                                   <span class="label label-danger pull-right">70%</span>
+                               </span>
+                           </h4>
 
-                         <div class="progress progress-xxs">
+                           <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
