@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 14 2016 г., 15:35
+-- Время создания: Ноя 05 2016 г., 18:11
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -56,6 +56,39 @@ INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_n
 (12, 'Наконец-то дождались!', '2016-09-21', 'Госслужащие получили зарплату !', 'Госслужащие получили крошечную зарплату!', 'Roma Slobodeniuk', '../../views/main/img/news/10-dollary-makro-oboi-1366x768.jpg', 'article'),
 (13, 'Pakistan cinemas ban Indian movies', '2016-10-03', 'Pakistan''s major cinemas have banned Indian movies in Pakistan''s biggest cities.', 'India and Pakistan do not have very good relations at the moment. The two countries have argued for many years over where the borders should be in Kashmir. There is also the possibility that India could limit the amount of water Pakistan gets from the Indus River. The latest disagreement is over movies and actors. Pakistan''s major cinemas have banned Indian movies in Pakistan''s biggest cities - Lahore, Karachi and Islamabad. The cinema owners say the ban is to show support for Pakistani soldiers who are risking their lives in Kashmir. The ban comes after a group of Indian moviemakers banned Pakistani actors from working in India''s famous Bollywood movie studios in Mumbai.', 'Roma Slobodeniuk', '../../views/main/img/news/161002-indian-movies.jpg', 'article');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `title` varchar(64) DEFAULT NULL,
+  `link` varchar(64) DEFAULT NULL,
+  `description` text,
+  `active` tinyint(1) DEFAULT '1',
+  `grant` tinyint(1) DEFAULT '0',
+  `class` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `pages`
+--
+
+INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `class`) VALUES
+(1, 'Главная', 'home', 'without_popup', 1, 0, ''),
+(7, 'Создать событие', 'addevent', 'without_popup', 0, 4, 'evant_animate'),
+(8, 'Создать новость', 'addnews', 'without_popup', 0, 4, 'news_animate'),
+(2, 'Новости', 'news/page/1', 'without_popup', 1, 0, ''),
+(3, 'События', 'events', 'without_popup', 1, 1, ''),
+(4, 'Связь с нами', '#', 'popup', 1, 0, 'connect'),
+(5, 'Вход', '#', 'popup', 1, 2, 'log_animate'),
+(6, 'Выход', 'out', 'without_popup', 1, 1, ''),
+(10, 'Профиль', 'profile', 'without_popup', 1, 1, ''),
+(9, 'Регистрация', 'home#registration_form', 'without_popup', 0, 1, ''),
+(11, 'Админ панель', 'admin/organizations/page/1', 'without_popup', 1, 4, '');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -68,6 +101,12 @@ ALTER TABLE `news`
   ADD UNIQUE KEY `short_content` (`short_content`);
 
 --
+-- Индексы таблицы `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -76,6 +115,11 @@ ALTER TABLE `news`
 --
 ALTER TABLE `news`
   MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT для таблицы `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

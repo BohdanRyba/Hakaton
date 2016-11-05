@@ -21,6 +21,11 @@ trait messagesOperations
     <div class="alert alert-danger">{$get['message']}</div>
 MESSAGE;
                     break;
+                case 'info':
+                    $message = <<<MESSAGE
+    <div class="alert alert-info">{$get['message']}</div>
+MESSAGE;
+                    break;
                 case 'warning':
                     $message = <<<MESSAGE
     <div class="alert alert-warning">{$get['message']}</div>
