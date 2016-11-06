@@ -13,7 +13,7 @@ class AdminController
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
         $organizationsList = AdminModel::getAllOrganizations();
-        
+
         $start_end_pagination_array = AdminModel::getPaginationContent($Cpag);
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
@@ -80,7 +80,7 @@ class AdminController
                 echo 'One of the POST\'s components didn\'t pass the checking clause!';
             }
         }
-//        header('Location: ' . Router::$permalink . $_POST['redirect']);
+        header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
     } // End this method!
 

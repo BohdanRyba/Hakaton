@@ -141,7 +141,7 @@ jQuery(function($) {
             var $saveBtn = $orgList.find('.save-org-info'),
                 $dontSaveBtn = $orgList.find('.dontsave-org-info');
 
-            $saveBtn.prop('disabled', false);
+            $saveBtn.prop
             $dontSaveBtn.prop('disabled', false);
 
         });
@@ -270,6 +270,14 @@ jQuery(function($) {
         $orgOnDel.attr('data-deletion', 'ready');
         $modalBody.text('Вы действительно хотите удалить '+$orgOnDel.find('h3.box-title').text()+'?');
         $('input[name="delete_org_id"]').val($('.box.organization-list[data-deletion=ready]').attr('data-id'));
+    });
+
+    $delSub.on('click', function () {
+        var $orgOnDel=$('.box.organization-list[data-deletion=ready]');
+
+        $('input[name="delete_org_id"]').val($orgOnDel.attr('data-id'));
+
+        return false;
     });
 
     $delCncl.on('click', function () {
