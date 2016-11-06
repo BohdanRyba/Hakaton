@@ -10,12 +10,13 @@ class NewsController
 
     public function actionIndex($Cpag)
     {
+//        self::showArray($_SERVER);
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
         $newsList = NewsModel::getNewsList();
         $listAmount = count($newsList);
-        $nav_content = $this->createNavContent("news/page/1", $Cpag);
+        $nav_content = $this->createNavContent(Router::$uri, $Cpag);
         $start_end_pagination_array = NewsModel::getPaginationContent($Cpag, $listAmount);
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];

@@ -3,7 +3,7 @@
 class Router
 {
     private $routes;
-    public $uri;
+    public static $uri;
     public $result;
     public static $permalink;
 
@@ -15,6 +15,7 @@ class Router
         $project = pathinfo($_SERVER['PHP_SELF']);
         $root_path = rtrim( '//' . $_SERVER['HTTP_HOST'] . $project['dirname'], '/' ) . '/';
         self::$permalink = $root_path;
+
         $routesPath = ROOT . 'config/routes.php';
         $this->routes = include($routesPath);
     }
@@ -26,9 +27,9 @@ class Router
     {
 
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/admin
-            $this->uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
-            $this->uri = trim($this->uri, '/');// admin
-            return $this->uri;
+            self::$uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
+            self::$uri = trim(self::$uri, '/');// admin
+            return self::$uri;
         }
     }
 
