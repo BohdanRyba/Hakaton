@@ -10,7 +10,8 @@ return array(
     'out' => 'login/out',
     'addnews' => 'addnews/index',
     'record' => 'addnews/record',
-    'events' => 'events/index',
+    'events/page/([0-9]+)' => 'events/index/$1', //in processing
+    'events/single/([0-9]+)' => 'events/showSingleEvent/$1', //in processing
     'admin/organizations/event_add' => 'admin/event_add',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add', // changed
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event', // changed
