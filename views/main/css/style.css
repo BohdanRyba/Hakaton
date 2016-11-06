@@ -801,17 +801,12 @@ b{
 .tabs{
 	padding:0;
 }
-
 .tabs li {
 	border: 1px solid black;
 	padding: 0;
 	font-size: 18px;
 	text-align: center;
 }
-.tabs li.active{
-	 background-color: grey;
-	 color:white;
- }
 .tabs li a{
 	display: block;
 	height: 100%;
@@ -824,10 +819,16 @@ b{
 	outline: solid 3px #3c8dbc;
 	color: #3c8dbc;
 }
+.tabs li.active {
+	outline: 3px solid #3c8dbc;
+}
 .tabs li.active a{
 	transition:all 200ms linear;
 	box-shadow: none;
-	/*background-color: #B8263D;*/
+	border: solid 2px #3c8dbc;
+	background-color: #72afd2;
+	color: #fff;
+	outline: 3px solid #3c8dbc;
 }
 .tabs li a:hover{
 	transition:all 200ms linear;
