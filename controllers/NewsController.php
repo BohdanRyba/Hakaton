@@ -10,7 +10,6 @@ class NewsController
 
     public function actionIndex($Cpag)
     {
-//        self::showArray($_SERVER);
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
@@ -36,7 +35,7 @@ class NewsController
         }
         if ($id) {
             $newsItem = NewsModel::getNewsItemById($id);
-            $nav_content = $this->createNavContent("news/page/1", $id);
+            $nav_content = $this->createNavContent(Router::$uri, $id);
             require_once(ROOT . 'views/news/view.php');
             unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
 

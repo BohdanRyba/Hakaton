@@ -87,7 +87,7 @@ trait navigationFunctional
         return $nav_from_db;
     }
 
-    public function createNavContent($page, $id)
+    public function createNavContent($page, $id = '')
     {
         $navigation = $this->getNavigation();
 

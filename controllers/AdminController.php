@@ -13,6 +13,7 @@ class AdminController
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
         $organizationsList = AdminModel::getAllOrganizations();
+        
         $start_end_pagination_array = AdminModel::getPaginationContent($Cpag);
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
