@@ -206,24 +206,24 @@ desired effect
                         </li>
                     </div>
 
-                    <div id="organization" data-id="1" class="cont-box clear">
+                    <div class="cont-box clear">
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                                <li class="button-list event_data_list"><span>События</span></li>
+                                <li data-type="event" class="button-list event_data_list"><span>События</span></li>
                                 <li class="btn-plus btn-plus-event"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                                <li class="button-list category_data_list"><span>Категории</span></li>
+                                <li data-type="category" class="button-list category_data_list"><span>Категории</span></li>
                                 <li class="btn-plus btn-plus-category"><span class="glyphicon glyphicon-plus">  </span></li>
                             </ul>
                         </div>
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                            <li class="button-list club_data_list"><span>Клубы</span></li>
+                            <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
                                 <li class="btn-plus btn-plus-club"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>

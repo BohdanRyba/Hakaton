@@ -904,3 +904,10 @@ table tbody.row-table>:hover{
 	left:45%;
 	top:40%;
 }
+.add-trainer{
+	position:absolute;
+	right:5%;
+	padding:2px;
+	font-size:20px;
+	border:1px solid #aaa;
+}

@@ -3,7 +3,8 @@
 let search = document.querySelector('input[type="search"]');
 
 
-search.onkeyup = function () {
+search.onkeyup = function (typeSearch) {
+    console.log(typeSearch);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
     let id= $('#organization').attr('data-id');

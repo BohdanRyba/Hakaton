@@ -17,7 +17,7 @@ sleep(1);
                 <div class="col-sm-10">
                     <input type="hidden" name="action" value="club">
                     <input type="text" class="form-control" id="inputEmail3" name="club_name"
-                           placeholder="Название клуба">
+                    placeholder="Название клуба">
                 </div>
             </div>
             <div class="file_dw form-group">
@@ -28,7 +28,7 @@ sleep(1);
                 <label class="col-sm-2 control-label">Страна</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="club_country" id="inputPassword3"
-                           placeholder="Страна">
+                    placeholder="Страна">
                 </div>
             </div>
             <div class="form-group">
@@ -41,35 +41,24 @@ sleep(1);
                 <label for="inputPassword3" class="col-sm-2 control-label">Руководитель клуба</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="club_shief" id="inputPassword3"
-                           placeholder="Руководитель клуба">
+                    placeholder="Руководитель клуба">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>
+            <div class="add_train_box form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="club_first_trener" id="inputPassword3"
-                           placeholder="Тренер №1">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Тренер №2</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="club_second_trener" id="inputPassword3"
-                           placeholder="Тренер №2">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Тренер №3</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="club_third_trener" id="inputPassword3"
-                           placeholder="Тренер №3">
+                    placeholder="Тренер">
+                    <span class="btn-search input-group-btn">
+                    <button type="button" class="add-trainer btn btn-info btn-flat-event">+</button>
+                    </span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Номер телефона</label>
                 <div class="col-sm-10">
                     <input type="tel" class="form-control" name="club_number" id="inputPassword3"
-                           placeholder="Номер телефона">
+                    placeholder="Номер телефона">
                 </div>
             </div>
             <div class="form-group">

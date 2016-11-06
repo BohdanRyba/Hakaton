@@ -285,7 +285,7 @@ class AdminModel
 
             $result = $db->query("INSERT INTO `clubs`
                         SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_image`          = '../../views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        = '{$a['club_country']}',
                         `club_city`           = '{$a['club_city']}',
                         `club_shief`          = '{$a['club_shief']}',

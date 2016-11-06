@@ -102,16 +102,35 @@ $( function() {
       $('.search_wrap').hide(400);
       $('.list_information').slideUp();
       $('.search_wrap_event').toggle(400);
+      var typeSearch= $(this).attr('data-type');
     });
     $('.category_data_list').on('click', function(){
       $('.search_wrap').hide(400);
       $('.list_information').slideUp();
       $('.search_wrap_category').toggle(400);
+      var typeSearch= $(this).attr('data-type');
     });
     $('.club_data_list').on('click', function(){
       $('.search_wrap').hide(400);
       $('.list_information').slideUp();
       $('.search_wrap_club').toggle(400);
+      var typeSearch= $(this).attr('data-type');
+    });
+
+    // button add new trainer
+    var window.incr_train=0;
+    $('body').on('сlick', '.add-trainer', function(){
+      window.incr_train++;
+      console.log('asd')
+      let trainer_node= +'<div class="form-group">'
+                          +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
+                          +'<div class="col-sm-10">'
+                            +'<input type="text" class="form-control" name="club_trener_'+window.incr_train+'" id="inputPassword3" placeholder="Тренер №'+window.incr_train+'">'
+                          +'</div>'
+                        +'</div>';
+
+      $('.add_train_box').append(trainer_node);
+
     });
 
 
