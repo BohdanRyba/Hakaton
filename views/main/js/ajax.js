@@ -24,7 +24,6 @@ function funcBefore() {
 }
 
 function funcSuccess(data) {
-    console.log(data);
 
     $('body').css('cursor', 'default');
     $('#loading>').remove();
@@ -54,7 +53,7 @@ $(function () {
     $('.btn-plus-event').on('click', function () {
         $('.cont-box1>').remove();
         $.ajax({
-            url: 'ajax_create-event',
+            url: 'ajax_createevent',
             type: 'POST',
             dataType: 'html',
             beforeSend: funcBefore,
@@ -82,12 +81,11 @@ $(function () {
         });
     });
 
-    $('.list-search').on('click', function () {
+    $('').on('click', function () {
         $('.cont-box1>').remove();
         $.ajax({
             url: 'club-cubinet-for-adm.php',
             type: 'POST',
-            data: ({}),
             dataType: 'html',
             beforeSend: funcBefore,
             success: funcSuccess
