@@ -5,42 +5,10 @@ require_once(ROOT . 'components/Traits.php');
 class AdminModel
 {
     use messagesOperations;
+    use paginationCreation;
 
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
-
-    public static function getPaginationContent($Cpag)
-    {
-
-        if (isset($Cpag) and is_numeric($Cpag)) {
-            $current = $Cpag;
-        } else {
-            $current = self::CURRENT_PAGE;
-        }
-        $per_page = self::PER_PAGE;
-
-        $pagination = function ($all) use ($per_page, $current) {
-            $pag = '<ul class="pagination">';
-            for ($i = 0, $j = 0; $i < count($all); $i += $per_page, $j++) {
-                if ($current == $j + 1) {
-                    $pag .= '<li class="active"><span>' . ($j + 1) . '</span></li>';
-                } else {
-                    $pag .= '<li><a href="' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
-                }
-            }
-            $pag .= '</ul>';
-            return $pag;
-        };
-
-        $all_count = count(self::getAllOrganizations());
-        $start = ($current - 1) * $per_page;
-        $end = (($current * $per_page) < $all_count) ? $current * $per_page : $all_count;
-
-        $start_end_pagination_array = array();
-        array_push($start_end_pagination_array, $start, $end, $pagination(self::getAllOrganizations()));
-
-        return $start_end_pagination_array;
-    }
 
     static function getAllOrganizations()
     {

@@ -91,8 +91,7 @@ trait navigationFunctional
     {
         $navigation = $this->getNavigation();
 
-        $navContent = '<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-                            <ul class="nav navbar-nav pull-right">';
+        $navContent = '';
         foreach ($navigation as $nav) {
             if (($nav['grant'] == ADMIN_ACCESS)) {
                 if (isset($_SESSION['user_access']) && $_SESSION['user_access'] == ADMIN_ACCESS) {
@@ -113,8 +112,6 @@ trait navigationFunctional
                 $navContent .= $this->getLink($nav, $page, $id);
             }
         }
-        $navContent .= '</ul>
-                </div>';
         return $navContent;
     }
 }

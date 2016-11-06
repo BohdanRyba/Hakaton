@@ -80,10 +80,7 @@ desired effect
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Главная</a></li>
-                                <li><a href="#">События</a></li>
-                                <li><a href="#">Новости</a></li>
-                                <li><a href="#">О нас</a></li>
+                                <?php echo $nav_content; ?>
                             </ul>
                         </li>
                         <!-- User Account Menu -->

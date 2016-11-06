@@ -6,15 +6,18 @@ require_once(ROOT . 'components/Traits.php');
 class AdminController
 {
     use messagesOperations;
+    use navigationFunctional;
 
     public function actionIndex($Cpag)
     {
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
+
+        $nav_content = $this->createNavContent(Router::$uri, $Cpag);
         $organizationsList = AdminModel::getAllOrganizations();
 
-        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag);
+        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag, count($organizationsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
@@ -29,6 +32,8 @@ class AdminController
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
+        $nav_content = $this->createNavContent(Router::$uri);
+
         require_once('views/admin/organizations/reg_org.php'); // here in view file we show the message;
 
         unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
@@ -103,12 +108,13 @@ class AdminController
         return true;
     }
 
-    public function actionOrg_settings()
+    public function actionOrg_settings($id)
     {
 //        self::showArray($_POST);
         if(isset($_POST['org_id'])){
             $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
         }
+        $nav_content = $this->createNavContent(Router::$uri, $id);
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {

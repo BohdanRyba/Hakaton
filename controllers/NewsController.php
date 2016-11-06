@@ -14,9 +14,8 @@ class NewsController
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
         $newsList = NewsModel::getNewsList();
-        $listAmount = count($newsList);
         $nav_content = $this->createNavContent(Router::$uri, $Cpag);
-        $start_end_pagination_array = NewsModel::getPaginationContent($Cpag, $listAmount);
+        $start_end_pagination_array = NewsModel::getPaginationContent($Cpag, count($newsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
