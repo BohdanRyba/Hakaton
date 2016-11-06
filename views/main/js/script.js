@@ -118,7 +118,7 @@ $( function() {
     });
 
     // button add new trainer
-    var window.incr_train=0;
+    var incr_train=0;
     $('body').on('сlick', '.add-trainer', function(){
       window.incr_train++;
       console.log('asd')
