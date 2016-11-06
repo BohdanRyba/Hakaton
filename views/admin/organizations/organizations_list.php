@@ -210,6 +210,7 @@
                                 <input type="submit" name="delete_org"
                                        class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
                                 <input type="hidden" name="delete_org_id">
+                                <input type="hidden" name="redirect" value="<?php echo Router::$uri; ?>">
                                 <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
                                         data-dismiss="modal">отмена
                                 </button>

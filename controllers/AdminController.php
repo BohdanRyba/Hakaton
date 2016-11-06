@@ -71,7 +71,7 @@ class AdminController
     }
 
     public function actionDelOrg(){
-
+        self::showArray($_POST);
         if (isset($_POST)) {
             if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
                 $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
@@ -82,7 +82,7 @@ class AdminController
         }
         header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
-    } // End this method!
+    }
 
     public function actionUpdateOrg()
     {

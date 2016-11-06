@@ -277,7 +277,6 @@ jQuery(function($) {
 
         $('input[name="delete_org_id"]').val($orgOnDel.attr('data-id'));
 
-        return false;
     });
 
     $delCncl.on('click', function () {
