@@ -86,6 +86,10 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        <?php if (isset($this->message)) {
+            echo $this->message;
+        }
+        ?>
         <section class="content-header">
             <h1>
                 Page Header

@@ -7,27 +7,27 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/organization_list.less">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/organization_list.less">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="<?=Router::$permalink?>views/main/js/less.min.js" type="text/javascript"></script>
+    <script src="<?= Router::$permalink ?>views/main/js/less.min.js" type="text/javascript"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -145,14 +145,15 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active treeview">
                     <a href="#">
                         <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?=Router::$permalink?>admin/organizations/org_add">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
 
@@ -167,12 +168,13 @@
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="#">
-                        <span>Multilevel</span>
+                    <a href="<?= Router::$permalink ?>admin/SettingsOrg/org_settings">
+                        <span>Settings</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings">Organizations
+                                Settings</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
@@ -198,17 +200,20 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <h4 class="modal-title text-uppercase" id="myModalLabel">удаление организации</h4>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <p></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary text-capitalize deletion-submit">удалить!
-                            </button>
-                            <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
-                                    data-dismiss="modal">отмена
-                            </button>
+                            <form method="post" action="delOrg">
+                                <input type="submit" name="delete_org"
+                                       class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
+                                <input type="hidden" name="delete_org_id">
+                                <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
+                                        data-dismiss="modal">отмена
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -216,15 +221,20 @@
 
             <div class="container-fluid">
                 <div class="row">
+                    <?php if (isset($this->message)) {
+                        echo $this->message;
+                    }
+                    ?>
+
                     <?php for ($i = $start; $i < $end; $i++): ?>
-                        <?php $organizationsList = $organizationsList[$i]; ?>
+                        <?php $organization = $organizationsList[$i]; ?>
                         <div class="col-xs-12 col-md-6 pull-left">
 
-                            <div data-id="<?php echo $organizationsList['id']; ?>"
+                            <div data-id="<?php echo $organization['id']; ?>"
                                  class="container box flat box-solid box-primary organization-list">
                                 <div class="row box-header">
                                     <h3 class="box-title text-uppercase">
-                                        <?php echo $organizationsList['org_name']; ?>
+                                        <?php echo $organization['org_name']; ?>
                                     </h3>
                                     <button type="button" class="btn btn-primary pull-right org-del-btn"
                                             data-toggle="modal"
@@ -232,22 +242,23 @@
                                 </div>
                                 <div class="row box-body">
                                     <div class="col-md-4 col-xs-12">
-                                        <img class="org-img" src="http://placehold.it/150x150">
+                                        <img class="org-img"
+                                             src="<?php echo Router::$permalink . $organization['org_pic_path'] ?>">
                                     </div>
                                     <div class="col-md-8 col-xs-12 pull-left">
                                         <div class="org-info-wrapper">
                                             <dl>
                                                 <dt class="organization-title-president-name">Президент организации:
                                                 </dt>
-                                                <dd class="organization-info-president-name"><?php echo $organizationsList['org_head_fio']; ?></dd>
+                                                <dd class="organization-info-president-name"><?php echo $organization['org_head_fio']; ?></dd>
                                                 <dt class="organization-title-president-phone">Мобильный номер:</dt>
                                                 <dd class="organization-info-president-phone"><a
-                                                        href="tel:+380685557777"><?php echo $organizationsList['org_phone']; ?></a>
+                                                        href="tel:+380685557777"><?php echo $organization['org_phone']; ?></a>
                                                 </dd>
                                                 <dt class="organization-title-president-email">Электронный адрес:</dt>
                                                 <dd class="organization-info-president-email"><a
                                                         href="mailto:example@gmail.com"
-                                                        target="_blank"><?php echo $organizationsList['org_email']; ?></a>
+                                                        target="_blank"><?php echo $organization['org_email']; ?></a>
                                                 </dd>
                                             </dl>
                                             <div class="btn-group-xs specialX">
@@ -259,7 +270,10 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                        <a href="#" class="gogogo text-center">редактировать</a>
+                                        <form method="post" action="../org_settings/<?php echo $organization['id']; ?>">
+                                            <input name="org_id" type="hidden" value="<?php echo $organization['id']; ?>">
+                                            <a><input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"></a>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -364,12 +378,12 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/organization_list.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/organization_list.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

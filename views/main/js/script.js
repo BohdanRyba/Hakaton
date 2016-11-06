@@ -50,18 +50,17 @@ $(function(){
     });
 
     $('.log_animate').click(function(){
-        $('.form_log').show(1000);
-        $('#overlay_log').show(400);
+      $('.form_log').show(1000);
+      $('#overlay_log').show(400);
     });
     $('#overlay_log').click(function(){
       $(this).hide(400);
       $('.form_log').hide(400);
-    })
+    });
 
     $('.connect').click(function(){
-        $('#overlay_log').show(600);
-        $('.us_info').show(1000);
-
+      $('#overlay_log').show(600);
+      $('.us_info').show(1000);
     });
     $('#overlay_log').click(function(){
       $(this).hide(400);
@@ -85,33 +84,47 @@ $(function(){
     $('body,html').animate({scrollTop: dist}, 500);
     window.a++;
   });
-  $('a.remove-part').click(function(){
+  $('body').on('click', 'a.remove-part', function(){
     $(this).parents('.part').slideUp(300);
   });
-// DATAPICKER
-// $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
-// $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
-// $( function() {
-//   $( "#event_begin").datepicker();
-//   $( "#event_end").datepicker();
-//});
+
     // button on page: organization for create eveny, reg club, dance 
     
-    $('.button-list').each(function(){
-      $(this).on('click', function(){
-       $(this).children('.list-information').slideUp(400);
-       $(this).parent('.button-org-add').nextAll('.search-wrapp').toggle(400);
-       $('.button-list').removeClass('btn-list-focus');
-       $(this).addClass('btn-list-focus');
-     });
+
+
+    $('.event_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_event').toggle(400);
+      var typeSearch= $(this).attr('data-type');
     });
-    $('.btn-search').on('click', function(){
-      $(this).parents('.list-search-button').nextAll('.list-information').slideToggle(400);
+    $('.category_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_category').toggle(400);
+      var typeSearch= $(this).attr('data-type');
+    });
+    $('.club_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_club').toggle(400);
+      var typeSearch= $(this).attr('data-type');
     });
 
-    $('.btn-plus').on('click', function(){
-      $('.btn-plus').removeClass('btn-plus-focus');
-      $(this).addClass('btn-plus-focus');
+    // button add new trainer
+    var incr_train=0;
+    $('body').on('сlick', '.add-trainer', function(){
+      window.incr_train++;
+      console.log('asd');
+      let trainer_node= +'<div class="form-group">'
+                          +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
+                          +'<div class="col-sm-10">'
+                            +'<input type="text" class="form-control" name="club_trener_'+window.incr_train+'" id="inputPassword3" placeholder="Тренер №'+window.incr_train+'">'
+                          +'</div>'
+                        +'</div>';
+
+      $('.add_train_box').append(trainer_node);
+
     });
 //MENU-EVENT
 	$('.tabs').each(function () {
