@@ -29,7 +29,7 @@ function  funcSearch(data) {      //function collection node with the search res
             let node =  '<li>'
                             +'<div class="list-search clr">'
                                 +'<div>'
-                                    +'<img class="bg_event_avatar" src=" '+ element.event_image +' " alt="wtf"/>'
+                                    +'<img class="bg_event_avatar" src="'+ element.event_image +'" alt="wtf"/>'
                                 +'</div>'
                                 +'<div>'
                                     +'<span>Событие: '+ element.event_name +' </span>'

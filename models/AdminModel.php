@@ -178,9 +178,6 @@ class AdminModel
                 $clubsList[$i]['club_country'] = $row['club_country'];
                 $clubsList[$i]['club_city'] = $row['club_city'];
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
-                $clubsList[$i]['club_first_trener'] = $row['club_first_trener'];
-                $clubsList[$i]['club_second_trener'] = $row['club_second_trener'];
-                $clubsList[$i]['club_third_trener'] = $row['club_third_trener'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
                 $i++;
@@ -227,7 +224,7 @@ class AdminModel
 
             $result = $db->query("INSERT INTO `clubs`
                         SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = '../../views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        = '{$a['club_country']}',
                         `club_city`           = '{$a['club_city']}',
                         `club_shief`          = '{$a['club_shief']}',
@@ -255,7 +252,7 @@ class AdminModel
 
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
-                        `event_image`          = '../../views/main/img/event_img/{$_FILES['event_image']['name']}',
+                        `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
                         `event_start`           = '{$a['event_start']}',
                         `event_end`          = '{$a['event_end']}',
