@@ -119,9 +119,13 @@ $( function() {
 
     // button add new trainer
     var incr_train=0;
-    $('body').on('сlick', '.add-trainer', function(){
+    $('body').on('сlick', 'a.add-trainer', function(){
+      alert ('бля');
+
+    });
+/*console.log('asd');
       window.incr_train++;
-      console.log('asd')
+
       let trainer_node= +'<div class="form-group">'
                           +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
                           +'<div class="col-sm-10">'
@@ -129,10 +133,7 @@ $( function() {
                           +'</div>'
                         +'</div>';
 
-      $('.add_train_box').append(trainer_node);
-
-    });
-
+      $('.add_train_box').append(trainer_node);*/
 
 
 

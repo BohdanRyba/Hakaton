@@ -49,8 +49,8 @@ sleep(1);
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="club_first_trener" id="inputPassword3"
                     placeholder="Тренер">
-                    <span class="btn-search input-group-btn">
-                    <button type="button" class="add-trainer btn btn-info btn-flat-event">+</button>
+                    <span id="add-train" class="btn-search input-group-btn">
+                    <a type="button" class="add-trainer btn btn-info btn-flat-event">+</a>
                     </span>
                 </div>
             </div>
