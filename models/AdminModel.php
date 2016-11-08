@@ -129,8 +129,8 @@ class AdminModel
             $pic_folder = implode("/", $tmp_arr_with_pic_path) . '/'; // after that we glue all the components to create a folder path with pictures;
 
             $old = getcwd(); // Save the current directory
-            chdir(ROOT. $pic_folder); // change the dir where lays the organization's picture;
-            $delete_picture_result = unlink(ROOT. $pic_folder. $image_name); // then delete the picture;
+            chdir(ROOT . $pic_folder); // change the dir where lays the organization's picture;
+            $delete_picture_result = unlink(ROOT . $pic_folder . $image_name); // then delete the picture;
             chdir($old); // Restore the old working directory;
 
             if ($result == true && $delete_picture_result == true) {
@@ -167,7 +167,8 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs(){
+    public static function ShowClubs()
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` ORDER BY id DESC";
             $result = $db->query($query);
@@ -187,7 +188,8 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowEvents(){
+    public static function ShowEvents()
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `events` ORDER BY id DESC";
             $result = $db->query($query);
@@ -354,5 +356,21 @@ class AdminModel
             die(mysqli_error($link));
         }
         return mysqli_affected_rows($link);
+    }
+
+    static function saveDanceProgram($json)
+    {
+        $array_for_record = array();
+        if (isset($json) && !empty($json)) {
+            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+                $result = $db->query("INSERT INTO `dance_groups`
+                        SET `dance_group_name` = '{$json['dance-group-name']}',
+                            `d_program` = '" . serialize($json['programs']) . "',
+                            `d_age_category` = '" . serialize($json['age-categories']) . "',
+                            `d_nomination` = '" . serialize($json['nominations']) . "',
+                            `d_league` = '" . serialize($json['leagues']) . "'");
+            }
+        }
+        return $result;
     }
 }

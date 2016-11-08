@@ -93,7 +93,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -177,7 +177,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -259,7 +259,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -340,7 +340,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');

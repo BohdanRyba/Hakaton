@@ -164,9 +164,45 @@ class AdminController
         include 'views/admin/SettingsOrg/create-event.php';
     }
 
+    public function actionDancingList()
+    {
+        echo 'Hello from dancing list!';
+
+        $db = Db::getConnection(Db::ADMIN_BASE);
+        $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
+        $result = $db->query($query);
+        $list = array();
+        $i = 0;
+        while ($row = $result->fetch_assoc()) {
+            $list[$i]['id'] = $row['id'];
+            $list[$i]['dance_group_name'] = $row['dance_group_name'];
+            $list[$i]['d_program'] = $row['d_program'];
+            $list[$i]['d_age_category'] = $row['d_age_category'];
+            $list[$i]['d_nomination'] = $row['d_nomination'];
+            $list[$i]['d_league'] = $row['d_league'];
+            $i++;
+        }
+
+        $db->close();
+
+        self::showArray($list);
+    }
+
     public function actionAddDancingGroups()
     {
         include 'views/admin/dancing_groups/add_dancing_groups.php';
     }
 
+    public function actionAddDanceProgram()
+    {
+        if(isset($_POST) && !empty($_POST['redirect'])){
+            $json = json_decode($_POST['redirect'], true);
+            $result = (integer)AdminModel::saveDanceProgram($json);
+            echo '<br>';
+            echo 'here is the result of the operation: ' . $result . '<br>';
+            echo '<br>';
+            echo 'redirect --> '.Router::$permalink . $json['redirect'];
+            header('Location: ' . Router::$permalink . $json['redirect']);
+        }
+    }
 }
