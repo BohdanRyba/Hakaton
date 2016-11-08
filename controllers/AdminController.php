@@ -164,4 +164,9 @@ class AdminController
         include 'views/admin/SettingsOrg/create-event.php';
     }
 
+    public function actionAddDancingGroups()
+    {
+        include 'views/admin/dancing_groups/add_dancing_groups.php';
+    }
+
 }

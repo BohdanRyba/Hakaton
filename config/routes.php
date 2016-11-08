@@ -26,5 +26,6 @@ return array(
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
+    'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     '' => 'home/index',
 );

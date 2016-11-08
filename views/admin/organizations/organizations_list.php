@@ -160,7 +160,7 @@
                         <span>Танцевальные групы</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
                 </li>
