@@ -911,3 +911,6 @@ table tbody.row-table>:hover{
 	font-size:20px;
 	border:1px solid #aaa;
 }
+.add-train-form{
+	display: table;
+}

@@ -4,7 +4,6 @@ let search = document.querySelector('input[type="search"]');
 
 
 search.onkeyup = function (typeSearch) {
-    console.log(typeSearch);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
     let id= $('#organization').attr('data-id');
@@ -36,7 +35,6 @@ function  funcSearch(data) {      //function collection node with the search res
                                 +'</div>'
                             +'</div>'
                         +'</li>';
-                        console.log(element.event_image);
             return node;
         });
         return nameList;

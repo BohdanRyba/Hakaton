@@ -118,22 +118,22 @@ $( function() {
     });
 
     // button add new trainer
-    var incr_train=0;
-    $('body').on('сlick', 'a.add-trainer', function(){
-      alert ('бля');
+    var incr_train = 0;
+    $('body').on('click', '#add-trainer', function(){
+      console.log('asd');
+      incr_train ++;
+
+      let trainer_node= '<div class="form-group">'
+      +'<label for="inputPassword3" class="col-sm-2 control-label">Трене</label>'
+      +'<div class="col-sm-10">'
+      +'<input type="text" class="form-control" name="club_trener_'+incr_train+'" id="inputPassword3" placeholder="ФИО тренер">'
+      +'</div>'
+      +'</div>';
+
+      $('.add_train_box').after(trainer_node);
 
     });
-/*console.log('asd');
-      window.incr_train++;
 
-      let trainer_node= +'<div class="form-group">'
-                          +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
-                          +'<div class="col-sm-10">'
-                            +'<input type="text" class="form-control" name="club_trener_'+window.incr_train+'" id="inputPassword3" placeholder="Тренер №'+window.incr_train+'">'
-                          +'</div>'
-                        +'</div>';
-
-      $('.add_train_box').append(trainer_node);*/
 
 
 

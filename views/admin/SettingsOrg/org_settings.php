@@ -481,7 +481,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/datepicker-ru.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?123"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
