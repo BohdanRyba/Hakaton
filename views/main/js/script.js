@@ -150,10 +150,13 @@ $( function() {
     $('.bg-opacity').on('click', function(){
       $(this).hide();
       $('.popup-control').hide(200);
+      $('.list_information').slideUp(200);
+      $('.list_data>').remove();
     });
     $('tbody>tr').each(function(){
       $(this).on('click', function(){
         $('.bg-opacity').show(200);
+        $('.list_information').hide();
         $('.popup-control').show(200);
       });
     });
