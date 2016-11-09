@@ -124,9 +124,9 @@ $( function() {
       incr_train ++;
 
       let trainer_node= '<div class="form-group">'
-      +'<label for="inputPassword3" class="col-sm-2 control-label">Трене</label>'
+      +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>'
       +'<div class="col-sm-10">'
-      +'<input type="text" class="form-control" name="club_trener_'+incr_train+'" id="inputPassword3" placeholder="ФИО тренер">'
+      +'<input type="text" class="form-control" name="club_trener_'+incr_train+'" id="inputPassword3" placeholder="ФИО тренера">'
       +'</div>'
       +'</div>';
 
