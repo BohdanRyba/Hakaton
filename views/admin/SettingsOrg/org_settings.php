@@ -462,13 +462,8 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="<?=Router::$permalink?>views/main/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?=Router::$permalink?>views/main/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?=Router::$permalink?>views/main/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
@@ -479,10 +474,9 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/datepicker-ru.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?12"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?1214"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
@@ -490,7 +484,6 @@ desired effect
             $('.sorting_1').each(function(i){
                 $(this).text(i+1);
             });
-            console.log('asd');
 
             //Initialize Select2 Elements
             $(".select2").select2();
@@ -500,33 +493,6 @@ desired effect
             $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
             //Money Euro
             $("[data-mask]").inputmask();
-
-
-            $('#datepicker').datepicker({
-              autoclose: true
-          });
-            //Date range picker
-            $('#reservation').daterangepicker();
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment()
-            },
-            function (start, end) {
-                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            }
-            );
-
         });
     });
 </script>
