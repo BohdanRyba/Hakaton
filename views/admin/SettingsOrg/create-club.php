@@ -56,9 +56,11 @@ sleep(1);
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Номер телефона</label>
-                <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="club_number" id="inputPassword3"
-                    placeholder="Номер телефона">
+                <div class="col-sm-10 create-input">
+                  <div class="icon-input input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input type="tel" class="form-control" name="club_number" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" placeholder="Номер телефона">
                 </div>
             </div>
             <div class="form-group">

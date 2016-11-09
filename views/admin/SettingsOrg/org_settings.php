@@ -220,7 +220,7 @@ desired effect
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                            <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
+                                <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
                                 <li class="btn-plus btn-plus-club"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>
@@ -406,11 +406,11 @@ desired effect
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                   <span class="label label-danger pull-right">70%</span>
-                               </span>
-                           </h4>
+                                 <span class="label label-danger pull-right">70%</span>
+                             </span>
+                         </h4>
 
-                           <div class="progress progress-xxs">
+                         <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
@@ -490,6 +490,7 @@ desired effect
             $('.sorting_1').each(function(i){
                 $(this).text(i+1);
             });
+            console.log('asd');
 
             //Initialize Select2 Elements
             $(".select2").select2();
@@ -500,6 +501,10 @@ desired effect
             //Money Euro
             $("[data-mask]").inputmask();
 
+
+            $('#datepicker').datepicker({
+              autoclose: true
+          });
             //Date range picker
             $('#reservation').daterangepicker();
             //Date range picker with time picker
@@ -522,10 +527,6 @@ desired effect
             }
             );
 
-            //Date picker
-            $('#datepicker').datepicker({
-                autoclose: true
-            });
         });
     });
 </script>

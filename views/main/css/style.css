@@ -263,7 +263,7 @@ body, p{
 }
 .form_log{
 	color:black;
-	z-index: 995;
+	z-index: 9995;
 	display:none;
 	position:absolute;
 	float:right;
@@ -271,8 +271,8 @@ body, p{
 	top:60px;
 	width:30%;
 }
-.us_info { display: none; position: fixed; z-index: 995; left: 45%; top: 30%; margin: -70px 0 0 -180px;}
-#overlay_log { display: none; position: fixed; z-index: 990; left: 0; top: 0; width: 100%; height: 100%; background:rgba(0,0,0,0.5); cursor: pointer;}
+.us_info { display: none; position: fixed; z-index: 9995; left: 45%; top: 30%; margin: -70px 0 0 -180px;}
+#overlay_log { display: none; position: fixed; z-index: 9990; left: 0; top: 0; width: 100%; height: 100%; background:rgba(0,0,0,0.5); cursor: pointer;}
 .us_info .kontakt_tel{
 	margin:0 auto;
 }
@@ -908,4 +908,11 @@ table tbody.row-table>:hover{
 }
 .add-train-form{
 	display: table;
+}
+.create-input{
+	display:table;
+}
+.icon-input{
+	border-radius:0;
+	background:#fff;
 }
