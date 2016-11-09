@@ -743,21 +743,20 @@ b{
 	margin:0 auto;
 	width:96%;
 }
-.list-data{
+.list_data{
 	padding:5px;
 }
-.search-wrapp{
-	position:relative;
+.search_wrapp{
 	display:none;
 }
-.list-information{
+.list_information{
 	position:absolute;
-
+	margin:0 auto;
+	z-index:1000;
 	display:none;
 }
-.list-information ul{
-		z-index:1000;
-	max-width:100%;
+.list_information ul{
+	max-width:95%;
 	background:#fff;
 }
 .list-search-button .form-group input{
@@ -814,8 +813,13 @@ table tbody.row-table>:hover{
 	-webkit-transition:all 0.6s;
 }
 .popup-control{
-	max-width:250px;
+	position:absolute;
+	display:none;
+	min-width:250px;
+	left:45%;
+	top:40%;
 	padding:10px;
+	z-index:810;
 	border-radius:5px;
 	background-color:rgba(0,0,0, 0.8);
 	box-shadow:0 0 10px rgba(0,0,0, 0.7);
@@ -895,19 +899,13 @@ table tbody.row-table>:hover{
 	height:100%;
 	z-index:800;
 }
-.popup-control{
-	display:none;
-	height:;
-	min-width:250px;
-	z-index:810;
-	position:absolute;
-	left:45%;
-	top:40%;
-}
 .add-trainer{
 	position:absolute;
 	right:5%;
 	padding:2px;
-	font-size:20px;
+	font-size:25px;
 	border:1px solid #aaa;
+}
+.add-train-form{
+	display: table;
 }

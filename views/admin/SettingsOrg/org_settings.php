@@ -229,14 +229,14 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control search_event" type="search" placeholder="Поиск по событиям">
+                                    <input id="search_event_input" class="form-control search_event" type="search" placeholder="Поиск по событиям">
                                     <span class="btn-search input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-12">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -245,9 +245,9 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control search_event" type="search" placeholder="Поиск по категориям">
+                                    <input id="search_event_inut" class="form-control search_event" type="search" placeholder="Поиск по категориям">
                                     <span class="btn-search input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
@@ -263,7 +263,7 @@ desired effect
                                 <div class="input-group input-group-sm">
                                     <input class="form-control search_event" type="search" placeholder="Поиск по клубам">
                                     <span class="btn-search input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
@@ -284,6 +284,7 @@ desired effect
                     <div class="cont-box content-in" id="loading"></div>
                 </div>
             </div>
+            <div class="bg-opacity"></div>
         </section>
     </div>
     <!-- Control Sidebar -->
@@ -481,7 +482,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/datepicker-ru.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?12"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {

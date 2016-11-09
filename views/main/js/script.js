@@ -118,18 +118,19 @@ $( function() {
     });
 
     // button add new trainer
-    var incr_train=0;
-    $('body').on('сlick', '.add-trainer', function(){
-      window.incr_train++;
-      console.log('asd')
-      let trainer_node= +'<div class="form-group">'
-                          +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
-                          +'<div class="col-sm-10">'
-                            +'<input type="text" class="form-control" name="club_trener_'+window.incr_train+'" id="inputPassword3" placeholder="Тренер №'+window.incr_train+'">'
-                          +'</div>'
-                        +'</div>';
+    var incr_train = 0;
+    $('body').on('click', '#add-trainer', function(){
+      console.log('asd');
+      incr_train ++;
 
-      $('.add_train_box').append(trainer_node);
+      let trainer_node= '<div class="form-group">'
+      +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>'
+      +'<div class="col-sm-10">'
+      +'<input type="text" class="form-control" name="club_trener_'+incr_train+'" id="inputPassword3" placeholder="ФИО тренера">'
+      +'</div>'
+      +'</div>';
+
+      $('.add_train_box').after(trainer_node);
 
     });
 
@@ -149,10 +150,13 @@ $( function() {
     $('.bg-opacity').on('click', function(){
       $(this).hide();
       $('.popup-control').hide(200);
+      $('.list_information').slideUp(200);
+      $('.list_data>').remove();
     });
     $('tbody>tr').each(function(){
       $(this).on('click', function(){
         $('.bg-opacity').show(200);
+        $('.list_information').hide();
         $('.popup-control').show(200);
       });
     });
