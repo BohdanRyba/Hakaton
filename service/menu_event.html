@@ -56,10 +56,159 @@ desired effect
 -->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+	<header class="main-header">
+		<!-- Logo -->
+		<a href="index2.html" class="logo">
+			<!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini"><b>A</b>LT</span>
+			<!-- logo for regular state and mobile devices -->
+			<span class="logo-lg"><b>Admin</b>LTE</span>
+		</a>
 
+		<!-- Header Navbar -->
+		<nav class="navbar navbar-static-top" role="navigation">
+			<!-- Sidebar toggle button-->
+			<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+				<span class="sr-only">Toggle navigation</span>
+			</a>
+			<!-- Navbar Right Menu -->
+			<div class="navbar-custom-menu">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Главная</a></li>
+							<li><a href="#">События</a></li>
+							<li><a href="#">Новости</a></li>
+							<li><a href="#">О нас</a></li>
+						</ul>
+					</li>
+					<!-- User Account Menu -->
+					<li class="dropdown user user-menu">
+						<!-- Menu Toggle Button -->
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<!-- The user image in the navbar-->
+							<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+							<!-- hidden-xs hides the username on small devices so only the image appears. -->
+							<span class="hidden-xs">Alexander Pierce</span>
+						</a>
+						<ul class="dropdown-menu">
+							<!-- The user image in the menu -->
+							<li class="user-header">
+								<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+								<p>
+									Alexander Pierce - Web Developer
+									<small>Member since Nov. 2012</small>
+								</p>
+							</li>
+							<!-- Menu Body -->
+							<li class="user-body">
+								<div class="row">
+									<div class="col-xs-4 text-center">
+										<a href="#">Followers</a>
+									</div>
+									<div class="col-xs-4 text-center">
+										<a href="#">Sales</a>
+									</div>
+									<div class="col-xs-4 text-center">
+										<a href="#">Friends</a>
+									</div>
+								</div>
+								<!-- /.row -->
+							</li>
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="#" class="btn btn-default btn-flat">Profile</a>
+								</div>
+								<div class="pull-right">
+									<a href="#" class="btn btn-default btn-flat">Sign out</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<!-- Control Sidebar Toggle Button -->
+					<li>
+						<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Left side column. contains the logo and sidebar -->
+	<aside class="main-sidebar">
+
+		<!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar">
+
+			<!-- Sidebar user panel (optional) -->
+			<div class="user-panel">
+				<div class="pull-left image">
+					<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+				</div>
+				<div class="pull-left info">
+					<p>Alexander Pierce</p>
+					<!-- Status -->
+				</div>
+			</div>
+
+			<!-- search form (Optional) -->
+			<form action="#" method="get" class="sidebar-form">
+				<div class="input-group">
+					<input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+				</div>
+			</form>
+			<!-- /.search form -->
+
+			<!-- Sidebar Menu -->
+			<ul class="sidebar-menu">
+				<li class="header">Menu</li>
+				<!-- Optionally, you can add icons to the links -->
+				<li class="active treeview">
+					<a href="#">
+						<span>Организации</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+							class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+						</li>
+					</ul>
+
+				</li>
+				<li>
+					<a href="#">
+						<span>Танцевальные групы</span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+						</li>
+					</ul>
+				</li>
+				<li class="treeview">
+					<a href="<?= Router::$permalink ?>admin/SettingsOrg/org_settings">
+						<span>Settings</span>
+						<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+					</a>
+					<ul class="treeview-menu">
+						<li><a href="<?= Router::$permalink ?>admin/organizations/org_settings">Organizations
+							Settings</a></li>
+						<li><a href="#">Link in level 2</a></li>
+					</ul>
+				</li>
+			</ul>
+			<!-- /.sidebar-menu -->
+		</section>
+		<!-- /.sidebar -->
+	</aside>
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
+
 		<section class="content-header">
 			<h1>
 				Page Header
@@ -77,159 +226,343 @@ desired effect
 			<div class="content_box col-md-4">
 				<div class="box box-info">
 					<div class="box-header with-border">
-						<h1 class="box-title" id="ev_menu">Меню событий <span>event</span></h1>
+						<h1 class="box-title" id="ev_menu">Настройки события <span>event</span></h1>
 						<div class="row col-md-12">
-						<div class="col-md-4">
-							<ul class="tabs">
-								<li><a href="#tab_a1">Категории</a></li>
-								<li><a href="#tab_a2">Заявки</a></li>
-								<li><a href="#tab_a3">Регистрация</a></li>
-								<li><a href="#tab_a4">Программа</a></li>
-								<li><a href="#tab_a5">Судьи</a></li>
-								<li><a href="#tab_a6">Документация</a></li>
-								<li><a href="#tab_a7">Система подсчетов</a></li>
-								<li><a href="#tab_a8">Протоколы</a></li>
-								<li><a href="#tab_a9">Результаты</a></li>
-							</ul>
-						</div>
-						<div class=" col-md-7 col-md-offset-1">
-							<div class="info_event">
-								<div id="tab_a1">
-									<h2>Категории в данном состязании:</h2>
-									<div>
-									<table>
-										<tr>
-											<td>Программа</td>
-											<td>Возрастная категория</td>
-											<td>Номинация</td>
-											<td>Лига</td>
-										</tr>
-										<tr>
-											<td>Хип-хоп</td>
-											<td>Дети от 7 до 10 лет</td>
-											<td>Соло</td>
-											<td>Первая лига</td>
-										</tr>
-									</table>
+							<div class="col-md-4">
+								<ul class="tabs">
+									<li><a href="#tab_a1">Категории</a></li>
+									<li><a href="#tab_a2">Заявки</a></li>
+									<li><a href="#tab_a3">Регистрация</a></li>
+									<li><a href="#tab_a4">Программа</a></li>
+									<li><a href="#tab_a5">Судьи</a></li>
+									<li><a href="#tab_a6">Система подсчетов</a></li>
+									<li><a href="#tab_a7">Протоколы</a></li>
+									<li><a href="#tab_a8">Результаты</a></li>
+								</ul>
+							</div>
+							<div class=" col-md-8 ">
+								<div class="info_event">
+									<div id="tab_a1">
+										<h2>Категории в данном состязании:</h2>
+										<div>
+											<table>
+												<tr>
+													<th>Программа</th>
+													<th>Возрастная категория</th>
+													<th>Номинация</th>
+													<th>Лига</th>
+												</tr>
+												<tr>
+													<td>Хип-хоп</td>
+													<td>Дети от 7 до 10 лет</td>
+													<td>Соло</td>
+													<td>Первая лига</td>
+												</tr>
+												<tr>
+													<td>Брейк</td>
+													<td>Дети до 5 лет</td>
+													<td>Дует</td>
+													<td>Дебют</td>
+												</tr>
+												<tr>
+													<td>Хип-хоп</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+												<tr>
+													<td>Хип-хоп</td>
+													<td>Дети от 7 до 10 лет</td>
+													<td>Соло</td>
+													<td>Первая лига</td>
+												</tr>
+												<tr>
+													<td>Брейк</td>
+													<td>Дети до 5 лет</td>
+													<td>Дует</td>
+													<td>Дебют</td>
+												</tr>
+												<tr>
+													<td>Хип-хоп</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+											</table>
+										</div>
 									</div>
-								</div>
-								<div id="tab_a2">
-									<h2>Просмотр заявок участников:</h2>
-									<div id="online_zayavka">
-										<p>Онлайн заявки</p>
-										<span>1</span>
-										<span>2</span>
-										<span>3</span>
-										<span>4</span>
-										<span>5</span>
+									<div id="tab_a2">
+										<h2>Просмотр заявок участников:</h2>
+										<div id="online_zayavka">
+											<h4>Онлайн заявки незарегистрированных участников</h4>
+											<table>
+												<tr>
+													<th>&nbsp</th>
+													<th>ФИО</th>
+													<th>№ телефона</th>
+													<th>Возраст(полных лет)</th>
+													<th>Номинация</th>
+													<th>Лига</th>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>067 999 99 99</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>067 999 99 99</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>067 999 99 99</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>067 999 99 99</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+											</table>
+										</div>
+										<div id="uchst_zayavka">
+											<h4>Заявки от зарегистрированных участников:</h4>
+												<table>
+													<tr>
+														<th>&nbsp</th>
+														<th>ФИО</th>
+														<th>Название клуба</th>
+														<th>Возраст учасника</th>
+														<th>Номинация</th>
+														<th>Лига</th>
+													</tr>
+													<tr>
+														<td>+</td>
+														<td>Иванов Иван Иваныч</td>
+														<td>ACE of ACE</td>
+														<td>15 лет</td>
+														<td>Соло</td>
+														<td>Без лиги</td>
+													</tr>
+													<tr>
+														<td>+</td>
+														<td>Иванов Иван Иваныч</td>
+														<td>ACE of ACE</td>
+														<td>15 лет</td>
+														<td>Соло</td>
+														<td>Без лиги</td>
+													</tr>
+													<tr>
+														<td>+</td>
+														<td>Иванов Иван Иваныч</td>
+														<td>ACE of ACE</td>
+														<td>15 лет</td>
+														<td>Соло</td>
+														<td>Без лиги</td>
+													</tr>
+												</table>
+										</div>
+										<div>
+											<h4>Заявки от клубов:</h4>
+											<table>
+												<tr>
+													<th>&nbsp</th>
+													<th>Название клуба</th>
+													<th>ФИО участника</th>
+													<th>Возраст учасника</th>
+													<th>Номинация</th>
+													<th>Лига</th>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>15 лет</td>
+													<td>ACE of ACE</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>ACE of ACE</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+												<tr>
+													<td>+</td>
+													<td>Иванов Иван Иваныч</td>
+													<td>Юниоры 12-15 лет</td>
+													<td>ACE of ACE</td>
+													<td>Соло</td>
+													<td>Без лиги</td>
+												</tr>
+											</table>
+										</div>
 									</div>
-									<div id="uchst_zayavka">
-										<p>Заявки от зарегистрированных участников:
-											<span>1</span>
-											<span>2</span>
-											<span>3</span>
-											<span>4</span>
-											<span>5</span>
-										</p>
+									<div id="tab_a3">
+										<h2>Добавление/регистрация новых участников:</h2>
+										<div>
+											<h4>Регистрация участника:</h4>
+												<span>1</span>
+												<span>2</span>
+												<span>3</span>
+												<span>4</span>
+												<span>5</span>
+										</div>
+										<div>
+											<h4>Регистрация клуба:</h4>
+												<span>1</span>
+												<span>2</span>
+												<span>3</span>
+												<span>4</span>
+												<span>5</span>
+										</div>
 									</div>
-									<div>
-										<p>Заявки от клубов:
-											<span>1</span>
-											<span>2</span>
-											<span>3</span>
-											<span>4</span>
-											<span>5</span>
-										</p>
-									</div>
-								</div>
-								<div id="tab_a3">
-									<h2>Добавление /регистрация новых участников:</h2>
-									<div>
-										<p>Регистрация участника:
-											<span>1</span>
-											<span>2</span>
-											<span>3</span>
-											<span>4</span>
-											<span>5</span>
-										</p>
-									</div>
-									<div>
-										<p>Регистрация клуба:
-											<span>1</span>
-											<span>2</span>
-											<span>3</span>
-											<span>4</span>
-											<span>5</span>
-										</p>
-									</div>
-								</div>
 
-								<div id="tab_a4">
-									<h2>Программа мероприятия:<span> name</span></h2>
-									<div>
-										<p>Просмотреть программу</p>
+									<div id="tab_a4">
+										<h2>Программа мероприятия:<span> name</span></h2>
+										<div>
+											<h4>Просмотреть программу</h4>
+										</div>
+										<div>
+											<h4>Отделения</h4>
+										</div>
+										<div>
+											<h4>Туры</h4>
+										</div>
+										<div>
+											<h4>Выбор способа жеребъевки</h4>
+											<span>type1</span>
+											<span>type2</span>
+											<span>type3</span>
+											<span>type4</span>
+											<span>type5</span>
+										</div>
 									</div>
-									<div>
-										<p>Отделения</p>
+									<div id="tab_a5">
+										<h2>Судьи</h2>
+										<div>
+											<h4>Добавление судей</h4>
+											<table>
+												<tr>
+													<th>&nbsp</th>
+													<th>ФИО</th>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>Иванов Иван Иваныч</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>Иванов Иван Иваныч</td>
+												</tr>
+												<tr>
+													<td><input type="checkbox"></td>
+													<td>Иванов Иван Иваныч</td>
+												</tr>
+											</table>
+											<input type="submit" class="btn btn-default" value="Добавить">
+										</div>
+										<div>
+											<h4>Отбор судей к категориям</h4>
+											<table>
+												<tr>
+													<!--<th>&nbsp</th>-->
+													<th>ФИО</th>
+													<th>Категория судейства</th>
+												</tr>
+												<tr>
+													<td>Иванов Иван Иваныч</td>
+													<td>
+														<label>
+														<select>
+															<option name="" value=""> &nbsp</option>
+															<option name="" value="hip">Хип-хоп</option>
+															<option name="" value="disco">Диско</option>
+															<option name="" value="house">Хаус</option>
+															<option name="" value="braik">Брейк</option>
+														</select>
+													</label>
+													</td>
+												</tr>
+												<tr>
+													<td>Иванов Иван Иваныч</td>
+													<td>
+														<label>
+															<select>
+																<option name=""  value=""> &nbsp</option>
+																<option name=""  value="hip">Хип-хоп</option>
+																<option name=""  value="disco">Диско</option>
+																<option name=""  value="house">Хаус</option>
+																<option name=""  value="braik">Брейк</option>
+															</select>
+														</label>
+													</td>
+												</tr>
+												<tr>
+													<td>Иванов Иван Иваныч</td>
+													<td>
+														<label>
+															<select>
+																<option name=""  value=""> &nbsp</option>
+																<option name=""  value="hip">Хип-хоп</option>
+																<option name=""  value="disco">Диско</option>
+																<option name=""  value="house">Хаус</option>
+																<option name=""  value="braik">Брейк</option>
+															</select>
+														</label>
+													</td>
+												</tr>
+											</table>
+											<input type="submit" class="btn btn-default" value="Сохранить">
+										</div>
 									</div>
-									<div>
-										<p>Туры</p>
+									<div id="tab_a6">
+										<h2>Выбор системы подсчетов</h2>
+										<div>
+											<h4>Выбор категории и системы для ее расчетов</h4>
+										</div>
+										<div>
+											<h4>Подсчет результатов</h4>
+										</div>
+										<div>
+											<h4>Печать граммот</h4>
+										</div>
 									</div>
-									<div>
-										<p>Выбор способа жеребъевки</p>
-										<span>type1</span>
-										<span>type2</span>
-										<span>type3</span>
-										<span>type4</span>
-										<span>type5</span>
+									<div id="tab_a7">
+										<h2>Протоколы с результатами</h2>
 									</div>
-
-								</div>
-								<div id="tab_a5">
-									<h2>Судьи</h2>
-									<div>
-										<p>Добавление судей</p>
-									</div>
-									<div>
-										<p>Отбор судей к категориям</p>
-									</div>
-								</div>
-								<div id="tab_a6">
-									<h2>Документация</h2>
-									<p></p>
-								</div>
-								<div id="tab_a7">
-									<h2>Выбор системы подсчетов</h2>
-									<div>
-										<p>Выбор категории и системы для ее расчетов</p>
-									</div>
-									<div>
-										<p>Подсчет результатов</p>
-									</div>
-									<div>
-										<p>Печать граммот</p>
-									</div>
-								</div>
-								<div id="tab_a8">
-									<h2>Протоколы с результатами</h2>
-								</div>
-								<div id="tab_a9">
-									<h2>Отображение окончательных результатов</h2>
-									<div>
-										<p>Общие результаты</p>
-									</div>
-									<div>
-										<p>Результаты по клубам</p>
-									</div>
-									<div>
-										<p>Рейтинг по каждому участнику отдельно</p>
+									<div id="tab_a8">
+										<h2>Отображение окончательных результатов</h2>
+										<div>
+											<h4>Общие результаты</h4>
+										</div>
+										<div>
+											<p>Результаты по клубам</p>
+										</div>
+										<div>
+											<h4>Рейтинг по каждому участнику отдельно</h4>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div><!-- /.box-body -->
-				</div><!-- /.box -->
-			</div>
+						</div><!-- /.box-body -->
+					</div><!-- /.box -->
+				</div>
 			</div>
 		</section>
 	</div>
