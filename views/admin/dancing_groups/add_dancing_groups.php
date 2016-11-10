@@ -55,10 +55,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Главная</a></li>
-                            <li><a href="#">События</a></li>
-                            <li><a href="#">Новости</a></li>
-                            <li><a href="#">О нас</a></li>
+                            <?php echo $nav_content; ?>
                         </ul>
                     </li>
                     <!-- User Account Menu -->
@@ -148,7 +145,7 @@
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active treeview">
-                    <a href="#">
+                    <a href="<?=Router::$permalink?>admin/organizations/page/1">
                         <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
@@ -188,6 +185,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-lg-10 col-lg-push-1 pull-left">
+                        <?php if (isset($this->message)) {
+                            echo $this->message;
+                        }
+                        ?>
                         <div class="container box box-primary flat">
                             <div class="row box-header">
                                 <!--DANCE GROUP NAME-->

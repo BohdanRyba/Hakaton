@@ -226,11 +226,16 @@ class AdminController
 
 
 
-    }
+    } //end this method!!!
 
     public function actionAddDancingGroups()
     {
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
+        $nav_content = $this->createNavContent(Router::$uri);
         include 'views/admin/dancing_groups/add_dancing_groups.php';
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
     }
 
     public function actionAddDanceProgram()
