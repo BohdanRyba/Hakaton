@@ -220,7 +220,7 @@ desired effect
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                            <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
+                                <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
                                 <li class="btn-plus btn-plus-club"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>
@@ -406,11 +406,11 @@ desired effect
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                   <span class="label label-danger pull-right">70%</span>
-                               </span>
-                           </h4>
+                                 <span class="label label-danger pull-right">70%</span>
+                             </span>
+                         </h4>
 
-                           <div class="progress progress-xxs">
+                         <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
@@ -462,13 +462,8 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="<?=Router::$permalink?>views/main/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?=Router::$permalink?>views/main/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?=Router::$permalink?>views/main/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
@@ -479,10 +474,9 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/datepicker-ru.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?12"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?1214"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
@@ -499,33 +493,6 @@ desired effect
             $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
             //Money Euro
             $("[data-mask]").inputmask();
-
-            //Date range picker
-            $('#reservation').daterangepicker();
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment()
-            },
-            function (start, end) {
-                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            }
-            );
-
-            //Date picker
-            $('#datepicker').datepicker({
-                autoclose: true
-            });
         });
     });
 </script>
