@@ -108,13 +108,15 @@ class AdminController
         return true;
     }
 
-    public function actionOrg_settings($id)
+    public function actionOrg_settings($id = '')
     {
 //        self::showArray($_POST);
         if(isset($_POST['org_id'])){
             $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
         }
-        $nav_content = $this->createNavContent(Router::$uri, $id);
+        if (isset($id) && is_numeric($id)){
+            $nav_content = $this->createNavContent(Router::$uri, $id);
+        }
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
@@ -186,6 +188,44 @@ class AdminController
         $db->close();
 
         self::showArray($list);
+
+        $dance_group_mane = '';
+        $d_program = array();
+        $d_age_category = array();
+        $d_nomination = array();
+        $d_league = array();
+
+        foreach($list as $value){
+            $dance_group_mane = $value['dance_group_name'];
+            $d_program = unserialize($value['d_program']);
+            $d_age_category = unserialize($value['d_age_category']);
+            $d_nomination = unserialize($value['d_nomination']);
+            $d_league = unserialize($value['d_league']);
+        }
+
+        echo '<br> Dance group name: ';
+        echo $dance_group_mane . '<br>';
+
+
+        echo '<br> Program array: <br>';
+        self::showArray($d_program);
+        echo '<br><br>';
+
+        echo '<br> Age_category array: <br>';
+        self::showArray($d_age_category);
+        echo '<br><br>';
+
+        echo '<br> Nomination array: <br>';
+        self::showArray($d_nomination);
+        echo '<br><br>';
+
+        echo '<br> League array: <br>';
+        self::showArray($d_league);
+        echo '<br><br>';
+
+
+
+
     }
 
     public function actionAddDancingGroups()
