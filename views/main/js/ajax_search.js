@@ -2,16 +2,12 @@
 'use strict';
 let search = document.querySelectorAll('input[type="search"]');
 
-
-
-
 search[0].onkeyup = function (typeSearch) {
     $('.bg-opacity').show(200);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
     let id= $('#organization').attr('data-id');
     id= parseInt(id);
-
 
     $.ajax({
         url: 'ajax_eventShow',
@@ -21,6 +17,7 @@ search[0].onkeyup = function (typeSearch) {
         success:funcSearch
     });
 };
+
 $('#search_event_go').on('click', function(){
    let id= $('#organization').attr('data-id');
    id= parseInt(id);
