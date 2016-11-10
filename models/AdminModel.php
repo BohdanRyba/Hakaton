@@ -360,6 +360,8 @@ class AdminModel
 
     static function saveDanceProgram($json)
     {
+        $result = '';
+        $message = '';
         $array_for_record = array();
         if (isset($json) && !empty($json)) {
             if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -369,8 +371,25 @@ class AdminModel
                             `d_age_category` = '" . serialize($json['age-categories']) . "',
                             `d_nomination` = '" . serialize($json['nominations']) . "',
                             `d_league` = '" . serialize($json['leagues']) . "'");
+                if ($result == true) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Танцевальная программа \"{$json['dance-group-name']}\" успешно сохранена!"
+                    ]);
+                } elseif ($result == false) {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Танцевальную программу \"{$json['dance-group-name']}\" сохранить не удалось!"
+                    ]);
+                }
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'НЕ удалось установить соединение с базой данных! Что-то пошло не так...'
+                ]);
             }
         }
+        self::saveMessage($message);
         return $result;
     }
 }

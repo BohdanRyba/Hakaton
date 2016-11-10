@@ -75,7 +75,8 @@ class AdminController
         echo json_encode($org_info);
     }
 
-    public function actionDelOrg(){
+    public function actionDelOrg()
+    {
         self::showArray($_POST);
         if (isset($_POST)) {
             if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
@@ -111,10 +112,10 @@ class AdminController
     public function actionOrg_settings($id = '')
     {
 //        self::showArray($_POST);
-        if(isset($_POST['org_id'])){
+        if (isset($_POST['org_id'])) {
             $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
         }
-        if (isset($id) && is_numeric($id)){
+        if (isset($id) && is_numeric($id)) {
             $nav_content = $this->createNavContent(Router::$uri, $id);
         }
         include 'views/admin/SettingsOrg/org_settings.php';
@@ -132,7 +133,8 @@ class AdminController
         AdminModel::club_add($_POST);
     }
 
-    public function addEvent(){
+    public function addEvent()
+    {
         AdminModel::event_add($_POST);
     }
 
@@ -143,7 +145,7 @@ class AdminController
 
     public function actionAjax_clubShow()
     {
-        echo  json_encode(AdminModel::ShowClubs()) ;
+        echo json_encode(AdminModel::ShowClubs());
     }
 
     public function actionAjax_eventShow()
@@ -152,7 +154,7 @@ class AdminController
 //        self::showArray($array);
 //        die;
 //
-        echo  json_encode(AdminModel::ShowEvents()) ;
+        echo json_encode(AdminModel::ShowEvents());
     }
 
     public function actionAjaxCategory_add()
@@ -194,14 +196,14 @@ class AdminController
         $d_age_category = array();
         $d_nomination = array();
         $d_league = array();
-
-        foreach($list as $value){
-            $dance_group_mane = $value['dance_group_name'];
-            $d_program = unserialize($value['d_program']);
-            $d_age_category = unserialize($value['d_age_category']);
-            $d_nomination = unserialize($value['d_nomination']);
-            $d_league = unserialize($value['d_league']);
+        foreach ($list as $value) {
+            $dance_group_mane .= '<br>' . $value['dance_group_name'] . '<br>';
+            array_push($d_program, unserialize($value['d_program']));
+            array_push($d_age_category, unserialize($value['d_age_category']));
+            array_push($d_nomination, unserialize($value['d_nomination']));
+            array_push($d_league, unserialize($value['d_league']));
         }
+
 
         echo '<br> Dance group name: ';
         echo $dance_group_mane . '<br>';
@@ -224,8 +226,6 @@ class AdminController
         echo '<br><br>';
 
 
-
-
     } //end this method!!!
 
     public function actionAddDancingGroups()
@@ -240,13 +240,13 @@ class AdminController
 
     public function actionAddDanceProgram()
     {
-        if(isset($_POST) && !empty($_POST['redirect'])){
+        if (isset($_POST) && !empty($_POST['redirect'])) {
             $json = json_decode($_POST['redirect'], true);
             $result = (integer)AdminModel::saveDanceProgram($json);
             echo '<br>';
             echo 'here is the result of the operation: ' . $result . '<br>';
             echo '<br>';
-            echo 'redirect --> '.Router::$permalink . $json['redirect'];
+            echo 'redirect --> ' . Router::$permalink . $json['redirect'];
             header('Location: ' . Router::$permalink . $json['redirect']);
         }
     }
