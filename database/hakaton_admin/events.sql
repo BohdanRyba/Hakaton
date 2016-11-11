@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 02 2016 г., 18:04
+-- Время создания: Ноя 11 2016 г., 19:23
 -- Версия сервера: 10.1.16-MariaDB
 -- Версия PHP: 5.6.24
 
@@ -36,20 +36,21 @@ CREATE TABLE `events` (
   `event_city` varchar(255) NOT NULL,
   `event_country` varchar(255) NOT NULL,
   `event_referee` varchar(255) NOT NULL,
-  `event_skutiner` varchar(255) NOT NULL
+  `event_skutiner` varchar(255) NOT NULL,
+  `org_id_for_event` bigint(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `events`
 --
 
-INSERT INTO `events` (`id`, `event_name`, `event_image`, `event_status`, `event_start`, `event_end`, `event_city`, `event_country`, `event_referee`, `event_skutiner`) VALUES
-(1, 'First Club', '../../views/main/img/event_img/B65GJLECduw.jpg', 'Enable', '2000-12-12', '2001-02-02', 'Lviv', 'Ukraine', 'Bodya', 'Yana'),
-(2, 'Second', '../../views/main/img/event_img/B65GJLECduw.jpg', 'qwertyu', '2000-12-12', '2001-02-02', 'Lviv', 'Ukraine', 'Bodya', 'Yana'),
-(3, 'Second', '../../views/main/img/event_img/img661907_cc10e581f742aec6.jpg', 'qwertyu', '2000-12-12', '2001-02-02', 'Lviv', 'Ukraine', 'Bodya', 'Yana'),
-(4, 'Hello Image', '../../views/main/img/event_img/B65GJLECduw.jpg', 'Hello Image', '0000-00-00', '0000-00-00', 'Hello Image', 'Hello Image', 'Hello Image', 'Hello Image'),
-(5, 'qwertyuiop', '../../views/main/img/event_img/img661907_cc10e581f742aec6.jpg', 'qwertyuiy', '0000-00-00', '0000-00-00', '.ldfch,jk./l', 'dxbfcngh,jk.l/,', 'vxdfbcgvnhbmj,nk.ml,', 'xvcbfvngbhm,n'),
-(6, 'poiuytr', '../../views/main/img/event_img/img661907_cc10e581f742aec6.jpg', 'wefrghyujgr', '0000-00-00', '0000-00-00', 'sfdhjm', 'sfdhj', 'fsdghmj', 'sfdgfh');
+INSERT INTO `events` (`id`, `event_name`, `event_image`, `event_status`, `event_start`, `event_end`, `event_city`, `event_country`, `event_referee`, `event_skutiner`, `org_id_for_event`) VALUES
+(1, 'First Club', '../../../views/main/img/event_img/111.jpg', 'Enable', '2000-12-12', '2001-02-02', 'Lviv', 'Ukraine', 'Bodya', 'Yana', 5),
+(15, 'wdafesgrdht', '../../../views/main/img/event_img/te_2Qu4gjys.jpg', 'dwafegrhtjy', '0000-00-00', '0000-00-00', 'szfdgfhgh', 'fszgdhfng', 'szvdxbfngmh', 'ascdvfgnh', 5),
+(16, 'qwertyqqqqq', '../../../views/main/img/event_img/', 'weqwrqw', '0000-00-00', '0000-00-00', 'eqweqwe', 'qweqweqwe', 'qweqweqwe', 'qweqweqeq', 5),
+(17, 'wdfegrhtfrgsrdh', '../../../views/main/img/event_img/', 'dafesgrdhtfgaesrhd', '0000-00-00', '0000-00-00', 'fsdfbsadgfb', 'dvfgbfdfzdvsbfdfd', 'fsfdvfbddsvfdfsf', 'fadsgfdfngfgdsf', 4),
+(18, 'Bagdashachka', '../../../views/main/img/event_img/backenddeveloper.jpg', 'qwertyuiop[', '0000-00-00', '0000-00-00', 'dfsgnmjh,', 'svdfbgn', 'vxfbgcnh', 'acsvdxfbcgn hmbj', 4),
+(19, 'sdsfsdfs', '../../../views/main/img/event_img/img669771_c9b88db761dd1b77.jpg', 'вфцвфв', '0000-00-00', '0000-00-00', 'уцауыкпвиеатрм и', 'ымвчиасптмрьи оть', 'ыавпатоьрлтб', 'уапкреньпгбршоюлд.', 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -69,7 +70,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
