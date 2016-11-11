@@ -7,27 +7,27 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/organization_list.less">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/organization_list.less">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="<?=Router::$permalink?>views/main/js/less.min.js" type="text/javascript"></script>
+    <script src="<?= Router::$permalink ?>views/main/js/less.min.js" type="text/javascript"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -55,10 +55,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Главная</a></li>
-                            <li><a href="#">События</a></li>
-                            <li><a href="#">Новости</a></li>
-                            <li><a href="#">О нас</a></li>
+                            <?php echo $nav_content; ?>
                         </ul>
                     </li>
                     <!-- User Account Menu -->
@@ -152,7 +149,8 @@
                         <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?=Router::$permalink?>admin/organizations/org_add">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
 
@@ -162,17 +160,18 @@
                         <span>Танцевальные групы</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
                 </li>
                 <li class="treeview">
-                    <a href="<?=Router::$permalink?>admin/SettingsOrg/org_settings">
+                    <a href="<?= Router::$permalink ?>admin/SettingsOrg/org_settings">
                         <span>Settings</span>
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?=Router::$permalink?>admin/organizations/org_settings">Organizations Settings</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings">Organizations
+                                Settings</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
@@ -198,17 +197,21 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <h4 class="modal-title text-uppercase" id="myModalLabel">удаление организации</h4>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <p></p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary text-capitalize deletion-submit">удалить!
-                            </button>
-                            <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
-                                    data-dismiss="modal">отмена
-                            </button>
+                            <form method="post" action="delOrg">
+                                <input type="submit" name="delete_org"
+                                       class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
+                                <input type="hidden" name="delete_org_id">
+                                <input type="hidden" name="redirect" value="<?php echo Router::$uri; ?>">
+                                <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
+                                        data-dismiss="modal">отмена
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -237,7 +240,8 @@
                                 </div>
                                 <div class="row box-body">
                                     <div class="col-md-4 col-xs-12">
-                                        <img class="org-img" src="<?php echo Router::$permalink.$organization['org_pic_path']?>">
+                                        <img class="org-img"
+                                             src="<?php echo Router::$permalink . $organization['org_pic_path'] ?>">
                                     </div>
                                     <div class="col-md-8 col-xs-12 pull-left">
                                         <div class="org-info-wrapper">
@@ -264,7 +268,10 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                        <a href="<?=Router::$permalink?>admin/organizations/org_settings" class="gogogo text-center">Настройки Организации</a>
+                                        <form method="post" action="../org_settings/<?php echo $organization['id']; ?>">
+                                            <input name="org_id" type="hidden" value="<?php echo $organization['id']; ?>">
+                                            <a><input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"></a>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -369,12 +376,12 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/organization_list.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/organization_list.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

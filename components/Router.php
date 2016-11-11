@@ -3,9 +3,10 @@
 class Router
 {
     private $routes;
-    public $uri;
+    public static $uri;
     public $result;
     public static $permalink;
+    public static $getid;
 
     /**
      * include file "routes.php" from folder "config" with array inside
@@ -15,6 +16,7 @@ class Router
         $project = pathinfo($_SERVER['PHP_SELF']);
         $root_path = rtrim( '//' . $_SERVER['HTTP_HOST'] . $project['dirname'], '/' ) . '/';
         self::$permalink = $root_path;
+
         $routesPath = ROOT . 'config/routes.php';
         $this->routes = include($routesPath);
     }
@@ -26,9 +28,18 @@ class Router
     {
 
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/admin
-            $this->uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
-            $this->uri = trim($this->uri, '/');// admin
-            return $this->uri;
+            self::$uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
+            self::$uri = trim(self::$uri, '/');// admin
+            return self::$uri;
+        }
+    }
+    static function getId()
+    {
+
+        if (!empty($_SERVER['REQUEST_URI'])) { // /Hakaton/admin/organizations/org_settings/21
+            self::$getid = preg_replace("/(.*)org_settings\//", '', $_SERVER['REQUEST_URI']); // /21
+            self::$getid = trim(self::$getid, '/');// 21
+            return self::$getid;
         }
     }
 

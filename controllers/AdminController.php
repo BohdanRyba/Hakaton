@@ -6,16 +6,24 @@ require_once(ROOT . 'components/Traits.php');
 class AdminController
 {
     use messagesOperations;
+    use navigationFunctional;
 
     public function actionIndex($Cpag)
     {
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
+
+        $nav_content = $this->createNavContent(Router::$uri, $Cpag);
         $organizationsList = AdminModel::getAllOrganizations();
-        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag);
+
+        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag, count($organizationsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
 
-        require_once('views/admin/organizations/organizations_list.php');
+        require_once('views/admin/organizations/organizations_list.php'); // here in view file we show the message;
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
         return true;
     }
 
@@ -24,6 +32,8 @@ class AdminController
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
+        $nav_content = $this->createNavContent(Router::$uri);
+
         require_once('views/admin/organizations/reg_org.php'); // here in view file we show the message;
 
         unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
@@ -32,16 +42,6 @@ class AdminController
 
     public function actionOrg_reg()
     {
-
-
-        echo '<pre>';
-        var_export($_POST);
-        echo '</pre>';
-
-        echo '<pre>';
-        var_export($_FILES);
-        echo '</pre>';
-
         $_POST = array_map("AdminModel::addSlashes", $_POST);
 
         if (isset($_POST)) {
@@ -51,40 +51,46 @@ class AdminController
             ) {
                 $resulting = (integer)AdminModel::recordOrganization();
                 echo $resulting . ' is the result';
-                $this->message = json_encode([
+                $message = json_encode([
                     'status' => 'success',
                     'message' => 'Организация успешно сохранена в базе данных!'
                 ]);
             } else {
                 echo 'NooooO!';
-                $this->message = json_encode([
+                $message = json_encode([
                     'status' => 'error',
                     'message' => 'Организацию сохранить не удалось! Пожалуйста, заполните все обязательные поля.'
                 ]);
             }
-            $this->saveMessage($this->message);
+            self::saveMessage($message);
         }
-
         header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
     }
 
     public function actionAjax_showOrgInf()
     {
-
-        $org_info = array();
         $org_info = AdminModel::getOrganizationById($_POST['id']);
 
         echo json_encode($org_info);
     }
 
+    public function actionDelOrg(){
+        self::showArray($_POST);
+        if (isset($_POST)) {
+            if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
+                $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
+                echo $resulting . ' is the result';
+            } else {
+                echo 'One of the POST\'s components didn\'t pass the checking clause!';
+            }
+        }
+        header('Location: ' . Router::$permalink . $_POST['redirect']);
+        return true;
+    }
+
     public function actionUpdateOrg()
     {
-
-        echo '<pre>';
-        var_export($_POST);
-        echo '</pre>';
-
         $_POST = array_map("AdminModel::addSlashes", $_POST);
 
         if (isset($_POST)) {
@@ -94,29 +100,24 @@ class AdminController
             ) {
                 $resulting = (integer)AdminModel::updateOrganization();
                 echo $resulting . ' is the result';
-                $this->message = json_encode([
-                    'status' => 'success',
-                    'message' => 'Изменения сохранены успешно!'
-                ]);
             } else {
                 echo 'NooooO!';
-                $this->message = json_encode([
-                    'status' => 'error',
-                    'message' => 'Данные обновить не удалось!'
-                ]);
             }
-            $this->saveMessage($this->message);
         }
-
-//        header('Location: '. Router::$permalink . $_POST['redirect']);
+        header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
     }
-
-
-    public function actionOrg_settings()
+    public function actionOrg_settings($id)
     {
+//        self::showArray($_POST);
+        if(isset($_POST['org_id'])){
+            $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
+        }
+
+        setcookie("get_id","$id");
+        $nav_content = $this->createNavContent(Router::$uri, $id);
         include 'views/admin/SettingsOrg/org_settings.php';
-        if($_POST) {
+        if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
                 $this->addClub();
             } elseif ($_POST['action'] == 'event') {
@@ -125,34 +126,91 @@ class AdminController
         }
     }
 
-    public function addClub(){
+    public function addClub()
+    {
+        echo '<pre>';
+        var_dump($_POST);
+        echo '</pre>';
         AdminModel::club_add($_POST);
     }
+
     public function addEvent(){
+//        echo '<pre>';
+//        var_dump($_POST);
+//        echo '</pre>';
+//
+//        die;
         AdminModel::event_add($_POST);
     }
 
-    public  function actionAjaxClub_add()
+    public function actionAjaxClub_add()
     {
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
-    public  function actionAjax_clubShow()
+    public function actionAjax_clubShow()
     {
         echo  json_encode(AdminModel::ShowClubs()) ;
     }
-    public  function actionAjax_eventShow()
+
+    public function actionAjax_eventShow()
     {
+        $array = AdminModel::ShowEvents();
+        self::showArray($array);
+//        die;
+//
         echo  json_encode(AdminModel::ShowEvents()) ;
     }
+
     public function actionAjaxCategory_add()
     {
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
-    public function actionAjaxCreate_event()
+    public function actionAjaxCreate_event($id='')
     {
         include 'views/admin/SettingsOrg/create-event.php';
     }
 
+    public function actionDancingList()
+    {
+        echo 'Hello from dancing list!';
+
+        $db = Db::getConnection(Db::ADMIN_BASE);
+        $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
+        $result = $db->query($query);
+        $list = array();
+        $i = 0;
+        while ($row = $result->fetch_assoc()) {
+            $list[$i]['id'] = $row['id'];
+            $list[$i]['dance_group_name'] = $row['dance_group_name'];
+            $list[$i]['d_program'] = $row['d_program'];
+            $list[$i]['d_age_category'] = $row['d_age_category'];
+            $list[$i]['d_nomination'] = $row['d_nomination'];
+            $list[$i]['d_league'] = $row['d_league'];
+            $i++;
+        }
+
+        $db->close();
+
+        self::showArray($list);
+    }
+
+    public function actionAddDancingGroups()
+    {
+        include 'views/admin/dancing_groups/add_dancing_groups.php';
+    }
+
+    public function actionAddDanceProgram()
+    {
+        if(isset($_POST) && !empty($_POST['redirect'])){
+            $json = json_decode($_POST['redirect'], true);
+            $result = (integer)AdminModel::saveDanceProgram($json);
+            echo '<br>';
+            echo 'here is the result of the operation: ' . $result . '<br>';
+            echo '<br>';
+            echo 'redirect --> '.Router::$permalink . $json['redirect'];
+            header('Location: ' . Router::$permalink . $json['redirect']);
+        }
+    }
 }

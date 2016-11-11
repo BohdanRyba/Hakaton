@@ -11,20 +11,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/AdminLTE.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/AdminLTE.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" type="text/css" href="<?=Router::$permalink?>views/main/css/style.css">
-    <script src="<?=Router::$permalink?>views/main/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= Router::$permalink ?>views/main/css/style.css">
+    <script src="<?= Router::$permalink ?>views/main/js/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,10 +73,13 @@ desired effect
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand">Brand</a></div>
-
-                <?php echo $nav_content; ?>
-
+                    <a href="#" class="navbar-brand">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+                    <ul class="nav navbar-nav pull-right">
+                        <?php echo $nav_content; ?>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -86,12 +89,17 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
+        <?php if (isset($this->message)) {
+            echo $this->message;
+        }
+        ?>
         <section class="content-header">
             <h1>
                 Page Header
                 <small>Optional description</small>
             </h1>
         </section>
+
         <!-- Main content -->
         <section class="content">
             <!-- Your Page Content Here -->
@@ -168,6 +176,7 @@ desired effect
                 </div>
             </div>
         </section>
+
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -264,12 +273,12 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

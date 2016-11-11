@@ -1,21 +1,27 @@
 <?php
 
 include_once(ROOT . 'models/NewsModel.php');
+require_once(ROOT . 'components/Traits.php');
 
 class NewsController
 {
+    use messagesOperations;
+    use navigationFunctional;
 
     public function actionIndex($Cpag)
     {
-
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
         $newsList = NewsModel::getNewsList();
-        $nav_content = NewsModel::getNavNewsContent($Cpag);
-        $start_end_pagination_array = NewsModel::getPaginationContent($Cpag);
+        $nav_content = $this->createNavContent(Router::$uri, $Cpag);
+        $start_end_pagination_array = NewsModel::getPaginationContent($Cpag, count($newsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
 
         require_once(ROOT . 'views/news/index.php');
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
 
         return true;
 
@@ -23,10 +29,14 @@ class NewsController
 
     public function actionView($id)
     {
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
         if ($id) {
             $newsItem = NewsModel::getNewsItemById($id);
-            $nav_content = NewsModel::getNavNewsContent($id);
+            $nav_content = $this->createNavContent(Router::$uri, $id);
             require_once(ROOT . 'views/news/view.php');
+            unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
 
             return true;
         }
