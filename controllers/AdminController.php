@@ -118,6 +118,8 @@ class AdminController
         if (isset($id) && is_numeric($id)) {
             $nav_content = $this->createNavContent(Router::$uri, $id);
         }
+        setcookie("get_id", "$id");
+
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
@@ -130,11 +132,13 @@ class AdminController
 
     public function addClub()
     {
+        self::showArray($_POST);
         AdminModel::club_add($_POST);
     }
 
     public function addEvent()
     {
+        self::showArray($_POST);
         AdminModel::event_add($_POST);
     }
 
@@ -150,11 +154,12 @@ class AdminController
 
     public function actionAjax_eventShow()
     {
-//        $array = AdminModel::ShowEvents();
+        $array = AdminModel::ShowEvents();
 //        self::showArray($array);
 //        die;
-//
+
         echo json_encode(AdminModel::ShowEvents());
+
     }
 
     public function actionAjaxCategory_add()
@@ -162,7 +167,7 @@ class AdminController
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
-    public function actionAjaxCreate_event()
+    public function actionAjaxCreate_event($id='')
     {
 //        echo "it's create-event";
         include 'views/admin/SettingsOrg/create-event.php';

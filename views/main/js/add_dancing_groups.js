@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 jQuery(function($) {
 
     var $menuItems=$('.dance-group-menu a'),
@@ -370,5 +371,4 @@ jQuery(function($) {
         });
         return obj;
     }
-
 });

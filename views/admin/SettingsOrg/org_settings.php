@@ -409,7 +409,6 @@ desired effect
                                  <span class="label label-danger pull-right">70%</span>
                              </span>
                          </h4>
-
                          <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
@@ -417,10 +416,10 @@ desired effect
                 </li>
             </ul>
             <!-- /.control-sidebar-menu -->
-
+                <?=setcookie("set","")?>
         </div>
         <!-- /.tab-pane -->
-        <!-- Stats tab content -->
+        <!-- Stats tab content -->,
         <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
         <!-- /.tab-pane -->
         <!-- Settings tab content -->
@@ -495,9 +494,16 @@ desired effect
             $("[data-mask]").inputmask();
         });
     });
+window.onload =function () {
+    var id_uri=window.location.href;
+    id_uri=id_uri.split('/');
+    id_uri=id_uri[id_uri.length-1];
+    document.getElementById('org_id').valueOf(id_uri);
+}
+
 </script>
 
 <script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?2771"></script>
 </body>
 </html>

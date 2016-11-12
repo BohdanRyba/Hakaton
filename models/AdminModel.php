@@ -170,7 +170,7 @@ class AdminModel
     public static function ShowClubs()
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `clubs` ORDER BY id DESC";
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$_COOKIE['org_id']} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
@@ -181,6 +181,8 @@ class AdminModel
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
+                $clubsList[$i]['org_id_for_club'] = $row['org_id'];
+
                 $i++;
             }
             $db->close();
@@ -191,7 +193,7 @@ class AdminModel
     public static function ShowEvents()
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `events` ORDER BY id DESC";
+            $query = "SELECT * FROM `events`  WHERE org_id_for_event = {$_COOKIE['org_id']} ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;
@@ -206,6 +208,7 @@ class AdminModel
                 $eventsList[$i]['event_country'] = $row['event_country'];
                 $eventsList[$i]['event_referee'] = $row['event_referee'];
                 $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
+                $eventsList[$i]['org_id_for_event'] = $row['org_id'];
                 $i++;
             }
             $db->close();
@@ -223,18 +226,19 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
                 move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
             }
-
+            $pass = md5($a['club_number']);
             $result = $db->query("INSERT INTO `clubs`
                         SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_image`          = '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        = '{$a['club_country']}',
                         `club_city`           = '{$a['club_city']}',
                         `club_shief`          = '{$a['club_shief']}',
-                        `club_first_trener`   = '{$a['club_first_trener']}',
-                        `club_second_trener`  = '{$a['club_second_trener']}',
-                        `club_third_trener`   = '{$a['club_third_trener']}',
                         `club_number`         = '{$a['club_number']}',
-                        `club_mail`           = '{$a['club_mail']}'
+                        `club_mail`           = '{$a['club_mail']}',
+                        `org_id_for_club`           = '{$a['org_id']}',
+                        `password`='{$pass}',
+                        `grant`=1,
+                        `active`=1
                         ");
 
             return $result;
@@ -251,7 +255,9 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
-
+            echo '<pre>';
+            var_dump($a);
+            echo '<pre>';
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
                         `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
@@ -261,12 +267,13 @@ class AdminModel
                         `event_city`   = '{$a['event_city']}',
                         `event_country`  = '{$a['event_country']}',
                         `event_referee`   = '{$a['event_referee']}',
-                        `event_skutiner`         = '{$a['event_skutiner']}'
+                        `event_skutiner`= '{$a['event_skutiner']}',
+                        `org_id_for_event`= '{$a['org_id']}'
                         ");
 
+            $db->close();
             return $result;
         }
-        $db->close();
         return true;
     }
 
