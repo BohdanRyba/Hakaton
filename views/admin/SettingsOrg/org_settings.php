@@ -236,7 +236,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-xs-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -252,7 +252,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -268,7 +268,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -498,6 +498,6 @@ desired effect
 </script>
 
 <script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?12"></script>
 </body>
 </html>

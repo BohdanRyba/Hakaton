@@ -17,17 +17,31 @@ search[0].onkeyup = function (typeSearch) {
         success:funcSearch
     });
 };
-
+$('.search_event').on('keyup', function(element){
+    let codKey= element.which;
+    if(codKey===13){
+        element.preventDefault();
+        let id= $('#organization').attr('data-id');
+        id= parseInt(id);
+        $.ajax({
+            url: 'ajax_eventShow',
+            type: 'POST',
+            data:'id='+id,
+            dataType: 'html',
+            success:funcSearchPrint
+        });
+    };
+});
 $('#search_event_go').on('click', function(){
-   let id= $('#organization').attr('data-id');
-   id= parseInt(id);
-   $.ajax({
-        url: 'ajax_eventShow',
-        type: 'POST',
-        data:'id='+id,
-        dataType: 'html',
-        success:funcSearchPrint
-    });
+ let id= $('#organization').attr('data-id');
+ id= parseInt(id);
+ $.ajax({
+    url: 'ajax_eventShow',
+    type: 'POST',
+    data:'id='+id,
+    dataType: 'html',
+    success:funcSearchPrint
+});
 });
 
 function  funcSearch(data) {      //function collection node with the search result    
@@ -37,15 +51,15 @@ function  funcSearch(data) {      //function collection node with the search res
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node =  '<li>'
-                            +'<div class="list-search clr">'
-                                +'<div>'
-                                    +'<img class="bg_event_avatar" src=" '+ element.event_image +' " alt="wtf"/>'
-                                +'</div>'
-                                +'<div>'
-                                    +'<span>Событие: '+ element.event_name +' </span>'
-                                +'</div>'
-                            +'</div>'
-                        +'</li>';
+            +'<div class="list-search clr">'
+            +'<div>'
+            +'<img class="bg_event_avatar" src=" '+ element.event_image +' " alt="wtf"/>'
+            +'</div>'
+            +'<div>'
+            +'<span>Событие: '+ element.event_name +' </span>'
+            +'</div>'
+            +'</div>'
+            +'</li>';
             return node;
         });
         return nameList;
@@ -71,8 +85,8 @@ function  funcSearchPrint(data) {      //function collection node with the searc
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
-        +'<div class="box-body">'
-        +'<li class="result_search">'
+            +'<div class="box-body">'
+            +'<li class="result_search">'
             +'<div class="list-search clr">'
             +'<div>'
             +'<img class="bg_event_avatar" src=" '+ element.event_image +' " alt="wtf"/>'
