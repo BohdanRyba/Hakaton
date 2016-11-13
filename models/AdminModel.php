@@ -192,8 +192,9 @@ class AdminModel
 
     public static function ShowEvents()
     {
+        $eventsList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `events`  WHERE org_id_for_event = {$_COOKIE['org_id']} ORDER BY id DESC";
+            $query = "SELECT * FROM `events` WHERE org_id_for_event = {$_COOKIE['get_id']} ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;
@@ -208,7 +209,7 @@ class AdminModel
                 $eventsList[$i]['event_country'] = $row['event_country'];
                 $eventsList[$i]['event_referee'] = $row['event_referee'];
                 $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
-                $eventsList[$i]['org_id_for_event'] = $row['org_id'];
+                $eventsList[$i]['org_id'] = $row['org_id_for_event'];
                 $i++;
             }
             $db->close();

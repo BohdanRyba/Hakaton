@@ -236,7 +236,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-xs-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -252,7 +252,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -268,7 +268,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -499,11 +499,11 @@ window.onload =function () {
     id_uri=id_uri.split('/');
     id_uri=id_uri[id_uri.length-1];
     document.getElementById('org_id').valueOf(id_uri);
-}
+} // I don't understand the purpose of this function (Roma);
 
 </script>
 
 <script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?2771"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?772"></script>
 </body>
 </html>

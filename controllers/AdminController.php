@@ -154,7 +154,7 @@ class AdminController
 
     public function actionAjax_eventShow()
     {
-        $array = AdminModel::ShowEvents();
+//        $array = AdminModel::ShowEvents();
 //        self::showArray($array);
 //        die;
 
