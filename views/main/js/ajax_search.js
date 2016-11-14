@@ -17,10 +17,12 @@ search[0].onkeyup = function (typeSearch) {
         success:funcSearch
     });
 };
-$('.search_event').on('keyup', function(element){
+$('.search_event').keydown(function(element){
     let codKey= element.which;
     if(codKey===13){
         element.preventDefault();
+        $('.bg-opacity').hide();
+        $('.list_information').hide();
         let id= $('#organization').attr('data-id');
         id= parseInt(id);
         $.ajax({
