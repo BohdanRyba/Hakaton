@@ -46,7 +46,8 @@ $('#search_event_go').on('click', function(){
 });
 });
 
-function  funcSearch(data) {      //function collection node with the search result    
+function  funcSearch(data) {      //function collection node with the search result
+    console.log(data);
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
@@ -70,7 +71,7 @@ function  funcSearch(data) {      //function collection node with the search res
     // It determines whether the array contains the search request
     const queryString = search[0].value.toLowerCase();
     let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString); 
+        return element.event_name.toLowerCase().includes(queryString);
     });
 
     // add search result in DOM
@@ -80,10 +81,9 @@ function  funcSearch(data) {      //function collection node with the search res
     });
 
 };
-function  funcSearchPrint(data) {      //function collection node with the search result    
+function  funcSearchPrint(data) {      //function collection node with the search result
     $('.cont-box1>').remove();
     let list = JSON.parse(data);
-
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
@@ -107,7 +107,7 @@ function  funcSearchPrint(data) {      //function collection node with the searc
     // It determines whether the array contains the search request
     const queryString = search[0].value.toLowerCase();
     let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString); 
+        return element.event_name.toLowerCase().includes(queryString);
     });
 
     // add search result in DOM

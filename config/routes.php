@@ -15,6 +15,7 @@ return array(
     'admin/organizations/event_add' => 'admin/event_add',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add', // changed
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event', // changed
+//    'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1', // нахіба ця строка?
     'admin/organizations/org_settings/ajax_eventShow' => 'admin/ajax_eventShow', // changed
     'admin/organizations/org_settings/ajax_create_category' => 'admin/ajaxCategory_add', // changed
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // changed
@@ -26,5 +27,8 @@ return array(
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
+    'admin/dancing_groups/dance_list' => 'admin/dancingList',
+    'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
+    'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',
     '' => 'home/index',
 );

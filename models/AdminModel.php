@@ -129,8 +129,8 @@ class AdminModel
             $pic_folder = implode("/", $tmp_arr_with_pic_path) . '/'; // after that we glue all the components to create a folder path with pictures;
 
             $old = getcwd(); // Save the current directory
-            chdir(ROOT. $pic_folder); // change the dir where lays the organization's picture;
-            $delete_picture_result = unlink(ROOT. $pic_folder. $image_name); // then delete the picture;
+            chdir(ROOT . $pic_folder); // change the dir where lays the organization's picture;
+            $delete_picture_result = unlink(ROOT . $pic_folder . $image_name); // then delete the picture;
             chdir($old); // Restore the old working directory;
 
             if ($result == true && $delete_picture_result == true) {
@@ -167,9 +167,10 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs(){
+    public static function ShowClubs()
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `clubs` ORDER BY id DESC";
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$_COOKIE['org_id']} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
@@ -178,11 +179,10 @@ class AdminModel
                 $clubsList[$i]['club_country'] = $row['club_country'];
                 $clubsList[$i]['club_city'] = $row['club_city'];
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
-                $clubsList[$i]['club_first_trener'] = $row['club_first_trener'];
-                $clubsList[$i]['club_second_trener'] = $row['club_second_trener'];
-                $clubsList[$i]['club_third_trener'] = $row['club_third_trener'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
+                $clubsList[$i]['org_id_for_club'] = $row['org_id'];
+
                 $i++;
             }
             $db->close();
@@ -190,9 +190,11 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowEvents(){
+    public static function ShowEvents()
+    {
+        $eventsList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `events` ORDER BY id DESC";
+            $query = "SELECT * FROM `events` WHERE org_id_for_event = {$_COOKIE['get_id']} ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;
@@ -207,6 +209,7 @@ class AdminModel
                 $eventsList[$i]['event_country'] = $row['event_country'];
                 $eventsList[$i]['event_referee'] = $row['event_referee'];
                 $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
+                $eventsList[$i]['org_id'] = $row['org_id_for_event'];
                 $i++;
             }
             $db->close();
@@ -224,18 +227,19 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
                 move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
             }
-
+            $pass = md5($a['club_number']);
             $result = $db->query("INSERT INTO `clubs`
                         SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = '../../views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_image`          = '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        = '{$a['club_country']}',
                         `club_city`           = '{$a['club_city']}',
                         `club_shief`          = '{$a['club_shief']}',
-                        `club_first_trener`   = '{$a['club_first_trener']}',
-                        `club_second_trener`  = '{$a['club_second_trener']}',
-                        `club_third_trener`   = '{$a['club_third_trener']}',
                         `club_number`         = '{$a['club_number']}',
-                        `club_mail`           = '{$a['club_mail']}'
+                        `club_mail`           = '{$a['club_mail']}',
+                        `org_id_for_club`           = '{$a['org_id']}',
+                        `password`='{$pass}',
+                        `grant`=1,
+                        `active`=1
                         ");
 
             return $result;
@@ -252,22 +256,25 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
-
+            echo '<pre>';
+            var_dump($a);
+            echo '<pre>';
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
-                        `event_image`          = '../../views/main/img/event_img/{$_FILES['event_image']['name']}',
+                        `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
                         `event_start`           = '{$a['event_start']}',
                         `event_end`          = '{$a['event_end']}',
                         `event_city`   = '{$a['event_city']}',
                         `event_country`  = '{$a['event_country']}',
                         `event_referee`   = '{$a['event_referee']}',
-                        `event_skutiner`         = '{$a['event_skutiner']}'
+                        `event_skutiner`= '{$a['event_skutiner']}',
+                        `org_id_for_event`= '{$a['org_id']}'
                         ");
 
+            $db->close();
             return $result;
         }
-        $db->close();
         return true;
     }
 
@@ -357,5 +364,40 @@ class AdminModel
             die(mysqli_error($link));
         }
         return mysqli_affected_rows($link);
+    }
+
+    static function saveDanceProgram($json)
+    {
+        $result = '';
+        $message = '';
+        $array_for_record = array();
+        if (isset($json) && !empty($json)) {
+            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+                $result = $db->query("INSERT INTO `dance_groups`
+                        SET `dance_group_name` = '{$json['dance-group-name']}',
+                            `d_program` = '" . serialize($json['programs']) . "',
+                            `d_age_category` = '" . serialize($json['age-categories']) . "',
+                            `d_nomination` = '" . serialize($json['nominations']) . "',
+                            `d_league` = '" . serialize($json['leagues']) . "'");
+                if ($result == true) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Танцевальная программа \"{$json['dance-group-name']}\" успешно сохранена!"
+                    ]);
+                } elseif ($result == false) {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Танцевальную программу \"{$json['dance-group-name']}\" сохранить не удалось!"
+                    ]);
+                }
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'НЕ удалось установить соединение с базой данных! Что-то пошло не так...'
+                ]);
+            }
+        }
+        self::saveMessage($message);
+        return $result;
     }
 }

@@ -6,6 +6,7 @@ class Router
     public static $uri;
     public $result;
     public static $permalink;
+    public static $getid;
 
     /**
      * include file "routes.php" from folder "config" with array inside
@@ -30,6 +31,16 @@ class Router
             self::$uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
             self::$uri = trim(self::$uri, '/');// admin
             return self::$uri;
+        }
+    }
+
+    static function getId()
+    {
+
+        if (!empty($_SERVER['REQUEST_URI'])) { // /Hakaton/admin/organizations/org_settings/21
+            self::$getid = preg_replace("/(.*)org_settings\//", '', $_SERVER['REQUEST_URI']); // /21
+            self::$getid = trim(self::$getid, '/');// 21
+            return self::$getid;
         }
     }
 

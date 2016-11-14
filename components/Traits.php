@@ -118,7 +118,7 @@ trait navigationFunctional
 
 trait paginationCreation
 {
-    public static function getPaginationContent($Cpag, $listAmount)
+    public static function getPaginationContent($Cpag, $listAmount) // we receive here two things: number of the current page, and a counted amount of the list which we are going to show;
     {
 
         if (isset($Cpag) and is_numeric($Cpag)) {

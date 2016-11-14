@@ -22,7 +22,8 @@ jQuery(function($) {
     var $danceProgramBlock=$('#dance-programs'),
         $ageCategoriesBlock=$('#age-categories'),
         $nominationsBlock=$('#nominations'),
-        $leaguesBlock=$('#leagues');
+        $leaguesBlock=$('#leagues'),
+        $sendFormToServer=$('#send-dg-to-server');
 
     //=============================DANCE_PROGRAM=======================================
 
@@ -84,8 +85,6 @@ jQuery(function($) {
     //ФУНКЦІЇ
 
     $dpSendBtn.on('click', function (e) {
-        e.preventDefault();
-
         var $form1=$danceProgramBlock.find('.dance-group-show-info'),
             $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
@@ -94,13 +93,15 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
             a['nominations']=createObj ($nmShowForm, '.nm-info-wrapper');
             a=JSON.stringify(a);
             $(this).next().val(a);
+            $sendFormToServer.val(a);
+            console.log(a);
         } else {
             return false;
         }
@@ -123,7 +124,6 @@ jQuery(function($) {
     }
 
     $agAddBtn.on('click', function (e) {
-        e.preventDefault();
         if (!$agAddForm.find('input[name=age-category-name-new]').val()=='') {
             var $ac=$agAddForm.serializeArray(),
                 acName=$ac[0].value,
@@ -169,8 +169,6 @@ jQuery(function($) {
     //видалення інформації
     //ФУНКЦІЇ
     $agSendBtn.on('click', function (e) {
-        e.preventDefault();
-
         var $form1=$danceProgramBlock.find('.dance-group-show-info'),
             $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
@@ -179,13 +177,14 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
             a['nominations']=createObj ($nmShowForm, '.nm-info-wrapper');
             a=JSON.stringify(a);
             $(this).next().val(a);
+            $sendFormToServer.val(a);
         } else {
             return false;
         }
@@ -252,8 +251,6 @@ jQuery(function($) {
     //видалення інформації
     //ФУНКЦІЇ
     $nmSendBtn.on('click', function (e) {
-        e.preventDefault();
-
         var $form1=$danceProgramBlock.find('.dance-group-show-info'),
             $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
@@ -262,13 +259,14 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
             a['nominations']=createObj ($nmShowForm, '.nm-info-wrapper');
             a=JSON.stringify(a);
             $(this).next().val(a);
+            $sendFormToServer.val(a);
         } else {
             return false;
         }
@@ -334,7 +332,6 @@ jQuery(function($) {
     //видалення інформації
     //ФУНКЦІЇ
     $lgSendBtn.on('click', function (e) {
-        e.preventDefault();
         var $form1=$danceProgramBlock.find('.dance-group-show-info'),
             $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
@@ -343,13 +340,14 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
             a['nominations']=createObj ($nmShowForm, '.nm-info-wrapper');
             a=JSON.stringify(a);
             $(this).next().val(a);
+            $sendFormToServer.val(a);
         } else {
             return false;
         }
@@ -372,5 +370,4 @@ jQuery(function($) {
         });
         return obj;
     }
-
 });

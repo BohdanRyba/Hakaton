@@ -16,6 +16,7 @@ sleep(1);
                 <label for="event_name" class="col-sm-2 control-label">Название события</label>
                 <div class="col-sm-10">
                     <input type="hidden" name="action" value="event">
+                    <input type="hidden" id="org_id" name="org_id" value="<?=$_COOKIE['get_id']?>" />
                     <input type="text" class="form-control" name="event_name" placeholder="Введите информацию">
                 </div>
             </div>
@@ -60,7 +61,6 @@ sleep(1);
                     <input type="text" class="form-control" name="event_country" placeholder="Введите страну">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="event_sud" class="col-sm-2 control-label">Главный судья</label>
                 <div class="col-sm-10">
@@ -77,5 +77,8 @@ sleep(1);
                 <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
             </div>
         </div>
+        <script>
+            document.getElementById("txt").value
+        </script>
     </form>
 </div>
