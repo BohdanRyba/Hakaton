@@ -190,11 +190,11 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowEvents($a)
+    public static function ShowEvents()
     {
         $eventsList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `events` WHERE org_id_for_event = {$_COOKIE['org_id']} ORDER BY id DESC";
+            $query = "SELECT * FROM `events` WHERE org_id_for_event = {$_COOKIE['get_id']} ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;

@@ -155,7 +155,7 @@ class AdminController
 //        self::showArray($array);
 //        die;
 
-        echo json_encode(AdminModel::ShowEvents($_COOKIE));
+        echo json_encode(AdminModel::ShowEvents());
 
     }
 
