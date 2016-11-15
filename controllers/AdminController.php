@@ -149,14 +149,11 @@ class AdminController
         echo json_encode(AdminModel::ShowClubs());
     }
 
-    public function actionAjax_eventShow()
+    public function actionAjax_eventShow($id)
     {
-//        $array = AdminModel::ShowEvents();
-//        self::showArray($array);
+//        echo $id;
 //        die;
-
-        echo json_encode(AdminModel::ShowEvents());
-
+        echo json_encode(AdminModel::ShowEvents($id));
     }
 
     public function actionAjaxCategory_add()

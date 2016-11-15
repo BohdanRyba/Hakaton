@@ -15,9 +15,9 @@ search[0].onkeyup = function (typeSearch) {
 
 
     $.ajax({
-        url: 'ajax_eventShow',
+        url: 'ajax_eventShow/'+id,
         type: 'POST',
-        data:'id='+id,
+        // data:'id='+id,
         dataType: 'html',
         success:funcSearch
     });
