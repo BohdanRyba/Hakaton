@@ -151,12 +151,7 @@ class AdminController
 
     public function actionAjax_eventShow()
     {
-//        $array = AdminModel::ShowEvents();
-//        self::showArray($array);
-//        die;
-
         echo json_encode(AdminModel::ShowEvents());
-
     }
 
     public function actionAjaxCategory_add()
