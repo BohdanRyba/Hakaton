@@ -6,8 +6,13 @@ search[0].onkeyup = function (typeSearch) {
     $('.bg-opacity').show(200);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
+
     var id= window.location.href;
+    id=id.split('/');
     id=id[id.length-1];
+    console.log(id);
+    id= parseInt(id);
+
 
     $.ajax({
         url: 'ajax_eventShow',
@@ -21,9 +26,7 @@ $('.search_event').keydown(function(element){
     let codKey= element.which;
     if(codKey===13){
         element.preventDefault();
-        $('.bg-opacity').hide();
-        $('.list_information').hide();
-        let id= $('#organization').attr('data-id');
+        let id= 5;
         id= parseInt(id);
         $.ajax({
             url: 'ajax_eventShow',

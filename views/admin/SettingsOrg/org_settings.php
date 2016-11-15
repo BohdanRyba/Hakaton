@@ -497,7 +497,6 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?772"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?121212"></script>
 </body>
 </html>
