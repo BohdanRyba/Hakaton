@@ -169,6 +169,8 @@ $(function () {
         $('tfoot tr').children().eq(1).text('Сума: ' + window.summ + 'грн');
         $('thead tr').children().eq(1).text('Сума: ' + window.summ + 'грн');
 
+
+        // search result main
         $('.bg-opacity').on('click', function () {
             $(this).hide();
             $('.popup-control').hide(200);

@@ -475,7 +475,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?14"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?1354"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
