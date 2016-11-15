@@ -268,11 +268,9 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
-                                            <a href="../org_settings/<?php echo $organization['id']; ?>" name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"></a>
-<!--                                        <form method="post" action="../org_settings/--><?php //echo $organization['id']; ?><!--">-->
-<!--                                            <input name="org_id" type="hidden" value="--><?php //echo $organization['id']; ?><!--">-->
-<!--                                            <button name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"><a></a></button> -->
-<!--                                        </form>-->
+                                        <form method="post" action="../org_settings/<?php echo $organization['id']; ?>">
+                                            <input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"><a></a></input>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="row">
