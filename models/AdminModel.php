@@ -209,7 +209,6 @@ class AdminModel
                 $eventsList[$i]['event_country'] = $row['event_country'];
                 $eventsList[$i]['event_referee'] = $row['event_referee'];
                 $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
-                $eventsList[$i]['org_id'] = $row['org_id_for_event'];
                 $i++;
             }
             $db->close();

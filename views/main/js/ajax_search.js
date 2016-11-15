@@ -6,11 +6,13 @@ search[0].onkeyup = function (typeSearch) {
     $('.bg-opacity').show(200);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
-    let id= window.location.href;
+
+    var id= window.location.href;
     id=id.split('/');
     id=id[id.length-1];
     console.log(id);
     id= parseInt(id);
+
 
     $.ajax({
         url: 'ajax_eventShow',
@@ -20,11 +22,10 @@ search[0].onkeyup = function (typeSearch) {
         success:funcSearch
     });
 };
-$('.search_event').on('keyup', function(element){
+$('.search_event').keydown(function(element){
     let codKey= element.which;
     if(codKey===13){
         element.preventDefault();
-        // let id= $('#organization').attr('data-id');
         let id= 5;
         id= parseInt(id);
         $.ajax({
@@ -37,9 +38,7 @@ $('.search_event').on('keyup', function(element){
     };
 });
 $('#search_event_go').on('click', function(){
- let id= $('#organization').attr('data-id');
- id= parseInt(id);
- $.ajax({
+   $.ajax({
     url: 'ajax_eventShow',
     type: 'POST',
     data:'id='+id,
@@ -48,8 +47,7 @@ $('#search_event_go').on('click', function(){
 });
 });
 
-function  funcSearch(data) {      //function collection node with the search result
-    console.log(data);
+function  funcSearch(data) {      //function collection node with the search result    
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
@@ -73,7 +71,7 @@ function  funcSearch(data) {      //function collection node with the search res
     // It determines whether the array contains the search request
     const queryString = search[0].value.toLowerCase();
     let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString);
+        return element.event_name.toLowerCase().includes(queryString); 
     });
 
     // add search result in DOM
@@ -83,9 +81,10 @@ function  funcSearch(data) {      //function collection node with the search res
     });
 
 };
-function  funcSearchPrint(data) {      //function collection node with the search result
+function  funcSearchPrint(data) {      //function collection node with the search result    
     $('.cont-box1>').remove();
     let list = JSON.parse(data);
+
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
@@ -109,7 +108,7 @@ function  funcSearchPrint(data) {      //function collection node with the searc
     // It determines whether the array contains the search request
     const queryString = search[0].value.toLowerCase();
     let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString);
+        return element.event_name.toLowerCase().includes(queryString); 
     });
 
     // add search result in DOM
