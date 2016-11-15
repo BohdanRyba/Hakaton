@@ -111,11 +111,8 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
-//        self::showArray($_POST);
-        if (isset($_POST['org_id'])) {
-            $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
-        }
         if (isset($id) && is_numeric($id)) {
+            $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
         }
         setcookie("get_id", "$id");

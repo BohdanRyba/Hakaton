@@ -494,16 +494,9 @@ desired effect
             $("[data-mask]").inputmask();
         });
     });
-window.onload =function () {
-    var id_uri=window.location.href;
-    id_uri=id_uri.split('/');
-    id_uri=id_uri[id_uri.length-1];
-    document.getElementById('org_id').valueOf(id_uri);
-} // I don't understand the purpose of this function (Roma);
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?772"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?121212"></script>
 </body>
 </html>

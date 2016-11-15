@@ -6,7 +6,10 @@ search[0].onkeyup = function (typeSearch) {
     $('.bg-opacity').show(200);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
-    let id= $('#organization').attr('data-id');
+    let id= window.location.href;
+    id=id.split('/');
+    id=id[id.length-1];
+    console.log(id);
     id= parseInt(id);
 
     $.ajax({
@@ -21,7 +24,8 @@ $('.search_event').on('keyup', function(element){
     let codKey= element.which;
     if(codKey===13){
         element.preventDefault();
-        let id= $('#organization').attr('data-id');
+        // let id= $('#organization').attr('data-id');
+        let id= 5;
         id= parseInt(id);
         $.ajax({
             url: 'ajax_eventShow',
