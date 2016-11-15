@@ -170,13 +170,8 @@ $(function () {
         $('thead tr').children().eq(1).text('Сума: ' + window.summ + 'грн');
 
 
-        // search result main
-        $('.bg-opacity').on('click', function () {
-            $(this).hide();
-            $('.popup-control').hide(200);
-            $('.list_information').slideUp(200);
-            $('.list_data>').remove();
-        });
+
+        console.log($('.bg-opacity'));
         $('tbody>tr').each(function () {
             $(this).on('click', function () {
                 $('.bg-opacity').show(200);

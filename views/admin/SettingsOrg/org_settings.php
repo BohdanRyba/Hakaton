@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
     <meta charset="utf-8">
@@ -475,7 +471,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?1354"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?1343984"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
@@ -497,6 +493,6 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?2"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?687"></script>
 </body>
 </html>

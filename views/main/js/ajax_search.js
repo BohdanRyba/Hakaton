@@ -1,9 +1,9 @@
 // ajax for search event
-'use strict';
+
 let search = document.querySelectorAll('input[type="search"]');
 
 search[0].onkeyup = function (typeSearch) {
-    $('.bg-opacity').show(200);
+    $('.bg-opacity').show();
     $('.list_information').show();
     $('body').trigger('dow_search_list');
 
@@ -33,21 +33,22 @@ $('.search_event').keydown(function(element){
             type: 'POST',
             data:'id='+id,
             dataType: 'html',
-            success:funcSearchPrint
+            success:funcSearch
         });
     };
 });
-$('#search_event_go').on('click', function(){
+$('#search_event_go').on('click', function(id){
    $.ajax({
-    url: 'ajax_eventShow',
-    type: 'POST',
-    data:'id='+id,
-    dataType: 'html',
-    success:funcSearchPrint
-});
+        url: 'ajax_eventShow',
+        type: 'POST',
+        data:'id='+id,
+        dataType: 'html',
+        success:funcSearch
+    });
 });
 
-function  funcSearch(data) {      //function collection node with the search result    
+//function collection node with the search result 
+function  funcSearch(data) {         
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
@@ -81,9 +82,11 @@ function  funcSearch(data) {      //function collection node with the search res
     });
 
 };
-function  funcSearchPrint(data) {      //function collection node with the search result    
+
+/*
+function  funcSearchPrint(data){      //function collection node with the search result    
     $('.cont-box1>').remove();
-    let list = JSON.parse(data);
+    list = JSON.parse(data);
 
     let render = function(list) {
         let nameList = list.map(function (element) {
@@ -117,6 +120,16 @@ function  funcSearchPrint(data) {      //function collection node with the searc
         $container.append(element);
     });
     var $result_search= $('li.result_search');
-    $result_search.wrapAll('<ul class="list_data"></ul>')
-
+    $result_search.wrapAll('<ul class="list_data"></ul>');
 };
+*/
+
+        // search result main close invisible background
+        $('body').on('click', '.bg-opacity', function () {
+            console.log("asd");
+            $(this).hide();
+            $('.popup-control').hide(200);
+            $('.list_information').slideUp(200);
+            $('.list_data>').remove();
+        });
+
