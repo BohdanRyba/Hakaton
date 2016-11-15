@@ -6,8 +6,8 @@ search[0].onkeyup = function (typeSearch) {
     $('.bg-opacity').show(200);
     $('.list_information').show();
     $('body').trigger('dow_search_list');
-    let id= $('#organization').attr('data-id');
-    id= parseInt(id);
+    var id= window.location.href;
+    id=id[id.length-1];
 
     $.ajax({
         url: 'ajax_eventShow',
@@ -35,9 +35,7 @@ $('.search_event').keydown(function(element){
     };
 });
 $('#search_event_go').on('click', function(){
- let id= $('#organization').attr('data-id');
- id= parseInt(id);
- $.ajax({
+   $.ajax({
     url: 'ajax_eventShow',
     type: 'POST',
     data:'id='+id,
@@ -46,8 +44,7 @@ $('#search_event_go').on('click', function(){
 });
 });
 
-function  funcSearch(data) {      //function collection node with the search result
-    console.log(data);
+function  funcSearch(data) {      //function collection node with the search result    
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
@@ -71,7 +68,7 @@ function  funcSearch(data) {      //function collection node with the search res
     // It determines whether the array contains the search request
     const queryString = search[0].value.toLowerCase();
     let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString);
+        return element.event_name.toLowerCase().includes(queryString); 
     });
 
     // add search result in DOM
@@ -81,9 +78,10 @@ function  funcSearch(data) {      //function collection node with the search res
     });
 
 };
-function  funcSearchPrint(data) {      //function collection node with the search result
+function  funcSearchPrint(data) {      //function collection node with the search result    
     $('.cont-box1>').remove();
     let list = JSON.parse(data);
+
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
@@ -107,7 +105,7 @@ function  funcSearchPrint(data) {      //function collection node with the searc
     // It determines whether the array contains the search request
     const queryString = search[0].value.toLowerCase();
     let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString);
+        return element.event_name.toLowerCase().includes(queryString); 
     });
 
     // add search result in DOM

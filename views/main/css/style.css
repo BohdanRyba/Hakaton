@@ -811,6 +811,15 @@ b {
 .button-box:last-child {
     margin-right: 0;
 }
+@media screen and (max-width: 970px){
+    .button-box{
+        width:100%;
+        transition: all 0.7s;
+    }
+    .button-box ul li{
+        text-align:center;
+    }
+}
 
 .button-org-add {
     padding: 0;
