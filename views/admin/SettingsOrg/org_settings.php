@@ -471,7 +471,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?1343984"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?13142   "></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
@@ -493,6 +493,6 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?687"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?611247"></script>
 </body>
 </html>

@@ -13,11 +13,9 @@ search[0].onkeyup = function (typeSearch) {
     console.log(id);
     id= parseInt(id);
 
-
     $.ajax({
         url: 'ajax_eventShow/'+id,
         type: 'POST',
-        // data:'id='+id,
         dataType: 'html',
         success:funcSearch
     });
@@ -26,29 +24,38 @@ $('.search_event').keydown(function(element){
     let codKey= element.which;
     if(codKey===13){
         element.preventDefault();
-        let id= 5;
+        var id= window.location.href;
+        id=id.split('/');
+        id=id[id.length-1];
+        console.log(id);
         id= parseInt(id);
+
+        $('.bg-opacity').hide();
         $.ajax({
-            url: 'ajax_eventShow',
+            url: 'ajax_eventShow/'+id,
             type: 'POST',
-            data:'id='+id,
             dataType: 'html',
-            success:funcSearch
+            success:funcSearchPrint
         });
     };
 });
-$('#search_event_go').on('click', function(id){
-   $.ajax({
-        url: 'ajax_eventShow',
+$('#search_event_go').on('click', function(){
+    var id= window.location.href;
+    id=id.split('/');
+    id=id[id.length-1];
+    console.log(id);
+    id= parseInt(id);
+
+    $.ajax({
+        url: 'ajax_eventShow/'+id,
         type: 'POST',
-        data:'id='+id,
         dataType: 'html',
-        success:funcSearch
+        success:funcSearchPrint
     });
 });
 
 //function collection node with the search result 
-function  funcSearch(data) {         
+function  funcSearch(data) {   
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
@@ -80,13 +87,10 @@ function  funcSearch(data) {
     render(searchQuery).forEach(function(element) {
         $container.append(element);
     });
-
 };
 
-/*
 function  funcSearchPrint(data){      //function collection node with the search result    
-    $('.cont-box1>').remove();
-    list = JSON.parse(data);
+    let list = JSON.parse(data);
 
     let render = function(list) {
         let nameList = list.map(function (element) {
@@ -117,19 +121,19 @@ function  funcSearchPrint(data){      //function collection node with the search
     // add search result in DOM
     let $container = $('.cont-box1');
     render(searchQuery).forEach(function(element) {
+        console.log($container);
         $container.append(element);
     });
     var $result_search= $('li.result_search');
     $result_search.wrapAll('<ul class="list_data"></ul>');
 };
-*/
 
-        // search result main close invisible background
-        $('body').on('click', '.bg-opacity', function () {
-            console.log("asd");
-            $(this).hide();
-            $('.popup-control').hide(200);
-            $('.list_information').slideUp(200);
-            $('.list_data>').remove();
-        });
+
+// search result main close invisible background
+$('body').on('click', '.bg-opacity', function () {
+    $(this).hide();
+    $('.popup-control').hide(200);
+    $('.list_information').slideUp(200);
+    $('.list_data>').eq(0).remove();
+});
 
