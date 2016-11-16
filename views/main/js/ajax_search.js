@@ -29,21 +29,19 @@ $('.search_event').keydown(function(element){
         let id= 5;
         id= parseInt(id);
         $.ajax({
-            url: 'ajax_eventShow',
+            url: 'ajax_eventShow/'+id,
             type: 'POST',
-            data:'id='+id,
             dataType: 'html',
-            success:funcSearch
+            success:funcSearchPrint
         });
     };
 });
 $('#search_event_go').on('click', function(id){
    $.ajax({
-        url: 'ajax_eventShow',
+        url: 'ajax_eventShow/'+id,
         type: 'POST',
-        data:'id='+id,
         dataType: 'html',
-        success:funcSearch
+        success:funcSearchPrint
     });
 });
 
@@ -51,7 +49,7 @@ $('#search_event_go').on('click', function(id){
 function  funcSearch(data) {         
     $('.list_data>').remove();
     let list = JSON.parse(data);
-
+    console.log(list);
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node =  '<li>'
@@ -83,7 +81,7 @@ function  funcSearch(data) {
 
 };
 
-/*
+
 function  funcSearchPrint(data){      //function collection node with the search result    
     $('.cont-box1>').remove();
     list = JSON.parse(data);
@@ -122,7 +120,7 @@ function  funcSearchPrint(data){      //function collection node with the search
     var $result_search= $('li.result_search');
     $result_search.wrapAll('<ul class="list_data"></ul>');
 };
-*/
+
 
         // search result main close invisible background
         $('body').on('click', '.bg-opacity', function () {
