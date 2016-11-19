@@ -93,7 +93,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['redirect']='сторінка зі списком танц груп';
+            a['redirect']='dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -101,7 +101,6 @@ jQuery(function($) {
             a=JSON.stringify(a);
             $(this).next().val(a);
             $sendFormToServer.val(a);
-            console.log(a);
         } else {
             return false;
         }
