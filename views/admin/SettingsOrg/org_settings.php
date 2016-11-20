@@ -225,7 +225,7 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input id="search_event_input" class="form-control search_event" type="search" placeholder="Поиск по событиям">
+                                    <input id="search_event_input" data-type="events" class="form-control search_event" type="search" placeholder="Поиск по событиям">
                                     <span class="btn-search input-group-btn">
                                         <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
@@ -241,7 +241,7 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input id="search_event_inut" class="form-control search_event" type="search" placeholder="Поиск по категориям">
+                                    <input id="search_event_inut" class="form-control search_event" data-type="option_category" type="search" placeholder="Поиск по категориям">
                                     <span class="btn-search input-group-btn">
                                         <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
@@ -257,7 +257,7 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control search_event" type="search" placeholder="Поиск по клубам">
+                                    <input class="form-control search_event" data-type="club" type="search" placeholder="Поиск по клубам">
                                     <span class="btn-search input-group-btn">
                                         <button id="" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
@@ -471,8 +471,8 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?13142   "></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?132"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax.js?12526"></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function(){
@@ -493,6 +493,6 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?611247"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?6877"></script>
 </body>
 </html>

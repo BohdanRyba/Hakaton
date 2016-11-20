@@ -140,12 +140,6 @@ $(function () {
 
         $('.add_train_box').after(trainer_node);
     });
-    $('.club_data_list').on('click', function () {
-        $('.search_wrap').hide(400);
-        $('.list_information').slideUp();
-        $('.search_wrap_club').toggle(400);
-        var typeSearch = $(this).attr('data-type');
-    });
 
     // button add new trainer
     var incr_train = 0;

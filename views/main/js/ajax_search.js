@@ -1,61 +1,75 @@
 // ajax for search event
-
-let search = document.querySelectorAll('input[type="search"]');
-
-search[0].onkeyup = function (typeSearch) {
+console.log($('.list-search'));
+$('.list-search').each(function(){
+    let search = $(this).find('input[type="search"]');
+    console.log(search);
+// ajax search when print
+var searchName= search.attr('data-type');
+search.on('keyup', function () {
     $('.bg-opacity').show();
     $('.list_information').show();
     $('body').trigger('dow_search_list');
 
-    var id= window.location.href;
-    id=id.split('/');
-    id=id[id.length-1];
-    console.log(id);
-    id= parseInt(id);
-
-    $.ajax({
-        url: 'ajax_eventShow/'+id,
-        type: 'POST',
-        dataType: 'html',
-        success:funcSearch
-    });
-};
+    actionAjaxSearch(searchName);
+});
+// ajax search when press enter
 $('.search_event').keydown(function(element){
     let codKey= element.which;
     if(codKey===13){
         element.preventDefault();
+
+        $('.bg_opacity').hide();
+        $('.popup-control').hide(200);
+        $('.list_information').slideUp(200);
+        $('.list_data>').eq(0).remove();
+
+        actionAjaxSearchAddPage(searchName);
+    };
+});
+    // ajax search when click button GO!!!
+    $('#search_event_go').on('click', function(){
+        $('.bg_opacity').hide();
+        $('.popup-control').hide(200);
+        $('.list_information').slideUp(200);
+        $('.list_data>').eq(0).remove();
+
+        actionAjaxSearchAddPage(searchName);
+    });
+
+    function actionAjaxSearch(searchName){
+        console.log("func run");  
         var id= window.location.href;
         id=id.split('/');
         id=id[id.length-1];
         console.log(id);
-        id= parseInt(id);
 
-        $('.bg-opacity').hide();
+        id= parseInt(id);
         $.ajax({
-            url: 'ajax_eventShow/'+id,
+            url: 'ajax_'+searchName+'Show/'+id,
+            type: 'POST',
+            dataType: 'html',
+            success:funcSearch
+        });
+    };
+    function actionAjaxSearchAddPage(searchName){
+        var id= window.location.href;
+        id=id.split('/');
+        id=id[id.length-1];
+        console.log(id);
+
+        id= parseInt(id);
+        $.ajax({
+            url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
             dataType: 'html',
             success:funcSearchPrint
         });
     };
-});
-$('#search_event_go').on('click', function(){
-    var id= window.location.href;
-    id=id.split('/');
-    id=id[id.length-1];
-    console.log(id);
-    id= parseInt(id);
 
-    $.ajax({
-        url: 'ajax_eventShow/'+id,
-        type: 'POST',
-        dataType: 'html',
-        success:funcSearchPrint
-    });
-});
 
-//function collection node with the search result 
+//function collection node with the search result for list
 function  funcSearch(data) {   
+    console.log("func run");  
     $('.list_data>').remove();
     let list = JSON.parse(data);
 
@@ -77,7 +91,7 @@ function  funcSearch(data) {
     };
 
     // It determines whether the array contains the search request
-    const queryString = search[0].value.toLowerCase();
+    const queryString = search.val().toLowerCase();
     let searchQuery = list.filter(function (element) {
         return element.event_name.toLowerCase().includes(queryString); 
     });
@@ -89,7 +103,9 @@ function  funcSearch(data) {
     });
 };
 
-function  funcSearchPrint(data){      //function collection node with the search result    
+//function collection node with the search result for load on page 
+function  funcSearchPrint(data){  
+console.log("func run");     
     let list = JSON.parse(data);
 
     let render = function(list) {
@@ -113,7 +129,7 @@ function  funcSearchPrint(data){      //function collection node with the search
     };
 
     // It determines whether the array contains the search request
-    const queryString = search[0].value.toLowerCase();
+    const queryString = search.val().toLowerCase();
     let searchQuery = list.filter(function (element) {
         return element.event_name.toLowerCase().includes(queryString); 
     });
@@ -122,14 +138,17 @@ function  funcSearchPrint(data){      //function collection node with the search
     let $container = $('.cont-box1');
     render(searchQuery).forEach(function(element) {
         console.log($container);
+        $container.children('.resize-remove').remove();
         $container.append(element);
     });
     var $result_search= $('li.result_search');
     $result_search.wrapAll('<ul class="list_data"></ul>');
 };
+});
 
 
-// search result main close invisible background
+
+// search result main close invisible background and clear list the result
 $('body').on('click', '.bg-opacity', function () {
     $(this).hide();
     $('.popup-control').hide(200);
