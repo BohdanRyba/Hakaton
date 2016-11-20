@@ -13,6 +13,9 @@ sleep(1);
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <div class="row">
+                <a href="#" class="send-info">сохранить</a>
+            </div>
             <div class="row pick-dancing-group-parameters-wrapper">
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <form id="pick-dance-programs" action="">
