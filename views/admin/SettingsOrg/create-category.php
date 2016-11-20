@@ -7,7 +7,7 @@ sleep(1);
             <div class="row pick-dancing-groups-wrapper">
                 <ul id="pick-dancing-groups">
                     <?php foreach ($dance_programs_list as $value): ?>
-                        <li data-id-dancing-group="<?php echo $value['id']; ?>"><span
+                        <li class="dancing-group-list-item" data-id-dancing-group="<?php echo $value['id']; ?>"><span
                                 class="numeration"></span><?php echo $value['dance_group_name']; ?>
                         </li>
                     <?php endforeach; ?>

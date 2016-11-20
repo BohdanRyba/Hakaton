@@ -432,10 +432,10 @@ class AdminModel
             $row = $result->fetch_assoc();
                 $danceProgram['id'] = $row['id'];
                 $danceProgram['dance_group_name'] = $row['dance_group_name'];
-                $danceProgram['d_program'] = $row['d_program'];
-                $danceProgram['d_age_category'] = $row['d_age_category'];
-                $danceProgram['d_nomination'] = $row['d_nomination'];
-                $danceProgram['d_league'] = $row['d_league'];
+                $danceProgram['d_program'] = unserialize($row['d_program']);
+                $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
+                $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
+                $danceProgram['d_league'] = unserialize($row['d_league']);
 
             $db->close();
 

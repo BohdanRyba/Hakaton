@@ -256,8 +256,11 @@ class AdminController
     public function actionAjax_settingUpDancingCategory()
     {
         if (isset($_POST) && !empty($_POST)){
-            self::showArray($_POST);
+            $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
+            foreach ($dance_group as $key => $item) {
+//                $dance_group['d_program']
+            }
+            echo json_encode($dance_group);
         }
-        echo 'Yess!';
     }
 }

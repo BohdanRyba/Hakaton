@@ -12,7 +12,7 @@ jQuery(function($) {
             type:"POST",
             url:'ajax_settingUpDancingCategory',
             data: 'id='+id,
-            success: console.log('ajax_settingUpDancingCategory works!!!'),
+            success: function(a){console.log(a)},
             error: function (msg) {
                 console.log(msg);
             }
@@ -24,7 +24,7 @@ jQuery(function($) {
         $(this).removeClass('picked-dancing-group');
     });
 
-    $body.on('click', $('#pick-dancing-groups').children(), function(){
+    $body.on('click', '.dancing-group-list-item', function(){
         var $danceGroups=$('#pick-dancing-groups').children();
 
         $danceGroups.each(function () {
