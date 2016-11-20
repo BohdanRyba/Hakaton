@@ -44,6 +44,7 @@ li {
 
 .pick-dancing-group-parameters-wrapper{
   overflow-x: scroll;
+  margin-bottom: 10px;
   form {
     padding: 10px 0;
     overflow: hidden;
@@ -85,7 +86,37 @@ li {
   }
 }
 
-
+.send-info {
+  width: 96%;
+  margin: 0 auto 10px;
+  display: block;
+  text-align: center;
+  transition: background 200ms linear, color 200ms linear, box-shadow 200ms linear;
+  color: @main-color;
+  background: white;
+  border: solid 5px @main-color;
+  font-weight: bold;
+  padding: 5px 0;
+  outline: none;
+  &:active {
+    transition: box-shadow 200ms linear;
+    box-shadow: none;
+  }
+  &:not(:disabled):hover {
+    transition: all 200ms linear;
+    color: white;
+    background: @main-color;
+    box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+    -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+  }
+  &:focus {
+    transition: all 200ms linear;
+    color: white;
+    background: @main-color;
+    box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+    -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+  }
+}
 
 
 
