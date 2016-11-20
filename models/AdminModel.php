@@ -399,4 +399,28 @@ class AdminModel
         self::saveMessage($message);
         return $result;
     }
+
+    static function getAllDanceGroups()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $danceProgramList[$i]['id'] = $row['id'];
+                $danceProgramList[$i]['dance_group_name'] = $row['dance_group_name'];
+                $danceProgramList[$i]['d_program'] = $row['d_program'];
+                $danceProgramList[$i]['d_age_category'] = $row['d_age_category'];
+                $danceProgramList[$i]['d_nomination'] = $row['d_nomination'];
+                $danceProgramList[$i]['d_league'] = $row['d_league'];
+                $i++;
+            }
+            $db->close();
+
+        };
+
+        return $danceProgramList;
+    }
+
 }

@@ -158,6 +158,9 @@ class AdminController
 
     public function actionAjaxCategory_add()
     {
+        $dance_programs_list = AdminModel::getAllDanceGroups();
+//        self::showArray($list);
+//        echo json_encode(AdminModel::ShowClubs());
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
