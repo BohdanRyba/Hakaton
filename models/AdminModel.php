@@ -399,4 +399,49 @@ class AdminModel
         self::saveMessage($message);
         return $result;
     }
+
+    static function getAllDanceGroups()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $danceProgramList[$i]['id'] = $row['id'];
+                $danceProgramList[$i]['dance_group_name'] = $row['dance_group_name'];
+                $danceProgramList[$i]['d_program'] = $row['d_program'];
+                $danceProgramList[$i]['d_age_category'] = $row['d_age_category'];
+                $danceProgramList[$i]['d_nomination'] = $row['d_nomination'];
+                $danceProgramList[$i]['d_league'] = $row['d_league'];
+                $i++;
+            }
+            $db->close();
+
+        };
+
+        return $danceProgramList;
+    }
+
+    static function getDanceGroupsById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` WHERE `id` = {$id}";
+            $result = $db->query($query);
+
+            $row = $result->fetch_assoc();
+                $danceProgram['id'] = $row['id'];
+                $danceProgram['dance_group_name'] = $row['dance_group_name'];
+                $danceProgram['d_program'] = unserialize($row['d_program']);
+                $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
+                $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
+                $danceProgram['d_league'] = unserialize($row['d_league']);
+
+            $db->close();
+
+        };
+
+        return $danceProgram;
+    }
+
 }

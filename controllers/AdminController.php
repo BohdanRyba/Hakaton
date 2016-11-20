@@ -158,6 +158,9 @@ class AdminController
 
     public function actionAjaxCategory_add()
     {
+        $dance_programs_list = AdminModel::getAllDanceGroups();
+//        self::showArray($list);
+//        echo json_encode(AdminModel::ShowClubs());
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
@@ -247,6 +250,17 @@ class AdminController
             echo '<br>';
             echo 'redirect --> ' . Router::$permalink . $json['redirect'];
             header('Location: ' . Router::$permalink . $json['redirect']);
+        }
+    }
+
+    public function actionAjax_settingUpDancingCategory()
+    {
+        if (isset($_POST) && !empty($_POST)){
+            $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
+            foreach ($dance_group as $key => $item) {
+//                $dance_group['d_program']
+            }
+            echo json_encode($dance_group);
         }
     }
 }
