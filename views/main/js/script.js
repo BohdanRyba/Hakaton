@@ -74,7 +74,8 @@ $(function () {
         $(this).hide(400);
         $('.us_info').hide(400);
     });
-    $('.btn-default').click(function () {
+    $('.btn-default').click(function (e) {
+        e.preventDefault();
         $('#overlay_log').hide(400);
         $('.form_log').hide(400);
     });

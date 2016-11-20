@@ -278,7 +278,7 @@ desired effect
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/script.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js?1233"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
