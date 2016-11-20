@@ -29,8 +29,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less?1">
-    <script src="<?=Router::$permalink?>views/main/js/less.min.js?1" type="text/javascript"></script>
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less?11">
+    <script src="<?=Router::$permalink?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -495,6 +495,7 @@ desired effect
 
 </script>
 
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax_search.js?688"></script>
 </body>
 </html>

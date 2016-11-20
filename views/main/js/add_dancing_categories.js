@@ -24,7 +24,7 @@ jQuery(function($) {
         $(this).removeClass('picked-dancing-group');
     });
 
-    $body.on('click','$danceGroups', function(){
+    $body.on('click', $('#pick-dancing-groups').children(), function(){
         var $danceGroups=$('#pick-dancing-groups').children();
 
         $danceGroups.each(function () {
@@ -36,11 +36,11 @@ jQuery(function($) {
 
     });
 
-    $body.on('click',  $('#add-dance-categories-parameters'), function(e) {
+    $body.on('click', '#add-dance-categories-parameters', function(e) {
         e.preventDefault();
     });
 
-    $body.on('click', $('#add-dance-categories-parameters'), function serializeCheckboxes () {
+    $body.on('click', '#add-dance-categories-parameters', function() {
         var pickedParameters=[];
         $('.pick-dancing-group-parameters-wrapper').find('form').each(function(){
             pickedParameters.push(($(this).serialize()));
