@@ -493,6 +493,6 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?687"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?688"></script>
 </body>
 </html>
