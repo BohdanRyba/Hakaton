@@ -252,4 +252,12 @@ class AdminController
             header('Location: ' . Router::$permalink . $json['redirect']);
         }
     }
+
+    public function actionAjax_settingUpDancingCategory()
+    {
+        if (isset($_POST) && !empty($_POST)){
+            self::showArray($_POST);
+        }
+        echo 'Yess!';
+    }
 }

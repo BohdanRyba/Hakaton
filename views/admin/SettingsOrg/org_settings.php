@@ -29,6 +29,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less">
+    <script src="<?=Router::$permalink?>views/main/js/less.min.js" type="text/javascript"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
