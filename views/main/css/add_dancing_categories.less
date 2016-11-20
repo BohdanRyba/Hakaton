@@ -2,26 +2,20 @@
 @highlight-color: rgba(147, 179, 243, 0.34);
 @text-standard-color: rgb(68, 68, 68);
 
-ul {
-  list-style: none;
-}
-
-li {
-  font-size: 18px;
-  line-height: 22px;
-}
-
 .pick-dancing-groups-wrapper{
   padding: 15px 0;
 }
 
 #pick-dancing-groups {
+  list-style: none;
   width: 100%;
   padding:0;
   color: @text-standard-color;
   max-height: 450px;
   overflow-y: scroll;
   li {
+    font-size: 18px;
+    line-height: 22px;
     padding: 7px 15px;
     background: @highlight-color;
     border-top: solid 1px @main-color;
@@ -49,6 +43,7 @@ li {
     padding: 10px 0;
     overflow: hidden;
     ul {
+      list-style: none;
       padding: 0;
       margin: 0;
       font-size: 16px;
@@ -58,6 +53,8 @@ li {
         color: white;
       }
       li {
+        font-size: 18px;
+        line-height: 22px;
         &:not(:first-child) {
           border-top: solid 1px @main-color;
         }

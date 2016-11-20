@@ -1,8 +1,10 @@
 jQuery(function($) {
 
-    var $danceGroups=$('#pick-dancing-groups').children(),
-        $send=$('.send-info'),
-        $pickParameters=$('.pick-dancing-group-parameters-wrapper');
+    var $body=$('body');
+
+    // var $danceGroups=$('#pick-dancing-groups').children(),
+    //     $send=$('.send-info'),
+    //     $pickParameters=$('.pick-dancing-group-parameters-wrapper');
 
     function ajax_settingUpDancingCategory(danceGroup) {
         var id=danceGroup.attr('data-id-dancing-group');
@@ -17,11 +19,14 @@ jQuery(function($) {
         });
     }
 
-    $danceGroups.each(function(){
+
+    $('#pick-dancing-groups').children().each(function(){
         $(this).removeClass('picked-dancing-group');
     });
 
-    $danceGroups.on('click', function(){
+    $body.on('click','$danceGroups', function(){
+        var $danceGroups=$('#pick-dancing-groups').children();
+
         $danceGroups.each(function () {
             $(this).removeClass('picked-dancing-group');
         });
@@ -31,13 +36,13 @@ jQuery(function($) {
 
     });
 
-    $send.on('click', function(e) {
+    $body.on('click',  $('#add-dance-categories-parameters'), function(e) {
         e.preventDefault();
     });
 
-    $send.on('click',  function serializeCheckboxes () {
+    $body.on('click', $('#add-dance-categories-parameters'), function serializeCheckboxes () {
         var pickedParameters=[];
-        $pickParameters.find('form').each(function(){
+        $('.pick-dancing-group-parameters-wrapper').find('form').each(function(){
             pickedParameters.push(($(this).serialize()));
         });
         console.log(pickedParameters);
