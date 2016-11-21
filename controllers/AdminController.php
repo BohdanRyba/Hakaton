@@ -164,7 +164,7 @@ class AdminController
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
-    public function actionAjaxCreate_event($id='')
+    public function actionAjaxCreate_event($id = '')
     {
 //        echo "it's create-event";
         include 'views/admin/SettingsOrg/create-event.php';
@@ -255,12 +255,16 @@ class AdminController
 
     public function actionAjax_settingUpDancingCategory()
     {
-        if (isset($_POST) && !empty($_POST)){
+        if (isset($_POST) && !empty($_POST)) {
             $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
-            foreach ($dance_group as $key => $item) {
-//                $dance_group['d_program']
-            }
             echo json_encode($dance_group);
         }
     }
+
+    public function actionAjax_saveDanceCategoryParameters()
+    {
+
+    }
+
+
 }
