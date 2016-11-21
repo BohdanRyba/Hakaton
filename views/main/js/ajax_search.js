@@ -145,7 +145,7 @@ function  funcSearchPrint(data){
         var $result_search= $('li.result_search');
         $result_search.wrapAll('<ul class="list_data"></ul>');
     };
-
+});
 
 
 
