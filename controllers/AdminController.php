@@ -182,9 +182,9 @@ class AdminController
         echo json_encode(AdminModel::ShowEvents($id));
     }
 
-    public function actionAjax_options_categoryShow(){
+    public function actionAjax_option_categoryShow(){
         echo 'Категории';
-    }
+    } // readjusted by Roma;
 
     public function actionAjaxCategory_add()
     {
