@@ -339,7 +339,6 @@
                                                             <label>Название:
                                                                 <input type="text" name="nomination-name-new" class="input-standard">
                                                             </label>
-                                                            <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
                                                         </div>
                                                         <div class="nomination-rule">
                                                             <label>Количество учасников:
@@ -391,7 +390,6 @@
                                                             <label>Название:
                                                                 <input type="text" name="league-name-new" class="input-standard">
                                                             </label>
-                                                            <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
                                                         </div>
                                                         <div class="nomination-rule">
                                                             <label>Лет выступлений:

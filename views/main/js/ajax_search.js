@@ -13,19 +13,19 @@ search.on('keyup', function () {
 });
 
     //>>>>>>>>>>>>>>>>>>>>>>>         ajax search when press enter
-$('.search_event').keydown(function(element){
-    let codKey= element.which;
-    if(codKey===13){
-        element.preventDefault();
+    $('.search_event').keydown(function(element){
+        let codKey= element.which;
+        if(codKey===13){
+            element.preventDefault();
 
-        $('.bg_opacity').hide();
-        $('.popup-control').hide(200);
-        $('.list_information').slideUp(200);
-        $('.list_data>').eq(0).remove();
+            $('.bg_opacity').hide();
+            $('.popup-control').hide(200);
+            $('.list_information').slideUp(200);
+            $('.list_data>').eq(0).remove();
 
-        actionAjaxSearchAddPage(searchName);
-    };
-});
+            actionAjaxSearchAddPage(searchName);
+        };
+    });
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax search when click button GO!!!
     $('#search_event_go').on('click', function(){
@@ -49,9 +49,10 @@ $('.search_event').keydown(function(element){
             url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
             dataType: 'html',
-            success:funcSearch
+            success:funcSearchPrint
         });
     };
+
     function actionAjaxSearchAddPage(searchName){
         var id= window.location.href;
         id=id.split('/');
@@ -67,13 +68,12 @@ $('.search_event').keydown(function(element){
         });
     };
 
-
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for list
 function  funcSearch(data) {   
     console.log("func run");  
     $('.list_data>').remove();
     let list = JSON.parse(data);
-
+    console.log(list);
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node =  '<li>'
@@ -106,7 +106,7 @@ function  funcSearch(data) {
 
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page 
 function  funcSearchPrint(data){  
-console.log("func run");     
+    console.log("func run");     
     let list = JSON.parse(data);
 
     let render = function(list) {
@@ -156,4 +156,5 @@ $('body').on('click', '.bg-opacity', function () {
     $('.list_information').slideUp(200);
     $('.list_data>').eq(0).remove();
 });
+
 

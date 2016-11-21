@@ -241,6 +241,7 @@ class AdminModel
                         `active`=1
                         ");
 
+
             return $result;
         }
         $db->close();
@@ -255,15 +256,12 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
-            echo '<pre>';
-            var_dump($a);
-            echo '<pre>';
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
                         `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
-                        `event_start`           = '{$a['event_start']}',
-                        `event_end`          = '{$a['event_end']}',
+                        `event_start`           = '{$a['data-start']}',
+                        `event_end`          = '{$a['data-finish']}',
                         `event_city`   = '{$a['event_city']}',
                         `event_country`  = '{$a['event_country']}',
                         `event_referee`   = '{$a['event_referee']}',
@@ -399,4 +397,49 @@ class AdminModel
         self::saveMessage($message);
         return $result;
     }
+
+    static function getAllDanceGroups()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $danceProgramList[$i]['id'] = $row['id'];
+                $danceProgramList[$i]['dance_group_name'] = $row['dance_group_name'];
+                $danceProgramList[$i]['d_program'] = $row['d_program'];
+                $danceProgramList[$i]['d_age_category'] = $row['d_age_category'];
+                $danceProgramList[$i]['d_nomination'] = $row['d_nomination'];
+                $danceProgramList[$i]['d_league'] = $row['d_league'];
+                $i++;
+            }
+            $db->close();
+
+        };
+
+        return $danceProgramList;
+    }
+
+    static function getDanceGroupsById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` WHERE `id` = {$id}";
+            $result = $db->query($query);
+
+            $row = $result->fetch_assoc();
+                $danceProgram['id'] = $row['id'];
+                $danceProgram['dance_group_name'] = $row['dance_group_name'];
+                $danceProgram['d_program'] = unserialize($row['d_program']);
+                $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
+                $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
+                $danceProgram['d_league'] = unserialize($row['d_league']);
+
+            $db->close();
+
+        };
+
+        return $danceProgram;
+    }
+
 }

@@ -29,6 +29,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less?11">
+    <script src="<?=Router::$permalink?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -241,7 +243,7 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input id="search_event_inut" class="form-control search_event" data-type="option_category" type="search" placeholder="Поиск по категориям">
+                                    <input id="search_event_inut" class="form-control search_event" data-type="options_category" type="search" placeholder="Поиск по категориям">
                                     <span class="btn-search input-group-btn">
                                         <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
@@ -257,7 +259,7 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control search_event" data-type="club" type="search" placeholder="Поиск по клубам">
+                                    <input class="form-control search_event" data-type="clubs" type="search" placeholder="Поиск по клубам">
                                     <span class="btn-search input-group-btn">
                                         <button id="" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
@@ -493,6 +495,7 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?6877"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?688"></script>
 </body>
 </html>
