@@ -1,18 +1,18 @@
-// ajax for search event
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>        ajax for search event
 console.log($('.list-search'));
 $('.list-search').each(function(){
     let search = $(this).find('input[type="search"]');
     console.log(search);
-// ajax search when print
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>         ajax search when print
 var searchName= search.attr('data-type');
 search.on('keyup', function () {
     $('.bg-opacity').show();
     $('.list_information').show();
-    $('body').trigger('dow_search_list');
 
     actionAjaxSearch(searchName);
 });
-// ajax search when press enter
+
+    //>>>>>>>>>>>>>>>>>>>>>>>         ajax search when press enter
 $('.search_event').keydown(function(element){
     let codKey= element.which;
     if(codKey===13){
@@ -26,7 +26,8 @@ $('.search_event').keydown(function(element){
         actionAjaxSearchAddPage(searchName);
     };
 });
-    // ajax search when click button GO!!!
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax search when click button GO!!!
     $('#search_event_go').on('click', function(){
         $('.bg_opacity').hide();
         $('.popup-control').hide(200);
@@ -67,7 +68,7 @@ $('.search_event').keydown(function(element){
     };
 
 
-//function collection node with the search result for list
+//>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for list
 function  funcSearch(data) {   
     console.log("func run");  
     $('.list_data>').remove();
@@ -90,7 +91,7 @@ function  funcSearch(data) {
         return nameList;
     };
 
-    // It determines whether the array contains the search request
+    //>>>>>>>>>      It determines whether the array contains the search request
     const queryString = search.val().toLowerCase();
     let searchQuery = list.filter(function (element) {
         return element.event_name.toLowerCase().includes(queryString); 
@@ -103,7 +104,7 @@ function  funcSearch(data) {
     });
 };
 
-//function collection node with the search result for load on page 
+//>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page 
 function  funcSearchPrint(data){  
 console.log("func run");     
     let list = JSON.parse(data);
@@ -128,7 +129,7 @@ console.log("func run");
         return nameList;
     };
 
-    // It determines whether the array contains the search request
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>     It determines whether the array contains the search request
     const queryString = search.val().toLowerCase();
     let searchQuery = list.filter(function (element) {
         return element.event_name.toLowerCase().includes(queryString); 
@@ -148,7 +149,7 @@ console.log("func run");
 
 
 
-// search result main close invisible background and clear list the result
+//>>>>>>>>>>>>>>>>>>>>>>>>       search result main close invisible background and clear list the result
 $('body').on('click', '.bg-opacity', function () {
     $(this).hide();
     $('.popup-control').hide(200);
