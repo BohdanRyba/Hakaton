@@ -38,7 +38,7 @@ search.on('keyup', function () {
     });
 
     function actionAjaxSearch(searchName){
-        console.log("func run");  
+        console.log("func run");
         var id= window.location.href;
         id=id.split('/');
         id=id[id.length-1];
@@ -69,8 +69,8 @@ search.on('keyup', function () {
     };
 
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for list
-function  funcSearch(data) {   
-    console.log("func run");  
+function  funcSearch(data) {
+    console.log("func run");
     $('.list_data>').remove();
     let list = JSON.parse(data);
     console.log(list);
@@ -91,11 +91,11 @@ function  funcSearch(data) {
         return nameList;
     };
 
-    //>>>>>>>>>      It determines whether the array contains the search request
-    const queryString = search.val().toLowerCase();
-    let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString); 
-    });
+        //>>>>>>>>>      It determines whether the array contains the search request
+        const queryString = search.val().toLowerCase();
+        let searchQuery = list.filter(function (element) {
+            return element.event_name.toLowerCase().includes(queryString);
+        });
 
     // add search result in DOM
     let $container = $('.list_data');
@@ -104,9 +104,9 @@ function  funcSearch(data) {
     });
 };
 
-//>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page 
-function  funcSearchPrint(data){  
-    console.log("func run");     
+//>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
+function  funcSearchPrint(data){
+    console.log("func run");
     let list = JSON.parse(data);
 
     let render = function(list) {
@@ -129,23 +129,23 @@ function  funcSearchPrint(data){
         return nameList;
     };
 
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>     It determines whether the array contains the search request
-    const queryString = search.val().toLowerCase();
-    let searchQuery = list.filter(function (element) {
-        return element.event_name.toLowerCase().includes(queryString); 
-    });
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>     It determines whether the array contains the search request
+        const queryString = search.val().toLowerCase();
+        let searchQuery = list.filter(function (element) {
+            return element.event_name.toLowerCase().includes(queryString);
+        });
 
-    // add search result in DOM
-    let $container = $('.cont-box1');
-    render(searchQuery).forEach(function(element) {
-        console.log($container);
-        $container.children('.resize-remove').remove();
-        $container.append(element);
-    });
-    var $result_search= $('li.result_search');
-    $result_search.wrapAll('<ul class="list_data"></ul>');
-};
-});
+        // add search result in DOM
+        let $container = $('.cont-box1');
+        render(searchQuery).forEach(function(element) {
+            console.log($container);
+            $container.children('.resize-remove').remove();
+            $container.append(element);
+        });
+        var $result_search= $('li.result_search');
+        $result_search.wrapAll('<ul class="list_data"></ul>');
+    };
+
 
 
 
@@ -156,5 +156,4 @@ $('body').on('click', '.bg-opacity', function () {
     $('.list_information').slideUp(200);
     $('.list_data>').eq(0).remove();
 });
-
 
