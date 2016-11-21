@@ -15,7 +15,8 @@ return array(
     'admin/organizations/event_add' => 'admin/event_add',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add', // changed
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event', // changed
-    'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1', // changed
+    'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
+    'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory', // changed
     'admin/organizations/org_settings/ajax_create_category' => 'admin/ajaxCategory_add', // changed
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // changed
     'admin/organizations/org_settings' => 'admin/org_settings',

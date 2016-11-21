@@ -55,7 +55,6 @@ $(function () {
         $.ajax({
             url: 'ajax_create-event',
             type: 'POST',
-            data:'name',
             dataType: 'html',
             beforeSend: funcBefore,
             success: funcSuccess

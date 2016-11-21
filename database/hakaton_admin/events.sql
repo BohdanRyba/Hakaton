@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 11 2016 г., 19:23
--- Версия сервера: 10.1.16-MariaDB
--- Версия PHP: 5.6.24
+-- Время создания: Ноя 19 2016 г., 12:35
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -48,9 +48,10 @@ INSERT INTO `events` (`id`, `event_name`, `event_image`, `event_status`, `event_
 (1, 'First Club', '../../../views/main/img/event_img/111.jpg', 'Enable', '2000-12-12', '2001-02-02', 'Lviv', 'Ukraine', 'Bodya', 'Yana', 5),
 (15, 'wdafesgrdht', '../../../views/main/img/event_img/te_2Qu4gjys.jpg', 'dwafegrhtjy', '0000-00-00', '0000-00-00', 'szfdgfhgh', 'fszgdhfng', 'szvdxbfngmh', 'ascdvfgnh', 5),
 (16, 'qwertyqqqqq', '../../../views/main/img/event_img/', 'weqwrqw', '0000-00-00', '0000-00-00', 'eqweqwe', 'qweqweqwe', 'qweqweqwe', 'qweqweqeq', 5),
-(17, 'wdfegrhtfrgsrdh', '../../../views/main/img/event_img/', 'dafesgrdhtfgaesrhd', '0000-00-00', '0000-00-00', 'fsdfbsadgfb', 'dvfgbfdfzdvsbfdfd', 'fsfdvfbddsvfdfsf', 'fadsgfdfngfgdsf', 4),
-(18, 'Bagdashachka', '../../../views/main/img/event_img/backenddeveloper.jpg', 'qwertyuiop[', '0000-00-00', '0000-00-00', 'dfsgnmjh,', 'svdfbgn', 'vxfbgcnh', 'acsvdxfbcgn hmbj', 4),
-(19, 'sdsfsdfs', '../../../views/main/img/event_img/img669771_c9b88db761dd1b77.jpg', 'вфцвфв', '0000-00-00', '0000-00-00', 'уцауыкпвиеатрм и', 'ымвчиасптмрьи оть', 'ыавпатоьрлтб', 'уапкреньпгбршоюлд.', 0);
+(17, 'wdfegrhtfrgsrdh', '../../../views/main/img/event_img/', 'dafesgrdhtfgaesrhd', '0000-00-00', '0000-00-00', 'fsdfbsadgfb', 'dvfgbfdfzdvsbfdfd', 'fsfdvfbddsvfdfsf', 'fadsgfdfngfgdsf', 6),
+(18, 'Bagdashachka', '../../../views/main/img/event_img/backenddeveloper.jpg', 'qwertyuiop[', '0000-00-00', '0000-00-00', 'dfsgnmjh,', 'svdfbgn', 'vxfbgcnh', 'acsvdxfbcgn hmbj', 6),
+(19, 'sdsfsdfs', '../../../views/main/img/event_img/222.jpg', 'вфцвфв', '0000-00-00', '0000-00-00', 'уцауыкпвиеатрм и', 'ымвчиасптмрьи оть', 'ыавпатоьрлтб', 'уапкреньпгбршоюлд.', 6),
+(20, '', '../../../views/main/img/event_img/', '', '0000-00-00', '0000-00-00', '', '', '', '', 7);
 
 --
 -- Индексы сохранённых таблиц
@@ -70,7 +71,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

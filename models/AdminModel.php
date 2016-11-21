@@ -190,10 +190,11 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowEvents()
+    public static function ShowEvents($id)
     {
+        $eventsList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `events`  WHERE org_id_for_event = {$_COOKIE['org_id']} ORDER BY id DESC";
+            $query = "SELECT * FROM `events` WHERE org_id_for_event = {$id} ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;
@@ -208,7 +209,6 @@ class AdminModel
                 $eventsList[$i]['event_country'] = $row['event_country'];
                 $eventsList[$i]['event_referee'] = $row['event_referee'];
                 $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
-                $eventsList[$i]['org_id_for_event'] = $row['org_id'];
                 $i++;
             }
             $db->close();
@@ -367,6 +367,8 @@ class AdminModel
 
     static function saveDanceProgram($json)
     {
+        $result = '';
+        $message = '';
         $array_for_record = array();
         if (isset($json) && !empty($json)) {
             if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -376,8 +378,70 @@ class AdminModel
                             `d_age_category` = '" . serialize($json['age-categories']) . "',
                             `d_nomination` = '" . serialize($json['nominations']) . "',
                             `d_league` = '" . serialize($json['leagues']) . "'");
+                if ($result == true) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Танцевальная программа \"{$json['dance-group-name']}\" успешно сохранена!"
+                    ]);
+                } elseif ($result == false) {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Танцевальную программу \"{$json['dance-group-name']}\" сохранить не удалось!"
+                    ]);
+                }
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'НЕ удалось установить соединение с базой данных! Что-то пошло не так...'
+                ]);
             }
         }
+        self::saveMessage($message);
         return $result;
     }
+
+    static function getAllDanceGroups()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $danceProgramList[$i]['id'] = $row['id'];
+                $danceProgramList[$i]['dance_group_name'] = $row['dance_group_name'];
+                $danceProgramList[$i]['d_program'] = $row['d_program'];
+                $danceProgramList[$i]['d_age_category'] = $row['d_age_category'];
+                $danceProgramList[$i]['d_nomination'] = $row['d_nomination'];
+                $danceProgramList[$i]['d_league'] = $row['d_league'];
+                $i++;
+            }
+            $db->close();
+
+        };
+
+        return $danceProgramList;
+    }
+
+    static function getDanceGroupsById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` WHERE `id` = {$id}";
+            $result = $db->query($query);
+
+            $row = $result->fetch_assoc();
+                $danceProgram['id'] = $row['id'];
+                $danceProgram['dance_group_name'] = $row['dance_group_name'];
+                $danceProgram['d_program'] = unserialize($row['d_program']);
+                $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
+                $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
+                $danceProgram['d_league'] = unserialize($row['d_league']);
+
+            $db->close();
+
+        };
+
+        return $danceProgram;
+    }
+
 }

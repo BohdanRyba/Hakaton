@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 28 2016 г., 08:42
+-- Время создания: Ноя 19 2016 г., 12:35
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -43,13 +43,11 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio`, `org_city`, `org_country`, `org_phone`, `org_email`, `org_pic_path`) VALUES
-(1, 'First Organization', 'FO', 'Head of the first organization', 'Kiev', 'Ukraine', 804424735265, 'first@gmail.com', 'views\\main\\img\\org_image\\Dancing-300x300.jpg'),
-(2, 'Second Organization''s name', 'SO', 'Michael Jackson', 'Rio-de-Janejro', 'Brasil', 38067382258, 'michael_jackson@gmail.com', 'views\\main\\img\\org_image\\Blues-Dancing-300x300.jpg'),
-(3, 'Third Organization', 'THO', 'Emilia Clarck', 'City of the Dragon', 'Mifia', 80256485232, 'dragons@gmail.com', 'views/main/img/org_image/pic.jpg'),
-(4, 'Julia Roberts Organization', 'JRO', 'Julia Roberts', 'San-Francisko', 'USA', 448852135135, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
-(5, 'Оля Корпорейшен', 'ОК', 'Гордова Ольга', 'Нежин', 'Украина', 80654735535, 'olia@gmail.com', 'views/main/img/org_image/Olia.jpg'),
-(6, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 4845616516186, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
-(7, 'Mime Organization', 'MO', 'Teodor Crack', 'Paris', 'France', 2535516816, 'mime@gmk.com', 'views/main/img/org_image/Mime-150x150.jpg');
+(1, 'First Organization', 'FO', 'Head of the first organizations', 'Kiev', 'Ukraine', 4835554447111, 'first@gmail.com', 'views\\main\\img\\org_image\\Dancing-300x300.jpg'),
+(3, 'Julia Roberts Organization', 'JROrg', 'Julia Roberts', 'San-Francisko', 'USA', 11111111111111, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
+(4, 'Оля Корпорейшен', 'ОК', 'Гордова Ольгаadsf', 'Нежин', 'Украина', 51551831, 'olia@gmailcom', 'views/main/img/org_image/Olia.jpg'),
+(5, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 2147483647, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
+(6, 'My own dance organization', 'MODO', 'Roman', 'Kmelnytski', 'Ukraine', 38067355215, 'roma@i.ua', 'views/main/img/org_image/2016-11-08_16-24-15.jpg');
 
 --
 -- Индексы сохранённых таблиц

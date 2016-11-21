@@ -33,6 +33,7 @@ class Router
             return self::$uri;
         }
     }
+
     static function getId()
     {
 

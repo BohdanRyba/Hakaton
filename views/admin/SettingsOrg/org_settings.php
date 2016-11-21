@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
     <meta charset="utf-8">
@@ -33,6 +29,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less?11">
+    <script src="<?=Router::$permalink?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -220,7 +218,7 @@ desired effect
 
                         <div class="button-box clr">
                             <ul class="button-org-add clr">
-                            <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
+                                <li data-type="club" class="button-list club_data_list"><span>Клубы</span></li>
                                 <li class="btn-plus btn-plus-club"><span class="glyphicon glyphicon-plus"></span></li>
                             </ul>
                         </div>
@@ -229,14 +227,14 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control search_event" type="search" placeholder="Поиск по событиям">
+                                    <input id="search_event_input" class="form-control search_event" type="search" placeholder="Поиск по событиям">
                                     <span class="btn-search input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -245,14 +243,14 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input class="form-control search_event" type="search" placeholder="Поиск по категориям">
+                                    <input id="search_event_inut" class="form-control search_event" type="search" placeholder="Поиск по категориям">
                                     <span class="btn-search input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -263,12 +261,12 @@ desired effect
                                 <div class="input-group input-group-sm">
                                     <input class="form-control search_event" type="search" placeholder="Поиск по клубам">
                                     <span class="btn-search input-group-btn">
-                                        <button type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="" type="button" class="btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -284,6 +282,7 @@ desired effect
                     <div class="cont-box content-in" id="loading"></div>
                 </div>
             </div>
+            <div class="bg-opacity"></div>
         </section>
     </div>
     <!-- Control Sidebar -->
@@ -405,11 +404,10 @@ desired effect
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                   <span class="label label-danger pull-right">70%</span>
-                               </span>
-                           </h4>
-
-                           <div class="progress progress-xxs">
+                                 <span class="label label-danger pull-right">70%</span>
+                             </span>
+                         </h4>
+                         <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
@@ -461,13 +459,8 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="<?=Router::$permalink?>views/main/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?=Router::$permalink?>views/main/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 <!-- bootstrap time picker -->
 <script src="<?=Router::$permalink?>views/main/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
@@ -478,10 +471,9 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/datepicker-ru.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?1343984"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
@@ -498,45 +490,12 @@ desired effect
             $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
             //Money Euro
             $("[data-mask]").inputmask();
-
-            //Date range picker
-            $('#reservation').daterangepicker();
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment()
-            },
-            function (start, end) {
-                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            }
-            );
-
-            //Date picker
-            $('#datepicker').datepicker({
-                autoclose: true
-            });
         });
     });
-window.onload =function () {
-    var id_uri=window.location.href;
-    id_uri=id_uri.split('/');
-    id_uri=id_uri[id_uri.length-1];
-    document.getElementById('org_id').valueOf(id_uri);
-}
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?688"></script>
 </body>
 </html>

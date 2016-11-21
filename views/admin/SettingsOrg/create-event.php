@@ -20,7 +20,6 @@ sleep(1);
                     <input type="text" class="form-control" name="event_name" placeholder="Введите информацию">
                 </div>
             </div>
-
             <div class="file_dw form-group">
                 <label for="event_pic">Добавить афишу события</label>
                 <input id="event_pic" name="event_image" type="file">
@@ -34,14 +33,20 @@ sleep(1);
             </div>
             <div class="form-group">
                 <label for="event_begin" class="col-sm-2 control-label">Дата начала</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="event_start" placeholder="Выберите дату">
+                <div class="col-sm-10 create-input">
+                  <div class="icon-input input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" name="data-start" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" placeholder="начало">
                 </div>
             </div>
             <div class="form-group">
-                <label for="event_end" class="col-sm-2 control-label">Дата окончания</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="event_end" placeholder="Выберите дату">
+                <label for="event_begin" class="col-sm-2 control-label">Дата окончания</label>
+                <div class="col-sm-10 create-input">
+                  <div class="icon-input input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control" name="data-finish" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" placeholder="конец">
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +61,6 @@ sleep(1);
                     <input type="text" class="form-control" name="event_country" placeholder="Введите страну">
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="event_sud" class="col-sm-2 control-label">Главный судья</label>
                 <div class="col-sm-10">
