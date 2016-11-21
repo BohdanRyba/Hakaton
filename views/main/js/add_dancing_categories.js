@@ -48,7 +48,4 @@ jQuery(function($) {
         });
         console.log(pickedParameters);
     });
-
-
-
 });

@@ -241,6 +241,7 @@ class AdminModel
                         `active`=1
                         ");
 
+
             return $result;
         }
         $db->close();
@@ -255,15 +256,12 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
-            echo '<pre>';
-            var_dump($a);
-            echo '<pre>';
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
                         `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
-                        `event_start`           = '{$a['event_start']}',
-                        `event_end`          = '{$a['event_end']}',
+                        `event_start`           = '{$a['data-start']}',
+                        `event_end`          = '{$a['data-finish']}',
                         `event_city`   = '{$a['event_city']}',
                         `event_country`  = '{$a['event_country']}',
                         `event_referee`   = '{$a['event_referee']}',

@@ -129,14 +129,40 @@ class AdminController
 
     public function addClub()
     {
-        self::showArray($_POST);
-        AdminModel::club_add($_POST);
+        if (isset($_POST)) {
+            if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
+                !empty($_POST['club_shief']) && !empty($_POST['club_number']) && !empty($_POST['club_mail']) &&
+                !empty($_POST['org_id']) && !empty($_POST['org_id'])
+            ) {
+                AdminModel::club_add($_POST);
+            } else {
+                echo 'NooooO!';
+            }
+        }
+//        self::showArray($_POST);
     }
 
     public function addEvent()
     {
-        self::showArray($_POST);
-        AdminModel::event_add($_POST);
+        if (isset($_POST)) {
+            if (!empty($_POST['event_name']) && !empty($_POST['event_status']) && !empty($_POST['data-finish']) &&
+                !empty($_POST['event_city']) && !empty($_POST['event_country']) && !empty($_POST['event_referee']) &&
+                !empty($_POST['event_skutiner']) && !empty($_POST['org_id'])
+            ) {
+                $message = json_encode([
+                    'status' => 'success',
+                    'message' => 'Организация успешно сохранена в базе данных!'
+                ]);
+                AdminModel::event_add($_POST);
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'Сохранить событие не удалось! Пожалуйста, проверьте правильность ввода данных!'
+                ]);
+            }
+        }
+
+        self::saveMessage($message);
     }
 
     public function actionAjaxClub_add()
@@ -156,6 +182,10 @@ class AdminController
         echo json_encode(AdminModel::ShowEvents($id));
     }
 
+    public function actionAjax_options_categoryShow(){
+        echo 'Категории';
+    }
+
     public function actionAjaxCategory_add()
     {
         $dance_programs_list = AdminModel::getAllDanceGroups();
@@ -164,7 +194,7 @@ class AdminController
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
-    public function actionAjaxCreate_event($id = '')
+    public function actionAjaxCreate_event($id='')
     {
 //        echo "it's create-event";
         include 'views/admin/SettingsOrg/create-event.php';
@@ -265,6 +295,4 @@ class AdminController
     {
 
     }
-
-
 }
