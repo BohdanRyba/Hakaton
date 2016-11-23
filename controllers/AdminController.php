@@ -291,9 +291,10 @@ class AdminController
 
     public function actionAjax_saveDanceCategoryParameters()
     {
+        $some = '[[{"name":"Хіп-хоп","value":"on"},{"name":"B&B","value":"on"}],[{"name":"Діти","value":"on"},{"name":"Дорослі","value":"on"}],[{"name":"Краща техніка виконання","value":"on"},{"name":"Кращий виспут за думкою глядачів","value":"on"}],[{"name":"Профі","value":"on"},{"name":"Початківці","value":"on"}],"1"]';
+        $arr = json_decode($some, true);
+        self::showArray($arr);
 
-        $some = 'id=1&parameters=[[{"name":"Хіп-хоп","value":"on"},{"name":"B&B","value":"on"}],[{"name":"Діти","value":"on"}],[{"name":"Краща техніка виконання","value":"on"}],[{"name":"Початківці","value":"on"}]]';
-        echo $some;
 //        if (isset($_POST) && !empty($_POST)) {
 //            $json = json_decode($_POST, true);
 //            $result = (integer)AdminModel::saveDanceProgram($json);
