@@ -170,9 +170,9 @@ class AdminController
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
-    public function actionAjax_clubShow($Cpag)
+    public function actionAjax_clubShow($id)
     {
-        echo json_encode(AdminModel::ShowClubs());
+        echo json_encode(AdminModel::ShowClubs($id));
     }
 
     public function actionAjax_eventShow($id)

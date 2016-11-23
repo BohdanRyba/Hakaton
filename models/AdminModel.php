@@ -167,10 +167,10 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs()
+    public static function ShowClubs($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$_COOKIE['org_id']} ORDER BY id DESC";
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
@@ -181,7 +181,7 @@ class AdminModel
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
-                $clubsList[$i]['org_id_for_club'] = $row['org_id'];
+                $clubsList[$i]['org_id_for_club'] = $row['org_id_for_club'];
 
                 $i++;
             }
