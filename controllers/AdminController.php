@@ -291,6 +291,16 @@ class AdminController
 
     public function actionAjax_saveDanceCategoryParameters()
     {
-        self::showArray($_POST);
+
+        $some = 'id=1&parameters=[[{"name":"Хіп-хоп","value":"on"},{"name":"B&B","value":"on"}],[{"name":"Діти","value":"on"}],[{"name":"Краща техніка виконання","value":"on"}],[{"name":"Початківці","value":"on"}]]';
+        echo $some;
+//        if (isset($_POST) && !empty($_POST)) {
+//            $json = json_decode($_POST, true);
+//            $result = (integer)AdminModel::saveDanceProgram($json);
+//            echo '<br>';
+//            echo 'here is the result of the operation: ' . $result . '<br>';
+//            echo '<br>';
+//            echo 'redirect --> ' . Router::$permalink . $json['redirect'];
+//            header('Location: ' . Router::$permalink . $json['redirect']);
     }
 }
