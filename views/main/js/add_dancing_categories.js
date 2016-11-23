@@ -89,7 +89,7 @@ jQuery(function($) {
         });
 
         $(this).addClass('picked-dancing-group');
-        
+
         //ajax_settingUpDancingCategory($(this));
         function ajax_settingUpDancingCategory(a) {
             var id=a.attr('data-id-dancing-group');
@@ -155,18 +155,20 @@ jQuery(function($) {
     });
 
     $body.on('click', '#add-dance-categories-parameters', function () {
-        var $id=$('#add-dance-categories-parameters').attr('data-id-dancing-group'),
+        var
+            $id=$('#add-dance-categories-parameters').attr('data-id-dancing-group'),
             pickedParameters=[];
         $('.pick-dancing-group-parameters-wrapper').find('form').each(function(){
             pickedParameters.push($(this).serializeArray());
         });
+        pickedParameters.push($id);
         pickedParameters=JSON.stringify(pickedParameters);
         $.ajax({
             type: "POST",
             url: 'ajax_saveDanceCategoryParameters',
-            data: 'id='+$id+'&parameters='+pickedParameters,
+            data: pickedParameters,
             success:function () {
-                console.log('id='+$id+'&parameters='+pickedParameters);
+                console.log(pickedParameters);
             },
             error: function (msg) {
                 console.log(msg);
