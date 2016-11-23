@@ -291,6 +291,6 @@ class AdminController
 
     public function actionAjax_saveDanceCategoryParameters()
     {
-
+        self::showArray($_POST);
     }
 }
