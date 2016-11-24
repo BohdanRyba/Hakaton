@@ -163,9 +163,13 @@ jQuery(function($) {
         });
         pickedParameters.push($id);
         pickedParameters=JSON.stringify(pickedParameters);
+        var org_id= window.location.href;// Roma added these lines
+        org_id=org_id.split('/');// Roma added these lines
+        org_id=org_id[org_id.length-1];// Roma added these lines
+        console.log(org_id);// Roma added these lines
         $.ajax({
             type: "POST",
-            url: 'ajax_saveDanceCategoryParameters',
+            url: 'ajax_saveDanceCategoryParameters/'+org_id,// Roma added these lines
             data: pickedParameters,
             success:function () {
                 console.log(pickedParameters);

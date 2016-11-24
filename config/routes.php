@@ -17,7 +17,7 @@ return array(
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
     'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory',
-    'admin/organizations/org_settings/ajax_saveDanceCategoryParameters' => 'admin/ajax_saveDanceCategoryParameters',
+    'admin/organizations/org_settings/ajax_saveDanceCategoryParameters/([0-9]+)' => 'admin/ajax_saveDanceCategoryParameters/$1',
     'admin/organizations/org_settings/ajax_create_category' => 'admin/ajaxCategory_add',
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',

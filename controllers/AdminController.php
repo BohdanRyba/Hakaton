@@ -289,19 +289,29 @@ class AdminController
         }
     }
 
-    public function actionAjax_saveDanceCategoryParameters()
+    public function actionAjax_saveDanceCategoryParameters($org_id)
     {
-        $some = '[[{"name":"Хіп-хоп","value":"on"},{"name":"B&B","value":"on"}],[{"name":"Діти","value":"on"},{"name":"Дорослі","value":"on"}],[{"name":"Краща техніка виконання","value":"on"},{"name":"Кращий виспут за думкою глядачів","value":"on"}],[{"name":"Профі","value":"on"},{"name":"Початківці","value":"on"}],"1"]';
-        $arr = json_decode($some, true);
-        self::showArray($arr);
+        if(empty($_POST)){
+            setcookie("POST", "empty");
+        } else {
+            setcookie("POST", "not empty");
+        }
+
+        $_POST = $_COOKIE['POST'];
+        echo $_POST;
+
 
 //        if (isset($_POST) && !empty($_POST)) {
-//            $json = json_decode($_POST, true);
-//            $result = (integer)AdminModel::saveDanceProgram($json);
+//        if (isset($arr) && !empty($arr)) {
+//            $_json = json_decode($_POST[0], true);
+//            $_POST = $arr;
+//            $result = (integer)AdminModel::saveCategoryParameters($_json[0], $org_id);
+
 //            echo '<br>';
 //            echo 'here is the result of the operation: ' . $result . '<br>';
 //            echo '<br>';
 //            echo 'redirect --> ' . Router::$permalink . $json['redirect'];
 //            header('Location: ' . Router::$permalink . $json['redirect']);
-    }
+//        }
+    } // end this method !
 }
