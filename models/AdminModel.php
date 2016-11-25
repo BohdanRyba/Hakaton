@@ -476,4 +476,22 @@ class AdminModel
         }
         return $result;
     }
+
+    static function getCategoryParametersById($id)
+    {
+        $returning_array = [];
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `category_parameters` WHERE `id_dance_group` = {$id} AND `id_org` = {$_COOKIE['get_id']}";
+            $result = $db->query($query);
+            while ($row = $result->fetch_assoc()){
+                $returning_array['id'] = $row['id'];
+                $returning_array['c_p_programs'] = unserialize($row['c_p_programs']);
+                $returning_array['c_p_age_categories'] = unserialize($row['c_p_age_categories']);
+                $returning_array['c_p_nominations'] = unserialize($row['c_p_nominations']);
+                $returning_array['c_p_leagues'] = unserialize($row['c_p_leagues']);
+            }
+            $db->close();
+        };
+        return $returning_array;
+    }
 }

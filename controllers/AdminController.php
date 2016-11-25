@@ -285,7 +285,10 @@ class AdminController
     {
         if (isset($_POST) && !empty($_POST)) {
             $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
-            echo json_encode($dance_group);
+            $category_parameters = AdminModel::getCategoryParametersById($_POST['id']);
+            $array['dance_group'] = $dance_group;
+            $array['category_parameters'] = $category_parameters;
+            echo json_encode($array);
         }
     }
 
