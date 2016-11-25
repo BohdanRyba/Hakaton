@@ -94,17 +94,17 @@ trait navigationFunctional
         $navContent = '';
         foreach ($navigation as $nav) {
             if (($nav['grant'] == ADMIN_ACCESS)) {
-                if (isset($_SESSION['user_access']) && $_SESSION['user_access'] == ADMIN_ACCESS) {
+                if (isset($_SESSION['accessing']) && $_SESSION['accessing'] == ADMIN_ACCESS) {
                     $navContent .= $this->getLink($nav, $page, $id);
                 }
             }
             if (($nav['grant'] == USER_ACCESS)) {
-                if (isset($_SESSION['user_access']) && ($_SESSION['user_access'] == USER_ACCESS || $_SESSION['user_access'] == ADMIN_ACCESS)) {
+                if (isset($_SESSION['accessing']) && ($_SESSION['accessing'] == USER_ACCESS || $_SESSION['accessing'] == ADMIN_ACCESS)) {
                     $navContent .= $this->getLink($nav, $page, $id);
                 }
             }
             if (($nav['grant'] == INLOGIN)) {
-                if (empty($_SESSION['user_access'])) {
+                if (empty($_SESSION['accessing'])) {
                     $navContent .= $this->getLink($nav, $page, $id);
                 }
             }
