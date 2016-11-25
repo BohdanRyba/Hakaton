@@ -495,7 +495,7 @@ desired effect
 
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js?1"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js?5101"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax_search.js?89"></script>
 </body>
 </html>

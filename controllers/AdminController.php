@@ -291,27 +291,19 @@ class AdminController
 
     public function actionAjax_saveDanceCategoryParameters($org_id)
     {
-        if(empty($_POST)){
-            setcookie("POST", "empty");
+//        self::showArray($_SESSION);
+//        $_SESSION['new'] = $_POST;
+//        die;
+
+        if (!empty($_POST['massive'])) {
+            $result = AdminModel::saveCategoryParameters($_POST['massive'], $org_id);
+            if($result == 'updated'){
+                setcookie("A_result", "$result");
+            } elseif($result == 'inserted') {
+                setcookie("A_result", "$result");
+            }
         } else {
-            setcookie("POST", "not empty");
+            setcookie("A_result", "Empty_POST");
         }
-
-        $_POST = $_COOKIE['POST'];
-        echo $_POST;
-
-
-//        if (isset($_POST) && !empty($_POST)) {
-//        if (isset($arr) && !empty($arr)) {
-//            $_json = json_decode($_POST[0], true);
-//            $_POST = $arr;
-//            $result = (integer)AdminModel::saveCategoryParameters($_json[0], $org_id);
-
-//            echo '<br>';
-//            echo 'here is the result of the operation: ' . $result . '<br>';
-//            echo '<br>';
-//            echo 'redirect --> ' . Router::$permalink . $json['redirect'];
-//            header('Location: ' . Router::$permalink . $json['redirect']);
-//        }
     } // end this method !
 }

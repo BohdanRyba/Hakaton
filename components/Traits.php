@@ -46,7 +46,7 @@ MESSAGE;
     public static function showArray($array)
     {
         echo '<hr><br><pre>';
-        var_export($array);
+        print_r($array);
         echo '</pre><br><hr>';
     }
 }

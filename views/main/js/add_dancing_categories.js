@@ -98,6 +98,7 @@ jQuery(function($) {
                 url:'ajax_settingUpDancingCategory',
                 data: 'id='+id,
                 success: function(msg){
+                    console.log(msg);
                     var msg=JSON.parse(msg),
                         programs=msg['d_program'],
                         ageCategories=msg['d_age_category'],
@@ -157,12 +158,15 @@ jQuery(function($) {
     $body.on('click', '#add-dance-categories-parameters', function () {
         var
             $id=$('#add-dance-categories-parameters').attr('data-id-dancing-group'),
-            pickedParameters=[];
+            pickedParameters=[],
+            pickedParametersWrapper={};
         $('.pick-dancing-group-parameters-wrapper').find('form').each(function(){
             pickedParameters.push($(this).serializeArray());
         });
         pickedParameters.push($id);
-        pickedParameters=JSON.stringify(pickedParameters);
+        pickedParametersWrapper["massive"]=pickedParameters;
+        // pickedParameters=JSON.stringify(pickedParameters);
+        // pickedParameters=pickedParameters.toString();
         var org_id= window.location.href;// Roma added these lines
         org_id=org_id.split('/');// Roma added these lines
         org_id=org_id[org_id.length-1];// Roma added these lines
@@ -170,7 +174,8 @@ jQuery(function($) {
         $.ajax({
             type: "POST",
             url: 'ajax_saveDanceCategoryParameters/'+org_id,// Roma added these lines
-            data: pickedParameters,
+            // data: 'b='+pickedParameters,
+            data: pickedParametersWrapper,
             success:function () {
                 console.log(pickedParameters);
             },

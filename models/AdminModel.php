@@ -442,19 +442,38 @@ class AdminModel
         return $danceProgram;
     }
 
-    static function saveCategoryParameters($_json, $org_id)
+    static function saveCategoryParameters($json, $org_id)
     {
+        $result = FALSE;
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("INSERT INTO `category_parameters`
+            $check = $db->query("SELECT `id_dance_group`, `id_org` FROM `category_parameters` WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
+            $row = $check->fetch_assoc();
+//            $_SESSION['for_check'] = $row;
+            if($row['id_dance_group'] == $json[4] && $row['id_org'] == $org_id){
+                $result = $db->query("UPDATE `category_parameters`
+                                  SET `c_p_programs` = '" . serialize($json[0]) . "',
+                                      `c_p_age_categories` = '" . serialize($json[1]) . "',
+                                      `c_p_nominations` = '" . serialize($json[2]) . "',
+                                      `c_p_leagues` = '" . serialize($json[3]) . "'
+                                  WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
+                if($result){
+                    $result = 'updated';
+                }
+            } else {
+                $result = $db->query("INSERT INTO `category_parameters`
                         SET `id` = NULL,
-                            `c_p_programs` = '" . serialize($_json[0]) . "',
-                            `c_p_age_categories` = '" . serialize($_json[1]) . "',
-                            `c_p_nominations` = '" . serialize($_json[2]) . "',
-                            `c_p_leagues` = '" . serialize($_json[3]) . "',
-                            `id_dance_group` = '" . $_json[4] . "',
+                            `c_p_programs` = '" . serialize($json[0]) . "',
+                            `c_p_age_categories` = '" . serialize($json[1]) . "',
+                            `c_p_nominations` = '" . serialize($json[2]) . "',
+                            `c_p_leagues` = '" . serialize($json[3]) . "',
+                            `id_dance_group` = {$json[4]},
                             `id_org` = '{$org_id}'");
+                if($result){
+                    $result = 'inserted';
+                }
+            }
             $db->close();
-            return $result;
-        };
+        }
+        return $result;
     }
 }
