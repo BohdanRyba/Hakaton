@@ -1,16 +1,17 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax for search event
 $('.list-search').each(function(i){
-    var search = $(this).find('input[type="search"]');
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>         ajax search when print
+    var search = $(this).parents('.search_wrap[style="display:block;"]').find('input[type="search"]');
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax search when print
+console.log(search);
 var searchName= search.attr('data-type');
 search.on('keyup', function () {
     $('.bg-opacity').show();
     $('.list_information').show();
-
     actionAjaxSearch(searchName);
 });
     //>>>>>>>>>>>>>>>>>>>>>>>       ajax search when press enter
     $('.search_event').on('keydown', function(e){
+        console.log(searchName);
         let codKey= e.which;
         if(codKey===13){
             e.preventDefault();
@@ -28,11 +29,9 @@ search.on('keyup', function () {
         $('.bg-opacity').hide();
         $('.list_information').slideUp(200);
         $('.list_data>').remove();
-
         actionAjaxSearchAddPage(searchName);
     });
     function actionAjaxSearch(searchName){
-        console.log('asd');
         var id= window.location.href;
         id=id.split('/');
         id=id[id.length-1];
@@ -40,11 +39,13 @@ search.on('keyup', function () {
         $.ajax({
             url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
-            dataType: 'html',
-            success:funcSearch
+            dataType: 'html',   
+            //success:funcSearch
+            success: function(m){/*console.log(m);*/}
         });
     };
     function actionAjaxSearchAddPage(searchName){
+        
         var id= window.location.href;
         id=id.split('/');
         id=id[id.length-1];
@@ -53,15 +54,15 @@ search.on('keyup', function () {
             url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
             dataType: 'html',
-            success:funcSearchPrint
+            //success:funcSearchPrint
+            success: function(m){console.log(m);}
         });
     };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for list
 function funcSearch(data) {
-    console.log(search);
-    console.log(data);
     $('.list_data>').remove();
     let list = JSON.parse(data);
+    console.log(data);
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node =  '<li>'
@@ -90,8 +91,11 @@ function funcSearch(data) {
     });
 };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
-function funcSearchPrint(data){
-    let list = JSON.parse(data);
+function funcSearchPrint(data) {
+                console.log(data);
+        var list = JSON.parse(data);
+
+
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
