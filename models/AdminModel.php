@@ -5,42 +5,10 @@ require_once(ROOT . 'components/Traits.php');
 class AdminModel
 {
     use messagesOperations;
+    use paginationCreation;
 
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
-
-    public static function getPaginationContent($Cpag)
-    {
-
-        if (isset($Cpag) and is_numeric($Cpag)) {
-            $current = $Cpag;
-        } else {
-            $current = self::CURRENT_PAGE;
-        }
-        $per_page = self::PER_PAGE;
-
-        $pagination = function ($all) use ($per_page, $current) {
-            $pag = '<ul class="pagination">';
-            for ($i = 0, $j = 0; $i < count($all); $i += $per_page, $j++) {
-                if ($current == $j + 1) {
-                    $pag .= '<li class="active"><span>' . ($j + 1) . '</span></li>';
-                } else {
-                    $pag .= '<li><a href="' . ($j + 1) . '">' . ($j + 1) . '</a></li>';
-                }
-            }
-            $pag .= '</ul>';
-            return $pag;
-        };
-
-        $all_count = count(self::getAllOrganizations());
-        $start = ($current - 1) * $per_page;
-        $end = (($current * $per_page) < $all_count) ? $current * $per_page : $all_count;
-
-        $start_end_pagination_array = array();
-        array_push($start_end_pagination_array, $start, $end, $pagination(self::getAllOrganizations()));
-
-        return $start_end_pagination_array;
-    }
 
     static function getAllOrganizations()
     {
@@ -161,8 +129,8 @@ class AdminModel
             $pic_folder = implode("/", $tmp_arr_with_pic_path) . '/'; // after that we glue all the components to create a folder path with pictures;
 
             $old = getcwd(); // Save the current directory
-            chdir(ROOT. $pic_folder); // change the dir where lays the organization's picture;
-            $delete_picture_result = unlink(ROOT. $pic_folder. $image_name); // then delete the picture;
+            chdir(ROOT . $pic_folder); // change the dir where lays the organization's picture;
+            $delete_picture_result = unlink(ROOT . $pic_folder . $image_name); // then delete the picture;
             chdir($old); // Restore the old working directory;
 
             if ($result == true && $delete_picture_result == true) {
@@ -199,7 +167,8 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs(){
+    public static function ShowClubs()
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` ORDER BY id DESC";
             $result = $db->query($query);
@@ -210,9 +179,6 @@ class AdminModel
                 $clubsList[$i]['club_country'] = $row['club_country'];
                 $clubsList[$i]['club_city'] = $row['club_city'];
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
-                $clubsList[$i]['club_first_trener'] = $row['club_first_trener'];
-                $clubsList[$i]['club_second_trener'] = $row['club_second_trener'];
-                $clubsList[$i]['club_third_trener'] = $row['club_third_trener'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
                 $i++;
@@ -222,7 +188,8 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowEvents(){
+    public static function ShowEvents()
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `events` ORDER BY id DESC";
             $result = $db->query($query);
@@ -259,7 +226,7 @@ class AdminModel
 
             $result = $db->query("INSERT INTO `clubs`
                         SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = '../../views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        = '{$a['club_country']}',
                         `club_city`           = '{$a['club_city']}',
                         `club_shief`          = '{$a['club_shief']}',
@@ -287,7 +254,7 @@ class AdminModel
 
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
-                        `event_image`          = '../../views/main/img/event_img/{$_FILES['event_image']['name']}',
+                        `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
                         `event_start`           = '{$a['event_start']}',
                         `event_end`          = '{$a['event_end']}',
@@ -389,5 +356,21 @@ class AdminModel
             die(mysqli_error($link));
         }
         return mysqli_affected_rows($link);
+    }
+
+    static function saveDanceProgram($json)
+    {
+        $array_for_record = array();
+        if (isset($json) && !empty($json)) {
+            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+                $result = $db->query("INSERT INTO `dance_groups`
+                        SET `dance_group_name` = '{$json['dance-group-name']}',
+                            `d_program` = '" . serialize($json['programs']) . "',
+                            `d_age_category` = '" . serialize($json['age-categories']) . "',
+                            `d_nomination` = '" . serialize($json['nominations']) . "',
+                            `d_league` = '" . serialize($json['leagues']) . "'");
+            }
+        }
+        return $result;
     }
 }

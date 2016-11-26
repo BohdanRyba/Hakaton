@@ -84,6 +84,7 @@ $(function () {
 
 	// add participats for reg crew
 
+
 	$('.part').nextAll('.part').hide();
 	window.a = 1;
 	$('#add_part').on('click', function () {
@@ -156,4 +157,87 @@ $(function () {
 	});
 
 });
+
+=======
+  $('.part').nextAll('.part').hide();
+  window.a=1;
+  $('#add_part').on('click',function(){
+    $('.part'+window.a).slideDown(400);
+    var dist= $(this).offset().top;
+    $('body,html').animate({scrollTop: dist}, 500);
+    window.a++;
+  });
+  $('body').on('click', 'a.remove-part', function(){
+    $(this).parents('.part').slideUp(300);
+  });
+// DATAPICKER
+/*$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+$.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+$( function() {
+  $( "#event_begin").datepicker();
+  $( "#event_end").datepicker();
+});*/
+    // button on page: organization for create eveny, reg club, dance 
+    
+
+
+    $('.event_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_event').toggle(400);
+      var typeSearch= $(this).attr('data-type');
+    });
+    $('.category_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_category').toggle(400);
+      var typeSearch= $(this).attr('data-type');
+    });
+    $('.club_data_list').on('click', function(){
+      $('.search_wrap').hide(400);
+      $('.list_information').slideUp();
+      $('.search_wrap_club').toggle(400);
+      var typeSearch= $(this).attr('data-type');
+    });
+
+    // button add new trainer
+    var incr_train=0;
+    $('body').on('сlick', '.add-trainer', function(){
+      window.incr_train++;
+      console.log('asd')
+      let trainer_node= +'<div class="form-group">'
+                          +'<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
+                          +'<div class="col-sm-10">'
+                            +'<input type="text" class="form-control" name="club_trener_'+window.incr_train+'" id="inputPassword3" placeholder="Тренер №'+window.incr_train+'">'
+                          +'</div>'
+                        +'</div>';
+
+      $('.add_train_box').append(trainer_node);
+
+    });
+
+
+
+
+
+    window.summ=0;
+    $('tbody>').each(function(i){
+      $(this).children(':first').text(i+1);
+      var price= parseInt($(this).children().eq(1).text());
+      window.summ= window.summ+price;
+    });
+    $('tfoot tr').children().eq(1).text('Сума: '+window.summ+'грн');
+    $('thead tr').children().eq(1).text('Сума: '+window.summ+'грн');
+
+    $('.bg-opacity').on('click', function(){
+      $(this).hide();
+      $('.popup-control').hide(200);
+    });
+    $('tbody>tr').each(function(){
+      $(this).on('click', function(){
+        $('.bg-opacity').show(200);
+        $('.popup-control').show(200);
+      });
+    });
+  });
 

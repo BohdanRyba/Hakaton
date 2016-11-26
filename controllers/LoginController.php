@@ -13,7 +13,7 @@ class LoginController
             $user = LoginModel::getUserFromBase($_POST['email']);
             if ($_POST['email'] == $user['club_mail'] && !empty($user)) {
                 if (md5($_POST['pass_in']) == $user['password']) {
-                    $_SESSION['user_access'] = $user['grand'];
+                    $_SESSION['user_access'] = $user['grant'];
                     $_SESSION['current_user'] = $user['club_shief'];
                     $message = json_encode([
                         'status' => 'success',

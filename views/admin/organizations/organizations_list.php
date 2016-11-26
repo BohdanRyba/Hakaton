@@ -55,10 +55,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Меню <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Главная</a></li>
-                            <li><a href="#">События</a></li>
-                            <li><a href="#">Новости</a></li>
-                            <li><a href="#">О нас</a></li>
+                            <?php echo $nav_content; ?>
                         </ul>
                     </li>
                     <!-- User Account Menu -->
@@ -163,7 +160,7 @@
                         <span>Танцевальные групы</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
                 </li>
@@ -210,6 +207,7 @@
                                 <input type="submit" name="delete_org"
                                        class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
                                 <input type="hidden" name="delete_org_id">
+                                <input type="hidden" name="redirect" value="<?php echo Router::$uri; ?>">
                                 <button type="button" class="btn btn-secondary text-capitalize deletion-cancel"
                                         data-dismiss="modal">отмена
                                 </button>

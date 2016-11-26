@@ -9,7 +9,6 @@ define('CORE_PATH', str_replace('index.php', '', implode('/', explode('/',$_SERV
 define('ADMIN_ROOT', ROOT . 'components/admin/');
 
 require_once (ROOT.'components/Db.php');
-require_once (ROOT.'components/Navigation.php');
 require_once (ROOT.'components/Router.php');
 require_once (ROOT.'config/const.php');
 

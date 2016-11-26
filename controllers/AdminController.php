@@ -6,14 +6,18 @@ require_once(ROOT . 'components/Traits.php');
 class AdminController
 {
     use messagesOperations;
+    use navigationFunctional;
 
     public function actionIndex($Cpag)
     {
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
+
+        $nav_content = $this->createNavContent(Router::$uri, $Cpag);
         $organizationsList = AdminModel::getAllOrganizations();
-        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag);
+
+        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag, count($organizationsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
@@ -28,6 +32,8 @@ class AdminController
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
+        $nav_content = $this->createNavContent(Router::$uri);
+
         require_once('views/admin/organizations/reg_org.php'); // here in view file we show the message;
 
         unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
@@ -70,7 +76,7 @@ class AdminController
     }
 
     public function actionDelOrg(){
-
+        self::showArray($_POST);
         if (isset($_POST)) {
             if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
                 $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
@@ -79,9 +85,9 @@ class AdminController
                 echo 'One of the POST\'s components didn\'t pass the checking clause!';
             }
         }
-//        header('Location: ' . Router::$permalink . $_POST['redirect']);
+        header('Location: ' . Router::$permalink . $_POST['redirect']);
         return true;
-    } // End this method!
+    }
 
     public function actionUpdateOrg()
     {
@@ -102,12 +108,13 @@ class AdminController
         return true;
     }
 
-    public function actionOrg_settings()
+    public function actionOrg_settings($id)
     {
 //        self::showArray($_POST);
         if(isset($_POST['org_id'])){
             $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
         }
+        $nav_content = $this->createNavContent(Router::$uri, $id);
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
@@ -157,4 +164,45 @@ class AdminController
         include 'views/admin/SettingsOrg/create-event.php';
     }
 
+    public function actionDancingList()
+    {
+        echo 'Hello from dancing list!';
+
+        $db = Db::getConnection(Db::ADMIN_BASE);
+        $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
+        $result = $db->query($query);
+        $list = array();
+        $i = 0;
+        while ($row = $result->fetch_assoc()) {
+            $list[$i]['id'] = $row['id'];
+            $list[$i]['dance_group_name'] = $row['dance_group_name'];
+            $list[$i]['d_program'] = $row['d_program'];
+            $list[$i]['d_age_category'] = $row['d_age_category'];
+            $list[$i]['d_nomination'] = $row['d_nomination'];
+            $list[$i]['d_league'] = $row['d_league'];
+            $i++;
+        }
+
+        $db->close();
+
+        self::showArray($list);
+    }
+
+    public function actionAddDancingGroups()
+    {
+        include 'views/admin/dancing_groups/add_dancing_groups.php';
+    }
+
+    public function actionAddDanceProgram()
+    {
+        if(isset($_POST) && !empty($_POST['redirect'])){
+            $json = json_decode($_POST['redirect'], true);
+            $result = (integer)AdminModel::saveDanceProgram($json);
+            echo '<br>';
+            echo 'here is the result of the operation: ' . $result . '<br>';
+            echo '<br>';
+            echo 'redirect --> '.Router::$permalink . $json['redirect'];
+            header('Location: ' . Router::$permalink . $json['redirect']);
+        }
+    }
 }

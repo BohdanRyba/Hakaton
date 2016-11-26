@@ -7,27 +7,27 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="../views/main/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../views/main/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="../views/main/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" href="../views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="../views/main/css/add_dancing_groups.less">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis_admin_page.css">
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_groups.less">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
     <![endif]-->
-    <script src="../views/main/js/less.min.js" type="text/javascript"></script>
+    <script src="<?=Router::$permalink?>views/main/js/less.min.js" type="text/javascript"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -190,7 +190,7 @@
                     <div class="col-xs-12 col-lg-10 col-lg-push-1 pull-left">
                         <div class="container box box-primary flat">
                             <div class="row box-header">
-                            <!--DANCE GROUP NAME-->
+                                <!--DANCE GROUP NAME-->
                                 <div class="col-xs-12 col-md-8">
                                     <div class="dance-group-name">
                                         <form action="">
@@ -247,22 +247,22 @@
                                         <div class="row see-info">
                                             <form class="dance-group-show-info">
                                                 <!--<div class="dp-info-wrapper">-->
-                                                    <!--<span class="text-bold count"></span>-->
-                                                    <!--<div class="btn-group-sm flat" role="group">-->
-                                                        <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
-                                                        <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
-                                                    <!--</div>-->
-                                                    <!--<label>Название:-->
-                                                        <!--<input disabled type="text" name="dance-program-name" class="input-standard">-->
-                                                    <!--</label>-->
-                                                    <!--<label>Код:-->
-                                                        <!--<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code">-->
-                                                    <!--</label>-->
+                                                <!--<span class="text-bold count"></span>-->
+                                                <!--<div class="btn-group-sm flat" role="group">-->
+                                                <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
+                                                <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
+                                                <!--</div>-->
+                                                <!--<label>Название:-->
+                                                <!--<input disabled type="text" name="dance-program-name" class="input-standard">-->
+                                                <!--</label>-->
+                                                <!--<label>Код:-->
+                                                <!--<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code">-->
+                                                <!--</label>-->
                                                 <!--</div>-->
                                             </form>
                                             <form action="add_dance_program" method="POST">
-                                                <input type="submit" class="send-info" data-state="disabled" value="отправить">
-                                                <input type="hidden" name="redirect">
+                                                <input type="submit" name="submit" class="send-info" data-state="disabled" value="отправить">
+                                                <input type="hidden" name="redirect" id="send-dg-to-server">
                                             </form>
                                         </div>
                                     </div>
@@ -299,23 +299,23 @@
                                         <div class="row see-info">
                                             <form class="dance-group-show-info-extended">
                                                 <!--<div class="ag-info-wrapper">-->
-                                                    <!--<span class="text-bold count"></span>-->
-                                                    <!--<div class="btn-group-sm flat" role="group">-->
-                                                        <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
-                                                        <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
-                                                    <!--</div>-->
-                                                    <!--<label>Название:-->
-                                                        <!--<input disabled type="text" name="age-category-name" class="input-standard">-->
-                                                    <!--</label>-->
-                                                    <!--<label>Код:-->
-                                                        <!--<input disabled type="text" name="age-category-code" class="input-standard dancing-group-info-code">-->
-                                                    <!--</label>-->
-                                                    <!--<label>От:-->
-                                                        <!--<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code">-->
-                                                    <!--</label>-->
-                                                    <!--<label>До:-->
-                                                        <!--<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code">-->
-                                                    <!--</label>-->
+                                                <!--<span class="text-bold count"></span>-->
+                                                <!--<div class="btn-group-sm flat" role="group">-->
+                                                <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
+                                                <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
+                                                <!--</div>-->
+                                                <!--<label>Название:-->
+                                                <!--<input disabled type="text" name="age-category-name" class="input-standard">-->
+                                                <!--</label>-->
+                                                <!--<label>Код:-->
+                                                <!--<input disabled type="text" name="age-category-code" class="input-standard dancing-group-info-code">-->
+                                                <!--</label>-->
+                                                <!--<label>От:-->
+                                                <!--<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code">-->
+                                                <!--</label>-->
+                                                <!--<label>До:-->
+                                                <!--<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code">-->
+                                                <!--</label>-->
                                                 <!--</div>-->
                                             </form>
                                             <form action="add_dance_program" method="POST">
@@ -354,20 +354,20 @@
                                         <div class="row see-info">
                                             <form class="dance-group-show-info-extended">
                                                 <!--<div class="nm-info-wrapper">-->
-                                                    <!--<span class="text-bold count"></span>-->
-                                                    <!--<div class="btn-group-sm flat" role="group">-->
-                                                        <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
-                                                        <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
-                                                    <!--</div>-->
-                                                    <!--<label>Название:-->
-                                                        <!--<input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">-->
-                                                    <!--</label>-->
-                                                    <!--<label>Код:-->
-                                                        <!--<input disabled type="text" name="nomination-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
-                                                    <!--</label>-->
-                                                    <!--<label>Кол-во учасников:-->
-                                                        <!--<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
-                                                    <!--</label>-->
+                                                <!--<span class="text-bold count"></span>-->
+                                                <!--<div class="btn-group-sm flat" role="group">-->
+                                                <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
+                                                <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
+                                                <!--</div>-->
+                                                <!--<label>Название:-->
+                                                <!--<input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">-->
+                                                <!--</label>-->
+                                                <!--<label>Код:-->
+                                                <!--<input disabled type="text" name="nomination-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
+                                                <!--</label>-->
+                                                <!--<label>Кол-во учасников:-->
+                                                <!--<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
+                                                <!--</label>-->
                                                 <!--</div>-->
                                             </form>
                                             <form action="add_dance_program" method="POST">
@@ -406,25 +406,25 @@
                                         <div class="row see-info">
                                             <form class="dance-group-show-info-extended">
                                                 <!--<div class="lg-info-wrapper">-->
-                                                    <!--<span class="text-bold count"></span>-->
-                                                    <!--<div class="btn-group-sm flat" role="group">-->
-                                                        <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
-                                                        <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
-                                                    <!--</div>-->
-                                                    <!--<label>Название:-->
-                                                        <!--<input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">-->
-                                                    <!--</label>-->
-                                                    <!--<label>Код:-->
-                                                        <!--<input disabled type="text" name="league-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
-                                                    <!--</label>-->
-                                                    <!--<label>Лет выступлений:-->
-                                                        <!--<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
-                                                    <!--</label>-->
+                                                <!--<span class="text-bold count"></span>-->
+                                                <!--<div class="btn-group-sm flat" role="group">-->
+                                                <!--<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>-->
+                                                <!--<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>-->
+                                                <!--</div>-->
+                                                <!--<label>Название:-->
+                                                <!--<input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">-->
+                                                <!--</label>-->
+                                                <!--<label>Код:-->
+                                                <!--<input disabled type="text" name="league-code" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
+                                                <!--</label>-->
+                                                <!--<label>Лет выступлений:-->
+                                                <!--<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">-->
+                                                <!--</label>-->
                                                 <!--</div>-->
                                             </form>
                                             <form action="add_dance_program" method="POST">
-                                                <input type="submit" name="submit" class="send-info" data-state="disabled" value="отправить">
-                                                <input type="hidden" name="redirect" id="send-dg-to-server">
+                                                <input type="submit" class="send-info" data-state="disabled" value="отправить">
+                                                <input type="hidden" name="redirect">
                                             </form>
                                         </div>
                                     </div>
@@ -524,12 +524,12 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../views/main/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../views/main/js/app.min.js"></script>
-<script src="../views/main/js/add_dancing_groups.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_groups.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

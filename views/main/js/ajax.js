@@ -53,7 +53,7 @@ $(function () {
     $('.btn-plus-event').on('click', function () {
         $('.cont-box1>').remove();
         $.ajax({
-            url: 'ajax_createevent',
+            url: 'ajax_create-event',
             type: 'POST',
             dataType: 'html',
             beforeSend: funcBefore,
