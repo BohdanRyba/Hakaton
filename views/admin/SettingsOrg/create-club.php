@@ -21,6 +21,7 @@ sleep(1);
                 </div>
             </div>
             <div class="file_dw form-group">
+                <input type="hidden" id="org_id" name="org_id" value="<?=$_COOKIE['get_id']?>" />
                 <label for="exampleInputFile">Загрузите логотип клуба</label>
                 <input id="exampleInputFile" name="club_image" type="file">
             </div>
@@ -46,19 +47,21 @@ sleep(1);
             </div>
             <div class="add_train_box form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
-                <div class="col-sm-10">
+                <div class="add-train-form col-sm-10">
                     <input type="text" class="form-control" name="club_first_trener" id="inputPassword3"
-                    placeholder="Тренер">
+                    placeholder="ФИО Тренера">
                     <span class="btn-search input-group-btn">
-                    <button type="button" class="add-trainer btn btn-info btn-flat-event">+</button>
+                    <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
                     </span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Номер телефона</label>
-                <div class="col-sm-10">
-                    <input type="tel" class="form-control" name="club_number" id="inputPassword3"
-                    placeholder="Номер телефона">
+                <div class="col-sm-10 create-input">
+                  <div class="icon-input input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input type="tel" class="form-control" name="club_number" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" placeholder="Номер телефона">
                 </div>
             </div>
             <div class="form-group">

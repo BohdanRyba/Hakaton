@@ -167,10 +167,10 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs()
+    public static function ShowClubs($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `clubs` ORDER BY id DESC";
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
@@ -181,6 +181,8 @@ class AdminModel
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
+                $clubsList[$i]['org_id_for_club'] = $row['org_id_for_club'];
+
                 $i++;
             }
             $db->close();
@@ -188,10 +190,11 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowEvents()
+    public static function ShowEvents($id)
     {
+        $eventsList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `events` ORDER BY id DESC";
+            $query = "SELECT * FROM `events` WHERE org_id_for_event = {$id} ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;
@@ -223,19 +226,21 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
                 move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
             }
-
+            $pass = md5($a['club_number']);
             $result = $db->query("INSERT INTO `clubs`
                         SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = 'views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_image`          = '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        = '{$a['club_country']}',
                         `club_city`           = '{$a['club_city']}',
                         `club_shief`          = '{$a['club_shief']}',
-                        `club_first_trener`   = '{$a['club_first_trener']}',
-                        `club_second_trener`  = '{$a['club_second_trener']}',
-                        `club_third_trener`   = '{$a['club_third_trener']}',
                         `club_number`         = '{$a['club_number']}',
-                        `club_mail`           = '{$a['club_mail']}'
+                        `club_mail`           = '{$a['club_mail']}',
+                        `org_id_for_club`           = '{$a['org_id']}',
+                        `password`='{$pass}',
+                        `grant`=1,
+                        `active`=1
                         ");
+
 
             return $result;
         }
@@ -251,22 +256,22 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
-
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
                         `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
-                        `event_start`           = '{$a['event_start']}',
-                        `event_end`          = '{$a['event_end']}',
+                        `event_start`           = '{$a['data-start']}',
+                        `event_end`          = '{$a['data-finish']}',
                         `event_city`   = '{$a['event_city']}',
                         `event_country`  = '{$a['event_country']}',
                         `event_referee`   = '{$a['event_referee']}',
-                        `event_skutiner`         = '{$a['event_skutiner']}'
+                        `event_skutiner`= '{$a['event_skutiner']}',
+                        `org_id_for_event`= '{$a['org_id']}'
                         ");
 
+            $db->close();
             return $result;
         }
-        $db->close();
         return true;
     }
 
@@ -360,6 +365,8 @@ class AdminModel
 
     static function saveDanceProgram($json)
     {
+        $result = '';
+        $message = '';
         $array_for_record = array();
         if (isset($json) && !empty($json)) {
             if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -369,8 +376,122 @@ class AdminModel
                             `d_age_category` = '" . serialize($json['age-categories']) . "',
                             `d_nomination` = '" . serialize($json['nominations']) . "',
                             `d_league` = '" . serialize($json['leagues']) . "'");
+                if ($result == true) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Танцевальная программа \"{$json['dance-group-name']}\" успешно сохранена!"
+                    ]);
+                } elseif ($result == false) {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Танцевальную программу \"{$json['dance-group-name']}\" сохранить не удалось!"
+                    ]);
+                }
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'НЕ удалось установить соединение с базой данных! Что-то пошло не так...'
+                ]);
             }
         }
+        self::saveMessage($message);
         return $result;
+    }
+
+    static function getAllDanceGroups()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $danceProgramList[$i]['id'] = $row['id'];
+                $danceProgramList[$i]['dance_group_name'] = $row['dance_group_name'];
+                $danceProgramList[$i]['d_program'] = $row['d_program'];
+                $danceProgramList[$i]['d_age_category'] = $row['d_age_category'];
+                $danceProgramList[$i]['d_nomination'] = $row['d_nomination'];
+                $danceProgramList[$i]['d_league'] = $row['d_league'];
+                $i++;
+            }
+            $db->close();
+
+        };
+
+        return $danceProgramList;
+    }
+
+    static function getDanceGroupsById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_groups` WHERE `id` = {$id}";
+            $result = $db->query($query);
+
+            $row = $result->fetch_assoc();
+                $danceProgram['id'] = $row['id'];
+                $danceProgram['dance_group_name'] = $row['dance_group_name'];
+                $danceProgram['d_program'] = unserialize($row['d_program']);
+                $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
+                $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
+                $danceProgram['d_league'] = unserialize($row['d_league']);
+
+            $db->close();
+
+        };
+
+        return $danceProgram;
+    }
+
+    static function saveCategoryParameters($json, $org_id)
+    {
+        $result = FALSE;
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $check = $db->query("SELECT `id_dance_group`, `id_org` FROM `category_parameters` WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
+            $row = $check->fetch_assoc();
+//            $_SESSION['for_check'] = $row;
+            if($row['id_dance_group'] == $json[4] && $row['id_org'] == $org_id){
+                $result = $db->query("UPDATE `category_parameters`
+                                  SET `c_p_programs` = '" . serialize($json[0]) . "',
+                                      `c_p_age_categories` = '" . serialize($json[1]) . "',
+                                      `c_p_nominations` = '" . serialize($json[2]) . "',
+                                      `c_p_leagues` = '" . serialize($json[3]) . "'
+                                  WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
+                if($result){
+                    $result = 'updated';
+                }
+            } else {
+                $result = $db->query("INSERT INTO `category_parameters`
+                        SET `id` = NULL,
+                            `c_p_programs` = '" . serialize($json[0]) . "',
+                            `c_p_age_categories` = '" . serialize($json[1]) . "',
+                            `c_p_nominations` = '" . serialize($json[2]) . "',
+                            `c_p_leagues` = '" . serialize($json[3]) . "',
+                            `id_dance_group` = {$json[4]},
+                            `id_org` = '{$org_id}'");
+                if($result){
+                    $result = 'inserted';
+                }
+            }
+            $db->close();
+        }
+        return $result;
+    }
+
+    static function getCategoryParametersById($id)
+    {
+        $returning_array = [];
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `category_parameters` WHERE `id_dance_group` = {$id} AND `id_org` = {$_COOKIE['get_id']}";
+            $result = $db->query($query);
+            while ($row = $result->fetch_assoc()){
+                $returning_array['id'] = $row['id'];
+                $returning_array['c_p_programs'] = unserialize($row['c_p_programs']);
+                $returning_array['c_p_age_categories'] = unserialize($row['c_p_age_categories']);
+                $returning_array['c_p_nominations'] = unserialize($row['c_p_nominations']);
+                $returning_array['c_p_leagues'] = unserialize($row['c_p_leagues']);
+            }
+            $db->close();
+        };
+        return $returning_array;
     }
 }

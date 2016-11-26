@@ -1,7 +1,7 @@
 /**
  * Created by PC1 on 28.09.2016.
  */
-jQuery(function($) {
+$(function() {
 
     $(window).on('resize', function(){
         var width = window.innerWidth,
@@ -141,7 +141,7 @@ jQuery(function($) {
             var $saveBtn = $orgList.find('.save-org-info'),
                 $dontSaveBtn = $orgList.find('.dontsave-org-info');
 
-            $saveBtn.prop
+            $saveBtn.prop('disabled', false);
             $dontSaveBtn.prop('disabled', false);
 
         });
@@ -171,8 +171,8 @@ jQuery(function($) {
     //КНОПКА ІНФОРМАЦІЇ
     $infoButton.on('click', function () {
 
-       var $orgList=$(this).parents('.box.organization-list'),
-           $infoContainer=$orgList.find('.full-info-container');
+        var $orgList=$(this).parents('.box.organization-list'),
+            $infoContainer=$orgList.find('.full-info-container');
 
         $orgList.trigger('onClick');
 
@@ -219,7 +219,7 @@ jQuery(function($) {
 
         } else if ($infoContainer.children().eq(0).attr('data-input')=='disabled') {
 
-            switchOrgInfo($orgList,'active');
+            switchOrgInfo($orgList, 'active');
 
             toggleButtons($orgList, true);
 
@@ -287,32 +287,3 @@ jQuery(function($) {
 
     //      виведення інформації по організації
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
