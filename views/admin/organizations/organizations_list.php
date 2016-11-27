@@ -269,7 +269,8 @@
                                     </div>
                                     <div class="col-xs-12">
                                         <form method="post" action="../org_settings/<?php echo $organization['id']; ?>">
-                                            <input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"><a></a></input>
+                                            <input name="org_id" type="hidden" value="<?php echo $organization['id']; ?>">
+                                            <a><input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"></a>
                                         </form>
                                     </div>
                                 </div>
@@ -380,7 +381,7 @@
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/organization_list.js?112"></script>
+<script src="<?= Router::$permalink ?>views/main/js/organization_list.js?12312"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

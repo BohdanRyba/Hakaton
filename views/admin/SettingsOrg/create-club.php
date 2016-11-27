@@ -21,7 +21,6 @@ sleep(1);
                 </div>
             </div>
             <div class="file_dw form-group">
-                <input type="hidden" id="org_id" name="org_id" value="<?=$_COOKIE['get_id']?>" />
                 <label for="exampleInputFile">Загрузите логотип клуба</label>
                 <input id="exampleInputFile" name="club_image" type="file">
             </div>

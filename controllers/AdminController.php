@@ -111,12 +111,13 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
+//        self::showArray($_POST);
+        if (isset($_POST['org_id'])) {
+            $current_org_name = AdminModel::getOrganizationById($_POST['org_id']);
+        }
         if (isset($id) && is_numeric($id)) {
-            $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
         }
-        setcookie("get_id", "$id");
-
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
@@ -129,40 +130,12 @@ class AdminController
 
     public function addClub()
     {
-        if (isset($_POST)) {
-            if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
-                !empty($_POST['club_shief']) && !empty($_POST['club_number']) && !empty($_POST['club_mail']) &&
-                !empty($_POST['org_id']) && !empty($_POST['org_id'])
-            ) {
-                AdminModel::club_add($_POST);
-            } else {
-                echo 'NooooO!';
-            }
-        }
-//        self::showArray($_POST);
+        AdminModel::club_add($_POST);
     }
 
     public function addEvent()
     {
-        if (isset($_POST)) {
-            if (!empty($_POST['event_name']) && !empty($_POST['event_status']) && !empty($_POST['data-finish']) &&
-                !empty($_POST['event_city']) && !empty($_POST['event_country']) && !empty($_POST['event_referee']) &&
-                !empty($_POST['event_skutiner']) && !empty($_POST['org_id'])
-            ) {
-                $message = json_encode([
-                    'status' => 'success',
-                    'message' => 'Организация успешно сохранена в базе данных!'
-                ]);
-                AdminModel::event_add($_POST);
-            } else {
-                $message = json_encode([
-                    'status' => 'error',
-                    'message' => 'Сохранить событие не удалось! Пожалуйста, проверьте правильность ввода данных!'
-                ]);
-            }
-        }
-
-        self::saveMessage($message);
+        AdminModel::event_add($_POST);
     }
 
     public function actionAjaxClub_add()
@@ -170,28 +143,26 @@ class AdminController
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
-    public function actionAjax_clubsShow($Cpag)
+    public function actionAjax_clubShow()
     {
         echo json_encode(AdminModel::ShowClubs());
     }
 
-    public function actionAjax_eventsShow($id)
+    public function actionAjax_eventShow()
     {
-        echo json_encode(AdminModel::ShowEvents($id));
+//        $array = AdminModel::ShowEvents();
+//        self::showArray($array);
+//        die;
+//
+        echo json_encode(AdminModel::ShowEvents());
     }
 
-    public function actionAjax_options_categoryShow(){
-        echo 'Категории';
-    }
     public function actionAjaxCategory_add()
     {
-        $dance_programs_list = AdminModel::getAllDanceGroups();
-//        self::showArray($list);
-//        echo json_encode(AdminModel::ShowClubs());
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
-    public function actionAjaxCreate_event($id='')
+    public function actionAjaxCreate_event()
     {
 //        echo "it's create-event";
         include 'views/admin/SettingsOrg/create-event.php';
@@ -277,17 +248,6 @@ class AdminController
             echo '<br>';
             echo 'redirect --> ' . Router::$permalink . $json['redirect'];
             header('Location: ' . Router::$permalink . $json['redirect']);
-        }
-    }
-
-    public function actionAjax_settingUpDancingCategory()
-    {
-        if (isset($_POST) && !empty($_POST)){
-            $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
-            foreach ($dance_group as $key => $item) {
-//                $dance_group['d_program']
-            }
-            echo json_encode($dance_group);
         }
     }
 }
