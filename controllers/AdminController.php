@@ -129,14 +129,40 @@ class AdminController
 
     public function addClub()
     {
-        self::showArray($_POST);
-        AdminModel::club_add($_POST);
+        if (isset($_POST)) {
+            if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
+                !empty($_POST['club_shief']) && !empty($_POST['club_number']) && !empty($_POST['club_mail']) &&
+                !empty($_POST['org_id']) && !empty($_POST['org_id'])
+            ) {
+                AdminModel::club_add($_POST);
+            } else {
+                echo 'NooooO!';
+            }
+        }
+//        self::showArray($_POST);
     }
 
     public function addEvent()
     {
-        self::showArray($_POST);
-        AdminModel::event_add($_POST);
+        if (isset($_POST)) {
+            if (!empty($_POST['event_name']) && !empty($_POST['event_status']) && !empty($_POST['data-finish']) &&
+                !empty($_POST['event_city']) && !empty($_POST['event_country']) && !empty($_POST['event_referee']) &&
+                !empty($_POST['event_skutiner']) && !empty($_POST['org_id'])
+            ) {
+                $message = json_encode([
+                    'status' => 'success',
+                    'message' => 'Организация успешно сохранена в базе данных!'
+                ]);
+                AdminModel::event_add($_POST);
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'Сохранить событие не удалось! Пожалуйста, проверьте правильность ввода данных!'
+                ]);
+            }
+        }
+
+        self::saveMessage($message);
     }
 
     public function actionAjaxClub_add()
@@ -144,17 +170,19 @@ class AdminController
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
-    public function actionAjax_clubShow($Cpag)
+    public function actionAjax_clubShow($id)
     {
-        echo json_encode(AdminModel::ShowClubs());
+        echo json_encode(AdminModel::ShowClubs($id));
     }
 
-    public function actionAjax_eventShow($id)
+    public function actionAjax_eventsShow($id)
     {
-//        echo $id;
-//        die;
         echo json_encode(AdminModel::ShowEvents($id));
     }
+
+    public function actionAjax_option_categoryShow(){
+        echo 'Категории';
+    } // readjusted by Roma;
 
     public function actionAjaxCategory_add()
     {
@@ -255,12 +283,30 @@ class AdminController
 
     public function actionAjax_settingUpDancingCategory()
     {
-        if (isset($_POST) && !empty($_POST)){
+        if (isset($_POST) && !empty($_POST)) {
             $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
-            foreach ($dance_group as $key => $item) {
-//                $dance_group['d_program']
-            }
-            echo json_encode($dance_group);
+            $category_parameters = AdminModel::getCategoryParametersById($_POST['id']);
+            $array['dance_group'] = $dance_group;
+            $array['category_parameters'] = $category_parameters;
+            echo json_encode($array);
         }
     }
+
+    public function actionAjax_saveDanceCategoryParameters($org_id)
+    {
+//        self::showArray($_SESSION);
+//        $_SESSION['new'] = $_POST;
+//        die;
+
+        if (!empty($_POST['massive'])) {
+            $result = AdminModel::saveCategoryParameters($_POST['massive'], $org_id);
+            if($result == 'updated'){
+                setcookie("A_result", "$result");
+            } elseif($result == 'inserted') {
+                setcookie("A_result", "$result");
+            }
+        } else {
+            setcookie("A_result", "Empty_POST");
+        }
+    } // end this method !
 }

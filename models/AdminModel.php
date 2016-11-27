@@ -167,10 +167,10 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs()
+    public static function ShowClubs($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$_COOKIE['org_id']} ORDER BY id DESC";
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
@@ -181,7 +181,7 @@ class AdminModel
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
                 $clubsList[$i]['club_number'] = $row['club_number'];
                 $clubsList[$i]['club_mail'] = $row['club_mail'];
-                $clubsList[$i]['org_id_for_club'] = $row['org_id'];
+                $clubsList[$i]['org_id_for_club'] = $row['org_id_for_club'];
 
                 $i++;
             }
@@ -241,6 +241,7 @@ class AdminModel
                         `active`=1
                         ");
 
+
             return $result;
         }
         $db->close();
@@ -255,15 +256,12 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
-            echo '<pre>';
-            var_dump($a);
-            echo '<pre>';
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
                         `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
-                        `event_start`           = '{$a['event_start']}',
-                        `event_end`          = '{$a['event_end']}',
+                        `event_start`           = '{$a['data-start']}',
+                        `event_end`          = '{$a['data-finish']}',
                         `event_city`   = '{$a['event_city']}',
                         `event_country`  = '{$a['event_country']}',
                         `event_referee`   = '{$a['event_referee']}',
@@ -444,4 +442,56 @@ class AdminModel
         return $danceProgram;
     }
 
+    static function saveCategoryParameters($json, $org_id)
+    {
+        $result = FALSE;
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $check = $db->query("SELECT `id_dance_group`, `id_org` FROM `category_parameters` WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
+            $row = $check->fetch_assoc();
+//            $_SESSION['for_check'] = $row;
+            if($row['id_dance_group'] == $json[4] && $row['id_org'] == $org_id){
+                $result = $db->query("UPDATE `category_parameters`
+                                  SET `c_p_programs` = '" . serialize($json[0]) . "',
+                                      `c_p_age_categories` = '" . serialize($json[1]) . "',
+                                      `c_p_nominations` = '" . serialize($json[2]) . "',
+                                      `c_p_leagues` = '" . serialize($json[3]) . "'
+                                  WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
+                if($result){
+                    $result = 'updated';
+                }
+            } else {
+                $result = $db->query("INSERT INTO `category_parameters`
+                        SET `id` = NULL,
+                            `c_p_programs` = '" . serialize($json[0]) . "',
+                            `c_p_age_categories` = '" . serialize($json[1]) . "',
+                            `c_p_nominations` = '" . serialize($json[2]) . "',
+                            `c_p_leagues` = '" . serialize($json[3]) . "',
+                            `id_dance_group` = {$json[4]},
+                            `id_org` = '{$org_id}'");
+                if($result){
+                    $result = 'inserted';
+                }
+            }
+            $db->close();
+        }
+        return $result;
+    }
+
+    static function getCategoryParametersById($id)
+    {
+        $returning_array = [];
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `category_parameters` WHERE `id_dance_group` = {$id} AND `id_org` = {$_COOKIE['get_id']}";
+            $result = $db->query($query);
+            while ($row = $result->fetch_assoc()){
+                $returning_array['id'] = $row['id'];
+                $returning_array['c_p_programs'] = unserialize($row['c_p_programs']);
+                $returning_array['c_p_age_categories'] = unserialize($row['c_p_age_categories']);
+                $returning_array['c_p_nominations'] = unserialize($row['c_p_nominations']);
+                $returning_array['c_p_leagues'] = unserialize($row['c_p_leagues']);
+            }
+            $db->close();
+        };
+        return $returning_array;
+    }
 }

@@ -98,6 +98,7 @@ jQuery(function($) {
                 url:'ajax_settingUpDancingCategory',
                 data: 'id='+id,
                 success: function(msg){
+                    console.log(msg);
                     var msg=JSON.parse(msg),
                         programs=msg['d_program'],
                         ageCategories=msg['d_age_category'],
@@ -167,9 +168,15 @@ jQuery(function($) {
         pickedParametersWrapper["massive"]=pickedParameters;
         // pickedParameters=JSON.stringify(pickedParameters);
         // pickedParameters=pickedParameters.toString();
+
+        var org_id= window.location.href;// Roma added these lines
+        org_id=org_id.split('/');// Roma added these lines
+        org_id=org_id[org_id.length-1];// Roma added these lines
+        console.log(org_id);// Roma added these lines
         $.ajax({
             type: "POST",
-            url: 'ajax_saveDanceCategoryParameters',
+            url: 'ajax_saveDanceCategoryParameters/'+org_id,// Roma added these lines
+            // data: 'b='+pickedParameters,
             data: pickedParametersWrapper,
             success:function () {
                 console.log(pickedParametersWrapper);
@@ -180,5 +187,3 @@ jQuery(function($) {
         });
     });
 });
-
-

@@ -74,7 +74,8 @@ $(function () {
         $(this).hide(400);
         $('.us_info').hide(400);
     });
-    $('.btn-default').click(function () {
+    $('.btn-default').click(function (e) {
+        e.preventDefault();
         $('#overlay_log').hide(400);
         $('.form_log').hide(400);
     });
@@ -138,12 +139,6 @@ $(function () {
             + '</div>';
 
         $('.add_train_box').after(trainer_node);
-    });
-    $('.club_data_list').on('click', function () {
-        $('.search_wrap').hide(400);
-        $('.list_information').slideUp();
-        $('.search_wrap_club').toggle(400);
-        var typeSearch = $(this).attr('data-type');
     });
 
     // button add new trainer
