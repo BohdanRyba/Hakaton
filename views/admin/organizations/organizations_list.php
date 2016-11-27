@@ -170,7 +170,7 @@
                         <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings">Organizations
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings/1">Organizations
                                 Settings</a></li>
                         <li><a href="#">Link in level 2</a></li>
                     </ul>
