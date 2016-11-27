@@ -157,18 +157,22 @@ jQuery(function($) {
     $body.on('click', '#add-dance-categories-parameters', function () {
         var
             $id=$('#add-dance-categories-parameters').attr('data-id-dancing-group'),
-            pickedParameters=[];
+            pickedParameters=[],
+            pickedParametersWrapper={};
         $('.pick-dancing-group-parameters-wrapper').find('form').each(function(){
             pickedParameters.push($(this).serializeArray());
+            //pickedParameters[$(this).attr('id')]=
         });
         pickedParameters.push($id);
-        pickedParameters=JSON.stringify(pickedParameters);
+        pickedParametersWrapper["massive"]=pickedParameters;
+        // pickedParameters=JSON.stringify(pickedParameters);
+        // pickedParameters=pickedParameters.toString();
         $.ajax({
             type: "POST",
             url: 'ajax_saveDanceCategoryParameters',
-            data: pickedParameters,
+            data: pickedParametersWrapper,
             success:function () {
-                console.log(pickedParameters);
+                console.log(pickedParametersWrapper);
             },
             error: function (msg) {
                 console.log(msg);
