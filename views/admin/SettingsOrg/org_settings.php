@@ -227,15 +227,16 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input id="search_event_input" data-type="events" class="form-control search_event" type="search" placeholder="Поиск по событиям">
+                                    <input id="search_event_input" data-type="event" class="form-control search_event active" type="search" placeholder="Поиск по событиям">
                                     <span class="btn-search input-group-btn">
-                                        <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="search_event_go" type="button" class=" btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
                         </div>
                         <div class="list_information col-xs-8">
                             <ul class="list_data">
+
                             </ul>
                         </div>
                     </div>
@@ -245,14 +246,10 @@ desired effect
                                 <div class="input-group input-group-sm">
                                     <input id="search_event_inut" class="form-control search_event" data-type="option_category" type="search" placeholder="Поиск по категориям">
                                     <span class="btn-search input-group-btn">
-                                        <button id="search_event_go" type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button id="" type="button" class="search_event_go btn btn-info btn-flat-event">Go!</button>
                                     </span>
                                 </div>
                             </form>
-                        </div>
-                        <div class="list_information col-xs-8">
-                            <ul class="list_data">
-                            </ul>
                         </div>
                     </div>
                     <div class="search_wrap search_wrap_club" data-type-search="club">
@@ -266,17 +263,11 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-xs-8">
-                            <ul class="list_data">
-                            </ul>
-                        </div>
                     </div>
 
                     <div class="cont-box1 clear">
                         <div class="list-group">
-                            <div>
-                                <span></span>
-                            </div>
+
                         </div>
                     </div>
                     <div class="cont-box content-in" id="loading"></div>
@@ -414,7 +405,7 @@ desired effect
                 </li>
             </ul>
             <!-- /.control-sidebar-menu -->
-                <?=setcookie("set","")?>
+            <?=setcookie("set","")?>
         </div>
         <!-- /.tab-pane -->
         <!-- Stats tab content -->,
@@ -474,7 +465,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/script.js?132"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax.js?12526"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax.js?526"></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function(){
@@ -494,7 +485,6 @@ desired effect
     });
 
 </script>
-
 <script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js?5101"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax_search.js?89"></script>
 </body>
