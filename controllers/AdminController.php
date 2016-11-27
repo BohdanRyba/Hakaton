@@ -304,7 +304,7 @@ class AdminController
             $result = AdminModel::saveCategoryParameters($_POST['massive'], $org_id);
             if($result == 'updated'){
                 setcookie("A_result", "$result");
-                echo 'Параметры танцевальной группы сохранены';
+                echo 'Параметры танцевальной группы обновлены';
             } elseif($result == 'inserted') {
                 setcookie("A_result", "$result");
                 echo 'Параметры танцевальной группы созданы';
