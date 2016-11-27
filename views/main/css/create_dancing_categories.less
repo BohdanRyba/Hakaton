@@ -115,8 +115,11 @@
       padding: 4px 0;
       width: 20%;
       input {
+        color: @main-color;
         width: 100%;
         margin:  0;
+        padding: 5px;
+        border:solid 2px @main-color;
         &:disabled {
           background: white;
           border:solid 2px @highlight-color;
@@ -211,6 +214,3 @@
   }
 }
 
-button.edit-categories-info.active{
-  background: lighten(#00a65a, 25%);
-}
