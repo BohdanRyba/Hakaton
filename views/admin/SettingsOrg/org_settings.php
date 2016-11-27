@@ -227,7 +227,7 @@ desired effect
                         <div class="list-search event_search_box">
                             <form method="GET" action="" class="line-search">
                                 <div class="input-group input-group-sm">
-                                    <input id="search_event_input" data-type="event" class="form-control search_event" type="search" placeholder="Поиск по событиям">
+                                    <input id="search_event_input" data-type="event" class="form-control search_event active" type="search" placeholder="Поиск по событиям">
                                     <span class="btn-search input-group-btn">
                                         <button id="search_event_go" type="button" class=" btn btn-info btn-flat-event">Go!</button>
                                     </span>
@@ -486,6 +486,6 @@ desired effect
 
 </script>
 <script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js?1"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?58157"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?55151"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@ return array(
     'admin/organizations/org_settings/ajax_create_category' => 'admin/ajaxCategory_add', // changed
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // changed
     'admin/organizations/org_settings' => 'admin/org_settings',
-    'admin/organizations/ajax_clubShow' => 'admin/ajax_clubShow',
+    'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_reg' => 'admin/org_reg',
     'admin/organizations/org_add' => 'admin/org_add',
     'admin/organizations/page/([0-9]+)' => 'admin/index/$1',

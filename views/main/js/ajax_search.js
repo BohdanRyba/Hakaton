@@ -1,20 +1,26 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax for search event
-$('.list-search').each(function(i){
-    var search = $(this).parents('.search_wrap[style="display:block;"]').find('input[type="search"]');
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax search when print
-console.log(search);
-var searchName= search.attr('data-type');
+
+var search = $('.list-search').find('input[type="search"]');
 search.on('keyup', function () {
+    var search = $('.list-search').find('input[type="search"].active');
+    console.log(search);
+    var searchName= search.attr('data-type');
+    console.log(searchName);
     $('.bg-opacity').show();
     $('.list_information').show();
     actionAjaxSearch(searchName);
 });
     //>>>>>>>>>>>>>>>>>>>>>>>       ajax search when press enter
     $('.search_event').on('keydown', function(e){
-        console.log(searchName);
+
         let codKey= e.which;
         if(codKey===13){
             e.preventDefault();
+            var search = $('.list-search').find('input[type="search"].active');
+            console.log(search);
+            var searchName= search.attr('data-type');
+            console.log(searchName);
+            console.log(searchName);
             $('.list_information').slideUp(200);
             $('.list_data>').remove();
             actionAjaxSearchAddPage(searchName);
@@ -25,6 +31,10 @@ search.on('keyup', function () {
     });
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    ajax search when click button GO!!!
     $('#search_event_go').on('click', function(e){
+        var search = $('.list-search').find('input[type="search"].active');
+        console.log(search);
+        var searchName= search.attr('data-type');
+        console.log(searchName);
         e.preventDefault();
         $('.bg-opacity').hide();
         $('.list_information').slideUp(200);
@@ -40,12 +50,12 @@ search.on('keyup', function () {
             url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
             dataType: 'html',   
-            //success:funcSearch
-            success: function(m){/*console.log(m);*/}
+            success:funcSearch
+            //success: function(m){/*console.log(m);*/}
         });
     };
     function actionAjaxSearchAddPage(searchName){
-        
+
         var id= window.location.href;
         id=id.split('/');
         id=id[id.length-1];
@@ -54,13 +64,14 @@ search.on('keyup', function () {
             url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
             dataType: 'html',
-            //success:funcSearchPrint
-            success: function(m){console.log(m);}
+            success:funcSearchPrint
+            //success: function(m){console.log(m);}
         });
     };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for list
 function funcSearch(data) {
     $('.list_data>').remove();
+    console.log(data);
     let list = JSON.parse(data);
     console.log(data);
     let render = function(list) {
@@ -92,8 +103,8 @@ function funcSearch(data) {
 };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
 function funcSearchPrint(data) {
-                console.log(data);
-        var list = JSON.parse(data);
+    console.log(data);
+    var list = JSON.parse(data);
 
 
     let render = function(list) {
@@ -128,7 +139,7 @@ function funcSearchPrint(data) {
         var $result_search= $('li.result_search');
         $result_search.wrapAll('<ul class="list_data"></ul>');
     };
-});
+
 //>>>>>>>>>>>>>>>>>>>>>>>>       search result main close invisible background and clear list the result
 $('.bg-opacity').on('click', function () {
     $(this).hide();
