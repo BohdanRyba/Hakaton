@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
     <meta charset="utf-8">
@@ -33,6 +29,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less?11">
+    <script src="<?=Router::$permalink?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -236,7 +234,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-xs-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -252,7 +250,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -268,7 +266,7 @@ desired effect
                                 </div>
                             </form>
                         </div>
-                        <div class="list_information col-sm-12">
+                        <div class="list_information col-xs-8">
                             <ul class="list_data">
                             </ul>
                         </div>
@@ -409,7 +407,6 @@ desired effect
                                  <span class="label label-danger pull-right">70%</span>
                              </span>
                          </h4>
-
                          <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
@@ -417,10 +414,10 @@ desired effect
                 </li>
             </ul>
             <!-- /.control-sidebar-menu -->
-
+                <?=setcookie("set","")?>
         </div>
         <!-- /.tab-pane -->
-        <!-- Stats tab content -->
+        <!-- Stats tab content -->,
         <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
         <!-- /.tab-pane -->
         <!-- Settings tab content -->
@@ -476,7 +473,7 @@ desired effect
 <script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/script.js?14"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?1343984"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax.js"></script>
 <script>
     $(function () {
@@ -495,9 +492,10 @@ desired effect
             $("[data-mask]").inputmask();
         });
     });
+
 </script>
 
-<script src="<?=Router::$permalink?>views/main/js/ajax_collector.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/ajax_search.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax_search.js?688"></script>
 </body>
 </html>

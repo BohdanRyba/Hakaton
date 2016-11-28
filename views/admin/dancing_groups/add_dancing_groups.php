@@ -339,7 +339,6 @@
                                                             <label>Название:
                                                                 <input type="text" name="nomination-name-new" class="input-standard">
                                                             </label>
-                                                            <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
                                                         </div>
                                                         <div class="nomination-rule">
                                                             <label>Количество учасников:
@@ -391,7 +390,6 @@
                                                             <label>Название:
                                                                 <input type="text" name="league-name-new" class="input-standard">
                                                             </label>
-                                                            <span class="text-bold"><a href=""><i class="fa fa-plus"></i></a></span>
                                                         </div>
                                                         <div class="nomination-rule">
                                                             <label>Лет выступлений:
@@ -530,7 +528,7 @@
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/add_dancing_groups.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_groups.js?2223"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

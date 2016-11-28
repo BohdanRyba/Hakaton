@@ -370,5 +370,4 @@ jQuery(function($) {
         });
         return obj;
     }
-
 });

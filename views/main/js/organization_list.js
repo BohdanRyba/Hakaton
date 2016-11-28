@@ -171,8 +171,8 @@ $(function() {
     //КНОПКА ІНФОРМАЦІЇ
     $infoButton.on('click', function () {
 
-       var $orgList=$(this).parents('.box.organization-list'),
-           $infoContainer=$orgList.find('.full-info-container');
+        var $orgList=$(this).parents('.box.organization-list'),
+            $infoContainer=$orgList.find('.full-info-container');
 
         $orgList.trigger('onClick');
 
@@ -287,32 +287,3 @@ $(function() {
 
     //      виведення інформації по організації
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
