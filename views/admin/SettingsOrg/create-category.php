@@ -20,12 +20,6 @@ sleep(1);
                             <li class="dancing-group-parameter-name text-capitalize text-bold text-center">
                                 программы
                             </li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd kfbshlkdfb lhdsfb lhj sdvfjhlsdvfd
-                                    ml</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
                         </ul>
                     </form>
                 </div>
@@ -35,12 +29,6 @@ sleep(1);
                             <li class="dancing-group-parameter-name text-capitalize text-bold text-center">
                                 возрастные категории
                             </li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd kfbshlkdfb lhdsfb lhj sdvfjhlsdvfd
-                                    ml</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
                         </ul>
                     </form>
                 </div>
@@ -50,12 +38,6 @@ sleep(1);
                             <li class="dancing-group-parameter-name text-capitalize text-bold text-center">
                                 номинации
                             </li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd kfbshlkdfb lhdsfb lhj sdvfjhlsdvfd
-                                    ml</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
                         </ul>
                     </form>
                 </div>
@@ -63,12 +45,6 @@ sleep(1);
                     <form id="pick-leagues" action="">
                         <ul>
                             <li class="dancing-group-parameter-name text-capitalize text-bold text-center">лиги</li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd kfbshlkdfb lhdsfb lhj sdvfjhlsdvfd
-                                    ml</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
-                            <li><label><input type="checkbox">lalalalalndsfjbsd</label></li>
                         </ul>
                     </form>
                 </div>
@@ -82,4 +58,3 @@ sleep(1);
         </div>
     </div>
     <!-- /.box-header -->
-  

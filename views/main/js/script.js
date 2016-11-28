@@ -2,14 +2,14 @@ $(function () {
 
 
     var numberArray = [],
-        emailRegular = /^[A-Za-z0-9]\.?([`\w-]\.?)+@[a-z]+(\.[a-z]+)+$/g,
-        $userName = $('[name="user_name"]'),
-        $userPhone = $('[name="user_phone"]'),
-        $userCountry = $('[name="user_country"]'),
-        $userEmail = $('[name="user_email"]'),
-        $userPassword1 = $('[name="password_1"]'),
-        $userPassword2 = $('[name="password_2"]'),
-        $registrationSubmit = $('[name="registration_submit"]');
+    emailRegular = /^[A-Za-z0-9]\.?([`\w-]\.?)+@[a-z]+(\.[a-z]+)+$/g,
+    $userName = $('[name="user_name"]'),
+    $userPhone = $('[name="user_phone"]'),
+    $userCountry = $('[name="user_country"]'),
+    $userEmail = $('[name="user_email"]'),
+    $userPassword1 = $('[name="password_1"]'),
+    $userPassword2 = $('[name="password_2"]'),
+    $registrationSubmit = $('[name="registration_submit"]');
     for (var i = 0; i < 10; i++) {
         numberArray[i] = i;
     }
@@ -74,7 +74,8 @@ $(function () {
         $(this).hide(400);
         $('.us_info').hide(400);
     });
-    $('.btn-default').click(function () {
+    $('.btn-default').click(function (e) {
+        e.preventDefault();
         $('#overlay_log').hide(400);
         $('.form_log').hide(400);
     });
@@ -101,27 +102,29 @@ $(function () {
      $( function() {
      $( "#event_begin").datepicker();
      $( "#event_end").datepicker();
-     });*/
+ });*/
     // button on page: organization for create eveny, reg club, dance 
-
 
     $('.event_data_list').on('click', function () {
         $('.search_wrap').hide(400);
         $('.list_information').slideUp();
         $('.search_wrap_event').toggle(400);
-        var typeSearch = $(this).attr('data-type');
+        $('.search_wrap input').removeClass('active');
+        $('.search_wrap_event input').addClass('active');
     });
     $('.category_data_list').on('click', function () {
         $('.search_wrap').hide(400);
         $('.list_information').slideUp();
         $('.search_wrap_category').toggle(400);
-        var typeSearch = $(this).attr('data-type');
+        $('.search_wrap input').removeClass('active');
+        $('.search_wrap_category input').addClass('active');
     });
     $('.club_data_list').on('click', function () {
         $('.search_wrap').hide(400);
         $('.list_information').slideUp();
         $('.search_wrap_club').toggle(400);
-        var typeSearch = $(this).attr('data-type');
+        $('.search_wrap input').removeClass('active');
+        $('.search_wrap_club input').addClass('active');
     });
 
     // button add new trainer
@@ -131,19 +134,13 @@ $(function () {
         incr_train++;
 
         let trainer_node = '<div class="form-group">'
-            + '<label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>'
-            + '<div class="col-sm-10">'
-            + '<input type="text" class="form-control" name="club_trener_' + incr_train + '" id="inputPassword3" placeholder="ФИО тренера">'
-            + '</div>'
-            + '</div>';
+        + '<label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>'
+        + '<div class="col-sm-10">'
+        + '<input type="text" class="form-control" name="club_trener_' + incr_train + '" id="inputPassword3" placeholder="ФИО тренера">'
+        + '</div>'
+        + '</div>';
 
         $('.add_train_box').after(trainer_node);
-    });
-    $('.club_data_list').on('click', function () {
-        $('.search_wrap').hide(400);
-        $('.list_information').slideUp();
-        $('.search_wrap_club').toggle(400);
-        var typeSearch = $(this).attr('data-type');
     });
 
     // button add new trainer
@@ -152,11 +149,11 @@ $(function () {
         window.incr_train++;
         console.log('asd')
         let trainer_node = +'<div class="form-group">'
-            + '<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
-            + '<div class="col-sm-10">'
-            + '<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
-            + '</div>'
-            + '</div>';
+        + '<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
+        + '<div class="col-sm-10">'
+        + '<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
+        + '</div>'
+        + '</div>';
 
         $('.add_train_box').append(trainer_node);
 
