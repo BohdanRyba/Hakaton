@@ -268,6 +268,7 @@ desired effect
                         </div>
                         <div class="list_information col-xs-8">
                             <ul class="list_data">
+
                             </ul>
                         </div>
                     </div>
