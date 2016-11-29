@@ -117,7 +117,7 @@ jQuery(function($) {
             });
         }
 
-        ajax_settingUpDancingCategory($checkedItem);
+        ajax_LoadRequiredDancingGroupParameters($checkedItem);
     });
 
     $body.on('click', '#menu-dance-programs', function (e) {e.preventDefault();});
