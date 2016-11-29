@@ -195,7 +195,7 @@
                                     <div class="col-xs-12 col-sm-6">
                                         <ul id="pick-dancing-group-to-use-wrapper">
                                             <?php foreach ($category_parameters as $value): ?>
-                                            <li data-id="<?=$value['id_dance_group']?>" class="pick-dancing-group-to-use"><?=$value['dance_group_name']?></li>
+                                            <li data-id-dancing-group="<?=$value['id_dance_group']?>" class="pick-dancing-group-to-use"><?=$value['dance_group_name']?></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     </div>
