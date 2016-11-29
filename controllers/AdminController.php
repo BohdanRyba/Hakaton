@@ -290,16 +290,10 @@ class AdminController
             $array['category_parameters'] = $category_parameters;
             echo json_encode($array);
         }
-//        self::showArray($_SESSION);
-//        die;
     }
 
     public function actionAjax_saveDanceCategoryParameters($org_id)
     {
-//        self::showArray($_SESSION);
-//        $_SESSION['new'] = $_POST;
-//        die;
-
         if (!empty($_POST['massive'])) {
             $result = AdminModel::saveCategoryParameters($_POST['massive'], $org_id);
             if($result == 'updated'){
@@ -313,5 +307,9 @@ class AdminController
             setcookie("A_result", "Empty_POST");
             echo 'Данные для сохранения отсутствуют';
         }
-    } // end this method !
+    }
+
+    public function actionCreateDancingCategories(){
+        require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
+    }
 }
