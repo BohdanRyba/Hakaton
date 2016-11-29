@@ -194,11 +194,9 @@
                             <div class="row pick-dancing-groups-parameters-wrapper">
                                     <div class="col-xs-12 col-sm-6">
                                         <ul id="pick-dancing-group-to-use-wrapper">
-                                            <li class="pick-dancing-group-to-use">Dance group 1</li>
-                                            <li class="pick-dancing-group-to-use">Dance group 2</li>
-                                            <li class="pick-dancing-group-to-use">Dance group 3</li>
-                                            <li class="pick-dancing-group-to-use">Dance group 4</li>
-                                            <li class="pick-dancing-group-to-use">Dance group 5</li>
+                                            <?php foreach ($category_parameters as $value): ?>
+                                            <li data-id="<?=$value['id_dance_group']?>" class="pick-dancing-group-to-use"><?=$value['dance_group_name']?></li>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </div>
                             </div>
