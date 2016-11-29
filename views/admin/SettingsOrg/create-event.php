@@ -77,8 +77,5 @@ sleep(1);
                 <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
             </div>
         </div>
-        <script>
-            document.getElementById("txt").value
-        </script>
     </form>
 </div>

@@ -290,6 +290,8 @@ class AdminController
             $array['category_parameters'] = $category_parameters;
             echo json_encode($array);
         }
+//        self::showArray($_SESSION);
+//        die;
     }
 
     public function actionAjax_saveDanceCategoryParameters($org_id)
@@ -302,11 +304,14 @@ class AdminController
             $result = AdminModel::saveCategoryParameters($_POST['massive'], $org_id);
             if($result == 'updated'){
                 setcookie("A_result", "$result");
+                echo 'Параметры танцевальной группы обновлены';
             } elseif($result == 'inserted') {
                 setcookie("A_result", "$result");
+                echo 'Параметры танцевальной группы созданы';
             }
         } else {
             setcookie("A_result", "Empty_POST");
+            echo 'Данные для сохранения отсутствуют';
         }
     } // end this method !
 }

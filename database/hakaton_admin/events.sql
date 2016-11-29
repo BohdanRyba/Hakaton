@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1
--- Время создания: Ноя 19 2016 г., 12:35
--- Версия сервера: 10.1.9-MariaDB
--- Версия PHP: 5.6.15
+-- Host: localhost
+-- Generation Time: Nov 27, 2016 at 08:25 
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `hakaton_admin`
+-- Database: `hakaton_admin`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE `events` (
@@ -41,7 +41,7 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `event_name`, `event_image`, `event_status`, `event_start`, `event_end`, `event_city`, `event_country`, `event_referee`, `event_skutiner`, `org_id_for_event`) VALUES
@@ -54,21 +54,21 @@ INSERT INTO `events` (`id`, `event_name`, `event_image`, `event_status`, `event_
 (20, '', '../../../views/main/img/event_img/', '', '0000-00-00', '0000-00-00', '', '', '', '', 7);
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `events`
+-- Indexes for table `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `events`
+-- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
