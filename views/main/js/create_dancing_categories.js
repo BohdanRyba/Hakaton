@@ -8,14 +8,15 @@ jQuery(function($) {
         var  $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter'),
              $searchedCategoriesForm=$('#show-searched-dancing-groups'),
              $danceGroupParametersList=$('#dance-group-parameters-list'),
-             $categoriesList=$('#categories-list');
+             $categoriesList=$('#categories-list'),
+             $checkedItem=$(this);
 
         $totalWrapperForInfo.css('display', 'block');
 
-        $(this).parent().children().each(function () {
+        $checkedItem.parent().children().each(function () {
             $(this).removeClass('picked-dancing-group-to-use');
         });
-        $(this).addClass('picked-dancing-group-to-use');
+        $checkedItem.addClass('picked-dancing-group-to-use');
 
         $danceGroupParametersList.css('display', 'none');
         $categoriesList.css('display', 'none');
@@ -28,7 +29,95 @@ jQuery(function($) {
 
         $('.dance-group-menu-items').each(function() {
             $(this).find('a').removeClass('active');
-        })
+        });
+
+        function ajax_LoadRequiredDancingGroupParameters($checkedItem) {
+            var id=$checkedItem.attr('data-id-dancing-group');
+            $.ajax({
+                type:"POST",
+                url:'ajax_settingUpDancingCategory',
+                data: 'id='+id,
+                success: function(msg){
+                    console.log(msg);
+                    var msg=JSON.parse(msg),
+                        checked=msg['category_parameters'],
+                        parameters=msg['dance_group'],
+                        programs=parameters['d_program'],
+                        ageCategories=parameters['d_age_category'],
+                        nominations=parameters['d_nomination'],
+                        leagues=parameters['d_league'],
+                        programsList=[],
+                        ageCategoriesList=[],
+                        nominationsList=[],
+                        leaguesList=[],
+                        $pickDancePrograms=$('#pick-dance-programs').find('ul'),
+                        $pickAgeCategories=$('#pick-age-categories').find('ul'),
+                        $pickNominations=$('#pick-nominations').find('ul'),
+                        $pickLeagues=$('#pick-leagues').find('ul');
+
+                    for (var key in programs) {programsList.push(key);}
+                    for (var key in ageCategories) {ageCategoriesList.push(key);}
+                    for (var key in nominations) {nominationsList.push(key);}
+                    for (var key in leagues) {leaguesList.push(key);}
+
+                    function clearOldInfo(ul) {
+                        for (var i=ul.children().length-1; i>0; i--) {
+                            ul.children().eq(i).remove();
+                        }
+                    }
+
+                    function addNewInfo(ul, list) {
+                        for (var i=0; i<list.length; i++) {
+                            ul.append('<li><label><input type="checkbox" name="'+list[i]+'">'+list[i]+'</label></li>');
+                        }
+                    }
+
+                    clearOldInfo($pickDancePrograms);
+                    clearOldInfo($pickAgeCategories);
+                    clearOldInfo($pickNominations);
+                    clearOldInfo($pickLeagues);
+
+                    addNewInfo($pickDancePrograms, programsList);
+                    addNewInfo($pickAgeCategories, ageCategoriesList);
+                    addNewInfo($pickNominations, nominationsList);
+                    addNewInfo($pickLeagues, leaguesList);
+
+
+
+                    var checkedAgeCategories=checked['c_p_age_categories'],
+                        checkedLeagues=checked['c_p_leagues'],
+                        checkedNominations=checked['c_p_nominations'],
+                        checkedPrograms=checked['c_p_programs'];
+
+                    for (let i=0; i<checkedAgeCategories.length; i++) {
+                        let name=checkedAgeCategories[i]['name'];
+                        $pickAgeCategories.find('[name="'+name+'"]').prop('checked', true);
+                    }
+
+
+
+                    for (let i=0; i<checkedLeagues.length; i++) {
+                        let name=checkedLeagues[i]['name'];
+                        $pickLeagues.find('[name="'+name+'"]').prop('checked', true);
+                    }
+
+                    for (let i=0; i<checkedNominations.length; i++) {
+                        let name=checkedNominations[i]['name'];
+                        $pickNominations.find('[name="'+name+'"]').prop('checked', true);
+                    }
+
+                    for (let i=0; i<checkedPrograms.length; i++) {
+                        let name=checkedPrograms[i]['name'].toString();
+                        $pickDancePrograms.find('[name="'+name+'"]').prop('checked', true);
+                    }
+                },
+                error: function (msg) {
+                    console.log(msg);
+                }
+            });
+        }
+
+        ajax_settingUpDancingCategory($checkedItem);
     });
 
     $body.on('click', '#menu-dance-programs', function (e) {e.preventDefault();});
