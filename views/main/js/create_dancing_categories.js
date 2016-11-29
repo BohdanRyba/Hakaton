@@ -1,6 +1,35 @@
 jQuery(function($) {
 
-    var $body=$('body');
+    var $body=$('body'),
+        $optionalDancingGroup=$('.pick-dancing-group-to-use'),
+        $totalWrapperForInfo=$('#total-wrapper-for-info');
+
+    $optionalDancingGroup.on('click', function () {
+        var  $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter'),
+             $searchedCategoriesForm=$('#show-searched-dancing-groups'),
+             $danceGroupParametersList=$('#dance-group-parameters-list'),
+             $categoriesList=$('#categories-list');
+
+        $totalWrapperForInfo.css('display', 'block');
+
+        $(this).parent().children().each(function () {
+            $(this).removeClass('picked-dancing-group-to-use');
+        });
+        $(this).addClass('picked-dancing-group-to-use');
+
+        $danceGroupParametersList.css('display', 'none');
+        $categoriesList.css('display', 'none');
+
+        function clearOldInfo() {
+            $chooseCategoriesParameterUl.children().remove();
+            $searchedCategoriesForm.children().remove();
+        }
+        clearOldInfo();
+
+        $('.dance-group-menu-items').each(function() {
+            $(this).find('a').removeClass('active');
+        })
+    });
 
     $body.on('click', '#menu-dance-programs', function (e) {e.preventDefault();});
     $body.on('click', '#menu-age-categories', function (e) {e.preventDefault();});
