@@ -315,4 +315,11 @@ class AdminController
         $category_parameters = AdminModel::getCategoryParametersForCreating();
         require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
     }
+
+    public function actionSaveDancingCategories(){
+        echo 'Save me!';
+
+//        $category_parameters = AdminModel::getCategoryParametersForCreating();
+//        require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
+    }
 }
