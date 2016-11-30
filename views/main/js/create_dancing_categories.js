@@ -140,27 +140,26 @@ jQuery(function($) {
             function ajax_addNewParameters() {
 
                 var $id=$('#pick-dancing-group-to-use-wrapper').find('.pick-dancing-group-to-use.picked-dancing-group-to-use').attr('data-id-dancing-group');
-                console.log($id);
 
-                // $.ajax({
-                //     type:"POST",
-                //     url:'ajax_settingUpDancingCategory',
-                //     data: $parameterSearchedFor, //TO REWORK!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                //     success: function(msg) {
-                //         var $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter');
-                //
-                //         //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                //         $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+HERE_MUST_BE_PARAMETER_NAME+'</li>')
-                //     },
-                //     error: function (msg) {
-                //     console.log(msg);
-                // }
-            //})
+                $.ajax({
+                    type:"POST",
+                    url:'ajax_settingUpDancingCategory',
+                    data: 'id='+$id,
+                    success: function(msg) {
+                        var $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter');
+
+                        //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
+                        $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+HERE_MUST_BE_PARAMETER_NAME+'</li>')
+                    },
+                    error: function (msg) {
+                    console.log(msg);
+                }
+            })
         }
 
             ajax_addNewParameters();
 
-            $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
+            //$chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
 
             if ($parametersList.css('display')=='block') { // ЯКЩО КЛІКАЄМО ПО ПУНКТУ МЕНЮ І ВЖЕ Є АКТИВНИМ ОДИН ПУНКТ
 
@@ -381,8 +380,12 @@ jQuery(function($) {
                 allCategories.push(category);
             });
 
-            allCategories=JSON.stringify(allCategories);
+            //allCategories=JSON.stringify(allCategories);
+
+            allCategories={'categories':allCategories};
+
             console.log(allCategories);
+            
             $.ajax({
                 type:"POST",
                 url:'ajax_sendCreatedCategories',
