@@ -385,7 +385,7 @@ jQuery(function($) {
             console.log(allCategories);
             $.ajax({
                 type:"POST",
-                url:'ajax_settingUpDancingCategory',
+                url:'ajax_sendCreatedCategories',
                 data: allCategories,
                 success: function(allCategories) {
                     console.log(allCategories);
