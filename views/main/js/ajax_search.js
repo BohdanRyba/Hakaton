@@ -106,7 +106,6 @@ function funcSearchPrint(data) {
     console.log(data);
     var list = JSON.parse(data);
 
-
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'

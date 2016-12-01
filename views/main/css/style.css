@@ -1143,3 +1143,16 @@ table tbody.row-table > :hover {
 #search_event_go{
     z-index:801;   
 }
+.opt-eve{
+    font-size:20px;
+}
+table .event_group_list_table tr:hover{
+    background:#00c0ef;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+table .event_group_list_table tr{
+    border:1px solid #00c0ef;
+    background:white;
+    transition:background 0.3s;
+}
