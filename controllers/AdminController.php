@@ -5,6 +5,11 @@ require_once(ROOT . 'components/Traits.php');
 
 class AdminController
 {
+    function debug($array = array()){
+        echo '<pre>';
+        var_dump($array);
+        echo '</pre>';
+    }
     use messagesOperations;
     use navigationFunctional;
 
@@ -111,12 +116,12 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
+
         if (isset($id) && is_numeric($id)) {
             $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
         }
         setcookie("get_id", "$id");
-
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
@@ -139,7 +144,6 @@ class AdminController
                 echo 'NooooO!';
             }
         }
-//        self::showArray($_POST);
     }
 
     public function addEvent()
