@@ -316,9 +316,18 @@ class AdminController
     }
 
     public function actionSaveDancingCategories(){
-        echo 'Save me!';
-
-//        $category_parameters = AdminModel::getCategoryParametersForCreating();
-//        require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
+        $category_parts = explode(',', $_SESSION['cat'][0][0]);
+        $tmp = [];
+        if(!empty($_POST['categories'])){
+            foreach ($_POST['categories'] as $category){
+                $category_parts = explode(',', $category[0]);
+                (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
+                $resulting = AdminModel::saveCreatedCategory($category_parts);
+                array_push($tmp, $resulting);
+            }
+            setcookie("A_result", "added");
+        }
+        $show_results = implode("\n", $tmp);
+        echo $show_results;
     }
 }

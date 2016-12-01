@@ -517,4 +517,37 @@ class AdminModel
         };
         return $category_parameters;
     }
+
+    static function saveCreatedCategory($category_parts)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_categories`
+                      WHERE `d_c_program`='{$category_parts[0]}'
+                      AND `d_c_age_category`='{$category_parts[1]}'
+                      AND `d_c_nomination`='{$category_parts[2]}'
+                      AND `d_c_league`='{$category_parts[3]}'
+                      ";
+            $result = $db->query($query);
+            $checking_result = $result->fetch_assoc();
+
+            if (!empty($checking_result)) {
+                return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" уже существует!';
+            } else {
+                $result = $db->query("INSERT INTO `dance_categories`
+                        SET `id` = NULL,
+                            `d_c_program` = '{$category_parts[0]}',
+                            `d_c_age_category` = '{$category_parts[1]}',
+                            `d_c_nomination` = '{$category_parts[2]}',
+                            `d_c_league` = '{$category_parts[3]}',
+                            `org_id` = {$_COOKIE['get_id']},
+                            `extra_id` = '{$category_parts[4]}'");
+                if($result){
+                    return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" успешно создана!';
+                } else {
+                    return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" не создана, что-то пошло не так...';
+                }
+            }
+        }
+        $db->close();
+    }
 }
