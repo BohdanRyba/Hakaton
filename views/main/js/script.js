@@ -160,7 +160,7 @@ $('.club_data_list').on('click', function () {
     console.log($('.bg-opacity'));
     $('tbody>tr').on('click', function () {
         // $('.bg-opacity').show(200);
-        // $('.popup-control').show(200);
+         $('.popup-control').show(200);
         console.log('asdasd');
     });
 });
