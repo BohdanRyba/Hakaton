@@ -316,7 +316,6 @@ class AdminController
     }
 
     public function actionSaveDancingCategories(){
-        $category_parts = explode(',', $_SESSION['cat'][0][0]);
         $tmp = [];
         if(!empty($_POST['categories'])){
             foreach ($_POST['categories'] as $category){
