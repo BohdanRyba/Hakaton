@@ -30,6 +30,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/add_dancing_categories.less?11">
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/create_dancing_categories.less">
     <script src="<?=Router::$permalink?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
@@ -267,8 +268,9 @@ desired effect
 
                     <div class="cont-box1 clear">
                         <div class="list-group">
-
+                        
                         </div>
+                        
                     </div>
                     <div class="cont-box content-in" id="loading"></div>
                 </div>
@@ -487,6 +489,7 @@ desired effect
 
 </script>
 <script src="<?=Router::$permalink?>views/main/js/add_dancing_categories.js?<?php echo date("Y-m-d_H:i:s");?>"></script>
+<script src="<?=Router::$permalink?>views/main/js/create_dancing_categories.js"></script>
 <script src="<?=Router::$permalink?>views/main/js/ajax_search.js?<?php echo date("Y-m-d_H:i:s");?>"></script>
 </body>
 </html>

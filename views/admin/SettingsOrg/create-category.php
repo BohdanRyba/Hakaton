@@ -13,6 +13,7 @@ sleep(1);
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <input type="hidden" name="action" value="category">
             <div class="row pick-dancing-group-parameters-wrapper">
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <form id="pick-dance-programs" action="">
