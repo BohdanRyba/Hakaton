@@ -123,6 +123,8 @@ class AdminController
                 $this->addClub();
             } elseif ($_POST['action'] == 'event') {
                 $this->addEvent();
+            } elseif ($_POST['action'] == 'category') {
+                $this->addCategory();
             }
         }
     }
@@ -140,6 +142,12 @@ class AdminController
             }
         }
 //        self::showArray($_POST);
+    }    
+    public function actionAjaxCategory_create()
+    {
+        $category_parameters = AdminModel::getCategoryParametersForCreating();
+        
+        include 'views/admin/SettingsOrg/option_category.php';
     }
 
     public function addEvent()

@@ -81,10 +81,10 @@ $(function () {
         });
     });
 
-    $('').on('click', function () {
+    $('.category_data_list').on('click', function () {
         $('.cont-box1>').remove();
         $.ajax({
-            url: 'club-cubinet-for-adm.php',
+            url: 'ajax_option_category',
             type: 'POST',
             dataType: 'html',
             beforeSend: funcBefore,
