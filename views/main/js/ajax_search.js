@@ -2,10 +2,8 @@
 
 var search = $('.list-search').find('input[type="search"]');
 search.on('keyup', function () {
-    var search = $('.list-search').find('input[type="search"].active');
-    console.log(search);
-    var searchName= search.attr('data-type');
-    console.log(searchName);
+    let search = $('.list-search').find('input[type="search"].active');
+    let searchName= search.attr('data-type');
     $('.bg-opacity').show();
     $('.list_information').show();
     actionAjaxSearch(searchName);
@@ -17,10 +15,7 @@ search.on('keyup', function () {
         if(codKey===13){
             e.preventDefault();
             var search = $('.list-search').find('input[type="search"].active');
-            console.log(search);
             var searchName= search.attr('data-type');
-            console.log(searchName);
-            console.log(searchName);
             $('.list_information').slideUp(200);
             $('.list_data>').remove();
             actionAjaxSearchAddPage(searchName);
@@ -32,9 +27,7 @@ search.on('keyup', function () {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    ajax search when click button GO!!!
     $('#search_event_go').on('click', function(e){
         var search = $('.list-search').find('input[type="search"].active');
-        console.log(search);
         var searchName= search.attr('data-type');
-        console.log(searchName);
         e.preventDefault();
         $('.bg-opacity').hide();
         $('.list_information').slideUp(200);
@@ -71,18 +64,20 @@ search.on('keyup', function () {
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for list
 function funcSearch(data) {
     $('.list_data>').remove();
-    console.log(data);
     let list = JSON.parse(data);
-    console.log(data);
+    let search = $('.list-search').find('input[type="search"].active');
+    let searchName = search.attr('data-type');
+    let img= searchName+'_image';
+    let name= searchName+'_name';
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node =  '<li>'
             +'<div class="list-search clr">'
             +'<div>'
-            +'<img class="bg_event_avatar" src=" '+ element.event_image +' " alt="wtf"/>'
+            +'<img class="bg_event_avatar" src="'+ element[img] +'" alt="wtf"/>'
             +'</div>'
             +'<div>'
-            +'<span>Событие: '+ element.event_name +' </span>'
+            +'<span>Название: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
             +'</li>';
@@ -93,19 +88,23 @@ function funcSearch(data) {
         //>>>>>>>>>      It determines whether the array contains the search request
         const queryString = search.val().toLowerCase();
         let searchQuery = list.filter(function (element) {
-            return element.event_name.toLowerCase().includes(queryString);
+            return element[name].toLowerCase().includes(queryString);
         });
     // add search result in DOM
     let $container = $('.list_data');
     render(searchQuery).forEach(function(element) {
         $container.append(element);
+        console.log(element);
     });
 };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
 function funcSearchPrint(data) {
-    console.log(data);
     var list = JSON.parse(data);
 
+    let search = $('.list-search').find('input[type="search"].active');
+    let searchName = search.attr('data-type');
+    let img= searchName+'_image';
+    let name= searchName+'_name';
 
     let render = function(list) {
         let nameList = list.map(function (element) {
@@ -114,9 +113,9 @@ function funcSearchPrint(data) {
             +'<li class="result_search">'
             +'<div class="list-search clr">'
             +'<div>'
-            +'<img class="bg_event_avatar" src=" '+ element.event_image +' " alt="wtf"/>'
+            +'<img class="bg_event_avatar" src=" '+ element[img] +' " alt="wtf"/>'
             +'</div>'   
-            +'<span>Событие: '+ element.event_name +' </span>'
+            +'<span>Событие: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
             +'</li>'
@@ -128,7 +127,7 @@ function funcSearchPrint(data) {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>     It determines whether the array contains the search request
         const queryString = search.val().toLowerCase();
         let searchQuery = list.filter(function (element) {
-            return element.event_name.toLowerCase().includes(queryString);
+            return element[name].toLowerCase().includes(queryString);
         });
         // add search result in DOM
         let $container = $('.list-group');

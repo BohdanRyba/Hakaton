@@ -1143,3 +1143,48 @@ table tbody.row-table > :hover {
 #search_event_go{
     z-index:801;   
 }
+.opt-eve{
+    font-size:20px;
+}
+table .event_group_list_table tr:hover{
+    background:#00c0ef;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+table .event_group_list_table tr{
+    border:1px solid #00c0ef;
+    background:white;
+    transition:background 0.3s;
+}
+.head_btn_users_list{
+    display:flex;
+    justify-content:space-between;
+    width:95%;
+    // height:50px;
+    margin:5px auto;
+}
+.head_btn_users_list .btn_table_list{
+    padding:15px 5px;
+    border:1px solid #00c0ef;
+    border-radius: 5px;
+
+    transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+.head_btn_users_list .btn_table_list:hover{
+    background:#00c0ef;
+    border:1px solid #00c0ef;
+    cursor:pointer;
+    color:white;
+    transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+.head_btn_users_list .btn_table_list:active{
+    box-shadow:inset 0 0 51px rgba(0,0,0, 0.7);
+}

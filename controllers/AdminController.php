@@ -175,7 +175,7 @@ class AdminController
         echo json_encode(AdminModel::ShowClubs($id));
     }
 
-    public function actionAjax_eventsShow($id)
+    public function actionAjax_eventShow($id)
     {
         echo json_encode(AdminModel::ShowEvents($id));
     }
