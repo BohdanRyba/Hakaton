@@ -71,7 +71,7 @@ function funcSearch(data) {
     let name= searchName+'_name';
     let render = function(list) {
         let nameList = list.map(function (element) {
-            let node =  '<li>'
+            let node =  '<li id="btn_go_'+ searchName +'_cabinet">'
             +'<div class="list-search clr">'
             +'<div>'
             +'<img class="bg_event_avatar" src="'+ element[img] +'" alt="wtf"/>'

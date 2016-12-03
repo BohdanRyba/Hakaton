@@ -92,6 +92,19 @@ $(function () {
         });
     });
 
+
+    // Opens page cabinet club
+    $('body').on('click', '#btn_go_club_cabinet', function(){
+        $('.cont-box1>').remove();
+        $.ajax({
+            url:'club-cabinet-for-adm',
+            type:'POST',
+            dataType:'html',
+            beforeSend: funcBefore,
+            success: funcSuccess
+        });
+    });
+
     // $('form').on('button', function (event) {
     //     event.preventDefault();
     //     var form_date = $(this).serialize();
@@ -105,4 +118,6 @@ $(function () {
     //         }
     //     });
     // });
+
+
 });
