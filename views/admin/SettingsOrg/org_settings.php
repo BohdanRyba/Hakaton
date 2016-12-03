@@ -264,11 +264,16 @@ desired effect
                                 </div>
                             </form>
                         </div>
+                        <div class="list_information col-xs-8">
+                            <ul class="list_data">
+
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="cont-box1 clear">
                         <div class="list-group">
-                        
+                            
                         </div>
                         
                     </div>
@@ -398,10 +403,10 @@ desired effect
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                 <span class="label label-danger pull-right">70%</span>
-                             </span>
-                         </h4>
-                         <div class="progress progress-xxs">
+                                   <span class="label label-danger pull-right">70%</span>
+                               </span>
+                           </h4>
+                           <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
