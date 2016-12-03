@@ -105,6 +105,9 @@ $(function () {
         });
     });
 
+    // Opens page table of data part info
+    
+
     // $('form').on('button', function (event) {
     //     event.preventDefault();
     //     var form_date = $(this).serialize();

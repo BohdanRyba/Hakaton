@@ -171,4 +171,6 @@ $('.club_data_list').on('click', function () {
         $(this).hide();
         $('.popup-control').hide(200);
     });
+
+    // 
 });
