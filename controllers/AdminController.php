@@ -61,7 +61,6 @@ class AdminController
                     'message' => 'Организация успешно сохранена в базе данных!'
                 ]);
             } else {
-                echo 'NooooO!';
                 $message = json_encode([
                     'status' => 'error',
                     'message' => 'Организацию сохранить не удалось! Пожалуйста, заполните все обязательные поля.'
