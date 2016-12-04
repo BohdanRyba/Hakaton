@@ -272,11 +272,12 @@ desired effect
                     </div>
 
                     <div class="cont-box1 clear">
-                        <div class="list-group">
-                            
-                        </div>
+                        
                         
                     </div>
+                    <div class="list-group">
+                            
+                        </div>
                     <div class="cont-box content-in" id="loading"></div>
                 </div>
             </div>

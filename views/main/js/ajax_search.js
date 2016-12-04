@@ -134,6 +134,7 @@ function funcSearchPrint(data) {
         render(searchQuery).forEach(function(element) {
             $container.children('.resize-remove').remove();
             $container.append(element);
+            $('.cont-box1>').remove();
         });
         var $result_search= $('li.result_search');
         $result_search.wrapAll('<ul class="list_data"></ul>');
