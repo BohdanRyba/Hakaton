@@ -1,12 +1,16 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax for search event
 
 var search = $('.list-search').find('input[type="search"]');
+
 search.on('keyup', function () {
-    let search = $('.list-search').find('input[type="search"].active');
-    let searchName= search.attr('data-type');
-    $('.bg-opacity').show();
-    $('.list_information').show();
-    actionAjaxSearch(searchName);
+    if($(this).val().length>=3){    
+        let search = $('.list-search').find('input[type="search"].active');
+        let searchName= search.attr('data-type');
+        $('.bg-opacity').show();
+        $('.list_information').show();
+        actionAjaxSearch(searchName);
+    };
+
 });
     //>>>>>>>>>>>>>>>>>>>>>>>       ajax search when press enter
     $('.search_event').on('keydown', function(e){
@@ -94,7 +98,6 @@ function funcSearch(data) {
     let $container = $('.list_data');
     render(searchQuery).forEach(function(element) {
         $container.append(element);
-        console.log(element);
     });
 };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page

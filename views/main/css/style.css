@@ -944,6 +944,8 @@ b {
 
 .list_data {
     padding: 5px;
+    max-height:620px;
+
 }
 
 .search_wrapp {
