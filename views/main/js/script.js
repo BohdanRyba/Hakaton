@@ -172,5 +172,18 @@ $('.club_data_list').on('click', function () {
         $('.popup-control').hide(200);
     });
 
+    $('.btn_table_list').on('click', function(){
+        $('.btn_table_list').removeClass('activ_table_list');
+        $(this).addClass('activ_table_list');
+    });
+    $('.btn-plus').on('click', function(){
+        $('.btn-plus').removeClass('active_btn_plus');
+        $(this).addClass('active_btn_plus');
+    });
+        $('.button-list').on('click', function(){
+        $('.button-list').removeClass('active_button_list');
+        $(this).addClass('active_button_list');
+    });
+
     // 
 });

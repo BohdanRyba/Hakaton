@@ -5,9 +5,6 @@ sleep(1);
     <div class="box-header with-border">
         <div class="container-fluid">
             <div class="row pick-dancing-groups-wrapper">
-                <div class="box-tools pull-right click-remove">
-                    <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
-                </div>
                 <ul id="pick-dancing-groups">
                     <?php foreach ($dance_programs_list as $value): ?>
                         <li class="dancing-group-list-item" data-id-dancing-group="<?php echo $value['id']; ?>"><span
@@ -61,4 +58,5 @@ sleep(1);
             <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
         </div>
     </div>
+</div>
     <!-- /.box-header -->
