@@ -842,9 +842,18 @@ b {
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
 }
-
-.btn-list-focus {
+.button-org-add .button-list:hover {
     border: 1px solid #367FAA;
+    cursor: pointer;
+}
+.button-org-add .button-list:active {
+    box-shadow:inset 0 0 20px rgba(0, 192, 239, 0.5);
+}
+
+.active_button_list{
+    border: 1px solid #367FAA;
+    cursor: pointer;
+    box-shadow:inset 0 0 20px rgba(54, 127, 170, 0.5);
 }
 
 .button-org-add .btn-plus {
@@ -860,21 +869,6 @@ b {
     -webkit-transition: all 0.4s;
 }
 
-.btn-plus-focus {
-    background: #00c0ef;
-    color: #fff;
-    transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -ms-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    -webkit-transition: all 0.4s;
-}
-
-.button-org-add .button-list:hover {
-    border: 1px solid #367FAA;
-    cursor: pointer;
-}
-
 .button-org-add .btn-plus:hover {
     background: #00c0ef;
     border-top-right-radius: 100%;
@@ -884,6 +878,14 @@ b {
     -moz-transition: all 0.4s;
     -webkit-transition: all 0.4s;
     cursor: crosshair;
+}
+.button-org-add .btn-plus:active{
+    box-shadow:inset 0 0 51px rgba(0,0,0, 0.5);
+}
+.active_btn_plus{
+    background: #00c0ef;
+    color: #fff;
+    box-shadow:inset 0 0 51px rgba(0,0,0, 0.5);
 }
 
 .box-body .cabinet-info p {
@@ -944,6 +946,8 @@ b {
 
 .list_data {
     padding: 5px;
+    max-height:620px;
+
 }
 
 .search_wrapp {
@@ -1187,4 +1191,14 @@ table .event_group_list_table tr{
 }
 .head_btn_users_list .btn_table_list:active{
     box-shadow:inset 0 0 51px rgba(0,0,0, 0.7);
+}
+.activ_table_list{
+    background:#00c0ef;
+    border:1px solid #00c0ef;
+    cursor:pointer;
+    color:white;
+    box-shadow:inset 0 0 51px rgba(0,0,0, 0.7);
+}
+.cont-box1 .resize-remove .border-none{
+    border:none;
 }

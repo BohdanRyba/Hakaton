@@ -24,7 +24,7 @@ function funcBefore() {
 }
 
 function funcSuccess(data) {
-
+    $('.list-group>').remove();
     $('body').css('cursor', 'default');
     $('#loading>').remove();
     $('#loading').css('height', '0px');
@@ -35,7 +35,7 @@ function funcSuccess(data) {
 $(function () {
     $('body').on('click', '#add_part', function () {
         $.ajax({
-            url: 'view_add_part.php',
+            url: 'view_add_part',
             type: 'POST',
             dataType: 'html',
             beforeSend: funcBefore,
@@ -92,6 +92,33 @@ $(function () {
         });
     });
 
+    // Opens page cabinet club
+    $('body').on('click', '#btn_go_club_cabinet', function(){
+        $('.cont-box1>').remove();
+        $.ajax({
+            url:'club-cabinet-for-adm',
+            type:'POST',
+            dataType:'html',
+            beforeSend: funcBefore,
+            success: funcSuccess
+        });
+    });
+
+    $('body').on('click', '.users_list', function(){
+        console.log("hello");
+        $('.cont-box1>').remove();
+        $.ajax({
+            url:'table_of_part.php',
+            type:'POST',
+            dataType:'html',
+            beforeSend: funcBefore,
+            seccess: funcSuccess
+        });
+    });
+
+    // Opens page table of data part info
+    
+
     // $('form').on('button', function (event) {
     //     event.preventDefault();
     //     var form_date = $(this).serialize();
@@ -105,4 +132,6 @@ $(function () {
     //         }
     //     });
     // });
+
+
 });
