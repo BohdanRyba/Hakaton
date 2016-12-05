@@ -96,36 +96,29 @@ $(function () {
     $('body').on('click', 'a.remove-part', function () {
         $(this).parents('.part').slideUp(300);
     });
-// DATAPICKER
-    /*$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
-     $.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
-     $( function() {
-     $( "#event_begin").datepicker();
-     $( "#event_end").datepicker();
- });*/
-    // button on page: organization for create eveny, reg club, dance 
 
-    $('.event_data_list').on('click', function () {
-        $('.search_wrap').hide(400);
-        $('.list_information').slideUp();
-        $('.search_wrap_event').toggle(400);
-        $('.search_wrap input').removeClass('active');
-        $('.search_wrap_event input').addClass('active');
-    });
-    $('.category_data_list').on('click', function () {
-        $('.search_wrap').hide(400);
-        $('.list_information').slideUp();
-        $('.search_wrap_category').toggle(400);
-        $('.search_wrap input').removeClass('active');
-        $('.search_wrap_category input').addClass('active');
-    });
-    $('.club_data_list').on('click', function () {
-        $('.search_wrap').hide(400);
-        $('.list_information').slideUp();
-        $('.search_wrap_club').toggle(400);
-        $('.search_wrap input').removeClass('active');
-        $('.search_wrap_club input').addClass('active');
-    });
+//search list
+$('.event_data_list').on('click', function () {
+    $('.search_wrap').hide(400);
+    $('.list_information').slideUp();
+    $('.search_wrap_event').toggle(400);
+    $('.search_wrap input').removeClass('active');
+    $('.search_wrap_event input').addClass('active');
+});
+$('.category_data_list').on('click', function () {
+    $('.search_wrap').hide(400);
+    $('.list_information').slideUp();
+    $('.search_wrap_category').toggle(400);
+    $('.search_wrap input').removeClass('active');
+    $('.search_wrap_category input').addClass('active');
+});
+$('.club_data_list').on('click', function () {
+    $('.search_wrap').hide(400);
+    $('.list_information').slideUp();
+    $('.search_wrap_club').toggle(400);
+    $('.search_wrap input').removeClass('active');
+    $('.search_wrap_club input').addClass('active');
+});
 
     // button add new trainer
     var incr_train = 0;
@@ -156,25 +149,40 @@ $(function () {
         + '</div>';
 
         $('.add_train_box').append(trainer_node);
-
-        window.summ = 0;
-        $('tbody>').each(function (i) {
-            $(this).children(':first').text(i + 1);
-            var price = parseInt($(this).children().eq(1).text());
-            window.summ = window.summ + price;
-        });
-        $('tfoot tr').children().eq(1).text('Сума: ' + window.summ + 'грн');
-        $('thead tr').children().eq(1).text('Сума: ' + window.summ + 'грн');
-
-
-
-        console.log($('.bg-opacity'));
-        $('tbody>tr').each(function () {
-            $(this).on('click', function () {
-                $('.bg-opacity').show(200);
-                $('.list_information').hide();
-                $('.popup-control').show(200);
-            });
-        });
     });
+    window.summ = 0;
+    $('tbody>').each(function (i) {
+        $(this).children(':first').text(i + 1);
+        var price = parseInt($(this).children().eq(1).text());
+        window.summ = window.summ + price;
+    });
+
+    console.log($('.bg-opacity'));
+    $('body').on('click', 'tbody>tr', function () {
+        $('.bg-opacity').show(200);
+
+        let top_height= $(this).offset().top;
+        $('.popup-control').css('top',top_height+'px');
+        $('.popup-control').show(200);
+    });
+    $('body').on('click', '.bg-opacity', function(){
+        $(this).hide();
+        $('.popup-control').hide(200);
+    });
+
+    // add class activ btn
+    $('.btn_table_list').on('click', function(){
+        $('.btn_table_list').removeClass('activ_table_list');
+        $(this).addClass('activ_table_list');
+    });
+    $('.btn-plus').on('click', function(){
+        $('.btn-plus').removeClass('active_btn_plus');
+        $(this).addClass('active_btn_plus');
+    });
+        $('.button-list').on('click', function(){
+        $('.button-list').removeClass('active_button_list');
+        $(this).addClass('active_button_list');
+    });
+
+    // 
 });

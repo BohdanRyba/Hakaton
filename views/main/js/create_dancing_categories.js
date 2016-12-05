@@ -125,6 +125,7 @@ jQuery(function($) {
             $menuItem.removeClass('active');
             $parametersList.slideUp(200);
             $categoriesList.slideUp(200);
+            console.log('up');
 
             clearOldInfo();
 
@@ -200,7 +201,7 @@ jQuery(function($) {
                 // ajax_addNewParameters($menuItem);
                 // $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
                 // $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
-                $parametersList.slideDown(200);
+                $parametersList.slideDown(2000);
             }
         }
     });
@@ -473,36 +474,4 @@ jQuery(function($) {
 
     });
 
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
