@@ -268,7 +268,7 @@ desired effect
 
                     <div class="cont-box1 clear">
                         <div class="list-group">
-                        
+
                         </div>
                         
                     </div>

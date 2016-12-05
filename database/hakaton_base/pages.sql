@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1
--- Время создания: Ноя 19 2016 г., 12:36
--- Версия сервера: 10.1.9-MariaDB
--- Версия PHP: 5.6.15
+-- Host: localhost
+-- Generation Time: Dec 05, 2016 at 06:04 
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `hakaton_base`
+-- Database: `hakaton_base`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `pages`
+-- Table structure for table `pages`
 --
 
 CREATE TABLE `pages` (
@@ -37,7 +37,7 @@ CREATE TABLE `pages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `pages`
+-- Dumping data for table `pages`
 --
 
 INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `class`) VALUES
@@ -54,21 +54,21 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (11, 'Админ панель', 'admin/organizations/page/1', 'without_popup', 1, 4, '');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `pages`
+-- Indexes for table `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `pages`
+-- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;

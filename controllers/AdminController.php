@@ -5,6 +5,11 @@ require_once(ROOT . 'components/Traits.php');
 
 class AdminController
 {
+    function debug($array = array()){
+        echo '<pre>';
+        var_dump($array);
+        echo '</pre>';
+    }
     use messagesOperations;
     use navigationFunctional;
 
@@ -56,7 +61,6 @@ class AdminController
                     'message' => 'Организация успешно сохранена в базе данных!'
                 ]);
             } else {
-                echo 'NooooO!';
                 $message = json_encode([
                     'status' => 'error',
                     'message' => 'Организацию сохранить не удалось! Пожалуйста, заполните все обязательные поля.'
@@ -111,12 +115,12 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
+
         if (isset($id) && is_numeric($id)) {
             $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
         }
         setcookie("get_id", "$id");
-
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
@@ -134,7 +138,7 @@ class AdminController
         if (isset($_POST)) {
             if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
                 !empty($_POST['club_shief']) && !empty($_POST['club_number']) && !empty($_POST['club_mail']) &&
-                !empty($_POST['org_id']) && !empty($_POST['org_id'])
+                !empty($_POST['org_id'])
             ) {
                 AdminModel::club_add($_POST);
             } else {
@@ -142,7 +146,8 @@ class AdminController
             }
         }
 //        self::showArray($_POST);
-    }    
+    }
+
     public function actionAjaxCategory_create()
     {
         $category_parameters = AdminModel::getCategoryParametersForCreating();

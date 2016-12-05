@@ -37,7 +37,7 @@ sleep(1);
                   <div class="icon-input input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control" name="data-start" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" placeholder="начало">
+                  <input type="text" class="form-control" name="data-start" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="" placeholder="начало">
                 </div>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@ sleep(1);
                   <div class="icon-input input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control" name="data-finish" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" placeholder="конец">
+                  <input type="text" class="form-control" name="data-finish" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="" placeholder="конец">
                 </div>
             </div>
             <div class="form-group">

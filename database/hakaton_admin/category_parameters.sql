@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2016 at 06:26 
+-- Generation Time: Dec 05, 2016 at 06:01 
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -53,7 +53,8 @@ INSERT INTO `category_parameters` (`id`, `c_p_programs`, `c_p_age_categories`, `
 (10, 'a:1:{i:0;a:2:{s:4:"name";s:5:"Dance";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:5:"Ojusd";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:4:"Name";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:4:"Lihj";s:5:"value";s:2:"on";}}', 5, 4),
 (11, 'a:1:{i:0;a:2:{s:4:"name";s:4:"asdf";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:9:"kjhafklsd";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:5:"sklfj";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:7:"dsklfjl";s:5:"value";s:2:"on";}}', 4, 3),
 (12, 'a:1:{i:0;a:2:{s:4:"name";s:8:"qqqqqqqq";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:13:"wwwwwwwwwwwww";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:20:"rrrrrrrrrrrrrrrrrrrr";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:17:"ttttttttttttttttt";s:5:"value";s:2:"on";}}', 3, 3),
-(13, 'a:1:{i:0;a:2:{s:4:"name";s:15:"Dance program 1";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:14:"Age category 1";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:12:"Nomination 1";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:8:"League 1";s:5:"value";s:2:"on";}}', 2, 3);
+(13, 'a:1:{i:0;a:2:{s:4:"name";s:15:"Dance program 1";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:14:"Age category 1";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:12:"Nomination 1";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:8:"League 1";s:5:"value";s:2:"on";}}', 2, 3),
+(14, 'a:1:{i:0;a:2:{s:4:"name";s:8:"qqqqqqqq";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:13:"wwwwwwwwwwwww";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:20:"rrrrrrrrrrrrrrrrrrrr";s:5:"value";s:2:"on";}}', 'a:1:{i:0;a:2:{s:4:"name";s:17:"ttttttttttttttttt";s:5:"value";s:2:"on";}}', 3, 5);
 
 --
 -- Indexes for dumped tables
@@ -73,7 +74,7 @@ ALTER TABLE `category_parameters`
 -- AUTO_INCREMENT for table `category_parameters`
 --
 ALTER TABLE `category_parameters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
