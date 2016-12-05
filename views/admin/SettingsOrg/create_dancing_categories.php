@@ -511,10 +511,13 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!--<script type="text/javascript" src="--><?//=Router::$permalink?><!--views/main/plugins/panescroll/jquery.mousewheel.js"></script>-->
+<!--<script type="text/javascript" src="--><?//=Router::$permalink?><!--views/main/plugins/panescroll/jquery.jscrollpane.min.js"></script>-->
 <!-- Bootstrap 3.3.6 -->
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
+
 <script src="<?=Router::$permalink?>views/main/js/create_dancing_categories.js"></script>
 </body>
 </html>

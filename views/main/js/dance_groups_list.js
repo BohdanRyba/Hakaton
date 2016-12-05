@@ -2,32 +2,264 @@ jQuery(function($) {
 
     var $menuItems = $('.dance-group-menu a'),
         $infoWrapper = $('#dance-group-info-wrapper'),
-        $totalInfoWrapper=$('#total-dance-group-info-wrapper');
+        $totalInfoWrapper=$('#total-dance-group-info-wrapper'),
+        $addInfo=$('.add-info'),
+        $showInfoBtn=$('.show-info-about-dance-group'),
+        $editInfoBtn=$('.edit-info-about-dance-group'),
+        $danceGroupNameInput=$('#dance-group-name'),
+        $saveInfoBtns=$('.send-info'),
+        //SHOW INFO BLOCKS
+        $danceProgramBlock=$('#dance-programs'),
+        $ageCategoriesBlock=$('#age-categories'),
+        $nominationsBlock=$('#nominations'),
+        $leaguesBlock=$('#leagues');
 
-    $('.show-info-about-dance-group').on('click', function () {
-        $totalInfoWrapper.toggleClass('isVisible');
-        $totalInfoWrapper.toggleClass('showPurpose');
-        $totalInfoWrapper.trigger('outerAction');
-    });
-    $('.edit-info-about-dance-group').on('click', function () {
-        $totalInfoWrapper.toggleClass('isVisible');
-        $totalInfoWrapper.toggleClass('editPurpose');
-        $totalInfoWrapper.trigger('outerAction');
-    });
+    // $('.show-info-about-dance-group').on('click', function () {
+    //     $totalInfoWrapper.toggleClass('isVisible');
+    //     $totalInfoWrapper.toggleClass('showPurpose');
+    //     $totalInfoWrapper.trigger('outerAction');
+    // });
+    // $('.edit-info-about-dance-group').on('click', function () {
+    //     $totalInfoWrapper.toggleClass('isVisible');
+    //     $totalInfoWrapper.toggleClass('editPurpose');
+    //     $totalInfoWrapper.trigger('outerAction');
+    // });
+    //
+    // $totalInfoWrapper.on('outerAction', function () {
+    //     if ($totalInfoWrapper.hasClass('isVisible')) {
+    //         $totalInfoWrapper.css('display', 'block');
+    //     } else {
+    //         $totalInfoWrapper.css('display', 'none');
+    //     }
+    // });
+    //=====FUNCTIONS USED WHEN BTNS ARE ON CLICK==========================
+    function clearOldInfo() {
+        $danceProgramBlock.find('.see-info').children().eq(0).empty();
+        $ageCategoriesBlock.find('.see-info').children().eq(0).empty();
+        $nominationsBlock.find('.see-info').children().eq(0).empty();
+        $leaguesBlock.find('.see-info').children().eq(0).empty();
+        $danceGroupNameInput.val('');
+    }
 
-    $totalInfoWrapper.on('outerAction', function () {
-        if ($totalInfoWrapper.hasClass('isVisible')) {
-            $totalInfoWrapper.css('display', 'block');
-        } else {
-            $totalInfoWrapper.css('display', 'none');
+    function GetNewInfoAboutDancingGroup($danceGroupId) {
+
+        $danceProgramBlock.find('.see-info').children().eq(0).append('<div class="dp-info-wrapper">'+
+            '<span class="text-bold count"></span>'+
+            '<div class="btn-group-sm flat" role="group">'+
+            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+            '</div>'+
+            '<label>Название:'+
+            '<input disabled type="text" name="dance-program-name" class="input-standard">'+
+            '</label>'+
+            '</div>');
+        $ageCategoriesBlock.find('.see-info').children().eq(0).append('<div class="ag-info-wrapper">'+
+            '<span class="text-bold count"></span>'+
+            '<div class="btn-group-sm flat" role="group">'+
+            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+            '</div>'+
+            '<label>Название:'+
+            '<input disabled type="text" name="age-category-name" class="input-standard">'+
+            '</label>'+
+            '<label>От:'+
+            '<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code">'+
+            '</label>'+
+            '<label>До:'+
+            '<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code">'+
+            '</label>'+
+            '</div>');
+        $nominationsBlock.find('.see-info').children().eq(0).append('<div class="nm-info-wrapper">'+
+            '<span class="text-bold count"></span>'+
+            '<div class="btn-group-sm flat" role="group">'+
+            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+            '</div>'+
+            '<label>Название:'+
+            '<input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
+            '</label>'+
+            '<label>Кол-во учасников:'+
+            '<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
+            '</label>'+
+            '</div>');
+        $leaguesBlock.find('.see-info').children().eq(0).append('<div class="lg-info-wrapper">'+
+            '<span class="text-bold count"></span>'+
+            '<div class="btn-group-sm flat" role="group">'+
+            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+            '</div>'+
+            '<label>Название:'+
+            '<input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
+            '</label>'+
+            '<label>Лет выступлений:'+
+            '<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
+            '</label>'+
+            '</div>');
+        $danceGroupNameInput.val('Танц группа'+$danceGroupId);
+        // $.ajax({
+        //     type:"POST",
+        //     url:'ajax_settingUpDancingCategory',
+        //     data: 'id='+$danceGroupId,
+        //     success: function(msg) {
+        //         console.log(msg);
+        //         //    Insert the info in respective blocks (in each of the SHOW INFO BLOCKS)
+        //     },
+        //     error: function (msg) {
+        //         console.log(msg);
+        //     }
+        // });
+    }
+
+    function hideBtns() {
+        $totalInfoWrapper.find('.btn-group-sm.flat').each(function () {
+            $(this).css('display', 'none');
+        });
+        $saveInfoBtns.each(function () {
+            $(this).css('display', 'none');
+        });
+    }
+
+    function showBtns() {
+        $totalInfoWrapper.find('.btn-group-sm.flat').each(function () {
+            $(this).css('display', 'table-cell');
+        });
+        $saveInfoBtns.each(function () {
+            $(this).css('display', 'block');
+        });
+    }
+
+    function hideAddInfoBlock() {
+        $addInfo.each(function () {
+            $(this).css('display', 'none');
+        });
+    }
+
+    function showAddInfoBlock() {
+        $addInfo.each(function () {
+            $(this).css('display', 'block');
+        });
+    }
+
+    function propNameInput(status) {
+        $danceGroupNameInput.prop('disabled', status);
+    }
+    //=====FUNCTIONS USED WHEN BTNS ARE ON CLICK==========================
+
+    //IF SHOW BTN IS ON CLICK
+    $showInfoBtn.on('click', function () {
+        var $btn=$(this),
+            $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
+
+        //Check $totalInfoWrapper visibility
+        if ($totalInfoWrapper.attr('data-visibility')=='none') { //    if it`s display:none than the block is shown, new info is loaded, attributes are changed
+
+            $totalInfoWrapper.css('display', 'block').attr('data-visibility', 'block').attr('data-purpose', 'show').attr('data-id', $danceGroupId);// change attr and show block
+            GetNewInfoAboutDancingGroup($danceGroupId);// load new info
+            hideBtns();
+            propNameInput(true);
+
+        } else if ($totalInfoWrapper.attr('data-visibility')=='block') {//    IF it`s DISPLAY:BLOCK than check the purpose
+
+            if ($totalInfoWrapper.attr('data-purpose')=='show') {//    IF it`s SHOW than check data-id
+
+                if ($totalInfoWrapper.attr('data-id')==$danceGroupId) { //   if id has coincided
+
+                    clearOldInfo();// clear old info
+                    $totalInfoWrapper.css('display','none').attr('data-visibility', 'none').attr('data-purpose', '').attr('data-id', '');// hide $totalWrapper and remove attr
+                    
+                } else { //     if id hasn`t coincided
+
+                    clearOldInfo();// clear old info
+                    GetNewInfoAboutDancingGroup($danceGroupId);// get new info
+                    $totalInfoWrapper.attr('data-id', $danceGroupId);// change attr data-id
+                    hideBtns();
+                    propNameInput(true);
+
+                }
+
+            } else if ($totalInfoWrapper.attr('data-purpose')=='edit') {//    IF it`s EDIT than check data-id
+
+                $totalInfoWrapper.attr('data-purpose', 'show');
+
+                if ($totalInfoWrapper.attr('data-id')==$danceGroupId) { //   if id has coincided
+
+                    hideBtns();// hide btns groups
+                    propNameInput(true);// disable dance group name input
+                    hideAddInfoBlock();
+
+                } else { //     if id hasn`t coincided
+
+                    clearOldInfo();
+                    GetNewInfoAboutDancingGroup($danceGroupId);
+                    propNameInput(true);// disable dance group name input
+                    hideBtns();
+                    $totalInfoWrapper.attr('data-id', $danceGroupId);
+                    hideAddInfoBlock();
+
+                }
+
+            }
         }
     });
 
+    //IF EDIT BTN IS ON CLICK
+    $editInfoBtn.on('click', function () {
+        // var $btn=$(this),
+        //     $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
+        // //Check $totalInfoWrapper visibility
+        // if ($totalInfoWrapper.attr('data-visibility')=='none') {
+        //     //    if it`s display:none than the block is shown, attributes are changed
+        //     var $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
+        //     $totalInfoWrapper.css('display', 'block').attr('data-visibility', 'block').attr('data-purpose', 'edit').attr('data-id', $danceGroupId);
+        // }
+        var $btn=$(this),
+            $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
 
+        //Check $totalInfoWrapper visibility
+        if ($totalInfoWrapper.attr('data-visibility')=='none') { //    if it`s display:none than the block is shown, new info is loaded, attributes are changed
 
+            $totalInfoWrapper.css('display', 'block').attr('data-visibility', 'block').attr('data-purpose', 'edit').attr('data-id', $danceGroupId);// change attr and show block
+            GetNewInfoAboutDancingGroup($danceGroupId);// load new info
+            showAddInfoBlock();
 
+        } else if ($totalInfoWrapper.attr('data-visibility')=='block') {//    IF it`s DISPLAY:BLOCK than check the purpose
 
+            if ($totalInfoWrapper.attr('data-purpose')=='show') {//    IF it`s SHOW than check data-id
 
+                $totalInfoWrapper.attr('data-purpose', 'edit');
+
+                if ($totalInfoWrapper.attr('data-id')==$danceGroupId) { //   if id has coincided
+
+                    showBtns();
+                    propNameInput(false);
+                    showAddInfoBlock();
+
+                } else { //     if id hasn`t coincided
+
+                    clearOldInfo();
+                    $totalInfoWrapper.attr('data-id', $danceGroupId);
+                    GetNewInfoAboutDancingGroup($danceGroupId);
+                    showAddInfoBlock();
+                }
+
+            } else if ($totalInfoWrapper.attr('data-purpose')=='edit') {//    IF it`s EDIT than check data-id
+
+                if ($totalInfoWrapper.attr('data-id')==$danceGroupId) { //   if id has coincided
+
+                    clearOldInfo();
+                    $totalInfoWrapper.css('display','none').attr('data-visibility', 'none').attr('data-id', '').attr('data-purpose', '');
+
+                } else { //     if id hasn`t coincided
+
+                    clearOldInfo();
+                    GetNewInfoAboutDancingGroup($danceGroupId);
+                    $totalInfoWrapper.attr('data-id', $danceGroupId);
+
+                }
+
+            }
+        }
+    });
 
 
     //МЕНЮ
@@ -41,16 +273,16 @@ jQuery(function($) {
         });
         $(this).addClass('active');
         $($(this).attr('href')).show();
+        if ($totalInfoWrapper.attr('data-purpose')=='show') {
+            $addInfo.each(function () {
+                $(this).css('display', 'none');
+            });
+        }
     });
 //МЕНЮ
 
 
-
-    var $danceProgramBlock=$('#dance-programs'),
-        $ageCategoriesBlock=$('#age-categories'),
-        $nominationsBlock=$('#nominations'),
-        $leaguesBlock=$('#leagues'),
-        $sendFormToServer=$('#send-dg-to-server');
+    var $sendFormToServer=$('#send-dg-to-server');
 
     //=============================DANCE_PROGRAM=======================================
 
