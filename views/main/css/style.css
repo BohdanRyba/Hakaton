@@ -1610,3 +1610,10 @@ table tbody.row-table > :hover {
     font-size: 20px;
     padding-left: 20px;
 }
+
+.judge_content_box {
+    display: block;
+    margin: 0 auto;
+    float: none;
+    width: 90%;
+}
