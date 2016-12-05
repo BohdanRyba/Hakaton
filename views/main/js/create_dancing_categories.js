@@ -1,5 +1,7 @@
 jQuery(function($) {
 
+
+    //=========================================================================
     var $body=$('body'),
         $optionalDancingGroup=$('.pick-dancing-group-to-use'),
         $totalWrapperForInfo=$('#total-wrapper-for-info');
@@ -11,7 +13,8 @@ jQuery(function($) {
              $categoriesList=$('#categories-list'),
              $checkedItem=$(this);
 
-        $totalWrapperForInfo.css('display', 'block');
+        // $totalWrapperForInfo.css('display', 'block');
+        $totalWrapperForInfo.slideDown(200);
 
         $checkedItem.parent().children().each(function () {
             $(this).removeClass('picked-dancing-group-to-use');
@@ -127,6 +130,8 @@ jQuery(function($) {
             clearOldInfo();
 
         } else { // ЯКЩО КЛІКАЄМО ПО ПУНКТУ МЕНЮ, ЯКИЙ ЩЕ НЕ Є АКТИВНИМ
+            $parametersList.slideUp(200);
+            $categoriesList.slideUp(200);
 
             $menu.find('.dance-group-menu-items').each(function () {
                 $(this).find('a').removeClass('active');
@@ -147,10 +152,35 @@ jQuery(function($) {
                     url:'ajax_settingUpDancingCategory',
                     data: 'id='+$id,
                     success: function(msg) {
-                        var $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter');
+                        var msg=JSON.parse(msg),
+                            checked=msg['category_parameters'],
+                            programs=checked['c_p_programs'],
+                            ageCategories=checked['c_p_age_categories'],
+                            nominations=checked['c_p_nominations'],
+                            leagues=checked['c_p_leagues'],
+                            $menuItem=$('.dance-group-menu').find('a.active').attr('id'),
+                            $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter');
 
-                        //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                          $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
+                        function addInfo($chooseCategoriesParameterUl, parameter, $id) {
+                            for (var i=0; i<parameter.length; i++) {
+                                var name=parameter[i]['name'];
+                                //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
+                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item" data-id-dancing-group="'+$id+'"><span class="numeration"></span>'+name+'</li>')
+                            }
+                        }
+
+                        if ($menuItem=='menu-dance-programs') {
+                            addInfo($chooseCategoriesParameterUl, programs, $id);
+                        } else if ($menuItem=='menu-age-categories') {
+                            addInfo($chooseCategoriesParameterUl, ageCategories, $id);
+                        } else if ($menuItem=='menu-nominations') {
+                            addInfo($chooseCategoriesParameterUl, nominations, $id);
+                        } else if ($menuItem=='menu-leagues') {
+                            addInfo($chooseCategoriesParameterUl, leagues, $id);
+                        }
+
+                        $parametersList.slideDown(200);
+
                     },
                     error: function (msg) {
                     console.log(msg);
@@ -196,7 +226,31 @@ jQuery(function($) {
         // $categoriesList.off('newCategoriesAdded'); ???????????????????????????????? не знаю чи потрібно
 
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"> <button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">Название танц категории</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label> </div><div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"> <button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">Название танц категории</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label> </div><div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"> <button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">Название танц категории</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label> </div>')
+        
+        function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
+            var $id=$parameter.attr('data-id-dancing-group');
+
+            $.ajax({
+                type:"POST",
+                url:'ajax_settingUpDancingCategory',
+                data: 'id='+$id,
+                success: function(msg) {
+                    var msg=JSON.parse(msg);
+                    console.log(msg);
+
+
+
+                },
+                error: function (msg) {
+                    console.log(msg);
+                }
+            })
+
+        }
+
+        ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($(this));
+        
+        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"> <button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">Название танц категории</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label> </div>');
 
         $categoriesList.trigger('newCategoriesAdded');
     });
@@ -219,8 +273,8 @@ jQuery(function($) {
     $body.on('click', '#update-dancing-categories-info', function (e) {
         e.preventDefault();
         //AJAX 3
-        function AJAX_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() { //!!!!!!!!!!!!!!!!!!TO REWORK
-
+        function ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() {
+            
         }
         // $searchedCategoriesForm.children().each(function () {
         //     $(this).
@@ -386,7 +440,7 @@ jQuery(function($) {
             allCategories={'categories':allCategories};
 
             console.log(allCategories);
-            
+
             $.ajax({
                 type:"POST",
                 url:'ajax_sendCreatedCategories',

@@ -190,7 +190,7 @@
 
 
 
-                    <div id="total-dance-group-info-wrapper">
+                    <div id="total-dance-group-info-wrapper" data-id="" data-purpose="" data-visibility="none">
                                 <div class="col-xs-12 col-sm-9 my-float-left">
                                     <div class="container box box-primary flat">
 
@@ -233,7 +233,7 @@
                                                 <div class="row dance-group-info" id="dance-programs">
                                                     <div class="container-fluid">
                                                         <!--ADD INFO-->
-                                                        <div class="row separation-line add-info">
+                                                        <div class="row separation-thick-line add-info">
                                                             <div class="col-xs-7">
                                                                 <div class="dance-group-add-info">
                                                                     <p class="text-capitalize">танцевальная программа</p>
@@ -243,7 +243,7 @@
                                                                                 <input type="text" name="dance-program-name-new" class="input-standard">
                                                                             </label>
                                                                         </div>
-                                                                        <a href="#" class="add-dance-group-info">сохранить</a>
+                                                                        <a href="#" class="add-dance-group-info">добавить</a>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -265,10 +265,7 @@
                                                                 <!--</label>-->
                                                                 <!--</div>-->
                                                             </form>
-                                                            <form action="add_dance_program" method="POST">
-                                                                <!--<input type="submit" class="send-info" data-state="disabled" value="отправить">-->
-                                                                <input type="hidden" name="redirect">
-                                                            </form>
+                                                                <a class="send-info">сохранить изменения</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -295,7 +292,7 @@
                                                                                 <input type="text" name="age-category-rule-age-max-new" class="input-standard">
                                                                             </label>
                                                                         </div>
-                                                                        <a href="#" class="add-dance-group-info">сохранить</a>
+                                                                        <a href="#" class="add-dance-group-info">добавить</a>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -323,10 +320,7 @@
                                                                 <!--</label>-->
                                                                 <!--</div>-->
                                                             </form>
-                                                            <form action="add_dance_program" method="POST">
-                                                                <!--<input type="submit" class="send-info" data-state="disabled" value="отправить">-->
-                                                                <input type="hidden" name="redirect">
-                                                            </form>
+                                                            <a class="send-info">сохранить изменения</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -349,7 +343,7 @@
                                                                                 <input type="text" name="nomination-rule-participants-number-new" class="input-standard">
                                                                             </label>
                                                                         </div>
-                                                                        <a href="#" class="add-dance-group-info">сохранить</a>
+                                                                        <a href="#" class="add-dance-group-info">добавить</a>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -374,10 +368,7 @@
                                                                 <!--</label>-->
                                                                 <!--</div>-->
                                                             </form>
-                                                            <form action="add_dance_program" method="POST">
-                                                                <!--<input type="submit" class="send-info" data-state="disabled" value="отправить">-->
-                                                                <input type="hidden" name="redirect">
-                                                            </form>
+                                                            <a class="send-info">сохранить изменения</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -400,7 +391,7 @@
                                                                                 <input type="text" name="league-rule-participation-years-new" class="input-standard">
                                                                             </label>
                                                                         </div>
-                                                                        <a href="#" class="add-dance-group-info">сохранить</a>
+                                                                        <a href="#" class="add-dance-group-info">добавить</a>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -425,10 +416,7 @@
                                                                 <!--</label>-->
                                                                 <!--</div>-->
                                                             </form>
-                                                            <form action="add_dance_program" method="POST">
-                                                                <!--<input type="submit" name="submit" class="send-info" data-state="disabled" value="отправить">-->
-                                                                <input type="hidden" name="redirect" id="send-dg-to-server">
-                                                            </form>
+                                                            <a class="send-info">сохранить изменения</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -449,31 +437,31 @@
                             <div class="row">
                                 <div class="">
                                     <ul class="dancing-group-list-wrapper">
-                                        <li>
+                                        <li data-id-dancing-group="1">
                                             <div class="btn-group-xs button-wrapper">
                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                 <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                             </div>
                                             <p class="dance-group-name">название танц группы sdcssfsdfsDFSFS</p>
                                         </li>
-                                        <li>
+                                        <li data-id-dancing-group="2">
                                             <div class="btn-group-xs button-wrapper">
-                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                             </div>
                                             <p class="dance-group-name">название танц группы</p>
                                         </li>
-                                        <li>
+                                        <li data-id-dancing-group="3">
                                             <div class="btn-group-xs button-wrapper">
-                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                             </div>
                                             <p class="dance-group-name">название танц группы</p>
                                         </li>
-                                        <li>
+                                        <li data-id-dancing-group="4">
                                             <div class="btn-group-xs button-wrapper">
-                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                             </div>
                                             <p class="dance-group-name">название танц группы</p>
                                         </li>
