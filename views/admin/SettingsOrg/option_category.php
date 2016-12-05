@@ -2,7 +2,7 @@
 sleep(1);
 ?>
 <div class="resize-remove">
-    <div class="container box box-solid box-primary flat">
+    <div class="container box box-solid box-primary flat border-none">
         <div class="box-tools pull-right click-remove">
             <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
         </div>
@@ -221,15 +221,12 @@ sleep(1);
                 <div class="row">
                     <div class="col-xs-12">
                         <form id="show-created-categories" class="dance-group-show-info margin-bot">
-
                         </form>
                     </div>
                     <div class="col-xs-12">
                         <a href="#" id="save-dance-categories" class="send-info">сохранить</a>
                     </div>
                 </div>
-
-
             </div>
         </div>  
     </div>

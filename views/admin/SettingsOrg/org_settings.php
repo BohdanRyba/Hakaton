@@ -272,17 +272,16 @@ desired effect
                     </div>
 
                     <div class="cont-box1 clear">
-                        
-                        
+
+
                     </div>
                     <div class="list-group">
-                            
-                        </div>
+
+                    </div>
                     <div class="cont-box content-in" id="loading"></div>
                 </div>
             </div>
-            <div class="bg-opacity"></div>
-            <div class="popup-control"></div>
+
         </section>
     </div>
     <!-- Control Sidebar -->
@@ -404,10 +403,10 @@ desired effect
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                   <span class="label label-danger pull-right">70%</span>
-                               </span>
-                           </h4>
-                           <div class="progress progress-xxs">
+                                 <span class="label label-danger pull-right">70%</span>
+                             </span>
+                         </h4>
+                         <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
@@ -449,7 +448,11 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-
+<div class="bg-opacity"></div>
+<div class="popup-control">
+    <div class="edit">Редактировать</div>
+    <div class="delete">Удалить</div>
+</div>
 <!-- jQuery 2.2.3 -->
 <script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

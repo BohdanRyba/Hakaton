@@ -35,7 +35,7 @@ function funcSuccess(data) {
 $(function () {
     $('body').on('click', '#add_part', function () {
         $.ajax({
-            url: 'view_add_part.php',
+            url: 'view_add_part',
             type: 'POST',
             dataType: 'html',
             beforeSend: funcBefore,

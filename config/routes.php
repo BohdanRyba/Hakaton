@@ -20,8 +20,10 @@ return array(
     'admin/organizations/org_settings/ajax_create_category' => 'admin/ajaxCategory_add',
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
+    'admin/organizations/org_settings/club-cabinet-for-adm' => 'admin/ajaxClubCabinet',
+    'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_option_category' => 'admin/ajaxCategory_create',
-
+//
     //
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // warning: this line should be lower than ajaxes!;

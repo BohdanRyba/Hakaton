@@ -175,7 +175,16 @@ class AdminController
 
     public function actionAjaxClub_add()
     {
+
         include 'views/admin/SettingsOrg/create-club.php';
+    }    
+    public function actionAjaxClubCabinet()
+    {
+        include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
+    }
+    public function actionAjaxAddpart()
+    {
+        include 'views/admin/SettingsOrg/view_add_part.php';
     }
 
     public function actionAjax_clubShow($id)

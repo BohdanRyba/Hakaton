@@ -158,20 +158,19 @@ $('.club_data_list').on('click', function () {
     });
 
     console.log($('.bg-opacity'));
-    $('tbody>tr').on('click', function () {
+    $('body').on('click', 'tbody>tr', function () {
         $('.bg-opacity').show(200);
 
         let top_height= $(this).offset().top;
-        console.log(top_height);
-
         $('.popup-control').css('top',top_height+'px');
         $('.popup-control').show(200);
     });
-    $('.bg-opacity').on('click', function(){
+    $('body').on('click', '.bg-opacity', function(){
         $(this).hide();
         $('.popup-control').hide(200);
     });
 
+    // add class activ btn
     $('.btn_table_list').on('click', function(){
         $('.btn_table_list').removeClass('activ_table_list');
         $(this).addClass('activ_table_list');
