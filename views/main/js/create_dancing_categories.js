@@ -6,15 +6,16 @@ jQuery(function($) {
         $optionalDancingGroup=$('.pick-dancing-group-to-use'),
         $totalWrapperForInfo=$('#total-wrapper-for-info');
 
-    $optionalDancingGroup.on('click', function () {
-        var  $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter'),
+    $body.off('click', '.pick-dancing-group-to-use');
+    $body.on('click', '.pick-dancing-group-to-use', function () {
+        var  $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see'),
              $searchedCategoriesForm=$('#show-searched-dancing-groups'),
              $danceGroupParametersList=$('#dance-group-parameters-list'),
              $categoriesList=$('#categories-list'),
              $checkedItem=$(this);
 
         // $totalWrapperForInfo.css('display', 'block');
-        $totalWrapperForInfo.slideDown(200);
+        $('#total-wrapper-for-info').slideDown(200);
 
         $checkedItem.parent().children().each(function () {
             $(this).removeClass('picked-dancing-group-to-use');
@@ -106,12 +107,13 @@ jQuery(function($) {
     $body.on('click', '#menu-leagues', function (e) {e.preventDefault();});
 
     //!!!!!!!!!!!!!!!!!!!!!!!<main_menu>!!!!!!!!!!!!!!!!!!!!!
+    $body.off('click', '.dance-group-menu-items');
     $body.on('click', '.dance-group-menu-items', function () {
         var $menuItem=$(this).find('a'),
             $menu=$(this).parents('.dance-group-menu'),
             $parametersList=$('#dance-group-parameters-list'),
             $categoriesList=$('#categories-list'),
-            $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter'),
+            $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see'),
             $searchedCategoriesForm=$('#show-searched-dancing-groups');
 
         function clearOldInfo() {
@@ -159,13 +161,13 @@ jQuery(function($) {
                             nominations=checked['c_p_nominations'],
                             leagues=checked['c_p_leagues'],
                             $menuItem=$('.dance-group-menu').find('a.active').attr('id'),
-                            $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter');
+                            $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see');
 
                         function addInfo($chooseCategoriesParameterUl, parameter, $id) {
                             for (var i=0; i<parameter.length; i++) {
                                 var name=parameter[i]['name'];
                                 //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item" data-id-dancing-group="'+$id+'"><span class="numeration"></span>'+name+'</li>')
+                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-id-dancing-group="'+$id+'"><span class="numeration"></span>'+name+'</li>')
                             }
                         }
 
@@ -201,16 +203,16 @@ jQuery(function($) {
                 // ajax_addNewParameters($menuItem);
                 // $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
                 // $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
-                $parametersList.slideDown(2000);
+                $parametersList.slideDown(200);
             }
         }
     });
     //!!!!!!!!!!!!!!!!!!!!!!!</main_menu>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     //!!!!!!!!!!!!!!!
-    $body.on('click', '.dancing-group-list-item', function(){
+    $body.on('click', '.dancing-group-list-item-to-see', function(){
         var $categoriesList=$('#categories-list'),
-            $danceGroups=$('#pick-dancing-group-parameter').children(),
+            $danceGroups=$('#pick-dancing-group-parameter-to-see').children(),
             $searchedCategoriesForm=$('#show-searched-dancing-groups');
 
         $danceGroups.each(function () {
