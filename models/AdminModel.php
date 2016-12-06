@@ -550,4 +550,15 @@ class AdminModel
         }
         $db->close();
     }
+
+    public static function getCategoryParametersByParameter($parameter){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $array_with_parameters = [];
+            $result = $db->query("SELECT `{$parameter}` FROM `category_parameters`");
+            while ($row = $result->fetch_assoc()){
+                $array_with_parameters = $row;
+            }
+            return $array_with_parameters;
+        }
+    }
 }

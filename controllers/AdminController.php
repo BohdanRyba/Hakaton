@@ -357,20 +357,12 @@ class AdminController
     } // add dance_group_id;
 
     public function actionAjaxShowAllCategoryParameters(){
-        $_SESSION['sss'] = $_POST;
-        self::showArray($_SESSION);
-        die;
-
-        if(!empty($_POST['categories'])){
-            foreach ($_POST['categories'] as $category){
-                $category_parts = explode(',', $category[0]);
-                (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
-                $resulting = AdminModel::saveCreatedCategory($category_parts);
-                array_push($tmp, $resulting);
-            }
-            setcookie("A_result", "added");
+//        $_SESSION['sss'] = $_POST;
+//        self::showArray($_SESSION);
+//        die;
+        if(!empty($_POST['parameter'])){
+            $array_with_asked_parameters = AdminModel::getCategoryParametersByParameter($_POST['parameter']);
+            echo json_encode($array_with_asked_parameters);
         }
-        $show_results = implode("\n", $tmp);
-        echo $show_results;
     }
 }
