@@ -556,7 +556,7 @@ class AdminModel
             $array_with_parameters = [];
             $result = $db->query("SELECT `{$parameter}` FROM `category_parameters`");
             while ($row = $result->fetch_assoc()){
-                $array_with_parameters = $row;
+                $array_with_parameters = unserialize($row);
             }
             return $array_with_parameters;
         }
