@@ -357,9 +357,6 @@ class AdminController
     } // add dance_group_id;
 
     public function actionAjaxShowAllCategoryParameters(){
-//        $_SESSION['sss'] = $_POST;
-//        self::showArray($_SESSION);
-//        die;
         if(!empty($_POST['parameter'])){
             $array_with_asked_parameters = AdminModel::getCategoryParametersByParameter($_POST['parameter']);
             echo json_encode($array_with_asked_parameters);
