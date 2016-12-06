@@ -338,6 +338,10 @@ class AdminController
     }
 
     public function actionAjaxSaveDancingCategories(){
+        $_SESSION['sss'] = $_POST;
+        self::showArray($_SESSION);
+        die;
+
         $tmp = [];
         if(!empty($_POST['categories'])){
             foreach ($_POST['categories'] as $category){
