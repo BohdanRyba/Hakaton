@@ -162,23 +162,17 @@ jQuery(function($) {
                     success: function (msg) {
                         var msg = JSON.parse(msg);
 
-                        function addInfo($chooseCategoriesParameterUl, parameter, $id) {
+                        console.log(msg);
+
+                        function addInfo($chooseCategoriesParameterUl) {
                             for (var i = 0; i < parameter.length; i++) {
                                 var name = parameter[i]['name'];
                                 //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-id-dancing-group="' + $id + '"><span class="numeration"></span>' + name + '</li>')
+                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-name="'+name+'"><span class="numeration"></span>' + name + '</li>')
                             }
                         }
 
-                        if ($menuItem=='menu-dance-programs') {
-                            addInfo($chooseCategoriesParameterUl, programs, $id);
-                        } else if ($menuItem=='menu-age-categories') {
-                            addInfo($chooseCategoriesParameterUl, ageCategories, $id);
-                        } else if ($menuItem=='menu-nominations') {
-                            addInfo($chooseCategoriesParameterUl, nominations, $id);
-                        } else if ($menuItem=='menu-leagues') {
-                            addInfo($chooseCategoriesParameterUl, leagues, $id);
-                        }
+                            addInfo($chooseCategoriesParameterUl);
 
                         $parametersList.slideDown(200);
 
@@ -230,15 +224,15 @@ jQuery(function($) {
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
-            var $id=$parameter.attr('data-id-dancing-group');
+            var $name=$parameter.attr('data-name');
 
 
             console.log(searchedParameter);
 
             $.ajax({
                 type:"POST",
-                url:'ajax_settingUpDancingCategory',
-                data: 'id='+$id,
+                url:'ajax_',
+                data: 'name='+$name,
                 success: function(msg) {
                     var msg=JSON.parse(msg);
                     console.log(msg);
