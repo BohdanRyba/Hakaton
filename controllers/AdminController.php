@@ -337,7 +337,7 @@ class AdminController
         require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
     }
 
-    public function actionSaveDancingCategories(){
+    public function actionAjaxSaveDancingCategories(){
         $tmp = [];
         if(!empty($_POST['categories'])){
             foreach ($_POST['categories'] as $category){
