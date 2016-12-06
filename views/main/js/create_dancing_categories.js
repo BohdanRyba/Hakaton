@@ -159,20 +159,22 @@ jQuery(function($) {
                     url: 'ajax_showAllDanceCategoriesParameters',
                     data: 'parameter=' + searchedParameter,
                     success: function (msg) {
+                        console.log(msg);
+
                         var msg = JSON.parse(msg);
 
                         console.log(msg);
 
-                        function addInfo($chooseCategoriesParameterUl) {
+                        // function addInfo($chooseCategoriesParameterUl) {
+                        //
+                        //     for (var i = 0; i < parameter.length; i++) {
+                        //         var name = parameter[i]['name'];
+                        //         //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
+                        //         $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-name="'+name+'"><span class="numeration"></span>' + name + '</li>')
+                        //     }
+                        // }
 
-                            for (var i = 0; i < parameter.length; i++) {
-                                var name = parameter[i]['name'];
-                                //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-name="'+name+'"><span class="numeration"></span>' + name + '</li>')
-                            }
-                        }
-
-                            addInfo($chooseCategoriesParameterUl);
+                            // addInfo($chooseCategoriesParameterUl);
 
                         $parametersList.slideDown(200);
 
