@@ -159,25 +159,23 @@ jQuery(function($) {
                     url: 'ajax_showAllDanceCategoriesParameters',
                     data: 'parameter=' + searchedParameter,
                     success: function (msg) {
-                        console.log(msg);
                         var msg = JSON.parse(msg);
-                        function addInfo($chooseCategoriesParameterUl, parameter, $id) {
-                            for (var i = 0; i < parameter.length; i++) {
-                                var name = parameter[i]['name'];
-                                //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-id-dancing-group="' + $id + '"><span class="numeration"></span>' + name + '</li>')
+
+
+                        console.log(msg);
+                        function addInfo($chooseCategoriesParameterUl) {
+
+                            for (var i = 0; i<msg.length; i++) {
+                                for (var j=0; j<msg[i].length; j++) {
+                                    var name = msg[i][j]['name'];
+                                    //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
+                                    $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-name="'+name+'"><span class="numeration"></span>' + name + '</li>')
+                                }
+
                             }
                         }
 
-                        // if ($menuItem=='menu-dance-programs') {
-                        //     addInfo($chooseCategoriesParameterUl, programs, $id);
-                        // } else if ($menuItem=='menu-age-categories') {
-                        //     addInfo($chooseCategoriesParameterUl, ageCategories, $id);
-                        // } else if ($menuItem=='menu-nominations') {
-                        //     addInfo($chooseCategoriesParameterUl, nominations, $id);
-                        // } else if ($menuItem=='menu-leagues') {
-                        //     addInfo($chooseCategoriesParameterUl, leagues, $id);
-                        // }
+                            addInfo($chooseCategoriesParameterUl);
 
                         $parametersList.slideDown(200);
 
@@ -229,24 +227,14 @@ jQuery(function($) {
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
-            var $id=$parameter.attr('data-id-dancing-group'),
-                $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
-                searchedParameter;
-
-            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='dance programs';} else
-                if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='age categories';} else
-                    if ($menuParameter.attr('href')=='#nominations') {searchedParameter='nominations';} else
-                        if ($menuParameter.attr('href')=='#leagues') {searchedParameter='leagues';}
-
-            console.log(searchedParameter);
-
+            var $name=$parameter.attr('data-name');
 
             console.log(searchedParameter);
 
             $.ajax({
                 type:"POST",
-                url:'ajax_settingUpDancingCategory',
-                data: 'id='+$id,
+                url:'ajax_',
+                data: 'name='+$name,
                 success: function(msg) {
                     var msg=JSON.parse(msg);
                     console.log(msg);
