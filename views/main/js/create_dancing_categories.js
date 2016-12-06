@@ -143,25 +143,24 @@ jQuery(function($) {
 
             clearOldInfo();
 
-            // $categoriesList.css('display', 'none');
+            $categoriesList.css('display', 'none');
             //AJAX 1
             function ajax_addNewParameters() {
 
-                var $id = $('#pick-dancing-group-to-use-wrapper').find('.pick-dancing-group-to-use.picked-dancing-group-to-use').attr('data-id-dancing-group');
+                var $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
+                    searchedParameter;
+
+                if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='dance_programs';} else
+                if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='age_categories';} else
+                if ($menuParameter.attr('href')=='#nominations') {searchedParameter='nominations';} else
+                if ($menuParameter.attr('href')=='#leagues') {searchedParameter='leagues';}
 
                 $.ajax({
                     type: "POST",
-                    url: 'ajax_settingUpDancingCategory',
-                    data: 'id=' + $id,
+                    url: 'ajax_showAllDanceCategoriesParameters',
+                    data: 'parameter=' + searchedParameter,
                     success: function (msg) {
-                        var msg = JSON.parse(msg),
-                            checked = msg['category_parameters'],
-                            programs = checked['c_p_programs'],
-                            ageCategories = checked['c_p_age_categories'],
-                            nominations = checked['c_p_nominations'],
-                            leagues = checked['c_p_leagues'],
-                            $menuItem = $('.dance-group-menu').find('a.active').attr('id'),
-                            $chooseCategoriesParameterUl = $('#pick-dancing-group-parameter-to-see');
+                        var msg = JSON.parse(msg);
 
                         function addInfo($chooseCategoriesParameterUl, parameter, $id) {
                             for (var i = 0; i < parameter.length; i++) {
@@ -171,15 +170,15 @@ jQuery(function($) {
                             }
                         }
 
-                        // if ($menuItem=='menu-dance-programs') {
-                        //     addInfo($chooseCategoriesParameterUl, programs, $id);
-                        // } else if ($menuItem=='menu-age-categories') {
-                        //     addInfo($chooseCategoriesParameterUl, ageCategories, $id);
-                        // } else if ($menuItem=='menu-nominations') {
-                        //     addInfo($chooseCategoriesParameterUl, nominations, $id);
-                        // } else if ($menuItem=='menu-leagues') {
-                        //     addInfo($chooseCategoriesParameterUl, leagues, $id);
-                        // }
+                        if ($menuItem=='menu-dance-programs') {
+                            addInfo($chooseCategoriesParameterUl, programs, $id);
+                        } else if ($menuItem=='menu-age-categories') {
+                            addInfo($chooseCategoriesParameterUl, ageCategories, $id);
+                        } else if ($menuItem=='menu-nominations') {
+                            addInfo($chooseCategoriesParameterUl, nominations, $id);
+                        } else if ($menuItem=='menu-leagues') {
+                            addInfo($chooseCategoriesParameterUl, leagues, $id);
+                        }
 
                         $parametersList.slideDown(200);
 
@@ -231,14 +230,8 @@ jQuery(function($) {
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
-            var $id=$parameter.attr('data-id-dancing-group'),
-                $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
-                searchedParameter;
+            var $id=$parameter.attr('data-id-dancing-group');
 
-            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='dance programs';} else
-                if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='age categories';} else
-                    if ($menuParameter.attr('href')=='#nominations') {searchedParameter='nominations';} else
-                        if ($menuParameter.attr('href')=='#leagues') {searchedParameter='leagues';}
 
             console.log(searchedParameter);
 
