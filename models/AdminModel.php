@@ -554,9 +554,9 @@ class AdminModel
     public static function getCategoryParametersByParameter($parameter){
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
-            $result = $db->query("SELECT `{$parameter}` FROM `category_parameters`");
+            $result = $db->query("SELECT `{$parameter}` FROM `category_parameters` WHERE `id_org` = {$_COOKIE['get_id']}");
             while ($row = $result->fetch_assoc()){
-                $array_with_parameters = unserialize($row);
+                $array_with_parameters[] = unserialize($row);
             }
             return $array_with_parameters;
         }
