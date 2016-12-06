@@ -15,7 +15,7 @@ sleep(1);
                 </ul>
             </div>
         </div>
-        <div id="total-wrapper-for-info">
+
             <div class="row dance-group-menu">
                 <div class="col-xs-6 col-sm-3">
                     <div class="dance-group-menu-items">
@@ -158,7 +158,7 @@ sleep(1);
 
                 </div>
             </div>
-
+        <div id="total-wrapper-for-info">
             <div id="create-dance-categories" class="col-xs-12">
                 <div class="row pick-dancing-group-parameters-wrapper">
                     <div class="col-xs-12 col-sm-6 col-md-3">
