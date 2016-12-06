@@ -556,7 +556,7 @@ class AdminModel
             $array_with_parameters = [];
             $result = $db->query("SELECT `{$parameter}` FROM `category_parameters` WHERE `id_org` = {$_COOKIE['get_id']}");
             while ($row = $result->fetch_assoc()){
-                $array_with_parameters[] = unserialize($row);
+                $array_with_parameters[] = unserialize($row[$parameter]);
             }
             return $array_with_parameters;
         }
