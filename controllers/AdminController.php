@@ -338,15 +338,12 @@ class AdminController
     }
 
     public function actionAjaxSaveDancingCategories(){
-//        $_SESSION['sss'] = $_POST;
-//        self::showArray($_SESSION);
-//        die;
-
         $tmp = [];
         if(!empty($_POST['categories'])){
             foreach ($_POST['categories'] as $category){
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
+                (!empty($category[2])) ? array_push($category_parts, $category[2]) : array_push($category_parts, '');
                 $resulting = AdminModel::saveCreatedCategory($category_parts);
                 array_push($tmp, $resulting);
             }
