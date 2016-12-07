@@ -222,10 +222,10 @@ jQuery(function($) {
                 searchedParameter,
                 obj={};
 
-            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='d_p_programs';} else
-            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='d_p_age_categories';} else
-            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='d_p_nominations';} else
-            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='d_p_leagues';}
+            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='d_c_programs';} else
+            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='d_c_age_categories';} else
+            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='d_c_nominations';} else
+            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='d_c_leagues';}
 
             obj['name']=$name;
             obj['parameter']=searchedParameter;
@@ -272,6 +272,7 @@ jQuery(function($) {
         e.preventDefault();
         //AJAX 3
         function ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() {
+
 
             $.ajax({
                 type:"POST",
