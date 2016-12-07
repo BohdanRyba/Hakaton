@@ -269,6 +269,7 @@ jQuery(function($) {
     });
 
     // ЗБЕРЕГТИ РЕДАГОВАНИЙ СПИСОК КАТЕГОРІЙ, ЗНАЙДЕНИХ ПО ПЕВНОМУ ПАРАМЕТРУ
+    $body.off('click', '#update-dancing-categories-info');
     $body.on('click', '#update-dancing-categories-info', function (e) {
         e.preventDefault();
         //AJAX 3
@@ -277,28 +278,27 @@ jQuery(function($) {
                 massive=[];
 
             $categoriesBlocks.each(function () {
-
+                var obj={};
+                obj['category_name']=$(this).find('.dance-category-name').text();
+                obj['category_code']=$(this).find('.dancing-group-info-code').val();
+                massive.push(obj);
             });
+
+            console.log(massive);
 
             $.ajax({
                 type:"POST",
-                url:'ajax_settingUpDancingCategory',
-                data: 'id='+$id,
+                url:'ajax_updatingCreatedDancingCategory',
+                data: massive,
                 success: function(msg) {
-                    var msg=JSON.parse(msg);
                     console.log(msg);
-
-
-
                 },
                 error: function (msg) {
                     console.log(msg);
                 }
             })
         }
-        // $searchedCategoriesForm.children().each(function () {
-        //     $(this).
-        // })
+        ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO();
     });
 
     $('#categories-list').on('newCategoriesAdded', function () {
