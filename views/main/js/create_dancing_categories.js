@@ -14,22 +14,12 @@ jQuery(function($) {
              $categoriesList=$('#categories-list'),
              $checkedItem=$(this);
 
-        // $totalWrapperForInfo.css('display', 'block');
         $('#total-wrapper-for-info').slideDown(200);
 
         $checkedItem.parent().children().each(function () {
             $(this).removeClass('picked-dancing-group-to-use');
         });
         $checkedItem.addClass('picked-dancing-group-to-use');
-
-        $danceGroupParametersList.css('display', 'none');
-        $categoriesList.css('display', 'none');
-
-        function clearOldInfo() {
-            $chooseCategoriesParameterUl.children().remove();
-            $searchedCategoriesForm.children().remove();
-        }
-        clearOldInfo();
 
         $('.dance-group-menu-items').each(function() {
             $(this).find('a').removeClass('active');
@@ -316,6 +306,13 @@ jQuery(function($) {
         $ul.find('.pick-dance-program-for-category').not('[data-checked="checked"]').each(function () {
             $(this).find('[type="checkbox"]').prop('checked',false);
         });
+
+        var $inputStatus=$(this).find('input').prop('checked');
+        if ($inputStatus==false) {
+            $(this).removeAttr('data-checked');
+        } else {
+            $(this).attr('data-checked','checked');
+        }
     });
 
     $body.on('click', '.pick-age-category-for-category', function () {
@@ -328,6 +325,13 @@ jQuery(function($) {
         $ul.find('.pick-age-category-for-category').not('[data-checked="checked"]').each(function () {
             $(this).find('[type="checkbox"]').prop('checked',false);
         });
+
+        var $inputStatus=$(this).find('input').prop('checked');
+        if ($inputStatus==false) {
+            $(this).removeAttr('data-checked');
+        } else {
+            $(this).attr('data-checked','checked');
+        }
     });
 
     $body.on('click', '.pick-nominations-for-category', function () {
@@ -340,6 +344,22 @@ jQuery(function($) {
         $ul.find('.pick-nominations-for-category').not('[data-checked="checked"]').each(function () {
             $(this).find('[type="checkbox"]').prop('checked',false);
         });
+
+        var $inputStatus=$(this).find('input').prop('checked');
+        if ($inputStatus==false) {
+            $(this).removeAttr('data-checked');
+        } else {
+            $(this).attr('data-checked','checked');
+        }
+    });
+
+     $body.on('click', '.pick-leagues-for-categories', function () {
+        var $inputStatus=$(this).find('input').prop('checked');
+        if ($inputStatus==false) {
+            $(this).removeAttr('data-checked');
+        } else {
+            $(this).attr('data-checked','checked');
+        }
     });
 
     //Check all leagues
@@ -356,10 +376,12 @@ jQuery(function($) {
             if ($checkAll.prop('checked')==true) {
                 $li.each(function () {
                     $(this).find('[type="checkbox"]').prop('checked', true);
+                    $(this).attr('data-checked', 'checked');
                 })
             } else {
                 $li.each(function () {
                     $(this).find('[type="checkbox"]').prop('checked', false);
+                    $(this).removeAttr('data-checked');
                 })
             }
         });
@@ -393,7 +415,7 @@ jQuery(function($) {
             }
         });
 
-        if (danceProgram[0]!='undefined'&&ageCategory[0]!='undefined'&&nomination[0]!='undefined'&&leagues.length>0) {
+        if (danceProgram[0]!=undefined&&ageCategory[0]!=undefined&&nomination[0]!=undefined&&(leagues.length>0)) {
             for (var i=0; i<leagues.length; i++) {
                 var categoryNameForServer=[];
 
@@ -410,6 +432,18 @@ jQuery(function($) {
             $('#show-created-dance-categories').trigger('newCategoriesAdded');
             $('#create-dance-categories').find('[type="checkbox"]').each(function () {
                 $(this).prop('checked', false);
+            });
+            $('.pick-dance-program-for-category').each(function(){
+                $(this).removeAttr('data-checked');
+            });
+            $('.pick-age-category-for-category').each(function(){
+                $(this).removeAttr('data-checked');
+            });
+            $('.pick-nominations-for-category').each(function(){
+                $(this).removeAttr('data-checked');
+            });
+            $('.pick-leagues-for-categories').each(function(){
+                $(this).removeAttr('data-checked');
             });
         }
     });
