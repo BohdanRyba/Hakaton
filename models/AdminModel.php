@@ -526,6 +526,7 @@ class AdminModel
                       AND `d_c_age_category`='{$category_parts[1]}'
                       AND `d_c_nomination`='{$category_parts[2]}'
                       AND `d_c_league`='{$category_parts[3]}'
+                      AND `org_id`={$_COOKIE['get_id']}
                       ";
             $result = $db->query($query);
             $checking_result = $result->fetch_assoc();
