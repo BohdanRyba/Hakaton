@@ -95,9 +95,11 @@ $(function () {
     // Opens page cabinet club
     $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
+        let id= $(this).children('.list-search').attr('data-club-id');
         $.ajax({
             url:'club-cabinet-for-adm',
             type:'POST',
+            data:id,
             dataType:'html',
             beforeSend: funcBefore,
             success: funcSuccess
@@ -105,7 +107,6 @@ $(function () {
     });
 
     $('body').on('click', '.users_list', function(){
-        console.log("hello");
         $('.cont-box1>').remove();
         $.ajax({
             url:'table_of_part.php',
