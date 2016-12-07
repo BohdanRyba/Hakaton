@@ -540,7 +540,8 @@ class AdminModel
                             `d_c_nomination` = '{$category_parts[2]}',
                             `d_c_league` = '{$category_parts[3]}',
                             `org_id` = {$_COOKIE['get_id']},
-                            `extra_id` = '{$category_parts[4]}'");
+                            `extra_id` = '{$category_parts[4]}',
+                            `id_dance_group` = '{$category_parts[5]}'");
                 if($result){
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" успешно создана!';
                 } else {
