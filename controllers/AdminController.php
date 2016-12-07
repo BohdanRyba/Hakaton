@@ -366,9 +366,9 @@ class AdminController
             $_SESSION['check'] = $_POST;
             setcookie("AAAAA", "WELL DONE");
         }
-//        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
-//            $array_with_asked_parameters = AdminModel::getCategoriesByName($_POST);
-//            echo json_encode($array_with_asked_parameters);
-//        }
+        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+            $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
+            echo json_encode($array_with_asked_categories);
+        }
     }
 }
