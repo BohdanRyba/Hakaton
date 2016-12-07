@@ -222,10 +222,10 @@ jQuery(function($) {
                 searchedParameter,
                 obj={};
 
-            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='c_p_programs';} else
-            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='c_p_age_categories';} else
-            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='c_p_nominations';} else
-            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='c_p_leagues';}
+            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='d_p_programs';} else
+            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='d_p_age_categories';} else
+            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='d_p_nominations';} else
+            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='d_p_leagues';}
 
             obj['name']=$name;
             obj['parameter']=searchedParameter;
