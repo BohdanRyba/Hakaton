@@ -222,10 +222,10 @@ jQuery(function($) {
                 searchedParameter,
                 obj={};
 
-            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='d_c_programs';} else
-            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='d_c_age_categories';} else
-            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='d_c_nominations';} else
-            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='d_c_leagues';}
+            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='d_c_program';} else
+            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='d_c_age_category';} else
+            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='d_c_nomination';} else
+            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='d_c_league';}
 
             obj['name']=$name;
             obj['parameter']=searchedParameter;
@@ -249,6 +249,7 @@ jQuery(function($) {
         }
 
         ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($(this));
+        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+3333+'</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label></div>');
 
         $categoriesList.trigger('newCategoriesAdded');
     });
@@ -272,7 +273,12 @@ jQuery(function($) {
         e.preventDefault();
         //AJAX 3
         function ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() {
+            var $categoriesBlocks=$('#show-searched-dancing-groups').children(),
+                massive=[];
 
+            $categoriesBlocks.each(function () {
+
+            });
 
             $.ajax({
                 type:"POST",
