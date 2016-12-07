@@ -217,18 +217,27 @@ jQuery(function($) {
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
-            var $name=$parameter.attr('data-name');
+            var $name=$parameter.attr('data-name'),
+                $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
+                searchedParameter,
+                obj={};
 
-            console.log(searchedParameter);
+            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='c_p_programs';} else
+            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='c_p_age_categories';} else
+            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='c_p_nominations';} else
+            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='c_p_leagues';}
+
+            obj['name']=$name;
+            obj['parameter']=searchedParameter;
 
             $.ajax({
                 type:"POST",
-                url:'ajax_',
-                data: 'name='+$name,
+                url:'ajax_showCategoriesAccordingToParameter',
+                data: obj,
                 success: function(msg) {
                     var msg=JSON.parse(msg);
                     console.log(msg);
-
+                    $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+NAME+'</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+CODE+'"></label></div>');
 
 
                 },
@@ -240,8 +249,6 @@ jQuery(function($) {
         }
 
         ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($(this));
-        
-        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">Название танц категории</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label> </div>');
 
         $categoriesList.trigger('newCategoriesAdded');
     });
@@ -265,7 +272,6 @@ jQuery(function($) {
         e.preventDefault();
         //AJAX 3
         function ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() {
-            
 
             $.ajax({
                 type:"POST",
@@ -499,6 +505,8 @@ jQuery(function($) {
                 data: allCategories,
                 success: function(allCategories) {
                     console.log(allCategories);
+                    alert('Категории добавлены');
+                    $('#show-created-categories').empty();
                 },
                 error: function (msg) {
                     console.log(msg);
