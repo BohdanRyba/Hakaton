@@ -219,7 +219,7 @@ jQuery(function($) {
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
             var $name=$parameter.attr('data-name');
 
-            console.log(searchedParameter);
+            console.log($name);
 
             $.ajax({
                 type:"POST",
@@ -241,7 +241,7 @@ jQuery(function($) {
 
         ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($(this));
         
-        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">Название танц категории</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label> </div>');
+        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+NAME+'</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+CODE+'"></label></div>');
 
         $categoriesList.trigger('newCategoriesAdded');
     });
