@@ -562,4 +562,15 @@ class AdminModel
             return $array_with_parameters;
         }
     }
+
+    public static function getCategoriesByName($searching_array){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $array_with_parameters = [];
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `{$searching_array['parameter']}` = '{$searching_array['name']}' ` `org_id` = {$_COOKIE['get_id']}");
+            while ($row = $result->fetch_assoc()){
+                $array_with_parameters[] = $row;
+            }
+            return $array_with_parameters;
+        }
+    }
 }

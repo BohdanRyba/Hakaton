@@ -359,4 +359,11 @@ class AdminController
             echo json_encode($array_with_asked_parameters);
         }
     }
+
+    public function actionAjaxShowCategoriesAccordingToParameter(){
+        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+            $array_with_asked_parameters = AdminModel::getCategoriesByName($_POST);
+            echo json_encode($array_with_asked_parameters);
+        }
+    }
 }
