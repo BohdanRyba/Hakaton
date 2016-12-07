@@ -223,7 +223,7 @@ jQuery(function($) {
 
             $.ajax({
                 type:"POST",
-                url:'ajax_',
+                url:'ajax_showCategoriesAccordingToParameter',
                 data: 'name='+$name,
                 success: function(msg) {
                     var msg=JSON.parse(msg);
@@ -499,6 +499,8 @@ jQuery(function($) {
                 data: allCategories,
                 success: function(allCategories) {
                     console.log(allCategories);
+                    alert('Категории добавлены');
+                    $('#show-created-categories').empty();
                 },
                 error: function (msg) {
                     console.log(msg);
