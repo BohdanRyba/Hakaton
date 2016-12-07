@@ -94,7 +94,7 @@ $(function () {
         window.a++;
     });
     $('body').on('click', 'a.remove-part', function () {
-        $(this).parents('.part').slideUp(300);
+        $(this).parents('.part').remove();
     });
 
 //search list

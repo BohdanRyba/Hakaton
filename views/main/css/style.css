@@ -1116,7 +1116,7 @@ table tbody.row-table > :hover {
 /* popup edit*/
 .bg-opacity {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -1156,6 +1156,16 @@ table .event_group_list_table tr:hover{
     transition:background 0.3s;
 }
 table .event_group_list_table tr{
+    border:1px solid #00c0ef;
+    background:white;
+    transition:background 0.3s;
+}
+table .part_list tr:hover{
+    background:#00c0ef;
+    cursor:pointer;
+    transition:background 0.3s;
+}
+table .part_list tr{
     border:1px solid #00c0ef;
     background:white;
     transition:background 0.3s;

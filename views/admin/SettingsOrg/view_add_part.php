@@ -1,4 +1,4 @@
-<div class="part row">
+<div class="part box-body">
   <label for="" class="lb_part">Новый участник</label>
   <div class="box-tools pull-right">
     <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
