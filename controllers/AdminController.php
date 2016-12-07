@@ -351,7 +351,7 @@ class AdminController
         }
         $show_results = implode("\n", $tmp);
         echo $show_results;
-    } // add dance_group_id;
+    }
 
     public function actionAjaxShowAllCategoryParameters(){
         if(!empty($_POST['parameter'])){
@@ -361,9 +361,14 @@ class AdminController
     }
 
     public function actionAjaxShowCategoriesAccordingToParameter(){
-        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
-            $array_with_asked_parameters = AdminModel::getCategoriesByName($_POST);
-            echo json_encode($array_with_asked_parameters);
+        self::showArray($_SESSION);
+        if(!empty($_POST)){
+            $_SESSION['check'] = $_POST;
+            setcookie("AAAAA", "WELL DONE");
         }
+//        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+//            $array_with_asked_parameters = AdminModel::getCategoriesByName($_POST);
+//            echo json_encode($array_with_asked_parameters);
+//        }
     }
 }
