@@ -105,7 +105,7 @@ jQuery(function($) {
 
         deletedCategories=[];
         editedCategories=[];
-        sendInfoToServerAboutEditedCategories=[];
+        sendInfoToServerAboutEditedCategories={};
 
         function clearOldInfo() {
             $chooseCategoriesParameterUl.children().remove();
@@ -330,7 +330,7 @@ jQuery(function($) {
                 success: function(msg) {
                     deletedCategories=[];
                     editedCategories=[];
-                    sendInfoToServerAboutEditedCategories=[];
+                    sendInfoToServerAboutEditedCategories={};
                 },
                 error: function (msg) {
                     console.log(msg);
@@ -519,6 +519,7 @@ jQuery(function($) {
         var $categoryCode=$('.dancing-group-info-code');
 
         $categoryCode.on('blur', function(){
+            console.log('blur');
             $categoryCode.prop('disabled',true);
         });
     });
