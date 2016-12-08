@@ -237,7 +237,7 @@
                                                     </div>
                                                     <div class="col-xs-12">
                                                         <div class="row pick-dancing-groups-parameters-wrapper">
-                                                            <ul id="pick-dancing-group-parameter">
+                                                            <ul id="pick-dancing-group-parameter-to-see">
                                                                 <li class="dancing-group-list-item picked-dancing-group" data-id-dancing-group=""><span class="numeration"></span>dancing group #1</li>
                                                                 <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>
                                                                 <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>
@@ -511,10 +511,13 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!--<script type="text/javascript" src="--><?//=Router::$permalink?><!--views/main/plugins/panescroll/jquery.mousewheel.js"></script>-->
+<!--<script type="text/javascript" src="--><?//=Router::$permalink?><!--views/main/plugins/panescroll/jquery.jscrollpane.min.js"></script>-->
 <!-- Bootstrap 3.3.6 -->
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
+
 <script src="<?=Router::$permalink?>views/main/js/create_dancing_categories.js"></script>
 </body>
 </html>

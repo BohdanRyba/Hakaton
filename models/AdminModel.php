@@ -526,6 +526,7 @@ class AdminModel
                       AND `d_c_age_category`='{$category_parts[1]}'
                       AND `d_c_nomination`='{$category_parts[2]}'
                       AND `d_c_league`='{$category_parts[3]}'
+                      AND `org_id`={$_COOKIE['get_id']}
                       ";
             $result = $db->query($query);
             $checking_result = $result->fetch_assoc();
@@ -540,13 +541,38 @@ class AdminModel
                             `d_c_nomination` = '{$category_parts[2]}',
                             `d_c_league` = '{$category_parts[3]}',
                             `org_id` = {$_COOKIE['get_id']},
-                            `extra_id` = '{$category_parts[4]}'");
+                            `extra_id` = '{$category_parts[4]}',
+                            `id_dance_group` = '{$category_parts[5]}'");
                 if($result){
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" успешно создана!';
                 } else {
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" не создана, что-то пошло не так...';
                 }
             }
+        }
+        $db->close();
+    }
+
+    public static function getCategoryParametersByParameter($parameter){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $array_with_parameters = [];
+            $result = $db->query("SELECT `{$parameter}` FROM `category_parameters` WHERE `id_org` = {$_COOKIE['get_id']}");
+            while ($row = $result->fetch_assoc()){
+                $array_with_parameters[] = unserialize($row[$parameter]);
+            }
+            return $array_with_parameters;
+        }
+        $db->close();
+    }
+
+    public static function getCategoriesByName($searching_array){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $array_with_parameters = [];
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `{$searching_array['parameter']}` = '{$searching_array['name']}' AND `org_id` = {$_COOKIE['get_id']}");
+            while ($row = $result->fetch_assoc()){
+                $array_with_parameters[] = $row;
+            }
+            return $array_with_parameters;
         }
         $db->close();
     }

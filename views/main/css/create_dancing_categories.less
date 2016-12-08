@@ -86,7 +86,7 @@
   }
 }
 
-#pick-dancing-group-parameter {
+#pick-dancing-group-parameter-to-see {
   list-style: none;
   width: 100%;
   padding:0;
@@ -193,6 +193,7 @@
         color: white;
       }
       li {
+        transition: background 150ms linear, color 150ms linear;
         background: white;
         font-size: 18px;
         line-height: 22px;
@@ -205,7 +206,14 @@
           background: lighten(rgb(147, 179, 243), 10%);
         }
         &:hover {
+          transition: background 150ms linear, color 150ms linear;
           background: darken(@highlight-color, 15%);
+          color: black;
+        }
+        &[data-checked="checked"] {
+          transition: background 150ms linear, color 150ms linear;
+          background: linear-gradient(to right, #00a65a, #25e78e);
+          color: white;
         }
         label {
           cursor: pointer;
@@ -256,3 +264,4 @@
     -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
   }
 }
+
