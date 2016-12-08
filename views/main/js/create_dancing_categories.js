@@ -3,8 +3,9 @@ jQuery(function($) {
 
     //=========================================================================
     var $body=$('body'),
-        $optionalDancingGroup=$('.pick-dancing-group-to-use'),
-        $totalWrapperForInfo=$('#total-wrapper-for-info');
+        deletedCategories=[],
+        editedCategories=[],
+        sendInfoToServerAboutEditedCategories={};
 
     $body.off('click', '.pick-dancing-group-to-use');
     $body.on('click', '.pick-dancing-group-to-use', function () {
@@ -101,6 +102,10 @@ jQuery(function($) {
             $categoriesList=$('#categories-list'),
             $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see'),
             $searchedCategoriesForm=$('#show-searched-dancing-groups');
+
+        deletedCategories=[];
+        editedCategories=[];
+        sendInfoToServerAboutEditedCategories=[];
 
         function clearOldInfo() {
             $chooseCategoriesParameterUl.children().remove();
@@ -208,6 +213,10 @@ jQuery(function($) {
 
         $searchedCategoriesForm.children().remove();
 
+        deletedCategories=[];
+        editedCategories=[];
+        sendInfoToServerAboutEditedCategories=[];
+
         // $categoriesList.off('newCategoriesAdded'); ???????????????????????????????? не знаю чи потрібно
 
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -261,6 +270,8 @@ jQuery(function($) {
         //$categoriesList.trigger('newCategoriesAdded');
     });
 
+
+
     // РЕДАГУВАННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
     $body.on('click', '.edit-categories-info', function () {
        var $editBtn=$(this),
@@ -273,7 +284,6 @@ jQuery(function($) {
         console.log($wrapper);
     });
 
-    var deletedCategories=[];
     // ВИДАЛЕННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
     $body.on('click', '.delete-categories-info', function () {
         var $wrapper=$(this).parents('.dp-info-wrapper'),
@@ -293,9 +303,7 @@ jQuery(function($) {
         e.preventDefault();
         //AJAX 3
         function ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() {
-            var $categoriesBlocks=$('#show-searched-dancing-groups').children(),
-                editedCategories=[],
-                sendInfoToServer={};
+            var $categoriesBlocks=$('#show-searched-dancing-groups').children();
 
             $categoriesBlocks.each(function () {
                 var obj={};
@@ -310,17 +318,19 @@ jQuery(function($) {
                 // massive.push(editedCategories, deletedCategories);
             });
 
-            sendInfoToServer['editedCategories']=editedCategories;
-            sendInfoToServer['deletedCategories']=deletedCategories;
-            console.log(sendInfoToServer);
+            sendInfoToServerAboutEditedCategories['editedCategories']=editedCategories;
+            sendInfoToServerAboutEditedCategories['deletedCategories']=deletedCategories;
+            console.log(sendInfoToServerAboutEditedCategories);
 
 
             $.ajax({
                 type:"POST",
                 url:'ajax_updatingCreatedDancingCategory',
-                data: sendInfoToServer,
+                data: sendInfoToServerAboutEditedCategories,
                 success: function(msg) {
-                    console.log(msg);
+                    deletedCategories=[];
+                    editedCategories=[];
+                    sendInfoToServerAboutEditedCategories=[];
                 },
                 error: function (msg) {
                     console.log(msg);
