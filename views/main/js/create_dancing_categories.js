@@ -1,7 +1,5 @@
 jQuery(function($) {
 
-
-
     //=========================================================================
     var $body=$('body'),
         deletedCategories=[],
@@ -179,21 +177,6 @@ jQuery(function($) {
             }
 
             ajax_addNewParameters();
-
-            //$chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
-
-            //     if ($parametersList.css('display')=='block') { // ЯКЩО КЛІКАЄМО ПО ПУНКТУ МЕНЮ І ВЖЕ Є АКТИВНИМ ОДИН ПУНКТ
-            //
-            //         //ajax_addNewParameters($menuItem);
-            //         //$chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
-            //
-            //     } else { //ЯКЩО АКТИВНИХ ПУНКТІВ НЕМАЄ
-            //         // ajax_addNewParameters($menuItem);
-            //         // $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
-            //         // $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item"><span class="numeration"></span>'+'HERE_MUST_BE_PARAMETER_NAME'+'</li>');
-            //         $parametersList.slideDown(200);
-            //     }
-            // }
         }});
     //!!!!!!!!!!!!!!!!!!!!!!!</main_menu>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -218,8 +201,6 @@ jQuery(function($) {
         deletedCategories=[];
         editedCategories=[];
         sendInfoToServerAboutEditedCategories={};
-
-        // $categoriesList.off('newCategoriesAdded'); ???????????????????????????????? не знаю чи потрібно
 
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         
@@ -272,8 +253,6 @@ jQuery(function($) {
         //$categoriesList.trigger('newCategoriesAdded');
     });
 
-
-
     // РЕДАГУВАННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
     $body.on('click', '.edit-categories-info', function () {
        var $editBtn=$(this),
@@ -281,9 +260,18 @@ jQuery(function($) {
            $categoryCode=$wrapper.find('.dancing-group-info-code');
 
         $categoryCode.prop('disabled',false).trigger('focus');
+        $('#show-searched-dancing-groups').trigger('IWantToEditCode');
 
         $wrapper.attr('data-edit', 'true');
         console.log($wrapper);
+    });
+
+    $('#show-searched-dancing-groups').on('IWantToEditCode', function () {
+        var $categoryCode=$('.dancing-group-info-code');
+        $categoryCode.on('blur', function(){
+            console.log('blur');
+            $categoryCode.prop('disabled',true);
+        });
     });
 
     // ВИДАЛЕННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
