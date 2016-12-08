@@ -361,14 +361,17 @@ class AdminController
     }
 
     public function actionAjaxShowCategoriesAccordingToParameter(){
-//        self::showArray($_SESSION);
-//        if(!empty($_POST)){
-//            $_SESSION['check'] = $_POST;
-//            setcookie("AAAAA", "WELL DONE");
-//        }
         if(!empty($_POST['name']) && !empty($_POST['parameter'])){
             $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
             echo json_encode($array_with_asked_categories);
         }
+    }
+
+    public function actionAjaxUpdatingCreatedDancingCategory(){
+        echo 'I like cheese!';
+//        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+//            $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
+//            echo json_encode($array_with_asked_categories);
+//        }
     }
 }
