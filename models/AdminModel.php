@@ -549,4 +549,12 @@ class AdminModel
         }
         $db->close();
     }
+
+    static function AddParticipant($post,$data){
+
+        echo 'Hello!';
+        return true;
+    }
+
 }
+

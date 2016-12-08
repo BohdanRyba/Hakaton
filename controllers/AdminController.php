@@ -351,4 +351,15 @@ class AdminController
         $show_results = implode("\n", $tmp);
         echo $show_results;
     }
+    public function actionAddParticipant($id){
+        self::showArray(id);
+        echo '</hr>';
+        self::showArray($_POST);
+        echo '</hr>';
+        AdminModel::AddParticipant($_POST,$id);
+        return true;
+    }
 }
+
+
+
