@@ -2,27 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b75b1b9-83e3-4d97-baba-d29ce594fb16" name="Default" comment="test adding participant">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/cab_org.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/menu_event.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/reg_judge.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service/reg_shabl_konk.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/main/plugins/panescroll/jquery.jscrollpane.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/main/plugins/panescroll/jquery.mousewheel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.php" afterPath="$PROJECT_DIR$/config/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/AdminController.php" afterPath="$PROJECT_DIR$/controllers/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/hakaton_admin/dance_categories.sql" afterPath="$PROJECT_DIR$/database/hakaton_admin/dance_categories.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/AdminModel.php" afterPath="$PROJECT_DIR$/models/AdminModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/dance_groups_list.html" afterPath="$PROJECT_DIR$/service/dance_groups_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/create_dancing_categories.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/create_dancing_categories.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/option_category.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/option_category.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/css/create_dancing_categories.less" afterPath="$PROJECT_DIR$/views/main/css/create_dancing_categories.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/css/dance_groups_list.less" afterPath="$PROJECT_DIR$/views/main/css/dance_groups_list.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/css/style.css" afterPath="$PROJECT_DIR$/views/main/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/js/ajax.js" afterPath="$PROJECT_DIR$/views/main/js/ajax.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/js/create_dancing_categories.js" afterPath="$PROJECT_DIR$/views/main/js/create_dancing_categories.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/js/dance_groups_list.js" afterPath="$PROJECT_DIR$/views/main/js/dance_groups_list.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/js/script.js" afterPath="$PROJECT_DIR$/views/main/js/script.js" />
     </list>
     <ignored path="Hakaton.iws" />
@@ -44,124 +23,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="create_dancing_categories.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/js/create_dancing_categories.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajax.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/js/ajax.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="131" column="62" selection-start-line="131" selection-start-column="62" selection-end-line="131" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajax_collector.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/js/ajax_collector.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dance_groups_list.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/js/dance_groups_list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajax_search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/js/ajax_search.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1598">
-              <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/AdminModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="585" column="1" selection-start-line="585" selection-start-column="1" selection-end-line="585" selection-end-column="1" />
-              <folding>
-                <marker date="1481212117146" expanded="true" signature="308:354" ph="SELECT * FRO... organizations" />
-                <marker date="1481212117146" expanded="true" signature="1386:1436" ph="SELECT * FRO... organizations" />
-                <marker date="1481212117146" expanded="true" signature="1994:2613" ph="INSERT INTO `organizations`... " />
-                <marker date="1481212117146" expanded="true" signature="3219:3371" ph="UPDATE `orga... " />
-                <marker date="1481212117146" expanded="true" signature="3437:3982" ph="UPDATE `orga... " />
-                <marker date="1481212117146" expanded="true" signature="4852:4893" ph="DELETE FROM " />
-                <marker date="1481212117146" expanded="true" signature="7209:7277" ph="SELECT * FRO... clubs" />
-                <marker date="1481212117146" expanded="true" signature="8183:8253" ph="SELECT * FRO... events" />
-                <marker date="1481212117146" expanded="true" signature="9606:10349" ph="INSERT INTO `clubs`... " />
-                <marker date="1481212117146" expanded="true" signature="10864:11617" ph="INSERT INTO `events`... " />
-                <marker date="1481212117146" expanded="true" signature="11801:11838" ph="SELECT * FRO... events" />
-                <marker date="1481212117146" expanded="true" signature="12268:12300" ph="SELECT * FRO... events" />
-                <marker date="1481212117146" expanded="true" signature="13502:13703" ph="UPDATE event... " />
-                <marker date="1481212117146" expanded="true" signature="14743:14775" ph="DELETE FROM " />
-                <marker date="1481212117146" expanded="true" signature="15228:15676" ph="INSERT INTO `dance_groups`... " />
-                <marker date="1481212117146" expanded="true" signature="16687:16747" ph="SELECT * FRO... dance_groups" />
-                <marker date="1481212117146" expanded="true" signature="17554:17596" ph="SELECT * FRO... dance_groups" />
-                <marker date="1481212117146" expanded="true" signature="18371:18483" ph="SELECT `id_d... category_parameters" />
-                <marker date="1481212117146" expanded="true" signature="18702:19167" ph="UPDATE `cate... " />
-                <marker date="1481212117146" expanded="true" signature="19327:19823" ph="INSERT INTO `category_parameters`... " />
-                <marker date="1481212117146" expanded="true" signature="20164:20246" ph="SELECT * FRO... category_parameters" />
-                <marker date="1481212117146" expanded="true" signature="21040:21337" ph="SELECT `danc... dance_groups" />
-                <marker date="1481212117146" expanded="true" signature="21987:22280" ph="SELECT * FRO... dance_categories" />
-                <marker date="1481212117146" expanded="true" signature="21987:22316" ph="SELECT * FRO... dance_categories" />
-                <marker date="1481212117146" expanded="true" signature="22725:23271" ph="INSERT INTO `dance_categories`... " />
-                <marker date="1481212117146" expanded="true" signature="24058:24124" ph="SELECT `${{$... category_parameters" />
-                <marker date="1481212117146" expanded="true" signature="24565:24684" ph="SELECT * FRO... dance_categories" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_dancing_categories.less" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/main/css/create_dancing_categories.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="266" column="1" selection-start-line="266" selection-start-column="1" selection-end-line="266" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/main/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1707">
-              <caret line="190" column="38" selection-start-line="190" selection-start-column="38" selection-end-line="190" selection-end-column="38" />
+            <state relative-caret-position="-2302">
+              <caret line="179" column="5" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/AdminController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
-              <folding>
-                <marker date="1481212084545" expanded="true" signature="8054:8099" ph="SELECT * FRO... dance_groups" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -243,48 +110,6 @@
               <option name="myItemId" value="Hakaton" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
@@ -295,56 +120,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,12 +186,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1481206994380</updated>
-      <workItem from="1481207000961" duration="4974000" />
+      <workItem from="1481207000961" duration="5102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4974000" />
+    <option name="totallyTimeSpent" value="5102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -523,9 +298,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
-          <folding>
-            <marker date="1481212084545" expanded="true" signature="8054:8099" ph="SELECT * FRO... dance_groups" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -533,9 +306,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -559,35 +330,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
           <caret line="585" column="1" selection-start-line="585" selection-start-column="1" selection-end-line="585" selection-end-column="1" />
-          <folding>
-            <marker date="1481212117146" expanded="true" signature="308:354" ph="SELECT * FRO... organizations" />
-            <marker date="1481212117146" expanded="true" signature="1386:1436" ph="SELECT * FRO... organizations" />
-            <marker date="1481212117146" expanded="true" signature="1994:2613" ph="INSERT INTO `organizations`... " />
-            <marker date="1481212117146" expanded="true" signature="3219:3371" ph="UPDATE `orga... " />
-            <marker date="1481212117146" expanded="true" signature="3437:3982" ph="UPDATE `orga... " />
-            <marker date="1481212117146" expanded="true" signature="4852:4893" ph="DELETE FROM " />
-            <marker date="1481212117146" expanded="true" signature="7209:7277" ph="SELECT * FRO... clubs" />
-            <marker date="1481212117146" expanded="true" signature="8183:8253" ph="SELECT * FRO... events" />
-            <marker date="1481212117146" expanded="true" signature="9606:10349" ph="INSERT INTO `clubs`... " />
-            <marker date="1481212117146" expanded="true" signature="10864:11617" ph="INSERT INTO `events`... " />
-            <marker date="1481212117146" expanded="true" signature="11801:11838" ph="SELECT * FRO... events" />
-            <marker date="1481212117146" expanded="true" signature="12268:12300" ph="SELECT * FRO... events" />
-            <marker date="1481212117146" expanded="true" signature="13502:13703" ph="UPDATE event... " />
-            <marker date="1481212117146" expanded="true" signature="14743:14775" ph="DELETE FROM " />
-            <marker date="1481212117146" expanded="true" signature="15228:15676" ph="INSERT INTO `dance_groups`... " />
-            <marker date="1481212117146" expanded="true" signature="16687:16747" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481212117146" expanded="true" signature="17554:17596" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481212117146" expanded="true" signature="18371:18483" ph="SELECT `id_d... category_parameters" />
-            <marker date="1481212117146" expanded="true" signature="18702:19167" ph="UPDATE `cate... " />
-            <marker date="1481212117146" expanded="true" signature="19327:19823" ph="INSERT INTO `category_parameters`... " />
-            <marker date="1481212117146" expanded="true" signature="20164:20246" ph="SELECT * FRO... category_parameters" />
-            <marker date="1481212117146" expanded="true" signature="21040:21337" ph="SELECT `danc... dance_groups" />
-            <marker date="1481212117146" expanded="true" signature="21987:22280" ph="SELECT * FRO... dance_categories" />
-            <marker date="1481212117146" expanded="true" signature="21987:22316" ph="SELECT * FRO... dance_categories" />
-            <marker date="1481212117146" expanded="true" signature="22725:23271" ph="INSERT INTO `dance_categories`... " />
-            <marker date="1481212117146" expanded="true" signature="24058:24124" ph="SELECT `${{$... category_parameters" />
-            <marker date="1481212117146" expanded="true" signature="24565:24684" ph="SELECT * FRO... dance_categories" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -609,8 +352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/main/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1707">
-          <caret line="190" column="38" selection-start-line="190" selection-start-column="38" selection-end-line="190" selection-end-column="38" />
+        <state relative-caret-position="-2302">
+          <caret line="179" column="5" selection-start-line="179" selection-start-column="5" selection-end-line="179" selection-end-column="5" />
           <folding />
         </state>
       </provider>
