@@ -281,7 +281,7 @@ jQuery(function($) {
 
         obj['id']=$wrapper.attr('data-id');
         obj['extra_id']=$wrapper.attr('data-extraid');
-        obj['catagory_name']=$wrapper.attr('data-catagoryname');
+        obj['category_name']=$wrapper.attr('data-catagoryname'); // Roma has readjusted "catagory_name" to "category_name";
         deletedCategories.push(obj);
         $wrapper.remove();
         console.log(deletedCategories);
@@ -321,6 +321,7 @@ jQuery(function($) {
                     deletedCategories=[];
                     editedCategories=[];
                     sendInfoToServerAboutEditedCategories={};
+                    console.log(msg);// Roma had added this line;
                 },
                 error: function (msg) {
                     console.log(msg);

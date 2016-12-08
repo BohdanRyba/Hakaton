@@ -543,7 +543,7 @@ class AdminModel
                             `org_id` = {$_COOKIE['get_id']},
                             `extra_id` = '{$category_parts[4]}',
                             `id_dance_group` = '{$category_parts[5]}'");
-                if($result){
+                if ($result) {
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" успешно создана!';
                 } else {
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" не создана, что-то пошло не так...';
@@ -553,11 +553,12 @@ class AdminModel
         $db->close();
     }
 
-    public static function getCategoryParametersByParameter($parameter){
+    public static function getCategoryParametersByParameter($parameter)
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
             $result = $db->query("SELECT `{$parameter}` FROM `category_parameters` WHERE `id_org` = {$_COOKIE['get_id']}");
-            while ($row = $result->fetch_assoc()){
+            while ($row = $result->fetch_assoc()) {
                 $array_with_parameters[] = unserialize($row[$parameter]);
             }
             return $array_with_parameters;
@@ -565,14 +566,51 @@ class AdminModel
         $db->close();
     }
 
-    public static function getCategoriesByName($searching_array){
+    public static function getCategoriesByName($searching_array)
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
-            $result = $db->query("SELECT * FROM `dance_categories` WHERE `{$searching_array['parameter']}` = '{$searching_array['name']}' AND `org_id` = {$_COOKIE['get_id']}");
-            while ($row = $result->fetch_assoc()){
+            $result = $db->query("SELECT * FROM `dance_categories`
+                                  WHERE `{$searching_array['parameter']}` = '{$searching_array['name']}' 
+                                  AND `org_id` = {$_COOKIE['get_id']}");
+            while ($row = $result->fetch_assoc()) {
                 $array_with_parameters[] = $row;
             }
             return $array_with_parameters;
+        }
+        $db->close();
+    }
+
+    public static function editDanceCategories($edit_array)
+    {
+        $information_array = [];
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            if (!empty($edit_array['editedCategories'])) {
+                foreach ($edit_array['editedCategories'] as $arr_to_edit) {
+                    $result = $db->query("UPDATE `dance_categories` 
+                                  SET `extra_id` = {$arr_to_edit['extra_id']}
+                                  WHERE `id` = {$arr_to_edit['id']}
+                                  AND `org_id` = {$_COOKIE['get_id']}");
+                    if ($result) {
+                        array_push($information_array, 'Код категории "' . $arr_to_edit['category_name'] . '" УСПЕШНО обновлен!');
+                    } else {
+                        array_push($information_array, 'Код категории "' . $arr_to_edit['category_name'] . '" обновить НЕ удалось!');
+                    }
+                }
+            }
+            if (!empty($edit_array['deletedCategories'])) {
+                foreach ($edit_array['deletedCategories'] as $arr_to_del) {
+                    $result2 = $db->query("DELETE FROM `dance_categories` 
+                                          WHERE `id` = {$arr_to_del['id']}
+                                          AND `org_id` = {$_COOKIE['get_id']}");
+                    if ($result2) {
+                        array_push($information_array, 'Категория "' . $arr_to_del['category_name'] . '" удалена!');
+                    } else {
+                        array_push($information_array, 'Категорию "' . $arr_to_del['category_name'] . '" удалить НЕ УДАЛОСЬ!');
+                    }
+                }
+            }
+            return $information_array;
         }
         $db->close();
     }

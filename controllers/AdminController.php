@@ -368,15 +368,10 @@ class AdminController
     }
 
     public function actionAjaxUpdatingCreatedDancingCategory(){
-        self::showArray($_SESSION);
         if(!empty($_POST)){
-            $_SESSION['eee'] = $_POST;
-            setcookie("AAK", "OK_OK");
+            $array_with_asked_categories = AdminModel::editDanceCategories($_POST);
+            $show_results = implode("\n", $array_with_asked_categories);
+            echo $show_results;
         }
-
-//        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
-//            $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
-//            echo json_encode($array_with_asked_categories);
-//        }
     }
 }
