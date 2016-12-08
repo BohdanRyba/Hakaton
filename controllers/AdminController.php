@@ -368,7 +368,12 @@ class AdminController
     }
 
     public function actionAjaxUpdatingCreatedDancingCategory(){
-        echo 'I like cheese!';
+        self::showArray($_SESSION);
+        if(!empty($_POST)){
+            $_SESSION['eee'] = $_POST;
+            setcookie("AAK", "OK_OK");
+        }
+
 //        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
 //            $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
 //            echo json_encode($array_with_asked_categories);
