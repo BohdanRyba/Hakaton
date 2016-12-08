@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b75b1b9-83e3-4d97-baba-d29ce594fb16" name="Default" comment="test adding participant">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/main/js/ajax.js" afterPath="$PROJECT_DIR$/views/main/js/ajax.js" />
     </list>
@@ -75,8 +74,8 @@
       <file leaf-file-name="view_add_part.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-201">
-              <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+            <state relative-caret-position="17">
+              <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -125,8 +124,8 @@
       <file leaf-file-name="ajax.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/main/js/ajax.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="126" column="41" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
+            <state relative-caret-position="289">
+              <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -170,8 +169,8 @@
         <option value="$PROJECT_DIR$/controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/models/AdminModel.php" />
         <option value="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" />
-        <option value="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" />
         <option value="$PROJECT_DIR$/views/main/js/ajax.js" />
+        <option value="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" />
       </list>
     </option>
   </component>
@@ -278,15 +277,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1481206994380</updated>
-      <workItem from="1481207000961" duration="9247000" />
+      <workItem from="1481207000961" duration="9988000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9247000" />
+    <option name="totallyTimeSpent" value="9988000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18986385" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -510,14 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/main/js/ajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="126" column="41" selection-start-line="126" selection-start-column="41" selection-end-line="126" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
@@ -528,10 +519,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/main/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-201">
-          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+        <state relative-caret-position="17">
+          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
           <folding />
         </state>
       </provider>

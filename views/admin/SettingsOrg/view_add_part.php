@@ -36,6 +36,7 @@
     </div>
   </div>
   <div class="form_in">
-    <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
+    <label class="" for=""><input name="reg_participant" type="button" value="Принять"></label>
   </div>
 </div>
+  </form>

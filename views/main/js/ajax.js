@@ -120,9 +120,10 @@ $(function () {
     // Opens page table of data part info
     
 
-    $('body').on('submit', '.form-horizontal', function (event) {
+    $('body').on('button', '.form-horizontal', function (event) {
         event.preventDefault();
         var form_date = $(this).serialize();
+        console.log(form_date);
         $.ajax({
             url: 'ajax_AddParticipant/'+5,
             type: 'POST',
