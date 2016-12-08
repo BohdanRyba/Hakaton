@@ -1,6 +1,7 @@
 jQuery(function($) {
 
 
+
     //=========================================================================
     var $body=$('body'),
         deletedCategories=[],
@@ -198,6 +199,7 @@ jQuery(function($) {
 
     //!!!!!!!!!!!!!!!
     $body.off('click', '.dancing-group-list-item-to-see');
+
     $body.on('click', '.dancing-group-list-item-to-see', function(){
         var $categoriesList=$('#categories-list'),
             $danceGroups=$('#pick-dancing-group-parameter-to-see').children(),
@@ -215,7 +217,7 @@ jQuery(function($) {
 
         deletedCategories=[];
         editedCategories=[];
-        sendInfoToServerAboutEditedCategories=[];
+        sendInfoToServerAboutEditedCategories={};
 
         // $categoriesList.off('newCategoriesAdded'); ???????????????????????????????? не знаю чи потрібно
 
@@ -309,8 +311,8 @@ jQuery(function($) {
                 var obj={};
                 if ($(this).attr('data-edit')=='true') {
                     obj['id']=$(this).attr('data-id');
-                    obj['extra_id']=$(this).attr('data-extraid');
-                    obj['catagory_name']=$(this).attr('data-catagoryname');
+                    obj['extra_id']=$(this).find('.dancing-group-info-code').val();
+                    obj['category_name']=$(this).attr('data-catagoryname');
                     editedCategories.push(obj);
                 }
                 // obj['category_name']=$(this).find('.dance-category-name').text();
