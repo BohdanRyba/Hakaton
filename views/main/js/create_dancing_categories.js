@@ -21,10 +21,6 @@ jQuery(function($) {
         });
         $checkedItem.addClass('picked-dancing-group-to-use');
 
-        $('.dance-group-menu-items').each(function() {
-            $(this).find('a').removeClass('active');
-        });
-
         function ajax_LoadRequiredDancingGroupParameters($checkedItem) {
             var id=$checkedItem.attr('data-id-dancing-group');
             $.ajax({
@@ -236,12 +232,21 @@ jQuery(function($) {
                 data: obj,
                 success: function(msg) {
                     var msg=JSON.parse(msg);
-                    console.log(msg);
                     for (var i=0; i<msg.length; i++) {
-                        // var name=msg[i]
-                    }
-                    // $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+NAME+'</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+CODE+'"></label></div>');
+                        var category=msg[i],
+                            program=category['d_c_program'],
+                            ageCategory=category['d_c_age_category'],
+                            nomination=category['d_c_nomination'],
+                            league=category['d_c_league'],
+                            code=category['extra_id'],
+                            id=category['id'],
+                            id_dance_group=category['id_dance_group'],
+                            generalName=program+' '+ageCategory+' '+nomination+' '+league;
 
+                        if (code==0) {code=''}
+
+                        $searchedCategoriesForm.append('<div class="dp-info-wrapper" data-id="'+id+'" data-extraId="'+code+'" data-catagoryName="'+generalName+'"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+generalName+'</p><label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+code+'"></label></div>');
+                    }
 
                 },
                 error: function (msg) {
@@ -252,23 +257,34 @@ jQuery(function($) {
         }
 
         ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($(this));
-        $searchedCategoriesForm.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+3333+'</p> <label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label></div>');
 
-        $categoriesList.trigger('newCategoriesAdded');
+        //$categoriesList.trigger('newCategoriesAdded');
     });
 
     // РЕДАГУВАННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
     $body.on('click', '.edit-categories-info', function () {
        var $editBtn=$(this),
-           $categoryCode=$editBtn.parents('.dp-info-wrapper').find('.dancing-group-info-code');
+           $wrapper=$editBtn.parents('.dp-info-wrapper'),
+           $categoryCode=$wrapper.find('.dancing-group-info-code');
 
         $categoryCode.prop('disabled',false).trigger('focus');
+
+        $wrapper.attr('data-edit', 'true');
+        console.log($wrapper);
     });
 
+    var deletedCategories=[];
     // ВИДАЛЕННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
     $body.on('click', '.delete-categories-info', function () {
-        var $wrapper=$(this).parents('.dp-info-wrapper');
+        var $wrapper=$(this).parents('.dp-info-wrapper'),
+            obj={};
+
+        obj['id']=$wrapper.attr('data-id');
+        obj['extra_id']=$wrapper.attr('data-extraid');
+        obj['catagory_name']=$wrapper.attr('data-catagoryname');
+        deletedCategories.push(obj);
         $wrapper.remove();
+        console.log(deletedCategories);
     });
 
     // ЗБЕРЕГТИ РЕДАГОВАНИЙ СПИСОК КАТЕГОРІЙ, ЗНАЙДЕНИХ ПО ПЕВНОМУ ПАРАМЕТРУ
@@ -278,21 +294,31 @@ jQuery(function($) {
         //AJAX 3
         function ajax_FUNCTION_FOR_UPDATING_CATEGORIES_INFO() {
             var $categoriesBlocks=$('#show-searched-dancing-groups').children(),
-                massive=[];
+                editedCategories=[],
+                sendInfoToServer={};
 
             $categoriesBlocks.each(function () {
                 var obj={};
-                obj['category_name']=$(this).find('.dance-category-name').text();
-                obj['category_code']=$(this).find('.dancing-group-info-code').val();
-                massive.push(obj);
+                if ($(this).attr('data-edit')=='true') {
+                    obj['id']=$(this).attr('data-id');
+                    obj['extra_id']=$(this).attr('data-extraid');
+                    obj['catagory_name']=$(this).attr('data-catagoryname');
+                    editedCategories.push(obj);
+                }
+                // obj['category_name']=$(this).find('.dance-category-name').text();
+                // obj['category_code']=$(this).find('.dancing-group-info-code').val();
+                // massive.push(editedCategories, deletedCategories);
             });
 
-            console.log(massive);
+            sendInfoToServer['editedCategories']=editedCategories;
+            sendInfoToServer['deletedCategories']=deletedCategories;
+            console.log(sendInfoToServer);
+
 
             $.ajax({
                 type:"POST",
                 url:'ajax_updatingCreatedDancingCategory',
-                data: massive,
+                data: sendInfoToServer,
                 success: function(msg) {
                     console.log(msg);
                 },
@@ -406,6 +432,7 @@ jQuery(function($) {
 
 
     //Показ створених категорій і додавання їх в форму по відображенню
+    $body.off('click', '#btn-create-dance-categories');
     $body.on('click', '#btn-create-dance-categories', function (e) {
         e.preventDefault();
         var danceProgram=[],
@@ -490,42 +517,92 @@ jQuery(function($) {
     $('#save-dance-categories').on('click', function (e) {
         e.preventDefault();
         //AJAX 4
-        function ajax_sendCreatedCategories() {
-            var allCategories=[];
+        if ($('#show-created-categories').children().length>0) {
+            function ajax_sendCreatedCategories() {
+                var allCategories=[];
 
-            $('#show-created-categories').children().each(function () {
-                var category=[];
+                $('#show-created-categories').children().each(function () {
+                    var category=[];
 
-                category.push($(this).find('.category-name-for-sending-to-server').val());
-                category.push($(this).find('.dancing-group-info-code').val());
-                category.push($('#pick-dancing-group-to-use-wrapper').find('.picked-dancing-group-to-use').attr('data-id-dancing-group'));
+                    category.push($(this).find('.category-name-for-sending-to-server').val());
+                    category.push($(this).find('.dancing-group-info-code').val());
+                    category.push($('#pick-dancing-group-to-use-wrapper').find('.picked-dancing-group-to-use').attr('data-id-dancing-group'));
 
-                allCategories.push(category);
-            });
+                    allCategories.push(category);
+                });
 
-            //allCategories=JSON.stringify(allCategories);
+                allCategories={'categories':allCategories};
 
-            allCategories={'categories':allCategories};
+                $.ajax({
+                    type:"POST",
+                    url:'ajax_sendCreatedCategories',
+                    data: allCategories,
+                    success: function(allCategories) {
+                        console.log(allCategories);
+                        alert('Категории добавлены');
+                        $('#show-created-categories').empty();
+                        $body.trigger('newDancingCategoriesWereCreated')
+                    },
+                    error: function (msg) {
+                        console.log(msg);
+                    }
+                });
+            }
+            ajax_sendCreatedCategories();
+        }
+    });
 
-            console.log(allCategories);
+    $body.off('newDancingCategoriesWereCreated')
+    $body.on('newDancingCategoriesWereCreated', function () {
+        console.log('newDancingCategoriesWereCreated');
+
+        var $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see'),
+            $searchedCategoriesForm=$('#show-searched-dancing-groups');
+
+        function clearOldInfo() {
+            $chooseCategoriesParameterUl.children().remove();
+            $searchedCategoriesForm.children().remove();
+        }
+        clearOldInfo();
+
+        function ajax_addNewParameter() {
+            var $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
+                searchedParameter;
+
+            if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='c_p_programs';} else
+            if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='c_p_age_categories';} else
+            if ($menuParameter.attr('href')=='#nominations') {searchedParameter='c_p_nominations';} else
+            if ($menuParameter.attr('href')=='#leagues') {searchedParameter='c_p_leagues';}
 
             $.ajax({
-                type:"POST",
-                url:'ajax_sendCreatedCategories',
-                data: allCategories,
-                success: function(allCategories) {
-                    console.log(allCategories);
-                    alert('Категории добавлены');
-                    $('#show-created-categories').empty();
+                type: "POST",
+                url: 'ajax_showAllDanceCategoriesParameters',
+                data: 'parameter=' + searchedParameter,
+                success: function (msg) {
+                    var msg = JSON.parse(msg);
+
+                    console.log(msg);
+                    function addInfo($chooseCategoriesParameterUl) {
+
+                        for (var i = 0; i<msg.length; i++) {
+                            for (var j=0; j<msg[i].length; j++) {
+                                var name = msg[i][j]['name'];
+                                //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
+                                $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-name="'+name+'"><span class="numeration"></span>' + name + '</li>')
+                            }
+                        }
+                    }
+
+                    addInfo($chooseCategoriesParameterUl);
+
                 },
                 error: function (msg) {
                     console.log(msg);
                 }
-            });
+            })
         }
 
-        ajax_sendCreatedCategories();
-
-    });
+        ajax_addNewParameter();
+    })
 
 });
