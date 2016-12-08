@@ -182,8 +182,7 @@ $(function () {
 		$(this).parents('.part').slideUp(300);
 	});
 
-	// button on page: organization for create eveny, reg club, dance
-
+	// button on page: organization for create event, reg club, dance
 
 	$('.event_data_list').on('click', function () {
 		$('.search_wrap').hide(400);
@@ -267,29 +266,6 @@ $(function () {
     $('body').on('click', 'a.remove-part', function () {
         $(this).parents('.part').remove();
     });
-
-//search list
-$('.event_data_list').on('click', function () {
-    $('.search_wrap').hide(400);
-    $('.list_information').slideUp();
-    $('.search_wrap_event').toggle(400);
-    $('.search_wrap input').removeClass('active');
-    $('.search_wrap_event input').addClass('active');
-});
-$('.category_data_list').on('click', function () {
-    $('.search_wrap').hide(400);
-    $('.list_information').slideUp();
-    $('.search_wrap_category').toggle(400);
-    $('.search_wrap input').removeClass('active');
-    $('.search_wrap_category input').addClass('active');
-});
-$('.club_data_list').on('click', function () {
-    $('.search_wrap').hide(400);
-    $('.list_information').slideUp();
-    $('.search_wrap_club').toggle(400);
-    $('.search_wrap input').removeClass('active');
-    $('.search_wrap_club input').addClass('active');
-});
 
     // button add new trainer
     var incr_train = 0;

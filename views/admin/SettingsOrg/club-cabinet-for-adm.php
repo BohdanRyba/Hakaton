@@ -8,8 +8,6 @@ sleep(1);
 			<a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
 		</div>
 	</div>
-	<!-- /.box-header -->
-	<!-- form start -->
 
 	<div class="box-body">
 
@@ -34,7 +32,6 @@ sleep(1);
 			<div class="box-header">
 				<h3 class="box-title">Список участников клуба</h3>
 			</div>
-			<!-- /.box-header -->
 
 			<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 				<div class="row">
@@ -197,9 +194,10 @@ sleep(1);
 				<!-- /.box-body -->
 
 				<div class="box-footer">
-					<form class="form-horizontal">
-							<a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
-					</form>
+					<div class="form-horizontal">
+							
+					</div>
+					<a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
 				</div>
 			</div>
 		</div>

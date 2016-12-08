@@ -40,7 +40,7 @@ $(function () {
             dataType: 'html',
             beforeSend: funcBefore,
             success: function (data) {
-                $('.form-horizontal').prepend(data);
+                $('.form-horizontal').append(data);
                 var dist = $('#add_part').offset().top;
                 $('body,html').animate({scrollTop: dist}, 400);
                 $('body').css('cursor', 'default');
