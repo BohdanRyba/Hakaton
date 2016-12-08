@@ -1,3 +1,4 @@
+
 <div class="part box-body">
   <label for="" class="lb_part">Новый участник</label>
   <div class="box-tools pull-right">
@@ -28,8 +29,11 @@
         <div class="input-group-addon">
           <i class="fa fa-calendar"></i>
         </div>
-        <input class=" form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" type="text">
+        <input class=" form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="" type="text">
       </div>
     </div>
+  </div>
+  <div class="form_in">
+    <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
   </div>
 </div>

@@ -351,4 +351,18 @@ class AdminController
         $show_results = implode("\n", $tmp);
         echo $show_results;
     }
+
+    public function actionAjax_AddParticipant($club_id){
+
+        self::showArray($club_id);
+        echo '</hr>';
+        self::showArray($_POST);
+        if (isset($_POST)){
+            return true;
+        }
+
+    }
+
+
+
 }

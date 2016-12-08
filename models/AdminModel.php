@@ -549,4 +549,12 @@ class AdminModel
         }
         $db->close();
     }
+
+
+    static function SaveParticipant ($data,$club_id)
+    {
+        echo 'hello! All save';
+        header('Location: http:'.$_SERVER['REQUEST_URI']);
+
+    }
 }
