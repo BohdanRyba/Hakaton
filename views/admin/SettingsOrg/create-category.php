@@ -8,11 +8,12 @@ sleep(1);
                 <ul id="pick-dancing-groups">
                     <?php foreach ($dance_programs_list as $value): ?>
                         <li class="dancing-group-list-item" data-id-dancing-group="<?php echo $value['id']; ?>"><span
-                                class="numeration"></span><?php echo $value['dance_group_name']; ?>
+                            class="numeration"></span><?php echo $value['dance_group_name']; ?>
                         </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
+            <input type="hidden" name="action" value="category">
             <div class="row pick-dancing-group-parameters-wrapper">
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <form id="pick-dance-programs" action="">
@@ -57,4 +58,5 @@ sleep(1);
             <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
         </div>
     </div>
+</div>
     <!-- /.box-header -->

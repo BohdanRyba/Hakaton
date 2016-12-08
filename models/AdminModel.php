@@ -428,12 +428,12 @@ class AdminModel
             $result = $db->query($query);
 
             $row = $result->fetch_assoc();
-                $danceProgram['id'] = $row['id'];
-                $danceProgram['dance_group_name'] = $row['dance_group_name'];
-                $danceProgram['d_program'] = unserialize($row['d_program']);
-                $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
-                $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
-                $danceProgram['d_league'] = unserialize($row['d_league']);
+            $danceProgram['id'] = $row['id'];
+            $danceProgram['dance_group_name'] = $row['dance_group_name'];
+            $danceProgram['d_program'] = unserialize($row['d_program']);
+            $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
+            $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
+            $danceProgram['d_league'] = unserialize($row['d_league']);
 
             $db->close();
 
@@ -449,14 +449,14 @@ class AdminModel
             $check = $db->query("SELECT `id_dance_group`, `id_org` FROM `category_parameters` WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
             $row = $check->fetch_assoc();
 //            $_SESSION['for_check'] = $row;
-            if($row['id_dance_group'] == $json[4] && $row['id_org'] == $org_id){
+            if ($row['id_dance_group'] == $json[4] && $row['id_org'] == $org_id) {
                 $result = $db->query("UPDATE `category_parameters`
                                   SET `c_p_programs` = '" . serialize($json[0]) . "',
                                       `c_p_age_categories` = '" . serialize($json[1]) . "',
                                       `c_p_nominations` = '" . serialize($json[2]) . "',
                                       `c_p_leagues` = '" . serialize($json[3]) . "'
                                   WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
-                if($result){
+                if ($result) {
                     $result = 'updated';
                 }
             } else {
@@ -468,7 +468,7 @@ class AdminModel
                             `c_p_leagues` = '" . serialize($json[3]) . "',
                             `id_dance_group` = {$json[4]},
                             `id_org` = '{$org_id}'");
-                if($result){
+                if ($result) {
                     $result = 'inserted';
                 }
             }
@@ -483,7 +483,7 @@ class AdminModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `category_parameters` WHERE `id_dance_group` = {$id} AND `id_org` = {$_COOKIE['get_id']}";
             $result = $db->query($query);
-            while ($row = $result->fetch_assoc()){
+            while ($row = $result->fetch_assoc()) {
                 $returning_array['id'] = $row['id'];
                 $returning_array['c_p_programs'] = unserialize($row['c_p_programs']);
                 $returning_array['c_p_age_categories'] = unserialize($row['c_p_age_categories']);
@@ -493,5 +493,87 @@ class AdminModel
             $db->close();
         };
         return $returning_array;
+    }
+
+    static function getCategoryParametersForCreating()
+    {
+        $category_parameters = [];
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT `dance_groups`.`dance_group_name`, `category_parameters`.`id_dance_group`
+                      FROM `dance_groups`
+                      RIGHT JOIN `category_parameters`
+                      ON `dance_groups`.`id`=`category_parameters`.`id_dance_group` AND `category_parameters`.`id_org`={$_COOKIE['get_id']}";
+            $result = $db->query($query);
+
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                if ($row['dance_group_name'] != NULL) {
+                    $category_parameters[$i]['dance_group_name'] = $row['dance_group_name'];
+                    $category_parameters[$i]['id_dance_group'] = $row['id_dance_group'];
+                }
+                $i++;
+            }
+            $db->close();
+        };
+        return $category_parameters;
+    }
+
+    static function saveCreatedCategory($category_parts)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `dance_categories`
+                      WHERE `d_c_program`='{$category_parts[0]}'
+                      AND `d_c_age_category`='{$category_parts[1]}'
+                      AND `d_c_nomination`='{$category_parts[2]}'
+                      AND `d_c_league`='{$category_parts[3]}'
+                      AND `org_id`={$_COOKIE['get_id']}
+                      ";
+            $result = $db->query($query);
+            $checking_result = $result->fetch_assoc();
+
+            if (!empty($checking_result)) {
+                return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" уже существует!';
+            } else {
+                $result = $db->query("INSERT INTO `dance_categories`
+                        SET `id` = NULL,
+                            `d_c_program` = '{$category_parts[0]}',
+                            `d_c_age_category` = '{$category_parts[1]}',
+                            `d_c_nomination` = '{$category_parts[2]}',
+                            `d_c_league` = '{$category_parts[3]}',
+                            `org_id` = {$_COOKIE['get_id']},
+                            `extra_id` = '{$category_parts[4]}',
+                            `id_dance_group` = '{$category_parts[5]}'");
+                if($result){
+                    return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" успешно создана!';
+                } else {
+                    return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" не создана, что-то пошло не так...';
+                }
+            }
+        }
+        $db->close();
+    }
+
+    public static function getCategoryParametersByParameter($parameter){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $array_with_parameters = [];
+            $result = $db->query("SELECT `{$parameter}` FROM `category_parameters` WHERE `id_org` = {$_COOKIE['get_id']}");
+            while ($row = $result->fetch_assoc()){
+                $array_with_parameters[] = unserialize($row[$parameter]);
+            }
+            return $array_with_parameters;
+        }
+        $db->close();
+    }
+
+    public static function getCategoriesByName($searching_array){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $array_with_parameters = [];
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `{$searching_array['parameter']}` = '{$searching_array['name']}' AND `org_id` = {$_COOKIE['get_id']}");
+            while ($row = $result->fetch_assoc()){
+                $array_with_parameters[] = $row;
+            }
+            return $array_with_parameters;
+        }
+        $db->close();
     }
 }

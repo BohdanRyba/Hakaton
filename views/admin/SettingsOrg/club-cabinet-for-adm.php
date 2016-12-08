@@ -70,7 +70,7 @@ sleep(1);
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 110px;" aria-label="CSS grade: activate to sort column ascending">Год рождения</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody class="part_list">
 								<tr role="row" class="odd">
 									<td class="sorting_1">Gecko</td>
 									<td>Firefox 1.0</td>
