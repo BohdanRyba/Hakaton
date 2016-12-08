@@ -1,4 +1,4 @@
-<form class="form_add_part_club">
+<form class="form-horizontal">
   <div class="part box-body">
     <label for="" class="lb_part">Новый участник</label>
     <div class="box-tools pull-right">
