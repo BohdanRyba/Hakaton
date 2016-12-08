@@ -1,2 +1,0 @@
-# Hakaton
-common hakaton project
