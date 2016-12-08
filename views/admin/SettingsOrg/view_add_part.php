@@ -1,13 +1,15 @@
 
-<div class="part box-body">
-  <label for="" class="lb_part">Новый участник</label>
-  <div class="box-tools pull-right">
-    <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Имя</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword3" placeholder="Имя">
+<form class="form-horizontal" method="post">
+  <div class="part box-body">
+    <label for="" class="lb_part">Новый участник</label>
+    <div class="box-tools pull-right">
+      <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">Имя</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputPassword3" placeholder="Имя">
+      </div>
     </div>
   </div>
   <div class="form-group">

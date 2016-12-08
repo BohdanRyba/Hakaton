@@ -40,7 +40,7 @@ $(function () {
             dataType: 'html',
             beforeSend: funcBefore,
             success: function (data) {
-                $('.form-horizontal').prepend(data);
+                $('.views_part').append(data);
                 var dist = $('#add_part').offset().top;
                 $('body,html').animate({scrollTop: dist}, 400);
                 $('body').css('cursor', 'default');
@@ -120,19 +120,17 @@ $(function () {
     // Opens page table of data part info
     
 
-    // $('form').on('button', function (event) {
-    //     event.preventDefault();
-    //     var form_date = $(this).serialize();
-    //     $.ajax({
-    //         url: '',
-    //         type: 'POST',
-    //         data: form_date,
-    //         dataType: 'html',
-    //         success: function () {
-    //             alert('Круто, клуб сохранен в базе даных');
-    //         }
-    //     });
-    // });
+    $('body').on('submit', '.form-horizontal', function (event) {
+        event.preventDefault();
+        var form_date = $(this).serialize();
+        $.ajax({
+            url: 'ajax_AddParticipant/'+5,
+            type: 'POST',
+            data: form_date,
+            dataType: 'html',
+            success: funcSuccess
+        });
+    });
 
 
 });
