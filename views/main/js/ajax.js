@@ -119,20 +119,22 @@ $(function () {
 
     // Opens page table of data part info
     
-
-    $('body').on('submit', '.form-horizontal', function (event) {
-        event.preventDefault();
-        var form_date = $(this).serialize();
+    function addPartClub(e) {
+        e.preventDefault();
+        let dataForm = $('.form-horizontal').serialize();
+        console.log($(this).serialize()+dataForm);
         $.ajax({
-            url: '',
+            url: 'add_new_info.php',
             type: 'POST',
-            data: form_date,
             dataType: 'html',
-            success: function () {
-                alert('Круто, ваши данные сохраненны!!!');
+            data: dataForm,
+            success: function () {  
+                console.log('блять получилось');
             }
         });
-    });
+    };
+
+    $('body').on('click', '#save_part_club', addPartClub);
 
 
 });
