@@ -196,14 +196,14 @@ sleep(1);
 				</div>
 				<!-- /.box-body -->
 
-				<div class="box-footer">
 
-					<div class="views_part">
-								
-					</div>
-					<a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
-				</div>
 			</div>
 		</div>
+	</div>
+	<div class="box-footer">
+		<div class="views_part">
+			
+		</div>
+		<a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
 	</div>
 </div>

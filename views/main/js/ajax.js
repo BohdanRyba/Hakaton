@@ -120,18 +120,23 @@ $(function () {
     // Opens page table of data part info
     
 
-    $('body').on('button', '.form-horizontal', function (event) {
-        event.preventDefault();
-        var form_date = $(this).serialize();
-        console.log(form_date);
+    function addPartClub(e) {
+        e.preventDefault();
+        let dataForm = $('.form-horizontal').serialize();
+        // console.log($(this).serialize()+dataForm);
         $.ajax({
-            url: 'ajax_AddParticipant/'+5,
+            url: 'add_new_info',
             type: 'POST',
-            data: form_date,
             dataType: 'html',
-            success: funcSuccess
+
+            data: dataForm,
+            success: function () {  
+                // console.log('блять получилось');
+            }
         });
-    });
+    };
+
+    $('body').on('click', '#save_part_club', addPartClub);
 
 
 });

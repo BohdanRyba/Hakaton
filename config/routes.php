@@ -21,6 +21,7 @@ return array(
     'admin/organizations/org_settings/ajax_option_category' => 'admin/ajaxCategory_create', // when we push the "category-button" for creating and saving categories;
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
+    'admin/organizations/org_settings/add_new_info' => 'admin/ajax_NewInfo',
     'admin/organizations/org_settings/club-cabinet-for-adm' => 'admin/ajaxClubCabinet',
     'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
@@ -28,7 +29,7 @@ return array(
     'admin/organizations/org_settings/ajax_sendCreatedCategories' => 'admin/saveDancingCategories', // added by ROMA;
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // warning: this line should be lower than ajaxes!;
 //    'admin/organizations/org_settings/create_dancing_categories' => 'admin/createDancingCategories', // This is for TEST;
-
+//
     'admin/organizations/org_reg' => 'admin/org_reg',
     'admin/organizations/org_add' => 'admin/org_add',
     'admin/organizations/page/([0-9]+)' => 'admin/index/$1',

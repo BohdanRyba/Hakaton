@@ -551,10 +551,18 @@ class AdminModel
     }
 
 
-    static function SaveParticipant ($data,$club_id)
+    static function SaveParticipant ($data)
     {
-        echo 'hello! All save';
-        header('Location: http:'.$_SERVER['REQUEST_URI']);
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("INSERT INTO `participant`
+                        SET `first_name` = '{$data['name']}',
+                            `second_name` = '{$data['lastName']}',
+                            `third_name` = '{$data['patronymic']}',
+                            `birth_date` = '{$data['date']}'
+                            ");
+            return $result;
+        }
+        $db->close();
 
     }
 }
