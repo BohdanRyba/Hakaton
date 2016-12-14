@@ -95,9 +95,10 @@ $(function () {
     // Opens page cabinet club
     $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
-        let id= $(this).children('.list-search').attr('data-club-id');
+        var id= $(this).children('.list-search').attr('data-element-id');
+        console.log(id);
         $.ajax({
-            url:'club-cabinet-for-adm',
+            url:'club-cabinet-for-adm/'+id,
             type:'POST',
             data:id,
             dataType:'html',

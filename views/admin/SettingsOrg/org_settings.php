@@ -486,8 +486,8 @@ desired effect
 <script src="<?= Router::$permalink ?>views/main/js/jquery-ui.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/spin.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/script.js?132"></script>
-<script src="<?= Router::$permalink ?>views/main/js/ajax.js?526"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
+<script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>6"></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function () {
