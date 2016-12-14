@@ -10,6 +10,12 @@ class AdminModel
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
 
+    static function debug($data){
+        echo '<pre>';
+        var_dump($data);
+        echo '<pre>';
+    }
+
     static function getAllOrganizations()
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -216,6 +222,52 @@ class AdminModel
         };
 
         return $eventsList;
+    }
+
+    public static function ShowClubById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` WHERE id = {$id}";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $clubsList ['id'] = $row['id'];
+                $clubsList ['club_name'] = $row['club_name'];
+                $clubsList ['club_country'] = $row['club_country'];
+                $clubsList ['club_city'] = $row['club_city'];
+                $clubsList ['club_shief'] = $row['club_shief'];
+                $clubsList ['club_number'] = $row['club_number'];
+                $clubsList ['club_mail'] = $row['club_mail'];
+                $clubsList ['org_id_for_club'] = $row['org_id_for_club'];
+
+                $i++;
+            }
+
+
+            $db->close();
+        }
+        return $clubsList;
+    }
+    public static function ShowParticipantById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `participant` WHERE `club_id`={$id}";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $partList[$i] ['id_participant']               = $row['id_participant'];
+                $partList[$i] ['first_name']        = $row['first_name'];
+                $partList[$i] ['second_name']     = $row['second_name'];
+                $partList[$i] ['third_name']        = $row['third_name'];
+                $partList[$i] ['birth_date']       = $row['birth_date'];
+
+
+                $i++;
+            }
+
+            $db->close();
+        }
+        return $partList;
     }
 
     static function club_add($a)
