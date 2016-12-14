@@ -96,8 +96,9 @@ $(function () {
     $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
         let id= $(this).children('.list-search').attr('data-club-id');
+        console.log(id);
         $.ajax({
-            url:'club-cabinet-for-adm',
+            url:'club-cabinet-for-adm/'+id,
             type:'POST',
             data:id,
             dataType:'html',
@@ -130,8 +131,8 @@ $(function () {
             dataType: 'html',
 
             data: dataForm,
-            success: function () {  
-                // console.log('блять получилось');
+            success: function (data) {  
+                alert(data);
             }
         });
     };

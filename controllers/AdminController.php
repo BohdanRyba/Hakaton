@@ -183,8 +183,10 @@ class AdminController
 
         include 'views/admin/SettingsOrg/create-club.php';
     }    
-    public function actionAjaxClubCabinet()
+    public function actionAjaxClubCabinet($id)
     {
+
+        $this->debug($_POST);
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
     }
     public function actionAjaxAddpart()
