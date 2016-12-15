@@ -125,6 +125,7 @@ $(function () {
     function addPartClub(e) {
         e.preventDefault();
         let dataForm = $('.form-horizontal').serialize();
+        var id= $(this).children('.list-search').attr('data-element-id');
         // console.log($(this).serialize()+dataForm);
         $.ajax({
             url: 'add_new_info',

@@ -185,15 +185,10 @@ class AdminController
     }    
     public function actionAjaxClubCabinet($id)
     {
-        echo $id;
-        $club = AdminModel::ShowClubById($id);
-        $participant = AdminModel::ShowParticipantById($id);
-        $this->debug($club);
-        echo '<hr>';
-        $this->debug($participant);
-        echo '<hr>';
-
+        AdminModel::ShowClubById($id);
+        $participant = AdminModel::ShowParticipantById();
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
+
     }
     public function actionAjaxAddpart()
     {
@@ -362,7 +357,6 @@ class AdminController
 
     public function actionAjax_NewInfo(){
         AdminModel::SaveParticipant($_POST);
-
     }
 
 

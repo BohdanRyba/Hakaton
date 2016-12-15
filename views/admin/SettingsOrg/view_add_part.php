@@ -1,4 +1,4 @@
-
+<?php $id = $_SESSION['id_club']?>
 <form class="form-horizontal" enctype="multipart/form-data">
   <div class="part box-body">
     <label for="" class="lb_part">Добавить нового участник</label>
@@ -31,6 +31,7 @@
           <i class="fa fa-calendar"></i>
         </div>
         <input type="text" id="datemask" class="form-control" name="date" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="" placeholder="Дата рождения">
+        <input type="hidden" name="id_club" value="<?=$id?>">
       </div>
     </div>
     <div class="form_in">
@@ -38,5 +39,5 @@
     </div>
   </div>
 
-</div>
+  </div>
   </form>
