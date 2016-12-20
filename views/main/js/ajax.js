@@ -40,7 +40,7 @@ $(function () {
             dataType: 'html',
             beforeSend: funcBefore,
             success: function (data) {
-                $('.form-horizontal').prepend(data);
+                $('.views_part').append(data);
                 var dist = $('#add_part').offset().top;
                 $('body,html').animate({scrollTop: dist}, 400);
                 $('body').css('cursor', 'default');
@@ -95,9 +95,13 @@ $(function () {
     // Opens page cabinet club
     $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
+
+        var id= $(this).children('.list-search').attr('data-element-id');
+        console.log(id);
         $.ajax({
-            url:'club-cabinet-for-adm',
+            url:'club-cabinet-for-adm/'+id,
             type:'POST',
+            data:id,
             dataType:'html',
             beforeSend: funcBefore,
             success: funcSuccess
@@ -105,7 +109,6 @@ $(function () {
     });
 
     $('body').on('click', '.users_list', function(){
-        console.log("hello");
         $('.cont-box1>').remove();
         $.ajax({
             url:'table_of_part.php',
@@ -119,19 +122,24 @@ $(function () {
     // Opens page table of data part info
     
 
-    // $('form').on('button', function (event) {
-    //     event.preventDefault();
-    //     var form_date = $(this).serialize();
-    //     $.ajax({
-    //         url: '',
-    //         type: 'POST',
-    //         data: form_date,
-    //         dataType: 'html',
-    //         success: function () {
-    //             alert('Круто, клуб сохранен в базе даных');
-    //         }
-    //     });
-    // });
+    function addPartClub(e) {
+        e.preventDefault();
+        let dataForm = $('.form-horizontal').serialize();
+        var id= $(this).children('.list-search').attr('data-element-id');
+        // console.log($(this).serialize()+dataForm);
+        $.ajax({
+            url: 'add_new_info',
+            type: 'POST',
+            dataType: 'html',
+
+            data: dataForm,
+            success: function (data) {  
+                alert(data);
+            }
+        });
+    };
+
+    $('body').on('click', '#save_part_club', addPartClub);
 
 
 });

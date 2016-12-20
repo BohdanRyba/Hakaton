@@ -10,6 +10,13 @@ class AdminModel
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
 
+    static function debug($data)
+    {
+        echo '<pre>';
+        var_dump($data);
+        echo '<pre>';
+    }
+
     static function getAllOrganizations()
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -216,6 +223,58 @@ class AdminModel
         };
 
         return $eventsList;
+    }
+
+    public static function ShowClubById($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` WHERE id = {$id}";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $clubsList ['id'] = $row['id'];
+                $clubsList ['club_name'] = $row['club_name'];
+                $clubsList ['club_country'] = $row['club_country'];
+                $clubsList ['club_city'] = $row['club_city'];
+                $clubsList ['club_shief'] = $row['club_shief'];
+                $clubsList ['club_number'] = $row['club_number'];
+                $clubsList ['club_mail'] = $row['club_mail'];
+                $clubsList ['org_id_for_club'] = $row['org_id_for_club'];
+
+
+                $_SESSION['id'] = $clubsList ['id'];
+                $_SESSION['club_name'] = $clubsList ['club_name'];
+                $_SESSION['club_country'] = $clubsList ['club_country'];
+                $_SESSION['club_city'] = $clubsList ['club_city'];
+                $_SESSION['club_shief'] = $clubsList ['club_shief'];
+                $_SESSION['club_number'] = $clubsList ['club_number'];
+                $_SESSION['club_mail'] = $clubsList ['club_mail'];
+                $_SESSION['org_id_for_club'] = $clubsList ['org_id_for_club'];
+            }
+
+            $db->close();
+        }
+        return $clubsList;
+    }
+
+    public static function ShowParticipantById()
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `participant` WHERE `club_id`={$_SESSION['id']}";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $partList[$i] ['id_participant'] = $row['id_participant'];
+                $partList[$i] ['first_name'] = $row['first_name'];
+                $partList[$i] ['second_name'] = $row['second_name'];
+                $partList[$i] ['third_name'] = $row['third_name'];
+                $partList[$i] ['birth_date'] = $row['birth_date'];
+                $i++;
+            }
+
+            $db->close();
+        }
+        return $partList;
     }
 
     static function club_add($a)
@@ -504,7 +563,6 @@ class AdminModel
                       RIGHT JOIN `category_parameters`
                       ON `dance_groups`.`id`=`category_parameters`.`id_dance_group` AND `category_parameters`.`id_org`={$_COOKIE['get_id']}";
             $result = $db->query($query);
-
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 if ($row['dance_group_name'] != NULL) {
@@ -526,7 +584,6 @@ class AdminModel
                       AND `d_c_age_category`='{$category_parts[1]}'
                       AND `d_c_nomination`='{$category_parts[2]}'
                       AND `d_c_league`='{$category_parts[3]}'
-                      AND `org_id`={$_COOKIE['get_id']}
                       ";
             $result = $db->query($query);
             $checking_result = $result->fetch_assoc();
@@ -578,7 +635,22 @@ class AdminModel
             }
             return $array_with_parameters;
         }
+    }
+
+    static function SaveParticipant($data)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("INSERT INTO `participant`
+                        SET `first_name` = '{$data['name']}',
+                            `second_name` = '{$data['lastName']}',
+                            `third_name` = '{$data['patronymic']}',
+                            `birth_date` = '{$data['date']}',
+                            `club_id` = '{$data['id_club']}'
+                            ");
+            return $result;
+        }
         $db->close();
+
     }
 
     public static function editDanceCategories($edit_array)
