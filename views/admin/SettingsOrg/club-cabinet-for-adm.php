@@ -72,6 +72,10 @@
 														<td>1.7</td>
 														<td>A</td>
 													</tr>
+													<td>A</td>
+													<td>A</td>
+													<td>A</td>
+													
 													<tr role="row" class="even">
 														<td class="sorting_1">Gecko</td>
 														<td>Firefox 1.5</td>
@@ -79,6 +83,7 @@
 														<td>1.8</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="odd">
 														<td class="sorting_1">Gecko</td>
 														<td>Firefox 2.0</td>
@@ -86,6 +91,7 @@
 														<td>1.8</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="even">
 														<td class="sorting_1">Gecko</td>
 														<td>Firefox 3.0</td>
@@ -93,6 +99,7 @@
 														<td>1.9</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="odd">
 														<td class="sorting_1">Gecko</td>
 														<td>Camino 1.0</td>
@@ -100,6 +107,7 @@
 														<td>1.8</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="even">
 														<td class="sorting_1">Gecko</td>
 														<td>Camino 1.5</td>
@@ -107,6 +115,7 @@
 														<td>1.8</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="odd">
 														<td class="sorting_1">Gecko</td>
 														<td>Netscape 7.2</td>
@@ -114,6 +123,7 @@
 														<td>1.7</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="even">
 														<td class="sorting_1">Gecko</td>
 														<td>Netscape Browser 8</td>
@@ -121,6 +131,7 @@
 														<td>1.7</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="odd">
 														<td class="sorting_1">Gecko</td>
 														<td>Netscape Navigator 9</td>
@@ -128,6 +139,7 @@
 														<td>1.8</td>
 														<td>A</td>
 													</tr>
+
 													<tr role="row" class="even">
 														<td class="sorting_1">Gecko</td>
 														<td>Mozilla 1.0</td>
@@ -135,6 +147,7 @@
 														<td>1</td>
 														<td>A</td>
 													</tr>
+
 												</tbody>
 												<tfoot>
 													<tr>

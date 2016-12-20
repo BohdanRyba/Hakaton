@@ -117,6 +117,15 @@ $(function () {
             seccess: funcSuccess
         });
     });
+    $('body').on('click', '.event_group_list_table>', function(){
+        $.ajax({
+            url:'option_event_users_list.php',
+            type:'POST',
+            dataType:'html',
+            beforeSend: funcBefore,
+            seccess:funcSuccess
+        });
+    });
 
     // Opens page table of data part info
     

@@ -1688,3 +1688,8 @@ table .part_list tr{
     float: none;
     width: 90%;
 }
+.edit_part,.delete_part{
+    height:60%;
+    width:20%;
+    border:1px solid #aaa;
+}
