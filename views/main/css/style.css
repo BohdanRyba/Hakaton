@@ -1212,3 +1212,42 @@ table .part_list tr{
 .cont-box1 .resize-remove .border-none{
     border:none;
 }
+
+/*regisration on event*/
+#reg_event{
+    text-align: center;
+}
+#reg_event li{
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+#reg_event li a{
+    padding:40px;
+}
+.menu_reg{
+    padding-bottom: 50px;
+}
+.menu_reg button{
+    margin-top: 20px;
+}
+.menu_reg input[type=checkbox] {
+    transform: scale(1.5);
+}
+.menu_reg span{
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.judge_content_box {
+    display: block;
+    margin: 0 auto;
+    float: none;
+    width: 90%;
+}
+.edit_part,.delete_part{
+    height:60%;
+    width:20%;
+    border:1px solid #aaa;
+
+}
