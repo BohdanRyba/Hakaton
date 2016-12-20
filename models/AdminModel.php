@@ -240,16 +240,6 @@ class AdminModel
                 $clubsList ['club_number'] = $row['club_number'];
                 $clubsList ['club_mail'] = $row['club_mail'];
                 $clubsList ['org_id_for_club'] = $row['org_id_for_club'];
-
-
-                $_SESSION['id'] = $clubsList ['id'];
-                $_SESSION['club_name'] = $clubsList ['club_name'];
-                $_SESSION['club_country'] = $clubsList ['club_country'];
-                $_SESSION['club_city'] = $clubsList ['club_city'];
-                $_SESSION['club_shief'] = $clubsList ['club_shief'];
-                $_SESSION['club_number'] = $clubsList ['club_number'];
-                $_SESSION['club_mail'] = $clubsList ['club_mail'];
-                $_SESSION['org_id_for_club'] = $clubsList ['org_id_for_club'];
             }
 
             $db->close();
