@@ -149,6 +149,8 @@
                         <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
+                                            class="fa fa-link"></i></span></a></li>
                         <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
                                     class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
@@ -160,19 +162,10 @@
                         <span>Танцевальные групы</span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        </li>
                         <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="<?= Router::$permalink ?>admin/SettingsOrg/org_settings">
-                        <span>Settings</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings/1">Organizations
-                                Settings</a></li>
-                        <li><a href="#">Link in level 2</a></li>
                     </ul>
                 </li>
             </ul>
