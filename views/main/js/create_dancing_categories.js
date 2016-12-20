@@ -9,10 +9,10 @@ jQuery(function($) {
     $body.off('click', '.pick-dancing-group-to-use');
     $body.on('click', '.pick-dancing-group-to-use', function () {
         var  $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see'),
-             $searchedCategoriesForm=$('#show-searched-dancing-groups'),
-             $danceGroupParametersList=$('#dance-group-parameters-list'),
-             $categoriesList=$('#categories-list'),
-             $checkedItem=$(this);
+            $searchedCategoriesForm=$('#show-searched-dancing-groups'),
+            $danceGroupParametersList=$('#dance-group-parameters-list'),
+            $categoriesList=$('#categories-list'),
+            $checkedItem=$(this);
 
         $('#total-wrapper-for-info').slideDown(200);
 
@@ -165,7 +165,7 @@ jQuery(function($) {
                             }
                         }
 
-                            addInfo($chooseCategoriesParameterUl);
+                        addInfo($chooseCategoriesParameterUl);
 
                         $parametersList.slideDown(200);
 
@@ -203,7 +203,7 @@ jQuery(function($) {
         sendInfoToServerAboutEditedCategories={};
 
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        
+
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
             var $name=$parameter.attr('data-name'),
                 $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
@@ -255,9 +255,9 @@ jQuery(function($) {
 
     // РЕДАГУВАННЯ КАТЕГОРІЇ, ЯКУ ШУКАЛИ
     $body.on('click', '.edit-categories-info', function () {
-       var $editBtn=$(this),
-           $wrapper=$editBtn.parents('.dp-info-wrapper'),
-           $categoryCode=$wrapper.find('.dancing-group-info-code');
+        var $editBtn=$(this),
+            $wrapper=$editBtn.parents('.dp-info-wrapper'),
+            $categoryCode=$wrapper.find('.dancing-group-info-code');
 
         $categoryCode.prop('disabled',false).trigger('focus');
         $('#show-searched-dancing-groups').trigger('IWantToEditCode');
@@ -343,7 +343,7 @@ jQuery(function($) {
         var $li=$(this),
             $ul=$li.parent();
         $ul.find('.pick-dance-program-for-category').each(function () {
-           $(this).removeAttr('data-checked');
+            $(this).removeAttr('data-checked');
         });
         $li.attr('data-checked','checked');
         $ul.find('.pick-dance-program-for-category').not('[data-checked="checked"]').each(function () {
@@ -396,7 +396,7 @@ jQuery(function($) {
         }
     });
 
-     $body.on('click', '.pick-leagues-for-categories', function () {
+    $body.on('click', '.pick-leagues-for-categories', function () {
         var $inputStatus=$(this).find('input').prop('checked');
         if ($inputStatus==false) {
             $(this).removeAttr('data-checked');
@@ -407,7 +407,7 @@ jQuery(function($) {
 
     //Check all leagues
     $body.on('click', '#create-dance-categories', function () {
-       $('#pick-leagues').trigger('controlClick');
+        $('#pick-leagues').trigger('controlClick');
     });
 
     $('#pick-leagues').on('controlClick', function () {
@@ -451,8 +451,8 @@ jQuery(function($) {
         nomination.push($nominations.find('li[data-checked="checked"] input').attr('name'));
 
         $leagues.find('.pick-leagues-for-categories').each(function () {
-           var $input=$(this).find('[type="checkbox"]'),
-               $status=$input.prop('checked');
+            var $input=$(this).find('[type="checkbox"]'),
+                $status=$input.prop('checked');
 
             if ($status==true) {
                 leagues.push($input.attr('name'));
