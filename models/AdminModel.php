@@ -259,6 +259,7 @@ class AdminModel
 
     public static function ShowParticipantById()
     {
+        $partList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `participant` WHERE `club_id`={$_SESSION['id']}";
             $result = $db->query($query);

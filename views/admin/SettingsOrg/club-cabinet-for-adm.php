@@ -14,10 +14,10 @@
         </div>
 
         <div class="col-sm-8 cabinet-info">
-            <p class="name">Название клуба: <span>Название клуба: <?=$_SESSION['club_name']?></span></p>
+            <p class="name">Название клуба: <span><?=$_SESSION['club_name']?></span></p>
             <p>Страна: <span><?=$_SESSION['club_country']?></span></p>
             <p>Город: <span><?=$_SESSION['club_city']?></span></p>
-            <p class="name_help">Тренер:<?=$_SESSION['club_shief']?></span></p>
+            <p class="name_help"> Тренер: <span><?=$_SESSION['club_shief']?></span></p>
         </div>
         <div class="col-sm-12">
 
