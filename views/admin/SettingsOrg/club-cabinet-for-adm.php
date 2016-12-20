@@ -1,6 +1,6 @@
 <div class="resize-remove">
     <div class="box-header with-border">
-        <h2 class="box-title">Кабинет клуба <span><?=$_SESSION['club_name']?>  </span></h2>
+        <h2 class="box-title">Кабинет клуба <span><?=$participant[0]['club_name']?>  </span></h2>
         <div class="box-tools pull-right click-remove">
             <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
         </div>
@@ -9,15 +9,15 @@
 
         <div class="col-sm-4 box-avatar-cab">
             <img src="../../main/img/Button-power-icon.png">
-            <p class="telef">Контактный телефон:<span><?=$_SESSION['club_number']?> </span></p>
-            <p class="e-mail">Адрес електроной почты: <span><?=$_SESSION['club_mail']?> </span></p>
+            <p class="telef">Контактный телефон:<span><?=$participant[0]['club_number']?> </span></p>
+            <p class="e-mail">Адрес електроной почты: <span><?=$participant[0]['club_mail']?> </span></p>
         </div>
 
         <div class="col-sm-8 cabinet-info">
-            <p class="name">Название клуба: <span>Название клуба: <?=$_SESSION['club_name']?></span></p>
-            <p>Страна: <span><?=$_SESSION['club_country']?></span></p>
-            <p>Город: <span><?=$_SESSION['club_city']?></span></p>
-            <p class="name_help">Тренер:<?=$_SESSION['club_shief']?></span></p>
+            <p class="name">Название клуба: <span><?=$participant[0]['club_name']?></span></p>
+            <p>Страна: <span><?=$participant[0]['club_country']?></span></p>
+            <p>Город: <span><?=$participant[0]['club_city']?></span></p>
+            <p class="name_help">Тренер:<span><?=$participant[0]['club_shief']?></span></p>
         </div>
         <div class="col-sm-12">
 
@@ -51,7 +51,7 @@
                             </thead>
                             <tbody class="part_list">
 
-                            <?php foreach ($participant as $value):?>
+                            <?php foreach ($participant[1] as $value):?>
                                 <tr role="row" class="odd">
                                     <td class="sorting_1"></td>
                                     <td><?= $value['first_name']?></td>

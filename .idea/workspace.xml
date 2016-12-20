@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b75b1b9-83e3-4d97-baba-d29ce594fb16" name="Default" comment="test adding participant">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/AdminController.php" afterPath="$PROJECT_DIR$/controllers/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/AdminModel.php" afterPath="$PROJECT_DIR$/models/AdminModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" afterPath="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" />
     </list>
     <ignored path="Hakaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,20 +28,20 @@
       <file leaf-file-name="AdminController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3179">
-              <caret line="187" column="8" selection-start-line="187" selection-start-column="8" selection-end-line="187" selection-end-column="8" />
+            <state relative-caret-position="221">
+              <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
               <folding>
-                <marker date="1481814698216" expanded="true" signature="8155:8200" ph="SELECT * FRO... dance_groups" />
+                <marker date="1482248850561" expanded="true" signature="8176:8221" ph="SELECT * FRO... dance_groups" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="club-cabinet-for-adm.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="club-cabinet-for-adm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="59" column="71" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -48,14 +50,14 @@
       <file leaf-file-name="create_dancing_categories.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/create_dancing_categories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6390">
+            <state relative-caret-position="-5421">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view_add_part.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="view_add_part.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -68,45 +70,45 @@
       <file leaf-file-name="AdminModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/AdminModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="243" column="16" selection-start-line="243" selection-start-column="16" selection-end-line="243" selection-end-column="31" />
+            <state relative-caret-position="238">
+              <caret line="239" column="38" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="38" />
               <folding>
-                <marker date="1481815111810" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
-                <marker date="1481815111810" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
-                <marker date="1481815111810" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
-                <marker date="1481815111810" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
-                <marker date="1481815111810" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
-                <marker date="1481815111810" expanded="true" signature="4962:5003" ph="DELETE FROM " />
-                <marker date="1481815111810" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
-                <marker date="1481815111810" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
-                <marker date="1481815111810" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
-                <marker date="1481815111810" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
-                <marker date="1481815111810" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
-                <marker date="1481815111810" expanded="true" signature="10834:10878" ph="SELECT * FRO... participant" />
-                <marker date="1481815111810" expanded="true" signature="10834:10879" ph="SELECT * FRO... participant" />
-                <marker date="1481815111810" expanded="true" signature="10834:10895" ph="SELECT * FRO... participant" />
-                <marker date="1481815111810" expanded="true" signature="11936:12679" ph="INSERT INTO `clubs`... " />
-                <marker date="1481815111810" expanded="true" signature="13194:13947" ph="INSERT INTO `events`... " />
-                <marker date="1481815111810" expanded="true" signature="14131:14168" ph="SELECT * FRO... events" />
-                <marker date="1481815111810" expanded="true" signature="14598:14630" ph="SELECT * FRO... events" />
-                <marker date="1481815111810" expanded="true" signature="15832:16033" ph="UPDATE event... " />
-                <marker date="1481815111810" expanded="true" signature="17073:17105" ph="DELETE FROM " />
-                <marker date="1481815111810" expanded="true" signature="17558:18006" ph="INSERT INTO `dance_groups`... " />
-                <marker date="1481815111810" expanded="true" signature="19017:19077" ph="SELECT * FRO... dance_groups" />
-                <marker date="1481815111810" expanded="true" signature="19884:19926" ph="SELECT * FRO... dance_groups" />
-                <marker date="1481815111810" expanded="true" signature="20701:20813" ph="SELECT `id_d... category_parameters" />
-                <marker date="1481815111810" expanded="true" signature="21032:21497" ph="UPDATE `cate... " />
-                <marker date="1481815111810" expanded="true" signature="21657:22153" ph="INSERT INTO `category_parameters`... " />
-                <marker date="1481815111810" expanded="true" signature="22494:22576" ph="SELECT * FRO... category_parameters" />
-                <marker date="1481815111810" expanded="true" signature="23370:23667" ph="SELECT `danc... dance_groups" />
-                <marker date="1481815111810" expanded="true" signature="24317:24610" ph="SELECT * FRO... dance_categories" />
-                <marker date="1481815111810" expanded="true" signature="24999:25474" ph="INSERT INTO `dance_categories`... " />
-                <marker date="1481815111810" expanded="true" signature="26095:26317" ph="INSERT INTO `participant`... " />
-                <marker date="1481815111810" expanded="true" signature="26095:26318" ph="INSERT INTO `participant`... " />
-                <marker date="1481815111810" expanded="true" signature="26095:26378" ph="INSERT INTO `participant`... " />
-                <marker date="1481815111810" expanded="true" signature="26095:26421" ph="INSERT INTO `participant`... " />
-                <marker date="1481815111810" expanded="true" signature="26095:26440" ph="INSERT INTO `participant`... " />
-                <marker date="1481815111810" expanded="true" signature="26095:26469" ph="INSERT INTO `participant`... " />
+                <marker date="1482248996874" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
+                <marker date="1482248996874" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
+                <marker date="1482248996874" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
+                <marker date="1482248996874" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
+                <marker date="1482248996874" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
+                <marker date="1482248996874" expanded="true" signature="4962:5003" ph="DELETE FROM " />
+                <marker date="1482248996874" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
+                <marker date="1482248996874" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
+                <marker date="1482248996874" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
+                <marker date="1482248996874" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
+                <marker date="1482248996874" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
+                <marker date="1482248996874" expanded="true" signature="10287:10331" ph="SELECT * FRO... participant" />
+                <marker date="1482248996874" expanded="true" signature="10287:10332" ph="SELECT * FRO... participant" />
+                <marker date="1482248996874" expanded="true" signature="10287:10348" ph="SELECT * FRO... participant" />
+                <marker date="1482248996874" expanded="true" signature="11389:12132" ph="INSERT INTO `clubs`... " />
+                <marker date="1482248996874" expanded="true" signature="12647:13400" ph="INSERT INTO `events`... " />
+                <marker date="1482248996874" expanded="true" signature="13584:13621" ph="SELECT * FRO... events" />
+                <marker date="1482248996874" expanded="true" signature="14051:14083" ph="SELECT * FRO... events" />
+                <marker date="1482248996874" expanded="true" signature="15285:15486" ph="UPDATE event... " />
+                <marker date="1482248996874" expanded="true" signature="16526:16558" ph="DELETE FROM " />
+                <marker date="1482248996874" expanded="true" signature="17011:17459" ph="INSERT INTO `dance_groups`... " />
+                <marker date="1482248996874" expanded="true" signature="18470:18530" ph="SELECT * FRO... dance_groups" />
+                <marker date="1482248996874" expanded="true" signature="19337:19379" ph="SELECT * FRO... dance_groups" />
+                <marker date="1482248996874" expanded="true" signature="20154:20266" ph="SELECT `id_d... category_parameters" />
+                <marker date="1482248996874" expanded="true" signature="20485:20950" ph="UPDATE `cate... " />
+                <marker date="1482248996874" expanded="true" signature="21110:21606" ph="INSERT INTO `category_parameters`... " />
+                <marker date="1482248996874" expanded="true" signature="21947:22029" ph="SELECT * FRO... category_parameters" />
+                <marker date="1482248996874" expanded="true" signature="22823:23120" ph="SELECT `danc... dance_groups" />
+                <marker date="1482248996874" expanded="true" signature="23770:24063" ph="SELECT * FRO... dance_categories" />
+                <marker date="1482248996874" expanded="true" signature="24452:24927" ph="INSERT INTO `dance_categories`... " />
+                <marker date="1482248996874" expanded="true" signature="25548:25770" ph="INSERT INTO `participant`... " />
+                <marker date="1482248996874" expanded="true" signature="25548:25771" ph="INSERT INTO `participant`... " />
+                <marker date="1482248996874" expanded="true" signature="25548:25831" ph="INSERT INTO `participant`... " />
+                <marker date="1482248996874" expanded="true" signature="25548:25874" ph="INSERT INTO `participant`... " />
+                <marker date="1482248996874" expanded="true" signature="25548:25893" ph="INSERT INTO `participant`... " />
+                <marker date="1482248996874" expanded="true" signature="25548:25922" ph="INSERT INTO `participant`... " />
               </folding>
             </state>
           </provider>
@@ -171,12 +173,12 @@
         <option value="$PROJECT_DIR$/views/admin/SettingsOrg/org_settings.php" />
         <option value="$PROJECT_DIR$/views/main/js/ajax.js" />
         <option value="$PROJECT_DIR$/config/routes.php" />
-        <option value="$PROJECT_DIR$/controllers/AdminController.php" />
-        <option value="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" />
-        <option value="$PROJECT_DIR$/models/AdminModel.php" />
         <option value="$PROJECT_DIR$/components/Db.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php" />
+        <option value="$PROJECT_DIR$/controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/models/AdminModel.php" />
+        <option value="$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php" />
       </list>
     </option>
   </component>
@@ -220,92 +222,7 @@
     <panes>
       <pane id="Scratches" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SettingsOrg" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hakaton" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scope" />
     </panes>
@@ -382,18 +299,18 @@
       <workItem from="1481903216721" duration="68000" />
       <workItem from="1481904181589" duration="1473000" />
       <workItem from="1481909509380" duration="838000" />
-      <workItem from="1482246756779" duration="712000" />
+      <workItem from="1482246756779" duration="1707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29053000" />
+    <option name="totallyTimeSpent" value="30048000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2655068" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2655068" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -421,7 +338,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18986385" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2655068" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -474,42 +391,42 @@
         <state relative-caret-position="9537">
           <caret line="561" column="31" selection-start-line="561" selection-start-column="31" selection-end-line="561" selection-end-column="31" />
           <folding>
-            <marker date="1481815111810" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
-            <marker date="1481815111810" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="4962:5003" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="10834:10878" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10879" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10895" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="11936:12679" ph="INSERT INTO `clubs`... " />
-            <marker date="1481815111810" expanded="true" signature="13194:13947" ph="INSERT INTO `events`... " />
-            <marker date="1481815111810" expanded="true" signature="14131:14168" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="14598:14630" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="15832:16033" ph="UPDATE event... " />
-            <marker date="1481815111810" expanded="true" signature="17073:17105" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="17558:18006" ph="INSERT INTO `dance_groups`... " />
-            <marker date="1481815111810" expanded="true" signature="19017:19077" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="19884:19926" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="20701:20813" ph="SELECT `id_d... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="21032:21497" ph="UPDATE `cate... " />
-            <marker date="1481815111810" expanded="true" signature="21657:22153" ph="INSERT INTO `category_parameters`... " />
-            <marker date="1481815111810" expanded="true" signature="22494:22576" ph="SELECT * FRO... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="23370:23667" ph="SELECT `danc... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="24317:24610" ph="SELECT * FRO... dance_categories" />
-            <marker date="1481815111810" expanded="true" signature="24999:25474" ph="INSERT INTO `dance_categories`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26317" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26318" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26378" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26421" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26440" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26469" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
+            <marker date="1482248996874" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="4962:5003" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="10287:10331" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10332" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10348" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="11389:12132" ph="INSERT INTO `clubs`... " />
+            <marker date="1482248996874" expanded="true" signature="12647:13400" ph="INSERT INTO `events`... " />
+            <marker date="1482248996874" expanded="true" signature="13584:13621" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="14051:14083" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="15285:15486" ph="UPDATE event... " />
+            <marker date="1482248996874" expanded="true" signature="16526:16558" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="17011:17459" ph="INSERT INTO `dance_groups`... " />
+            <marker date="1482248996874" expanded="true" signature="18470:18530" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="19337:19379" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="20154:20266" ph="SELECT `id_d... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="20485:20950" ph="UPDATE `cate... " />
+            <marker date="1482248996874" expanded="true" signature="21110:21606" ph="INSERT INTO `category_parameters`... " />
+            <marker date="1482248996874" expanded="true" signature="21947:22029" ph="SELECT * FRO... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="22823:23120" ph="SELECT `danc... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="23770:24063" ph="SELECT * FRO... dance_categories" />
+            <marker date="1482248996874" expanded="true" signature="24452:24927" ph="INSERT INTO `dance_categories`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25770" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25771" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25831" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25874" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25893" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25922" ph="INSERT INTO `participant`... " />
           </folding>
         </state>
       </provider>
@@ -583,7 +500,7 @@
         <state relative-caret-position="6035">
           <caret line="355" column="44" selection-start-line="355" selection-start-column="44" selection-end-line="355" selection-end-column="44" />
           <folding>
-            <marker date="1481814698216" expanded="true" signature="8155:8200" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248850561" expanded="true" signature="8176:8221" ph="SELECT * FRO... dance_groups" />
           </folding>
         </state>
       </provider>
@@ -593,42 +510,42 @@
         <state relative-caret-position="9537">
           <caret line="561" column="31" selection-start-line="561" selection-start-column="31" selection-end-line="561" selection-end-column="31" />
           <folding>
-            <marker date="1481815111810" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
-            <marker date="1481815111810" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="4962:5003" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="10834:10878" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10879" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10895" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="11936:12679" ph="INSERT INTO `clubs`... " />
-            <marker date="1481815111810" expanded="true" signature="13194:13947" ph="INSERT INTO `events`... " />
-            <marker date="1481815111810" expanded="true" signature="14131:14168" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="14598:14630" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="15832:16033" ph="UPDATE event... " />
-            <marker date="1481815111810" expanded="true" signature="17073:17105" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="17558:18006" ph="INSERT INTO `dance_groups`... " />
-            <marker date="1481815111810" expanded="true" signature="19017:19077" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="19884:19926" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="20701:20813" ph="SELECT `id_d... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="21032:21497" ph="UPDATE `cate... " />
-            <marker date="1481815111810" expanded="true" signature="21657:22153" ph="INSERT INTO `category_parameters`... " />
-            <marker date="1481815111810" expanded="true" signature="22494:22576" ph="SELECT * FRO... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="23370:23667" ph="SELECT `danc... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="24317:24610" ph="SELECT * FRO... dance_categories" />
-            <marker date="1481815111810" expanded="true" signature="24999:25474" ph="INSERT INTO `dance_categories`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26317" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26318" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26378" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26421" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26440" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26469" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
+            <marker date="1482248996874" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="4962:5003" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="10287:10331" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10332" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10348" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="11389:12132" ph="INSERT INTO `clubs`... " />
+            <marker date="1482248996874" expanded="true" signature="12647:13400" ph="INSERT INTO `events`... " />
+            <marker date="1482248996874" expanded="true" signature="13584:13621" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="14051:14083" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="15285:15486" ph="UPDATE event... " />
+            <marker date="1482248996874" expanded="true" signature="16526:16558" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="17011:17459" ph="INSERT INTO `dance_groups`... " />
+            <marker date="1482248996874" expanded="true" signature="18470:18530" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="19337:19379" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="20154:20266" ph="SELECT `id_d... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="20485:20950" ph="UPDATE `cate... " />
+            <marker date="1482248996874" expanded="true" signature="21110:21606" ph="INSERT INTO `category_parameters`... " />
+            <marker date="1482248996874" expanded="true" signature="21947:22029" ph="SELECT * FRO... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="22823:23120" ph="SELECT `danc... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="23770:24063" ph="SELECT * FRO... dance_categories" />
+            <marker date="1482248996874" expanded="true" signature="24452:24927" ph="INSERT INTO `dance_categories`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25770" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25771" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25831" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25874" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25893" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25922" ph="INSERT INTO `participant`... " />
           </folding>
         </state>
       </provider>
@@ -702,7 +619,7 @@
         <state relative-caret-position="6086">
           <caret line="358" column="30" selection-start-line="358" selection-start-column="24" selection-end-line="358" selection-end-column="30" />
           <folding>
-            <marker date="1481814698216" expanded="true" signature="8155:8200" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248850561" expanded="true" signature="8176:8221" ph="SELECT * FRO... dance_groups" />
           </folding>
         </state>
       </provider>
@@ -712,42 +629,42 @@
         <state relative-caret-position="9469">
           <caret line="557" column="0" selection-start-line="557" selection-start-column="0" selection-end-line="557" selection-end-column="0" />
           <folding>
-            <marker date="1481815111810" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
-            <marker date="1481815111810" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="4962:5003" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="10834:10878" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10879" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10895" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="11936:12679" ph="INSERT INTO `clubs`... " />
-            <marker date="1481815111810" expanded="true" signature="13194:13947" ph="INSERT INTO `events`... " />
-            <marker date="1481815111810" expanded="true" signature="14131:14168" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="14598:14630" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="15832:16033" ph="UPDATE event... " />
-            <marker date="1481815111810" expanded="true" signature="17073:17105" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="17558:18006" ph="INSERT INTO `dance_groups`... " />
-            <marker date="1481815111810" expanded="true" signature="19017:19077" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="19884:19926" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="20701:20813" ph="SELECT `id_d... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="21032:21497" ph="UPDATE `cate... " />
-            <marker date="1481815111810" expanded="true" signature="21657:22153" ph="INSERT INTO `category_parameters`... " />
-            <marker date="1481815111810" expanded="true" signature="22494:22576" ph="SELECT * FRO... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="23370:23667" ph="SELECT `danc... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="24317:24610" ph="SELECT * FRO... dance_categories" />
-            <marker date="1481815111810" expanded="true" signature="24999:25474" ph="INSERT INTO `dance_categories`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26317" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26318" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26378" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26421" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26440" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26469" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
+            <marker date="1482248996874" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="4962:5003" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="10287:10331" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10332" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10348" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="11389:12132" ph="INSERT INTO `clubs`... " />
+            <marker date="1482248996874" expanded="true" signature="12647:13400" ph="INSERT INTO `events`... " />
+            <marker date="1482248996874" expanded="true" signature="13584:13621" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="14051:14083" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="15285:15486" ph="UPDATE event... " />
+            <marker date="1482248996874" expanded="true" signature="16526:16558" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="17011:17459" ph="INSERT INTO `dance_groups`... " />
+            <marker date="1482248996874" expanded="true" signature="18470:18530" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="19337:19379" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="20154:20266" ph="SELECT `id_d... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="20485:20950" ph="UPDATE `cate... " />
+            <marker date="1482248996874" expanded="true" signature="21110:21606" ph="INSERT INTO `category_parameters`... " />
+            <marker date="1482248996874" expanded="true" signature="21947:22029" ph="SELECT * FRO... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="22823:23120" ph="SELECT `danc... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="23770:24063" ph="SELECT * FRO... dance_categories" />
+            <marker date="1482248996874" expanded="true" signature="24452:24927" ph="INSERT INTO `dance_categories`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25770" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25771" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25831" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25874" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25893" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25922" ph="INSERT INTO `participant`... " />
           </folding>
         </state>
       </provider>
@@ -920,16 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/AdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3179">
-          <caret line="187" column="8" selection-start-line="187" selection-start-column="8" selection-end-line="187" selection-end-column="8" />
-          <folding>
-            <marker date="1481814698216" expanded="true" signature="8155:8200" ph="SELECT * FRO... dance_groups" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/db_params.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -954,71 +861,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/create_dancing_categories.php">
+    <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6390">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php">
+    <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/create_dancing_categories.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="-5421">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/AdminModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="243" column="16" selection-start-line="243" selection-start-column="16" selection-end-line="243" selection-end-column="31" />
+        <state relative-caret-position="238">
+          <caret line="239" column="38" selection-start-line="239" selection-start-column="29" selection-end-line="239" selection-end-column="38" />
           <folding>
-            <marker date="1481815111810" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
-            <marker date="1481815111810" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
-            <marker date="1481815111810" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
-            <marker date="1481815111810" expanded="true" signature="4962:5003" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
-            <marker date="1481815111810" expanded="true" signature="10834:10878" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10879" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="10834:10895" ph="SELECT * FRO... participant" />
-            <marker date="1481815111810" expanded="true" signature="11936:12679" ph="INSERT INTO `clubs`... " />
-            <marker date="1481815111810" expanded="true" signature="13194:13947" ph="INSERT INTO `events`... " />
-            <marker date="1481815111810" expanded="true" signature="14131:14168" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="14598:14630" ph="SELECT * FRO... events" />
-            <marker date="1481815111810" expanded="true" signature="15832:16033" ph="UPDATE event... " />
-            <marker date="1481815111810" expanded="true" signature="17073:17105" ph="DELETE FROM " />
-            <marker date="1481815111810" expanded="true" signature="17558:18006" ph="INSERT INTO `dance_groups`... " />
-            <marker date="1481815111810" expanded="true" signature="19017:19077" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="19884:19926" ph="SELECT * FRO... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="20701:20813" ph="SELECT `id_d... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="21032:21497" ph="UPDATE `cate... " />
-            <marker date="1481815111810" expanded="true" signature="21657:22153" ph="INSERT INTO `category_parameters`... " />
-            <marker date="1481815111810" expanded="true" signature="22494:22576" ph="SELECT * FRO... category_parameters" />
-            <marker date="1481815111810" expanded="true" signature="23370:23667" ph="SELECT `danc... dance_groups" />
-            <marker date="1481815111810" expanded="true" signature="24317:24610" ph="SELECT * FRO... dance_categories" />
-            <marker date="1481815111810" expanded="true" signature="24999:25474" ph="INSERT INTO `dance_categories`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26317" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26318" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26378" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26421" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26440" ph="INSERT INTO `participant`... " />
-            <marker date="1481815111810" expanded="true" signature="26095:26469" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="418:464" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="1496:1546" ph="SELECT * FRO... organizations" />
+            <marker date="1482248996874" expanded="true" signature="2104:2723" ph="INSERT INTO `organizations`... " />
+            <marker date="1482248996874" expanded="true" signature="3329:3481" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="3547:4092" ph="UPDATE `orga... " />
+            <marker date="1482248996874" expanded="true" signature="4962:5003" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="7319:7387" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="8293:8363" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="9409:9442" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9443" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="9409:9447" ph="SELECT * FRO... clubs" />
+            <marker date="1482248996874" expanded="true" signature="10287:10331" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10332" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="10287:10348" ph="SELECT * FRO... participant" />
+            <marker date="1482248996874" expanded="true" signature="11389:12132" ph="INSERT INTO `clubs`... " />
+            <marker date="1482248996874" expanded="true" signature="12647:13400" ph="INSERT INTO `events`... " />
+            <marker date="1482248996874" expanded="true" signature="13584:13621" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="14051:14083" ph="SELECT * FRO... events" />
+            <marker date="1482248996874" expanded="true" signature="15285:15486" ph="UPDATE event... " />
+            <marker date="1482248996874" expanded="true" signature="16526:16558" ph="DELETE FROM " />
+            <marker date="1482248996874" expanded="true" signature="17011:17459" ph="INSERT INTO `dance_groups`... " />
+            <marker date="1482248996874" expanded="true" signature="18470:18530" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="19337:19379" ph="SELECT * FRO... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="20154:20266" ph="SELECT `id_d... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="20485:20950" ph="UPDATE `cate... " />
+            <marker date="1482248996874" expanded="true" signature="21110:21606" ph="INSERT INTO `category_parameters`... " />
+            <marker date="1482248996874" expanded="true" signature="21947:22029" ph="SELECT * FRO... category_parameters" />
+            <marker date="1482248996874" expanded="true" signature="22823:23120" ph="SELECT `danc... dance_groups" />
+            <marker date="1482248996874" expanded="true" signature="23770:24063" ph="SELECT * FRO... dance_categories" />
+            <marker date="1482248996874" expanded="true" signature="24452:24927" ph="INSERT INTO `dance_categories`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25770" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25771" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25831" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25874" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25893" ph="INSERT INTO `participant`... " />
+            <marker date="1482248996874" expanded="true" signature="25548:25922" ph="INSERT INTO `participant`... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/view_add_part.php">
+    <entry file="file://$PROJECT_DIR$/controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+        <state relative-caret-position="221">
+          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
+          <folding>
+            <marker date="1482248850561" expanded="true" signature="8176:8221" ph="SELECT * FRO... dance_groups" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/admin/SettingsOrg/club-cabinet-for-adm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="59" column="71" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="71" />
           <folding />
         </state>
       </provider>
