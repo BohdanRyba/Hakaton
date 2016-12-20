@@ -95,6 +95,7 @@ $(function () {
     // Opens page cabinet club
     $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
+
         var id= $(this).children('.list-search').attr('data-element-id');
         console.log(id);
         $.ajax({
@@ -129,17 +130,20 @@ $(function () {
 
     // Opens page table of data part info
     
+
     function addPartClub(e) {
         e.preventDefault();
         let dataForm = $('.form-horizontal').serialize();
-        console.log($(this).serialize()+dataForm);
+        var id= $(this).children('.list-search').attr('data-element-id');
+        // console.log($(this).serialize()+dataForm);
         $.ajax({
-            url: 'add_new_info.php',
+            url: 'add_new_info',
             type: 'POST',
             dataType: 'html',
+
             data: dataForm,
-            success: function () {  
-                console.log('блять получилось');
+            success: function (data) {  
+                alert(data);
             }
         });
     };

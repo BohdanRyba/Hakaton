@@ -183,9 +183,12 @@ class AdminController
 
         include 'views/admin/SettingsOrg/create-club.php';
     }    
-    public function actionAjaxClubCabinet()
+    public function actionAjaxClubCabinet($id)
     {
+        $participant[0] = AdminModel::ShowClubById($id);
+        $participant[1] = AdminModel::ShowParticipantById();
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
+
     }
     public function actionAjaxAddpart()
     {
@@ -337,13 +340,12 @@ class AdminController
         require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
     }
 
-    public function actionAjaxSaveDancingCategories(){
+    public function actionSaveDancingCategories(){
         $tmp = [];
         if(!empty($_POST['categories'])){
             foreach ($_POST['categories'] as $category){
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
-                (!empty($category[2])) ? array_push($category_parts, $category[2]) : array_push($category_parts, '');
                 $resulting = AdminModel::saveCreatedCategory($category_parts);
                 array_push($tmp, $resulting);
             }
@@ -353,22 +355,22 @@ class AdminController
         echo $show_results;
     }
 
-    public function actionAjaxShowAllCategoryParameters(){
-        if(!empty($_POST['parameter'])){
-            $array_with_asked_parameters = AdminModel::getCategoryParametersByParameter($_POST['parameter']);
-            echo json_encode($array_with_asked_parameters);
-        }
+    public function actionAjax_NewInfo(){
+        AdminModel::SaveParticipant($_POST);
     }
 
     public function actionAjaxShowCategoriesAccordingToParameter(){
-//        self::showArray($_SESSION);
-//        if(!empty($_POST)){
-//            $_SESSION['check'] = $_POST;
-//            setcookie("AAAAA", "WELL DONE");
-//        }
         if(!empty($_POST['name']) && !empty($_POST['parameter'])){
             $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
             echo json_encode($array_with_asked_categories);
+        }
+    }
+
+    public function actionAjaxUpdatingCreatedDancingCategory(){
+        if(!empty($_POST)){
+            $array_with_asked_categories = AdminModel::editDanceCategories($_POST);
+            $show_results = implode("\n", $array_with_asked_categories);
+            echo $show_results;
         }
     }
 }
