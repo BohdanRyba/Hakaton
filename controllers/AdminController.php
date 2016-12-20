@@ -186,7 +186,7 @@ class AdminController
     public function actionAjaxClubCabinet($id)
     {
         $participant[0] = AdminModel::ShowClubById($id);
-        $participant[1] = AdminModel::ShowParticipantById();
+        $participant[1] = AdminModel::ShowParticipantById($id);
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
 
     }

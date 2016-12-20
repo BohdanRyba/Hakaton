@@ -247,11 +247,11 @@ class AdminModel
         return $clubsList;
     }
 
-    public static function ShowParticipantById()
+    public static function ShowParticipantById($id)
     {
         $partList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `participant` WHERE `club_id`={$_SESSION['id']}";
+            $query = "SELECT * FROM `participant` WHERE `club_id`={$id}";
             $result = $db->query($query);
             $i = 0;
             while ($row = $result->fetch_assoc()) {
