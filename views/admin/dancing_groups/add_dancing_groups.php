@@ -142,14 +142,18 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active treeview">
-                    <a href="<?=Router::$permalink?>admin/organizations/page/1">
+                    <a href="#">
                         <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
+                                            class="fa fa-link"></i></span></a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
                     </ul>
 
                 </li>
@@ -158,17 +162,10 @@
                         <span>Танцевальные групы</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <span>Multilevel</span>
-                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
                     </ul>
                 </li>
             </ul>
