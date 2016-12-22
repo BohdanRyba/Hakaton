@@ -1245,9 +1245,6 @@ table .part_list tr{
     float: none;
     width: 90%;
 }
-.edit_part,.delete_part{
-    height:60%;
-    width:20%;
-    border:1px solid #aaa;
-
+#example1_wrapper #example1 .part_list .odd #edit_bt{
+    color:green;
 }

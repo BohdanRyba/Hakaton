@@ -31,54 +31,56 @@
                         <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 
                             <thead>
-                            <tr role="row">
-                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 181px;"
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 181px;"
                                     aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Номер№
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;"
-                                    aria-label="Browser: activate to sort column ascending">Имя
-                                </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 198px;"
-                                    aria-label="Platform(s): activate to sort column ascending">Фамилия
-                                </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 155px;"
-                                    aria-label="Engine version: activate to sort column ascending">Отчество
-                                </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 110px;"
-                                    aria-label="CSS grade: activate to sort column ascending">Год рождения
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody class="part_list">
+                                aria-label="Browser: activate to sort column ascending">Имя
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 198px;"
+                            aria-label="Platform(s): activate to sort column ascending">Фамилия
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 155px;"
+                        aria-label="Engine version: activate to sort column ascending">Отчество
+                    </th>
+                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 110px;"
+                    aria-label="CSS grade: activate to sort column ascending">Год рождения
+                </th>
+            </tr>
+        </thead>
+        <tbody class="part_list">
 
-                            <?php foreach ($participant[1] as $value):?>
-                                <tr role="row" class="odd">
-                                    <td class="sorting_1"></td>
-                                    <td><?= $value['first_name']?></td>
-                                    <td><?= $value['second_name']?></td>
-                                    <td><?= $value['third_name']?></td>
-                                    <td><?= $value['birth_date']?></td>
-                                </tr>
-                            <?php endforeach;?>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th rowspan="1" colspan="1">Номер№</th>
-                                <th rowspan="1" colspan="1">Имя</th>
-                                <th rowspan="1" colspan="1">Фамилия</th>
-                                <th rowspan="1" colspan="1">Отчество</th>
-                                <th rowspan="1" colspan="1">Год рождения</th>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php foreach ($participant[1] as $value):?>
+                <tr role="row" class="odd">
+                    <td class="sorting_1"></td>
+                    <td><?= $value['first_name']?></td>
+                    <td><?= $value['second_name']?></td>
+                    <td><?= $value['third_name']?></td>
+                    <td><?= $value['birth_date']?></td>
+                    <td id="edit_bt">e</td>
+                    <td id="delete_bt">d</td>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th rowspan="1" colspan="1">Номер№</th>
+                <th rowspan="1" colspan="1">Имя</th>
+                <th rowspan="1" colspan="1">Фамилия</th>
+                <th rowspan="1" colspan="1">Отчество</th>
+                <th rowspan="1" colspan="1">Год рождения</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="box-footer">
+    <div class="views_part">
     </div>
-    <div class="box-footer">
-        <div class="views_part">
-        </div>
-        <a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
-    </div>
+    <a type="submit" id="add_part" class="btn btn-info">Добавить участника</a>
+</div>
 </div>

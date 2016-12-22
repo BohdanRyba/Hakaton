@@ -34,15 +34,6 @@
         <input type="hidden" name="id_club" value="<?=$id?>">
       </div>
     </div>
-    <div class="form-group">
-      <label for="event_begin" class="col-sm-2 control-label">Дата окончания</label>
-      <div class="col-sm-10 create-input">
-        <div class="icon-input input-group-addon">
-          <i class="fa fa-calendar"></i>
-        </div>
-        <input type="text" class="form-control" name="data-finish" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="" placeholder="конец">
-      </div>
-    </div>
     <div class="form_in">
       <label class="" for=""><input name="reg_participant" type="submit" value="Принять" id="save_part_club"></label>
     </div>

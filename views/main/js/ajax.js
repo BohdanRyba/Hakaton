@@ -47,6 +47,7 @@ $(function () {
                 $('#loading>').remove();
                 $('#loading').css('height', '0px');
                 $('.content-in').css('height', '0');
+                $('body').trigger('mask_ajax');
             }
         });
     });
