@@ -133,6 +133,8 @@ $(function () {
     function addPartClub(e) {
         e.preventDefault();
         let dataForm = $('.form-horizontal').serialize();
+        $('.form-horizontal>input').val(' ');
+        var that=$(this);
         console.log($(this).serialize()+dataForm);
         $.ajax({
             url: 'add_new_info.php',
@@ -140,6 +142,7 @@ $(function () {
             dataType: 'html',
             data: dataForm,
             success: function () {  
+
                 console.log('блять получилось');
             }
         });
