@@ -187,8 +187,9 @@ class AdminController
     {
         $participant[0] = AdminModel::ShowClubById($id);
         $participant[1] = AdminModel::ShowParticipantById();
+        $participant[2] = AdminModel::GetCoachesById();
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
-
+        return $participant;
     }
     public function actionAjaxAddpart()
     {

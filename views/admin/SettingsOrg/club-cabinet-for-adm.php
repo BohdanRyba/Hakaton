@@ -17,7 +17,8 @@
             <p class="name">Название клуба: <span><?=$participant[0]['club_name']?></span></p>
             <p>Страна: <span><?=$participant[0]['club_country']?></span></p>
             <p>Город: <span><?=$participant[0]['club_city']?></span></p>
-            <p class="name_help">Тренер:<span><?=$participant[0]['club_shief']?></span></p>
+                    <p>Cудья:<span><?=$participant[2]['coach_name']?></span></p>
+            <p class="name_help">Керівник:<span><?=$participant[0]['club_shief']?></span></p>
         </div>
         <div class="col-sm-12">
 
