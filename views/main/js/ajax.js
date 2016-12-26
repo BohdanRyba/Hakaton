@@ -142,7 +142,6 @@ $(function () {
             dataType: 'html',
             data: dataForm,
             success: function () {  
-
                 console.log('блять получилось');
             }
         });

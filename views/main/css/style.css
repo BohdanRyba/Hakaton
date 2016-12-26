@@ -21,7 +21,9 @@ li {
     line-height: 0;
     clear: both;
 }
-
+.dsb{
+    display:block;
+}
 a:hover {
     color: #00ff00;
 }
@@ -1247,4 +1249,7 @@ table .part_list tr{
 }
 #example1_wrapper #example1 .part_list .odd #edit_bt{
     color:green;
+}
+.block_list_club{
+    border:1px solid #aaa;
 }
