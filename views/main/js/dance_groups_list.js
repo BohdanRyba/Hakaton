@@ -404,19 +404,38 @@ jQuery(function($) {
     $ageCategoriesBlock.on('click', 'button.btn-success.edit-button', function () {
         var $btn=$(this),
             $inputs=$btn.parents('.ag-info-wrapper').find('input');
-        $btn.toggleClass('not-disabled');
 
-        if ($btn.hasClass('not-disabled')) {
-            $inputs.each(function () {
-                $(this).prop('disabled', false);
-            });
-            $inputs.eq(0).trigger('focus');
-        } else {
-            $inputs.each(function () {
-                $(this).prop('disabled', true);
-            })
-        }
+        $inputs.each(function () {
+            $(this).prop('disabled', false);
+        });
+        $inputs.eq(0).trigger('focus');
+
+
+        // $btn.toggleClass('not-disabled');
+        //
+        // if ($btn.hasClass('not-disabled')) {
+        //     $inputs.each(function () {
+        //         $(this).prop('disabled', false);
+        //     });
+        //     $inputs.eq(0).trigger('focus');
+        // } else {
+        //     $inputs.each(function () {
+        //         $(this).prop('disabled', true);
+        //     })
+        // }
     });
+    function checkFocus($inputs) {
+        for (var i=0; i<$inputs.length; i++) {
+            if ($inputs.eq(i).is(':focus')){
+                console.log($(this)+' is on focus');
+                // return true;
+            } else {
+                // return false;
+                console.log($(this)+' is NOT on focus');
+            }
+        }
+    }
+    checkFocus($inputs);
     //редагування інформації
 
     //видалення інформації
