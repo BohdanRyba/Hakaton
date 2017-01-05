@@ -331,12 +331,6 @@ class AdminController
         }
     }
 
-    public function actionCreateDancingCategories(){
-        $category_parameters = [];
-        $category_parameters = AdminModel::getCategoryParametersForCreating();
-        require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
-    }
-
     public function actionAjaxSaveDancingCategories(){
         $tmp = [];
         if(!empty($_POST['categories'])){
