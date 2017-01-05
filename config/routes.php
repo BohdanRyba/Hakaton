@@ -26,9 +26,11 @@ return array(
     'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/ajax_AddParticipant/([0-9]+)' => 'admin/ajax_AddParticipant/$1',
+    'admin/organizations/org_settings/ajax_showCategoriesAccordingToParameter' => 'admin/ajaxShowCategoriesAccordingToParameter', // added by Roma;
+    'admin/organizations/org_settings/ajax_updatingCreatedDancingCategory' => 'admin/ajaxUpdatingCreatedDancingCategory', // added by Roma;
+    'admin/organizations/org_settings/ajax_showAllDanceCategoriesParameters' => 'admin/ajaxShowAllCategoryParameters', // added by ROMA;
     'admin/organizations/org_settings/ajax_sendCreatedCategories' => 'admin/ajaxSaveDancingCategories', // added by ROMA;
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // warning: this line should be lower than ajaxes!;
-//    'admin/organizations/org_settings/create_dancing_categories' => 'admin/createDancingCategories', // This is for TEST;
     'admin/organizations/org_reg' => 'admin/org_reg',
     'admin/organizations/org_add' => 'admin/org_add',
     'admin/organizations/page/([0-9]+)' => 'admin/index/$1',
