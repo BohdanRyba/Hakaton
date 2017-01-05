@@ -230,5 +230,4 @@ sleep(1);
             </div>
         </div>  
     </div>
-    <script src="<?=Router::$permalink?>views/main/js/create_dancing_categories.js"></script>
 </div>
