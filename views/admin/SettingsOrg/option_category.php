@@ -53,21 +53,7 @@ sleep(1);
                                 <div class="col-xs-12">
                                     <div class="row pick-dancing-groups-parameters-wrapper">
                                         <ul id="pick-dancing-group-parameter-to-see">
-                                            <li class="dancing-group-list-item-to-see picked-dancing-group" data-id-dancing-group=""><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #3</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #3</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item-to-see"><span class="numeration"></span>dancing group #2</li>
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>-->
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #1</li>-->
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>-->
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>-->
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #1</li>-->
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>-->
-<!--                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>-->
+
                                         </ul>
                                     </div>
                                 </div>

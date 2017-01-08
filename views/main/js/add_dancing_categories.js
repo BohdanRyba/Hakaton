@@ -53,6 +53,7 @@ jQuery(function($) {
 
                     function addNewInfo(ul, list) {
                         for (var i=0; i<list.length; i++) {
+                            // ul.append('<li><label><input type="checkbox" name="'+list[i]+'">выбрать все</label></li>');
                             ul.append('<li><label><input type="checkbox" name="'+list[i]+'">'+list[i]+'</label></li>');
                         }
                     }
