@@ -15,150 +15,137 @@ sleep(1);
                 </ul>
             </div>
         </div>
-        <div id="total-wrapper-for-info">
-            <div class="row dance-group-menu">
-                <div class="col-xs-6 col-sm-3">
-                    <div class="dance-group-menu-items">
-                        <a href="#dance-programs" class="text-center text-bold" id="menu-dance-programs">танцевальная<br>программа</a>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="dance-group-menu-items">
-                        <a href="#age-categories" class="text-center text-bold" id="menu-age-categories">возрастная<br>категория</a>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="dance-group-menu-items">
-                        <a href="#nominations" class="text-center text-bold" id="menu-nominations">номинация<br>выступления</a>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="dance-group-menu-items">
-                        <a href="#leagues" class="text-center text-bold" id="menu-leagues">лига<br>уровень выступления</a>
-                    </div>
+
+        <div class="row dance-group-menu">
+            <div class="col-xs-6 col-sm-3">
+                <div class="dance-group-menu-items">
+                    <a href="#dance-programs" class="text-center text-bold" id="menu-dance-programs">танцевальная<br>программа</a>
                 </div>
             </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="dance-group-menu-items">
+                    <a href="#age-categories" class="text-center text-bold" id="menu-age-categories">возрастная<br>категория</a>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="dance-group-menu-items">
+                    <a href="#nominations" class="text-center text-bold" id="menu-nominations">номинация<br>выступления</a>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+                <div class="dance-group-menu-items">
+                    <a href="#leagues" class="text-center text-bold" id="menu-leagues">лига<br>уровень выступления</a>
+                </div>
+            </div>
+        </div>
 
-            <div id="dance-group-info-wrapper">
-                <div class="row">
+        <div id="dance-group-info-wrapper">
+            <div class="row">
 
-                    <div id="dance-group-parameters-list" class="col-xs-12 col-md-4 col-lg-3">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div id="example1_filter" class="dataTables_filter">
-                                        <label>Искать по названию:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-                                    </div>
+                <div id="dance-group-parameters-list" class="col-xs-12 col-md-4 col-lg-3">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div id="example1_filter" class="dataTables_filter">
+                                    <label>Искать по названию:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
                                 </div>
-                                <div class="col-xs-12">
-                                    <div class="row pick-dancing-groups-parameters-wrapper">
-                                        <ul id="pick-dancing-group-parameter">
-                                            <li class="dancing-group-list-item picked-dancing-group" data-id-dancing-group=""><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #1</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #2</li>
-                                            <li class="dancing-group-list-item"><span class="numeration"></span>dancing group #3</li>
-                                        </ul>
-                                    </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row pick-dancing-groups-parameters-wrapper">
+                                    <ul id="pick-dancing-group-parameter-to-see">
+
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div id="categories-list" class="col-xs-12 col-md-8 col-lg-9">
-                        <div class="container-fluid">
-                            <a id="update-dancing-categories-info" href="" class="send-info">сохранить</a>
-                            <form id="show-searched-dancing-groups" class="dance-group-show-info">
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat edit-categories-info"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat delete-categories-info"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                                <div class="dp-info-wrapper">
-                                    <div class="btn-group-sm flat" role="group">
-                                        <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                    </div>
-                                    <p class="dance-category-name">Название танц категории</p>
-                                    <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
-
                 </div>
-            </div>
 
+                <div id="categories-list" class="col-xs-12 col-md-8 col-lg-9">
+                    <div class="container-fluid">
+                        <a id="update-dancing-categories-info" href="" class="send-info">сохранить</a>
+                        <form id="show-searched-dancing-groups" class="dance-group-show-info">
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat edit-categories-info"><i
+                                                class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat delete-categories-info"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                            <div class="dp-info-wrapper">
+                                <div class="btn-group-sm flat" role="group">
+                                    <button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                </div>
+                                <p class="dance-category-name">Название танц категории</p>
+                                <label>Код:<input disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code"></label>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="total-wrapper-for-info">
             <div id="create-dance-categories" class="col-xs-12">
                 <div class="row pick-dancing-group-parameters-wrapper">
                     <div class="col-xs-12 col-sm-6 col-md-3">
@@ -176,7 +163,8 @@ sleep(1);
                     <div class="col-xs-12 col-sm-6 col-md-3">
                         <form id="pick-age-categories">
                             <ul>
-                                <li class="dancing-group-parameter-name text-capitalize text-bold text-center">возрастные категории</li>
+                                <li class="dancing-group-parameter-name text-capitalize text-bold text-center">возрастные
+                                    категории</li>
                                 <li class="pick-age-category-for-category"><label><input type="checkbox" name="от 1 до 5">от 1 до 5</label></li>
                                 <li class="pick-age-category-for-category"><label><input type="checkbox" name="от 5 до 10">от 5 до 10</label></li>
                                 <li class="pick-age-category-for-category"><label><input type="checkbox" name="от 10 до 15">от 10 до 15</label></li>
@@ -228,6 +216,6 @@ sleep(1);
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </div>

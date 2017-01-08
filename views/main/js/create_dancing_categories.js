@@ -152,6 +152,7 @@ jQuery(function($) {
                     url: 'ajax_showAllDanceCategoriesParameters',
                     data: 'parameter=' + searchedParameter,
                     success: function (msg) {
+                        console.log(msg);
                         var msg = JSON.parse(msg);
                         console.log('ajax_addNewParameters (ajax1) has worked successfully!');
                         function addInfo($chooseCategoriesParameterUl) {
