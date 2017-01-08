@@ -225,7 +225,7 @@ class AdminController
 
     public function actionDancingList()
     {
-        echo 'Hello from dancing list!';
+//        echo 'Hello from dancing list!';
 
         $db = Db::getConnection(Db::ADMIN_BASE);
         $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
@@ -243,44 +243,50 @@ class AdminController
         }
 
         $db->close();
+//
+//        self::showArray($list);
+//
+//        $dance_group_mane = '';
+//        $d_program = array();
+//        $d_age_category = array();
+//        $d_nomination = array();
+//        $d_league = array();
+//        foreach ($list as $value) {
+//            $dance_group_mane .= '<br>' . $value['dance_group_name'] . '<br>';
+//            array_push($d_program, unserialize($value['d_program']));
+//            array_push($d_age_category, unserialize($value['d_age_category']));
+//            array_push($d_nomination, unserialize($value['d_nomination']));
+//            array_push($d_league, unserialize($value['d_league']));
+//        }
+//
+//
+//        echo '<br> Dance group name: ';
+//        echo $dance_group_mane . '<br>';
+//
+//
+//        echo '<br> Program array: <br>';
+//        self::showArray($d_program);
+//        echo '<br><br>';
+//
+//        echo '<br> Age_category array: <br>';
+//        self::showArray($d_age_category);
+//        echo '<br><br>';
+//
+//        echo '<br> Nomination array: <br>';
+//        self::showArray($d_nomination);
+//        echo '<br><br>';
+//
+//        echo '<br> League array: <br>';
+//        self::showArray($d_league);
+//        echo '<br><br>';
 
-        self::showArray($list);
-
-        $dance_group_mane = '';
-        $d_program = array();
-        $d_age_category = array();
-        $d_nomination = array();
-        $d_league = array();
-        foreach ($list as $value) {
-            $dance_group_mane .= '<br>' . $value['dance_group_name'] . '<br>';
-            array_push($d_program, unserialize($value['d_program']));
-            array_push($d_age_category, unserialize($value['d_age_category']));
-            array_push($d_nomination, unserialize($value['d_nomination']));
-            array_push($d_league, unserialize($value['d_league']));
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
-
-
-        echo '<br> Dance group name: ';
-        echo $dance_group_mane . '<br>';
-
-
-        echo '<br> Program array: <br>';
-        self::showArray($d_program);
-        echo '<br><br>';
-
-        echo '<br> Age_category array: <br>';
-        self::showArray($d_age_category);
-        echo '<br><br>';
-
-        echo '<br> Nomination array: <br>';
-        self::showArray($d_nomination);
-        echo '<br><br>';
-
-        echo '<br> League array: <br>';
-        self::showArray($d_league);
-        echo '<br><br>';
-
-
+        $nav_content = $this->createNavContent(Router::$uri);
+        require_once 'views/admin/dancing_groups/dance_list.php';
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
+        return true;
     } //end this method!!!
 
     public function actionAddDancingGroups()
