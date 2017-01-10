@@ -306,7 +306,6 @@ $('body').on('click', 'a.remove-part', function () {
         window.summ = window.summ + price;
     });
 
-    console.log($('.bg-opacity'));
     $('body').on('click', 'tbody>tr', function () {
         $('.bg-opacity').show(200);
 
@@ -333,5 +332,8 @@ $('body').on('click', 'a.remove-part', function () {
         $(this).addClass('active_button_list');
     });
 
-    // 
+    // event options list the clubs target click
+    $('.list_club_data li').on('click', function(event){
+      console.log($(this).children('div').attr('data-id'));
+    });
 });

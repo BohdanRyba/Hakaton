@@ -994,7 +994,6 @@ b {
 
 .list_data li:hover {
     cursor: pointer;
-
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
     transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -1251,5 +1250,29 @@ table .part_list tr{
     color:green;
 }
 .block_list_club{
-    border:1px solid #aaa;
+    padding:5px;
+    background: #00c0ef;
 }
+.list_club{
+    padding:5px;
+}
+.list_club_data{
+    width:100%;
+    padding:0;
+}
+.list_club_data li{
+    margin-top:5px;
+    padding:5px;
+    background:#fff;
+}
+.list_club_data li:hover {
+    cursor: pointer;
+    border-right:5px solid #32CD32;
+    padding-left:10px;
+    transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+

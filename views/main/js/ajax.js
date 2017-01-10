@@ -104,7 +104,12 @@ $(function () {
             data:id,
             dataType:'html',
             beforeSend: funcBefore,
-            success: funcSuccess
+            success: [
+                        funcSuccess,
+                        function(){
+                            $('.list_data>').remove();
+                        }
+                    ]
         });
     });
 
