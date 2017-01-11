@@ -51,27 +51,14 @@
         </thead>
         <tbody class="part_list">
 
-            <?php foreach ($participant[1] as $value):?>
                 <tr role="row" class="odd">
-                    <td class="sorting_1"></td>
-                    <td><?= $value['first_name']?></td>
-                    <td><?= $value['second_name']?></td>
-                    <td><?= $value['third_name']?></td>
-                    <td><?= $value['birth_date']?></td>
-                    <td id="edit_bt">e</td>
-                    <td id="delete_bt">d</td>
+                    <td class="sorting_1">1</td>
+                    <td>first_name</td>
+                    <td>aaaaaaa</td>
+                    <td>third_name</td>
+                    <td>birth_date</td>
                 </tr>
-            <?php endforeach;?>
         </tbody>
-        <tfoot>
-            <tr>
-                <th rowspan="1" colspan="1">Номер№</th>
-                <th rowspan="1" colspan="1">Имя</th>
-                <th rowspan="1" colspan="1">Фамилия</th>
-                <th rowspan="1" colspan="1">Отчество</th>
-                <th rowspan="1" colspan="1">Год рождения</th>
-            </tr>
-        </tfoot>
     </table>
 </div>
 </div>

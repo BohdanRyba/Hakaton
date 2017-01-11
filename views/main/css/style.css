@@ -1124,6 +1124,16 @@ table tbody.row-table > :hover {
     height: 100%;
     z-index: 800;
 }
+.bg_shadow {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:100;
+    background:rgba(0,0,0,0.7);
+}
 
 .add-trainer {
     position: absolute;
@@ -1274,5 +1284,32 @@ table .part_list tr{
     -ms-transition: all 0.4s;
     -moz-transition: all 0.4s;
     -webkit-transition: all 0.4s;
+}
+
+.list_table_part{
+    display:none;
+    position:fixed;
+    top:55px;
+    z-index:111;
+}
+.list_table_part .part_list .active_part{
+    padding:5px;
+    background:#00c0ef;
+    box-shadow: 0 0 5px 3px rgba(0,192,239,0.7);
+}
+.take_btn{
+    float:left;
+    width:30%;
+    padding:5px;
+    color:#fff;
+    text-align:center;
+    background:#32CD32;
+}
+.take_btn span{
+    text-align:center;
+}
+.take_btn:hover{
+    cursor:pointer;
+    box-shadow: 0 0 5px 3px rgba(50,205,50,0.7);
 }
 

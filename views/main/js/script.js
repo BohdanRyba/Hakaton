@@ -334,6 +334,26 @@ $('body').on('click', 'a.remove-part', function () {
 
     // event options list the clubs target click
     $('.list_club_data li').on('click', function(event){
-      console.log($(this).children('div').attr('data-id'));
+      $('.bg_shadow').show();
+      $('.list_table_part').show(300);
+      $(this).css({
+        'z-index':'801',
+        'position':'relative'
+      });
+
     });
+    $('.bg_shadow').on('click', function(){
+      $(this).hide();
+      $('.list_table_part').hide(300);
+      $('.list_club_data li').css({
+        'z-index':'0',
+        'position':'static'
+      });
+
+    });
+
+    $('.list_table_part .part_list tr').on('click', function(){
+      $(this).toggleClass('active_part');
+    });
+
 });
