@@ -25,71 +25,72 @@ jQuery(function($) {
 
     function GetNewInfoAboutDancingGroup($danceGroupId) {
 
-        $danceProgramBlock.find('.see-info').children().eq(0).append('<div class="dp-info-wrapper">'+
-            '<span class="text-bold count"></span>'+
-            '<div class="btn-group-sm flat" role="group">'+
-            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-            '</div>'+
-            '<label>Название:'+
-            '<input disabled type="text" name="dance-program-name" class="input-standard">'+
-            '</label>'+
-            '</div>');
-        $ageCategoriesBlock.find('.see-info').children().eq(0).append('<div class="ag-info-wrapper">'+
-            '<span class="text-bold count"></span>'+
-            '<div class="btn-group-sm flat" role="group">'+
-            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-            '</div>'+
-            '<label>Название:'+
-            '<input disabled type="text" name="age-category-name" class="input-standard">'+
-            '</label>'+
-            '<label>От:'+
-            '<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code">'+
-            '</label>'+
-            '<label>До:'+
-            '<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code">'+
-            '</label>'+
-            '</div>');
-        $nominationsBlock.find('.see-info').children().eq(0).append('<div class="nm-info-wrapper">'+
-            '<span class="text-bold count"></span>'+
-            '<div class="btn-group-sm flat" role="group">'+
-            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-            '</div>'+
-            '<label>Название:'+
-            '<input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
-            '</label>'+
-            '<label>Кол-во учасников:'+
-            '<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
-            '</label>'+
-            '</div>');
-        $leaguesBlock.find('.see-info').children().eq(0).append('<div class="lg-info-wrapper">'+
-            '<span class="text-bold count"></span>'+
-            '<div class="btn-group-sm flat" role="group">'+
-            '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-            '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-            '</div>'+
-            '<label>Название:'+
-            '<input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
-            '</label>'+
-            '<label>Лет выступлений:'+
-            '<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
-            '</label>'+
-            '</div>');
-        $danceGroupNameInput.val('Танц группа'+$danceGroupId);
-        // $.ajax({
-        //     type:"POST",
-        //     url:'ajax_settingUpDancingCategory',
-        //     data: 'id='+$danceGroupId,
-        //     success: function(msg) {
-        //         console.log(msg);
-        //         //    Insert the info in respective blocks (in each of the SHOW INFO BLOCKS)
-        //     },
-        //     error: function (msg) {
-        //         console.log(msg);
-        //     }
-        // });
+        // $danceProgramBlock.find('.see-info').children().eq(0).append('<div class="dp-info-wrapper">'+
+        //     '<span class="text-bold count"></span>'+
+        //     '<div class="btn-group-sm flat" role="group">'+
+        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+        //     '</div>'+
+        //     '<label>Название:'+
+        //     '<input disabled type="text" name="dance-program-name" class="input-standard">'+
+        //     '</label>'+
+        //     '</div>');
+        // $ageCategoriesBlock.find('.see-info').children().eq(0).append('<div class="ag-info-wrapper">'+
+        //     '<span class="text-bold count"></span>'+
+        //     '<div class="btn-group-sm flat" role="group">'+
+        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+        //     '</div>'+
+        //     '<label>Название:'+
+        //     '<input disabled type="text" name="age-category-name" class="input-standard">'+
+        //     '</label>'+
+        //     '<label>От:'+
+        //     '<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code">'+
+        //     '</label>'+
+        //     '<label>До:'+
+        //     '<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code">'+
+        //     '</label>'+
+        //     '</div>');
+        // $nominationsBlock.find('.see-info').children().eq(0).append('<div class="nm-info-wrapper">'+
+        //     '<span class="text-bold count"></span>'+
+        //     '<div class="btn-group-sm flat" role="group">'+
+        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+        //     '</div>'+
+        //     '<label>Название:'+
+        //     '<input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
+        //     '</label>'+
+        //     '<label>Кол-во учасников:'+
+        //     '<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
+        //     '</label>'+
+        //     '</div>');
+        // $leaguesBlock.find('.see-info').children().eq(0).append('<div class="lg-info-wrapper">'+
+        //     '<span class="text-bold count"></span>'+
+        //     '<div class="btn-group-sm flat" role="group">'+
+        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
+        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+        //     '</div>'+
+        //     '<label>Название:'+
+        //     '<input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
+        //     '</label>'+
+        //     '<label>Лет выступлений:'+
+        //     '<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
+        //     '</label>'+
+        //     '</div>');
+        //$danceGroupNameInput.val('Танц группа'+$danceGroupId);
+
+        $.ajax({
+            type:"POST",
+            url:'ajax_settingUpDancingCategory',
+            data: 'id='+$danceGroupId,
+            success: function(msg) {
+                console.log(msg);
+                //    Insert the info in respective blocks (in each of the SHOW INFO BLOCKS)
+            },
+            error: function (msg) {
+                console.log(msg);
+            }
+        });
     }
 
     function hideBtns() {
@@ -139,7 +140,6 @@ jQuery(function($) {
         var $btn=$(this),
             $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
 
-        totalNumeration();
         //Check $totalInfoWrapper visibility
         if ($totalInfoWrapper.attr('data-visibility')=='none') { //    if it`s display:none than the block is shown, new info is loaded, attributes are changed
 
@@ -197,7 +197,6 @@ jQuery(function($) {
         var $btn=$(this),
             $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
 
-        totalNumeration();
         //Check $totalInfoWrapper visibility
         if ($totalInfoWrapper.attr('data-visibility')=='none') { //    if it`s display:none than the block is shown, new info is loaded, attributes are changed
 
