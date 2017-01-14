@@ -443,44 +443,15 @@
                             <div class="row">
                                 <div class="">
                                     <ul class="dancing-group-list-wrapper">
-
                                         <?php foreach ($list as $value): ?>
-                                            <li>
-                                                <div class="btn-group-xs button-wrapper">
-                                                    <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                    <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                                                </div>
-                                                <p class="dance-group-name"><?=$value['dance_group_name'];?></p>
-                                            </li>
+                                        <li data-id-dancing-group="<?=$value['id'];?>">
+                                            <div class="btn-group-xs button-wrapper">
+                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                            </div>
+                                            <p class="dance-group-name"><?=$value['dance_group_name'];?></p>
+                                        </li>
                                         <?php endforeach; ?>
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы sdcssfsdfsDFSFS</p>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы</p>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы</p>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы</p>-->
-<!--                                        </li>-->
                                     </ul>
                                 </div>
                             </div>
