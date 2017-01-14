@@ -225,6 +225,24 @@ class AdminModel
         return $eventsList;
     }
 
+    public static function GetCoachesById(){
+        $coachList=[];
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `coaches` WHERE club_id = {$_SESSION['id']}";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $coachList[$i]['id'] = $row['id'];
+                $coachList[$i]['coach_name'] = $row['coach_name'];
+                $coachList[$i]['club_id'] = $row['club_id'];
+                $i++;
+            }
+
+            $db->close();
+        }
+        return $coachList;
+    }
+
     public static function ShowClubById($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
