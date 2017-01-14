@@ -21,7 +21,9 @@ li {
     line-height: 0;
     clear: both;
 }
-
+.dsb{
+    display:block;
+}
 a:hover {
     color: #00ff00;
 }
@@ -992,7 +994,6 @@ b {
 
 .list_data li:hover {
     cursor: pointer;
-
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
     transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -1123,6 +1124,16 @@ table tbody.row-table > :hover {
     height: 100%;
     z-index: 800;
 }
+.bg_shadow {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:100;
+    background:rgba(0,0,0,0.7);
+}
 
 .add-trainer {
     position: absolute;
@@ -1245,9 +1256,60 @@ table .part_list tr{
     float: none;
     width: 90%;
 }
-.edit_part,.delete_part{
-    height:60%;
-    width:20%;
-    border:1px solid #aaa;
-
+#example1_wrapper #example1 .part_list .odd #edit_bt{
+    color:green;
 }
+.block_list_club{
+    padding:5px;
+    background: #00c0ef;
+}
+.list_club{
+    padding:5px;
+}
+.list_club_data{
+    width:100%;
+    padding:0;
+}
+.list_club_data li{
+    margin-top:5px;
+    padding:5px;
+    background:#fff;
+}
+.list_club_data li:hover {
+    cursor: pointer;
+    border-right:5px solid #32CD32;
+    padding-left:10px;
+    transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+
+.list_table_part{
+    display:none;
+    position:fixed;
+    top:55px;
+    z-index:111;
+}
+.list_table_part .part_list .active_part{
+    padding:5px;
+    background:#00c0ef;
+    box-shadow: 0 0 5px 3px rgba(0,192,239,0.7);
+}
+.take_btn{
+    float:left;
+    width:30%;
+    padding:5px;
+    color:#fff;
+    text-align:center;
+    background:#32CD32;
+}
+.take_btn span{
+    text-align:center;
+}
+.take_btn:hover{
+    cursor:pointer;
+    box-shadow: 0 0 5px 3px rgba(50,205,50,0.7);
+}
+

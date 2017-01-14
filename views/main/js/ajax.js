@@ -20,7 +20,7 @@ function funcBefore() {
         left: '50%' // Положение слева относительно родителя
     };
     var target = document.getElementById('loading');
-    var spinner = new Spinner(opts).spin(target);
+    var spinner = new Spinner(opts).spin(target);''
 }
 
 function funcSuccess(data) {
@@ -47,6 +47,7 @@ $(function () {
                 $('#loading>').remove();
                 $('#loading').css('height', '0px');
                 $('.content-in').css('height', '0');
+                $('body').trigger('mask_ajax');
             }
         });
     });
@@ -95,7 +96,6 @@ $(function () {
     // Opens page cabinet club
     $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
-
         var id= $(this).children('.list-search').attr('data-element-id');
         console.log(id);
         $.ajax({
@@ -104,7 +104,12 @@ $(function () {
             data:id,
             dataType:'html',
             beforeSend: funcBefore,
-            success: funcSuccess
+            success: [
+                        funcSuccess,
+                        function(){
+                            $('.list_data>').remove();
+                        }
+                    ]
         });
     });
 
@@ -130,25 +135,22 @@ $(function () {
 
     // Opens page table of data part info
     
-
     function addPartClub(e) {
         e.preventDefault();
         let dataForm = $('.form-horizontal').serialize();
-        var id= $(this).children('.list-search').attr('data-element-id');
-        // console.log($(this).serialize()+dataForm);
+        $('.form-horizontal>input').val(' ');
+        var that=$(this);
+        console.log($(this).serialize()+dataForm);
         $.ajax({
-            url: 'add_new_info',
+            url: 'add_new_info.php',
             type: 'POST',
             dataType: 'html',
-
             data: dataForm,
-            success: function (data) {  
-                alert(data);
+            success: function () {  
+                console.log('блять получилось');
             }
         });
     };
 
     $('body').on('click', '#save_part_club', addPartClub);
-
-
 });
