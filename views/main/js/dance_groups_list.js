@@ -88,7 +88,7 @@ jQuery(function($) {
                 //    Insert the info in respective blocks (in each of the SHOW INFO BLOCKS)
             },
             error: function (msg) {
-                console.log(msg);
+                console.log('ajax GetNewInfoAboutDancingGroup has failed!');
             }
         });
     }
