@@ -387,4 +387,12 @@ class AdminController
             echo $show_results;
         }
     }
+
+    public function actionAjaxGetNewInfoAboutDancingGroup(){
+        if(!empty($_POST['id'])){
+            $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
+            echo json_encode($dance_group);
+        }
+        return true;
+    }
 }
