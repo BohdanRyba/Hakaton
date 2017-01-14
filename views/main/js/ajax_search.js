@@ -1,6 +1,6 @@
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>      ajax for search event
-
 var search = $('.list-search').find('input[type="search"]');
+var clubInfoObj= new Object();
 
 search.on('keyup', function () {
     if($(this).val().length>=3){    
@@ -10,7 +10,6 @@ search.on('keyup', function () {
         $('.list_information').show();
         actionAjaxSearch(searchName);
     };
-
 });
     //>>>>>>>>>>>>>>>>>>>>>>>       ajax search when press enter
     $('.search_event').on('keydown', function(e){
@@ -69,14 +68,19 @@ search.on('keyup', function () {
 function funcSearch(data) {
     $('.list_data>').remove();
     let list = JSON.parse(data);
+    clubInfoObj= list;
+    console.log(data+'+++++++++++');
+    console.log(clubInfoObj);
+
     let search = $('.list-search').find('input[type="search"].active');
     let searchName = search.attr('data-type');
     let img= searchName+'_image';
     let name= searchName+'_name';
     let render = function(list) {
-        let nameList = list.map(function (element) {
+        let nameList = list.map(function (element, i) {
+
             let node =  '<li id="btn_go_'+ searchName +'_cabinet">'
-            +'<div class="list-search clr">'
+            +'<div class="list-search clr" data-element-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src="'+ element[img] +'" alt="wtf"/>'
             +'</div>'
@@ -114,7 +118,7 @@ function funcSearchPrint(data) {
             let node = '<div class="resize-remove">'
             +'<div class="box-body">'
             +'<li class="result_search">'
-            +'<div class="list-search clr">'
+            +'<div class="list-search clr" data-club-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src=" '+ element[img] +' " alt="wtf"/>'
             +'</div>'   

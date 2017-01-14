@@ -183,9 +183,12 @@ class AdminController
 
         include 'views/admin/SettingsOrg/create-club.php';
     }    
-    public function actionAjaxClubCabinet()
+    public function actionAjaxClubCabinet($id)
     {
+        $participant[0] = AdminModel::ShowClubById($id);
+        $participant[1] = AdminModel::ShowParticipantById($id);
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
+
     }
     public function actionAjaxAddpart()
     {
@@ -331,13 +334,18 @@ class AdminController
         }
     }
 
+    public function actionCreateDancingCategories(){
+        $category_parameters = [];
+        $category_parameters = AdminModel::getCategoryParametersForCreating();
+        require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
+    }
+
     public function actionAjaxSaveDancingCategories(){
         $tmp = [];
         if(!empty($_POST['categories'])){
             foreach ($_POST['categories'] as $category){
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
-                (!empty($category[2])) ? array_push($category_parts, $category[2]) : array_push($category_parts, '');
                 $resulting = AdminModel::saveCreatedCategory($category_parts);
                 array_push($tmp, $resulting);
             }
@@ -345,6 +353,10 @@ class AdminController
         }
         $show_results = implode("\n", $tmp);
         echo $show_results;
+    }
+
+    public function actionAjax_NewInfo(){
+        AdminModel::SaveParticipant($_POST);
     }
 
     public function actionAjaxShowAllCategoryParameters(){

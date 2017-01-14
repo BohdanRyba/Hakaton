@@ -32,7 +32,7 @@
     <link rel="stylesheet/less" type="text/less"
           href="<?= Router::$permalink ?>views/main/css/add_dancing_categories.less?11">
     <link rel="stylesheet/less" type="text/less"
-          href="<?= Router::$permalink ?>views/main/css/create_dancing_categories.less">
+          href="<?= Router::$permalink ?>views/main/css/create_dancing_categories.less?31">
     <script src="<?= Router::$permalink ?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
@@ -169,21 +169,30 @@ desired effect
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="<?= Router::$permalink ?>admin/organizations/page/1"><i
-                            class="fa fa-link"></i> <span>Организации</span></a></li>
-                <li><a href="<?= Router::$permalink ?>admin/organizations/org_settings/create-event"><i
-                            class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
+                <li class="active treeview">
+                    <a href="#">
+                        <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Link in level 2</a></li>
-                        <li><a href="#">Link in level 2</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
+                                            class="fa fa-link"></i></span></a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Танцевальные групы</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -486,8 +495,8 @@ desired effect
 <script src="<?= Router::$permalink ?>views/main/js/jquery-ui.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/spin.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/script.js?132"></script>
-<script src="<?= Router::$permalink ?>views/main/js/ajax.js?526"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
+<script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function () {

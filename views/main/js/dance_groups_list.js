@@ -14,24 +14,7 @@ jQuery(function($) {
         $nominationsBlock=$('#nominations'),
         $leaguesBlock=$('#leagues');
 
-    // $('.show-info-about-dance-group').on('click', function () {
-    //     $totalInfoWrapper.toggleClass('isVisible');
-    //     $totalInfoWrapper.toggleClass('showPurpose');
-    //     $totalInfoWrapper.trigger('outerAction');
-    // });
-    // $('.edit-info-about-dance-group').on('click', function () {
-    //     $totalInfoWrapper.toggleClass('isVisible');
-    //     $totalInfoWrapper.toggleClass('editPurpose');
-    //     $totalInfoWrapper.trigger('outerAction');
-    // });
-    //
-    // $totalInfoWrapper.on('outerAction', function () {
-    //     if ($totalInfoWrapper.hasClass('isVisible')) {
-    //         $totalInfoWrapper.css('display', 'block');
-    //     } else {
-    //         $totalInfoWrapper.css('display', 'none');
-    //     }
-    // });
+    console.log($menuItems);
     //=====FUNCTIONS USED WHEN BTNS ARE ON CLICK==========================
     function clearOldInfo() {
         $danceProgramBlock.find('.see-info').children().eq(0).empty();
@@ -150,6 +133,7 @@ jQuery(function($) {
         var $btn=$(this),
             $danceGroupId=$btn.parents('li').attr('data-id-dancing-group');
 
+        console.log('showBtn is clicked!');
         //Check $totalInfoWrapper visibility
         if ($totalInfoWrapper.attr('data-visibility')=='none') { //    if it`s display:none than the block is shown, new info is loaded, attributes are changed
 
@@ -240,6 +224,7 @@ jQuery(function($) {
                     $totalInfoWrapper.attr('data-id', $danceGroupId);
                     GetNewInfoAboutDancingGroup($danceGroupId);
                     showAddInfoBlock();
+                    propNameInput(false);
                 }
 
             } else if ($totalInfoWrapper.attr('data-purpose')=='edit') {//    IF it`s EDIT than check data-id
@@ -261,7 +246,6 @@ jQuery(function($) {
         }
     });
 
-
     //МЕНЮ
     $menuItems.on('click', function (e) {
         e.preventDefault();
@@ -278,6 +262,10 @@ jQuery(function($) {
                 $(this).css('display', 'none');
             });
         }
+        agNumeration();
+        dpNumeration();
+        lgNumeration();
+        nmNumeration();
     });
 //МЕНЮ
 
@@ -423,20 +411,21 @@ jQuery(function($) {
         //         $(this).prop('disabled', true);
         //     })
         // }
+        // function checkFocus(inputs) {
+        //     for (var i=0; i<$inputs.length; i++) {
+        //         if ($inputs.eq(i).is(':focus')){
+        //             console.log($(this)+' is on focus');
+        //             // return true;
+        //         } else {
+        //             // return false;
+        //             console.log($(this)+' is NOT on focus');
+        //         }
+        //     }
+        // }
+        // checkFocus($inputs);
+        // //редагування інформації
+
     });
-    function checkFocus($inputs) {
-        for (var i=0; i<$inputs.length; i++) {
-            if ($inputs.eq(i).is(':focus')){
-                console.log($(this)+' is on focus');
-                // return true;
-            } else {
-                // return false;
-                console.log($(this)+' is NOT on focus');
-            }
-        }
-    }
-    checkFocus($inputs);
-    //редагування інформації
 
     //видалення інформації
     $ageCategoriesBlock.on('click', 'button.btn-danger.delete-button', function () {
@@ -566,20 +555,20 @@ jQuery(function($) {
 
     $lgAddBtn.on('click', function (e) {
         e.preventDefault();
-        if (!$lgAddForm.find('input[name=league-name-new]').val()=='') {
-            var $lg=$lgAddForm.serializeArray(),
-                lgName=$lg[0].value,
-                lgNumber=$lg[1].value,
-                lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label></div>';
-
-            $lgShowForm.append(lgInfo);
-
-            lgNumeration();
-
-            $lgAddForm.find('input').each(function(){
-                $(this).val('');
-            })
-        }
+        // if (!$lgAddForm.find('input[name=league-name-new]').val()=='') {
+        //     var $lg=$lgAddForm.serializeArray(),
+        //         lgName=$lg[0].value,
+        //         lgNumber=$lg[1].value,
+        //         lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label></div>';
+        //
+        //     $lgShowForm.append(lgInfo);
+        //
+        //     lgNumeration();
+        //
+        //     $lgAddForm.find('input').each(function(){
+        //         $(this).val('');
+        //     })
+        // }
     });
     //ФУНКЦІЇ
     //редагування інформації
@@ -609,12 +598,13 @@ jQuery(function($) {
     });
     //видалення інформації
     //ФУНКЦІЇ
+    var $form1=$danceProgramBlock.find('.dance-group-show-info'),
+        $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
+        $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
+        $form4=$leaguesBlock.find('.dance-group-show-info-extended');
+    
     $lgSendBtn.on('click', function (e) {
-        var $form1=$danceProgramBlock.find('.dance-group-show-info'),
-            $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
-            $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
-            $form4=$leaguesBlock.find('.dance-group-show-info-extended');
-
+        
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
@@ -649,5 +639,53 @@ jQuery(function($) {
         return obj;
     }
 
+
+
+    //=========================<Save new info & Check duplicated info>===============
+    var $saveNewInfoBtn=$('.add-dance-group-info'),
+        activeItem, $displayedBlock;
+
+    $saveNewInfoBtn.on('click', function () {
+        for (var i=0; i<$menuItems.length; i++) {
+            if ($menuItems.eq(i).hasClass('active')) {
+                activeItem=$menuItems[i].id;
+                console.log(activeItem);
+                break;
+            }
+        }
+        if (activeItem=='menu-dance-programs') {
+
+        } else
+        if (activeItem=='menu-age-categories') {
+
+        } else
+        if (activeItem=='menu-nominations') {
+
+        } else
+        if (activeItem=='menu-leagues') {
+
+            if (!$lgAddForm.find('input[name=league-name-new]').val()=='') {
+                var $lg=$lgAddForm.serializeArray(),
+                    lgName=$lg[0].value,
+                    lgNumber=$lg[1].value,
+                    newLeagueInfo={},
+                    lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label></div>';
+
+                newLeagueInfo['name']=lgName;
+                newLeagueInfo['yearRules']=lgNumber;
+                console.log(newLeagueInfo);
+                
+                $form4.children().each(function () {
+                    
+                });
+                // $lgShowForm.append(lgInfo);
+                // lgNumeration();
+                // $lgAddForm.find('input').each(function(){
+                //     $(this).val('');
+                // });
+            }
+        }
+    });
+    //=========================</Save new info & Check duplicated info>===============
 
 });
