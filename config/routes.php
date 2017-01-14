@@ -7,6 +7,7 @@ return array(
     'home' => 'home/index',
     'login' => 'login/index',
     'registration' => 'login/registration',
+    'admin/dancing_groups/ajax_GetNewInfoAboutDancingGroup' => 'admin/ajaxGetNewInfoAboutDancingGroup', // added by ROMA;
     'out' => 'login/out',
     'addnews' => 'addnews/index',
     'record' => 'addnews/record',

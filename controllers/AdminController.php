@@ -387,4 +387,12 @@ class AdminController
             echo $show_results;
         }
     }
+
+    public function actionAjaxGetNewInfoAboutDancingGroup(){
+        self::showArray($_SESSION);
+        if($_POST){
+            $_SESSION['testing'] = $_POST;
+        }
+        return true;
+    }
 }
