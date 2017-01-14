@@ -389,9 +389,9 @@ class AdminController
     }
 
     public function actionAjaxGetNewInfoAboutDancingGroup(){
-        self::showArray($_SESSION);
-        if($_POST){
-            $_SESSION['testing'] = $_POST;
+        if(!empty($_POST['id'])){
+            $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
+            echo json_encode($dance_group);
         }
         return true;
     }
