@@ -81,7 +81,7 @@ jQuery(function($) {
 
         $.ajax({
             type:"POST",
-            url:'ajax_settingUpDancingCategory',
+            url:'ajax_GetNewInfoAboutDancingGroup',
             data: 'id='+$danceGroupId,
             success: function(msg) {
                 console.log(msg);
