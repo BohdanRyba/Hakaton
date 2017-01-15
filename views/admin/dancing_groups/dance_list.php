@@ -176,7 +176,12 @@
 
 
     <div class="content-wrapper">
-        <section class="content-header"></section>
+        <section class="content-header">
+            <?php if (isset($this->message)) {
+                echo $this->message;
+            }
+            ?>
+        </section>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">

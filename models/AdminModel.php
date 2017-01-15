@@ -446,27 +446,28 @@ class AdminModel
                     $action = 'UPDATE';
                     $action_verb[0] = 'обновлена';
                     $action_verb[1] = 'обновить';
-//                    $where = 'WHERE `id` = ' . $id;
+                    $where = 'WHERE `id` = ' . $json['dg-id'];
                 } elseif ($list == '') {
                     $action = 'INSERT INTO';
                     $action_verb[0] = 'сохранена';
                     $action_verb[1] = 'сохранить';
                 }
-                $result = $db->query("{$action} `dance_groups` {$where}
+                $result = $db->query("{$action} `dance_groups`
                         SET `dance_group_name` = '{$json['dance-group-name']}',
                             `d_program` = '" . serialize($json['programs']) . "',
                             `d_age_category` = '" . serialize($json['age-categories']) . "',
                             `d_nomination` = '" . serialize($json['nominations']) . "',
-                            `d_league` = '" . serialize($json['leagues']) . "'");
+                            `d_league` = '" . serialize($json['leagues']) . "' 
+                            {$where}");
                 if ($result == true) {
                     $message = json_encode([
                         'status' => 'success',
-                        'message' => "Танцевальная программа \"{$json['dance-group-name']}\" успешно {$action_verb[0]}!"
+                        'message' => "Танцевальная группа \"{$json['dance-group-name']}\" успешно {$action_verb[0]}!"
                     ]);
                 } elseif ($result == false) {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Танцевальную программу \"{$json['dance-group-name']}\" {$action_verb[1]} не удалось!"
+                        'message' => "Танцевальную группу \"{$json['dance-group-name']}\" {$action_verb[1]} не удалось!"
                     ]);
                 }
             } else {

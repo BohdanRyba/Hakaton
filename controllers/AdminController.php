@@ -229,11 +229,11 @@ class AdminController
         if(!empty($_POST)){
             if (isset($_POST) && !empty($_POST['redirect'])) {
                 $json = json_decode($_POST['redirect'], true);
-                self::showArray($json);
-//                $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
-                echo '<br>';
+//                self::showArray($json);
+                $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
+//                echo '<br>';
 //                echo 'here is the result of the operation: ' . $result . '<br>';
-                echo '<br>';
+//                echo '<br>';
             }
         }
         $list = AdminModel::getAllDanceGroups('list');
