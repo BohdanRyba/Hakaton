@@ -30,8 +30,6 @@ jQuery(function($) {
             data: 'id='+$danceGroupId,
             success: function(msg) {
                 var msg=JSON.parse(msg);
-
-                $totalInfoWrapper.attr('data-current-id', $danceGroupId);
                 //    Insert the info in respective blocks (in each of the SHOW INFO BLOCKS
                 $danceGroupNameInput.val(msg['dance_group_name']);
 
@@ -114,6 +112,7 @@ jQuery(function($) {
             $totalInfoWrapper.css('display', 'block').attr('data-visibility', 'block').attr('data-purpose', 'show').attr('data-id', $danceGroupId);// change attr and show block
             GetNewInfoAboutDancingGroup($danceGroupId, 'hide');// load new info
             propNameInput(true);
+            hideBtns();
 
         } else if ($totalInfoWrapper.attr('data-visibility')=='block') {//    IF it`s DISPLAY:BLOCK than check the purpose
 
@@ -130,7 +129,7 @@ jQuery(function($) {
                     GetNewInfoAboutDancingGroup($danceGroupId,'hide');// get new info
                     $totalInfoWrapper.attr('data-id', $danceGroupId);// change attr data-id
                     propNameInput(true);
-
+                    hideBtns();
                 }
 
             } else if ($totalInfoWrapper.attr('data-purpose')=='edit') {//    IF it`s EDIT than check data-id
@@ -147,6 +146,7 @@ jQuery(function($) {
 
                     clearOldInfo();
                     GetNewInfoAboutDancingGroup($danceGroupId, 'hide');
+                    hideAddInfoBlock();
                     propNameInput(true);// disable dance group name input
                     $totalInfoWrapper.attr('data-id', $danceGroupId);
                     hideAddInfoBlock();
@@ -168,6 +168,7 @@ jQuery(function($) {
             $totalInfoWrapper.css('display', 'block').attr('data-visibility', 'block').attr('data-purpose', 'edit').attr('data-id', $danceGroupId);// change attr and show block
             GetNewInfoAboutDancingGroup($danceGroupId);// load new info
             showAddInfoBlock();
+            showBtns();
 
         } else if ($totalInfoWrapper.attr('data-visibility')=='block') {//    IF it`s DISPLAY:BLOCK than check the purpose
 
@@ -288,7 +289,7 @@ jQuery(function($) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
-            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
+            a['dg-id']=$totalInfoWrapper.attr('data-id');
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -379,7 +380,7 @@ jQuery(function($) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
-            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
+            a['dg-id']=$totalInfoWrapper.attr('data-id');
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -448,7 +449,7 @@ jQuery(function($) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
-            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
+            a['dg-id']=$totalInfoWrapper.attr('data-id');
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -516,7 +517,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
-            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
+            a['dg-id']=$totalInfoWrapper.attr('data-id');
             a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
