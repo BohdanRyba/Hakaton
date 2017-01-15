@@ -559,6 +559,6 @@
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?5"></script>
+<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?52"></script>
 </body>
 </html>
