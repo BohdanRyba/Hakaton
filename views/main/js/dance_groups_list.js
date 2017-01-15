@@ -9,6 +9,7 @@ jQuery(function($) {
         $danceGroupNameInput=$('#dance-group-name'),
         $saveInfoBtns=$('.send-info'),
         $modalBlock=$('#confirmDanceGroupDeletion'),
+        $body=$('body'),
         //SHOW INFO BLOCKS
         $danceProgramBlock=$('#dance-programs'),
         $ageCategoriesBlock=$('#age-categories'),
@@ -256,18 +257,42 @@ jQuery(function($) {
     $danceProgramBlock.on('click', 'button.btn-success.edit-button', function () {
         var $btn=$(this),
             $inputs=$btn.parents('.dp-info-wrapper').find('input');
-        $btn.toggleClass('not-disabled');
 
-        if ($btn.hasClass('not-disabled')) {
-            $inputs.each(function () {
-                $(this).prop('disabled', false);
+        $inputs.each(function () {
+            $(this).prop('disabled', false);
+        });
+        $inputs.eq(0).trigger('focus');
+
+        $btn.attr('data-status', 'working');
+        $body.trigger('danceProgramWantsEdition');
+
+        $body.on('danceProgramWantsEdition', function () {
+            $body.on('click', function () {
+                var $btn=$danceProgramBlock.find('[data-status="working"]'),
+                    $inputs=$btn.parents('.dp-info-wrapper').find('input'),
+                    focusStatus=[];
+
+                for (var i=0; i<$inputs.length; i++) {
+                    focusStatus.push($inputs.eq(i).is(':focus'));
+                }
+
+                function find(array, value) {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i] == value) return true;
+                    }
+                    return false;
+                }
+
+                if (find(focusStatus, true)==false) {
+                    $inputs.each(function () {
+                        $(this).prop('disabled', true);
+                        $btn.attr('data-status', '');
+                        $body.off('danceProgramWantsEdition');
+                    });
+                }
             });
-            $inputs.eq(0).trigger('focus');
-        } else {
-            $inputs.each(function () {
-                $(this).prop('disabled', true);
-            })
-        }
+        });
+
     });
     //редагування інформації
 
@@ -325,6 +350,7 @@ jQuery(function($) {
     });
     //ФУНКЦІЇ
     //редагування інформації
+
     $ageCategoriesBlock.on('click', 'button.btn-success.edit-button', function () {
         var $btn=$(this),
             $inputs=$btn.parents('.ag-info-wrapper').find('input');
@@ -333,36 +359,38 @@ jQuery(function($) {
             $(this).prop('disabled', false);
         });
         $inputs.eq(0).trigger('focus');
-
-
-        // $btn.toggleClass('not-disabled');
-        //
-        // if ($btn.hasClass('not-disabled')) {
-        //     $inputs.each(function () {
-        //         $(this).prop('disabled', false);
-        //     });
-        //     $inputs.eq(0).trigger('focus');
-        // } else {
-        //     $inputs.each(function () {
-        //         $(this).prop('disabled', true);
-        //     })
-        // }
-        // function checkFocus(inputs) {
-        //     for (var i=0; i<$inputs.length; i++) {
-        //         if ($inputs.eq(i).is(':focus')){
-        //             console.log($(this)+' is on focus');
-        //             // return true;
-        //         } else {
-        //             // return false;
-        //             console.log($(this)+' is NOT on focus');
-        //         }
-        //     }
-        // }
-        // checkFocus($inputs);
+        $btn.attr('data-status', 'working');
+        $body.trigger('ageCategoriesWantEdition');
         // //редагування інформації
 
     });
+    $body.on('ageCategoriesWantEdition', function () {
+        $body.on('click', function () {
+            console.log('control click!');
+            var $btn=$ageCategoriesBlock.find('[data-status="working"]'),
+                $inputs=$btn.parents('.ag-info-wrapper').find('input'),
+                focusStatus=[];
 
+            for (var i=0; i<$inputs.length; i++) {
+                focusStatus.push($inputs.eq(i).is(':focus'));
+            }
+
+            function find(array, value) {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i] == value) return true;
+                }
+                return false;
+            }
+
+            if (find(focusStatus, true)==false) {
+                $inputs.each(function () {
+                   $(this).prop('disabled', true);
+                    $btn.attr('data-status', '');
+                    $body.off('ageCategoriesWantEdition');
+                });
+            }
+        });
+    });
     //видалення інформації
     $ageCategoriesBlock.on('click', 'button.btn-danger.delete-button', function () {
         var $btn = $(this);
@@ -417,18 +445,40 @@ jQuery(function($) {
     $nominationsBlock.on('click', 'button.btn-success.edit-button', function () {
         var $btn=$(this),
             $inputs=$btn.parents('.nm-info-wrapper').find('input');
-        $btn.toggleClass('not-disabled');
 
-        if ($btn.hasClass('not-disabled')) {
-            $inputs.each(function () {
-                $(this).prop('disabled', false);
-            });
-            $inputs.eq(0).trigger('focus');
-        } else {
-            $inputs.each(function () {
-                $(this).prop('disabled', true);
-            })
-        }
+        $inputs.each(function () {
+            $(this).prop('disabled', false);
+        });
+        $inputs.eq(0).trigger('focus');
+        $btn.attr('data-status', 'working');
+        $body.trigger('nominationsWantEdition');
+
+    });
+    $body.on('nominationsWantEdition', function () {
+        $body.on('click', function () {
+            var $btn=$nominationsBlock.find('[data-status="working"]'),
+                $inputs=$btn.parents('.nm-info-wrapper').find('input'),
+                focusStatus=[];
+
+            for (var i=0; i<$inputs.length; i++) {
+                focusStatus.push($inputs.eq(i).is(':focus'));
+            }
+
+            function find(array, value) {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i] == value) return true;
+                }
+                return false;
+            }
+
+            if (find(focusStatus, true)==false) {
+                $inputs.each(function () {
+                    $(this).prop('disabled', true);
+                    $btn.attr('data-status', '');
+                    $body.off('nominationsWantEdition');
+                });
+            }
+        });
     });
     //редагування інформації
 
@@ -485,18 +535,40 @@ jQuery(function($) {
     $leaguesBlock.on('click', 'button.btn-success.edit-button', function () {
         var $btn=$(this),
             $inputs=$btn.parents('.lg-info-wrapper').find('input');
-        $btn.toggleClass('not-disabled');
 
-        if ($btn.hasClass('not-disabled')) {
-            $inputs.each(function () {
-                $(this).prop('disabled', false);
-            });
-            $inputs.eq(0).trigger('focus');
-        } else {
-            $inputs.each(function () {
-                $(this).prop('disabled', true);
-            })
-        }
+        $inputs.each(function () {
+            $(this).prop('disabled', false);
+        });
+        $inputs.eq(0).trigger('focus');
+        $btn.attr('data-status', 'working');
+        $body.trigger('leaguesWantEdition');
+
+    });
+    $body.on('leaguesWantEdition', function () {
+        $body.on('click', function () {
+            var $btn=$leaguesBlock.find('[data-status="working"]'),
+                $inputs=$btn.parents('.lg-info-wrapper').find('input'),
+                focusStatus=[];
+
+            for (var i=0; i<$inputs.length; i++) {
+                focusStatus.push($inputs.eq(i).is(':focus'));
+            }
+
+            function find(array, value) {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i] == value) return true;
+                }
+                return false;
+            }
+
+            if (find(focusStatus, true)==false) {
+                $inputs.each(function () {
+                    $(this).prop('disabled', true);
+                    $btn.attr('data-status', '');
+                    $body.off('leaguesWantEdition');
+                });
+            }
+        });
     });
     //редагування інформації
 
