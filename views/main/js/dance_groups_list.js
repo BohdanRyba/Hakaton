@@ -23,72 +23,17 @@ jQuery(function($) {
         $danceGroupNameInput.val('');
     }
 
-    function GetNewInfoAboutDancingGroup($danceGroupId) {
-
-        // $danceProgramBlock.find('.see-info').children().eq(0).append('<div class="dp-info-wrapper">'+
-        //     '<span class="text-bold count"></span>'+
-        //     '<div class="btn-group-sm flat" role="group">'+
-        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-        //     '</div>'+
-        //     '<label>Название:'+
-        //     '<input disabled type="text" name="dance-program-name" class="input-standard">'+
-        //     '</label>'+
-        //     '</div>');
-        // $ageCategoriesBlock.find('.see-info').children().eq(0).append('<div class="ag-info-wrapper">'+
-        //     '<span class="text-bold count"></span>'+
-        //     '<div class="btn-group-sm flat" role="group">'+
-        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-        //     '</div>'+
-        //     '<label>Название:'+
-        //     '<input disabled type="text" name="age-category-name" class="input-standard">'+
-        //     '</label>'+
-        //     '<label>От:'+
-        //     '<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code">'+
-        //     '</label>'+
-        //     '<label>До:'+
-        //     '<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code">'+
-        //     '</label>'+
-        //     '</div>');
-        // $nominationsBlock.find('.see-info').children().eq(0).append('<div class="nm-info-wrapper">'+
-        //     '<span class="text-bold count"></span>'+
-        //     '<div class="btn-group-sm flat" role="group">'+
-        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-        //     '</div>'+
-        //     '<label>Название:'+
-        //     '<input disabled type="text" name="nomination-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
-        //     '</label>'+
-        //     '<label>Кол-во учасников:'+
-        //     '<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
-        //     '</label>'+
-        //     '</div>');
-        // $leaguesBlock.find('.see-info').children().eq(0).append('<div class="lg-info-wrapper">'+
-        //     '<span class="text-bold count"></span>'+
-        //     '<div class="btn-group-sm flat" role="group">'+
-        //     '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button>'+
-        //     '<button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-        //     '</div>'+
-        //     '<label>Название:'+
-        //     '<input disabled type="text" name="league-name" class="input-standard" value="sakjdsafahkbjhabfsahb">'+
-        //     '</label>'+
-        //     '<label>Лет выступлений:'+
-        //     '<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="sakjdsafahkbjhabfsahb">'+
-        //     '</label>'+
-        //     '</div>');
-        //$danceGroupNameInput.val('Танц группа'+$danceGroupId);
-
+    function GetNewInfoAboutDancingGroup($danceGroupId, whatToDoWithBtns) {
         $.ajax({
             type:"POST",
             url:'ajax_GetNewInfoAboutDancingGroup',
             data: 'id='+$danceGroupId,
             success: function(msg) {
                 var msg=JSON.parse(msg);
-                console.log(msg);
+
+                $totalInfoWrapper.attr('data-current-id', $danceGroupId);
                 //    Insert the info in respective blocks (in each of the SHOW INFO BLOCKS
                 $danceGroupNameInput.val(msg['dance_group_name']);
-                console.log(msg['d_league']);
 
                 for (let key in msg['d_program']) {
                     $form1.append('<div class="dp-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+key+'"></label></div>');
@@ -105,6 +50,10 @@ jQuery(function($) {
                     $form4.append('<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+key+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+msg['d_league'][key]['league-rule-participation-years']+'"></label></div>');
                 }
 
+                if (whatToDoWithBtns=='hide') {
+                    hideBtns();
+                }
+                totalNumeration();
             },
             error: function (msg) {
                 console.log('ajax GetNewInfoAboutDancingGroup has failed!');
@@ -163,8 +112,7 @@ jQuery(function($) {
         if ($totalInfoWrapper.attr('data-visibility')=='none') { //    if it`s display:none than the block is shown, new info is loaded, attributes are changed
 
             $totalInfoWrapper.css('display', 'block').attr('data-visibility', 'block').attr('data-purpose', 'show').attr('data-id', $danceGroupId);// change attr and show block
-            GetNewInfoAboutDancingGroup($danceGroupId);// load new info
-            hideBtns();
+            GetNewInfoAboutDancingGroup($danceGroupId, 'hide');// load new info
             propNameInput(true);
 
         } else if ($totalInfoWrapper.attr('data-visibility')=='block') {//    IF it`s DISPLAY:BLOCK than check the purpose
@@ -179,9 +127,8 @@ jQuery(function($) {
                 } else { //     if id hasn`t coincided
 
                     clearOldInfo();// clear old info
-                    GetNewInfoAboutDancingGroup($danceGroupId);// get new info
+                    GetNewInfoAboutDancingGroup($danceGroupId,'hide');// get new info
                     $totalInfoWrapper.attr('data-id', $danceGroupId);// change attr data-id
-                    hideBtns();
                     propNameInput(true);
 
                 }
@@ -199,9 +146,8 @@ jQuery(function($) {
                 } else { //     if id hasn`t coincided
 
                     clearOldInfo();
-                    GetNewInfoAboutDancingGroup($danceGroupId);
+                    GetNewInfoAboutDancingGroup($danceGroupId, 'hide');
                     propNameInput(true);// disable dance group name input
-                    hideBtns();
                     $totalInfoWrapper.attr('data-id', $danceGroupId);
                     hideAddInfoBlock();
 
@@ -342,6 +288,7 @@ jQuery(function($) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
+            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -349,7 +296,7 @@ jQuery(function($) {
             a=JSON.stringify(a);
             $(this).next().val(a);
             $sendFormToServer.val(a);
-            console.log(a);
+            // console.log(a);
         } else {
             return false;
         }
@@ -432,6 +379,7 @@ jQuery(function($) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
+            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -500,6 +448,7 @@ jQuery(function($) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
+            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
             a['age-categories']=createObj ($agShowForm, '.ag-info-wrapper');
@@ -567,6 +516,7 @@ jQuery(function($) {
         if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
+            a['dg-id']=$totalInfoWrapper.attr('data-current-id');
             a['redirect']='admin/dancing_groups/dance_list';
             a['leagues']=createObj ($lgShowForm, '.lg-info-wrapper');
             a['programs']=createObj ($dpShowForm, '.dp-info-wrapper');
@@ -598,8 +548,6 @@ jQuery(function($) {
         return obj;
     }
 
-
-
     //=========================<Save new info & Check duplicated info>===============
     var $saveNewInfoBtn=$('.add-dance-group-info'),
         activeItem;
@@ -608,7 +556,6 @@ jQuery(function($) {
         for (var i=0; i<$menuItems.length; i++) {
             if ($menuItems.eq(i).hasClass('active')) {
                 activeItem=$menuItems[i].id;
-                console.log(activeItem);
                 break;
             }
         }
@@ -617,26 +564,27 @@ jQuery(function($) {
                 var $dp=$('#form-add-dance-program').serializeArray(),
                     dpName=$dp[0].value,
                     newDanceProgramsInfo={},
-                    permission= false,
+                    permission= true,
                     $blocksToCheck=$form1.children(),
                     dpInfo='<div class="dp-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+dpName+'"></label></div>';
 
                 newDanceProgramsInfo['name']=dpName;
+                if ($blocksToCheck.length>0) {
+                    for (var i=0; i<$blocksToCheck.length; i++) {
+                        let $nameToCheck=$blocksToCheck.eq(i).find('[name="dance-program-name"]').val();
 
-                for (var i=0; i<$blocksToCheck.length; i++) {
-                    let $nameToCheck=$blocksToCheck.eq(i).find('[name="dance-program-name"]').val();
-
-                    if (newDanceProgramsInfo['name']==$nameToCheck) {
-                        alert('имя уже есть');
-                        permission= false;
-                        break;
-                    } else {
-                        permission=true;
+                        if (newDanceProgramsInfo['name']==$nameToCheck) {
+                            alert('имя уже есть');
+                            permission= false;
+                            break;
+                        } else {
+                            permission=true;
+                        }
                     }
                 }
 
                 if (permission) {
-                    $dpShowForm.append(dpInfo);
+                    $form1.append(dpInfo);
                     dpNumeration();
                     $dpAddForm.find('input').each(function(){
                         $(this).val('');
@@ -651,7 +599,7 @@ jQuery(function($) {
                     acMinAge=$ac[1].value,
                     acMaxAge=$ac[2].value,
                     newAgeCategoryInfo={},
-                    permission= false,
+                    permission= true,
                     $blocksToCheck=$form2.children(),
                     acInfo='<div class="ag-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+acName+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+acMinAge+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+acMaxAge+'"></label></div>';
 
@@ -659,26 +607,28 @@ jQuery(function($) {
                 newAgeCategoryInfo['minAge']=acMinAge;
                 newAgeCategoryInfo['maxAge']=acMaxAge;
 
-                for (var i=0; i<$blocksToCheck.length; i++) {
-                    let $nameToCheck=$blocksToCheck.eq(i).find('[name="age-category-name"]').val(),
-                        $minToCheck=$blocksToCheck.eq(i).find('[name="age-category-rule-age-min"]').val(),
-                        $maxToCheck=$blocksToCheck.eq(i).find('[name="age-category-rule-age-max"]').val();
+                if ($blocksToCheck.length>0) {
+                    for (var i=0; i<$blocksToCheck.length; i++) {
+                        let $nameToCheck=$blocksToCheck.eq(i).find('[name="age-category-name"]').val(),
+                            $minToCheck=$blocksToCheck.eq(i).find('[name="age-category-rule-age-min"]').val(),
+                            $maxToCheck=$blocksToCheck.eq(i).find('[name="age-category-rule-age-max"]').val();
 
-                    if (newAgeCategoryInfo['minAge']==$minToCheck&&newAgeCategoryInfo['maxAge']==$maxToCheck&&newAgeCategoryInfo['name']==$nameToCheck) {
-                        alert('такие параметры уже есть');
-                        permission= false;
-                        break;
-                    } else if (newAgeCategoryInfo['name']==$nameToCheck) {
-                        alert('имя уже есть');
-                        permission= false;
-                        break;
-                    } else {
-                        permission=true;
+                        if (newAgeCategoryInfo['minAge']==$minToCheck&&newAgeCategoryInfo['maxAge']==$maxToCheck&&newAgeCategoryInfo['name']==$nameToCheck) {
+                            alert('такие параметры уже есть');
+                            permission= false;
+                            break;
+                        } else if (newAgeCategoryInfo['name']==$nameToCheck) {
+                            alert('имя уже есть');
+                            permission= false;
+                            break;
+                        } else {
+                            permission=true;
+                        }
                     }
                 }
 
                 if (permission) {
-                $agShowForm.append(acInfo);
+                $form2.append(acInfo);
                 agNumeration();
                 $agAddForm.find('input').each(function(){
                     $(this).val('');
@@ -691,37 +641,40 @@ jQuery(function($) {
                     nmName=$nm[0].value,
                     nmNumber=$nm[1].value,
                     newNominationsInfo={},
-                    permission= false,
+                    permission= true,
                     $blocksToCheck=$form3.children(),
                     nmInfo='<div class="nm-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+nmName+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+nmNumber+'"></label></div>';
 
                 newNominationsInfo['name']=nmName;
                 newNominationsInfo['number']=nmNumber;
 
-                for (var i=0; i<$blocksToCheck.length; i++) {
-                    let $nameToCheck=$blocksToCheck.eq(i).find('[name="nomination-name"]').val(),
-                        $ruleToCheck=$blocksToCheck.eq(i).find('[name="nomination-rule-participants-number-min"]').val();
+                if ($blocksToCheck.length>0) {
+                    for (var i=0; i<$blocksToCheck.length; i++) {
+                        let $nameToCheck=$blocksToCheck.eq(i).find('[name="nomination-name"]').val(),
+                            $ruleToCheck=$blocksToCheck.eq(i).find('[name="nomination-rule-participants-number-min"]').val();
 
-                    if (newNominationsInfo['number']==$ruleToCheck&&newNominationsInfo['name']==$nameToCheck) {
-                        alert('правило и имя уже есть');
-                        permission= false;
-                        break;
-                    }
-                    // else if (newNominationsInfo['number']==$ruleToCheck) {
-                    //     alert('правило уже есть');
-                    //     permission= false;
-                    //     break;
-                    // }
-                    else if (newNominationsInfo['name']==$nameToCheck) {
-                        alert('имя уже есть');
-                        permission= false;
-                        break;
-                    } else {
-                        permission=true;
+                        if (newNominationsInfo['number']==$ruleToCheck&&newNominationsInfo['name']==$nameToCheck) {
+                            alert('правило и имя уже есть');
+                            permission= false;
+                            break;
+                        }
+                        // else if (newNominationsInfo['number']==$ruleToCheck) {
+                        //     alert('правило уже есть');
+                        //     permission= false;
+                        //     break;
+                        // }
+                        else if (newNominationsInfo['name']==$nameToCheck) {
+                            alert('имя уже есть');
+                            permission= false;
+                            break;
+                        } else {
+                            permission=true;
+                        }
                     }
                 }
+
                 if (permission) {
-                    $nmShowForm.append(nmInfo);
+                    $form3.append(nmInfo);
                     nmNumeration();
                     $nmAddForm.find('input').each(function(){
                         $(this).val('');
@@ -735,38 +688,40 @@ jQuery(function($) {
                     lgName=$lg[0].value,
                     lgNumber=$lg[1].value,
                     newLeagueInfo={},
-                    permission= false,
+                    permission= true,
                     $blocksToCheck=$form4.children(),
                     lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label></div>';
 
                 newLeagueInfo['name']=lgName;
                 newLeagueInfo['yearRules']=lgNumber;
 
-                for (var i=0; i<$blocksToCheck.length; i++) {
-                    let $nameToCheck=$blocksToCheck.eq(i).find('[name="league-name"]').val(),
-                        $ruleToCheck=$blocksToCheck.eq(i).find('[name="league-rule-participation-years"]').val();
+                if ($blocksToCheck.length>0) {
+                    for (var i=0; i<$blocksToCheck.length; i++) {
+                        let $nameToCheck=$blocksToCheck.eq(i).find('[name="league-name"]').val(),
+                            $ruleToCheck=$blocksToCheck.eq(i).find('[name="league-rule-participation-years"]').val();
 
-                    if (newLeagueInfo['yearRules']==$ruleToCheck&&newLeagueInfo['name']==$nameToCheck) {
-                        alert('правило и имя уже есть');
-                        permission= false;
-                        break;
-                    }
-                    // else if (newLeagueInfo['yearRules']==$ruleToCheck) {
-                    //     alert('правило уже есть');
-                    //     permission= false;
-                    //     break;
-                    // }
-                    else if (newLeagueInfo['name']==$nameToCheck) {
-                        alert('имя уже есть');
-                        permission= false;
-                        break;
-                    } else {
-                        permission=true;
+                        if (newLeagueInfo['yearRules']==$ruleToCheck&&newLeagueInfo['name']==$nameToCheck) {
+                            alert('правило и имя уже есть');
+                            permission= false;
+                            break;
+                        }
+                        // else if (newLeagueInfo['yearRules']==$ruleToCheck) {
+                        //     alert('правило уже есть');
+                        //     permission= false;
+                        //     break;
+                        // }
+                        else if (newLeagueInfo['name']==$nameToCheck) {
+                            alert('имя уже есть');
+                            permission= false;
+                            break;
+                        } else {
+                            permission=true;
+                        }
                     }
                 }
 
                 if (permission) {
-                    $lgShowForm.append(lgInfo);
+                    $form4.append(lgInfo);
                     lgNumeration();
                     $lgAddForm.find('input').each(function(){
                         $(this).val('');
