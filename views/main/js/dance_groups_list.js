@@ -8,6 +8,7 @@ jQuery(function($) {
         $editInfoBtn=$('.edit-info-about-dance-group'),
         $danceGroupNameInput=$('#dance-group-name'),
         $saveInfoBtns=$('.send-info'),
+        $modalBlock=$('#confirmDanceGroupDeletion'),
         //SHOW INFO BLOCKS
         $danceProgramBlock=$('#dance-programs'),
         $ageCategoriesBlock=$('#age-categories'),
@@ -732,5 +733,16 @@ jQuery(function($) {
         }
     });
     //=========================</Save new info & Check duplicated info>===============
+
+    //=========================<Delete dance group>===============
+    $('.delete-dance-group').on('click', function () {
+        var $modalBody=$modalBlock.find('.modal-body'),
+            $li=$(this).parents('li');
+        $modalBody.find('p').remove();
+        $('#dancing-group-deletion-id').val($li.attr('data-id-dancing-group'));
+        $modalBody.prepend('<p>Вы действительно хотите удалить танцевальную групу <b>'+ $li.find('.dance-group-name').text()+'</b> ?</p>');
+    });
+
+    //=========================</Delete dance group>===============
 
 });
