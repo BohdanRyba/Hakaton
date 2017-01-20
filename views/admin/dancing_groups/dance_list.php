@@ -176,7 +176,12 @@
 
 
     <div class="content-wrapper">
-        <section class="content-header"></section>
+        <section class="content-header">
+            <?php if (isset($this->message)) {
+                echo $this->message;
+            }
+            ?>
+        </section>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -582,6 +587,7 @@
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
+
 <script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?6"></script>
 </body>
 </html>
