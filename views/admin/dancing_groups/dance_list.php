@@ -20,7 +20,7 @@
     -->
     <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/dance_groups_list.less">
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/dance_groups_list.less?1">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]-->
@@ -176,7 +176,12 @@
 
 
     <div class="content-wrapper">
-        <section class="content-header"></section>
+        <section class="content-header">
+            <?php if (isset($this->message)) {
+                echo $this->message;
+            }
+            ?>
+        </section>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -184,7 +189,7 @@
 
 
 
-                    <div id="total-dance-group-info-wrapper">
+                    <div id="total-dance-group-info-wrapper" data-visibility="none">
                         <div class="col-xs-12 col-sm-9 my-float-left">
                             <div class="container box box-primary flat">
 
@@ -259,8 +264,8 @@
                                                     <!--</label>-->
                                                     <!--</div>-->
                                                 </form>
-                                                <form action="add_dance_program" method="POST">
-                                                    <!--<input type="submit" class="send-info" data-state="disabled" value="отправить">-->
+                                                <form action="" method="POST">
+                                                    <input type="submit" class="send-info" data-state="disabled" value="отправить">
                                                     <input type="hidden" name="redirect">
                                                 </form>
                                             </div>
@@ -317,8 +322,8 @@
                                                     <!--</label>-->
                                                     <!--</div>-->
                                                 </form>
-                                                <form action="add_dance_program" method="POST">
-                                                    <!--<input type="submit" class="send-info" data-state="disabled" value="отправить">-->
+                                                <form action="" method="POST">
+                                                    <input type="submit" class="send-info" data-state="disabled" value="отправить">
                                                     <input type="hidden" name="redirect">
                                                 </form>
                                             </div>
@@ -368,8 +373,8 @@
                                                     <!--</label>-->
                                                     <!--</div>-->
                                                 </form>
-                                                <form action="add_dance_program" method="POST">
-                                                    <!--<input type="submit" class="send-info" data-state="disabled" value="отправить">-->
+                                                <form action="" method="POST">
+                                                    <input type="submit" class="send-info" data-state="disabled" value="отправить">
                                                     <input type="hidden" name="redirect">
                                                 </form>
                                             </div>
@@ -419,8 +424,8 @@
                                                     <!--</label>-->
                                                     <!--</div>-->
                                                 </form>
-                                                <form action="add_dance_program" method="POST">
-                                                    <!--<input type="submit" name="submit" class="send-info" data-state="disabled" value="отправить">-->
+                                                <form action="" method="POST">
+                                                    <input type="submit" name="submit" class="send-info" data-state="disabled" value="отправить">
                                                     <input type="hidden" name="redirect" id="send-dg-to-server">
                                                 </form>
                                             </div>
@@ -432,6 +437,33 @@
                         </div>
                     </div>
 
+                    <!-- Modal -->
+                    <div id="confirmDanceGroupDeletion" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Подтверждение удаления</h4>
+                                </div>
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="pwd">Пароль подтверждения действия:</label>
+                                            <input type="password" class="form-control" name="deletion-confirmation-password" id="pwd">
+                                            <input type="hidden" name="dancing-group-id" id="dancing-group-deletion-id">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-danger" name="deletion-confirmation-btn" value="Удалить!">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
 
                     <div class="col-xs-12 col-sm-3 my-float-right">
                         <div class="container box box-solid box-primary flat">
@@ -443,44 +475,16 @@
                             <div class="row">
                                 <div class="">
                                     <ul class="dancing-group-list-wrapper">
-
                                         <?php foreach ($list as $value): ?>
-                                            <li>
-                                                <div class="btn-group-xs button-wrapper">
-                                                    <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                    <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                                                </div>
-                                                <p class="dance-group-name"><?=$value['dance_group_name'];?></p>
-                                            </li>
+                                        <li data-id-dancing-group="<?=$value['id'];?>">
+                                            <div class="btn-group-xs button-wrapper">
+                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                                                <button type="button" data-toggle="modal" data-target="#confirmDanceGroupDeletion" class="delete-dance-group btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                            </div>
+                                            <p class="dance-group-name"><?=$value['dance_group_name'];?></p>
+                                        </li>
                                         <?php endforeach; ?>
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы sdcssfsdfsDFSFS</p>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы</p>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы</p>-->
-<!--                                        </li>-->
-<!--                                        <li>-->
-<!--                                            <div class="btn-group-xs button-wrapper">-->
-<!--                                                <button type="button" class="btn btn-info btn-flat"><i class="fa fa-info"></i></button>-->
-<!--                                                <button type="button" class="btn btn-success btn-flat"><i class="fa fa-edit"></i></button>-->
-<!--                                            </div>-->
-<!--                                            <p class="dance-group-name">название танц группы</p>-->
-<!--                                        </li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -583,6 +587,7 @@
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js"></script>
+
+<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?6"></script>
 </body>
 </html>

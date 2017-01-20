@@ -226,24 +226,26 @@ class AdminController
 
     public function actionDancingList()
     {
-//        echo 'Hello from dancing list!';
-
-        $db = Db::getConnection(Db::ADMIN_BASE);
-        $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
-        $result = $db->query($query);
-        $list = array();
-        $i = 0;
-        while ($row = $result->fetch_assoc()) {
-            $list[$i]['id'] = $row['id'];
-            $list[$i]['dance_group_name'] = $row['dance_group_name'];
-            $list[$i]['d_program'] = $row['d_program'];
-            $list[$i]['d_age_category'] = $row['d_age_category'];
-            $list[$i]['d_nomination'] = $row['d_nomination'];
-            $list[$i]['d_league'] = $row['d_league'];
-            $i++;
+        if(!empty($_POST)){
+            if (isset($_POST) && !empty($_POST['redirect'])) {
+                $json = json_decode($_POST['redirect'], true);
+//                self::showArray($json);
+                $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
+//                echo '<br>';
+//                echo 'here is the result of the operation: ' . $result . '<br>';
+//                echo '<br>';
+            } elseif($_POST['deletion-confirmation-btn'] == 'Удалить!' && !empty($_POST['dancing-group-id'])){
+                self::showArray($_POST);
+                /**
+                 *Do the password confirmation;
+                 * */
+//                $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
+//                if($result){
+//                    echo "SUCCESS!";
+//                }
+            }
         }
-
-        $db->close();
+        $list = AdminModel::getAllDanceGroups('list');
 //
 //        self::showArray($list);
 //
@@ -386,5 +388,17 @@ class AdminController
             $show_results = implode("\n", $array_with_asked_categories);
             echo $show_results;
         }
+    }
+
+    public function actionAjaxGetNewInfoAboutDancingGroup(){
+        if(!empty($_POST['id'])){
+            $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
+            echo json_encode($dance_group);
+        }
+        return true;
+    }
+
+    public function actionPickCategoriesForEvent(){
+        require_once ('views/admin/option_event/pick_categories_for_event.php');
     }
 }

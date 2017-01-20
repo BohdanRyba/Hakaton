@@ -225,8 +225,9 @@ class AdminModel
         return $eventsList;
     }
 
-    public static function GetCoachesById(){
-        $coachList=[];
+    public static function GetCoachesById()
+    {
+        $coachList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `coaches` WHERE club_id = {$_SESSION['id']}";
             $result = $db->query($query);
@@ -431,28 +432,42 @@ class AdminModel
         return mysqli_affected_rows($link);
     }
 
-    static function saveDanceProgram($json)
+    static function saveDanceProgram($json, $list = '')
     {
         $result = '';
         $message = '';
         $array_for_record = array();
+        $action = '';
+        $action_verbs = [];
+        $where = '';
         if (isset($json) && !empty($json)) {
             if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-                $result = $db->query("INSERT INTO `dance_groups`
+                if ($list == 'update_list') {
+                    $action = 'UPDATE';
+                    $action_verb[0] = 'обновлена';
+                    $action_verb[1] = 'обновить';
+                    $where = 'WHERE `id` = ' . $json['dg-id'];
+                } elseif ($list == '') {
+                    $action = 'INSERT INTO';
+                    $action_verb[0] = 'сохранена';
+                    $action_verb[1] = 'сохранить';
+                }
+                $result = $db->query("{$action} `dance_groups`
                         SET `dance_group_name` = '{$json['dance-group-name']}',
                             `d_program` = '" . serialize($json['programs']) . "',
                             `d_age_category` = '" . serialize($json['age-categories']) . "',
                             `d_nomination` = '" . serialize($json['nominations']) . "',
-                            `d_league` = '" . serialize($json['leagues']) . "'");
+                            `d_league` = '" . serialize($json['leagues']) . "' 
+                            {$where}");
                 if ($result == true) {
                     $message = json_encode([
                         'status' => 'success',
-                        'message' => "Танцевальная программа \"{$json['dance-group-name']}\" успешно сохранена!"
+                        'message' => "Танцевальная группа \"{$json['dance-group-name']}\" успешно {$action_verb[0]}!"
                     ]);
                 } elseif ($result == false) {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Танцевальную программу \"{$json['dance-group-name']}\" сохранить не удалось!"
+                        'message' => "Танцевальную группу \"{$json['dance-group-name']}\" {$action_verb[1]} не удалось!"
                     ]);
                 }
             } else {
@@ -462,14 +477,17 @@ class AdminModel
                 ]);
             }
         }
+
         self::saveMessage($message);
         return $result;
     }
 
-    static function getAllDanceGroups()
+    static function getAllDanceGroups($list = '')
     {
-        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+        $danceProgramList = array();
+        if ($list == 'list') {
+            $db = Db::getConnection(Db::ADMIN_BASE);
+            $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
             $result = $db->query($query);
 
             $i = 0;
@@ -482,9 +500,26 @@ class AdminModel
                 $danceProgramList[$i]['d_league'] = $row['d_league'];
                 $i++;
             }
-            $db->close();
 
-        };
+        } elseif ($list == '') {
+            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+                $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
+                $result = $db->query($query);
+
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $danceProgramList[$i]['id'] = $row['id'];
+                    $danceProgramList[$i]['dance_group_name'] = $row['dance_group_name'];
+                    $danceProgramList[$i]['d_program'] = $row['d_program'];
+                    $danceProgramList[$i]['d_age_category'] = $row['d_age_category'];
+                    $danceProgramList[$i]['d_nomination'] = $row['d_nomination'];
+                    $danceProgramList[$i]['d_league'] = $row['d_league'];
+                    $i++;
+                }
+
+            };
+        }
+        $db->close();
 
         return $danceProgramList;
     }
@@ -619,7 +654,8 @@ class AdminModel
         $db->close();
     }
 
-    public static function getCategoryParametersByParameter($parameter)
+    public
+    static function getCategoryParametersByParameter($parameter)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
@@ -632,7 +668,8 @@ class AdminModel
         $db->close();
     }
 
-    public static function getCategoriesByName($searching_array)
+    public
+    static function getCategoriesByName($searching_array)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
@@ -662,7 +699,7 @@ class AdminModel
 
     }
 
-    public static function editDanceCategories($edit_array)
+    static function editDanceCategories($edit_array)
     {
         $information_array = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -692,6 +729,17 @@ class AdminModel
                 }
             }
             return $information_array;
+        }
+        $db->close();
+    }
+
+    static function deleteTheDanceGroup($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("DELETE FROM `dance_groups` 
+                                          WHERE `id` = {$id}
+                                          ");
+            return $result;
         }
         $db->close();
     }
