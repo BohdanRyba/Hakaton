@@ -699,7 +699,6 @@ class AdminModel
 
     }
 
-    public
     static function editDanceCategories($edit_array)
     {
         $information_array = [];
@@ -730,6 +729,17 @@ class AdminModel
                 }
             }
             return $information_array;
+        }
+        $db->close();
+    }
+
+    static function deleteTheDanceGroup($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("DELETE FROM `dance_groups` 
+                                          WHERE `id` = {$id}
+                                          ");
+            return $result;
         }
         $db->close();
     }

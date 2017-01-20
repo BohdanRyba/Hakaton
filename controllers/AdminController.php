@@ -234,6 +234,15 @@ class AdminController
 //                echo '<br>';
 //                echo 'here is the result of the operation: ' . $result . '<br>';
 //                echo '<br>';
+            } elseif($_POST['deletion-confirmation-btn'] == 'Удалить!' && !empty($_POST['dancing-group-id'])){
+                self::showArray($_POST);
+                /**
+                 *Do the password confirmation;
+                 * */
+//                $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
+//                if($result){
+//                    echo "SUCCESS!";
+//                }
             }
         }
         $list = AdminModel::getAllDanceGroups('list');
