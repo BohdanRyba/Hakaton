@@ -229,59 +229,38 @@ class AdminController
         if(!empty($_POST)){
             if (isset($_POST) && !empty($_POST['redirect'])) {
                 $json = json_decode($_POST['redirect'], true);
-//                self::showArray($json);
                 $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
-//                echo '<br>';
-//                echo 'here is the result of the operation: ' . $result . '<br>';
-//                echo '<br>';
-            } elseif($_POST['deletion-confirmation-btn'] == 'Удалить!' && !empty($_POST['dancing-group-id'])){
-                self::showArray($_POST);
-                /**
-                 *Do the password confirmation;
-                 * */
-//                $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
-//                if($result){
-//                    echo "SUCCESS!";
-//                }
+            } elseif($_POST['deletion-confirmation-btn'] == 'Удалить!' &&
+                            !empty($_POST['dancing-group-id']) &&
+                                !empty($_POST['deletion-confirmation-password'])){
+                if(AdminModel::getPermissionForDeletion()){
+                    $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
+                    if($result){
+                        $message = json_encode([
+                            'status' => 'success',
+                            'message' => "Удаление подтверждено, танцевальная группа удалена."
+                        ]);
+                    } else {
+                        $message = json_encode([
+                            'status' => 'warning',
+                            'message' => "Удаление подтверждено, но танцевальную группу удалить не удалось."
+                        ]);
+                    }
+                } else {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "В доступе отказано, танцевальная группа не удалена."
+                    ]);
+                }
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => "Вы не ввели пароль для подтверждения удаления танцеваной группы!"
+                ]);
             }
+            self::saveMessage($message);
         }
         $list = AdminModel::getAllDanceGroups('list');
-//
-//        self::showArray($list);
-//
-//        $dance_group_mane = '';
-//        $d_program = array();
-//        $d_age_category = array();
-//        $d_nomination = array();
-//        $d_league = array();
-//        foreach ($list as $value) {
-//            $dance_group_mane .= '<br>' . $value['dance_group_name'] . '<br>';
-//            array_push($d_program, unserialize($value['d_program']));
-//            array_push($d_age_category, unserialize($value['d_age_category']));
-//            array_push($d_nomination, unserialize($value['d_nomination']));
-//            array_push($d_league, unserialize($value['d_league']));
-//        }
-//
-//
-//        echo '<br> Dance group name: ';
-//        echo $dance_group_mane . '<br>';
-//
-//
-//        echo '<br> Program array: <br>';
-//        self::showArray($d_program);
-//        echo '<br><br>';
-//
-//        echo '<br> Age_category array: <br>';
-//        self::showArray($d_age_category);
-//        echo '<br><br>';
-//
-//        echo '<br> Nomination array: <br>';
-//        self::showArray($d_nomination);
-//        echo '<br><br>';
-//
-//        echo '<br> League array: <br>';
-//        self::showArray($d_league);
-//        echo '<br><br>';
 
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
@@ -290,7 +269,7 @@ class AdminController
         require_once 'views/admin/dancing_groups/dance_list.php';
         unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
         return true;
-    } //end this method!!!
+    }
 
     public function actionAddDancingGroups()
     {
@@ -399,6 +378,8 @@ class AdminController
     }
 
     public function actionPickCategoriesForEvent(){
+        $nav_content = $this->createNavContent(Router::$uri);
+        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms();
         require_once ('views/admin/option_event/pick_categories_for_event.php');
     }
 }

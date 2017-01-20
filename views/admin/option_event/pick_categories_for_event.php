@@ -198,7 +198,9 @@
                                                 <div class="col-xs-12">
                                                     <div class="row pick-dancing-groups-parameters-wrapper">
                                                         <ul id="pick-dancing-group-parameter-to-see">
-                                                            <li class="dancing-group-list-item-to-see" data-name="Хіп-хоп"><span class="numeration"></span>Хіп-хоп</li>
+                                                            <?php foreach ($dancing_programs as $program):?>
+                                                                <li class="dancing-group-list-item-to-see" data-name="<?=$program;?>"><span class="numeration"></span><?=$program;?></li>
+                                                            <?php endforeach;?>
                                                         </ul>
                                                     </div>
                                                 </div>

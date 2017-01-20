@@ -743,4 +743,67 @@ class AdminModel
         }
         $db->close();
     }
+
+    static function getUniqueDanceCategoryPrograms()
+    {
+        $dance_category_programs = [];
+        setcookie("get_id", "1");
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT `d_c_program` FROM `dance_categories` 
+                                          WHERE `org_id` = {$_COOKIE['get_id']}
+                                          ");
+            if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                    $dance_category_programs[] = $row['d_c_program'];
+                }
+                $tmp_array = array();
+                foreach ($dance_category_programs as $key => $program_name) {
+                    if ($key == 0) {
+                        $tmp_array[] = $program_name;
+                    } else {
+                        if (!in_array($program_name, $tmp_array)) {
+                            $tmp_array[] = $program_name;
+                        }
+                    }
+                }
+                return $tmp_array;
+            } else {
+                return ["result" => "FALSE..."];
+            }
+        }
+        $db->close();
+    }
+
+    static function getPermissionForDeletion()
+    {
+        $message = '';
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT `password` FROM `clubs` 
+                                          WHERE `club_shief` = '{$_SESSION['current_user']}'
+                                          ");
+            if ($result) {
+                $hashed_pass = $result->fetch_assoc();
+                if (!empty($_POST['deletion-confirmation-password'])) {
+                    if (md5($_POST['deletion-confirmation-password']) === $hashed_pass['password']) {
+                        return true;
+                    } else {
+                        $message = json_encode([
+                            'status' => 'error',
+                            'message' => "Неверный пароль! Пожалуйста, введите правильный пароль, чтобы подтвердить удаления танцевальной группы."
+                        ]);
+                        return false;
+                    }
+                } else {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Вы не ввели пароль для подтверждения удаления танцеваной группы"
+                    ]);
+                    return false;
+                }
+
+            }
+        }
+        $db->close();
+        self::saveMessage($message);
+    }
 }
