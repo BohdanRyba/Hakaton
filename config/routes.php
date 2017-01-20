@@ -14,6 +14,7 @@ return array(
     'events/page/([0-9]+)' => 'events/index/$1', // it should be completed...
     'events/single/([0-9]+)' => 'events/showSingleEvent/$1', // it should be completed...
     'admin/organizations/event_add' => 'admin/event_add',
+    'admin/organizations/pick_categories_for_event' => 'admin/pickCategoriesForEvent',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
     'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory',

@@ -397,4 +397,8 @@ class AdminController
         }
         return true;
     }
+
+    public function actionPickCategoriesForEvent(){
+        require_once ('views/admin/option_event/pick_categories_for_event.php');
+    }
 }
