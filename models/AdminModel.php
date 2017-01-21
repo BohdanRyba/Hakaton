@@ -459,12 +459,12 @@ class AdminModel
                             `d_nomination` = '" . serialize($json['nominations']) . "',
                             `d_league` = '" . serialize($json['leagues']) . "' 
                             {$where}");
-                if ($result == true) {
+                if ($result === true) {
                     $message = json_encode([
                         'status' => 'success',
                         'message' => "Танцевальная группа \"{$json['dance-group-name']}\" успешно {$action_verb[0]}!"
                     ]);
-                } elseif ($result == false) {
+                } elseif ($result === false) {
                     $message = json_encode([
                         'status' => 'error',
                         'message' => "Танцевальную группу \"{$json['dance-group-name']}\" {$action_verb[1]} не удалось!"

@@ -227,12 +227,14 @@ class AdminController
     public function actionDancingList()
     {
         if(!empty($_POST)){
+
             if (isset($_POST) && !empty($_POST['redirect'])) {
                 $json = json_decode($_POST['redirect'], true);
                 $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
             } elseif($_POST['deletion-confirmation-btn'] == 'Удалить!' &&
                             !empty($_POST['dancing-group-id']) &&
                                 !empty($_POST['deletion-confirmation-password'])){
+                $message = '';
                 if(AdminModel::getPermissionForDeletion()){
                     $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
                     if($result){
@@ -240,25 +242,28 @@ class AdminController
                             'status' => 'success',
                             'message' => "Удаление подтверждено, танцевальная группа удалена."
                         ]);
+                        self::saveMessage($message);
                     } else {
                         $message = json_encode([
                             'status' => 'warning',
                             'message' => "Удаление подтверждено, но танцевальную группу удалить не удалось."
                         ]);
+                        self::saveMessage($message);
                     }
                 } else {
                     $message = json_encode([
                         'status' => 'error',
                         'message' => "В доступе отказано, танцевальная группа не удалена."
                     ]);
+                    self::saveMessage($message);
                 }
             } else {
                 $message = json_encode([
                     'status' => 'error',
                     'message' => "Вы не ввели пароль для подтверждения удаления танцеваной группы!"
                 ]);
+                self::saveMessage($message);
             }
-            self::saveMessage($message);
         }
         $list = AdminModel::getAllDanceGroups('list');
 
