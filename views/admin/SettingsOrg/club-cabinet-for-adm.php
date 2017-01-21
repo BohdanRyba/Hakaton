@@ -1,6 +1,6 @@
 <div class="resize-remove">
     <div class="box-header with-border">
-        <h2 class="box-title">Кабинет клуба <span><?=$participant[0]['club_name']?>  </span></h2>
+        <h2 class="box-title">Кабинет клуба <span><?=$participant['club_name']?>  </span></h2>
         <div class="box-tools pull-right click-remove">
             <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
         </div>
@@ -9,16 +9,16 @@
 
         <div class="col-sm-4 box-avatar-cab">
             <img src="../../main/img/Button-power-icon.png">
-            <p class="telef">Контактный телефон:<span><?=$participant[0]['club_number']?> </span></p>
-            <p class="e-mail">Адрес електроной почты: <span><?=$participant[0]['club_mail']?> </span></p>
+            <p class="telef">Контактный телефон:<span><?=$participant['club_number']?> </span></p>
+            <p class="e-mail">Адрес електроной почты: <span><?=$participant['club_mail']?> </span></p>
         </div>
 
         <div class="col-sm-8 cabinet-info">
-            <p class="name">Название клуба: <span><?=$participant[0]['club_name']?></span></p>
-            <p>Страна: <span><?=$participant[0]['club_country']?></span></p>
-            <p>Город: <span><?=$participant[0]['club_city']?></span></p>
-                    <p>Cудья:<span><?=$participant[2]['coach_name']?></span></p>
-            <p class="name_help">Керівник:<span><?=$participant[0]['club_shief']?></span></p>
+            <p class="name">Название клуба: <span><?=$participant['club_name']?></span></p>
+            <p>Страна: <span><?=$participant['club_country']?></span></p>
+            <p>Город: <span><?=$participant['club_city']?></span></p>
+                    <p>Cудья:<span><?=$participant['coach_name']?></span></p>
+            <p class="name_help">Керівник:<span><?=$participant['club_shief']?></span></p>
         </div>
         <div class="col-sm-12">
 
@@ -30,6 +30,19 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+
+                            <tbody class="part_list">
+                            <?php foreach ($participant['club_part'] as $part){?>
+
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1">1</td>
+                                    <td><?=$part['first_name']?></td>
+                                    <td><?=$part['second_name']?></td>
+                                    <td><?=$part['third_name']?></td>
+                                    <td><?=$part['birth_date']?></td>
+                                </tr>
+                            <?php } ?>
+                            </tbody>
 
                             <thead>
                                 <tr role="row">
@@ -50,17 +63,9 @@
                 </th>
             </tr>
         </thead>
-        <tbody class="part_list">
-
-                <tr role="row" class="odd">
-                    <td class="sorting_1">1</td>
-                    <td>first_name</td>
-                    <td>aaaaaaa</td>
-                    <td>third_name</td>
-                    <td>birth_date</td>
-                </tr>
-        </tbody>
     </table>
+
+
 </div>
 </div>
 </div>

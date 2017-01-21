@@ -108,7 +108,6 @@ function funcSearch(data) {
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
 function funcSearchPrint(data) {
     var list = JSON.parse(data);
-    console.log(data);
     let search = $('.list-search').find('input[type="search"].active');
     let searchName = search.attr('data-type');
     let img= searchName+'_image';

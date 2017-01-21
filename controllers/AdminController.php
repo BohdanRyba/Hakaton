@@ -124,16 +124,16 @@ class AdminController
         include 'views/admin/SettingsOrg/org_settings.php';
         if (isset($_POST['action']) || isset($_POST['action'])) {
             if ($_POST['action'] == 'club') {
-                $this->addClub();
+                $this->actionAddClub();
             } elseif ($_POST['action'] == 'event') {
-                $this->addEvent();
-            } elseif ($_POST['action'] == 'category') {
-                $this->addCategory();
-            }
+                $this->actionAddEvent();
+            } /*elseif ($_POST['action'] == 'category') {
+                $this->actionAddCategory();
+            }*/
         }
     }
 
-    public function addClub()
+    public function actionAddClub()
     {
         if (isset($_POST)) {
             if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
@@ -145,7 +145,7 @@ class AdminController
                 echo 'NooooO!';
             }
         }
-//        self::showArray($_POST);
+        self::showArray($_POST);
     }
 
     public function actionAjaxCategory_create()
@@ -155,7 +155,7 @@ class AdminController
         include 'views/admin/SettingsOrg/option_category.php';
     }
 
-    public function addEvent()
+    public function actionAddEvent()
     {
         if (isset($_POST)) {
             if (!empty($_POST['event_name']) && !empty($_POST['event_status']) && !empty($_POST['data-finish']) &&
@@ -185,10 +185,12 @@ class AdminController
     }    
     public function actionAjaxClubCabinet($id)
     {
-        $participant[0] = AdminModel::ShowClubById($id);
-        $participant[1] = AdminModel::ShowParticipantById($id);
-        $participant[2] = AdminModel::GetCoachesById();
+        $participant = AdminModel::ShowClubById($id);
+//        $participant[0] = AdminModel::ShowClubById($id);
+//        $participant[1] = AdminModel::ShowParticipantById($id);
+//        $participant[2] = AdminModel::GetCoachesById();
         include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
+
         return $participant;
     }
     public function actionAjaxAddpart()
@@ -382,9 +384,9 @@ class AdminController
         return true;
     }
 
-    public function actionPickCategoriesForEvent(){
+    public function actionPickCategoriesForEvent($event_id){
         $nav_content = $this->createNavContent(Router::$uri);
-        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms();
+        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
         require_once ('views/admin/option_event/pick_categories_for_event.php');
     }
 }

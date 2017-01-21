@@ -249,21 +249,66 @@ class AdminModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE id = {$id}";
             $result = $db->query($query);
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $clubsList ['id'] = $row['id'];
-                $clubsList ['club_name'] = $row['club_name'];
-                $clubsList ['club_country'] = $row['club_country'];
-                $clubsList ['club_city'] = $row['club_city'];
-                $clubsList ['club_shief'] = $row['club_shief'];
-                $clubsList ['club_number'] = $row['club_number'];
-                $clubsList ['club_mail'] = $row['club_mail'];
-                $clubsList ['org_id_for_club'] = $row['org_id_for_club'];
+            $club_info = array();
+
+
+            /*
+             *TODO SELECT ALL INFO ABOUT CLUB FROM DB TO THE CLUB INFO
+             * */
+
+
+            while ($row = $result->fetch_assoc()){
+                $club_info['club_name']         = $row['club_name'];
+                $club_info['club_image']        = $row['club_image'];
+                $club_info['club_country']      = $row['club_country'];
+                $club_info['club_city']         = $row['club_city'];
+                $club_info['club_shief']         = $row['club_shief'];
+                $club_info['club_number']         = $row['club_number'];
+                $club_info['club_mail']         = $row['club_mail'];
+                $club_info['coach_name']         = $row['coaches'];
             }
 
+
+            /*
+             * TODO разбить строку с судьями на массив
+             *
+             * UPDATE: TODO - SUCCESS
+             *
+             *
+             * **/
+
+
+            $pieces = explode("&", $club_info['coach_name']);
+            $new_arr = array_diff($pieces, array('', NULL, false));
+            $club_info['coach_name'] =implode(",", $new_arr);
+
+
+            /*
+             * UPDATE: TODO - SUCCESS
+             * **/
+
+
+            /*
+             * TODO SELECT ALL PARTICIPANTS FROM DB TO THE CLUB INFO
+             * */
+
+
+            $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
+            $result = $db->query($query);
+
+            $i=0;
+            while ($row = $result->fetch_assoc()){
+                $club_info['club_part'][$i]['id_participant']    =   $row['id_participant'];
+                $club_info['club_part'][$i]['first_name']        =   $row['first_name'];
+                $club_info['club_part'][$i]['second_name']       =   $row['second_name'];
+                $club_info['club_part'][$i]['third_name']        =   $row['third_name'];
+                $club_info['club_part'][$i]['birth_date']        =   $row['birth_date'];
+                $i++;
+            }
             $db->close();
+            return $club_info;
+
         }
-        return $clubsList;
     }
 
     public static function ShowParticipantById($id)
@@ -295,23 +340,42 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
                 move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
             }
+            if (isset($_POST['club_first_trener'])){$club_trener_0=$_POST['club_first_trener'];}else{$club_trener_0='';}
+            if (isset($_POST['club_trener_1'])){$club_trener_1=$_POST['club_trener_1'];}else{$club_trener_1='';}
+            if (isset($_POST['club_trener_2'])){$club_trener_2=$_POST['club_trener_2'];}else{$club_trener_2='';}
+            if (isset($_POST['club_trener_3'])){$club_trener_3=$_POST['club_trener_3'];}else{$club_trener_3='';}
+            if (isset($_POST['club_trener_4'])){$club_trener_4=$_POST['club_trener_4'];}else{$club_trener_4='';}
+            if (isset($_POST['club_trener_5'])){$club_trener_5=$_POST['club_trener_5'];}else{$club_trener_5='';}
+            if (isset($_POST['club_trener_6'])){$club_trener_6=$_POST['club_trener_6'];}else{$club_trener_6='';}
+            if (isset($_POST['club_trener_7'])){$club_trener_7=$_POST['club_trener_7'];}else{$club_trener_7='';}
+            $coaches  = "$club_trener_0&$club_trener_1&$club_trener_2&$club_trener_3&$club_trener_4&$club_trener_5&$club_trener_6&$club_trener_7";
+
+
             $pass = md5($a['club_number']);
             $result = $db->query("INSERT INTO `clubs`
-                        SET `club_name`       = '{$a['club_name']}',
-                        `club_image`          = '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
-                        `club_country`        = '{$a['club_country']}',
-                        `club_city`           = '{$a['club_city']}',
-                        `club_shief`          = '{$a['club_shief']}',
-                        `club_number`         = '{$a['club_number']}',
-                        `club_mail`           = '{$a['club_mail']}',
-                        `org_id_for_club`           = '{$a['org_id']}',
-                        `password`='{$pass}',
-                        `grant`=1,
-                        `active`=1
+                        SET 
+                        `club_name`           =   '{$a['club_name']}',
+                        `club_image`          =   '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_country`        =   '{$a['club_country']}',
+                        `club_city`           =   '{$a['club_city']}',
+                        `club_shief`          =   '{$a['club_shief']}',
+                        `club_number`         =   '{$a['club_number']}',
+                        `club_mail`           =   '{$a['club_mail']}',
+                        `org_id_for_club`     =   '{$a['org_id']}',
+                        `password`            =   '{$pass}',
+                        `grant`               =   1,
+                        `active`              =   1,
+                        `coaches`             =   '{$coaches}'
+                        
                         ");
 
+            if ($result)
+            {
+                return $result;
+            }else{
+                echo 'something else not work';
+            }
 
-            return $result;
         }
         $db->close();
         return true;
@@ -744,31 +808,41 @@ class AdminModel
         $db->close();
     }
 
-    static function getUniqueDanceCategoryPrograms()
+    static function getUniqueDanceCategoryPrograms($event_id)
     {
         $dance_category_programs = [];
-        setcookie("get_id", "1");
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("SELECT `d_c_program` FROM `dance_categories` 
-                                          WHERE `org_id` = {$_COOKIE['get_id']}
+            $result1 = $db->query("SELECT `org_id_for_event` FROM `events` 
+                                          WHERE `id` = {$event_id}
                                           ");
-            if ($result) {
-                while ($row = $result->fetch_assoc()) {
-                    $dance_category_programs[] = $row['d_c_program'];
+            $org_id = '';
+            if ($result1) {
+                while ($row = $result1->fetch_assoc()) {
+                    $org_id = $row['org_id_for_event'];
                 }
-                $tmp_array = array();
-                foreach ($dance_category_programs as $key => $program_name) {
-                    if ($key == 0) {
-                        $tmp_array[] = $program_name;
-                    } else {
-                        if (!in_array($program_name, $tmp_array)) {
+            }
+            if($org_id != ''){
+                $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories` 
+                                          WHERE `org_id` = {$org_id}
+                                          ");
+                if ($result2) {
+                    while ($row = $result2->fetch_assoc()) {
+                        $dance_category_programs[] = $row['d_c_program'];
+                    }
+                    $tmp_array = array();
+                    foreach ($dance_category_programs as $key => $program_name) {
+                        if ($key == 0) {
                             $tmp_array[] = $program_name;
+                        } else {
+                            if (!in_array($program_name, $tmp_array)) {
+                                $tmp_array[] = $program_name;
+                            }
                         }
                     }
+                    return $tmp_array;
+                } else {
+                    return ["result" => "FALSE..."];
                 }
-                return $tmp_array;
-            } else {
-                return ["result" => "FALSE..."];
             }
         }
         $db->close();
