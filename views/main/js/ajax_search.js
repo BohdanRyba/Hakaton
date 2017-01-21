@@ -13,7 +13,6 @@ search.on('keyup', function () {
 });
     //>>>>>>>>>>>>>>>>>>>>>>>       ajax search when press enter
     $('.search_event').on('keydown', function(e){
-
         let codKey= e.which;
         if(codKey===13){
             e.preventDefault();
@@ -80,6 +79,7 @@ function funcSearch(data) {
         let nameList = list.map(function (element, i) {
 
             let node =  '<li id="btn_go_'+ searchName +'_cabinet">'
+            +'<a href="">'
             +'<div class="list-search clr" data-element-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src="'+ element[img] +'" alt="wtf"/>'
@@ -88,6 +88,7 @@ function funcSearch(data) {
             +'<span>Название: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
+            +'</a>'
             +'</li>';
             return node;
         });
@@ -107,24 +108,26 @@ function funcSearch(data) {
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
 function funcSearchPrint(data) {
     var list = JSON.parse(data);
-
     let search = $('.list-search').find('input[type="search"].active');
     let searchName = search.attr('data-type');
     let img= searchName+'_image';
     let name= searchName+'_name';
-
+    let $container = $('.list_data_page');
+        $container.children().remove();
     let render = function(list) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
             +'<div class="box-body">'
-            +'<li class="result_search">'
-            +'<div class="list-search clr" data-club-id="'+ element.id +'">'
+            +'<li class="result_search" id="btn_go_'+ searchName +'_cabinet">'
+            +'<a href="">'
+            +'<div class="list-search clr" data-element-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src=" '+ element[img] +' " alt="wtf"/>'
             +'</div>'   
             +'<span>Событие: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
+            +'</a>'
             +'</li>'
             +'</div>';
             return node;
@@ -137,14 +140,11 @@ function funcSearchPrint(data) {
             return element[name].toLowerCase().includes(queryString);
         });
         // add search result in DOM
-        let $container = $('.list-group');
+        $('.list-data>').remove();
         render(searchQuery).forEach(function(element) {
-            $container.children('.resize-remove').remove();
             $container.append(element);
             $('.cont-box1>').remove();
         });
-        var $result_search= $('li.result_search');
-        $result_search.wrapAll('<ul class="list_data"></ul>');
     };
 
 //>>>>>>>>>>>>>>>>>>>>>>>>       search result main close invisible background and clear list the result
