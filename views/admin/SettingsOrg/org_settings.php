@@ -55,7 +55,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" >
 <div class="wrapper">
     <!-- Main Header -->
 
@@ -291,10 +291,13 @@ desired effect
                         </div>
                     </div>
 
-                    <div class="cont-box1 clear">
-
-                    </div>
                     <div class="list-group">
+                        <ul class="list_data_page">
+                            
+                        </ul>
+                    </div>
+
+                    <div class="cont-box1 clear">
 
                     </div>
                     <div class="cont-box content-in" id="loading"></div>
