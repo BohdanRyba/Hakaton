@@ -1,3 +1,4 @@
+<?php $_SESSION['club_id']=$participant['id']?>
 <div class="resize-remove">
     <div class="box-header with-border">
         <h2 class="box-title">Кабинет клуба <span><?=$participant['club_name']?>  </span></h2>
@@ -32,6 +33,7 @@
                         <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 
                             <tbody class="part_list">
+                            <?php if ( isset($participant['club_part']) ) {?>
                             <?php foreach ($participant['club_part'] as $part){?>
 
                                 <tr role="row" class="odd">
@@ -41,7 +43,7 @@
                                     <td><?=$part['third_name']?></td>
                                     <td><?=$part['birth_date']?></td>
                                 </tr>
-                            <?php } ?>
+                            <?php } }?>
                             </tbody>
 
                             <thead>
@@ -64,8 +66,6 @@
             </tr>
         </thead>
     </table>
-
-
 </div>
 </div>
 </div>

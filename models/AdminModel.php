@@ -258,14 +258,15 @@ class AdminModel
 
 
             while ($row = $result->fetch_assoc()){
+                $club_info['id']                = $row['id'];
                 $club_info['club_name']         = $row['club_name'];
                 $club_info['club_image']        = $row['club_image'];
                 $club_info['club_country']      = $row['club_country'];
                 $club_info['club_city']         = $row['club_city'];
-                $club_info['club_shief']         = $row['club_shief'];
-                $club_info['club_number']         = $row['club_number'];
+                $club_info['club_shief']        = $row['club_shief'];
+                $club_info['club_number']       = $row['club_number'];
                 $club_info['club_mail']         = $row['club_mail'];
-                $club_info['coach_name']         = $row['coaches'];
+                $club_info['coach_name']        = $row['coaches'];
             }
 
 
@@ -298,12 +299,15 @@ class AdminModel
 
             $i=0;
             while ($row = $result->fetch_assoc()){
+                if(!is_null($row)){
                 $club_info['club_part'][$i]['id_participant']    =   $row['id_participant'];
                 $club_info['club_part'][$i]['first_name']        =   $row['first_name'];
                 $club_info['club_part'][$i]['second_name']       =   $row['second_name'];
                 $club_info['club_part'][$i]['third_name']        =   $row['third_name'];
                 $club_info['club_part'][$i]['birth_date']        =   $row['birth_date'];
                 $i++;
+                }
+                else{break;}
             }
             $db->close();
             return $club_info;
