@@ -117,7 +117,8 @@ function funcSearchPrint(data) {
         let nameList = list.map(function (element) {
             let node = '<div class="resize-remove">'
             +'<div class="box-body">'
-            +'<li class="result_search">'
+            +'<li class="result_search" id="btn_go_'+ searchName +'_cabinet">'
+            +'<a href="">'
             +'<div class="list-search clr" data-club-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src=" '+ element[img] +' " alt="wtf"/>'
@@ -125,6 +126,7 @@ function funcSearchPrint(data) {
             +'<span>Событие: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
+            +'</a>'
             +'</li>'
             +'</div>';
             return node;
