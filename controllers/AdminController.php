@@ -382,9 +382,9 @@ class AdminController
         return true;
     }
 
-    public function actionPickCategoriesForEvent(){
+    public function actionPickCategoriesForEvent($org_id){
         $nav_content = $this->createNavContent(Router::$uri);
-        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms();
+        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($org_id);
         require_once ('views/admin/option_event/pick_categories_for_event.php');
     }
 }

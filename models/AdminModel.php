@@ -744,13 +744,13 @@ class AdminModel
         $db->close();
     }
 
-    static function getUniqueDanceCategoryPrograms()
+    static function getUniqueDanceCategoryPrograms($org_id)
     {
         $dance_category_programs = [];
         setcookie("get_id", "1");
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT `d_c_program` FROM `dance_categories` 
-                                          WHERE `org_id` = {$_COOKIE['get_id']}
+                                          WHERE `org_id` = {$org_id}
                                           ");
             if ($result) {
                 while ($row = $result->fetch_assoc()) {
