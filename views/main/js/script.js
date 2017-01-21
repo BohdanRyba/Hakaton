@@ -392,8 +392,6 @@ $('body').on('click', 'a.remove-part', function () {
 
     $('body').on('click','#btn_go_event_cabinet', function(){
       let urlOrg = location.href.split('/');
-      //urlOrg = '../../pick_categories_for_event/'+urlOrg[urlOrg.length-1];
-      console.log('asdasd');
       $(this).children('a').attr('href', '../pick_categories_for_event/'+urlOrg[urlOrg.length-1])
     });
 
