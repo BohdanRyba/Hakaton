@@ -119,7 +119,7 @@ function funcSearchPrint(data) {
             +'<div class="box-body">'
             +'<li class="result_search" id="btn_go_'+ searchName +'_cabinet">'
             +'<a href="">'
-            +'<div class="list-search clr" data-club-id="'+ element.id +'">'
+            +'<div class="list-search clr" data-element-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src=" '+ element[img] +' " alt="wtf"/>'
             +'</div>'   
