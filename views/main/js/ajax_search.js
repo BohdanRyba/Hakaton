@@ -79,6 +79,7 @@ function funcSearch(data) {
         let nameList = list.map(function (element, i) {
 
             let node =  '<li id="btn_go_'+ searchName +'_cabinet">'
+            +'<a href="">'
             +'<div class="list-search clr" data-element-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src="'+ element[img] +'" alt="wtf"/>'
@@ -87,6 +88,7 @@ function funcSearch(data) {
             +'<span>Название: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
+            +'</a>'
             +'</li>';
             return node;
         });

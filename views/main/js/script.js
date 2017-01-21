@@ -391,7 +391,8 @@ $('body').on('click', 'a.remove-part', function () {
     });
 
     $('body').on('click','#btn_go_event_cabinet', function(){
-      let eventId = $(this).children('.list-search').attr('data-element-id');
+      let eventId = $(this).find('.list-search').attr('data-element-id');
+      console.log(eventId);
       $(this).children('a').attr('href', '../pick_categories_for_event/'+eventId);
     });
 
