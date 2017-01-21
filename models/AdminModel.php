@@ -744,31 +744,41 @@ class AdminModel
         $db->close();
     }
 
-    static function getUniqueDanceCategoryPrograms($org_id)
+    static function getUniqueDanceCategoryPrograms($event_id)
     {
         $dance_category_programs = [];
-        setcookie("get_id", "1");
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("SELECT `d_c_program` FROM `dance_categories` 
+            $result1 = $db->query("SELECT `org_id_for_event` FROM `events` 
+                                          WHERE `id` = {$event_id}
+                                          ");
+            $org_id = '';
+            if ($result1) {
+                while ($row = $result1->fetch_assoc()) {
+                    $org_id = $row['org_id_for_event'];
+                }
+            }
+            if($org_id != ''){
+                $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories` 
                                           WHERE `org_id` = {$org_id}
                                           ");
-            if ($result) {
-                while ($row = $result->fetch_assoc()) {
-                    $dance_category_programs[] = $row['d_c_program'];
-                }
-                $tmp_array = array();
-                foreach ($dance_category_programs as $key => $program_name) {
-                    if ($key == 0) {
-                        $tmp_array[] = $program_name;
-                    } else {
-                        if (!in_array($program_name, $tmp_array)) {
+                if ($result2) {
+                    while ($row = $result2->fetch_assoc()) {
+                        $dance_category_programs[] = $row['d_c_program'];
+                    }
+                    $tmp_array = array();
+                    foreach ($dance_category_programs as $key => $program_name) {
+                        if ($key == 0) {
                             $tmp_array[] = $program_name;
+                        } else {
+                            if (!in_array($program_name, $tmp_array)) {
+                                $tmp_array[] = $program_name;
+                            }
                         }
                     }
+                    return $tmp_array;
+                } else {
+                    return ["result" => "FALSE..."];
                 }
-                return $tmp_array;
-            } else {
-                return ["result" => "FALSE..."];
             }
         }
         $db->close();
