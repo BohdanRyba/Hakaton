@@ -1,4 +1,4 @@
-<?php $id = $_SESSION['id']?>
+<?php ///$id = $_SESSION['id']?>
 <form class="form-horizontal" enctype="multipart/form-data">
   <div class="part box-body">
     <label for="" class="lb_part">Добавить нового участник</label>
