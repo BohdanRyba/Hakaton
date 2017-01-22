@@ -62,6 +62,7 @@ jQuery(function($) {
                 data: dataForServer,
                 success: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has worked successfully!');
+                    console.log(dataForServer);
                     console.log(msg);
                 },
                 error: function (msg) {
