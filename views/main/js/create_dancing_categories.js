@@ -7,9 +7,6 @@ jQuery(function($) {
         sendInfoToServerAboutEditedCategories={};
 
 //$body.off('click', '.pick-dancing-group-to-use');
-    $body.click(function () {
-        console.log('click!');
-    });
     $body.on('click', '.pick-dancing-group-to-use', function () {
         var $chooseCategoriesParameterUl=$('#pick-dancing-group-parameter-to-see'),
             $searchedCategoriesForm=$('#show-searched-dancing-groups'),
@@ -120,7 +117,7 @@ jQuery(function($) {
             $menuItem.removeClass('active');
             $parametersList.slideUp(200);
             $categoriesList.slideUp(200);
-            console.log('up');
+            // console.log('up');
 
             clearOldInfo();
 
@@ -152,7 +149,7 @@ jQuery(function($) {
                     url: 'ajax_showAllDanceCategoriesParameters',
                     data: 'parameter=' + searchedParameter,
                     success: function (msg) {
-                        console.log(msg);
+                        // console.log(msg);
                         var msg = JSON.parse(msg);
                         console.log('ajax_addNewParameters (ajax1) has worked successfully!');
                         function addInfo($chooseCategoriesParameterUl) {
@@ -517,14 +514,13 @@ jQuery(function($) {
         var $categoryCode=$('.dancing-group-info-code');
 
         $categoryCode.on('blur', function(){
-            console.log('blur');
+            // console.log('blur');
             $categoryCode.prop('disabled',true);
         });
     });
 
 //Збереження створених нових танцювальних категорій
     $body.on('click', '#save-dance-categories', function (e) {
-        console.log('click before ajax4');
         e.preventDefault();
 //AJAX 4
         if ($('#show-created-categories').children().length>0) {
