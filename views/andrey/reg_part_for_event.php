@@ -7,21 +7,21 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="../views/main/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../views/main/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="../views/main/css/skins/skin-blue.min.css">
-    <link rel="stylesheet" type="text/css" href="../views/main/css/style.css">
+    <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" type="text/css" href="<?=Router::$permalink?>views/main/css/style.css">
     <!--     <link rel="stylesheet" href="../views/main/css/fixis.css"> -->
-    <script src="../views/main/js/jquery.min.js"></script>
+    <script src="<?=Router::$permalink?>views/main/js/jquery.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -323,24 +323,12 @@
                                     </div>
 
                                     <div class="col-sm-8">
-                                        <div class="block_reg">
-                                            <table id="table_part" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                                <tbody class="part_list">
-
-                                                </tbody>
-
-                                            </table>
-                                        </div>
+                                        
                                         <div class="list_table_part">
                                             <div class="take_btn">
                                                 <span>Принять</span>
                                             </div>
-                                            <div class="new_part_btn">
-                                                <span>Добавить нового учасника</span>
-                                            </div>
-                                            
-
-                                            <table id="table_part" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                 <tbody class="part_list">
                                                     <tr role="row" class="odd">
                                                         <td class="sorting_1"></td>
@@ -398,243 +386,242 @@
                                                         <td>second_name</td>
                                                         <td>third_name</td>
                                                         <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
+                                                    </tr><tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
 
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
 
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
 
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1"></td>
-                                                        <td>first_name</td>
-                                                        <td>second_name</td>
-                                                        <td>third_name</td>
-                                                        <td>birth_date</td>
-                                                    </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td class="sorting_1"></td>
+                                                    <td>first_name</td>
+                                                    <td>second_name</td>
+                                                    <td>third_name</td>
+                                                    <td>birth_date</td>
+                                                </tr>
 
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
-
-
-                                    <div class="cont-box content-in" id="loading"></div>
                                 </div>
+
+
+                                <div class="cont-box content-in" id="loading"></div>
                             </div>
                         </div>
-                    </section>
-                </div>
-                <!-- Control Sidebar -->
-                <aside class="control-sidebar control-sidebar-dark">
-                    <!-- Create the tabs -->
-                    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                        <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                        <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <!-- Home tab content -->
-                        <div class="tab-pane active" id="control-sidebar-home-tab">
-                            <h3 class="control-sidebar-heading">Recent Activity</h3>
-                            <ul class="control-sidebar-menu">
-                                <li>
-                                    <a href="javascript::;">
-                                        <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                                        <div class="menu-info">
-                                            <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                            <p>Will be 23 on April 24th</p>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /.control-sidebar-menu -->
-
-                            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                            <ul class="control-sidebar-menu">
-                                <li>
-                                    <a href="javascript::;">
-                                        <h4 class="control-sidebar-subheading">
-                                            Custom Template Design
-                                            <span class="pull-right-container">
-                                                <span class="label label-danger pull-right">70%</span>
-                                            </span>
-                                        </h4>
-
-                                        <div class="progress progress-xxs">
-                                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- /.control-sidebar-menu -->
-
-                        </div>
-                        <!-- /.tab-pane -->
-                        <!-- Stats tab content -->
-                        <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                        <!-- /.tab-pane -->
-                        <!-- Settings tab content -->
-                        <div class="tab-pane" id="control-sidebar-settings-tab">
-                            <form method="post">
-                                <h3 class="control-sidebar-heading">General Settings</h3>
-
-                                <div class="form-group">
-                                    <label class="control-sidebar-subheading">
-                                        Report panel usage
-                                        <input type="checkbox" class="pull-right" checked>
-                                    </label>
-
-                                    <p>
-                                        Some information about this general settings option
-                                    </p>
-                                </div>
-                                <!-- /.form-group -->
-                            </form>
-                        </div>
-                        <!-- /.tab-pane -->
                     </div>
-                </aside>
-                <!-- /.control-sidebar -->
+                </section>
+            </div>
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Create the tabs -->
+                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                    <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- Home tab content -->
+                    <div class="tab-pane active" id="control-sidebar-home-tab">
+                        <h3 class="control-sidebar-heading">Recent Activity</h3>
+                        <ul class="control-sidebar-menu">
+                            <li>
+                                <a href="javascript::;">
+                                    <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                                        <p>Will be 23 on April 24th</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.control-sidebar-menu -->
+
+                        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+                        <ul class="control-sidebar-menu">
+                            <li>
+                                <a href="javascript::;">
+                                    <h4 class="control-sidebar-subheading">
+                                        Custom Template Design
+                                        <span class="pull-right-container">
+                                            <span class="label label-danger pull-right">70%</span>
+                                        </span>
+                                    </h4>
+
+                                    <div class="progress progress-xxs">
+                                        <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /.control-sidebar-menu -->
+
+                    </div>
+                    <!-- /.tab-pane -->
+                    <!-- Stats tab content -->
+                    <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+                    <!-- /.tab-pane -->
+                    <!-- Settings tab content -->
+                    <div class="tab-pane" id="control-sidebar-settings-tab">
+                        <form method="post">
+                            <h3 class="control-sidebar-heading">General Settings</h3>
+
+                            <div class="form-group">
+                                <label class="control-sidebar-subheading">
+                                    Report panel usage
+                                    <input type="checkbox" class="pull-right" checked>
+                                </label>
+
+                                <p>
+                                    Some information about this general settings option
+                                </p>
+                            </div>
+                            <!-- /.form-group -->
+                        </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+            </aside>
+            <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
     immediately after the control sidebar -->
     <footer class="main-footer">
@@ -681,10 +668,10 @@
                             <h4 class="control-sidebar-subheading">
                                 Custom Template Design
                                 <span class="pull-right-container">
-                                 <span class="label label-danger pull-right">70%</span>
-                             </span>
-                         </h4>
-                         <div class="progress progress-xxs">
+                                   <span class="label label-danger pull-right">70%</span>
+                               </span>
+                           </h4>
+                           <div class="progress progress-xxs">
                             <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                         </div>
                     </a>
@@ -733,30 +720,30 @@
 
 <div class="bg_shadow"></div>
 <!-- jQuery 2.2.3 -->
-<script src="../views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../views/main/bootstrap/js/bootstrap.min.js"></script>
-<script src="../views/main/plugins/select2/select2.full.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/select2/select2.full.min.js"></script>
 <!-- InputMask -->
-<script src="../views/main/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../views/main/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../views/main/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <!-- bootstrap datepicker -->
-<script src="../views/main/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- bootstrap time picker -->
-<script src="../views/main/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll 1.3.0 -->
-<script src="../views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
-<script src="../views/main/plugins/iCheck/icheck.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
-<script src="../views/main/plugins/fastclick/fastclick.js"></script>
+<script src="<?=Router::$permalink?>views/main/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../views/main/js/jquery-ui.js"></script>
-<script src="../views/main/js/app.min.js"></script>
-<script src="../views/main/js/spin.min.js"></script>
-<script src="../views/main/js/script.js?212124225"></script>
-<script src="../views/main/js/ajax.js?526"></script>
+<script src="<?=Router::$permalink?>views/main/js/jquery-ui.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/spin.min.js"></script>
+<script src="<?=Router::$permalink?>views/main/js/script.js?2125"></script>
+<script src="<?=Router::$permalink?>views/main/js/ajax.js?526"></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function(){

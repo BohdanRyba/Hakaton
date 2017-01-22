@@ -75,7 +75,7 @@ $(function () {
         $('.cont-box1>').remove();
         $.ajax({
             url: 'ajax_club_add',
-            type: 'POST',
+            type: 'get',
             dataType: 'html',
             beforeSend: funcBefore,
             success: funcSuccess
@@ -100,7 +100,7 @@ $(function () {
         console.log(id);
         $.ajax({
             url:'club-cabinet-for-adm/'+id,
-            type:'POST',
+            type:'post',
             data:id,
             dataType:'html',
             beforeSend: funcBefore,
@@ -142,8 +142,8 @@ $(function () {
         var that=$(this);
         console.log($(this).serialize()+dataForm);
         $.ajax({
-            url: 'add_new_info.php',
-            type: 'POST',
+            url: 'add_new_info',
+            type: 'post',
             dataType: 'html',
             data: dataForm,
             success: function () {  
