@@ -400,9 +400,11 @@ class AdminController
     }
 
     public function actionAjaxSendPickedCategoriesForEvent(){
-        if(!empty($_POST['all']) && !empty($_POST['checked'])){
-            $asked_parameters = AdminModel::assignEventIdToDancingCategory();
-            echo json_encode($asked_parameters);
+//        self::showArray($_SESSION);
+        if(!empty($_POST)){
+            $result = AdminModel::assignEventIdToDancingCategory();
+//            $_SESSION['test'] = $_POST;
+            echo json_encode($_POST);
         }
     }
 }
