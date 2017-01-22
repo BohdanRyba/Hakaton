@@ -398,4 +398,11 @@ class AdminController
             echo json_encode($asked_parameters);
         }
     }
+
+    public function actionAjaxSendPickedCategoriesForEvent(){
+        if(!empty($_POST['all']) && !empty($_POST['checked'])){
+            $asked_parameters = AdminModel::assignEventIdToDancingCategory();
+            echo json_encode($asked_parameters);
+        }
+    }
 }

@@ -892,4 +892,8 @@ class AdminModel
         $db->close();
         self::saveMessage($message);
     }
+
+    static function assignEventIdToDancingCategory(){
+        
+    }
 }
