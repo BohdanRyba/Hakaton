@@ -1,6 +1,9 @@
 jQuery(function($) {
     var $body=$('body'),
-        $pickedCategories=$('#pick_dancing_categories_for_event');
+        $pickedCategories=$('#pick_dancing_categories_for_event'),
+        $sendBtn=$('#update-dancing-categories-info');
+
+    function toggleSendBtnVisibility(visibility){$sendBtn.css('display', visibility);}
 
     $body.on('click', '.pick_dancing_categories_for_event', function () {
         var $inputStatus=$(this).find('input').prop('checked');
@@ -11,6 +14,7 @@ jQuery(function($) {
         }
     });
 
+    //function responsible for 1-click-checking all categories
     $body.on('click','#check-all-dancing-categories', function () {
         var $checkAllLi=$(this),
             $checkAll=$checkAllLi.find('input'),
@@ -29,6 +33,7 @@ jQuery(function($) {
         }
     });
 
+    //send to server picked categories
     $body.on('click', '#update-dancing-categories-info', function () {
         function ajax_sendPickedCategoriesForEvent() {
             var dataForServer={'all':[], 'checked':[]},
@@ -55,8 +60,9 @@ jQuery(function($) {
                 type:"POST",
                 url:'ajax_sendPickedCategoriesForEvent',
                 data: dataForServer,
-                success: function () {
+                success: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has worked successfully!');
+                    console.log(msg);
                 },
                 error: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has failed work!');
@@ -67,10 +73,12 @@ jQuery(function($) {
         ajax_sendPickedCategoriesForEvent();
     });
 
+    //show block with categories after dance program was clicked
     $('dancing-group-list-item-to-see').one('click', function() {
         $('#categories-list').css('display', 'block');
     });
 
+    //loading categories according to clicked dance program
     $body.on('click', '.dancing-group-list-item-to-see', function(){
         var $categoriesList=$('#categories-list'),
             $danceGroups=$('#pick-dancing-group-parameter-to-see').children(),
@@ -83,6 +91,7 @@ jQuery(function($) {
         $(this).addClass('picked-dancing-group');
 
         $categoriesList.css('display', 'block');
+        toggleSendBtnVisibility('none');
 
         $searchedCategoriesForm.empty();
 
@@ -99,12 +108,11 @@ jQuery(function($) {
                 url:'ajax_showCategoriesToPickForEvent',
                 data: obj,
                 success: function(msg) {
-                    // console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
+                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
                     // console.log(msg);
                     var msg=JSON.parse(msg);
                     console.log(msg);
                     // console.log(msg[0]);
-                    // if (msg[0]==undefined) {$searchedCategoriesForm.append('<div class="dp-info-wrapper"><p class="dance-category-name">таких категорий нет</p></div>');}
                     $searchedCategoriesForm.append('<li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
 
                     for (var i=0; i<msg.length; i++) {
@@ -116,9 +124,7 @@ jQuery(function($) {
                             id=category['id'],
                             generalName=program+' '+ageCategory+' '+nomination+' '+league;
 
-                        // $searchedCategoriesForm.append('<div class="dp-info-wrapper" data-id="'+id+'" data-extraId="'+code+'" data-catagoryName="'+generalName+'"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+generalName+'</p><label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+code+'"></label></div>');
                         $searchedCategoriesForm.append('<li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="'+id+'">'+generalName+'</label></li>');
-                    // '<li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="хіп-хоп">'+generalName+'</label></li>'
                     }
 
                 },
@@ -132,5 +138,12 @@ jQuery(function($) {
 
         ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($(this));
 
+    });
+
+    $body.on('click', '.pick_dancing_categories_for_event', function () {
+        toggleSendBtnVisibility('block');
+    });
+    $body.on('click', '#check-all-dancing-categories', function () {
+        toggleSendBtnVisibility('block');
     });
 });
