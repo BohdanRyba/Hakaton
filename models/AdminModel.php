@@ -833,6 +833,7 @@ class AdminModel
                 }
             }
             if($org_id != ''){
+                setcookie('get_id', $org_id);
                 $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories` 
                                           WHERE `org_id` = {$org_id}
                                           ");
