@@ -30,9 +30,15 @@ jQuery(function($) {
     });
 
     $body.on('click', '#update-dancing-categories-info', function () {
-
         function ajax_sendPickedCategoriesForEvent() {
-            var dataForServer={'all':[], 'checked':[]};
+            var dataForServer={'all':[], 'checked':[]},
+                id=window.location.href;
+
+            id=id.split('/');
+            id=id[id.length-1];
+            id= parseInt(id);
+            dataForServer['event_id']=id;
+
             $pickedCategories.find('.pick_dancing_categories_for_event').each(function () {
                 var $input=$(this).find('input'),
                     id=parseInt($input.attr('name'),10);
@@ -58,10 +64,12 @@ jQuery(function($) {
                 }
             })
         }
-
         ajax_sendPickedCategoriesForEvent();
     });
 
+    $('dancing-group-list-item-to-see').one('click', function() {
+        $('#categories-list').css('display', 'block');
+    });
 
     $body.on('click', '.dancing-group-list-item-to-see', function(){
         var $categoriesList=$('#categories-list'),
@@ -78,8 +86,7 @@ jQuery(function($) {
 
         $searchedCategoriesForm.empty();
 
-//AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+        //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
             var $name=$parameter.attr('data-name'),
                 obj={};
