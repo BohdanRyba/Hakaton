@@ -60,8 +60,9 @@ jQuery(function($) {
                 type:"POST",
                 url:'ajax_sendPickedCategoriesForEvent',
                 data: dataForServer,
-                success: function () {
+                success: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has worked successfully!');
+                    console.log(msg);
                 },
                 error: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has failed work!');
