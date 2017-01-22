@@ -336,8 +336,10 @@ class AdminController
     }
 
     public function actionAjaxSaveDancingCategories(){
+        self::showArray($_SESSION);
         $tmp = [];
         if(!empty($_POST['categories'])){
+            $_SESSION['test'] = $_POST['categories'];
             foreach ($_POST['categories'] as $category){
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');

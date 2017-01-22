@@ -142,10 +142,10 @@ jQuery(function($) {
                 var $menuParameter=$('.dance-group-menu').find('.dance-group-menu-items').find('a.active'),
                     searchedParameter;
 
-                if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='c_p_programs';} else
-                if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='c_p_age_categories';} else
-                if ($menuParameter.attr('href')=='#nominations') {searchedParameter='c_p_nominations';} else
-                if ($menuParameter.attr('href')=='#leagues') {searchedParameter='c_p_leagues';}
+                if ($menuParameter.attr('href')=='#dance-programs') {searchedParameter='d_c_program';} else
+                if ($menuParameter.attr('href')=='#age-categories') {searchedParameter='d_c_age_category';} else
+                if ($menuParameter.attr('href')=='#nominations') {searchedParameter='d_c_nomination';} else
+                if ($menuParameter.attr('href')=='#leagues') {searchedParameter='d_c_league';}
 
                 $.ajax({
                     type: "POST",
