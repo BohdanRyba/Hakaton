@@ -212,14 +212,7 @@
                                         <div class="container-fluid">
                                             <span id="update-dancing-categories-info" class="send-info">сохранить</span>
                                             <form id="pick_dancing_categories_for_event">
-                                                <ul>
-                                                    <li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="хіп-хоп">хіп-хоп</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="хаус">хаус</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="танец живота">танец живота</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="брейк">брейк</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="вальс">вальс</label></li>
-                                                </ul>
+                                                <ul></ul>
                                             </form>
                                         </div>
                                     </div>
