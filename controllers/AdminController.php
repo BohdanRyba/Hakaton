@@ -391,4 +391,11 @@ class AdminController
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
         require_once ('views/admin/option_event/pick_categories_for_event.php');
     }
+
+    public function actionAjaxShowCategoriesToPickForEvent(){
+        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+            $asked_parameters = AdminModel::getCategoriesByName($_POST);
+            echo json_encode($asked_parameters);
+        }
+    }
 }
