@@ -39,6 +39,8 @@ jQuery(function($) {
             $danceGroups=$('#pick-dancing-group-parameter-to-see').children(),
             $searchedCategoriesForm=$('#pick_dancing_categories_for_event').find('ul');
 
+        console.log($searchedCategoriesForm);
+
         $danceGroups.each(function () {
             $(this).removeClass('picked-dancing-group');
         });
@@ -70,8 +72,8 @@ jQuery(function($) {
                     var msg=JSON.parse(msg);
                     console.log(msg[0]);
                     // if (msg[0]==undefined) {$searchedCategoriesForm.append('<div class="dp-info-wrapper"><p class="dance-category-name">таких категорий нет</p></div>');}
-
-                    $searchedCategoriesForm.append('<li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
+                    // $searchedCategoriesForm.empty();
+                    // $searchedCategoriesForm.append('<li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
 
                     // for (var i=0; i<msg.length; i++) {
                     //     var category=msg[i],
