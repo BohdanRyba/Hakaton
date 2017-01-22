@@ -10,6 +10,14 @@ class AdminModel
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
 
+    static function remove_empty($array) {
+        return array_filter($array, '_remove_empty_internal');
+    }
+
+    static function _remove_empty_internal($value) {
+        return !empty($value) || $value === 0;
+    }
+
     static function debug($data)
     {
         echo '<pre>';
@@ -924,10 +932,75 @@ class AdminModel
         self::saveMessage($message);
     }
 
-    static function assignEventIdToDancingCategory()
+    static function assignEventIdToDancingCategory($all_ids, $checked_ids,  $event_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $resulting_array = [];
+            foreach ( $all_ids as $key => $id){
+                $result1 = $db->query("SELECT `event_ids` FROM `dance_categories` WHERE `org_id` = {$_COOKIE['get_id']}
+                                        AND `id` = {$id}
+                                          ");
+                if ($result1){
+                    $row = $result1->fetch_assoc();
+                    if(empty($row['event_ids'])){
+                        if(in_array($id, $checked_ids)){
+                            $event_ids = $event_id . "&";
+                            $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$event_ids}'
+                                                                WHERE `id` = {$id}
+                                                        ");
+                            if ($update_result){
+                                $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated SUCCESSFULLY!\n";
+                            } else {
+                                $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated!\n";
+                            }
+                        }
+                    } else {
+                        if(in_array($id, $checked_ids)){
+                            $event_ids_array = explode("&", $row['event_ids']);
+                            if(!in_array($event_id, $event_ids_array)){
+                                $emptyRemoved = static::remove_empty(array_push($event_ids_array, $event_id));
+                                $imploded_events_ids = implode("&",$emptyRemoved);
+                                $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$imploded_events_ids}'
+                                                                WHERE `id` = {$id}
+                                                        ");
+                                if ($update_result){
+                                    $resulting_array[] = "SUCCESS! The dancing category with id = \"" . $id . "\" was updated!\n";
+                                } else {
+                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated...\n";
+                                }
+                            }
+                        } else {
+                            $event_ids_array = explode("&", $row['event_ids']);
+                            if(in_array($event_id, $event_ids_array)){
+                                function uncheck_event_id($id_to_uncheck, $event_id){
+                                    if($event_id == $id_to_uncheck){
+                                        return '';
+                                    } else {
+                                        return $id_to_uncheck;
+                                    }
 
+                                }
+                                $event_ids_array = array_map("uncheck_event_id", $event_ids_array);
+                                $emptyRemoved = static::remove_empty(array_push($event_ids_array, $event_id));
+                                $imploded_events_ids = implode("&",$emptyRemoved);
+                                $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$imploded_events_ids}'
+                                                                WHERE `id` = {$id}
+                                                        ");
+                                if ($update_result){
+                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated - the event_id has been deleted!\n";
+                                } else {
+                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated, can't be deleted...\n";
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            return $resulting_array;
         }
 
     }
