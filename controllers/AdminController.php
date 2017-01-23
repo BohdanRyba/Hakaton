@@ -185,13 +185,16 @@ class AdminController
     }    
     public function actionAjaxClubCabinet($id)
     {
-        $participant = AdminModel::ShowClubById($id);
-//        $participant[0] = AdminModel::ShowClubById($id);
-//        $participant[1] = AdminModel::ShowParticipantById($id);
-//        $participant[2] = AdminModel::GetCoachesById();
-        include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
 
-        return $participant;
+        $participant = AdminModel::ShowClubById($id);
+        require_once ('views/admin/SettingsOrg/club-cabinet-for-adm.php');
+
+        /**
+         *
+         * TODO: В будущем,если нужны будут какие нибудь данные раскоментировать
+         *
+         *         return $participant;
+         */
     }
     public function actionAjaxAddpart()
     {

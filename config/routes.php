@@ -15,6 +15,7 @@ return array(
     'events/single/([0-9]+)' => 'events/showSingleEvent/$1', // it should be completed...
     'admin/organizations/event_add' => 'admin/event_add',
     'admin/organizations/pick_categories_for_event/([0-9]+)' => 'admin/pickCategoriesForEvent/$1',
+    'admin/organizations/cubinet_club/([0-9]+)' => 'admin/ajaxClubCabinet/$1',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
     'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory',
@@ -24,7 +25,6 @@ return array(
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
     'admin/organizations/org_settings/add_new_info' => 'admin/ajax_NewInfo',
-    'admin/organizations/org_settings/club-cabinet-for-adm/([0-9]+)' => 'admin/ajaxClubCabinet/$1',
     'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/ajax_AddParticipant/([0-9]+)' => 'admin/ajax_AddParticipant/$1',
