@@ -339,8 +339,10 @@ class AdminController
     }
 
     public function actionAjaxSaveDancingCategories(){
+        self::showArray($_SESSION);
         $tmp = [];
         if(!empty($_POST['categories'])){
+            $_SESSION['test'] = $_POST['categories'];
             foreach ($_POST['categories'] as $category){
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
@@ -391,5 +393,12 @@ class AdminController
         $nav_content = $this->createNavContent(Router::$uri);
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
         require_once ('views/admin/option_event/pick_categories_for_event.php');
+    }
+
+    public function actionAjaxShowCategoriesToPickForEvent(){
+        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+            $asked_parameters = AdminModel::getCategoriesByName($_POST);
+            echo json_encode($asked_parameters);
+        }
     }
 }

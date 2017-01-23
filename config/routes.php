@@ -14,6 +14,7 @@ return array(
     'events/page/([0-9]+)' => 'events/index/$1', // it should be completed...
     'events/single/([0-9]+)' => 'events/showSingleEvent/$1', // it should be completed...
     'admin/organizations/event_add' => 'admin/event_add',
+    'admin/organizations/pick_categories_for_event/ajax_showCategoriesToPickForEvent' => 'admin/ajaxShowCategoriesToPickForEvent',
     'admin/organizations/pick_categories_for_event/([0-9]+)' => 'admin/pickCategoriesForEvent/$1',
     'admin/organizations/cubinet_club/([0-9]+)' => 'admin/ajaxClubCabinet/$1',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
@@ -34,7 +35,7 @@ return array(
     'admin/organizations/org_settings/ajax_sendCreatedCategories' => 'admin/ajaxSaveDancingCategories', // added by ROMA;
     'admin/organizations/org_settings/([0-9]+)' => 'admin/org_settings/$1', // warning: this line should be lower than ajaxes!;
     'admin/organizations/org_reg' => 'admin/org_reg',
-    'admin/organizations/org_add' => 'admin/org_add',
+        'admin/organizations/org_add' => 'admin/org_add',
     'admin/organizations/page/([0-9]+)' => 'admin/index/$1',
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
