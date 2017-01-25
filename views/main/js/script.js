@@ -186,15 +186,14 @@ $(function () {
 	var incr_train = 0;
 	$('body').on('сlick', '.add-trainer', function () {
 		window.incr_train++;
-		console.log('asd');
-		let trainer_node = +'<div class="form-group">'
-   + '<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
-   + '<div class="col-sm-10">'
-   + '<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
-   + '</div>'
-   + '</div>';
 
-   $('.add_train_box').append(trainer_node);
+		let trainer_node = +'<div class="form-group">'
+                        +'<div class="col-sm-12">'
+                          +'<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
+                        +'</div>'
+                      +'</div>';
+
+    $('.add_train_box').append(trainer_node);
 
  });
 //MENU-EVENT
@@ -381,7 +380,6 @@ $('body').on('click', 'a.remove-part', function () {
         var arr_part = [];
         if($(this).hasClass('active_part')){
           arr_part[i]=$(this).html();
-          console.log(arr_part[i]);
           $('.block_reg .part_list').append('<tr>'+arr_part[i]+'</tr>');
 
         };
@@ -397,11 +395,18 @@ $('body').on('click', 'a.remove-part', function () {
     });
     $('body').on('click','#btn_go_club_cabinet', function(){
       let elementId = $(this).find('.list-search').attr('data-element-id');
-      console.log(elementId);
+      console.log( '../cubinet_club/'+elementId);
       $(this).children('a').attr('href', '../cubinet_club/'+elementId);
     });
 
+    // ---------- Accordion with dance kategary list for participant registration at the event
+    $('.list_kategory_down').hide();
+    var $accordeonLi = $('.accordeon_kategory').children('li');
+    $accordeonLi.on('click', function(){
+      $accordeonLi.next('.list_kategory_down').slideUp(300);
+      $(this).next('.list_kategory_down').slideDown(300);
 
+    });
 
   });
 
