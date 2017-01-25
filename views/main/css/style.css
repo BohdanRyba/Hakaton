@@ -1415,7 +1415,6 @@ width: 4px;
     -webkit-transition: all 0.4s;
 }
 .accordeon_kategory .list_kategory_down{
-    display:;
     padding-left:0px;
     background:#fff;
     border-bottom:5px solid #00c0ef;
@@ -1424,10 +1423,15 @@ width: 4px;
     padding:5px 5px 5px 25px;
     color:#000;
     background:#fff;
+    border:none;
 }
 .form_block_reg{
     margin-top:5px;
 }
 .form_block_reg form div{
     margin-bottom:1px;
+}
+.accordeon_kategory .list_kategory_down .act_part{
+    color:#fff;
+    background:#32CD32;
 }

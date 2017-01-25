@@ -407,6 +407,9 @@ $('body').on('click', 'a.remove-part', function () {
       $(this).next('.list_kategory_down').slideDown(300);
 
     });
+    $('.list_kategory_down li').on('click', function(){
+      $(this).toggleClass('act_part');
+    });
 
   });
 
