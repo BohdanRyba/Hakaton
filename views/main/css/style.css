@@ -1417,7 +1417,7 @@ width: 4px;
 .accordeon_category .list_category_down{
     padding-left:0px;
     background:#fff;
-    border-bottom:5px solid #00c0ef;
+    //border-bottom:5px solid #00c0ef;
 }
 .accordeon_category .list_category_down li{
     padding:5px 5px 5px 25px;
