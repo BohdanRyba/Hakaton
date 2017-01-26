@@ -1289,14 +1289,52 @@ table .part_list tr{
 .list_table_part{
     display:none;
     position:fixed;
+    max-height:90%;
     top:55px;
     background:#fff;
     z-index:111;
+    overflow-y:auto;
+}
+.list_table_part::-webkit-scrollbar-button {
+background-image:url('');
+background-repeat:no-repeat;
+width:5px;
+height:0px
+}
+
+.list_table_part::-webkit-scrollbar-track {
+background-color:#ecedee;
+}
+
+.list_table_part::-webkit-scrollbar-thumb {
+-webkit-border-radius: 10px;
+border-radius: 10px;
+background-color:#6dc0c8;
+}
+
+.list_table_part::-webkit-scrollbar-thumb:hover{
+background-color:#00c0ef;
+width:10px;
+}
+
+.list_table_part::-webkit-resizer{
+background-image:url('');
+background-repeat:no-repeat;
+width:4px;
+height:0px
+}
+
+.list_table_part::-webkit-scrollbar{
+width: 4px;
+}
+#table_part{
+    margin-bottom:0;
 }
 #table_part .part_list .active_part{
     padding:5px;
     background:#00c0ef;
     box-shadow: 0 0 5px 3px rgba(0,192,239,0.7);
+
 }
 .take_btn{
     float:left;
@@ -1304,7 +1342,6 @@ table .part_list tr{
     padding:5px;
     color:#fff;
     text-align:center;
-    border-left:solid 1px #aaa;
     background:#32CD32;
 }
 .take_btn:hover{
