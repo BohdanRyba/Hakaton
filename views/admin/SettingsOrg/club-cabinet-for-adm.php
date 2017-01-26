@@ -181,7 +181,7 @@
             <div class="container-fluid">
                 <div class="row">
 
-    <?php $_SESSION['club_id']=$participant['id']?>
+    <?php $_SESSION['org_id']=$participant['id']?>
 <div class="resize-remove">
     <div class="box-header with-border">
         <h2 class="box-title">Кабинет клуба <span><?=$participant['club_name']?>  </span></h2>

@@ -115,7 +115,7 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
-
+        $_SESSION['organization_id'] = $id;
         if (isset($id) && is_numeric($id)) {
             $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
@@ -178,6 +178,10 @@ class AdminController
         self::saveMessage($message);
     }
 
+
+
+
+
     public function actionAjaxClub_add()
     {
 
@@ -196,6 +200,12 @@ class AdminController
          *         return $participant;
          */
     }
+    public function actionRegPartForEvent()
+    {
+        $list = AdminModel::ShowClubsForReg($_SESSION['organization_id']) ;
+        include 'views/admin/option_event/reg_part_for_event.php';
+    }
+
     public function actionAjaxAddpart()
     {
         include 'views/admin/SettingsOrg/view_add_part.php';

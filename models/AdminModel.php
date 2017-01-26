@@ -173,8 +173,7 @@ class AdminModel
             return $result;
         } else return 'db.connect false';
     }
-
-    public static function ShowClubs($id)
+    public static function ShowClubs($id ='')
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
@@ -195,6 +194,25 @@ class AdminModel
             $db->close();
         }
         return $clubsList;
+    }
+
+    public static function ShowClubsForReg($id ='')
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $clubsList[$i]['id'] = $row['id'];
+                $clubsList[$i]['club_name'] = $row['club_name'];
+
+                $i++;
+            }
+            return $clubsList;
+
+            $db->close();
+        }
+
     }
 
     public static function ShowEvents($id)
@@ -243,6 +261,7 @@ class AdminModel
         }
         return $coachList;
     }
+
 
     public static function ShowClubById($id)
     {
@@ -332,8 +351,8 @@ class AdminModel
             }
 
             $db->close();
+            return $partList;
         }
-        return $partList;
     }
 
     static function club_add($a)

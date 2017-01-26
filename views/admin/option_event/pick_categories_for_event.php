@@ -142,34 +142,41 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">Menu</li>
+                <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active treeview">
-                    <a href="#">
-                        <span>Организации</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
-                                        class="fa fa-link"></i></span></a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
-                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
-                    </ul>
+                <li class="active"><a href="../admin/organizations/page/1"><i class="fa fa-link"></i> <span>Организации</span></a></li>
+                <li><a href="../admin/organizations/org_settings/create-event"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
 
-                </li>
-                <li>
-                    <a href="#">
-                        <span>Танцевальные групы</span>
+                <li class="treeview">
+                    <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        <li class="treeview">
+                            <a href="#"><i class="opt-eve ion ion-ios-people-outline"></i> <span>Заявки</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Хіп-Хоп</a></li>
+                                <li><a href="#">Диско</a></li>
+                                <li><a href="#">Данс-шоу</a></li>
+                                <li><a href="#">Хаус</a></li>
+                                <li><a href="#">Брейк Данс</a></li>
+                            </ul>
                         </li>
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event">Регистраця</a></li>
+                        <li><a href="">Категории</a></li>
+                        <li><a href="#">Програма</a></li>
+                        <li><a href="#">Суддьи</a></li>
                     </ul>
                 </li>
             </ul>
             <!-- /.sidebar-menu -->
+
         </section>
         <!-- /.sidebar -->
     </aside>

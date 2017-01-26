@@ -395,19 +395,19 @@ $('body').on('click', 'a.remove-part', function () {
     });
     $('body').on('click','#btn_go_club_cabinet', function(){
       let elementId = $(this).find('.list-search').attr('data-element-id');
-      console.log( '../cubinet_club/'+elementId);
-      $(this).children('a').attr('href', '../cubinet_club/'+elementId);
+      console.log( '../cabinet_club/'+elementId);
+      $(this).children('a').attr('href', '../cabinet_club/'+elementId);
     });
 
-    // ---------- Accordion with dance kategary list for participant registration at the event
-    $('.list_kategory_down').hide();
-    var $accordeonLi = $('.accordeon_kategory').children('li');
+    // ---------- Accordion with dance categary list for participant registration at the event
+    $('.list_category_down').hide();
+    var $accordeonLi = $('.accordeon_category').children('li');
     $accordeonLi.on('click', function(){
-      $accordeonLi.next('.list_kategory_down').slideUp(300);
-      $(this).next('.list_kategory_down').slideDown(300);
+      $accordeonLi.next('.list_category_down').slideUp(300);
+      $(this).next('.list_category_down').slideDown(300);
 
     });
-    $('.list_kategory_down li').on('click', function(){
+    $('.list_category_down li').on('click', function(){
       $(this).toggleClass('act_part');
     });
 

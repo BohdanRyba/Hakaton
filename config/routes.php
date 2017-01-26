@@ -40,7 +40,8 @@ return array(
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
-    'admin/dancing_groups/dance_list' => 'admin/dancingList',
+    'admin/option_event/reg_part_for_event' => 'admin/regPartForEvent',
+//    admin/option_event/reg_part_for_event
     'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',
     '' => 'home/index',
