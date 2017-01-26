@@ -115,7 +115,7 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
-
+        $_SESSION['organization_id'] = $id;
         if (isset($id) && is_numeric($id)) {
             $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
@@ -178,6 +178,10 @@ class AdminController
         self::saveMessage($message);
     }
 
+
+
+
+
     public function actionAjaxClub_add()
     {
 
@@ -185,14 +189,23 @@ class AdminController
     }    
     public function actionAjaxClubCabinet($id)
     {
-        $participant = AdminModel::ShowClubById($id);
-//        $participant[0] = AdminModel::ShowClubById($id);
-//        $participant[1] = AdminModel::ShowParticipantById($id);
-//        $participant[2] = AdminModel::GetCoachesById();
-        include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
 
-        return $participant;
+        $participant = AdminModel::ShowClubById($id);
+        require_once ('views/admin/SettingsOrg/club-cabinet-for-adm.php');
+
+        /**
+         *
+         * TODO: В будущем,если нужны будут какие нибудь данные раскоментировать
+         *
+         *         return $participant;
+         */
     }
+    public function actionRegPartForEvent()
+    {
+        $list = AdminModel::ShowClubsForReg($_SESSION['organization_id']) ;
+        include 'views/admin/option_event/reg_part_for_event.php';
+    }
+
     public function actionAjaxAddpart()
     {
         include 'views/admin/SettingsOrg/view_add_part.php';
@@ -336,8 +349,10 @@ class AdminController
     }
 
     public function actionAjaxSaveDancingCategories(){
+        self::showArray($_SESSION);
         $tmp = [];
         if(!empty($_POST['categories'])){
+            $_SESSION['test'] = $_POST['categories'];
             foreach ($_POST['categories'] as $category){
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
@@ -388,5 +403,12 @@ class AdminController
         $nav_content = $this->createNavContent(Router::$uri);
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
         require_once ('views/admin/option_event/pick_categories_for_event.php');
+    }
+
+    public function actionAjaxShowCategoriesToPickForEvent(){
+        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+            $asked_parameters = AdminModel::getCategoriesByName($_POST);
+            echo json_encode($asked_parameters);
+        }
     }
 }

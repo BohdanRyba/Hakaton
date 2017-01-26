@@ -95,7 +95,7 @@ $(function () {
     });
 
     // Opens page cabinet club
-    $('body').on('click', '#btn_go_club_cabinet', function(){
+/*    $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
         var id= $(this).find('.list-search').attr('data-element-id');
         console.log(id);
@@ -112,7 +112,7 @@ $(function () {
                         }
                     ]
         });
-    });
+    });*/
 
     $('body').on('click', '.users_list', function(){
         $('.cont-box1>').remove();

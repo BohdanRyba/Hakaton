@@ -173,8 +173,7 @@ class AdminModel
             return $result;
         } else return 'db.connect false';
     }
-
-    public static function ShowClubs($id)
+    public static function ShowClubs($id ='')
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
@@ -195,6 +194,25 @@ class AdminModel
             $db->close();
         }
         return $clubsList;
+    }
+
+    public static function ShowClubsForReg($id ='')
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $clubsList[$i]['id'] = $row['id'];
+                $clubsList[$i]['club_name'] = $row['club_name'];
+
+                $i++;
+            }
+            return $clubsList;
+
+            $db->close();
+        }
+
     }
 
     public static function ShowEvents($id)
@@ -244,6 +262,7 @@ class AdminModel
         return $coachList;
     }
 
+
     public static function ShowClubById($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -258,14 +277,15 @@ class AdminModel
 
 
             while ($row = $result->fetch_assoc()){
+                $club_info['id']                = $row['id'];
                 $club_info['club_name']         = $row['club_name'];
                 $club_info['club_image']        = $row['club_image'];
                 $club_info['club_country']      = $row['club_country'];
                 $club_info['club_city']         = $row['club_city'];
-                $club_info['club_shief']         = $row['club_shief'];
-                $club_info['club_number']         = $row['club_number'];
+                $club_info['club_shief']        = $row['club_shief'];
+                $club_info['club_number']       = $row['club_number'];
                 $club_info['club_mail']         = $row['club_mail'];
-                $club_info['coach_name']         = $row['coaches'];
+                $club_info['coach_name']        = $row['coaches'];
             }
 
 
@@ -298,12 +318,15 @@ class AdminModel
 
             $i=0;
             while ($row = $result->fetch_assoc()){
+                if(!is_null($row)){
                 $club_info['club_part'][$i]['id_participant']    =   $row['id_participant'];
                 $club_info['club_part'][$i]['first_name']        =   $row['first_name'];
                 $club_info['club_part'][$i]['second_name']       =   $row['second_name'];
                 $club_info['club_part'][$i]['third_name']        =   $row['third_name'];
                 $club_info['club_part'][$i]['birth_date']        =   $row['birth_date'];
                 $i++;
+                }
+                else{break;}
             }
             $db->close();
             return $club_info;
@@ -328,8 +351,8 @@ class AdminModel
             }
 
             $db->close();
+            return $partList;
         }
-        return $partList;
     }
 
     static function club_add($a)
@@ -692,6 +715,7 @@ class AdminModel
                       AND `d_c_age_category`='{$category_parts[1]}'
                       AND `d_c_nomination`='{$category_parts[2]}'
                       AND `d_c_league`='{$category_parts[3]}'
+                      AND `org_id` = '{$_COOKIE['get_id']}'
                       ";
             $result = $db->query($query);
             $checking_result = $result->fetch_assoc();
@@ -723,11 +747,21 @@ class AdminModel
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
-            $result = $db->query("SELECT `{$parameter}` FROM `category_parameters` WHERE `id_org` = {$_COOKIE['get_id']}");
+            $result = $db->query("SELECT `{$parameter}` FROM `dance_categories` WHERE `org_id` = {$_COOKIE['get_id']}");
             while ($row = $result->fetch_assoc()) {
-                $array_with_parameters[] = unserialize($row[$parameter]);
+                $array_with_parameters[] = $row[$parameter];
             }
-            return $array_with_parameters;
+            $tmp_array = array();
+            foreach ($array_with_parameters as $key => $parameter_name) {
+                if ($key == 0) {
+                    $tmp_array[] = $parameter_name;
+                } else {
+                    if (!in_array($parameter_name, $tmp_array)) {
+                        $tmp_array[] = $parameter_name;
+                    }
+                }
+            }
+            return $tmp_array;
         }
         $db->close();
     }
@@ -822,6 +856,7 @@ class AdminModel
                 }
             }
             if($org_id != ''){
+                setcookie('get_id', $org_id);
                 $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories` 
                                           WHERE `org_id` = {$org_id}
                                           ");

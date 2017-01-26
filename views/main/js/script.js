@@ -399,7 +399,7 @@ $('body').on('click', 'a.remove-part', function () {
       $(this).children('a').attr('href', '../cabinet_club/'+elementId);
     });
 
-    // ---------- Accordion with dance kategary list for participant registration at the event
+    // ---------- Accordion with dance categary list for participant registration at the event
     $('.list_category_down').hide();
     var $accordeonLi = $('.accordeon_category').children('li');
     $accordeonLi.on('click', function(){
