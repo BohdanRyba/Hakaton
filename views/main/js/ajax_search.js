@@ -3,13 +3,13 @@ var search = $('.list-search').find('input[type="search"]');
 var clubInfoObj= new Object();
 
 search.on('keyup', function () {
-    if($(this).val().length>=3){    
+//    if($(this).val().length>=3){    
         let search = $('.list-search').find('input[type="search"].active');
         let searchName= search.attr('data-type');
         $('.bg-opacity').show();
         $('.list_information').show();
         actionAjaxSearch(searchName);
-    };
+//   };
 });
     //>>>>>>>>>>>>>>>>>>>>>>>       ajax search when press enter
     $('.search_event').on('keydown', function(e){

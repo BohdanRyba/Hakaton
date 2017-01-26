@@ -208,7 +208,7 @@
                                             <div class=" event_search_box">
                                                 <form method="GET" action="" class="line-search">
                                                     <div class="dsb input-group input-group-sm">
-                                                        <input id="search_event_input" data-type="event"
+                                                        <input id="search_event_input" data-type="club"
                                                         class="form-control search_event active" type="search"
                                                         placeholder="Поиск клубов">
                                                     </div>
@@ -217,7 +217,7 @@
                                             <div class="list_club col-xs-12">
 
                                                 <!-- Resuly search -->
-                                                <ul class="list_club_data">
+                                                <ul class="list_club_data list_data_page">
                                                     <?php foreach ($list as $club):?>
                                                     <li id="<?= $club['id']?>">
                                                         <div class="list-search clr" data-id="1">
