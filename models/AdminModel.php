@@ -198,7 +198,7 @@ class AdminModel
 
     public static function ShowClubsForReg($id ='')
     {
-        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
@@ -261,6 +261,33 @@ class AdminModel
         }
         return $coachList;
     }
+
+    
+    public static function ShowAllParticipantByClubId($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $participantList = array();
+            $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
+            $result = $db->query($query);
+
+            $i=0;
+            while ($row = $result->fetch_assoc()){
+                if(!is_null($row)){
+                    $participantList[$i]['id_participant']    =   $row['id_participant'];
+                    $participantList[$i]['first_name']        =   $row['first_name'];
+                    $participantList[$i]['second_name']       =   $row['second_name'];
+                    $participantList[$i]['third_name']        =   $row['third_name'];
+                    $participantList[$i]['birth_date']        =   $row['birth_date'];
+                    $i++;
+                }
+                else{break;}
+            }
+            $db->close();
+            return $participantList;
+
+        }
+    }
+
 
 
     public static function ShowClubById($id)
@@ -333,28 +360,6 @@ class AdminModel
 
         }
     }
-
-    public static function ShowParticipantById($id)
-    {
-        $partList = [];
-        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `participant` WHERE `club_id`={$id}";
-            $result = $db->query($query);
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $partList[$i] ['id_participant'] = $row['id_participant'];
-                $partList[$i] ['first_name'] = $row['first_name'];
-                $partList[$i] ['second_name'] = $row['second_name'];
-                $partList[$i] ['third_name'] = $row['third_name'];
-                $partList[$i] ['birth_date'] = $row['birth_date'];
-                $i++;
-            }
-
-            $db->close();
-            return $partList;
-        }
-    }
-
     static function club_add($a)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {

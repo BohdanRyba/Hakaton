@@ -171,7 +171,7 @@
                                 <li><a href="#">Брейк Данс</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event">Регистраця</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?= $_SESSION['organization_id']?>">Регистраця</a></li>
                         <li><a href="">Категории</a></li>
                         <li><a href="#">Програма</a></li>
                         <li><a href="#">Суддьи</a></li>
