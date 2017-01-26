@@ -1390,4 +1390,48 @@ width: 4px;
     -moz-transition: all 0.4s;
     -webkit-transition: all 0.4s;
 }
-
+.accordeon_kategory{
+    padding:0;
+    margin-top:5px;
+    background:#00c0ef;
+}
+.accordeon_kategory li{
+    padding:0;
+    margin-bottom:5px;
+    color:#fff;
+    background:#00c0ef;
+    border-bottom:1px solid #fff;
+}
+.accordeon_kategory li .dance_kategory{
+    padding:10px 20px;
+}
+.accordeon_kategory li:hover{
+    cursor:pointer;
+    box-shadow:0 0 7px rgba(0,0,0,0.7);
+    transition:all 0,4s;
+    -o-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+}
+.accordeon_kategory .list_kategory_down{
+    padding-left:0px;
+    background:#fff;
+    border-bottom:5px solid #00c0ef;
+}
+.accordeon_kategory .list_kategory_down li{
+    padding:5px 5px 5px 25px;
+    color:#000;
+    background:#fff;
+    border:none;
+}
+.form_block_reg{
+    margin-top:5px;
+}
+.form_block_reg form div{
+    margin-bottom:1px;
+}
+.accordeon_kategory .list_kategory_down .act_part{
+    color:#fff;
+    background:#32CD32;
+}
