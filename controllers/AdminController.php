@@ -133,6 +133,7 @@ class AdminController
         }
     }
 
+
     public function actionAddClub()
     {
         if (isset($_POST)) {
@@ -200,12 +201,16 @@ class AdminController
          *         return $participant;
          */
     }
-    public function actionRegPartForEvent()
+    public function actionRegPartForEvent($id)
     {
-        $list = AdminModel::ShowClubsForReg($_SESSION['organization_id']) ;
+        $list = AdminModel::ShowClubsForReg($id) ;
         include 'views/admin/option_event/reg_part_for_event.php';
     }
 
+
+//    public fu
+
+    // ShowAllParticipantByClubId
     public function actionAjaxAddpart()
     {
         include 'views/admin/SettingsOrg/view_add_part.php';
