@@ -219,7 +219,7 @@
                                                 <!-- Resuly search -->
                                                 <ul class="list_club_data">
                                                     <?php foreach ($list as $club):?>
-                                                    <li id="<?= $club['id']?>">
+                                                    <li id="" data-club-id="<?= $club['id']?>">
                                                         <div class="list-search clr">
                                                             <div>
                                                                 <img class="bg_event_avatar" src="" alt="wtf"/>

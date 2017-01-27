@@ -134,6 +134,7 @@ $(function () {
         });
     });
 
+
     // Opens page table of data part info
     
     function addPartClub(e) {
