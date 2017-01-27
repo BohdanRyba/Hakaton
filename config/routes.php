@@ -26,9 +26,10 @@ return array(
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
     'admin/organizations/org_settings/add_new_info' => 'admin/ajax_NewInfo',
+    'admin/organizations/cabinet_club/([0-9]+)'=>'admin/ajaxClubCabinet/$1',
 //    'admin/option_event/reg_part_for_event/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
 
-    'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
+    'admin/organizations/org_settings/view_add_part/' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/ajax_AddParticipant/([0-9]+)' => 'admin/ajax_AddParticipant/$1',
     'admin/organizations/org_settings/ajax_showCategoriesAccordingToParameter' => 'admin/ajaxShowCategoriesAccordingToParameter', // added by Roma;

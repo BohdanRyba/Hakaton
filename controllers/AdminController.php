@@ -210,15 +210,11 @@ class AdminController
     public function actionRegParticipantForEvent($id)
     {
         echo json_encode(AdminModel::ShowAllParticipantByClubId($id));
+
     }
-
-
-//    public fu
-
-    // ShowAllParticipantByClubId
-    public function actionAjaxAddpart()
+    public function actionAjaxAddpart($id)
     {
-        echo 'HELLLO!!!!';$list = AdminModel::ShowClubsForReg($id) ;
+        $list = AdminModel::ShowClubsForReg($id) ;
         include 'views/admin/SettingsOrg/view_add_part.php';
     }
 

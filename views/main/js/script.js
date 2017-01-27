@@ -355,16 +355,18 @@ $('body').on('click', 'a.remove-part', function () {
           let list = JSON.parse(data);
             let nameList = list.map(function(participant){
 
-              let node = +'<tr role="row" class="odd" data-id-part="`+ participant.id_participant +`">'
-                         +'<td class="sorting_1"></td>'
+              let node = '<tr role="row" class="odd" data-id-part="'+ participant.id_participant +'">'
+                         +'<td class="sorting_1">'+ participant.id_participant +'</td>'
                          +'<td>'+ participant.first_name +'</td>'
                          +'<td>'+ participant.second_name +'</td>'
                          +'<td>'+ participant.third_name +'</td>'
-                         +'<td>'+ participant.birthd_date +'</td>'
-                        +'</tr>';
+                         +'<td>'+ participant.birth_date +'</td>'
+                         +'<td>'+ participant.equals_date +'</td>'
+                         +'</tr>';
             return node;
             });
           let box = $('.list_table_part').find('#table_part > .part_list');
+          box.children().remove();
           nameList.forEach(function(element){
             box.append(element);
           });

@@ -264,14 +264,17 @@ class AdminModel
         return $coachList;
     }
 
-    
+    /*
+     *
+     * TODO: Сделать сравнение даты и выводить возраст учасника!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     *
+     * */
     public static function ShowAllParticipantByClubId($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $participantList = array();
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
-
             $i=0;
             while ($row = $result->fetch_assoc()){
                 if(!is_null($row)){
@@ -280,6 +283,8 @@ class AdminModel
                     $participantList[$i]['second_name']       =   $row['second_name'];
                     $participantList[$i]['third_name']        =   $row['third_name'];
                     $participantList[$i]['birth_date']        =   $row['birth_date'];
+                    $participantList[$i]['equals_date']       =   $currentDate = date("Y-m-d") - $row['birth_date'];
+
                     $i++;
                 }
                 else{break;}
