@@ -106,6 +106,7 @@ function funcSearch(data) {
 };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
 function funcSearchPrint(data) {
+        console.log(data);
     var list = JSON.parse(data);
     let search = $('.list-search').find('input[type="search"].active');
     let searchName = search.attr('data-type');
@@ -182,11 +183,11 @@ function actionAjaxSearch(searchName){
     });
 };
 function funcSearchClub(data) {
-    console.log(data);
+
     let $container = $('.list_club_data');
     clubInfoObj.listClub = $container.children();
     $container.remove();
-    // let list = JSON.parse(data);
+    let list = JSON.parse(data);
 
     console.log(clubInfoObj);
 

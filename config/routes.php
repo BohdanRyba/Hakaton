@@ -46,7 +46,7 @@ return array(
     'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
     'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
 //    'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/actionRegParticipantForEvent/$1',
-//    admin/option_event/reg_part_for_event
+//    'admin/option_event/reg_part_for_event'
     'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',
     '' => 'home/index',

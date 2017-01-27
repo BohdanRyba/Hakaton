@@ -363,6 +363,7 @@ $('body').on('click', 'a.remove-part', function () {
                          +'<td>'+ participant.birth_date +'</td>'
                          +'<td>'+ participant.equals_date +'</td>'
                          +'</tr>';
+
             return node;
             });
           let box = $('.list_table_part').find('#table_part > .part_list');
