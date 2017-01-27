@@ -139,13 +139,13 @@ $(function () {
           let render = function(data){
             let nameList = data.map(function(participant){
               
-              let node = `<tr role="row" class="odd" data-id-part="`+ participant.id_participant +`">
-                          <td class="sorting_1"></td>
-                          <td>`+ participant.first_name +`</td>
-                          <td>`+ participant.second_name +`</td>
-                          <td>`+ participant.third_name +`</td>
-                          <td>`+ participant.birthd_date +`</td>
-                        </tr> `;
+              let node = +'<tr role="row" class="odd" data-id-part="`+ participant.id_participant +`">'
+                         +'<td class="sorting_1"></td>'
+                         +'<td>`+ participant.first_name +`</td>'
+                         +'<td>`+ participant.second_name +`</td>'
+                         +'<td>`+ participant.third_name +`</td>'
+                         +'<td>`+ participant.birthd_date +`</td>'
+                        +'</tr>';
             return node;
             });
             return nameList;
