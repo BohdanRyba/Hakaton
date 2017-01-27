@@ -333,6 +333,33 @@ $('body').on('click', 'a.remove-part', function () {
 
     // event options list the clubs target click
     $('.list_club_data li').on('click', function(){
+      let id = $(this).attr('data-club-id');
+      $.ajax({
+        url:'regParticipantForEvent/'+id,
+        type:'POST',
+        dataType:'html',
+        success:function(data){
+          let list = JSON.parse(data);
+          let render = function(data){
+            let nameList = data.map(function(participant){
+              
+              let node = `<tr role="row" class="odd" data-id-part="`+ participant.id_participant +`">
+                          <td class="sorting_1"></td>
+                          <td>`+ participant.first_name +`</td>
+                          <td>`+ participant.second_name +`</td>
+                          <td>`+ participant.third_name +`</td>
+                          <td>`+ participant.birthd_date +`</td>
+                        </tr> `;
+            return node;
+            });
+            return nameList;
+          };
+          let box = $('.list_table_part').find('#table_part');
+          render.each(function(element){
+            box.append(element);
+          });
+        }
+      });
       $('.bg_shadow').show();
       $('.list_table_part').show(300);
       $(this).css({
@@ -340,6 +367,9 @@ $('body').on('click', 'a.remove-part', function () {
         'position':'relative'
       });
     });
+
+
+
     $('.bg_shadow').on('click', function(){
       $(this).hide();
       $('.list_table_part').hide(300);
@@ -350,20 +380,8 @@ $('body').on('click', 'a.remove-part', function () {
       $('#table_part .part_list .active_part').removeClass('active_part');
     });
 
-    //save html part
-    // var part_obj = new Object();
-    // part_obj.size= function(obj){
-    //   var size= 0, key;
-    //   for(key in obj){
-    //     if(obj.hasOwnProperty(key)) size++;
-    //   };
-    //   return size;
-    // };
-
     $('body').on('click', '#table_part .part_list tr', function(event){
       $(this).toggleClass('active_part');
-      
-
     });
 
     $('.take_btn').on('click', function(){
