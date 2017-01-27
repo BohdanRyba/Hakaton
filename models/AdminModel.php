@@ -173,6 +173,8 @@ class AdminModel
             return $result;
         } else return 'db.connect false';
     }
+
+
     public static function ShowClubs($id ='')
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -192,8 +194,8 @@ class AdminModel
                 $i++;
             }
             $db->close();
+            return $clubsList;
         }
-        return $clubsList;
     }
 
     public static function ShowClubsForReg($id ='')

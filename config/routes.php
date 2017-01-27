@@ -26,6 +26,8 @@ return array(
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
     'admin/organizations/org_settings/add_new_info' => 'admin/ajax_NewInfo',
+//    'admin/option_event/reg_part_for_event/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
+
     'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/ajax_AddParticipant/([0-9]+)' => 'admin/ajax_AddParticipant/$1',
@@ -40,7 +42,9 @@ return array(
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
-    'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regPartForEvent/$1',
+    'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
+    'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
+//    'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/actionRegParticipantForEvent/$1',
 //    admin/option_event/reg_part_for_event
     'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',
