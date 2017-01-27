@@ -141,9 +141,10 @@ function funcSearchPrint(data) {
         });
         // add search result in DOM
         $('.list-data>').remove();
+        $('.cont-box1>').remove();
         render(searchQuery).forEach(function(element) {
             $container.append(element);
-            $('.cont-box1>').remove();
+            
         });
     };
 
