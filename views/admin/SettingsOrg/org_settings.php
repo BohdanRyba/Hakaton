@@ -242,13 +242,13 @@ desired effect
                     </div>
                     <div class="search_wrap  search_wrap_event" data-type-search="event">
                         <div class="list-search event_search_box">
-                            <form method="GET" action="" class="line-search">
+                            <form method="POST" action="" class="line-search">
                                 <div class="input-group input-group-sm">
                                     <input id="search_event_input" data-type="event"
                                            class="form-control search_event active" type="search"
                                            placeholder="Поиск по событиям">
                                     <span class="btn-search input-group-btn">
-                                        <button id="search_event_go" type="button" class=" btn btn-info btn-flat-event">Go!</button>
+                                        <button type="button" class=" btn btn-info btn-flat-event search_event_go">Go!</button>
                                     </span>
                                 </div>
                             </form>
@@ -261,12 +261,12 @@ desired effect
                     </div>
                     <div class="search_wrap search_wrap_category" data-type-search="category">
                         <div class="list-search event_search_box">
-                            <form method="GET" action="" class="line-search">
+                            <form method="POST" action="" class="line-search">
                                 <div class="input-group input-group-sm">
                                     <input id="search_event_inut" class="form-control search_event"
                                            data-type="option_category" type="search" placeholder="Поиск по категориям">
                                     <span class="btn-search input-group-btn">
-                                        <button id="" type="button" class="search_event_go btn btn-info btn-flat-event">Go!</button>
+                                        <button type="button" class="search_event_go btn btn-info btn-flat-event search_event_go">Go!</button>
                                     </span>
                                 </div>
                             </form>
@@ -274,12 +274,12 @@ desired effect
                     </div>
                     <div class="search_wrap search_wrap_club" data-type-search="club">
                         <div class="list-search event_search_box">
-                            <form method="GET" action="" class="line-search">
+                            <form method="POST" action="" class="line-search">
                                 <div class="input-group input-group-sm">
                                     <input class="form-control search_event" data-type="club" type="search"
                                            placeholder="Поиск по клубам">
                                     <span class="btn-search input-group-btn">
-                                        <button id="" type="button" class="btn btn-info btn-flat-event">Go!</button>
+                                        <button type="button" class="btn btn-info btn-flat-event search_event_go">Go!</button>
                                     </span>
                                 </div>
                             </form>

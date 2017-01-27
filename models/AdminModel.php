@@ -173,9 +173,11 @@ class AdminModel
             return $result;
         } else return 'db.connect false';
     }
+
+
     public static function ShowClubs($id ='')
     {
-        if ($db     = Db::getConnection(Db::ADMIN_BASE)) {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
@@ -192,8 +194,8 @@ class AdminModel
                 $i++;
             }
             $db->close();
+            return $clubsList;
         }
-        return $clubsList;
     }
 
     public static function ShowClubsForReg($id ='')

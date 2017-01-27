@@ -205,10 +205,10 @@
                                 <div class="row">
                                     <div class="block_list_club col-sm-4">
                                         <div class="search_wrap_event" data-type-search="event">
-                                            <div class=" event_search_box">
-                                                <form method="GET" action="" class="line-search">
+                                            <div class="club_search_box">
+                                                <form method="POST" action="" class="line-search list-search">
                                                     <div class="dsb input-group input-group-sm">
-                                                        <input id="search_event_input" data-type="event"
+                                                        <input id="search_event_input" data-type="club"
                                                         class="form-control search_event active" type="search"
                                                         placeholder="Поиск клубов">
                                                     </div>
@@ -220,7 +220,7 @@
                                                 <ul class="list_club_data">
                                                     <?php foreach ($list as $club):?>
                                                     <li id="<?= $club['id']?>">
-                                                        <div class="list-search clr" data-id="1">
+                                                        <div class="list-search clr">
                                                             <div>
                                                                 <img class="bg_event_avatar" src="" alt="wtf"/>
                                                             </div>
@@ -743,8 +743,8 @@
 <script src="<?= Router::$permalink ?>views/main/js/jquery-ui.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/spin.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/script.js?2115255"></script>
-<script src="<?= Router::$permalink ?>views/main/js/ajax.js?526"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>""></script>
+<script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>""></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function(){
@@ -764,5 +764,6 @@
     });
 
 </script>
+<script src="<?= Router::$permalink ?>views/main/js/ajax_search.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>

@@ -218,6 +218,7 @@ class AdminController
     // ShowAllParticipantByClubId
     public function actionAjaxAddpart()
     {
+        echo 'HELLLO!!!!';$list = AdminModel::ShowClubsForReg($id) ;
         include 'views/admin/SettingsOrg/view_add_part.php';
     }
 

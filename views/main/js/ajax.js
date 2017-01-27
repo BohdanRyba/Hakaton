@@ -24,14 +24,15 @@ function funcBefore() {
 }
 
 function funcSuccess(data) {
-    $('.list-group>').remove();
+    $('.list-group').children(':not(.list_data_page)').remove();
+    $('.list_data_page>').remove();
     $('body').css('cursor', 'default');
     $('#loading>').remove();
     $('#loading').css('height', '0px');
     $('.content-in').css('height', '0');
     $('.cont-box1').append(data);
     $('body').trigger('mask_ajax');
-}
+};
 $(function () {
     $('body').on('click', '#add_part', function () {
         $.ajax({
