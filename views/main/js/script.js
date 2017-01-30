@@ -367,11 +367,11 @@ $('body').on('click', 'a.remove-part', function () {
         return node;
       });
       let box = $('.list_table_part').find('#table_part > .part_list');
-      box.children().remove();
+      box.find().remove();
       nameList.forEach(function(element){
         box.append(element);
       });
-    }
+    };
 //--------------------------- END
 
 
@@ -386,8 +386,45 @@ $('.bg_shadow').on('click', function(){
   $('#table_part .part_list .active_part').removeClass('active_part');
 });
 
-$('body').on('click', '#table_part .part_list tr', function(event){
+$('.accordeon_category').hide();
+$('.form_block_reg').hide();
+
+$('body').on('click', '#table_part .part_list tr', function(){
   $(this).toggleClass('active_part');
+});
+
+
+function editCategory(data) {
+  let list = JSON.parse(data);
+  console.log(list, data);
+  let element = list.map(function(category) {
+
+    let node =  '<li>'
+    +'<div class="dance_category"><span>' +category.d_c_program+ '</span></div>'
+    +'</li>'
+    +'<ul class="list_category_down">'
+    +'<li class="act_part">' +category.d_c_age_category+ '"-"' +category.d_c_nomination+ '"-"' +category.d_c_league+ '</li>'
+    +'</ul>';
+    return node
+    
+  });
+
+  let box = $('.accordeon_category');
+  $box.find().remove();
+  element.forEach(function(element){
+    box.append(element);
+  });
+};
+
+$('body').on('click', '.block_reg .table_reg .part_list tr', function(){
+
+  $.ajax({
+    url:'ajax_test_json',
+    type:'POST',
+    dataType:'html',
+    success:editCategory
+  });
+  $('.accordeon_category').show(300);
 });
 
 
@@ -436,13 +473,14 @@ $('.take_btn').on('click', function(){
 
 });
 
-$('body').on('click', '#table_take_part tr', function(){
-  $(this).toggleClass('active_part');
-  console.log('asd');
-});
+// $('body').on('click', '#table_take_part tr', function(){
+//   $(this).toggleClass('active_part');
+//   console.log('asd');
+// });
 
 //========== hide show accordeon category 
-  $('.accordeon_category').hide();
+
+
 
 
 
