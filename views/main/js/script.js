@@ -188,14 +188,14 @@ $(function () {
 		window.incr_train++;
 
 		let trainer_node = +'<div class="form-group">'
-                        +'<div class="col-sm-12">'
-                          +'<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
-                        +'</div>'
-                      +'</div>';
+    +'<div class="col-sm-12">'
+    +'<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
+    +'</div>'
+    +'</div>';
 
     $('.add_train_box').append(trainer_node);
 
- });
+  });
 //MENU-EVENT
 $('.tabs').each(function () {
   $(this).children().filter(':first').addClass('active');
@@ -352,76 +352,110 @@ $('body').on('click', 'a.remove-part', function () {
 
     //--------------- take JSON all information paticipant for registration on event
     function TakeInfoPartisipant(data){
-          let list = JSON.parse(data);
-            let nameList = list.map(function(participant){
+      let list = JSON.parse(data);
+      let nameList = list.map(function(participant){
 
-              let node = '<tr role="row" class="odd" data-id-part="'+ participant.id_participant +'">'
-                         +'<td class="sorting_1">'+ participant.id_participant +'</td>'
-                         +'<td>'+ participant.first_name +'</td>'
-                         +'<td>'+ participant.second_name +'</td>'
-                         +'<td>'+ participant.third_name +'</td>'
-                         +'<td>'+ participant.birth_date +'</td>'
-                         +'<td>'+ participant.equals_date +'</td>'
-                         +'</tr>';
+        let node = '<tr role="row" class="odd" data-id-part="'+ participant.id_participant +'">'
+        +'<td class="sorting_1">'+ participant.id_participant +'</td>'
+        +'<td>'+ participant.first_name +'</td>'
+        +'<td>'+ participant.second_name +'</td>'
+        +'<td>'+ participant.third_name +'</td>'
+        +'<td>'+ participant.birth_date +'</td>'
+        +'<td>'+ participant.equals_date +'</td>'
+        +'</tr>';
 
-            return node;
-            });
-          let box = $('.list_table_part').find('#table_part > .part_list');
-          box.children().remove();
-          nameList.forEach(function(element){
-            box.append(element);
-          });
-        }
+        return node;
+      });
+      let box = $('.list_table_part').find('#table_part > .part_list');
+      box.children().remove();
+      nameList.forEach(function(element){
+        box.append(element);
+      });
+    }
 //--------------------------- END
 
 
 
-    $('.bg_shadow').on('click', function(){
-      $(this).hide();
-      $('.list_table_part').hide(300);
-      $('.list_club_data li').css({
-        'z-index':'0',
-        'position':'static'
-      });
-      $('#table_part .part_list .active_part').removeClass('active_part');
-    });
+$('.bg_shadow').on('click', function(){
+  $(this).hide();
+  $('.list_table_part').hide(300);
+  $('.list_club_data li').css({
+    'z-index':'0',
+    'position':'static'
+  });
+  $('#table_part .part_list .active_part').removeClass('active_part');
+});
 
-    $('body').on('click', '#table_part .part_list tr', function(event){
-      $(this).toggleClass('active_part');
-    });
-
-    $('.take_btn').on('click', function(){
-      $('.bg_shadow').hide();
-      $('.list_table_part').hide(300);
-      $('.list_club_data li').css({
-        'z-index':'0',
-        'position':'static'
-      });
+$('body').on('click', '#table_part .part_list tr', function(event){
+  $(this).toggleClass('active_part');
+});
 
 
+//================ take participant with list and add on page
+var checkRepet = function(id) {
+  let $part = [];
+  $('#table_take_part').find('tr').each(function(i){
+    $part[i] = $(this).attr('data-id-part');
+  });
 
-      $('.list_table_part .part_list tr').each(function(i){
-        var arr_part = [];
-        if($(this).hasClass('active_part')){
-          arr_part[i]=$(this).html();
-          $('.block_reg .part_list').append('<tr>'+arr_part[i]+'</tr>');
+  if($part.length){
+    for(i=0; i<=$part.length; i++){
+      if( $part[i] === id ){
+        return false
+      }else{
+        return true
+      };
+    };
+  }else{
+    return true
+  };
 
-        };
-      });
-      $('#table_part .part_list .active_part').removeClass('active_part');
+};
 
-    });
+$('.take_btn').on('click', function(){
+  $('.bg_shadow').hide();
+  $('.list_table_part').hide(300);
+  $('.list_club_data li').css({
+    'z-index':'0',
+    'position':'static'
+  });
 
-    $('body').on('click','#btn_go_event_cabinet', function(){
-      let elementId = $(this).find('.list-search').attr('data-element-id');
-      console.log(elementId);
-      $(this).children('a').attr('href', '../pick_categories_for_event/'+elementId);
-    });
-    $('body').on('click','#btn_go_club_cabinet', function(){
-      let elementId = $(this).find('.list-search').attr('data-element-id');
-      console.log( '../cabinet_club/'+elementId);
-      $(this).children('a').attr('href', '../cabinet_club/'+elementId);
-    });
+  $('.list_table_part .part_list tr').each(function(i){
+    var arr_part = [],
+    $that = $(this);
+    thisId = $that.attr('data-id-part');
+
+    if( $that.hasClass('active_part') && checkRepet(thisId) ){
+      arr_part[i]=$that.html();
+      $('.block_reg .part_list').append('<tr data-id-part="' +thisId+ '"  >' +arr_part[i]+ '</tr>');
+    };
+
+  });
+
+  $('#table_part .part_list .active_part').removeClass('active_part');
+
+});
+
+$('body').on('click', '#table_take_part tr', function(){
+  $(this).toggleClass('active_part');
+  console.log('asd');
+});
+
+//========== hide show accordeon category 
+  $('.accordeon_category').hide();
+
+
+
+$('body').on('click','#btn_go_event_cabinet', function(){
+  let elementId = $(this).find('.list-search').attr('data-element-id');
+  console.log(elementId);
+  $(this).children('a').attr('href', '../pick_categories_for_event/'+elementId);
+});
+$('body').on('click','#btn_go_club_cabinet', function(){
+  let elementId = $(this).find('.list-search').attr('data-element-id');
+  console.log( '../cabinet_club/'+elementId);
+  $(this).children('a').attr('href', '../cabinet_club/'+elementId);
+});
 
     // ---------- Accordion with dance categary list for participant registration at the event
     $('.list_category_down').hide();

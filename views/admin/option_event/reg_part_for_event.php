@@ -238,7 +238,7 @@
 
                                     <div class="col-sm-8">
                                         <div class="block_reg">
-                                            <table id="table_part" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <table id="table_part" class="table_reg table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                 <tbody class="part_list">
 
                                                 </tbody>
@@ -253,7 +253,7 @@
                                                 </div>
                                                 <table id="table_part" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                     <tbody class="part_list">
-
+                                                        
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -538,8 +538,8 @@
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/spin.min.js"></script>
 
-<script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>""></script>
-<script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>""></script>
+<script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 <script>
     $(function () {
         $('body').on('mask_ajax', function(){
