@@ -10,12 +10,22 @@ class AdminModel
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
 
+    static $event_id = '';
+
     static function remove_empty($array) {
-        return array_filter($array, '_remove_empty_internal');
+        return array_filter($array, 'self::_remove_empty_internal');
     }
 
     static function _remove_empty_internal($value) {
         return !empty($value) || $value === 0;
+    }
+
+    static function uncheck_event_id($id_to_uncheck){
+        if(self::$event_id == $id_to_uncheck){
+            return '';
+        } else {
+            return $id_to_uncheck;
+        }
     }
 
     static function debug($data)
@@ -956,11 +966,12 @@ class AdminModel
                             }
                         }
                     } else {
+                        $event_ids_array = explode("&", $row['event_ids']);
                         if(in_array($id, $checked_ids)){
-                            $event_ids_array = explode("&", $row['event_ids']);
                             if(!in_array($event_id, $event_ids_array)){
-                                $emptyRemoved = static::remove_empty(array_push($event_ids_array, $event_id));
-                                $imploded_events_ids = implode("&",$emptyRemoved);
+                                array_push($event_ids_array, $event_id);
+                                $emptyRemoved = static::remove_empty($event_ids_array);
+                                $imploded_events_ids = implode("&", $emptyRemoved);
                                 $update_result = $db->query("UPDATE `dance_categories`
                                                                 SET `event_ids` = '{$imploded_events_ids}'
                                                                 WHERE `id` = {$id}
@@ -972,19 +983,11 @@ class AdminModel
                                 }
                             }
                         } else {
-                            $event_ids_array = explode("&", $row['event_ids']);
                             if(in_array($event_id, $event_ids_array)){
-                                function uncheck_event_id($id_to_uncheck, $event_id){
-                                    if($event_id == $id_to_uncheck){
-                                        return '';
-                                    } else {
-                                        return $id_to_uncheck;
-                                    }
-
-                                }
-                                $event_ids_array = array_map("uncheck_event_id", $event_ids_array);
-                                $emptyRemoved = static::remove_empty(array_push($event_ids_array, $event_id));
-                                $imploded_events_ids = implode("&",$emptyRemoved);
+                                self::$event_id = $event_id;
+                                $event_ids_array_mapped = array_map("self::uncheck_event_id", $event_ids_array);
+                                $emptyRemoved = static::remove_empty($event_ids_array_mapped);
+                                $imploded_events_ids = implode("&",$emptyRemoved) . "&";
                                 $update_result = $db->query("UPDATE `dance_categories`
                                                                 SET `event_ids` = '{$imploded_events_ids}'
                                                                 WHERE `id` = {$id}

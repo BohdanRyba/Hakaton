@@ -403,7 +403,10 @@ class AdminController
         self::showArray($_SESSION);
         if(!empty($_POST)){
             $all_ids = $_POST['all'];
-            $checked_ids = $_POST['checked'];
+            $checked_ids = array();
+            if(!empty($_POST['checked'])){
+                $checked_ids = $_POST['checked'];
+            }
             $event_id = $_POST['event_id'];
             $result = AdminModel::assignEventIdToDancingCategory( $all_ids, $checked_ids,  $event_id );
             $_SESSION['test'] = $_POST;
