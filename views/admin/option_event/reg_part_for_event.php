@@ -201,7 +201,7 @@
                                 <div class="box-header">
                                     <h3 class="box-title">Выберите клуб для регистрации участников</h3>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="block_list_club col-sm-4">
                                         <div class="search_wrap_event" data-type-search="event">
@@ -253,7 +253,7 @@
                                                 </div>
                                                 <table id="table_part" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                                     <tbody class="part_list">
-                                                        
+
                                                     </tbody>
                                                 </table>
                                             </div>
