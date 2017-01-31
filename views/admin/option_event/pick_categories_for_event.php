@@ -181,6 +181,26 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div id="pickCategoriesForEventCallback" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Оповещение об изменения</h4>
+                                </div>
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                       <p>Изменения сохраненны успешно!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">ок</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
 
 
                     <div id="dance-group-info-wrapper">

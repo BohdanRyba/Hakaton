@@ -1,7 +1,9 @@
 jQuery(function($) {
     var $body=$('body'),
         $pickedCategories=$('#pick_dancing_categories_for_event'),
-        $sendBtn=$('#update-dancing-categories-info');
+        $sendBtn=$('#update-dancing-categories-info'),
+        $modal=$('#pickCategoriesForEventCallback'),
+        $modalBody=$modal.find('.modal-body');
 
     function toggleSendBtnVisibility(visibility){$sendBtn.css('display', visibility);}
 
@@ -64,10 +66,16 @@ jQuery(function($) {
                     console.log('ajax_sendPickedCategoriesForEvent has worked successfully!');
                     console.log(dataForServer);
                     console.log(msg);
+                    $modalBody.empty();
+                    $modalBody.append('<p>Изменения сохраненны успешно!</p>');
+                    $modal.modal();
                 },
                 error: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has failed work!');
                     console.log(msg);
+                    $modalBody.empty();
+                    $modalBody.append('<p>Ошибка! Изменения <b>не</b> сохраненны!</p>');
+                    $modal.modal();
                 }
             })
         }
@@ -115,11 +123,11 @@ jQuery(function($) {
                 url:'ajax_showCategoriesToPickForEvent',
                 data: obj,
                 success: function(msg) {
-                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
+                    // console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
                     var msg=JSON.parse(msg),
                         categories=msg['all_dancing_categories'],
                         checkedCategories=msg['checked_dancing_categories'];
-                    console.log(msg);
+                    console.log(checkedCategories);
                     $searchedCategoriesForm.append('<li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
 
                     for (let i=0; i<categories.length; i++) {
@@ -134,10 +142,16 @@ jQuery(function($) {
                         $searchedCategoriesForm.append('<li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="'+id+'">'+generalName+'</label></li>');
                     }
 
-                    console.log(category);
 
-                    // var $allCategories=$searchedCategoriesForm.find('.pick_dancing_categories_for_event');
+                    var $allCategories=$searchedCategoriesForm.find('.pick_dancing_categories_for_event');
 
+                    for (let i=0; i<checkedCategories.length; i++) {
+                        let id=checkedCategories[i],
+                            $pickedCategory=$allCategories.find('[name="'+id+'"]');
+
+                        $pickedCategory.prop('checked', true);
+                    $pickedCategory.parents('.pick_dancing_categories_for_event').attr('data-checked','checked')
+                    }
 
                         // let $pickedCategory=$allCategories.find('[name="'+id+'"]');
                     // $pickedCategory.prop('checked').attr('data-checked','checked');
