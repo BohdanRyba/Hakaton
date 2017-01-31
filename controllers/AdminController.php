@@ -393,14 +393,15 @@ class AdminController
     }
 
     public function actionAjaxShowCategoriesToPickForEvent(){
-        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+        if(!empty($_POST['name']) && !empty($_POST['parameter']) && !empty($_POST['event_id'])){
+            $_SESSION['test'] = $_POST;
             $asked_parameters = AdminModel::getCategoriesByName($_POST);
             echo json_encode($asked_parameters);
         }
+        self::showArray($_SESSION);
     }
 
     public function actionAjaxSendPickedCategoriesForEvent(){
-        self::showArray($_SESSION);
         if(!empty($_POST)){
             $all_ids = $_POST['all'];
             $checked_ids = array();
