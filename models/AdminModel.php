@@ -792,7 +792,6 @@ class AdminModel
         $db->close();
     }
 
-    public
     static function getCategoriesByName($searching_array)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -803,8 +802,22 @@ class AdminModel
             while ($row = $result->fetch_assoc()) {
                 $array_with_parameters[] = $row;
             }
-            return $array_with_parameters;
+
+            $array_with_checked_ids = [];
+            foreach ($array_with_parameters as $key => $value){
+                if(!empty($value['event_ids'])){
+                    $exploded_ids = explode("&",$value['event_ids']);
+                    if(in_array($searching_array['event_id'], $exploded_ids)){
+                        array_push($array_with_checked_ids, $value['id']);
+                    }
+                }
+            }
+            $array_to_return['all_dancing_categories'] = $array_with_parameters;
+            $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
+
+            return $array_to_return;
         }
+        $db->close();
     }
 
     static function SaveParticipant($data)
@@ -1005,6 +1018,7 @@ class AdminModel
             }
             return $resulting_array;
         }
-
+        $db->close();
     }
+
 }
