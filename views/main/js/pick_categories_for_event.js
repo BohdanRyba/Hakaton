@@ -99,7 +99,13 @@ jQuery(function($) {
         //AJAX 2 function AJAX_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER!!!!!!!!!!!!!!!!!!!!!!!!!!!
         function ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER($parameter) {
             var $name=$parameter.attr('data-name'),
-                obj={};
+                obj={},
+                id=window.location.href;
+
+            id=id.split('/');
+            id=id[id.length-1];
+            id= parseInt(id);
+            obj['event_id']=id;
 
             obj['name']=$name;
             obj['parameter']='d_c_program';
