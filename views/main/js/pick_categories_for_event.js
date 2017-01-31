@@ -134,6 +134,12 @@ jQuery(function($) {
                         $searchedCategoriesForm.append('<li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="'+id+'">'+generalName+'</label></li>');
                     }
 
+                    var $allCategories=$searchedCategoriesForm.find('.pick_dancing_categories_for_event');
+
+
+                        // let $pickedCategory=$allCategories.find('[name="'+id+'"]');
+                    // $pickedCategory.prop('checked').attr('data-checked','checked');
+
                 },
                 error: function (msg) {
                     console.log(msg);
