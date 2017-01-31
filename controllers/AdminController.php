@@ -408,11 +408,7 @@ class AdminController
             }
             $event_id = $_POST['event_id'];
             $result = AdminModel::assignEventIdToDancingCategory( $all_ids, $checked_ids,  $event_id );
-            if($result){
-                echo "SUCCESS!";
-            } else {
-                echo "FAILURE!";
-            }
+            echo json_encode($result);
         }
     }
 }
