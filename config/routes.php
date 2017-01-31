@@ -16,6 +16,7 @@ return array(
     'events/single/([0-9]+)' => 'events/showSingleEvent/$1', // it should be completed...
     'admin/organizations/event_add' => 'admin/event_add',
     'admin/organizations/pick_categories_for_event/ajax_showCategoriesToPickForEvent' => 'admin/ajaxShowCategoriesToPickForEvent',
+    'admin/organizations/pick_categories_for_event/ajax_sendPickedCategoriesForEvent' => 'admin/ajaxSendPickedCategoriesForEvent',
     'admin/organizations/pick_categories_for_event/([0-9]+)' => 'admin/pickCategoriesForEvent/$1',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',

@@ -393,9 +393,30 @@ class AdminController
     }
 
     public function actionAjaxShowCategoriesToPickForEvent(){
-        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
+        self::showArray($_SESSION);
+        if(!empty($_POST['name']) && !empty($_POST['parameter']) && !empty($_POST['event_id'])){
             $asked_parameters = AdminModel::getCategoriesByName($_POST);
+            $_SESSION['testing_array'] = $asked_parameters;
             echo json_encode($asked_parameters);
+        }
+    }
+
+    public function actionAjaxSendPickedCategoriesForEvent(){
+        if(!empty($_POST)){
+            $all_ids = $_POST['all'];
+            $checked_ids = array();
+            if(!empty($_POST['checked'])){
+                $checked_ids = $_POST['checked'];
+            }
+            $event_id = $_POST['event_id'];
+            $result = AdminModel::assignEventIdToDancingCategory( $all_ids, $checked_ids,  $event_id );
+//            $_SESSION['test'] = $_POST;
+//            $_SESSION['result'] = $result;
+            if($result){
+                echo "SUCCESS!";
+            } else {
+                echo "FAILURE!";
+            }
         }
     }
 }

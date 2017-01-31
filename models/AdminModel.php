@@ -10,6 +10,24 @@ class AdminModel
     const CURRENT_PAGE = 1;
     const PER_PAGE = 4;
 
+    static $event_id = '';
+
+    static function remove_empty($array) {
+        return array_filter($array, 'self::_remove_empty_internal');
+    }
+
+    static function _remove_empty_internal($value) {
+        return !empty($value) || $value === 0;
+    }
+
+    static function uncheck_event_id($id_to_uncheck){
+        if(self::$event_id == $id_to_uncheck){
+            return '';
+        } else {
+            return $id_to_uncheck;
+        }
+    }
+
     static function debug($data)
     {
         echo '<pre>';
@@ -257,15 +275,15 @@ class AdminModel
              * */
 
 
-            while ($row = $result->fetch_assoc()){
-                $club_info['club_name']         = $row['club_name'];
-                $club_info['club_image']        = $row['club_image'];
-                $club_info['club_country']      = $row['club_country'];
-                $club_info['club_city']         = $row['club_city'];
-                $club_info['club_shief']         = $row['club_shief'];
-                $club_info['club_number']         = $row['club_number'];
-                $club_info['club_mail']         = $row['club_mail'];
-                $club_info['coach_name']         = $row['coaches'];
+            while ($row = $result->fetch_assoc()) {
+                $club_info['club_name'] = $row['club_name'];
+                $club_info['club_image'] = $row['club_image'];
+                $club_info['club_country'] = $row['club_country'];
+                $club_info['club_city'] = $row['club_city'];
+                $club_info['club_shief'] = $row['club_shief'];
+                $club_info['club_number'] = $row['club_number'];
+                $club_info['club_mail'] = $row['club_mail'];
+                $club_info['coach_name'] = $row['coaches'];
             }
 
 
@@ -280,7 +298,7 @@ class AdminModel
 
             $pieces = explode("&", $club_info['coach_name']);
             $new_arr = array_diff($pieces, array('', NULL, false));
-            $club_info['coach_name'] =implode(",", $new_arr);
+            $club_info['coach_name'] = implode(",", $new_arr);
 
 
             /*
@@ -296,13 +314,13 @@ class AdminModel
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
 
-            $i=0;
-            while ($row = $result->fetch_assoc()){
-                $club_info['club_part'][$i]['id_participant']    =   $row['id_participant'];
-                $club_info['club_part'][$i]['first_name']        =   $row['first_name'];
-                $club_info['club_part'][$i]['second_name']       =   $row['second_name'];
-                $club_info['club_part'][$i]['third_name']        =   $row['third_name'];
-                $club_info['club_part'][$i]['birth_date']        =   $row['birth_date'];
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $club_info['club_part'][$i]['id_participant'] = $row['id_participant'];
+                $club_info['club_part'][$i]['first_name'] = $row['first_name'];
+                $club_info['club_part'][$i]['second_name'] = $row['second_name'];
+                $club_info['club_part'][$i]['third_name'] = $row['third_name'];
+                $club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
                 $i++;
             }
             $db->close();
@@ -340,15 +358,47 @@ class AdminModel
                 $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
                 move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
             }
-            if (isset($_POST['club_first_trener'])){$club_trener_0=$_POST['club_first_trener'];}else{$club_trener_0='';}
-            if (isset($_POST['club_trener_1'])){$club_trener_1=$_POST['club_trener_1'];}else{$club_trener_1='';}
-            if (isset($_POST['club_trener_2'])){$club_trener_2=$_POST['club_trener_2'];}else{$club_trener_2='';}
-            if (isset($_POST['club_trener_3'])){$club_trener_3=$_POST['club_trener_3'];}else{$club_trener_3='';}
-            if (isset($_POST['club_trener_4'])){$club_trener_4=$_POST['club_trener_4'];}else{$club_trener_4='';}
-            if (isset($_POST['club_trener_5'])){$club_trener_5=$_POST['club_trener_5'];}else{$club_trener_5='';}
-            if (isset($_POST['club_trener_6'])){$club_trener_6=$_POST['club_trener_6'];}else{$club_trener_6='';}
-            if (isset($_POST['club_trener_7'])){$club_trener_7=$_POST['club_trener_7'];}else{$club_trener_7='';}
-            $coaches  = "$club_trener_0&$club_trener_1&$club_trener_2&$club_trener_3&$club_trener_4&$club_trener_5&$club_trener_6&$club_trener_7";
+            if (isset($_POST['club_first_trener'])) {
+                $club_trener_0 = $_POST['club_first_trener'];
+            } else {
+                $club_trener_0 = '';
+            }
+            if (isset($_POST['club_trener_1'])) {
+                $club_trener_1 = $_POST['club_trener_1'];
+            } else {
+                $club_trener_1 = '';
+            }
+            if (isset($_POST['club_trener_2'])) {
+                $club_trener_2 = $_POST['club_trener_2'];
+            } else {
+                $club_trener_2 = '';
+            }
+            if (isset($_POST['club_trener_3'])) {
+                $club_trener_3 = $_POST['club_trener_3'];
+            } else {
+                $club_trener_3 = '';
+            }
+            if (isset($_POST['club_trener_4'])) {
+                $club_trener_4 = $_POST['club_trener_4'];
+            } else {
+                $club_trener_4 = '';
+            }
+            if (isset($_POST['club_trener_5'])) {
+                $club_trener_5 = $_POST['club_trener_5'];
+            } else {
+                $club_trener_5 = '';
+            }
+            if (isset($_POST['club_trener_6'])) {
+                $club_trener_6 = $_POST['club_trener_6'];
+            } else {
+                $club_trener_6 = '';
+            }
+            if (isset($_POST['club_trener_7'])) {
+                $club_trener_7 = $_POST['club_trener_7'];
+            } else {
+                $club_trener_7 = '';
+            }
+            $coaches = "$club_trener_0&$club_trener_1&$club_trener_2&$club_trener_3&$club_trener_4&$club_trener_5&$club_trener_6&$club_trener_7";
 
 
             $pass = md5($a['club_number']);
@@ -369,10 +419,9 @@ class AdminModel
                         
                         ");
 
-            if ($result)
-            {
+            if ($result) {
                 return $result;
-            }else{
+            } else {
                 echo 'something else not work';
             }
 
@@ -743,7 +792,6 @@ class AdminModel
         $db->close();
     }
 
-    public
     static function getCategoriesByName($searching_array)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -754,8 +802,22 @@ class AdminModel
             while ($row = $result->fetch_assoc()) {
                 $array_with_parameters[] = $row;
             }
-            return $array_with_parameters;
+
+            $array_with_checked_ids = [];
+            foreach ($array_with_parameters as $key => $value){
+                if(!empty($value['event_ids'])){
+                    $exploded_ids = explode("&",$value['event_ids']);
+                    if(in_array($searching_array['event_id'], $exploded_ids)){
+                        array_push($array_with_checked_ids, $value['id']);
+                    }
+                }
+            }
+            $array_to_return['all_dancing_categories'] = $array_with_parameters;
+            $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
+
+            return $array_to_return;
         }
+        $db->close();
     }
 
     static function SaveParticipant($data)
@@ -832,7 +894,7 @@ class AdminModel
                     $org_id = $row['org_id_for_event'];
                 }
             }
-            if($org_id != ''){
+            if ($org_id != '') {
                 setcookie('get_id', $org_id);
                 $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories` 
                                           WHERE `org_id` = {$org_id}
@@ -892,4 +954,71 @@ class AdminModel
         $db->close();
         self::saveMessage($message);
     }
+
+    static function assignEventIdToDancingCategory($all_ids, $checked_ids,  $event_id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $resulting_array = [];
+            foreach ( $all_ids as $key => $id){
+                $result1 = $db->query("SELECT `event_ids` FROM `dance_categories` WHERE `org_id` = {$_COOKIE['get_id']}
+                                        AND `id` = {$id}
+                                          ");
+                if ($result1){
+                    $row = $result1->fetch_assoc();
+                    if(empty($row['event_ids'])){
+                        if(in_array($id, $checked_ids)){
+                            $event_ids = $event_id . "&";
+                            $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$event_ids}'
+                                                                WHERE `id` = {$id}
+                                                        ");
+                            if ($update_result){
+                                $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated SUCCESSFULLY!\n";
+                            } else {
+                                $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated!\n";
+                            }
+                        }
+                    } else {
+                        $event_ids_array = explode("&", $row['event_ids']);
+                        if(in_array($id, $checked_ids)){
+                            if(!in_array($event_id, $event_ids_array)){
+                                array_push($event_ids_array, $event_id);
+                                $emptyRemoved = static::remove_empty($event_ids_array);
+                                $imploded_events_ids = implode("&", $emptyRemoved);
+                                $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$imploded_events_ids}'
+                                                                WHERE `id` = {$id}
+                                                        ");
+                                if ($update_result){
+                                    $resulting_array[] = "SUCCESS! The dancing category with id = \"" . $id . "\" was updated!\n";
+                                } else {
+                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated...\n";
+                                }
+                            }
+                        } else {
+                            if(in_array($event_id, $event_ids_array)){
+                                self::$event_id = $event_id;
+                                $event_ids_array_mapped = array_map("self::uncheck_event_id", $event_ids_array);
+                                $emptyRemoved = static::remove_empty($event_ids_array_mapped);
+                                $imploded_events_ids = implode("&",$emptyRemoved) . "&";
+                                $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$imploded_events_ids}'
+                                                                WHERE `id` = {$id}
+                                                        ");
+                                if ($update_result){
+                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated - the event_id has been deleted!\n";
+                                } else {
+                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated, can't be deleted...\n";
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            return $resulting_array;
+        }
+        $db->close();
+    }
+
 }
