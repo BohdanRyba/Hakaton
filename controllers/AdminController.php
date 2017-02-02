@@ -210,12 +210,18 @@ class AdminController
         $list = AdminModel::ShowClubsForReg($id) ;
         $json = file_get_contents( __DIR__ . DIRECTORY_SEPARATOR .'categories.json' ); // в примере все файлы в корне
         echo json_encode($json);
+
         include 'views/admin/option_event/reg_part_for_event.php';
     }
     public function actionRegParticipantForEvent($id)
     {
         echo json_encode(AdminModel::ShowAllParticipantByClubId($id));
 
+    }
+    public function actionTestAjax()
+    {
+        $json = file_get_contents( 'categories.json' ); // в примере все файлы в корне
+        echo json_encode($json);
     }
     public function actionAjaxAddpart($id)
     {
