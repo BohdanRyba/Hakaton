@@ -11,7 +11,11 @@ jQuery(function($) {
         $danceProgramsList=$('#dance-program-to-pick-categories'),
         $departmentsFillingPanelBody=$('#departments-filling-panel-body'),
         $departmentsFillingCategoriesList=$('#categories-list'),
-        $departmentsFillingSaveBtn=$('#update-dancing-department-info');
+        $departmentsFillingSaveBtn=$('#update-dancing-department-info'),
+        //DEPARTMENTS EDITION
+        $departmentsEditionSaveBtn=$('#update-dancing-department-categories-list'),
+        $departmentsEditionPanelBody=$('#departments-edition-panel-body'),
+        $departmentsEditionTransferCategory=$('#transferCategory');
 
     function toggleVisibility (target, visibility) {
         target.css('display', visibility);
@@ -136,6 +140,29 @@ jQuery(function($) {
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT saves CATEGORIES $danceProgramsList THAT ARE USED IN THE DANCING PROGRAM)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 //DEPARTMENTS FIILLING
+
+
+//DEPARTMENTS EDITION
+    //   dropdown pick department
+    $body.on('click', '.dropdown-menu-department-content',function () {
+        var $departments=$(this).parent().children(),
+            $departmentName=$(this).children().text(),
+            $seeDepartmentName=$('#see-department-content-name');
+        console.log($departmentsEditionPanelBody.css('display'));
+
+        $departments.each(function () {
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+        // $(this).parents('.dropdown').find('.dropdown-toggle').html($departmentName+'<span class="caret"></span>');
+        $seeDepartmentName.text($departmentName);
+        if ($departmentsEditionPanelBody.css('display')=='none') {
+            toggleVisibility ($departmentsEditionPanelBody,'block');
+        }
+    });
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//DEPARTMENTS EDITION
+
 });
 
 
