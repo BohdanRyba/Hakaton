@@ -432,4 +432,9 @@ class AdminController
             echo json_encode($result);
         }
     }
+
+    public function actionCreateDancingDepartments(){
+        $nav_content = $this->createNavContent(Router::$uri);
+        require_once('views/admin/option_event/create_dancing_departments.php');
+    }
 }

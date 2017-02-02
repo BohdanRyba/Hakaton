@@ -18,6 +18,7 @@ return array(
     'admin/organizations/pick_categories_for_event/ajax_showCategoriesToPickForEvent' => 'admin/ajaxShowCategoriesToPickForEvent',
     'admin/organizations/pick_categories_for_event/ajax_sendPickedCategoriesForEvent' => 'admin/ajaxSendPickedCategoriesForEvent',
     'admin/organizations/pick_categories_for_event/([0-9]+)' => 'admin/pickCategoriesForEvent/$1',
+    'admin/organizations/create_dancing_departments' => 'admin/createDancingDepartments',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
     'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory',
