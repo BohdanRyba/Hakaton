@@ -394,7 +394,15 @@ class AdminController
 
     public function actionAjaxShowCategoriesToPickForEvent(){
         if(!empty($_POST['name']) && !empty($_POST['parameter']) && !empty($_POST['event_id'])){
-            $asked_parameters = AdminModel::getCategoriesByName($_POST);
+            $name = $_POST['name'];
+            $parameter = $_POST['parameter'];
+            $event_id = $_POST['event_id'];
+            $asked_parameters = AdminModel::getCategoriesByName($name, $parameter, $event_id);
+            echo json_encode($asked_parameters);
+        } elseif(!empty($_POST['name']) && !empty($_POST['parameter']) && !isset($_POST['event_id'])){
+            $name = $_POST['name'];
+            $parameter = $_POST['parameter'];
+            $asked_parameters = AdminModel::getCategoriesByName($name, $parameter);
             echo json_encode($asked_parameters);
         }
     }

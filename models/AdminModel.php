@@ -792,30 +792,39 @@ class AdminModel
         $db->close();
     }
 
-    static function getCategoriesByName($searching_array)
+    static function getCategoriesByName($name, $parameter, $event_id = NULL)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
-            $result = $db->query("SELECT * FROM `dance_categories`
-                                  WHERE `{$searching_array['parameter']}` = '{$searching_array['name']}' 
-                                  AND `org_id` = {$_COOKIE['get_id']}");
-            while ($row = $result->fetch_assoc()) {
-                $array_with_parameters[] = $row;
-            }
 
-            $array_with_checked_ids = [];
-            foreach ($array_with_parameters as $key => $value){
-                if(!empty($value['event_ids'])){
-                    $exploded_ids = explode("&",$value['event_ids']);
-                    if(in_array($searching_array['event_id'], $exploded_ids)){
-                        array_push($array_with_checked_ids, $value['id']);
-                    }
+            $result = $db->query("SELECT * FROM `dance_categories`
+                                  WHERE `{$parameter}` = '{$name}' 
+                                  AND `org_id` = {$_COOKIE['get_id']}");
+
+            if($result){
+                while ($row = $result->fetch_assoc()) {
+                    $array_with_parameters[] = $row;
                 }
             }
-            $array_to_return['all_dancing_categories'] = $array_with_parameters;
-            $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
 
-            return $array_to_return;
+            if ($event_id != NULL){
+                return $array_with_parameters;
+            } elseif ($event_id == NULL){
+                $array_with_checked_ids = [];
+                foreach ($array_with_parameters as $key => $value){
+                    if(!empty($value['event_ids'])){
+                        $exploded_ids = explode("&", $value['event_ids']);
+                        if(in_array($event_id, $exploded_ids)){
+                            array_push($array_with_checked_ids, $value['id']);
+                        }
+                    }
+                }
+                $array_to_return['all_dancing_categories'] = $array_with_parameters;
+                $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
+
+                return $array_to_return;
+            }
+
         }
         $db->close();
     }
