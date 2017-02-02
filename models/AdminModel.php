@@ -192,7 +192,8 @@ class AdminModel
         } else return 'db.connect false';
     }
 
-    public static function ShowClubs($id)
+
+    public static function ShowClubs($id ='')
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
@@ -211,8 +212,27 @@ class AdminModel
                 $i++;
             }
             $db->close();
+            return $clubsList;
         }
-        return $clubsList;
+    }
+
+    public static function ShowClubsForReg($id ='')
+    {
+            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
+            $result = $db->query($query);
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                $clubsList[$i]['id'] = $row['id'];
+                $clubsList[$i]['club_name'] = $row['club_name'];
+
+                $i++;
+            }
+            return $clubsList;
+
+            $db->close();
+        }
+
     }
 
     public static function ShowEvents($id)
@@ -262,6 +282,39 @@ class AdminModel
         return $coachList;
     }
 
+    /*
+     *
+     * TODO: Сделать сравнение даты и выводить возраст учасника!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     *
+     * */
+    public static function ShowAllParticipantByClubId($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $participantList = array();
+            $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
+            $result = $db->query($query);
+            $i=0;
+            while ($row = $result->fetch_assoc()){
+                if(!is_null($row)){
+                    $participantList[$i]['id_participant']    =   $row['id_participant'];
+                    $participantList[$i]['first_name']        =   $row['first_name'];
+                    $participantList[$i]['second_name']       =   $row['second_name'];
+                    $participantList[$i]['third_name']        =   $row['third_name'];
+                    $participantList[$i]['birth_date']        =   $row['birth_date'];
+                    $participantList[$i]['equals_date']       =   $currentDate = date("Y-m-d") - $row['birth_date'];
+
+                    $i++;
+                }
+                else{break;}
+            }
+            $db->close();
+            return $participantList;
+
+        }
+    }
+
+
+
     public static function ShowClubById($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -275,15 +328,16 @@ class AdminModel
              * */
 
 
-            while ($row = $result->fetch_assoc()) {
-                $club_info['club_name'] = $row['club_name'];
-                $club_info['club_image'] = $row['club_image'];
-                $club_info['club_country'] = $row['club_country'];
-                $club_info['club_city'] = $row['club_city'];
-                $club_info['club_shief'] = $row['club_shief'];
-                $club_info['club_number'] = $row['club_number'];
-                $club_info['club_mail'] = $row['club_mail'];
-                $club_info['coach_name'] = $row['coaches'];
+            while ($row = $result->fetch_assoc()){
+                $club_info['id']                = $row['id'];
+                $club_info['club_name']         = $row['club_name'];
+                $club_info['club_image']        = $row['club_image'];
+                $club_info['club_country']      = $row['club_country'];
+                $club_info['club_city']         = $row['club_city'];
+                $club_info['club_shief']        = $row['club_shief'];
+                $club_info['club_number']       = $row['club_number'];
+                $club_info['club_mail']         = $row['club_mail'];
+                $club_info['coach_name']        = $row['coaches'];
             }
 
 
@@ -314,42 +368,23 @@ class AdminModel
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
 
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $club_info['club_part'][$i]['id_participant'] = $row['id_participant'];
-                $club_info['club_part'][$i]['first_name'] = $row['first_name'];
-                $club_info['club_part'][$i]['second_name'] = $row['second_name'];
-                $club_info['club_part'][$i]['third_name'] = $row['third_name'];
-                $club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+            $i=0;
+            while ($row = $result->fetch_assoc()){
+                if(!is_null($row)){
+                $club_info['club_part'][$i]['id_participant']    =   $row['id_participant'];
+                $club_info['club_part'][$i]['first_name']        =   $row['first_name'];
+                $club_info['club_part'][$i]['second_name']       =   $row['second_name'];
+                $club_info['club_part'][$i]['third_name']        =   $row['third_name'];
+                $club_info['club_part'][$i]['birth_date']        =   $row['birth_date'];
                 $i++;
+                }
+                else{break;}
             }
             $db->close();
             return $club_info;
 
         }
     }
-
-    public static function ShowParticipantById($id)
-    {
-        $partList = [];
-        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $query = "SELECT * FROM `participant` WHERE `club_id`={$id}";
-            $result = $db->query($query);
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                $partList[$i] ['id_participant'] = $row['id_participant'];
-                $partList[$i] ['first_name'] = $row['first_name'];
-                $partList[$i] ['second_name'] = $row['second_name'];
-                $partList[$i] ['third_name'] = $row['third_name'];
-                $partList[$i] ['birth_date'] = $row['birth_date'];
-                $i++;
-            }
-
-            $db->close();
-        }
-        return $partList;
-    }
-
     static function club_add($a)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {

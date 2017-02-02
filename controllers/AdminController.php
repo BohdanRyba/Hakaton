@@ -117,7 +117,7 @@ class AdminController
 
     public function actionOrg_settings($id = '')
     {
-
+        $_SESSION['organization_id'] = $id;
         if (isset($id) && is_numeric($id)) {
             $current_org_name = AdminModel::getOrganizationById($id);
             $nav_content = $this->createNavContent(Router::$uri, $id);
@@ -188,17 +188,44 @@ class AdminController
 
     public function actionAjaxClubCabinet($id)
     {
-        $participant = AdminModel::ShowClubById($id);
-//        $participant[0] = AdminModel::ShowClubById($id);
-//        $participant[1] = AdminModel::ShowParticipantById($id);
-//        $participant[2] = AdminModel::GetCoachesById();
-        include 'views/admin/SettingsOrg/club-cabinet-for-adm.php';
 
-        return $participant;
+        $participant = AdminModel::ShowClubById($id);
+        $nav_content = $this->createNavContent(Router::$uri);
+
+        require_once ('views/admin/SettingsOrg/club-cabinet-for-adm.php');
+
+        /**
+         *
+         * TODO: В будущем,если нужны будут какие нибудь данные раскоментировать
+         *
+         *         return $participant;
+         */
     }
 
-    public function actionAjaxAddpart()
+    public function actionRegClubForEvent($id)
     {
+        $list = AdminModel::ShowClubsForReg($id) ;
+        $json = file_get_contents( __DIR__ . DIRECTORY_SEPARATOR .'categories.json' ); // в примере все файлы в корне
+        echo json_encode($json);
+
+        include 'views/admin/option_event/reg_part_for_event.php';
+    }
+
+    public function actionRegParticipantForEvent($id)
+    {
+        echo json_encode(AdminModel::ShowAllParticipantByClubId($id));
+
+    }
+
+    public function actionTestAjax()
+    {
+        $json = file_get_contents( 'categories.json' ); // в примере все файлы в корне
+        echo json_encode($json);
+    }
+
+    public function actionAjaxAddpart($id)
+    {
+        $list = AdminModel::ShowClubsForReg($id) ;
         include 'views/admin/SettingsOrg/view_add_part.php';
     }
 

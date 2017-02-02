@@ -19,6 +19,7 @@ return array(
     'admin/organizations/pick_categories_for_event/ajax_sendPickedCategoriesForEvent' => 'admin/ajaxSendPickedCategoriesForEvent',
     'admin/organizations/pick_categories_for_event/([0-9]+)' => 'admin/pickCategoriesForEvent/$1',
     'admin/organizations/create_dancing_departments' => 'admin/createDancingDepartments',
+    'admin/organizations/cubinet_club/([0-9]+)' => 'admin/ajaxClubCabinet/$1',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
     'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory',
@@ -28,8 +29,9 @@ return array(
     'admin/organizations/org_settings/ajax_option_categoryShow' => 'admin/ajax_option_categoryShow', // added by Roma;
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
     'admin/organizations/org_settings/add_new_info' => 'admin/ajax_NewInfo',
-    'admin/organizations/org_settings/club-cabinet-for-adm/([0-9]+)' => 'admin/ajaxClubCabinet/$1',
-    'admin/organizations/org_settings/view_add_part' => 'admin/ajaxAddPart',
+    'admin/organizations/cabinet_club/([0-9]+)'=>'admin/ajaxClubCabinet/$1',
+//    'admin/option_event/reg_part_for_event/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1', //after merging ASoft
+    'admin/organizations/org_settings/view_add_part/' => 'admin/ajaxAddPart',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/ajax_AddParticipant/([0-9]+)' => 'admin/ajax_AddParticipant/$1',
     'admin/organizations/org_settings/ajax_updatingCreatedDancingCategory' => 'admin/ajaxUpdatingCreatedDancingCategory', // added by Roma;
@@ -42,7 +44,10 @@ return array(
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
-    'admin/dancing_groups/dance_list' => 'admin/dancingList',
+    'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
+    'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
+   'admin/option_event/reg_part_for_event/ajax_test_json' => 'admin/testAjax',//--------------SLOT
+//    'admin/option_event/reg_part_for_event'
     'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',
     '' => 'home/index',
