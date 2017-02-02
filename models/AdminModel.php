@@ -807,9 +807,9 @@ class AdminModel
                 }
             }
 
-            if ($event_id != NULL){
+            if ($event_id == NULL){
                 return $array_with_parameters;
-            } elseif ($event_id == NULL){
+            } elseif ($event_id != NULL){
                 $array_with_checked_ids = [];
                 foreach ($array_with_parameters as $key => $value){
                     if(!empty($value['event_ids'])){
