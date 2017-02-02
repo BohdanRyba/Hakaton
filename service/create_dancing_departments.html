@@ -195,8 +195,8 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="pwd">Пароль подтверждения действия:</label>
-                                                <input type="password" class="form-control" name="deletion-confirmation-password" id="pwd">
-                                                <input type="hidden" name="dancing-group-id" id="dancing-group-deletion-id">
+                                                <input type="text" class="form-control" name="deletion-confirmation-password" id="pwd">
+                                                <!--<input type="hidden" name="dancing-group-id" id="dancing-group-deletion-id">-->
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -220,7 +220,7 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="newDepartmentName">Новое название:</label>
-                                                <input type="password" class="form-control" name="new-Department-Name" id="newDepartmentName">
+                                                <input type="text" class="form-control" name="new-Department-Name" id="newDepartmentName">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -244,11 +244,45 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="newDepartment">Название отделения:</label>
-                                                <input type="password" class="form-control" name="new-Department-Name" id="newDepartment">
+                                                <input type="text" class="form-control" name="new-Department-Name" id="newDepartment">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="submit" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="transferCategory" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Перемещение категории</h4>
+                                    </div>
+                                    <form action="" method="POST">
+                                        <div class="modal-body">
+                                            <!--<div class="form-group">-->
+                                                <!--<label for="newDepartment">Название отделения:</label>-->
+                                                <!--<input type="text" class="form-control" name="new-Department-Name" id="newDepartment">-->
+                                            <!--</div>-->
+                                            <p>Переместить категорию из <span data-direction="from"></span> в <span data-direction="to"></span></p>
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Переместить в:
+                                                    <span class="caret"></span></button>
+                                                <ul class="dropdown-menu flat">
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" class="btn btn-success" name="transfer-category-btn" value="Переместить">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                         </div>
                                     </form>
@@ -385,64 +419,53 @@
                                     </div>
 
                                     <div id="departments_content">
-                                        <!--<div class="panel panel-primary flat">-->
-                                            <!--<div class="panel-heading flat">-->
-                                                <!--<div class="dropdown">-->
-                                                    <!--<button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для просмотра-->
-                                                        <!--<span class="caret"></span></button>-->
-                                                    <!--<ul class="dropdown-menu flat">-->
-                                                        <!--<li class="dropdown-menu-department prevent-text-emphasizing"><a href="">department 1</a></li>-->
-                                                        <!--<li class="dropdown-menu-department prevent-text-emphasizing"><a href="">department 2</a></li>-->
-                                                        <!--<li class="dropdown-menu-department prevent-text-emphasizing"><a href="">department 3</a></li>-->
-                                                    <!--</ul>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                            <!--<div id="departments-filling-panel-body" class="panel-body">-->
-                                                <!--<div id="dance-group-info-wrapper">-->
-                                                    <!--<div id="dance-group-parameters-list" class="col-xs-12 col-md-4 col-lg-3">-->
-                                                        <!--<div class="container-fluid">-->
-                                                            <!--<div class="row">-->
-                                                                <!--<div class="col-xs-12">-->
-                                                                    <!--<div class="row pick-dancing-groups-parameters-wrapper">-->
-                                                                        <!--<p id="see-department-name" class="text-bold text-center"></p>-->
-                                                                        <!--<ul id="dance-program-to-pick-categories">-->
-                                                                            <!--<li class="prevent-text-emphasizing dance-program-name" data-name="111"><span class="numeration"></span>department 1</li>-->
-                                                                            <!--<li class="prevent-text-emphasizing dance-program-name" data-name="111"><span class="numeration"></span>department 2</li>-->
-                                                                            <!--<li class="prevent-text-emphasizing dance-program-name" data-name="111"><span class="numeration"></span>department 3</li>-->
-                                                                        <!--</ul>-->
-                                                                    <!--</div>-->
-                                                                <!--</div>-->
-                                                            <!--</div>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-
-                                                    <!--<div id="categories-list" class="col-xs-12 col-md-8 col-lg-9">-->
-                                                        <!--<div class="container-fluid">-->
-                                                            <!--<div class="row">-->
-                                                                <!--<div class="col-xs-12">-->
-                                                                    <!--<div class="form-group prevent-text-emphasizing">-->
-                                                                        <!--<label for="departments-search-category">название категории:</label>-->
-                                                                        <!--<input type="text" class="form-control" id="departments-search-category">-->
-                                                                    <!--</div>-->
-                                                                <!--</div>-->
-                                                                <!--<div class="col-xs-12">-->
-                                                                    <!--<form id="pick-dancing-categories-for-department">-->
-                                                                        <!--<ul>-->
-                                                                            <!--<li id="check-all-dancing-categories" class="prevent-text-emphasizing"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>-->
-                                                                            <!--<li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>-->
-                                                                            <!--<li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>-->
-                                                                            <!--<li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>-->
-                                                                            <!--<li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>-->
-                                                                        <!--</ul>-->
-                                                                    <!--</form>-->
-                                                                    <!--<span id="update-dancing-department-info" class="prevent-text-emphasizing send-info">сохранить</span>-->
-                                                                <!--</div>-->
-                                                            <!--</div>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
+                                        <div class="panel panel-primary flat">
+                                            <div class="panel-heading flat">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для просмотра
+                                                        <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu flat">
+                                                        <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 1</a></li>
+                                                        <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 2</a></li>
+                                                        <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div id="departments-edition-panel-body" class="panel-body">
+                                                <div id="department-content" class="col-xs-12">
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <p id="see-department-content-name" class="text-bold text-center"></p>
+                                                                <div class="form-group prevent-text-emphasizing">
+                                                                    <label for="search-category-in-department">название категории:</label>
+                                                                    <input type="text" class="form-control" id="search-category-in-department">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <form class="dance-group-show-info" id="department-categories-list">
+                                                                    <div class="dp-info-wrapper">
+                                                                        <div class="prevent-text-emphasizing btn-group-sm flat" role="group">
+                                                                            <button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>
+                                                                            <button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                                                        </div>
+                                                                        <p class="dance-category-name prevent-text-emphasizing text-bold">Хіп Дорослі Кращий виспут за думкою глядачів Початківці</p>
+                                                                    </div>
+                                                                    <div class="dp-info-wrapper">
+                                                                        <div class="prevent-text-emphasizing btn-group-sm flat" role="group">
+                                                                            <button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>
+                                                                            <button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                                                        </div>
+                                                                        <p class="dance-category-name prevent-text-emphasizing text-bold">Хіп Дорослі Кращий виспут за думкою глядачів Початківці</p>
+                                                                    </div>
+                                                                </form>
+                                                                <span id="update-dancing-department-categories-list" class="prevent-text-emphasizing send-info">сохранить</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                             </div>
                         </div>
@@ -542,6 +565,6 @@
 <script src="../views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../views/main/js/app.min.js"></script>
-<script src="../views/main/js/create_dancing_departments.js"></script>
+<script src="../views/main/js/create_dancing_departments.js?1"></script>
 </body>
 </html>

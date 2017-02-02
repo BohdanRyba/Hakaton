@@ -123,11 +123,10 @@ jQuery(function($) {
                 url:'ajax_showCategoriesToPickForEvent',
                 data: obj,
                 success: function(msg) {
-                    // console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
+                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
                     var msg=JSON.parse(msg),
                         categories=msg['all_dancing_categories'],
                         checkedCategories=msg['checked_dancing_categories'];
-                    console.log(checkedCategories);
                     $searchedCategoriesForm.append('<li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
 
                     for (let i=0; i<categories.length; i++) {
@@ -152,10 +151,6 @@ jQuery(function($) {
                         $pickedCategory.prop('checked', true);
                     $pickedCategory.parents('.pick_dancing_categories_for_event').attr('data-checked','checked')
                     }
-
-                        // let $pickedCategory=$allCategories.find('[name="'+id+'"]');
-                    // $pickedCategory.prop('checked').attr('data-checked','checked');
-
                 },
                 error: function (msg) {
                     console.log(msg);

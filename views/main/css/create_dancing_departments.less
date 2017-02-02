@@ -10,7 +10,7 @@
   user-select: none;
 }
 
-#departments_list, #update-dancing-department-info, #departments-filling-panel-body, #categories-list, #departments_filling, #departments_content {display: none;}
+#departments_list, #update-dancing-department-info, #departments-filling-panel-body, #categories-list, #departments_filling, #departments_content, #update-dancing-department-categories-list, #departments-edition-panel-body {display: none;} //#departments-edition-panel-body
 //#departments_filling {display: none;}
 
 .dance-group-menu {
@@ -88,7 +88,7 @@
   }
 }
 
-#dance-group-parameters-list, #categories-list {
+#dance-group-parameters-list, #categories-list, #department-content {
   padding: 10px;
   &>div{
     border: solid 3px @main-color;
@@ -221,6 +221,32 @@
           vertical-align: middle;
         }
       }
+    }
+  }
+}
+
+.dance-group-show-info {
+  margin: 0 -15px;
+  max-height: 505px;
+  overflow-y: scroll;
+  & > div {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    &:nth-child(odd) {
+      background: @highlight-color;
+    }
+    & > div {
+      display: table-cell;
+      padding: 0 10px;
+      min-width: 90px;
+      width:10%;
+      vertical-align: middle;
+    }
+    & .dance-category-name {
+      font-size: 16px;
+      display: table-cell;
+      vertical-align: middle;
     }
   }
 }
