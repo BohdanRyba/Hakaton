@@ -282,7 +282,9 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+    <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+    <script src="<?= Router::$permalink ?>views/main/js/ajax.js"></script>
+    <script src="<?= Router::$permalink ?>views/main/js/script.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/pick_categories_for_event.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>
