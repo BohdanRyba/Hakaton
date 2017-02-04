@@ -167,7 +167,7 @@ jQuery(function($) {
     $body.on('click', '.pick_dancing_categories_for_event', function () {
         toggleSendBtnVisibility('block');
     });
-    $body.on('click', '#check-all-dancing-categories', function () {
+        $body.on('click', '#check-all-dancing-categories', function () {
         toggleSendBtnVisibility('block');
     });
 });

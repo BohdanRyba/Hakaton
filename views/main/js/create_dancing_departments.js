@@ -62,6 +62,10 @@ jQuery(function($) {
         // $modalBody.find('p').remove();
         // $('#dancing-group-deletion-id').val($li.attr('data-id-dancing-group'));
     });
+
+    $('#send-created-department').on('click', function () {
+        var name=$createDepartmentModal.find()
+    });
 //DEPARTMENTS LIST
 //    =========================================================================================================
 //DEPARTMENTS FIILLING
