@@ -154,9 +154,9 @@ jQuery(function($) {
                 },
                 error: function (msg) {
                     console.log(msg);
-                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has failed work!');
+                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has failed to work!');
                 }
-            })
+            });
 
         }
 

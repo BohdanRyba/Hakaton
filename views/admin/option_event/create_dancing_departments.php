@@ -248,7 +248,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
+                                            <input type="button" id="send-created-department" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                         </div>
                                     </form>
@@ -565,6 +565,6 @@
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?1"></script>
+<script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?10"></script>
 </body>
 </html>
