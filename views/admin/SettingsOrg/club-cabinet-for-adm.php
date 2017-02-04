@@ -200,7 +200,7 @@
             <p class="name">Название клуба: <span><?=$participant['club_name']?></span></p>
             <p>Страна: <span><?=$participant['club_country']?></span></p>
             <p>Город: <span><?=$participant['club_city']?></span></p>
-                    <p>Cудья:<span><?=$participant['coach_name']?></span></p>
+            <p>Cудья:<span><?=$participant['coach_name']?></span></p>
             <p class="name_help">Керівник:<span><?=$participant['club_shief']?></span></p>
         </div>
         <div class="col-sm-12">
@@ -224,6 +224,7 @@
                                     <td><?=$part['second_name']?></td>
                                     <td><?=$part['third_name']?></td>
                                     <td><?=$part['birth_date']?></td>
+                                    <td><?=$part['coach']?></td>
                                 </tr>
                             <?php } }?>
                             </tbody>

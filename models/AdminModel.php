@@ -877,6 +877,7 @@ class AdminModel
                             `second_name` = '{$data['lastName']}',
                             `third_name` = '{$data['patronymic']}',
                             `birth_date` = '{$data['date']}',
+                            `coach` = '{$data['coach']}',
                             `club_id` = '{$data['id_club']}'
                             ");
             return $result;

@@ -42,7 +42,7 @@ search.on('keyup', function () {
         $.ajax({
             url: 'ajax_'+searchName+'Show/'+id,
             type: 'POST',
-            dataType: 'html',   
+            dataType: 'html',
             success:funcSearch
             //success: function(m){/*console.log(m);*/}
         });
@@ -123,7 +123,7 @@ function funcSearchPrint(data) {
             +'<div class="list-search clr" data-element-id="'+ element.id +'">'
             +'<div>'
             +'<img class="bg_event_avatar" src=" '+ element[img] +' " alt="wtf"/>'
-            +'</div>'   
+            +'</div>'
             +'<span>Событие: '+ element[name] +' </span>'
             +'</div>'
             +'</div>'
@@ -144,7 +144,7 @@ function funcSearchPrint(data) {
         $('.cont-box1>').remove();
         render(searchQuery).forEach(function(element) {
             $container.append(element);
-            
+
         });
     };
 
@@ -178,7 +178,7 @@ function actionAjaxSearch(searchName){
     $.ajax({
         url: 'ajax_'+ searchName +'_Show/'+id,
         type: 'POST',
-        dataType: 'html',   
+        dataType: 'html',
         success:funcSearchClub
     });
 };
