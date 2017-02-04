@@ -168,6 +168,34 @@
                         </li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="opt-eve ion ion-ios-people-outline"></i> <span>Заявки</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Хіп-Хоп</a></li>
+                                <li><a href="#">Диско</a></li>
+                                <li><a href="#">Данс-шоу</a></li>
+                                <li><a href="#">Хаус</a></li>
+                                <li><a href="#">Брейк Данс</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/pick_categories_for_event/<?=Router::$any_last_path_value;?>">Категории</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?=$_SESSION['organization_id']?>">Регистраця</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/create_dancing_departments/<?=Router::$any_last_path_value;?>">Отделения</a></li>
+                        <li><a href="#">Програма</a></li>
+                        <li><a href="#">Суддьи</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -565,6 +593,6 @@
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?1"></script>
+<script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>

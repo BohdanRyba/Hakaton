@@ -460,7 +460,7 @@ class AdminController
         }
     }
 
-    public function actionCreateDancingDepartments(){
+    public function actionCreateDancingDepartments( $event_id ){
         $nav_content = $this->createNavContent(Router::$uri);
         require_once('views/admin/option_event/create_dancing_departments.php');
     }

@@ -18,7 +18,7 @@ return array(
     'admin/organizations/pick_categories_for_event/ajax_showCategoriesToPickForEvent' => 'admin/ajaxShowCategoriesToPickForEvent',
     'admin/organizations/pick_categories_for_event/ajax_sendPickedCategoriesForEvent' => 'admin/ajaxSendPickedCategoriesForEvent',
     'admin/organizations/pick_categories_for_event/([0-9]+)' => 'admin/pickCategoriesForEvent/$1',
-    'admin/organizations/create_dancing_departments' => 'admin/createDancingDepartments',
+    'admin/organizations/create_dancing_departments/([0-9]+)' => 'admin/createDancingDepartments/$1',
     'admin/organizations/cubinet_club/([0-9]+)' => 'admin/ajaxClubCabinet/$1',
     'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
     'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
@@ -48,6 +48,7 @@ return array(
     'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
    'admin/option_event/reg_part_for_event/ajax_test_json' => 'admin/testAjax',//--------------SLOT
 //    'admin/option_event/reg_part_for_event'
+    'admin/dancing_groups/dance_list' => 'admin/dancingList',
     'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',
     '' => 'home/index',

@@ -144,9 +144,30 @@
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="../admin/organizations/page/1"><i class="fa fa-link"></i> <span>Организации</span></a></li>
-                <li><a href="../admin/organizations/org_settings/create-event"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
+                <li class="active treeview">
+                    <a href="#">
+                        <span>Организации</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
+                                            class="fa fa-link"></i></span></a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
+                    </ul>
 
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Танцевальные групы</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="treeview">
                     <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>
                         <span class="pull-right-container">
@@ -168,8 +189,9 @@
                                 <li><a href="#">Брейк Данс</a></li>
                             </ul>
                         </li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/pick_categories_for_event/<?=Router::$any_last_path_value;?>">Категории</a></li>
                         <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?=$_SESSION['organization_id']?>">Регистраця</a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/option_event/categories">Категории</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/create_dancing_departments/<?=Router::$any_last_path_value;?>">Отделения</a></li>
                         <li><a href="#">Програма</a></li>
                         <li><a href="#">Суддьи</a></li>
                     </ul>
