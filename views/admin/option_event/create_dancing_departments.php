@@ -20,14 +20,13 @@
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less"
-          href="<?= Router::$permalink ?>views/main/css/create_dancing_departments.less">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/create_dancing_departments.less?<?php echo date("Y-m-d_H:i:s"); ?>">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]>-->
     <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
     <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-    <![endif]-->
+    <!--[endif]-->
     <script src="<?= Router::$permalink ?>views/main/js/less.min.js" type="text/javascript"></script>
 </head>
 <body class="hold-transition skin-blue">
@@ -332,17 +331,7 @@
                                                 <button class="btn btn-primary dropdown-toggle text-bold flat"
                                                         type="button" data-toggle="dropdown">Переместить в:
                                                     <span class="caret"></span></button>
-                                                <ul class="dropdown-menu flat">
-                                                    <li data-department-id=""
-                                                        class="transfer-to dropdown-menu-department prevent-text-emphasizing">
-                                                        <a href="#">department 1</a></li>
-                                                    <li data-department-id=""
-                                                        class="transfer-to dropdown-menu-department prevent-text-emphasizing">
-                                                        <a href="#">department 2</a></li>
-                                                    <li data-department-id=""
-                                                        class="transfer-to dropdown-menu-department prevent-text-emphasizing">
-                                                        <a href="#">department 3</a></li>
-                                                </ul>
+                                                <ul class="dropdown-menu flat"></ul>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -362,9 +351,7 @@
                             <div class="row dance-group-menu">
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_list"
-                                           class="prevent-text-emphasizing text-center text-uppercase text-bold active"
-                                           id="menu-dance-programs">список</a>
+                                        <a href="#departments_list" class="active prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-dance-programs">список</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
