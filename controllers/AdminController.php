@@ -223,7 +223,7 @@ class AdminController
         echo json_encode($json);
     }
 
-    public function actionAjaxAddpart($id)
+    public function actionAjaxAddpart($id='')
     {
         $list = AdminModel::ShowClubsForReg($id) ;
         include 'views/admin/SettingsOrg/view_add_part.php';

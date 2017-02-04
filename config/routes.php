@@ -30,7 +30,7 @@ return array(
     'admin/organizations/org_settings/ajax_eventShow/([0-9]+)' => 'admin/ajax_eventShow/$1',
     'admin/organizations/org_settings/add_new_info' => 'admin/ajax_NewInfo',
     'admin/organizations/cabinet_club/([0-9]+)'=>'admin/ajaxClubCabinet/$1',
-    'admin/organizations/org_settings/view_add_part/' => 'admin/ajaxAddPart',
+    'admin/organizations/cabinet_club/view_add_part/([0-9]+)' => 'admin/ajaxAddPart/$1',
     'admin/organizations/org_settings/ajax_clubShow/([0-9]+)' => 'admin/ajax_clubShow/$1',
     'admin/organizations/org_settings/ajax_AddParticipant/([0-9]+)' => 'admin/ajax_AddParticipant/$1',
     'admin/organizations/org_settings/ajax_updatingCreatedDancingCategory' => 'admin/ajaxUpdatingCreatedDancingCategory', // added by Roma;
