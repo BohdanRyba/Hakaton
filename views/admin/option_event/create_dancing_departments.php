@@ -20,7 +20,7 @@
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/create_dancing_departments.less">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/create_dancing_departments.less?1">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -303,11 +303,7 @@
                                             <div class="dropdown">
                                                 <button class="btn btn-primary dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Переместить в:
                                                     <span class="caret"></span></button>
-                                                <ul class="dropdown-menu flat">
-                                                    <li data-department-id="" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li data-department-id="" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li data-department-id="" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3</a></li>
-                                                </ul>
+                                                <ul class="dropdown-menu flat"></ul>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -325,7 +321,7 @@
                             <div class="row dance-group-menu">
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_list" class="prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-dance-programs">список</a>
+                                        <a href="#departments_list" class="active prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-dance-programs">список</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
@@ -452,9 +448,9 @@
                                                 <button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для просмотра
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li data-dropdown-id="" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li data-dropdown-id="" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li data-dropdown-id="" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                    <li data-dropdown-id="1" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 1</a></li>
+                                                    <li data-dropdown-id="2" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 2</a></li>
+                                                    <li data-dropdown-id="3" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
