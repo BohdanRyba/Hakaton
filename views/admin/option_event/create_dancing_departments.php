@@ -237,7 +237,7 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="pwd">Пароль подтверждения действия:</label>
-                                                <input type="text" class="form-control"
+                                                <input type="password" class="form-control"
                                                        name="deletion-confirmation-password" id="pwd">
                                                 <input type="hidden" name="department-id">
                                             </div>
@@ -322,19 +322,26 @@
                                             <!--<label for="newDepartment">Название отделения:</label>-->
                                             <!--<input type="text" class="form-control" name="new-Department-Name" id="newDepartment">-->
                                             <!--</div>-->
-                                            <p>Переместить категорию из <span data-direction="from"></span> в <span
-                                                        data-direction="to"></span></p>
+
+                                            <p>Переместить категорию из
+                                                <ins><span class="text-bold" data-direction="from"></span></ins>
+                                                в
+                                                <ins><span class="text-bold" data-direction="to"></span></ins>
+                                            </p>
                                             <div class="dropdown">
                                                 <button class="btn btn-primary dropdown-toggle text-bold flat"
                                                         type="button" data-toggle="dropdown">Переместить в:
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
-                                                                href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
-                                                                href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
-                                                                href="#">department 3</a></li>
+                                                    <li data-department-id=""
+                                                        class="transfer-to dropdown-menu-department prevent-text-emphasizing">
+                                                        <a href="#">department 1</a></li>
+                                                    <li data-department-id=""
+                                                        class="transfer-to dropdown-menu-department prevent-text-emphasizing">
+                                                        <a href="#">department 2</a></li>
+                                                    <li data-department-id=""
+                                                        class="transfer-to dropdown-menu-department prevent-text-emphasizing">
+                                                        <a href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -394,7 +401,7 @@
                                                     <ul class="dancing-department-list-wrapper">
                                                         <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                                             <?php foreach ($departments as $department): ?>
-                                                                <li data-id-department="<?= $department['id'];?>">
+                                                                <li data-id-department="<?= $department['id']; ?>">
                                                                     <div class="btn-group-xs button-wrapper">
                                                                         <button type="button"
                                                                                 class="show-info-about-dance-group btn btn-info btn-flat">
@@ -408,7 +415,7 @@
                                                                                 class="delete-department btn btn-danger delete-button btn-flat">
                                                                             <i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    <p class="department-name"><?= $department['dep_name'];?></p>
+                                                                    <p class="department-name"><?= $department['dep_name']; ?></p>
                                                                 </li>
                                                             <?php endforeach; ?>
                                                         <?php endif; ?>
@@ -427,14 +434,13 @@
                                                         type="button" data-toggle="dropdown">Отделение для наполнения
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
-                                                                href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
-                                                                href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
-                                                                href="#">department 3
-
-                                                        </a></li>
+                                                    <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
+                                                        <?php foreach ($departments as $department): ?>
+                                                            <li data-department-id="<?= $department['id']; ?>"
+                                                                class="dropdown-menu-department prevent-text-emphasizing">
+                                                                <a href="#"><?= $department['dep_name']; ?></a></li>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
                                                 </ul>
                                             </div>
                                         </div>
@@ -527,12 +533,13 @@
                                                         type="button" data-toggle="dropdown">Отделение для просмотра
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing">
-                                                        <a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing">
-                                                        <a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing">
-                                                        <a href="#">department 3</a></li>
+                                                    <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
+                                                        <?php foreach ($departments as $department): ?>
+                                                            <li data-department-id="<?= $department['id']; ?>"
+                                                                class="dropdown-menu-department prevent-text-emphasizing">
+                                                                <a href="#"><?= $department['dep_name']; ?></a></li>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
                                                 </ul>
                                             </div>
                                         </div>

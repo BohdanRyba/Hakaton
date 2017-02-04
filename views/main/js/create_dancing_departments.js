@@ -54,6 +54,7 @@ jQuery(function($) {
         $modalBody.find('p').remove();
         // $('#dancing-group-deletion-id').val($li.attr('data-id-dancing-group'));
         $modalBody.prepend('<p>Вы действительно хотите удалить танцевальное отделение <b>'+ $li.find('.department-name').text()+'</b> ?</p>');
+        $deleteDepartmentModal.find('[name="department-id"]').val($(this).parents('li').attr('data-id-department'));
     });
 
     //department name edition
@@ -63,23 +64,22 @@ jQuery(function($) {
         $modalBody.find('p').remove();
         // $('#dancing-group-deletion-id').val($li.attr('data-id-dancing-group'));
         $modalBody.prepend('<p>Вы собираетесь переименовать отделение <b>'+ $li.find('.department-name').text()+'</b> .</p>');
+        $editDepartmentModal.find('[name="department-id"]').val($(this).parents('li').attr('data-id-department'));
+    });
+
+    $('[name="new-department-name-confirmation-btn"]').on('click', function (e) {
+        var name=$editDepartmentModal.find('#newDepartmentName').val();
+        if (name=='') {
+            e.preventDefault();
+        }
     });
 
     //create new department
-    // $('#create_new_department').on('click', function () {
-    // });
-
-    $('#send-created-department').on('click', function () {
-        var name=$createDepartmentModal.find('#newDepartment').val(),
-            eventId=window.location.href,
-            obj={};
-
-        eventId=eventId.split('/');
-        eventId=eventId[eventId.length-1];
-        eventId= parseInt(eventId);
-
-        $createDepartmentModal.find('[name="department-id"]').val()
-
+    $('#send-created-department').on('click', function (e) {
+        var name=$createDepartmentModal.find('#newDepartment').val();
+        if (name=='') {
+            e.preventDefault();
+        }
     });
 //DEPARTMENTS LIST
 //    =========================================================================================================
@@ -178,6 +178,36 @@ jQuery(function($) {
         if ($departmentsEditionPanelBody.css('display')=='none') {
             toggleVisibility ($departmentsEditionPanelBody,'block');
         }
+    });
+
+    $body.on('click', '.edit-created-category-info', function () {
+        var currentDepartment=$('#departments_content').find('.dropdown-menu').children('.active').text(),
+            $from=$departmentsEditionTransferCategory.find('[data-direction="from"]'),
+            $to=$departmentsEditionTransferCategory.find('[data-direction="to"]'),
+            departments={};
+
+        $('#departments_filling').find('.dropdown-menu').children().each(function () {
+            departments[$(this).text()]=$(this).attr('data-dropdown-id');
+        });
+        delete departments[currentDepartment];
+
+        // for (key in departments) {
+        //
+        // }
+
+        $to.text('');
+        $departmentsEditionTransferCategory.find('.dropdown-menu-department').each(function () {
+            $(this).removeClass('active');
+        });
+        $from.text(currentDepartment);
+        $departmentsEditionTransferCategory.modal();
+    });
+
+    $body.on('click', '.transfer-to', function () {
+        var $to=$departmentsEditionTransferCategory.find('[data-direction="to"]'),
+            toName=$(this).text();
+
+        $to.text(toName);
     });
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //DEPARTMENTS EDITION

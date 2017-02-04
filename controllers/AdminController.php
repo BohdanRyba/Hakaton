@@ -462,6 +462,7 @@ class AdminController
 
     public function actionCreateDancingDepartments( $event_id ){
         self::showArray($_POST);
+        self::showArray($_SESSION);
         if(!empty($_POST)){
             if(!empty($_POST['new-department-name-confirmation-btn'])){
                 if($_POST['new-department-name-confirmation-btn'] == 'Создать'
@@ -475,8 +476,10 @@ class AdminController
                     $name = $_POST['new-Department-Name'];
                     $result = AdminModel::departmentsOperation($name, $event_id, 'Изменить', $dep_id);
                 }
-            } elseif (!empty($_POST['deletion-confirmation-btn'])){
-
+            } elseif (!empty($_POST['deletion-confirmation-btn']) && !empty($_POST['department-id'])){
+                if(AdminModel::getPermissionForDeletion()){
+                    $result = AdminModel::deleteDepartment($_POST['department-id']);
+                }
             }
         }
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;

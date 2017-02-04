@@ -986,22 +986,27 @@ class AdminModel
                     } else {
                         $message = json_encode([
                             'status' => 'error',
-                            'message' => "Неверный пароль! Пожалуйста, введите правильный пароль, чтобы подтвердить удаления танцевальной группы."
+                            'message' => "Неверный пароль! Пожалуйста, введите правильный пароль!"
                         ]);
+                        self::saveMessage($message);
+                        $db->close();
                         return false;
                     }
                 } else {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Вы не ввели пароль для подтверждения удаления танцеваной группы"
+                        'message' => "Вы не ввели пароль для подтверждения удаления!"
                     ]);
+                    self::saveMessage($message);
+                    $db->close();
                     return false;
                 }
-
+            } else {
+                return false;
             }
+        } else {
+            return 'DB connection error';
         }
-        $db->close();
-        self::saveMessage($message);
     }
 
     static function assignEventIdToDancingCategory($all_ids, $checked_ids, $event_id)
@@ -1095,12 +1100,12 @@ class AdminModel
                 return $result;
             } elseif ($dep_id != null && $option === 'Изменить') {
                 $update_result = $db->query("UPDATE `departments`
-                                                SET `dep_name` = '{$name}',
+                                                SET `dep_name` = '{$name}'
                                                 WHERE `id` = {$dep_id}");
                 if ($update_result) {
                     $message = json_encode([
                         'status' => 'success',
-                        'message' => "Отделение \"" . $name . "\" было успешно изменено!"
+                        'message' => "Отделение было успешно изменено!"
                     ]);
                 } else {
                     $message = json_encode([
@@ -1144,6 +1149,30 @@ class AdminModel
                 $db->close();
                 return false;
             }
+        } else {
+            return 'DB connection error';
+        }
+    }
+
+    static function deleteDepartment($dep_id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("DELETE FROM `departments` 
+                                          WHERE `id` = {$dep_id}");
+            if ($result) {
+                $message = json_encode([
+                    'status' => 'success',
+                    'message' => "Отделение было успешно удалено!"
+                ]);
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => "Отделение удалить не удалось!"
+                ]);
+            }
+            self::saveMessage($message);
+            $db->close();
+            return $result;
         } else {
             return 'DB connection error';
         }
