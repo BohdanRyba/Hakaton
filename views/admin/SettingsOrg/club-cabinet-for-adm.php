@@ -182,11 +182,10 @@
                 <div class="row">
 
 <div class="resize-remove">
+    <input type="hidden" value="<?=$participant['id']?>">
+    <?php $_SESSION['club_id'] = $participant['id']?>
     <div class="box-header with-border">
         <h2 class="box-title">Кабинет клуба <span><?=$participant['club_name']?>  </span></h2>
-        <div class="box-tools pull-right click-remove">
-            <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
-        </div>
     </div>
     <div class="box-body">
 
@@ -283,9 +282,29 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-    <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-    <script src="<?= Router::$permalink ?>views/main/js/ajax.js"></script>
-    <script src="<?= Router::$permalink ?>views/main/js/script.js"></script>
+
+<script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
+<script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
+<script>
+    $(function () {
+        $('body').on('mask_ajax', function () {
+            $('.sorting_1').each(function (i) {
+                $(this).text(i + 1);
+            });
+
+            //Initialize Select2 Elements
+            $(".select2").select2();
+            //Datemask dd/mm/yyyy
+            $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+            //Datemask2 mm/dd/yyyy
+            $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+            //Money Euro
+            $("[data-mask]").inputmask();
+        });
+    });
+
+</script>
 <script src="<?= Router::$permalink ?>views/main/js/pick_categories_for_event.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>

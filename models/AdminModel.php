@@ -224,6 +224,7 @@ class AdminModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
+            $clubsList = array();
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $clubsList[$i]['id'] = $row['id'];
@@ -378,7 +379,8 @@ class AdminModel
                     $club_info['club_part'][$i]['first_name'] = $row['first_name'];
                     $club_info['club_part'][$i]['second_name'] = $row['second_name'];
                     $club_info['club_part'][$i]['third_name'] = $row['third_name'];
-                    $club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+					$club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+					$club_info['club_part'][$i]['coach'] = $row['coach'];
                     $i++;
                 } else {
                     break;
@@ -443,7 +445,7 @@ class AdminModel
 
             $pass = md5($a['club_number']);
             $result = $db->query("INSERT INTO `clubs`
-                        SET 
+                        SET
                         `club_name`           =   '{$a['club_name']}',
                         `club_image`          =   '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
                         `club_country`        =   '{$a['club_country']}',
@@ -456,7 +458,7 @@ class AdminModel
                         `grant`               =   1,
                         `active`              =   1,
                         `coaches`             =   '{$coaches}'
-                        
+
                         ");
 
             if ($result) {
@@ -610,7 +612,7 @@ class AdminModel
                             `d_program` = '" . serialize($json['programs']) . "',
                             `d_age_category` = '" . serialize($json['age-categories']) . "',
                             `d_nomination` = '" . serialize($json['nominations']) . "',
-                            `d_league` = '" . serialize($json['leagues']) . "' 
+                            `d_league` = '" . serialize($json['leagues']) . "'
                             {$where}");
                 if ($result === true) {
                     $message = json_encode([
@@ -838,7 +840,7 @@ class AdminModel
             $array_with_parameters = [];
 
             $result = $db->query("SELECT * FROM `dance_categories`
-                                  WHERE `{$parameter}` = '{$name}' 
+                                  WHERE `{$parameter}` = '{$name}'
                                   AND `org_id` = {$_COOKIE['get_id']}");
 
             if ($result) {
@@ -892,7 +894,7 @@ class AdminModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             if (!empty($edit_array['editedCategories'])) {
                 foreach ($edit_array['editedCategories'] as $arr_to_edit) {
-                    $result = $db->query("UPDATE `dance_categories` 
+                    $result = $db->query("UPDATE `dance_categories`
                                   SET `extra_id` = {$arr_to_edit['extra_id']}
                                   WHERE `id` = {$arr_to_edit['id']}
                                   AND `org_id` = {$_COOKIE['get_id']}");
@@ -905,7 +907,7 @@ class AdminModel
             }
             if (!empty($edit_array['deletedCategories'])) {
                 foreach ($edit_array['deletedCategories'] as $arr_to_del) {
-                    $result2 = $db->query("DELETE FROM `dance_categories` 
+                    $result2 = $db->query("DELETE FROM `dance_categories`
                                           WHERE `id` = {$arr_to_del['id']}
                                           AND `org_id` = {$_COOKIE['get_id']}");
                     if ($result2) {
@@ -923,7 +925,7 @@ class AdminModel
     static function deleteTheDanceGroup($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("DELETE FROM `dance_groups` 
+            $result = $db->query("DELETE FROM `dance_groups`
                                           WHERE `id` = {$id}
                                           ");
             return $result;
@@ -935,7 +937,7 @@ class AdminModel
     {
         $dance_category_programs = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result1 = $db->query("SELECT `org_id_for_event` FROM `events` 
+            $result1 = $db->query("SELECT `org_id_for_event` FROM `events`
                                           WHERE `id` = {$event_id}
                                           ");
             $org_id = '';
@@ -946,7 +948,7 @@ class AdminModel
             }
             if ($org_id != '') {
                 setcookie('get_id', $org_id);
-                $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories` 
+                $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories`
                                           WHERE `org_id` = {$org_id}
                                           ");
                 if ($result2) {
@@ -976,7 +978,7 @@ class AdminModel
     {
         $message = '';
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("SELECT `password` FROM `clubs` 
+            $result = $db->query("SELECT `password` FROM `clubs`
                                           WHERE `club_shief` = '{$_SESSION['current_user']}'
                                           ");
             if ($result) {
@@ -1080,6 +1082,7 @@ class AdminModel
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $message = '';
+            $name = self::addSlashes($name);
             if ($option === 'Создать' && $dep_id == null) {
                 $result = $db->query("INSERT INTO `departments`
                                               SET `id` = '',
@@ -1158,7 +1161,7 @@ class AdminModel
     static function deleteDepartment($dep_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("DELETE FROM `departments` 
+            $result = $db->query("DELETE FROM `departments`
                                           WHERE `id` = {$dep_id}");
             if ($result) {
                 $message = json_encode([

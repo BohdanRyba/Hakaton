@@ -3,6 +3,7 @@ jQuery(function($) {
     var $menuItems=$('.dance-group-menu a'),
         $infoWrapper=$('#main_info_wrapper'),
         $body=$('body'),
+        $departmentsContent=$('#departments_content'),
         //DEPARTMENTS LIST
         $deleteDepartmentModal=$('#confirmDepartmentDeletion'),
         $editDepartmentModal=$('#editDepartmentName'),
@@ -180,20 +181,25 @@ jQuery(function($) {
         }
     });
 
+    //  click on btn to transfer category
     $body.on('click', '.edit-created-category-info', function () {
-        var currentDepartment=$('#departments_content').find('.dropdown-menu').children('.active').text(),
+        var currentDepartment=$departmentsContent.find('.dropdown-menu').children('.active').text(),
             $from=$departmentsEditionTransferCategory.find('[data-direction="from"]'),
             $to=$departmentsEditionTransferCategory.find('[data-direction="to"]'),
             departments={};
+        let $menu=$departmentsEditionTransferCategory.find('.dropdown-menu');
 
-        $('#departments_filling').find('.dropdown-menu').children().each(function () {
+        $departmentsContent.find('.dropdown-menu').children().each(function () {
             departments[$(this).text()]=$(this).attr('data-dropdown-id');
         });
         delete departments[currentDepartment];
 
-        // for (key in departments) {
-        //
-        // }
+        $menu.empty();
+
+        // fill dropdown menu with available departments to choose from
+        for (var key in departments) {
+            $menu.append('<li data-department-id="'+departments[key]+'" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">'+key+'</a></li>');
+        }
 
         $to.text('');
         $departmentsEditionTransferCategory.find('.dropdown-menu-department').each(function () {
@@ -203,6 +209,7 @@ jQuery(function($) {
         $departmentsEditionTransferCategory.modal();
     });
 
+    //  choose what department to transfer category in
     $body.on('click', '.transfer-to', function () {
         var $to=$departmentsEditionTransferCategory.find('[data-direction="to"]'),
             toName=$(this).text();

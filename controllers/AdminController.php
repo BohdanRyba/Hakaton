@@ -30,7 +30,7 @@ class AdminController
         $pagination = $start_end_pagination_array[2];
 
         require_once('views/admin/organizations/organizations_list.php'); // here in view file we show the message;
-        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
+        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
         return true;
     }
 
@@ -43,7 +43,7 @@ class AdminController
 
         require_once('views/admin/organizations/reg_org.php'); // here in view file we show the message;
 
-        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
+        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
         return true;
     }
 
@@ -223,7 +223,7 @@ class AdminController
         echo json_encode($json);
     }
 
-    public function actionAjaxAddpart($id)
+    public function actionAjaxAddpart($id='')
     {
         $list = AdminModel::ShowClubsForReg($id) ;
         include 'views/admin/SettingsOrg/view_add_part.php';
@@ -307,7 +307,7 @@ class AdminController
         }
         $nav_content = $this->createNavContent(Router::$uri);
         require_once 'views/admin/dancing_groups/dance_list.php';
-        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
+        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
         return true;
     }
 
@@ -318,7 +318,7 @@ class AdminController
         }
         $nav_content = $this->createNavContent(Router::$uri);
         include 'views/admin/dancing_groups/add_dancing_groups.php';
-        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
+        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
     }
 
     public function actionAddDanceProgram()
@@ -461,8 +461,6 @@ class AdminController
     }
 
     public function actionCreateDancingDepartments( $event_id ){
-        self::showArray($_POST);
-        self::showArray($_SESSION);
         if(!empty($_POST)){
             if(!empty($_POST['new-department-name-confirmation-btn'])){
                 if($_POST['new-department-name-confirmation-btn'] == 'Создать'
@@ -488,6 +486,6 @@ class AdminController
         $departments = AdminModel::getDepartmentsByEventId( $event_id );
         $nav_content = $this->createNavContent(Router::$uri);
         require_once('views/admin/option_event/create_dancing_departments.php');
-        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
+        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
     }
 }

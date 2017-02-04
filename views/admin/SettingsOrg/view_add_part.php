@@ -24,21 +24,15 @@
               <input type="text" name="patronymic" class="form-control" id="inputPassword3" placeholder="Отчество">
           </div>
       </div>
-      <div class="form-group">
-          <label for="inputPassword3" class="col-sm-2 control-label">Отчество</label>
-          <div class="col-sm-10">
-              <input type="text" name="coach" class="form-control" id="inputPassword3" placeholder="Тренер">
-          </div>
-      </div>
     <div class="add_train_box form-group">
-      <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
-      <div class="add-train-form col-sm-10">
-      <input type="text" class="form-control" name="couch" id="inputPassword3"
-        placeholder="ФИО Тренера">
-        <span class="btn-search input-group-btn">
-          <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
-        </span>
-      </div>
+        <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
+        <div class="add-train-form col-sm-10">
+            <input type="text" class="form-control" name="coach" id="inputPassword3"
+            placeholder="ФИО Тренера">
+            <span class="btn-search input-group-btn">
+            <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
+            </span>
+        </div>
     </div>
     <div class="form-group">
       <label for="event_begin" class="col-sm-2 control-label">Дата рождения</label>

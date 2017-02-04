@@ -33,16 +33,20 @@ function funcSuccess(data) {
     $('.cont-box1').append(data);
     $('body').trigger('mask_ajax');
 };
+
 $(function () {
     $('body').on('click', '#add_part', function () {
+      let url = location.href;
+      url = url.split('/');
+      let id = url[url.length-1];
         $.ajax({
-            url: 'view_add_part',
+            url: 'view_add_part/'+id,
             type: 'POST',
             dataType: 'html',
-            beforeSend: funcBefore,
             success: function (data) {
+                $('.views_part>').remove();
                 $('.views_part').append(data);
-                var dist = $('#add_part').offset().top;
+                let dist = $('#add_part').offset().top;
                 $('body,html').animate({scrollTop: dist}, 400);
                 $('body').css('cursor', 'default');
                 $('#loading>').remove();
@@ -52,6 +56,7 @@ $(function () {
             }
         });
     });
+
     $('.btn-plus-event').on('click', function () {
         $('.cont-box1>').remove();
         $.ajax({
@@ -135,7 +140,7 @@ $(function () {
     });
 
     // Opens page table of data part info
-    
+
     function addPartClub(e) {
         e.preventDefault();
         let dataForm = $('.form-horizontal').serialize();
@@ -147,8 +152,8 @@ $(function () {
             type: 'post',
             dataType: 'html',
             data: dataForm,
-            success: function () {  
-                console.log('блять получилось');
+            success: function () {
+                location.reload();
             }
         });
     };
