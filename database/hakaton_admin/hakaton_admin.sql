@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Янв 27 2017 г., 14:56
+-- Время создания: Фев 04 2017 г., 15:48
 -- Версия сервера: 10.1.13-MariaDB
 -- Версия PHP: 5.6.23
 
@@ -144,23 +144,24 @@ CREATE TABLE `dance_categories` (
 INSERT INTO `dance_categories` (`id`, `d_c_program`, `d_c_age_category`, `d_c_nomination`, `d_c_league`, `org_id`, `extra_id`, `id_dance_group`, `event_ids`) VALUES
 (1, 'Хіп-хоп', 'Діти', 'Краща техніка виконання', 'Профі', 5, 31111, 1, ''),
 (13, 'Dance program 1', 'Age category 1', 'Nomination 1', 'League 1', 1, 4444, 2, ''),
-(24, 'qqqqqqqq', 'eeeeeeeeeeeeeeeeee', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 6, 0, 0, ''),
+(24, 'qqqqqqqq', 'eeeeeeeeeeeeeeeeee', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 6, 0, 0, '22&'),
 (4, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Профі', 5, 905567, 1, ''),
-(16, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Початківці', 6, 234, 0, ''),
-(25, 'Dance program 1', 'Age category 1', 'Nomination 1', 'League 1', 6, 123321, 0, '22&'),
+(16, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Початківці', 6, 234, 0, '102&10&3&14&22&19'),
+(25, 'Dance program 1', 'Age category 1', 'Nomination 1', 'League 1', 6, 123321, 0, '37&67&22'),
 (7, 'Хіп-хоп', 'Діти', 'Кращий виспут за думкою глядачів', 'Початківці', 1, 1333, 1, ''),
-(17, 'B&B', 'Діти', 'Кращий виспут за думкою глядачів', 'Профі', 6, 0, 0, ''),
+(17, 'B&B', 'Діти', 'Кращий виспут за думкою глядачів', 'Профі', 6, 0, 0, '12&43&32&11&19'),
 (9, 'B&B', 'Діти', 'Краща техніка виконання', 'Початківці', 1, 7222, 1, ''),
 (10, 'Хіп-хоп', 'Діти', 'Краща техніка виконання', 'Профі', 1, 7867, 1, ''),
 (11, 'qqqqqqqq', 'wwwwwwwwwwwww', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 5, 0, 3, ''),
-(14, 'aaaa', 'bbbb', 'ccc', 'vvvv', 6, 12332, 4, ''),
+(14, 'aaaa', 'bbbb', 'ccc', 'vvvv', 6, 12332, 4, '22&'),
 (15, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Профі', 5, 123, 1, ''),
-(18, 'B&B', 'Діти', 'Кращий виспут за думкою глядачів', 'Початківці', 6, 0, 0, ''),
-(19, 'B&B', 'Діти', 'Краща техніка виконання', 'Профі', 6, 0, 0, ''),
+(18, 'B&B', 'Діти', 'Кращий виспут за думкою глядачів', 'Початківці', 6, 0, 0, '23&7&8&32&66&57&22&'),
+(19, 'B&B', 'Діти', 'Краща техніка виконання', 'Профі', 6, 0, 0, '233&88&45&90&22&19'),
 (20, 'Бачата', 'Юніори', 'Краще соло', 'Мала ліга', 5, 0, 0, ''),
 (21, 'Бачата', 'Юніори', 'Краще соло', 'Старша ліга', 5, 0, 0, ''),
 (22, 'Танго', 'Юніори', 'Краща пара', 'Мала ліга', 5, 0, 0, ''),
-(23, 'Танго', 'Юніори', 'Краща пара', 'Старша ліга', 5, 0, 0, '');
+(23, 'Танго', 'Юніори', 'Краща пара', 'Старша ліга', 5, 0, 0, ''),
+(26, 'B&B', 'Діти', 'Краща техніка виконання', 'Початківці', 6, 0, 0, '19');
 
 -- --------------------------------------------------------
 
@@ -184,6 +185,26 @@ CREATE TABLE `dance_groups` (
 INSERT INTO `dance_groups` (`id`, `dance_group_name`, `d_program`, `d_age_category`, `d_nomination`, `d_league`) VALUES
 (1, 'Сучасні танці', 'a:2:{s:6:"Хіп";a:0:{}s:3:"B&B";a:0:{}}', 'a:2:{s:8:"Діти";a:2:{s:25:"age-category-rule-age-min";s:4:"2005";s:25:"age-category-rule-age-max";s:4:"2006";}s:14:"Дорослі";a:2:{s:25:"age-category-rule-age-min";s:4:"1995";s:25:"age-category-rule-age-max";s:4:"1997";}}', 'a:2:{s:44:"Краща техніка виконання";a:1:{s:39:"nomination-rule-participants-number-min";s:1:"2";}s:60:"Кращий виспут за думкою глядачів";a:1:{s:39:"nomination-rule-participants-number-min";s:1:"3";}}', 'a:2:{s:10:"Профі";a:1:{s:31:"league-rule-participation-years";s:2:"15";}s:20:"Початківці";a:1:{s:31:"league-rule-participation-years";s:1:"2";}}'),
 (3, 'Programas', 'a:1:{s:17:"new dance program";a:0:{}}', 'a:2:{s:13:"wwwwwwwwwwwww";a:2:{s:25:"age-category-rule-age-min";s:8:"11111111";s:25:"age-category-rule-age-max";s:9:"222222222";}s:18:"eeeeeeeeeeeeeeeeee";a:2:{s:25:"age-category-rule-age-min";s:7:"3333333";s:25:"age-category-rule-age-max";s:8:"44444444";}}', 'a:1:{s:20:"rrrrrrrrrrrrrrrrrrrr";a:1:{s:39:"nomination-rule-participants-number-min";s:8:"55555555";}}', 'a:1:{s:17:"ttttttttttttttttt";a:1:{s:31:"league-rule-participation-years";s:14:"66666666666666";}}');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `dep_name` varchar(255) NOT NULL,
+  `d_c_ids` text NOT NULL,
+  `event_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `departments`
+--
+
+INSERT INTO `departments` (`id`, `dep_name`, `d_c_ids`, `event_id`) VALUES
+(1, 'First''s department', '', 19);
 
 -- --------------------------------------------------------
 
@@ -332,6 +353,12 @@ ALTER TABLE `dance_groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `events`
 --
 ALTER TABLE `events`
@@ -373,12 +400,17 @@ ALTER TABLE `coaches`
 -- AUTO_INCREMENT для таблицы `dance_categories`
 --
 ALTER TABLE `dance_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT для таблицы `dance_groups`
 --
 ALTER TABLE `dance_groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT для таблицы `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `events`
 --
