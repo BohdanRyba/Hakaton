@@ -332,8 +332,6 @@ class AdminModel
 
 
             while ($row = $result->fetch_assoc()) {
-                self::showArray($row);
-                die;
                 $club_info['id'] = $row['id'];
                 $club_info['club_name'] = $row['club_name'];
                 $club_info['club_image'] = $row['club_image'];
