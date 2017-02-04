@@ -21,6 +21,16 @@ jQuery(function($) {
         target.css('display', visibility);
     }
 
+    function getEventId() {
+        var eventId=window.location.href;
+
+        eventId=eventId.split('/');
+        eventId=eventId[eventId.length-1];
+        eventId= parseInt(eventId);
+
+        return eventId;
+    }
+
 
 //МЕНЮ
     $menuItems.on('click', function (e) {
@@ -56,11 +66,20 @@ jQuery(function($) {
     });
 
     //create new department
-    $('#create_new_department').on('click', function () {
-        // var $modalBody=$editDepartmentModal.find('.modal-body'),
-        //     $li=$(this).parents('li');
-        // $modalBody.find('p').remove();
-        // $('#dancing-group-deletion-id').val($li.attr('data-id-dancing-group'));
+    // $('#create_new_department').on('click', function () {
+    // });
+
+    $('#send-created-department').on('click', function () {
+        var name=$createDepartmentModal.find('#newDepartment').val(),
+            eventId=window.location.href,
+            obj={};
+
+        eventId=eventId.split('/');
+        eventId=eventId[eventId.length-1];
+        eventId= parseInt(eventId);
+
+        $createDepartmentModal.find('[name="department-id"]').val()
+
     });
 //DEPARTMENTS LIST
 //    =========================================================================================================

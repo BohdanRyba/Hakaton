@@ -224,7 +224,7 @@
                                             <div class="form-group">
                                                 <label for="pwd">Пароль подтверждения действия:</label>
                                                 <input type="text" class="form-control" name="deletion-confirmation-password" id="pwd">
-                                                <!--<input type="hidden" name="dancing-group-id" id="dancing-group-deletion-id">-->
+                                                <input type="hidden" name="department-id">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -249,6 +249,7 @@
                                             <div class="form-group">
                                                 <label for="newDepartmentName">Новое название:</label>
                                                 <input type="text" class="form-control" name="new-Department-Name" id="newDepartmentName">
+                                                <input type="hidden" name="department-id">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -276,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
+                                            <input type="button" id="send-created-department" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                         </div>
                                     </form>
@@ -352,7 +353,7 @@
                                             <div class="row">
                                                 <div class="">
                                                     <ul class="dancing-department-list-wrapper">
-                                                        <li data-id-dancing-group="6">
+                                                        <li data-id-department="6">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -360,7 +361,7 @@
                                                             </div>
                                                             <p class="department-name">1 отделение</p>
                                                         </li>
-                                                        <li data-id-dancing-group="6">
+                                                        <li data-id-department="6">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -368,7 +369,7 @@
                                                             </div>
                                                             <p class="department-name">2 отделение</p>
                                                         </li>
-                                                        <li data-id-dancing-group="6">
+                                                        <li data-id-department="6">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -593,6 +594,7 @@
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+
 <script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>

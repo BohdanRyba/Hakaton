@@ -154,9 +154,9 @@ jQuery(function($) {
                 },
                 error: function (msg) {
                     console.log(msg);
-                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has failed work!');
+                    console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has failed to work!');
                 }
-            })
+            });
 
         }
 
@@ -167,7 +167,7 @@ jQuery(function($) {
     $body.on('click', '.pick_dancing_categories_for_event', function () {
         toggleSendBtnVisibility('block');
     });
-    $body.on('click', '#check-all-dancing-categories', function () {
+        $body.on('click', '#check-all-dancing-categories', function () {
         toggleSendBtnVisibility('block');
     });
 });
