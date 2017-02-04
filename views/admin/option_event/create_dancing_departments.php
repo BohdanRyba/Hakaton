@@ -324,7 +324,7 @@
                             <div class="row dance-group-menu">
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_list" class="prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-dance-programs">список</a>
+                                        <a href="#departments_list" class="prevent-text-emphasizing text-center text-uppercase text-bold active" id="menu-dance-programs">список</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
