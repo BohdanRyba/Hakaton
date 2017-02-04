@@ -290,12 +290,18 @@ $('body').on('click', 'a.remove-part', function () {
       window.summ = window.summ + price;
     });
 
-    $('body').on('click', 'tbody>tr', function () {
-      $('.bg-opacity').show(200);
 
-      let top_height= $(this).offset().top;
-      $('.popup-control').css('top',top_height+'px');
-      $('.popup-control').show(200);
+    $('body').on('click', 'tbody>tr', function (event) {
+      $('.bg-opacity').show(200);
+			let posX = event.clientX;
+			let posY = event.clientY;
+			console.log(posX, posY);
+			$('.popup-control').css({
+				'top':posY+'px',
+				'left':posX+'px'
+			});
+			$('.popup-control').show(200);
+
     });
     $('body').on('click', '.bg-opacity', function(){
       $(this).hide();
