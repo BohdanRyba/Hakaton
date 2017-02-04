@@ -186,17 +186,16 @@ $(function () {
 	var incr_train = 0;
 	$('body').on('сlick', '.add-trainer', function () {
 		window.incr_train++;
-		console.log('asd');
+
 		let trainer_node = +'<div class="form-group">'
-   + '<label for="inputPassword3" class="col-sm-2 control-label">Тренер №1</label>'
-   + '<div class="col-sm-10">'
-   + '<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
-   + '</div>'
-   + '</div>';
+    +'<div class="col-sm-12">'
+    +'<input type="text" class="form-control" name="club_trener_' + window.incr_train + '" id="inputPassword3" placeholder="Тренер №' + window.incr_train + '">'
+    +'</div>'
+    +'</div>';
 
-   $('.add_train_box').append(trainer_node);
+    $('.add_train_box').append(trainer_node);
 
- });
+  });
 //MENU-EVENT
 $('.tabs').each(function () {
   $(this).children().filter(':first').addClass('active');
@@ -334,6 +333,14 @@ $('body').on('click', 'a.remove-part', function () {
 
     // event options list the clubs target click
     $('.list_club_data li').on('click', function(){
+      let id = $(this).attr('data-club-id');
+      $.ajax({
+        url:'regParticipantForEvent/'+id,
+        type:'POST',
+        dataType:'html',
+        success:TakeInfoPartisipant
+      });
+
       $('.bg_shadow').show();
       $('.list_table_part').show(300);
       $(this).css({
@@ -341,62 +348,164 @@ $('body').on('click', 'a.remove-part', function () {
         'position':'relative'
       });
     });
-    $('.bg_shadow').on('click', function(){
-      $(this).hide();
-      $('.list_table_part').hide(300);
-      $('.list_club_data li').css({
-        'z-index':'0',
-        'position':'static'
+
+
+    //--------------- take JSON all information paticipant for registration on event
+    function TakeInfoPartisipant(data){
+      let list = JSON.parse(data);
+      let nameList = list.map(function(participant){
+
+        let node = '<tr role="row" class="odd" data-id-part="'+ participant.id_participant +'">'
+        +'<td class="sorting_1">'+ participant.id_participant +'</td>'
+        +'<td>'+ participant.first_name +'</td>'
+        +'<td>'+ participant.second_name +'</td>'
+        +'<td>'+ participant.third_name +'</td>'
+        +'<td>'+ participant.birth_date +'</td>'
+        +'<td>'+ participant.equals_date +'</td>'
+        +'</tr>';
+
+        return node;
       });
-      $('#table_part .part_list .active_part').removeClass('active_part');
-    });
-
-    //save html part
-    // var part_obj = new Object();
-    // part_obj.size= function(obj){
-    //   var size= 0, key;
-    //   for(key in obj){
-    //     if(obj.hasOwnProperty(key)) size++;
-    //   };
-    //   return size;
-    // };
-
-    $('body').on('click', '#table_part .part_list tr', function(event){
-      $(this).toggleClass('active_part');
-      
-
-    });
-
-    $('.take_btn').on('click', function(){
-      $('.bg_shadow').hide();
-      $('.list_table_part').hide(300);
-      $('.list_club_data li').css({
-        'z-index':'0',
-        'position':'static'
+      let box = $('.list_table_part').find('#table_part > .part_list');
+      box.find().remove();
+      nameList.forEach(function(element){
+        box.append(element);
       });
+    };
+//--------------------------- END
 
 
 
-      $('.list_table_part .part_list tr').each(function(i){
-        var arr_part = [];
-        if($(this).hasClass('active_part')){
-          arr_part[i]=$(this).html();
-          console.log(arr_part[i]);
-          $('.block_reg .part_list').append('<tr>'+arr_part[i]+'</tr>');
+$('.bg_shadow').on('click', function(){
+  $(this).hide();
+  $('.list_table_part').hide(300);
+  $('.list_club_data li').css({
+    'z-index':'0',
+    'position':'static'
+  });
+  $('#table_part .part_list .active_part').removeClass('active_part');
+});
 
-        };
-      });
-      $('#table_part .part_list .active_part').removeClass('active_part');
+$('.accordeon_category').hide();
+$('.form_block_reg').hide();
+
+$('body').on('click', '#table_part .part_list tr', function(){
+  $(this).toggleClass('active_part');
+});
+
+
+function editCategory(data) {
+  let list = JSON.parse(data);
+  console.log(list, data);
+  let element = list.map(function(category) {
+
+    let node =  '<li>'
+    +'<div class="dance_category"><span>' +category.d_c_program+ '</span></div>'
+    +'</li>'
+    +'<ul class="list_category_down">'
+    +'<li class="act_part">' +category.d_c_age_category+ '"-"' +category.d_c_nomination+ '"-"' +category.d_c_league+ '</li>'
+    +'</ul>';
+    return node
+    
+  });
+
+  let box = $('.accordeon_category');
+  $box.find().remove();
+  element.forEach(function(element){
+    box.append(element);
+  });
+};
+
+$('body').on('click', '.block_reg .table_reg .part_list tr', function(){
+
+  $.ajax({
+    url:'ajax_test_json',
+    type:'POST',
+    dataType:'html',
+    success:editCategory
+  });
+  $('.accordeon_category').show(300);
+});
+
+
+//================ take participant with list and add on page
+var checkRepet = function(id) {
+  let $part = [];
+  $('#table_take_part').find('tr').each(function(i){
+    $part[i] = $(this).attr('data-id-part');
+  });
+
+  if($part.length){
+    for(i=0; i<=$part.length; i++){
+      if( $part[i] === id ){
+        return false
+      }else{
+        return true
+      };
+    };
+  }else{
+    return true
+  };
+
+};
+
+$('.take_btn').on('click', function(){
+  $('.bg_shadow').hide();
+  $('.list_table_part').hide(300);
+  $('.list_club_data li').css({
+    'z-index':'0',
+    'position':'static'
+  });
+
+  $('.list_table_part .part_list tr').each(function(i){
+    var arr_part = [],
+    $that = $(this);
+    thisId = $that.attr('data-id-part');
+
+    if( $that.hasClass('active_part') && checkRepet(thisId) ){
+      arr_part[i]=$that.html();
+      $('.block_reg .part_list').append('<tr data-id-part="' +thisId+ '"  >' +arr_part[i]+ '</tr>');
+    };
+
+  });
+
+  $('#table_part .part_list .active_part').removeClass('active_part');
+
+});
+
+// $('body').on('click', '#table_take_part tr', function(){
+//   $(this).toggleClass('active_part');
+//   console.log('asd');
+// });
+
+//========== hide show accordeon category 
+
+
+
+
+
+$('body').on('click','#btn_go_event_cabinet', function(){
+  let elementId = $(this).find('.list-search').attr('data-element-id');
+  console.log(elementId);
+  $(this).children('a').attr('href', '../pick_categories_for_event/'+elementId);
+});
+$('body').on('click','#btn_go_club_cabinet', function(){
+  let elementId = $(this).find('.list-search').attr('data-element-id');
+  console.log( '../cabinet_club/'+elementId);
+  $(this).children('a').attr('href', '../cabinet_club/'+elementId);
+});
+
+    // ---------- Accordion with dance categary list for participant registration at the event
+    $('.list_category_down').hide();
+    var $accordeonLi = $('.accordeon_category').children('li');
+    $accordeonLi.on('click', function(){
+      $accordeonLi.next('.list_category_down').slideUp(300);
+      $(this).next('.list_category_down').slideDown(300);
 
     });
-
-    $('body').on('click','#btn_go_event_cabinet', function(){
-      let eventId = $(this).find('.list-search').attr('data-element-id');
-      console.log(eventId);
-      $(this).children('a').attr('href', '../pick_categories_for_event/'+eventId);
+    $('.list_category_down li').on('click', function(){
+      $(this).toggleClass('act_part');
     });
-
-
 
   });
 

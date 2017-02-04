@@ -261,6 +261,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
+                                        <?php $_SESSION['org_id'] = $organization['id']?>
                                         <form method="post" action="../org_settings/<?php echo $organization['id']; ?>">
                                             <input name="submitik" type="submit" class="form-control text-center gogogo" value="Настройка организации"><a></a></input>
                                         </form>

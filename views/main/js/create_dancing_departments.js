@@ -21,6 +21,16 @@ jQuery(function($) {
         target.css('display', visibility);
     }
 
+    function getEventId() {
+        var eventId=window.location.href;
+
+        eventId=eventId.split('/');
+        eventId=eventId[eventId.length-1];
+        eventId= parseInt(eventId);
+
+        return eventId;
+    }
+
 
 //МЕНЮ
     $menuItems.on('click', function (e) {
@@ -56,40 +66,20 @@ jQuery(function($) {
     });
 
     //create new department
-    $('#create_new_department').on('click', function () {
-        // var $modalBody=$editDepartmentModal.find('.modal-body'),
-        //     $li=$(this).parents('li');
-        // $modalBody.find('p').remove();
-        // $('#dancing-group-deletion-id').val($li.attr('data-id-dancing-group'));
-    });
+    // $('#create_new_department').on('click', function () {
+    // });
 
     $('#send-created-department').on('click', function () {
-        var name=$createDepartmentModal.find('#newDepartment').val();
+        var name=$createDepartmentModal.find('#newDepartment').val(),
+            eventId=window.location.href,
+            obj={};
 
-        console.log(name);
-        $.ajax({
-            type:"POST",
-            url:'ajax_',
-            data: name,
-            success: function(msg) {
-                console.log(msg);
-                var $ul=$('#departments_list').find('.dancing-department-list-wrapper');
+        eventId=eventId.split('/');
+        eventId=eventId[eventId.length-1];
+        eventId= parseInt(eventId);
 
-                // $ul.append('<li data-id-dancing-group="'+id+'"><div class="btn-group-xs button-wrapper">
-                //     <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                //     <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                //     <button type="button" data-toggle="modal" data-target="#confirmDepartmentDeletion" class="delete-department btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                //     </div>
-                //     <p class="department-name">'+name+'</p></li>');
+        $createDepartmentModal.find('[name="department-id"]').val()
 
-                $createDepartmentModal.find('[data-dismiss="modal"]').trigger('click');
-            },
-            error: function (msg) {
-                console.log(msg);
-                alert('Ошибка! Попробуйте ещё раз.');
-                console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has failed work!');
-            }
-        });
     });
 //DEPARTMENTS LIST
 //    =========================================================================================================

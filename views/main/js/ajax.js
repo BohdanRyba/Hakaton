@@ -24,14 +24,15 @@ function funcBefore() {
 }
 
 function funcSuccess(data) {
-    $('.list-group>').remove();
+    $('.list-group').children(':not(.list_data_page)').remove();
+    $('.list_data_page>').remove();
     $('body').css('cursor', 'default');
     $('#loading>').remove();
     $('#loading').css('height', '0px');
     $('.content-in').css('height', '0');
     $('.cont-box1').append(data);
     $('body').trigger('mask_ajax');
-}
+};
 $(function () {
     $('body').on('click', '#add_part', function () {
         $.ajax({
@@ -94,9 +95,9 @@ $(function () {
     });
 
     // Opens page cabinet club
-    $('body').on('click', '#btn_go_club_cabinet', function(){
+/*    $('body').on('click', '#btn_go_club_cabinet', function(){
         $('.cont-box1>').remove();
-        var id= $(this).children('.list-search').attr('data-element-id');
+        var id= $(this).find('.list-search').attr('data-element-id');
         console.log(id);
         $.ajax({
             url:'club-cabinet-for-adm/'+id,
@@ -111,7 +112,7 @@ $(function () {
                         }
                     ]
         });
-    });
+    });*/
 
     $('body').on('click', '.users_list', function(){
         $('.cont-box1>').remove();

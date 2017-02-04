@@ -168,6 +168,34 @@
                         </li>
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="#"><i class="opt-eve ion ion-ios-people-outline"></i> <span>Заявки</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Хіп-Хоп</a></li>
+                                <li><a href="#">Диско</a></li>
+                                <li><a href="#">Данс-шоу</a></li>
+                                <li><a href="#">Хаус</a></li>
+                                <li><a href="#">Брейк Данс</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/pick_categories_for_event/<?=Router::$any_last_path_value;?>">Категории</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?=$_SESSION['organization_id']?>">Регистраця</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/create_dancing_departments/<?=Router::$any_last_path_value;?>">Отделения</a></li>
+                        <li><a href="#">Програма</a></li>
+                        <li><a href="#">Суддьи</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -196,7 +224,7 @@
                                             <div class="form-group">
                                                 <label for="pwd">Пароль подтверждения действия:</label>
                                                 <input type="text" class="form-control" name="deletion-confirmation-password" id="pwd">
-                                                <!--<input type="hidden" name="dancing-group-id" id="dancing-group-deletion-id">-->
+                                                <input type="hidden" name="department-id">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -221,6 +249,7 @@
                                             <div class="form-group">
                                                 <label for="newDepartmentName">Новое название:</label>
                                                 <input type="text" class="form-control" name="new-Department-Name" id="newDepartmentName">
+                                                <input type="hidden" name="department-id">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -324,7 +353,7 @@
                                             <div class="row">
                                                 <div class="">
                                                     <ul class="dancing-department-list-wrapper">
-                                                        <li data-id-dancing-group="6">
+                                                        <li data-id-department="6">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -332,7 +361,7 @@
                                                             </div>
                                                             <p class="department-name">1 отделение</p>
                                                         </li>
-                                                        <li data-id-dancing-group="6">
+                                                        <li data-id-department="6">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -340,7 +369,7 @@
                                                             </div>
                                                             <p class="department-name">2 отделение</p>
                                                         </li>
-                                                        <li data-id-dancing-group="6">
+                                                        <li data-id-department="6">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -565,6 +594,7 @@
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?10"></script>
+
+<script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>
