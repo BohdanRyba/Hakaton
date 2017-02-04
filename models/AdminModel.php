@@ -12,16 +12,19 @@ class AdminModel
 
     static $event_id = '';
 
-    static function remove_empty($array) {
+    static function remove_empty($array)
+    {
         return array_filter($array, 'self::_remove_empty_internal');
     }
 
-    static function _remove_empty_internal($value) {
+    static function _remove_empty_internal($value)
+    {
         return !empty($value) || $value === 0;
     }
 
-    static function uncheck_event_id($id_to_uncheck){
-        if(self::$event_id == $id_to_uncheck){
+    static function uncheck_event_id($id_to_uncheck)
+    {
+        if (self::$event_id == $id_to_uncheck) {
             return '';
         } else {
             return $id_to_uncheck;
@@ -193,7 +196,7 @@ class AdminModel
     }
 
 
-    public static function ShowClubs($id ='')
+    public static function ShowClubs($id = '')
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
@@ -216,9 +219,9 @@ class AdminModel
         }
     }
 
-    public static function ShowClubsForReg($id ='')
+    public static function ShowClubsForReg($id = '')
     {
-            if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
             $i = 0;
@@ -293,26 +296,26 @@ class AdminModel
             $participantList = array();
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
-            $i=0;
-            while ($row = $result->fetch_assoc()){
-                if(!is_null($row)){
-                    $participantList[$i]['id_participant']    =   $row['id_participant'];
-                    $participantList[$i]['first_name']        =   $row['first_name'];
-                    $participantList[$i]['second_name']       =   $row['second_name'];
-                    $participantList[$i]['third_name']        =   $row['third_name'];
-                    $participantList[$i]['birth_date']        =   $row['birth_date'];
-                    $participantList[$i]['equals_date']       =   $currentDate = date("Y-m-d") - $row['birth_date'];
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                if (!is_null($row)) {
+                    $participantList[$i]['id_participant'] = $row['id_participant'];
+                    $participantList[$i]['first_name'] = $row['first_name'];
+                    $participantList[$i]['second_name'] = $row['second_name'];
+                    $participantList[$i]['third_name'] = $row['third_name'];
+                    $participantList[$i]['birth_date'] = $row['birth_date'];
+                    $participantList[$i]['equals_date'] = $currentDate = date("Y-m-d") - $row['birth_date'];
 
                     $i++;
+                } else {
+                    break;
                 }
-                else{break;}
             }
             $db->close();
             return $participantList;
 
         }
     }
-
 
 
     public static function ShowClubById($id)
@@ -328,16 +331,16 @@ class AdminModel
              * */
 
 
-            while ($row = $result->fetch_assoc()){
-                $club_info['id']                = $row['id'];
-                $club_info['club_name']         = $row['club_name'];
-                $club_info['club_image']        = $row['club_image'];
-                $club_info['club_country']      = $row['club_country'];
-                $club_info['club_city']         = $row['club_city'];
-                $club_info['club_shief']        = $row['club_shief'];
-                $club_info['club_number']       = $row['club_number'];
-                $club_info['club_mail']         = $row['club_mail'];
-                $club_info['coach_name']        = $row['coaches'];
+            while ($row = $result->fetch_assoc()) {
+                $club_info['id'] = $row['id'];
+                $club_info['club_name'] = $row['club_name'];
+                $club_info['club_image'] = $row['club_image'];
+                $club_info['club_country'] = $row['club_country'];
+                $club_info['club_city'] = $row['club_city'];
+                $club_info['club_shief'] = $row['club_shief'];
+                $club_info['club_number'] = $row['club_number'];
+                $club_info['club_mail'] = $row['club_mail'];
+                $club_info['coach_name'] = $row['coaches'];
             }
 
 
@@ -368,23 +371,25 @@ class AdminModel
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
 
-            $i=0;
-            while ($row = $result->fetch_assoc()){
-                if(!is_null($row)){
-                $club_info['club_part'][$i]['id_participant']    =   $row['id_participant'];
-                $club_info['club_part'][$i]['first_name']        =   $row['first_name'];
-                $club_info['club_part'][$i]['second_name']       =   $row['second_name'];
-                $club_info['club_part'][$i]['third_name']        =   $row['third_name'];
-                $club_info['club_part'][$i]['birth_date']        =   $row['birth_date'];
-                $i++;
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                if (!is_null($row)) {
+                    $club_info['club_part'][$i]['id_participant'] = $row['id_participant'];
+                    $club_info['club_part'][$i]['first_name'] = $row['first_name'];
+                    $club_info['club_part'][$i]['second_name'] = $row['second_name'];
+                    $club_info['club_part'][$i]['third_name'] = $row['third_name'];
+                    $club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+                    $i++;
+                } else {
+                    break;
                 }
-                else{break;}
             }
             $db->close();
             return $club_info;
 
         }
     }
+
     static function club_add($a)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
@@ -836,20 +841,20 @@ class AdminModel
                                   WHERE `{$parameter}` = '{$name}' 
                                   AND `org_id` = {$_COOKIE['get_id']}");
 
-            if($result){
+            if ($result) {
                 while ($row = $result->fetch_assoc()) {
                     $array_with_parameters[] = $row;
                 }
             }
 
-            if ($event_id == NULL){
+            if ($event_id == NULL) {
                 return $array_with_parameters;
-            } elseif ($event_id != NULL){
+            } elseif ($event_id != NULL) {
                 $array_with_checked_ids = [];
-                foreach ($array_with_parameters as $key => $value){
-                    if(!empty($value['event_ids'])){
+                foreach ($array_with_parameters as $key => $value) {
+                    if (!empty($value['event_ids'])) {
                         $exploded_ids = explode("&", $value['event_ids']);
-                        if(in_array($event_id, $exploded_ids)){
+                        if (in_array($event_id, $exploded_ids)) {
                             array_push($array_with_checked_ids, $value['id']);
                         }
                     }
@@ -999,24 +1004,24 @@ class AdminModel
         self::saveMessage($message);
     }
 
-    static function assignEventIdToDancingCategory($all_ids, $checked_ids,  $event_id)
+    static function assignEventIdToDancingCategory($all_ids, $checked_ids, $event_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $resulting_array = [];
-            foreach ( $all_ids as $key => $id){
+            foreach ($all_ids as $key => $id) {
                 $result1 = $db->query("SELECT `event_ids` FROM `dance_categories` WHERE `org_id` = {$_COOKIE['get_id']}
                                         AND `id` = {$id}
                                           ");
-                if ($result1){
+                if ($result1) {
                     $row = $result1->fetch_assoc();
-                    if(empty($row['event_ids'])){
-                        if(in_array($id, $checked_ids)){
+                    if (empty($row['event_ids'])) {
+                        if (in_array($id, $checked_ids)) {
                             $event_ids = $event_id . "&";
                             $update_result = $db->query("UPDATE `dance_categories`
                                                                 SET `event_ids` = '{$event_ids}'
                                                                 WHERE `id` = {$id}
                                                         ");
-                            if ($update_result){
+                            if ($update_result) {
                                 $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated SUCCESSFULLY!\n";
                             } else {
                                 $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated!\n";
@@ -1024,8 +1029,8 @@ class AdminModel
                         }
                     } else {
                         $event_ids_array = explode("&", $row['event_ids']);
-                        if(in_array($id, $checked_ids)){
-                            if(!in_array($event_id, $event_ids_array)){
+                        if (in_array($id, $checked_ids)) {
+                            if (!in_array($event_id, $event_ids_array)) {
                                 array_push($event_ids_array, $event_id);
                                 $emptyRemoved = static::remove_empty($event_ids_array);
                                 $imploded_events_ids = implode("&", $emptyRemoved);
@@ -1033,23 +1038,23 @@ class AdminModel
                                                                 SET `event_ids` = '{$imploded_events_ids}'
                                                                 WHERE `id` = {$id}
                                                         ");
-                                if ($update_result){
+                                if ($update_result) {
                                     $resulting_array[] = "SUCCESS! The dancing category with id = \"" . $id . "\" was updated!\n";
                                 } else {
                                     $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated...\n";
                                 }
                             }
                         } else {
-                            if(in_array($event_id, $event_ids_array)){
+                            if (in_array($event_id, $event_ids_array)) {
                                 self::$event_id = $event_id;
                                 $event_ids_array_mapped = array_map("self::uncheck_event_id", $event_ids_array);
                                 $emptyRemoved = static::remove_empty($event_ids_array_mapped);
-                                $imploded_events_ids = implode("&",$emptyRemoved) . "&";
+                                $imploded_events_ids = implode("&", $emptyRemoved) . "&";
                                 $update_result = $db->query("UPDATE `dance_categories`
                                                                 SET `event_ids` = '{$imploded_events_ids}'
                                                                 WHERE `id` = {$id}
                                                         ");
-                                if ($update_result){
+                                if ($update_result) {
                                     $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated - the event_id has been deleted!\n";
                                 } else {
                                     $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated, can't be deleted...\n";
@@ -1065,4 +1070,82 @@ class AdminModel
         $db->close();
     }
 
+    static function departmentsOperation($name, $event_id, $option = '', $dep_id = null )
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $message = '';
+            if ($option === 'Создать' && $dep_id == null) {
+                $result = $db->query("INSERT INTO `departments`
+                                              SET `id` = '',
+                                                  `dep_name` = '{$name}',
+                                                  `event_id` = {$event_id}");
+                if ($result) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Отделение \"" . $name . "\" было успешно создано!"
+                    ]);
+                } else {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Отделение \"" . $name . "\" создать не удалось!"
+                    ]);
+                }
+                self::saveMessage($message);
+                $db->close();
+                return $result;
+            } elseif ($dep_id != null && $option === 'Изменить') {
+                $update_result = $db->query("UPDATE `departments`
+                                                SET `dep_name` = '{$name}',
+                                                WHERE `id` = {$dep_id}");
+                if ($update_result) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Отделение \"" . $name . "\" было успешно изменено!"
+                    ]);
+                } else {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "Отделение \"" . $name . "\" изменить не удалось!"
+                    ]);
+                }
+                self::saveMessage($message);
+                $db->close();
+                return $update_result;
+            } else {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => "Приняты некорректные данные, сохранить или изменить отделение не удалось!"
+                ]);
+            }
+            self::saveMessage($message);
+            $db->close();
+            return 'data error';
+        } else {
+            $message = json_encode([
+                'status' => 'error',
+                'message' => "Ошибка подключения к базе данных!"
+            ]);
+            self::saveMessage($message);
+            return 'DB connection error';
+        }
+    }
+
+    static function getDepartmentsByEventId($event_id){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $getting_result = $db->query("SELECT * FROM `departments` WHERE `event_id` = {$event_id}");
+            if($getting_result){
+                $departments = array();
+                while ($row = $getting_result->fetch_assoc()){
+                    $departments[] = $row;
+                }
+                $db->close();
+                return $departments;
+            } else {
+                $db->close();
+                return false;
+            }
+        } else {
+            return 'DB connection error';
+        }
+    }
 }

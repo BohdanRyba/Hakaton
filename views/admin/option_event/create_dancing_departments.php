@@ -20,7 +20,8 @@
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/create_dancing_departments.less">
+    <link rel="stylesheet/less" type="text/less"
+          href="<?= Router::$permalink ?>views/main/css/create_dancing_departments.less">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -149,10 +150,11 @@
                         <span>Организации</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
-                                        class="fa fa-link"></i></span></a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span
+                                        class="pull-right-container"><i
+                                            class="fa fa-link"></i></span></a></li>
                         <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
-                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
 
@@ -162,9 +164,11 @@
                         <span>Танцевальные групы</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span
+                                        class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
                         </li>
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span
+                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                     </ul>
                 </li>
@@ -189,9 +193,15 @@
                                 <li><a href="#">Брейк Данс</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/pick_categories_for_event/<?=Router::$any_last_path_value;?>">Категории</a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?=$_SESSION['organization_id']?>">Регистраця</a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/create_dancing_departments/<?=Router::$any_last_path_value;?>">Отделения</a></li>
+                        <li>
+                            <a href="<?= Router::$permalink ?>admin/organizations/pick_categories_for_event/<?= Router::$any_last_path_value; ?>">Категории</a>
+                        </li>
+                        <li>
+                            <a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?= $_SESSION['organization_id'] ?>">Регистраця</a>
+                        </li>
+                        <li>
+                            <a href="<?= Router::$permalink ?>admin/organizations/create_dancing_departments/<?= Router::$any_last_path_value; ?>">Отделения</a>
+                        </li>
                         <li><a href="#">Програма</a></li>
                         <li><a href="#">Суддьи</a></li>
                     </ul>
@@ -207,6 +217,10 @@
         <section class="content-header"></section>
         <!-- Main content -->
         <section class="content">
+            <?php if (isset($this->message)) {
+                echo $this->message;
+            }
+            ?>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12 col-sm-10 col-sm-push-1">
@@ -223,13 +237,16 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="pwd">Пароль подтверждения действия:</label>
-                                                <input type="text" class="form-control" name="deletion-confirmation-password" id="pwd">
+                                                <input type="text" class="form-control"
+                                                       name="deletion-confirmation-password" id="pwd">
                                                 <input type="hidden" name="department-id">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-danger" name="deletion-confirmation-btn" value="Удалить!">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                            <input type="submit" class="btn btn-danger" name="deletion-confirmation-btn"
+                                                   value="Удалить!">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -248,13 +265,16 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="newDepartmentName">Новое название:</label>
-                                                <input type="text" class="form-control" name="new-Department-Name" id="newDepartmentName">
+                                                <input type="text" class="form-control" name="new-Department-Name"
+                                                       id="newDepartmentName">
                                                 <input type="hidden" name="department-id">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-success" name="new-department-name-confirmation-btn" value="Изменить">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                            <input type="submit" class="btn btn-success"
+                                                   name="new-department-name-confirmation-btn" value="Изменить">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -273,12 +293,15 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="newDepartment">Название отделения:</label>
-                                                <input type="text" class="form-control" name="new-Department-Name" id="newDepartment">
+                                                <input type="text" class="form-control" name="new-Department-Name"
+                                                       id="newDepartment">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="button" id="send-created-department" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                            <input type="submit" id="send-created-department" class="btn btn-warning"
+                                                   name="new-department-name-confirmation-btn" value="Создать">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -299,20 +322,27 @@
                                             <!--<label for="newDepartment">Название отделения:</label>-->
                                             <!--<input type="text" class="form-control" name="new-Department-Name" id="newDepartment">-->
                                             <!--</div>-->
-                                            <p>Переместить категорию из <span data-direction="from"></span> в <span data-direction="to"></span></p>
+                                            <p>Переместить категорию из <span data-direction="from"></span> в <span
+                                                        data-direction="to"></span></p>
                                             <div class="dropdown">
-                                                <button class="btn btn-primary dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Переместить в:
+                                                <button class="btn btn-primary dropdown-toggle text-bold flat"
+                                                        type="button" data-toggle="dropdown">Переместить в:
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
+                                                                href="#">department 1</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
+                                                                href="#">department 2</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
+                                                                href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-success" name="transfer-category-btn" value="Переместить">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                            <input type="submit" class="btn btn-success" name="transfer-category-btn"
+                                                   value="Переместить">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
+                                            </button>
                                         </div>
                                     </form>
                                 </div>
@@ -325,17 +355,23 @@
                             <div class="row dance-group-menu">
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_list" class="prevent-text-emphasizing text-center text-uppercase text-bold active" id="menu-dance-programs">список</a>
+                                        <a href="#departments_list"
+                                           class="prevent-text-emphasizing text-center text-uppercase text-bold active"
+                                           id="menu-dance-programs">список</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_filling" class="prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-age-categories">наполнение</a>
+                                        <a href="#departments_filling"
+                                           class="prevent-text-emphasizing text-center text-uppercase text-bold"
+                                           id="menu-age-categories">наполнение</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_content" class="prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-nominations">содержание</a>
+                                        <a href="#departments_content"
+                                           class="prevent-text-emphasizing text-center text-uppercase text-bold"
+                                           id="menu-nominations">содержание</a>
                                     </div>
                                 </div>
                             </div>
@@ -346,37 +382,36 @@
                                         <div class="container box box-solid box-primary flat">
                                             <div class="row box-header">
                                                 <h3 class="box-title text-uppercase">
-                                                    <button type="button" id="create_new_department" data-toggle="modal" data-target="#createDepartment" class="btn btn-warning btn-flat"><i class="fa fa-plus"></i></button>
+                                                    <button type="submit" id="create_new_department" data-toggle="modal"
+                                                            data-target="#createDepartment"
+                                                            class="btn btn-warning btn-flat"><i class="fa fa-plus"></i>
+                                                    </button>
                                                     создать отделение
                                                 </h3>
                                             </div>
                                             <div class="row">
                                                 <div class="">
                                                     <ul class="dancing-department-list-wrapper">
-                                                        <li data-id-department="6">
-                                                            <div class="btn-group-xs button-wrapper">
-                                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                                <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                                                                <button type="button" data-toggle="modal" data-target="#confirmDepartmentDeletion" class="delete-department btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                                            </div>
-                                                            <p class="department-name">1 отделение</p>
-                                                        </li>
-                                                        <li data-id-department="6">
-                                                            <div class="btn-group-xs button-wrapper">
-                                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                                <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                                                                <button type="button" data-toggle="modal" data-target="#confirmDepartmentDeletion" class="delete-department btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                                            </div>
-                                                            <p class="department-name">2 отделение</p>
-                                                        </li>
-                                                        <li data-id-department="6">
-                                                            <div class="btn-group-xs button-wrapper">
-                                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                                                                <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                                                                <button type="button" data-toggle="modal" data-target="#confirmDepartmentDeletion" class="delete-department btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                                                            </div>
-                                                            <p class="department-name">3 отделение</p>
-                                                        </li>
+                                                        <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
+                                                            <?php foreach ($departments as $department): ?>
+                                                                <li data-id-department="<?= $department['id'];?>">
+                                                                    <div class="btn-group-xs button-wrapper">
+                                                                        <button type="button"
+                                                                                class="show-info-about-dance-group btn btn-info btn-flat">
+                                                                            <i class="fa fa-info"></i></button>
+                                                                        <button type="button" data-toggle="modal"
+                                                                                data-target="#editDepartmentName"
+                                                                                class="edit-info-about-department btn btn-success btn-flat">
+                                                                            <i class="fa fa-edit"></i></button>
+                                                                        <button type="button" data-toggle="modal"
+                                                                                data-target="#confirmDepartmentDeletion"
+                                                                                class="delete-department btn btn-danger delete-button btn-flat">
+                                                                            <i class="fa fa-trash"></i></button>
+                                                                    </div>
+                                                                    <p class="department-name"><?= $department['dep_name'];?></p>
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        <?php endif; ?>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -388,12 +423,16 @@
                                     <div class="panel panel-primary flat">
                                         <div class="panel-heading flat">
                                             <div class="dropdown">
-                                                <button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для наполнения
+                                                <button class="btn btn-warning dropdown-toggle text-bold flat"
+                                                        type="button" data-toggle="dropdown">Отделение для наполнения
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
+                                                                href="#">department 1</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
+                                                                href="#">department 2</a></li>
+                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a
+                                                                href="#">department 3
 
                                                         </a></li>
                                                 </ul>
@@ -401,16 +440,30 @@
                                         </div>
                                         <div id="departments-filling-panel-body" class="panel-body">
                                             <div id="dance-group-info-wrapper">
-                                                <div id="dance-group-parameters-list" class="col-xs-12 col-md-4 col-lg-3">
+                                                <div id="dance-group-parameters-list"
+                                                     class="col-xs-12 col-md-4 col-lg-3">
                                                     <div class="container-fluid">
                                                         <div class="row">
                                                             <div class="col-xs-12">
                                                                 <div class="row pick-dancing-groups-parameters-wrapper">
-                                                                    <p id="see-department-name" class="text-bold text-center"></p>
+                                                                    <p id="see-department-name"
+                                                                       class="text-bold text-center"></p>
                                                                     <ul id="dance-program-to-pick-categories">
-                                                                        <li class="prevent-text-emphasizing dance-program-name" data-name="111"><span class="numeration"></span>department 1</li>
-                                                                        <li class="prevent-text-emphasizing dance-program-name" data-name="111"><span class="numeration"></span>department 2</li>
-                                                                        <li class="prevent-text-emphasizing dance-program-name" data-name="111"><span class="numeration"></span>department 3</li>
+                                                                        <li class="prevent-text-emphasizing dance-program-name"
+                                                                            data-name="111"><span
+                                                                                    class="numeration"></span>department
+                                                                            1
+                                                                        </li>
+                                                                        <li class="prevent-text-emphasizing dance-program-name"
+                                                                            data-name="111"><span
+                                                                                    class="numeration"></span>department
+                                                                            2
+                                                                        </li>
+                                                                        <li class="prevent-text-emphasizing dance-program-name"
+                                                                            data-name="111"><span
+                                                                                    class="numeration"></span>department
+                                                                            3
+                                                                        </li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -423,21 +476,40 @@
                                                         <div class="row">
                                                             <div class="col-xs-12">
                                                                 <div class="form-group prevent-text-emphasizing">
-                                                                    <label for="departments-search-category">название категории:</label>
-                                                                    <input type="text" class="form-control" id="departments-search-category">
+                                                                    <label for="departments-search-category">название
+                                                                        категории:</label>
+                                                                    <input type="text" class="form-control"
+                                                                           id="departments-search-category">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-12">
                                                                 <form id="pick-dancing-categories-for-department">
                                                                     <ul>
-                                                                        <li id="check-all-dancing-categories" class="prevent-text-emphasizing"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>
-                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>
-                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>
-                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>
-                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="15">B&amp;B Дорослі Краща техніка виконання Профі</label></li>
+                                                                        <li id="check-all-dancing-categories"
+                                                                            class="prevent-text-emphasizing">
+                                                                            <label><input class="text-capitalize"
+                                                                                          type="checkbox">выбрать
+                                                                                все</label></li>
+                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department">
+                                                                            <label><input type="checkbox" name="15">B&amp;B
+                                                                                Дорослі Краща техніка виконання
+                                                                                Профі</label></li>
+                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department">
+                                                                            <label><input type="checkbox" name="15">B&amp;B
+                                                                                Дорослі Краща техніка виконання
+                                                                                Профі</label></li>
+                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department">
+                                                                            <label><input type="checkbox" name="15">B&amp;B
+                                                                                Дорослі Краща техніка виконання
+                                                                                Профі</label></li>
+                                                                        <li class="prevent-text-emphasizing pick-dancing-categories-for-department">
+                                                                            <label><input type="checkbox" name="15">B&amp;B
+                                                                                Дорослі Краща техніка виконання
+                                                                                Профі</label></li>
                                                                     </ul>
                                                                 </form>
-                                                                <span id="update-dancing-department-info" class="prevent-text-emphasizing send-info">сохранить</span>
+                                                                <span id="update-dancing-department-info"
+                                                                      class="prevent-text-emphasizing send-info">сохранить</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -451,12 +523,16 @@
                                     <div class="panel panel-primary flat">
                                         <div class="panel-heading flat">
                                             <div class="dropdown">
-                                                <button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для просмотра
+                                                <button class="btn btn-warning dropdown-toggle text-bold flat"
+                                                        type="button" data-toggle="dropdown">Отделение для просмотра
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing">
+                                                        <a href="#">department 1</a></li>
+                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing">
+                                                        <a href="#">department 2</a></li>
+                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing">
+                                                        <a href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -465,30 +541,49 @@
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <p id="see-department-content-name" class="text-bold text-center"></p>
+                                                            <p id="see-department-content-name"
+                                                               class="text-bold text-center"></p>
                                                             <div class="form-group prevent-text-emphasizing">
-                                                                <label for="search-category-in-department">название категории:</label>
-                                                                <input type="text" class="form-control" id="search-category-in-department">
+                                                                <label for="search-category-in-department">название
+                                                                    категории:</label>
+                                                                <input type="text" class="form-control"
+                                                                       id="search-category-in-department">
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-12">
-                                                            <form class="dance-group-show-info" id="department-categories-list">
+                                                            <form class="dance-group-show-info"
+                                                                  id="department-categories-list">
                                                                 <div class="dp-info-wrapper">
-                                                                    <div class="prevent-text-emphasizing btn-group-sm flat" role="group">
-                                                                        <button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>
-                                                                        <button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                                                    <div class="prevent-text-emphasizing btn-group-sm flat"
+                                                                         role="group">
+                                                                        <button type="button"
+                                                                                class="btn btn-success edit-created-category-info edit-button btn-flat">
+                                                                            <i class="fa fa-exchange"></i></button>
+                                                                        <button type="button"
+                                                                                class="btn btn-danger delete-created-categories-info delete-button btn-flat">
+                                                                            <i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">Хіп Дорослі Кращий виспут за думкою глядачів Початківці</p>
+                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">
+                                                                        Хіп Дорослі Кращий виспут за думкою глядачів
+                                                                        Початківці</p>
                                                                 </div>
                                                                 <div class="dp-info-wrapper">
-                                                                    <div class="prevent-text-emphasizing btn-group-sm flat" role="group">
-                                                                        <button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>
-                                                                        <button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                                                                    <div class="prevent-text-emphasizing btn-group-sm flat"
+                                                                         role="group">
+                                                                        <button type="button"
+                                                                                class="btn btn-success edit-created-category-info edit-button btn-flat">
+                                                                            <i class="fa fa-exchange"></i></button>
+                                                                        <button type="button"
+                                                                                class="btn btn-danger delete-created-categories-info delete-button btn-flat">
+                                                                            <i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">Хіп Дорослі Кращий виспут за думкою глядачів Початківці</p>
+                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">
+                                                                        Хіп Дорослі Кращий виспут за думкою глядачів
+                                                                        Початківці</p>
                                                                 </div>
                                                             </form>
-                                                            <span id="update-dancing-department-categories-list" class="prevent-text-emphasizing send-info">сохранить</span>
+                                                            <span id="update-dancing-department-categories-list"
+                                                                  class="prevent-text-emphasizing send-info">сохранить</span>
                                                         </div>
                                                     </div>
                                                 </div>

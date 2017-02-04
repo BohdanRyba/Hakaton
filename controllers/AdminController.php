@@ -462,7 +462,29 @@ class AdminController
 
     public function actionCreateDancingDepartments( $event_id ){
         self::showArray($_POST);
+        if(!empty($_POST)){
+            if(!empty($_POST['new-department-name-confirmation-btn'])){
+                if($_POST['new-department-name-confirmation-btn'] == 'Создать'
+                    && !empty($_POST['new-Department-Name'])){
+                    $name = $_POST['new-Department-Name'];
+                    $result = AdminModel::departmentsOperation($name, $event_id, 'Создать');
+                } elseif ($_POST['new-department-name-confirmation-btn'] == 'Изменить'
+                    && !empty($_POST['new-Department-Name'])
+                    && !empty($_POST['department-id'])){
+                    $dep_id = $_POST['department-id'];
+                    $name = $_POST['new-Department-Name'];
+                    $result = AdminModel::departmentsOperation($name, $event_id, 'Изменить', $dep_id);
+                }
+            } elseif (!empty($_POST['deletion-confirmation-btn'])){
+
+            }
+        }
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
+        $departments = AdminModel::getDepartmentsByEventId( $event_id );
         $nav_content = $this->createNavContent(Router::$uri);
         require_once('views/admin/option_event/create_dancing_departments.php');
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
     }
 }
