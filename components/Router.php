@@ -6,6 +6,13 @@ class Router
     public static $uri;
     public $result;
     public static $permalink;
+    public static $any_last_path_value;
+
+    public static function set_last_path_value(){
+        $request_url = explode('/', $_SERVER['REQUEST_URI']);
+        $last_element = $request_url[count($request_url)-1];
+        self::$any_last_path_value = $last_element;
+    }
 
     /**
      * include file "routes.php" from folder "config" with array inside
@@ -15,6 +22,7 @@ class Router
         $project = pathinfo($_SERVER['PHP_SELF']);
         $root_path = rtrim( '//' . $_SERVER['HTTP_HOST'] . $project['dirname'], '/' ) . '/';
         self::$permalink = $root_path;
+        self::set_last_path_value();
 
         $routesPath = ROOT . 'config/routes.php';
         $this->routes = include($routesPath);
