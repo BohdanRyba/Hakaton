@@ -208,8 +208,8 @@ class AdminController
     public function actionRegClubForEvent($id)
     {
         $list = AdminModel::ShowClubsForReg($id) ;
-        $json = file_get_contents( __DIR__ . DIRECTORY_SEPARATOR .'categories.json' ); // в примере все файлы в корне
-        echo json_encode($json);
+        $json = file_get_contents('categories.json' ); // в примере все файлы в корне
+//        echo json_encode($json);
 
         include 'views/admin/option_event/reg_part_for_event.php';
     }
