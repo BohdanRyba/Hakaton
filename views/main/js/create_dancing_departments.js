@@ -70,17 +70,17 @@ jQuery(function($) {
         $.ajax({
             type:"POST",
             url:'ajax_',
-            data: ,
+            data: name,
             success: function(msg) {
                 console.log(msg);
                 var $ul=$('#departments_list').find('.dancing-department-list-wrapper');
 
-                $ul.append('<li data-id-dancing-group="'+id+'"><div class="btn-group-xs button-wrapper">
-                    <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
-                    <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
-                    <button type="button" data-toggle="modal" data-target="#confirmDepartmentDeletion" class="delete-department btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
-                    </div>
-                    <p class="department-name">'+name+'</p></li>');
+                // $ul.append('<li data-id-dancing-group="'+id+'"><div class="btn-group-xs button-wrapper">
+                //     <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                //     <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
+                //     <button type="button" data-toggle="modal" data-target="#confirmDepartmentDeletion" class="delete-department btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
+                //     </div>
+                //     <p class="department-name">'+name+'</p></li>');
 
                 $createDepartmentModal.find('[data-dismiss="modal"]').trigger('click');
             },
