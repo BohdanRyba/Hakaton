@@ -5,11 +5,13 @@ require_once(ROOT . 'components/Traits.php');
 
 class AdminController
 {
-    function debug($array = array()){
+    function debug($array = array())
+    {
         echo '<pre>';
         var_dump($array);
         echo '</pre>';
     }
+
     use messagesOperations;
     use navigationFunctional;
 
@@ -133,7 +135,6 @@ class AdminController
         }
     }
 
-
     public function actionAddClub()
     {
         if (isset($_POST)) {
@@ -152,7 +153,7 @@ class AdminController
     public function actionAjaxCategory_create()
     {
         $category_parameters = AdminModel::getCategoryParametersForCreating();
-        
+
         include 'views/admin/SettingsOrg/option_category.php';
     }
 
@@ -179,19 +180,17 @@ class AdminController
         self::saveMessage($message);
     }
 
-
-
-
-
     public function actionAjaxClub_add()
     {
 
         include 'views/admin/SettingsOrg/create-club.php';
-    }    
+    }
+
     public function actionAjaxClubCabinet($id)
     {
 
         $participant = AdminModel::ShowClubById($id);
+        $nav_content = $this->createNavContent(Router::$uri);
 
         require_once ('views/admin/SettingsOrg/club-cabinet-for-adm.php');
 
@@ -203,24 +202,27 @@ class AdminController
          */
     }
 
-
-
     public function actionRegClubForEvent($id)
     {
         $list = AdminModel::ShowClubsForReg($id) ;
+        $json = file_get_contents( __DIR__ . DIRECTORY_SEPARATOR .'categories.json' ); // в примере все файлы в корне
+        echo json_encode($json);
 
         include 'views/admin/option_event/reg_part_for_event.php';
     }
+
     public function actionRegParticipantForEvent($id)
     {
         echo json_encode(AdminModel::ShowAllParticipantByClubId($id));
 
     }
+
     public function actionTestAjax()
     {
         $json = file_get_contents( 'categories.json' ); // в примере все файлы в корне
         echo json_encode($json);
     }
+
     public function actionAjaxAddpart($id)
     {
         $list = AdminModel::ShowClubsForReg($id) ;
@@ -237,7 +239,8 @@ class AdminController
         echo json_encode(AdminModel::ShowEvents($id));
     }
 
-    public function actionAjax_option_categoryShow(){
+    public function actionAjax_option_categoryShow()
+    {
         echo 'Категории';
     } // readjusted by Roma;
 
@@ -249,7 +252,7 @@ class AdminController
         include 'views/admin/SettingsOrg/create-category.php';
     }
 
-    public function actionAjaxCreate_event($id='')
+    public function actionAjaxCreate_event($id = '')
     {
 //        echo "it's create-event";
         include 'views/admin/SettingsOrg/create-event.php';
@@ -257,18 +260,19 @@ class AdminController
 
     public function actionDancingList()
     {
-        if(!empty($_POST)){
+        if (!empty($_POST)) {
 
             if (isset($_POST) && !empty($_POST['redirect'])) {
                 $json = json_decode($_POST['redirect'], true);
                 $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
-            } elseif($_POST['deletion-confirmation-btn'] == 'Удалить!' &&
-                            !empty($_POST['dancing-group-id']) &&
-                                !empty($_POST['deletion-confirmation-password'])){
+            } elseif ($_POST['deletion-confirmation-btn'] == 'Удалить!' &&
+                !empty($_POST['dancing-group-id']) &&
+                !empty($_POST['deletion-confirmation-password'])
+            ) {
                 $message = '';
-                if(AdminModel::getPermissionForDeletion()){
+                if (AdminModel::getPermissionForDeletion()) {
                     $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
-                    if($result){
+                    if ($result) {
                         $message = json_encode([
                             'status' => 'success',
                             'message' => "Удаление подтверждено, танцевальная группа удалена."
@@ -345,10 +349,10 @@ class AdminController
     {
         if (!empty($_POST['massive'])) {
             $result = AdminModel::saveCategoryParameters($_POST['massive'], $org_id);
-            if($result == 'updated'){
+            if ($result == 'updated') {
                 setcookie("A_result", "$result");
                 echo 'Параметры танцевальной группы обновлены';
-            } elseif($result == 'inserted') {
+            } elseif ($result == 'inserted') {
                 setcookie("A_result", "$result");
                 echo 'Параметры танцевальной группы созданы';
             }
@@ -358,18 +362,20 @@ class AdminController
         }
     }
 
-    public function actionCreateDancingCategories(){
+    public function actionCreateDancingCategories()
+    {
         $category_parameters = [];
         $category_parameters = AdminModel::getCategoryParametersForCreating();
-        require_once ('views/admin/SettingsOrg/create_dancing_categories.php');
+        require_once('views/admin/SettingsOrg/create_dancing_categories.php');
     }
 
-    public function actionAjaxSaveDancingCategories(){
+    public function actionAjaxSaveDancingCategories()
+    {
         self::showArray($_SESSION);
         $tmp = [];
-        if(!empty($_POST['categories'])){
+        if (!empty($_POST['categories'])) {
             $_SESSION['test'] = $_POST['categories'];
-            foreach ($_POST['categories'] as $category){
+            foreach ($_POST['categories'] as $category) {
                 $category_parts = explode(',', $category[0]);
                 (!empty($category[1])) ? array_push($category_parts, $category[1]) : array_push($category_parts, '');
                 $resulting = AdminModel::saveCreatedCategory($category_parts);
@@ -381,50 +387,107 @@ class AdminController
         echo $show_results;
     }
 
-    public function actionAjax_NewInfo(){
+    public function actionAjax_NewInfo()
+    {
         AdminModel::SaveParticipant($_POST);
     }
 
-    public function actionAjaxShowAllCategoryParameters(){
-        if(!empty($_POST['parameter'])){
+    public function actionAjaxShowAllCategoryParameters()
+    {
+        if (!empty($_POST['parameter'])) {
             $array_with_asked_parameters = AdminModel::getCategoryParametersByParameter($_POST['parameter']);
             echo json_encode($array_with_asked_parameters);
         }
     }
 
-    public function actionAjaxShowCategoriesAccordingToParameter(){
-        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
-            $array_with_asked_categories = AdminModel::getCategoriesByName($_POST);
-            echo json_encode($array_with_asked_categories);
+    public function actionAjaxShowCategoriesAccordingToParameter()
+    {
+        if (!empty($_POST['name']) && !empty($_POST['parameter']) && !isset($_POST['event_id'])) {
+            $name = $_POST['name'];
+            $parameter = $_POST['parameter'];
+            $asked_parameters = AdminModel::getCategoriesByName($name, $parameter);
+            echo json_encode($asked_parameters);
         }
     }
 
-    public function actionAjaxUpdatingCreatedDancingCategory(){
-        if(!empty($_POST)){
+    public function actionAjaxUpdatingCreatedDancingCategory()
+    {
+        if (!empty($_POST)) {
             $array_with_asked_categories = AdminModel::editDanceCategories($_POST);
             $show_results = implode("\n", $array_with_asked_categories);
             echo $show_results;
         }
     }
 
-    public function actionAjaxGetNewInfoAboutDancingGroup(){
-        if(!empty($_POST['id'])){
+    public function actionAjaxGetNewInfoAboutDancingGroup()
+    {
+        if (!empty($_POST['id'])) {
             $dance_group = AdminModel::getDanceGroupsById($_POST['id']);
             echo json_encode($dance_group);
         }
         return true;
     }
 
-    public function actionPickCategoriesForEvent($event_id){
+    public function actionPickCategoriesForEvent($event_id)
+    {
         $nav_content = $this->createNavContent(Router::$uri);
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
-        require_once ('views/admin/option_event/pick_categories_for_event.php');
+        require_once('views/admin/option_event/pick_categories_for_event.php');
     }
 
-    public function actionAjaxShowCategoriesToPickForEvent(){
-        if(!empty($_POST['name']) && !empty($_POST['parameter'])){
-            $asked_parameters = AdminModel::getCategoriesByName($_POST);
+    public function actionAjaxShowCategoriesToPickForEvent()
+    {
+        if (!empty($_POST['name']) && !empty($_POST['parameter']) && !empty($_POST['event_id'])) {
+            $name = $_POST['name'];
+            $parameter = $_POST['parameter'];
+            $event_id = $_POST['event_id'];
+            $asked_parameters = AdminModel::getCategoriesByName($name, $parameter, $event_id);
             echo json_encode($asked_parameters);
         }
+    }
+
+    public function actionAjaxSendPickedCategoriesForEvent()
+    {
+        if (!empty($_POST)) {
+            $all_ids = $_POST['all'];
+            $checked_ids = array();
+            if (!empty($_POST['checked'])) {
+                $checked_ids = $_POST['checked'];
+            }
+            $event_id = $_POST['event_id'];
+            $result = AdminModel::assignEventIdToDancingCategory($all_ids, $checked_ids, $event_id);
+            echo json_encode($result);
+        }
+    }
+
+    public function actionCreateDancingDepartments( $event_id ){
+        self::showArray($_POST);
+        self::showArray($_SESSION);
+        if(!empty($_POST)){
+            if(!empty($_POST['new-department-name-confirmation-btn'])){
+                if($_POST['new-department-name-confirmation-btn'] == 'Создать'
+                    && !empty($_POST['new-Department-Name'])){
+                    $name = $_POST['new-Department-Name'];
+                    $result = AdminModel::departmentsOperation($name, $event_id, 'Создать');
+                } elseif ($_POST['new-department-name-confirmation-btn'] == 'Изменить'
+                    && !empty($_POST['new-Department-Name'])
+                    && !empty($_POST['department-id'])){
+                    $dep_id = $_POST['department-id'];
+                    $name = $_POST['new-Department-Name'];
+                    $result = AdminModel::departmentsOperation($name, $event_id, 'Изменить', $dep_id);
+                }
+            } elseif (!empty($_POST['deletion-confirmation-btn']) && !empty($_POST['department-id'])){
+                if(AdminModel::getPermissionForDeletion()){
+                    $result = AdminModel::deleteDepartment($_POST['department-id']);
+                }
+            }
+        }
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
+        $departments = AdminModel::getDepartmentsByEventId( $event_id );
+        $nav_content = $this->createNavContent(Router::$uri);
+        require_once('views/admin/option_event/create_dancing_departments.php');
+        unset($_SESSION['messages']); // we should to unset this variable to show correct messages when you reload a page;
     }
 }

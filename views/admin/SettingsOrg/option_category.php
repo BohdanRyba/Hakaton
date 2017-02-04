@@ -1,6 +1,26 @@
 <?php
 sleep(1);
 ?>
+<!-- Modal -->
+<div id="createCategoryModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-uppercase">информация</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center text-bold" id="modalMsg"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" type="button" class="btn btn-default text-capitalize" data-dismiss="modal">закрыть</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <div class="resize-remove">
     <div class="container box box-solid box-primary flat border-none">
         <div class="box-tools pull-right click-remove">

@@ -20,7 +20,7 @@
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/pick_categories_for_event.less">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/pick_categories_for_event.less?11">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -144,9 +144,30 @@
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="../admin/organizations/page/1"><i class="fa fa-link"></i> <span>Организации</span></a></li>
-                <li><a href="../admin/organizations/org_settings/create-event"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
+                <li class="active treeview">
+                    <a href="#">
+                        <span>Организации</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
+                                            class="fa fa-link"></i></span></a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
+                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
+                    </ul>
 
+                </li>
+                <li>
+                    <a href="#">
+                        <span>Танцевальные групы</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
+                        </li>
+                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="treeview">
                     <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>
                         <span class="pull-right-container">
@@ -168,8 +189,9 @@
                                 <li><a href="#">Брейк Данс</a></li>
                             </ul>
                         </li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/pick_categories_for_event/<?=Router::$any_last_path_value;?>">Категории</a></li>
                         <li><a href="<?= Router::$permalink ?>admin/option_event/reg_part_for_event/<?=$_SESSION['organization_id']?>">Регистраця</a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/option_event/categories">Категории</a></li>
+                        <li><a href="<?= Router::$permalink ?>admin/organizations/create_dancing_departments/<?=Router::$any_last_path_value;?>">Отделения</a></li>
                         <li><a href="#">Програма</a></li>
                         <li><a href="#">Суддьи</a></li>
                     </ul>
@@ -188,6 +210,26 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div id="pickCategoriesForEventCallback" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Оповещение об изменения</h4>
+                                </div>
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                       <p>Изменения сохраненны успешно!</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">ок</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
 
 
                     <div id="dance-group-info-wrapper">
@@ -219,14 +261,7 @@
                                         <div class="container-fluid">
                                             <span id="update-dancing-categories-info" class="send-info">сохранить</span>
                                             <form id="pick_dancing_categories_for_event">
-                                                <ul>
-                                                    <li id="check-all-dancing-categories"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="хіп-хоп">хіп-хоп</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="хаус">хаус</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="танец живота">танец живота</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="брейк">брейк</label></li>
-                                                    <li class="pick_dancing_categories_for_event"><label><input type="checkbox" name="вальс">вальс</label></li>
-                                                </ul>
+                                                <ul></ul>
                                             </form>
                                         </div>
                                     </div>
@@ -329,6 +364,7 @@
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+
 <script src="<?= Router::$permalink ?>views/main/js/pick_categories_for_event.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
 </html>
