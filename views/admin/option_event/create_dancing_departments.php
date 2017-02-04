@@ -277,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="button" id="send-created-department" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
+                                            <input type="submit" id="send-created-department" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                         </div>
                                     </form>
@@ -299,14 +299,14 @@
                                             <!--<label for="newDepartment">Название отделения:</label>-->
                                             <!--<input type="text" class="form-control" name="new-Department-Name" id="newDepartment">-->
                                             <!--</div>-->
-                                            <p>Переместить категорию из <span data-direction="from"></span> в <span data-direction="to"></span></p>
+                                            <p>Переместить категорию из <ins><span class="text-bold" data-direction="from"></span></ins> в <ins><span class="text-bold" data-direction="to"></span></ins></p>
                                             <div class="dropdown">
                                                 <button class="btn btn-primary dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Переместить в:
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                    <li data-department-id="" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
+                                                    <li data-department-id="" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
+                                                    <li data-department-id="" class="transfer-to dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -361,7 +361,7 @@
                                                             </div>
                                                             <p class="department-name">1 отделение</p>
                                                         </li>
-                                                        <li data-id-department="6">
+                                                        <li data-id-department="7">
                                                             <div class="btn-group-xs button-wrapper">
                                                                 <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                                 <button type="button" data-toggle="modal" data-target="#editDepartmentName" class="edit-info-about-department btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
@@ -391,11 +391,9 @@
                                                 <button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для наполнения
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3
-
-                                                        </a></li>
+                                                    <li data-department-id="" class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 1</a></li>
+                                                    <li data-department-id="" class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 2</a></li>
+                                                    <li data-department-id="" class="dropdown-menu-department prevent-text-emphasizing"><a href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -454,9 +452,9 @@
                                                 <button class="btn btn-warning dropdown-toggle text-bold flat" type="button" data-toggle="dropdown">Отделение для просмотра
                                                     <span class="caret"></span></button>
                                                 <ul class="dropdown-menu flat">
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 1</a></li>
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 2</a></li>
-                                                    <li class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 3</a></li>
+                                                    <li data-dropdown-id="" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 1</a></li>
+                                                    <li data-dropdown-id="" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 2</a></li>
+                                                    <li data-dropdown-id="" class="dropdown-menu-department-content prevent-text-emphasizing"><a href="#">department 3</a></li>
                                                 </ul>
                                             </div>
                                         </div>
