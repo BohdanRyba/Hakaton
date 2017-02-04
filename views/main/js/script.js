@@ -170,17 +170,17 @@ $(function () {
 
 
 
-    $('.part').nextAll('.part').hide();
-    window.a = 1;
-    $('#add_part').on('click', function () {
-      $('.part' + window.a).slideDown(400);
-      var dist = $(this).offset().top;
-      $('body,html').animate({scrollTop: dist}, 500);
-      window.a++;
-    });
-    $('body').on('click', 'a.remove-part', function () {
-      $(this).parents('.part').slideUp(300);
-    });
+    // $('.part').nextAll('.part').hide();
+    // window.a = 1;
+    // $('#add_part').on('click', function () {
+    //   $('.part' + window.a).slideDown(400);
+    //   var dist = $(this).offset().top;
+    //   $('body,html').animate({scrollTop: dist}, 500);
+    //   window.a++;
+    // });
+    // $('body').on('click', 'a.remove-part', function () {
+    //   $(this).parents('.part').slideUp(300);
+    // });
 
 	// button add new trainer
 	var incr_train = 0;
@@ -216,21 +216,6 @@ $('.tabs a').click(function () {
 });
 $('.info_event').each(function () {
   $(this).children().children('div').css('padding-top', '50px');
-});
-
-
-
-
-$('.part').nextAll('.part').hide();
-window.a=1;
-$('#add_part').on('click',function(){
-  $('.part'+window.a).slideDown(400);
-  var dist= $(this).offset().top;
-  $('body,html').animate({scrollTop: dist}, 500);
-  window.a++;
-});
-$('body').on('click', 'a.remove-part', function(){
-  $(this).parents('.part').slideUp(300);
 });
 
 $('.part').nextAll('.part').hide();
@@ -406,7 +391,7 @@ function editCategory(data) {
     +'<li class="act_part">' +category.d_c_age_category+ '"-"' +category.d_c_nomination+ '"-"' +category.d_c_league+ '</li>'
     +'</ul>';
     return node
-    
+
   });
 
   let box = $('.accordeon_category');
@@ -478,7 +463,7 @@ $('.take_btn').on('click', function(){
 //   console.log('asd');
 // });
 
-//========== hide show accordeon category 
+//========== hide show accordeon category
 
 
 
@@ -522,9 +507,3 @@ $('body').on('click','#btn_go_club_cabinet', function(){
     //     }
     //   });
     // });
-
-
-
-
-
-

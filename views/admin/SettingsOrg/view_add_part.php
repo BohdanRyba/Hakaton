@@ -25,14 +25,14 @@
       </div>
     </div>
     <div class="add_train_box form-group">
-      <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
-      <div class="add-train-form col-sm-10">
-      <input type="text" class="form-control" name="couch" id="inputPassword3"
-        placeholder="ФИО Тренера">
-        <span class="btn-search input-group-btn">
-          <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
-        </span>
-      </div>
+        <label for="inputPassword3" class="col-sm-2 control-label">Тренер</label>
+        <div class="add-train-form col-sm-10">
+            <input type="text" class="form-control" name="club_first_trener" id="inputPassword3"
+            placeholder="ФИО Тренера">
+            <span class="btn-search input-group-btn">
+            <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
+            </span>
+        </div>
     </div>
     <div class="form-group">
       <label for="event_begin" class="col-sm-2 control-label">Дата рождения</label>
