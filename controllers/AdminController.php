@@ -5,13 +5,6 @@ require_once(ROOT . 'components/Traits.php');
 
 class AdminController
 {
-    function debug($array = array())
-    {
-        echo '<pre>';
-        var_dump($array);
-        echo '</pre>';
-    }
-
     use messagesOperations;
     use navigationFunctional;
 
@@ -77,17 +70,14 @@ class AdminController
     public function actionAjax_showOrgInf()
     {
         $org_info = AdminModel::getOrganizationById($_POST['id']);
-
         echo json_encode($org_info);
     }
 
     public function actionDelOrg()
     {
-        self::showArray($_POST);
         if (isset($_POST)) {
             if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
                 $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
-                echo $resulting . ' is the result';
             } else {
                 echo 'One of the POST\'s components didn\'t pass the checking clause!';
             }
@@ -182,7 +172,6 @@ class AdminController
 
     public function actionAjaxClub_add()
     {
-
         include 'views/admin/SettingsOrg/create-club.php';
     }
 
@@ -238,11 +227,6 @@ class AdminController
     {
         echo json_encode(AdminModel::ShowEvents($id));
     }
-
-    public function actionAjax_option_categoryShow()
-    {
-        echo 'Категории';
-    } // readjusted by Roma;
 
     public function actionAjaxCategory_add()
     {
@@ -326,10 +310,6 @@ class AdminController
         if (isset($_POST) && !empty($_POST['redirect'])) {
             $json = json_decode($_POST['redirect'], true);
             $result = (integer)AdminModel::saveDanceProgram($json);
-            echo '<br>';
-            echo 'here is the result of the operation: ' . $result . '<br>';
-            echo '<br>';
-            echo 'redirect --> ' . Router::$permalink . $json['redirect'];
             header('Location: ' . Router::$permalink . $json['redirect']);
         }
     }

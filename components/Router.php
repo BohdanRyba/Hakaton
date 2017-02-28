@@ -1,7 +1,9 @@
 <?php
-
+require_once(ROOT . 'components/Traits.php');
 class Router
 {
+    use messagesOperations;
+
     private $routes;
     public static $uri;
     public $result;
@@ -44,7 +46,6 @@ class Router
     public function run()
     {
         $uri = $this->getURI();
-
         foreach ($this->routes as $uriPattern => $path) {
             if (preg_match("~$uriPattern~", $uri)) {
 
