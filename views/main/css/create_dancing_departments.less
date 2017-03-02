@@ -1,0 +1,252 @@
+@main-color: #3c8dbc;
+@highlight-color: rgba(147, 179, 243, 0.34);
+@text-standard-color: rgb(68, 68, 68);
+
+.prevent-text-emphasizing {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#update-dancing-department-info, #departments-filling-panel-body, #categories-list, #departments_filling, #departments_content, #update-dancing-department-categories-list, #departments-edition-panel-body {display: none;} //#departments-edition-panel-body
+//#departments_filling {display: none;}
+
+.dance-group-menu {
+  margin-bottom: 15px;
+  padding: 10px 0;
+  outline: 1px solid transparent;
+  border-bottom: 1px solid @highlight-color;
+  border-top: 1px solid @highlight-color;
+  .dance-group-menu-items {
+    margin: 10px 0;
+    a {
+      &.active {
+        color: white;
+        background: @main-color;
+      }
+      transition: background 200ms linear, color 200ms linear;
+      font-size: 18px;
+      line-height: 20px;
+      font-stretch: normal;
+      display: block;
+      padding: 10px 0;
+      background: white;
+      outline: solid 3px @main-color;
+      color: darken(@main-color, 5%);
+      &:hover {
+        transition:all 200ms linear;
+        background: @main-color;
+        color: white;
+        box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+        -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+      }
+      &:active {
+        transition:all 200ms linear;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.dancing-department-list-wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  li {
+    &:hover {
+      transition: background 150ms linear;
+      background: @highlight-color;
+    }
+    transition: background 150ms linear;
+    background: white;
+    width: 100%;
+    list-style: none;
+    padding: 10px 5px;
+    display: table;
+    &:not(:last-child) {
+      border-bottom: solid 2px @main-color;
+    }
+    .button-wrapper{
+      display: table-cell;
+      min-width: 80px;
+      padding: 0 5px;
+      vertical-align: middle;
+
+    }
+    p.department-name{
+      cursor: default;
+      font-size: 16px;
+      line-height: 20px;
+      display: table-cell;
+      padding: 0;
+      vertical-align: middle;
+      text-align: left;
+    }
+  }
+}
+
+#dance-group-parameters-list, #categories-list, #department-content {
+  padding: 10px;
+  &>div{
+    border: solid 3px @main-color;
+  }
+}
+
+#dance-group-parameters-list{
+  &>div{
+    padding-top: 10px;
+  }
+}
+
+.pick-dancing-groups-parameters-wrapper{
+  padding: 15px 0;
+}
+
+.see-department-name {
+  padding-bottom: 5px;
+}
+
+#dance-program-to-pick-categories {
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  padding:0;
+  color: @text-standard-color;
+  max-height: 400px;
+  overflow-y: scroll;
+  li {
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 7px 5px;
+    background: @highlight-color;
+    border-top: solid 1px @main-color;
+    &:last-child {
+      border-bottom: solid 1px @main-color;
+    }
+    &:nth-child(even) {
+      background: lighten(@highlight-color, 15%);
+    }
+    &:hover {
+      background: darken(@highlight-color, 15%);
+    }
+    &.picked-dancing-program{
+      color: white;
+      font-weight: bold;
+      background: linear-gradient(to right, #00a65a, desaturate(lighten( #00a65a,20%), 20%));
+    }
+  }
+}
+
+.send-info {
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+  text-align: center;
+  transition: background 200ms linear, color 200ms linear, box-shadow 200ms linear;
+  color: @main-color;
+  background: white;
+  border: solid 5px @main-color;
+  font-weight: bold;
+  padding: 5px 0;
+  cursor: pointer;
+  outline: none;
+  &:active {
+    transition: box-shadow 200ms linear;
+    box-shadow: none;
+  }
+  &:not(:disabled):hover {
+    transition: all 200ms linear;
+    color: white;
+    background: @main-color;
+    box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+    -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+  }
+  &:focus {
+    transition: all 200ms linear;
+    color: white;
+    background: @main-color;
+    box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+    -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+  }
+}
+
+#pick-dancing-categories-for-department {
+  padding: 10px 0;
+  overflow: hidden;
+  ul {
+    max-height: 425px;
+    overflow-y: scroll;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    border: solid 3px @main-color;
+    &:hover li.dancing-group-parameter-name {
+      background: #367fa9;
+      color: white;
+    }
+    li {
+      transition: background 150ms linear, color 150ms
+      linear;
+      background: white;
+      font-size: 18px;
+      line-height: 22px;
+      &:not(:first-child) {
+        border-top: solid 1px @main-color;
+      }
+      &:hover {
+        transition: background 150ms linear, color 150ms linear;
+        background: darken(@highlight-color, 15%);
+        color: black;
+      }
+      &[data-checked="checked"] {
+        transition: background 150ms linear, color 150ms linear;
+        background: linear-gradient(to right, #00a65a, #25e78e);
+        color: white;
+      }
+      label {
+        cursor: pointer;
+        width: 100%;
+        height:100%;
+        padding: 5px 10px;
+        margin: 0;
+        font-weight: 600;
+        input {
+          transform: scale(1.5);
+          margin: 5px 15px 5px 5px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.dance-group-show-info {
+  margin: 0 -15px;
+  max-height: 505px;
+  overflow-y: scroll;
+  & > div {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    &:nth-child(odd) {
+      background: @highlight-color;
+    }
+    & > div {
+      display: table-cell;
+      padding: 0 10px;
+      min-width: 90px;
+      width:10%;
+      vertical-align: middle;
+    }
+    & .dance-category-name {
+      font-size: 16px;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}

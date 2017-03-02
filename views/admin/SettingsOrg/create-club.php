@@ -24,6 +24,7 @@ sleep(1);
                 <input type="hidden" id="org_id" name="org_id" value="<?=$_COOKIE['get_id']?>" />
                 <label for="exampleInputFile">Загрузите логотип клуба</label>
                 <input id="exampleInputFile" name="club_image" type="file">
+                <?php $_SESSION['organization'] = $_COOKIE['get_id']?>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Страна</label>

@@ -1,12 +1,20 @@
 <?php
-
+require_once(ROOT . 'components/Traits.php');
 class Router
 {
+    use messagesOperations;
+
     private $routes;
     public static $uri;
     public $result;
     public static $permalink;
-    public static $getid;
+    public static $any_last_path_value;
+
+    public static function set_last_path_value(){
+        $request_url = explode('/', $_SERVER['REQUEST_URI']);
+        $last_element = $request_url[count($request_url)-1];
+        self::$any_last_path_value = $last_element;
+    }
 
     /**
      * include file "routes.php" from folder "config" with array inside
@@ -16,6 +24,7 @@ class Router
         $project = pathinfo($_SERVER['PHP_SELF']);
         $root_path = rtrim( '//' . $_SERVER['HTTP_HOST'] . $project['dirname'], '/' ) . '/';
         self::$permalink = $root_path;
+        self::set_last_path_value();
 
         $routesPath = ROOT . 'config/routes.php';
         $this->routes = include($routesPath);
@@ -34,20 +43,9 @@ class Router
         }
     }
 
-    static function getId()
-    {
-
-        if (!empty($_SERVER['REQUEST_URI'])) { // /Hakaton/admin/organizations/org_settings/21
-            self::$getid = preg_replace("/(.*)org_settings\//", '', $_SERVER['REQUEST_URI']); // /21
-            self::$getid = trim(self::$getid, '/');// 21
-            return self::$getid;
-        }
-    }
-
     public function run()
     {
         $uri = $this->getURI();
-
         foreach ($this->routes as $uriPattern => $path) {
             if (preg_match("~$uriPattern~", $uri)) {
 
