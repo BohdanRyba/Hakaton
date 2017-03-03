@@ -232,11 +232,19 @@ $('body').on('click', 'a.remove-part', function () {
 
     // button on page: organization for create event, reg club, dance
     $('.event_data_list').on('click', function () {
+
       $('.search_wrap').hide(400);
       $('.list_information').slideUp();
       $('.search_wrap_event').slideDown(400);
       $('.search_wrap input').removeClass('active');
       $('.search_wrap_event input').addClass('active');
+
+      let search = $('.list-search').find('input[type="search"].active');
+      let searchName= search.attr('data-type');
+      //$('.bg-opacity').show();
+      //$('.list_information').show();
+      actionAjaxSearchAddPage(searchName);
+
     });
     $('.category_data_list').on('click', function () {
       $('.search_wrap').hide(400);
@@ -251,6 +259,12 @@ $('body').on('click', 'a.remove-part', function () {
       $('.search_wrap_club').slideDown(400);
       $('.search_wrap input').removeClass('active');
       $('.search_wrap_club input').addClass('active');
+
+      let search = $('.list-search').find('input[type="search"].active');
+      let searchName= search.attr('data-type');
+      //$('.bg-opacity').show();
+      //$('.list_information').show();
+      actionAjaxSearchAddPage(searchName);
     });
 
     // button add new trainer

@@ -147,9 +147,21 @@
               <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="../admin/organizations/page/1"><i class="fa fa-link"></i> <span>Организации</span></a></li>
-                <li><a href="../admin/organizations/org_settings/create-event"><i class="fa fa-link"></i> <span>Танцевальные групы</span></a></li>
-                
+                <li class="active treeview">
+                    <a href="#">
+                        <span>Организации</span>
+                    </a>
+                </li>
+                <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить Организацию<span
+                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
+                <li>
+                    <a href="#">
+                        <span>Танцевальные групы</span>
+                    </a>
+                </li>
+                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить групу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
                 <li class="treeview">
                     <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>
                         <span class="pull-right-container">
