@@ -259,7 +259,14 @@ jQuery(function($) {
 
                         if (code==0) {code=''}
 
-                        $searchedCategoriesForm.append('<div class="dp-info-wrapper" data-id="'+id+'" data-extraId="'+code+'" data-catagoryName="'+generalName+'"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button> <button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> </div><p class="dance-category-name">'+generalName+'</p><label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+code+'"></label></div>');
+                        $searchedCategoriesForm.append('<div class="dp-info-wrapper" data-id="'+id+'" data-extraId="'+code+'" data-catagoryName="'+generalName+'">' +
+                            '<p class="dance-category-name">'+generalName+'</p>' +
+                            '<label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+code+'"></label>' +
+                            '<div class="btn-group-sm flat" role="group">' +
+                            '<button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button>' +
+                            '<button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> ' +
+                            '</div>' +
+                        '</div>');
 
                     }
 
@@ -500,7 +507,15 @@ jQuery(function($) {
 
                 categoryNameForServer=categoryNameForServer.toString();
 
-                $showBlock.append('<div class="dp-info-wrapper"><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button></div><p class="dance-category-name text-bold">'+danceProgram[0]+' '+ ageCategory[0] +' '+ nomination[0] +' '+ leagues[i]+'</p><label>Код:<input disabled type="text" name="dancing-group-info-code" class="input-standard dancing-group-info-code"></label><input type="hidden" class="category-name-for-sending-to-server" value="'+categoryNameForServer+'"></div>');
+                $showBlock.append('<div class="dp-info-wrapper">' +
+                    '<p class="dance-category-name text-bold">'+danceProgram[0]+' '+ ageCategory[0] +' '+ nomination[0] +' '+ leagues[i]+'</p>' +
+                    '<label>Код:<input disabled type="text" name="dancing-group-info-code" class="input-standard dancing-group-info-code"></label>' +
+                    '<input type="hidden" class="category-name-for-sending-to-server" value="'+categoryNameForServer+'">' +
+                    '<div class="btn-group-sm flat" role="group">' +
+                    '<button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-edit"></i></button>' +
+                    '<button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>' +
+                    '</div>' +
+                    '</div>');
             }
 
             $('#save-dance-categories').css('display', 'block');
