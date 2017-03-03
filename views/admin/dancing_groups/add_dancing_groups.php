@@ -516,7 +516,7 @@
 <script src="<?=Router::$permalink?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
-<script src="<?=Router::$permalink?>views/main/js/add_dancing_groups.js?2223"></script>
+<script src="<?=Router::$permalink?>views/main/js/add_dancing_groups.js?000"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

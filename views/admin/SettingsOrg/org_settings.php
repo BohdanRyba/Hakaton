@@ -32,7 +32,7 @@
     <link rel="stylesheet/less" type="text/less"
           href="<?= Router::$permalink ?>views/main/css/add_dancing_categories.less?11">
     <link rel="stylesheet/less" type="text/less"
-          href="<?= Router::$permalink ?>views/main/css/create_dancing_categories.less?32">
+          href="<?= Router::$permalink ?>views/main/css/create_dancing_categories.less?34">
     <script src="<?= Router::$permalink ?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--

@@ -588,6 +588,6 @@
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 
-<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?6"></script>
+<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?7"></script>
 </body>
 </html>

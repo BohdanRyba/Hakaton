@@ -36,18 +36,29 @@ jQuery(function($) {
                 $danceGroupNameInput.val(msg['dance_group_name']);
 
                 for (let key in msg['d_program']) {
-                    $form1.append('<div class="dp-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+key+'"></label></div>');
+                    $form1.append('<div class="dp-info-wrapper"><span class="text-bold count"></span>' +
+                        '<label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+key+'"></label>' +
+                        '<div class="btn-group-sm flat" role="group">' +
+                        '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>' +
+                        '</div>' +
+                        '</div>');
                 }
 
                 for (let key in msg['d_age_category']) {
-                    $form2.append('<div class="ag-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+key+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+msg['d_age_category'][key]['age-category-rule-age-min']+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+msg['d_age_category'][key]['age-category-rule-age-max']+'"></label></div>');
+                    $form2.append('<div class="ag-info-wrapper">' +
+                        '<span class="text-bold count"></span>' +
+                        '<label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+key+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+msg['d_age_category'][key]['age-category-rule-age-min']+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+msg['d_age_category'][key]['age-category-rule-age-max']+'"></label>' +
+                        '<div class="btn-group-sm flat" role="group">' +
+                        '<button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>' +
+                        '</div>' +
+                        '</div>');
                 }
 
                 for (let key in msg['d_nomination']) {
-                    $form3.append('<div class="nm-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+key+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+msg['d_nomination'][key]['nomination-rule-participants-number-min']+'"></label></div>');
+                    $form3.append('<div class="nm-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+key+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+msg['d_nomination'][key]['nomination-rule-participants-number-min']+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>');
                 }
                 for (let key in msg['d_league']) {
-                    $form4.append('<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+key+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+msg['d_league'][key]['league-rule-participation-years']+'"></label></div>');
+                    $form4.append('<div class="lg-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+key+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+msg['d_league'][key]['league-rule-participation-years']+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>');
                 }
 
                 if (whatToDoWithBtns=='hide') {
