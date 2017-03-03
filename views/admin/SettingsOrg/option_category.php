@@ -28,14 +28,14 @@ sleep(1);
 <!--        </div>-->
 
         <div class="row dgp">
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="dgpi">
-                    <a href="#" id="watch" class="text-center text-uppercase text-bold">просмотр</a>
+                    <a href="#" id="watch" class="dgpia text-center text-uppercase text-bold">просмотр</a>
                 </div>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-sm-6">
                 <div class="dgpi">
-                    <a href="#" id="create" class="text-center text-uppercase text-bold">создание</a>
+                    <a href="#" id="create" class="dgpia text-center text-uppercase text-bold">создание</a>
                 </div>
             </div>
         </div>
