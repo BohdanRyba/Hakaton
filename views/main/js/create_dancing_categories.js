@@ -6,6 +6,26 @@ jQuery(function($) {
         editedCategories=[],
         sendInfoToServerAboutEditedCategories={};
 
+    $body.on('click', '.dgpi a', function (e) {
+        e.preventDefault();
+        $('.dgpi a').each(function () {
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+    });
+
+    $body.on('click', '#watch', function () {
+        $('#dancing-group').css('display', 'none');
+        $('#total-wrapper-for-info').css('display', 'none');
+        $('#dance-group-info-wrapper').css('display', 'block');
+        $('#categories-menu').css('display', 'block');
+    });
+    $body.on('click', '#create', function () {
+        $('#dancing-group').css('display', 'block');
+        if ($('#pick-dancing-group-to-use-wrapper').find('.picked-dancing-group-to-use').length >0) {$('#total-wrapper-for-info').css('display', 'block');}
+        $('#dance-group-info-wrapper').css('display', 'none');
+        $('#categories-menu').css('display', 'none');
+    });
 
 //$body.off('click', '.pick-dancing-group-to-use');
     $body.on('click', '.pick-dancing-group-to-use', function () {
@@ -152,7 +172,7 @@ jQuery(function($) {
                     success: function (msg) {
                         // console.log(msg);
                         var msg = JSON.parse(msg);
-                        console.log(msg);
+                        // console.log(msg);
                         console.log('ajax_addNewParameters (ajax1) has worked successfully!');
                         function addInfo($chooseCategoriesParameterUl) {
 
@@ -223,7 +243,7 @@ jQuery(function($) {
                 success: function(msg) {
                     $('#update-dancing-categories-info').css('display', 'none');
                     console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
-                    console.log(msg);
+                    // console.log(msg);
                     var msg=JSON.parse(msg);
                     if (msg[0]==undefined) {$searchedCategoriesForm.append('<div class="dp-info-wrapper"><p class="dance-category-name">таких категорий нет</p></div>');}
                     for (var i=0; i<msg.length; i++) {
@@ -289,7 +309,7 @@ jQuery(function($) {
         obj['category_name']=$wrapper.attr('data-catagoryname'); // Roma has readjusted "catagory_name" to "category_name";
         deletedCategories.push(obj);
         $wrapper.remove();
-        console.log(deletedCategories);
+        // console.log(deletedCategories);
     });
 
 // ЗБЕРЕГТИ РЕДАГОВАНИЙ СПИСОК КАТЕГОРІЙ, ЗНАЙДЕНИХ ПО ПЕВНОМУ ПАРАМЕТРУ
@@ -315,7 +335,7 @@ jQuery(function($) {
 
             sendInfoToServerAboutEditedCategories['editedCategories']=editedCategories;
             sendInfoToServerAboutEditedCategories['deletedCategories']=deletedCategories;
-            console.log(sendInfoToServerAboutEditedCategories);
+            // console.log(sendInfoToServerAboutEditedCategories);
 
 
             $.ajax({
@@ -426,7 +446,7 @@ jQuery(function($) {
             $checkAll=$checkAllLi.find('input'),
             $li=$('.pick-leagues-for-categories');
 
-        console.log('check all leagues clicked');
+        // console.log('check all leagues clicked');
         if ($checkAll.prop('checked')==true) {
             $li.each(function () {
                 $(this).find('[type="checkbox"]').prop('checked', true);
