@@ -23,10 +23,28 @@ sleep(1);
 </div>
 <div class="resize-remove">
     <div class="container box box-solid box-primary flat border-none">
-        <div class="box-tools pull-right click-remove">
-            <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
+<!--        <div class="box-tools pull-right click-remove">-->
+<!--            <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>-->
+<!--        </div>-->
+        <?php if (isset($this->message)) {
+            echo $this->message;
+        }
+        ?>
+
+        <div class="row dgp">
+            <div class="col-xs-12 col-sm-6">
+                <div class="dgpi">
+                    <a href="#" id="watch" class="dgpia text-center text-uppercase text-bold">просмотр</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="dgpi">
+                    <a href="#" id="create" class="dgpia text-center text-uppercase text-bold">создание</a>
+                </div>
+            </div>
         </div>
-        <div class="row pick-dancing-groups-parameters-wrapper">
+
+        <div class="row pick-dancing-groups-parameters-wrapper" id="dancing-group">
             <div class="col-xs-12 col-sm-6">
                 <ul id="pick-dancing-group-to-use-wrapper">
                     <?php foreach ($category_parameters as $value): ?>
@@ -36,7 +54,7 @@ sleep(1);
             </div>
         </div>
 
-        <div class="row dance-group-menu">
+        <div id="categories-menu" class="row dance-group-menu">
             <div class="col-xs-6 col-sm-3">
                 <div class="dance-group-menu-items">
                     <a href="#dance-programs" class="text-center text-bold" id="menu-dance-programs">танцевальная<br>программа</a>

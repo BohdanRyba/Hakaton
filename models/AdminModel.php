@@ -761,13 +761,22 @@ class AdminModel
                       RIGHT JOIN `category_parameters`
                       ON `dance_groups`.`id`=`category_parameters`.`id_dance_group` AND `category_parameters`.`id_org`={$_COOKIE['get_id']}";
             $result = $db->query($query);
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                if ($row['dance_group_name'] != NULL) {
-                    $category_parameters[$i]['dance_group_name'] = $row['dance_group_name'];
-                    $category_parameters[$i]['id_dance_group'] = $row['id_dance_group'];
+            if($result){
+                $i = 0;
+                while ($row = $result->fetch_assoc()) {
+                    if ($row['dance_group_name'] != NULL) {
+                        $category_parameters[$i]['dance_group_name'] = $row['dance_group_name'];
+                        $category_parameters[$i]['id_dance_group'] = $row['id_dance_group'];
+                    }
+                    $i++;
                 }
-                $i++;
+                self::showArray($category_parameters);
+            } elseif(!$result || empty($category_parameters)) {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => "Танцевальные руппы для данной организации не выбраны."
+                ]);
+                self::saveMessage($message);
             }
             $db->close();
         };

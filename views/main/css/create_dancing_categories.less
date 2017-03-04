@@ -6,6 +6,10 @@
   display: none;
 }
 
+#dancing-group, #total-wrapper-for-info, #dance-group-info-wrapper, #categories-menu {
+  display: none;
+}
+
 #choose-dancing-group {
   padding: 10px 0;
   select {
@@ -14,40 +18,49 @@
   }
 }
 
-.dance-group-menu {
-  margin-bottom: 15px;
-  padding: 10px 0;
-  outline: 1px solid transparent;
-  border-bottom: 1px solid @highlight-color;
-  border-top: 1px solid @highlight-color;
-  .dance-group-menu-items {
-    margin: 10px 0;
-    a {
-      &.active {
-        color: white;
-        background: @main-color;
-      }
-      transition: background 200ms linear, color 200ms linear;
-      font-size: 16px;
-      line-height: 18px;
-      font-stretch: normal;
-      display: block;
-      padding: 5px 0;
-      background: white;
-      outline: solid 3px @main-color;
-      color: darken(@main-color, 5%);
-      &:hover {
-        transition:all 200ms linear;
-        background: @main-color;
-        color: white;
-        box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
-        -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
-      }
-      &:active {
-        transition:all 200ms linear;
-        box-shadow: none;
-      }
-    }
+.dance-group-menu, .dgp {
+   margin-bottom: 15px;
+   padding: 10px 0;
+   outline: 1px solid transparent;
+   border-bottom: 1px solid @highlight-color;
+   border-top: 1px solid @highlight-color;
+   .dance-group-menu-items, .dgpi {
+     margin: 10px 0;
+     a {
+       &.active {
+         color: white;
+         background: @main-color;
+       }
+       transition: background 200ms linear, color 200ms linear;
+       font-size: 16px;
+       line-height: 18px;
+       font-stretch: normal;
+       display: block;
+       padding: 5px 0;
+       background: white;
+       outline: solid 3px @main-color;
+       color: darken(@main-color, 5%);
+       &:hover {
+         transition:all 200ms linear;
+         background: @main-color;
+         color: white;
+         box-shadow: 5px 5px 5px 0 rgba(122, 122, 122, 0.5),
+         -5px 5px 5px 0 rgba(122, 122, 122, 0.5);
+       }
+       &:active {
+         transition:all 200ms linear;
+         box-shadow: none;
+       }
+     }
+   }
+ }
+
+.dgpia{
+  font-size: 24px !important;
+  padding: 20px 0 !important;
+  &.active {
+    color: white;
+    background: hsl(347, 100%, 41%) !important;;
   }
 }
 

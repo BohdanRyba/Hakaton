@@ -76,12 +76,12 @@ jQuery(function($) {
     });
 
     //create new department
-    $('#send-created-department').on('click', function (e) {
-        var name=$createDepartmentModal.find('#newDepartment').val();
-        if (name=='') {
-            e.preventDefault();
-        }
-    });
+    // $('#send-created-department').on('click', function (e) {
+    //     var name=$createDepartmentModal.find('#newDepartment').val();
+    //     // if (name=='') {
+    //     //     e.preventDefault();
+    //     // }
+    // });
 //DEPARTMENTS LIST
 //    =========================================================================================================
 //DEPARTMENTS FIILLING

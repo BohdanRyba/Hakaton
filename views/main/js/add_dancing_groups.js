@@ -1,7 +1,8 @@
 jQuery(function($) {
 
     var $menuItems=$('.dance-group-menu a'),
-        $infoWrapper=$('#dance-group-info-wrapper');
+        $infoWrapper=$('#dance-group-info-wrapper'),
+        $dgName=$('#dance-group-name');
 
     //МЕНЮ
     $menuItems.on('click', function (e) {
@@ -44,7 +45,7 @@ jQuery(function($) {
         if (!$dpAddForm.find('input[name=dance-program-name-new]').val()=='') {
             var $dp=$('#form-add-dance-program').serializeArray(),
                 dpName=$dp[0].value,
-                dpInfo='<div class="dp-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+dpName+'"></label></div>';
+                dpInfo='<div class="dp-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+dpName+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
             $dpShowForm.append(dpInfo);
 
@@ -85,12 +86,13 @@ jQuery(function($) {
     //ФУНКЦІЇ
 
     $dpSendBtn.on('click', function (e) {
-        var $form1=$danceProgramBlock.find('.dance-group-show-info'),
-            $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
-            $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
-            $form4=$leaguesBlock.find('.dance-group-show-info-extended');
+        // var $form1=$danceProgramBlock.find('.dance-group-show-info'),
+        //     $form2=$ageCategoriesBlock.find('.dance-group-show-info-extended'),
+        //     $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
+        //     $form4=$leaguesBlock.find('.dance-group-show-info-extended');
 
-        if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        // if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        if ($dgName.val()!='') {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
@@ -129,7 +131,7 @@ jQuery(function($) {
                 acName=$ac[0].value,
                 acMinAge=$ac[1].value,
                 acMaxAge=$ac[2].value,
-                acInfo='<div class="ag-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+acName+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+acMinAge+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+acMaxAge+'"></label></div>';
+                acInfo='<div class="ag-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+acName+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+acMinAge+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+acMaxAge+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
             $agShowForm.append(acInfo);
 
@@ -174,7 +176,8 @@ jQuery(function($) {
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
             $form4=$leaguesBlock.find('.dance-group-show-info-extended');
 
-        if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        // if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        if ($dgName.val()!='') {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
@@ -211,7 +214,7 @@ jQuery(function($) {
             var $nm=$nmAddForm.serializeArray(),
                 nmName=$nm[0].value,
                 nmNumber=$nm[1].value,
-                nmInfo='<div class="nm-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+nmName+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+nmNumber+'"></label></div>';
+                nmInfo='<div class="nm-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+nmName+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+nmNumber+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
             $nmShowForm.append(nmInfo);
 
@@ -256,7 +259,8 @@ jQuery(function($) {
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
             $form4=$leaguesBlock.find('.dance-group-show-info-extended');
 
-        if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        // if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        if ($dgName.val()!='') {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';
@@ -292,7 +296,7 @@ jQuery(function($) {
             var $lg=$lgAddForm.serializeArray(),
                 lgName=$lg[0].value,
                 lgNumber=$lg[1].value,
-                lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label></div>';
+                lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
             $lgShowForm.append(lgInfo);
 
@@ -337,7 +341,7 @@ jQuery(function($) {
             $form3=$nominationsBlock.find('.dance-group-show-info-extended'),
             $form4=$leaguesBlock.find('.dance-group-show-info-extended');
 
-        if ($form1.children().length>0&&$form2.children().length>0&&$form3.children().length>0&&$form4.children().length>0) {
+        if ($dgName.val()!='') {
             var a={};
             a['dance-group-name']=$('#dance-group-name').val();
             a['redirect']='admin/dancing_groups/dance_list';

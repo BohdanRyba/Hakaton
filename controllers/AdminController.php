@@ -143,8 +143,11 @@ class AdminController
     public function actionAjaxCategory_create()
     {
         $category_parameters = AdminModel::getCategoryParametersForCreating();
-
+        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        }
         include 'views/admin/SettingsOrg/option_category.php';
+        unset($_SESSION['messages']);
     }
 
     public function actionAddEvent()
