@@ -770,7 +770,6 @@ class AdminModel
                     }
                     $i++;
                 }
-                self::showArray($category_parameters);
             } elseif(!$result || empty($category_parameters)) {
                 $message = json_encode([
                     'status' => 'error',
