@@ -19,6 +19,7 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
+        <link rel="stylesheet" type="text/css" href="<?= Router::$permalink ?>views/main/css/style.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
     <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/pick_categories_for_event.less">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -178,8 +179,8 @@
         <section class="content-header"></section>
         <!-- Main content -->
         <section class="content">
-            <div class="container-fluid">
-                <div class="row">
+          <div class="content_box col-md-10">
+                <div class="box box-info">
 
 <div class="resize-remove">
     <div class="box-header with-border">
@@ -272,6 +273,12 @@
     <!-- Default to the left -->
     <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
 </footer>
+
+<div class="bg-opacity"></div>
+<div class="popup-control">
+    <div class="edit">Редактировать</div>
+    <div class="delete">Удалить</div>
+</div>
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->

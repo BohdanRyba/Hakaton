@@ -52,7 +52,7 @@ sleep(1);
                     <input type="text" class="form-control" name="club_first_trener" id="inputPassword3"
                     placeholder="ФИО Тренера">
                     <span class="btn-search input-group-btn">
-                    <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
+                      <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
                     </span>
                 </div>
             </div>

@@ -2,6 +2,14 @@
 var search = $('.list-search').find('input[type="search"]');
 var clubInfoObj= new Object();
 
+$('.list-search').on('click', function(){
+    let search = $('.list-search').find('input[type="search"].active');
+    let searchName= search.attr('data-type');
+    $('.bg-opacity').show();
+    $('.list_information').show();
+    actionAjaxSearch(searchName);
+});
+
 search.on('keyup', function () {
     let search = $('.list-search').find('input[type="search"].active');
     let searchName= search.attr('data-type');
@@ -106,7 +114,7 @@ function funcSearch(data) {
 };
 //>>>>>>>>>>>>>>>>>>>>      function collection node with the search result for load on page
 function funcSearchPrint(data) {
-        console.log(data);
+    console.log(data);
     var list = JSON.parse(data);
     let search = $('.list-search').find('input[type="search"].active');
     let searchName = search.attr('data-type');

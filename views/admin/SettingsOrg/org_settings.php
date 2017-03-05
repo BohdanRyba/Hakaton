@@ -172,29 +172,20 @@ desired effect
                 <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active treeview">
-                    <a href="#">
+                    <a href="<?= Router::$permalink ?>admin/organizations/page/1">
                         <span>Организации</span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
-                                            class="fa fa-link"></i></span></a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
-                                        class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
-                    </ul>
-
                 </li>
+                <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить Организацию<span
+                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
                 <li>
-                    <a href="#">
+                    <a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">
                         <span>Танцевальные групы</span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
-                        </li>
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
-                    </ul>
                 </li>
+                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить групу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                        </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -208,8 +199,8 @@ desired effect
             <div class="content_box col-md-10">
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h2 class="box-title col-sm-4">организация <?php if (!empty($current_org_name['org_name'])) {
-                                echo $current_org_name['org_name'];
+                        <h2 class="box-title col-sm-4">организация <?php if (!empty($current_org_name['org_abbreviation'])) {
+                                echo $current_org_name['org_abbreviation'];
                             } ?> </h2>
                         <li>
                             <span class="button-reg glyphicon glyphicon-pencil"></span>

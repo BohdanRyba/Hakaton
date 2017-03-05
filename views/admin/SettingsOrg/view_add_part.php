@@ -1,6 +1,6 @@
 
-<form class="form-horizontal" enctype="multipart/form-data">
-  <div class="part box-body">
+<form class="form-horizontal" action method="POST" enctype="multipart/form-data">
+  <div class="box-body">
     <label for="" class="lb_part">Добавить нового участник</label>
     <div class="box-tools pull-right">
       <a class="btn btn-box-tool remove-part"><i class="fa fa-times"></i></a>
@@ -30,7 +30,7 @@
             <input type="text" class="form-control" name="club_first_trener" id="inputPassword3"
             placeholder="ФИО Тренера">
             <span class="btn-search input-group-btn">
-            <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
+              <a type="button" id="add-trainer" class="btn btn-info btn-flat-event">+</a>
             </span>
         </div>
     </div>

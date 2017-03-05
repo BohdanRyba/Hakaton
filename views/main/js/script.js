@@ -232,11 +232,19 @@ $('body').on('click', 'a.remove-part', function () {
 
     // button on page: organization for create event, reg club, dance
     $('.event_data_list').on('click', function () {
+
       $('.search_wrap').hide(400);
       $('.list_information').slideUp();
       $('.search_wrap_event').slideDown(400);
       $('.search_wrap input').removeClass('active');
       $('.search_wrap_event input').addClass('active');
+
+      let search = $('.list-search').find('input[type="search"].active');
+      let searchName= search.attr('data-type');
+      //$('.bg-opacity').show();
+      //$('.list_information').show();
+      actionAjaxSearchAddPage(searchName);
+
     });
     $('.category_data_list').on('click', function () {
       $('.search_wrap').hide(400);
@@ -251,6 +259,12 @@ $('body').on('click', 'a.remove-part', function () {
       $('.search_wrap_club').slideDown(400);
       $('.search_wrap input').removeClass('active');
       $('.search_wrap_club input').addClass('active');
+
+      let search = $('.list-search').find('input[type="search"].active');
+      let searchName= search.attr('data-type');
+      //$('.bg-opacity').show();
+      //$('.list_information').show();
+      actionAjaxSearchAddPage(searchName);
     });
 
     // button add new trainer
@@ -290,12 +304,18 @@ $('body').on('click', 'a.remove-part', function () {
       window.summ = window.summ + price;
     });
 
-    $('body').on('click', 'tbody>tr', function () {
-      $('.bg-opacity').show(200);
 
-      let top_height= $(this).offset().top;
-      $('.popup-control').css('top',top_height+'px');
-      $('.popup-control').show(200);
+    $('body').on('click', 'tbody>tr', function (event) {
+      $('.bg-opacity').show(200);
+			let posX = event.clientX;
+			let posY = event.clientY;
+			console.log(posX, posY);
+			$('.popup-control').css({
+				'top':posY+'px',
+				'left':posX+'px'
+			});
+			$('.popup-control').show(200);
+
     });
     $('body').on('click', '.bg-opacity', function(){
       $(this).hide();

@@ -300,6 +300,7 @@
                                             <input type="submit">
 <!--                                            <input type="submit" id="send-created-department" class="btn btn-warning" name="new-department-name-confirmation-btn" value="Создать">-->
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+
                                         </div>
                                     </form>
                                 </div>
