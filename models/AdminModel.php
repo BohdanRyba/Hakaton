@@ -379,7 +379,8 @@ class AdminModel
                     $club_info['club_part'][$i]['first_name'] = $row['first_name'];
                     $club_info['club_part'][$i]['second_name'] = $row['second_name'];
                     $club_info['club_part'][$i]['third_name'] = $row['third_name'];
-                    $club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+					$club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+					$club_info['club_part'][$i]['coach'] = $row['coach'];
                     $i++;
                 } else {
                     break;
@@ -886,6 +887,7 @@ class AdminModel
                             `second_name` = '{$data['lastName']}',
                             `third_name` = '{$data['patronymic']}',
                             `birth_date` = '{$data['date']}',
+                            `coach` = '{$data['coach']}',
                             `club_id` = '{$data['id_club']}'
                             ");
             return $result;

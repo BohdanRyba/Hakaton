@@ -183,6 +183,8 @@
                 <div class="box box-info">
 
 <div class="resize-remove">
+    <input type="hidden" value="<?=$participant['id']?>">
+    <?php $_SESSION['club_id'] = $participant['id']?>
     <div class="box-header with-border">
         <h2 class="box-title">Кабинет клуба <span><?=$participant['club_name']?>  </span></h2>
     </div>
@@ -198,7 +200,7 @@
             <p class="name">Название клуба: <span><?=$participant['club_name']?></span></p>
             <p>Страна: <span><?=$participant['club_country']?></span></p>
             <p>Город: <span><?=$participant['club_city']?></span></p>
-                    <p>Cудья:<span><?=$participant['coach_name']?></span></p>
+            <p>Cудья:<span><?=$participant['coach_name']?></span></p>
             <p class="name_help">Керівник:<span><?=$participant['club_shief']?></span></p>
         </div>
         <div class="col-sm-12">
@@ -222,6 +224,7 @@
                                     <td><?=$part['second_name']?></td>
                                     <td><?=$part['third_name']?></td>
                                     <td><?=$part['birth_date']?></td>
+                                    <td><?=$part['coach']?></td>
                                 </tr>
                             <?php } }?>
                             </tbody>
@@ -286,6 +289,7 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
+
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/script.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 <script src="<?= Router::$permalink ?>views/main/js/ajax.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
