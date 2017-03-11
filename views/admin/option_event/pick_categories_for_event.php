@@ -154,10 +154,10 @@
                         </li>
                 <li>
                     <a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">
-                        <span>Танцевальные групы</span>
+                        <span>Танцевальные группы</span>
                     </a>
                 </li>
-                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить групу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить группу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                         </li>
                 <li class="treeview">
                     <a href="#"><i class="opt-eve ion ion-ios-gear-outline"></i> <span>Настройка Событий</span>

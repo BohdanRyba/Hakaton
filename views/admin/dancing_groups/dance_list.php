@@ -145,28 +145,19 @@
                 <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active treeview">
-                    <a href="#">
+                    <a href="<?= Router::$permalink ?>admin/organizations/page/1">
                         <span>Организации</span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/page/1"> Список<span class="pull-right-container"><i
-                                        class="fa fa-link"></i></span></a></li>
-                        <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить<span
-                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
-                    </ul>
-
+                </li>
+                <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить Организацию<span
+                            class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span>Танцевальные групы</span>
+                    <a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">
+                        <span>Танцевальные группы</span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">Редактировать<span class="pull-right-container"><i class="fa fa-pencil-square-o"></i></span></a>
-                        </li>
-                        <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
-                    </ul>
+                </li>
+                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить группу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
                 </li>
             </ul>
             <!-- /.sidebar-menu -->
@@ -187,8 +178,6 @@
             <div class="container-fluid">
                 <div class="row">
 
-
-
                     <div id="total-dance-group-info-wrapper" data-visibility="none">
                         <div class="col-xs-12 col-sm-9 my-float-left">
                             <div class="container box box-primary flat">
@@ -198,7 +187,7 @@
                                     <div class="col-xs-12 col-md-8">
                                         <div class="dance-group-name">
                                             <form action="">
-                                                <label class="text-capitalize"><span class="big-letters">название танцевальной групы:</span><input type="text" class="input-standard" name="dance-group-name" id="dance-group-name"></label>
+                                                <label class="text-capitalize"><span class="big-letters">название танцевальной группы:</span><input type="text" class="input-standard" name="dance-group-name" id="dance-group-name"></label>
                                             </form>
                                         </div>
                                     </div>
@@ -469,7 +458,7 @@
                         <div class="container box box-solid box-primary flat">
                             <div class="row box-header">
                                 <h3 class="box-title text-uppercase">
-                                    Танцевальные групы
+                                    Танцевальные группы
                                 </h3>
                             </div>
                             <div class="row">

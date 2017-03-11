@@ -150,15 +150,15 @@
                     </a>
                 </li>
                 <li><a href="<?= Router::$permalink ?>admin/organizations/org_add">Добавить Организацию<span
-                                    class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
+                            class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                </li>
                 <li>
                     <a href="<?= Router::$permalink ?>admin/dancing_groups/dance_list">
-                        <span>Танцевальные групы</span>
+                        <span>Танцевальные группы</span>
                     </a>
                 </li>
-                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить групу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
-                        </li>
+                <li><a href="<?= Router::$permalink ?>admin/dancing_groups/add_dancing_groups">Добавить группу<span class="pull-right-container"><i class="fa fa-plus"></i></span></a>
+                </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -183,7 +183,7 @@
                                 <div class="col-xs-12 col-md-8">
                                     <div class="dance-group-name">
                                         <form action="">
-                                            <label class="text-capitalize"><span class="big-letters">название танцевальной групы:</span><input type="text" class="input-standard" name="dance-group-name" id="dance-group-name"></label>
+                                            <label class="text-capitalize"><span class="big-letters">название танцевальной группы:</span><input type="text" class="input-standard" name="dance-group-name" id="dance-group-name"></label>
                                         </form>
                                     </div>
                                 </div>
