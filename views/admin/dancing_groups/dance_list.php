@@ -20,7 +20,7 @@
     -->
     <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?=Router::$permalink?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/dance_groups_list.less?1">
+    <link rel="stylesheet/less" type="text/less" href="<?=Router::$permalink?>views/main/css/dance_groups_list.less?2">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]-->
@@ -476,13 +476,13 @@
                                 <div class="">
                                     <ul class="dancing-group-list-wrapper">
                                         <?php foreach ($list as $value): ?>
-                                        <li data-id-dancing-group="<?=$value['id'];?>">
-                                            <div class="btn-group-xs button-wrapper">
-                                                <button type="button" class="show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
+                                        <li class="pseudo-click dance-group" data-id-dancing-group="<?=$value['id'];?>">
+                                            <p class="pseudo-click dance-group-name"><?=$value['dance_group_name'];?></p>
+                                            <div class="pseudo-click btn-group-xs button-wrapper">
+                                                <button type="button" class="displayNone show-info-about-dance-group btn btn-info btn-flat"><i class="fa fa-info"></i></button>
                                                 <button type="button" class="edit-info-about-dance-group btn btn-success btn-flat"><i class="fa fa-edit"></i></button>
                                                 <button type="button" data-toggle="modal" data-target="#confirmDanceGroupDeletion" class="delete-dance-group btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button>
                                             </div>
-                                            <p class="dance-group-name"><?=$value['dance_group_name'];?></p>
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>
@@ -588,6 +588,6 @@
 <!-- AdminLTE App -->
 <script src="<?=Router::$permalink?>views/main/js/app.min.js"></script>
 
-<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?7"></script>
+<script src="<?=Router::$permalink?>views/main/js/dance_groups_list.js?9"></script>
 </body>
 </html>
