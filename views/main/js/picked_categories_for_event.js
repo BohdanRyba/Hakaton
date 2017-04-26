@@ -28,7 +28,7 @@ jQuery(function($) {
         function ajax_sendRemovedCategories() {
             var categories=[];
             $categoriesBlock.find('[data-checked="checked"]').each(function () {
-                categories.push(+$(this).find('input').attr('name'));
+                categories.push($(this).find('input').attr('name'));
             });
 
             console.log(categories);
