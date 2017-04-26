@@ -44,6 +44,8 @@ class LoginController
     {
         unset($_SESSION['accessing']);
         unset($_SESSION['user_access']);
+        unset($_SESSION['org_id']);
+        unset($_SESSION['organization_id']);
         header('Location: ' . CORE_PATH . 'home');
         $message = json_encode([
             'status' => 'info',

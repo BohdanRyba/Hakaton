@@ -184,7 +184,7 @@ class AdminController
         $participant = AdminModel::ShowClubById($id);
         $nav_content = $this->createNavContent(Router::$uri);
 
-        require_once ('views/admin/SettingsOrg/club-cabinet-for-adm.php');
+        require_once('views/admin/SettingsOrg/club-cabinet-for-adm.php');
 
         /**
          *
@@ -196,8 +196,8 @@ class AdminController
 
     public function actionRegClubForEvent($id)
     {
-        $list = AdminModel::ShowClubsForReg($id) ;
-        $json = file_get_contents('categories.json' ); // в примере все файлы в корне
+        $list = AdminModel::ShowClubsForReg($id);
+        $json = file_get_contents('categories.json'); // в примере все файлы в корне
 //        echo json_encode($json);
 
         include 'views/admin/option_event/reg_part_for_event.php';
@@ -211,13 +211,13 @@ class AdminController
 
     public function actionTestAjax()
     {
-        $json = file_get_contents( 'categories.json' ); // в примере все файлы в корне
+        $json = file_get_contents('categories.json'); // в примере все файлы в корне
         echo json_encode($json);
     }
 
-    public function actionAjaxAddpart($id='')
+    public function actionAjaxAddpart($id = '')
     {
-        $list = AdminModel::ShowClubsForReg($id) ;
+        $list = AdminModel::ShowClubsForReg($id);
         include 'views/admin/SettingsOrg/view_add_part.php';
     }
 
@@ -443,22 +443,25 @@ class AdminController
         }
     }
 
-    public function actionCreateDancingDepartments( $event_id ){
-        if(!empty($_POST)){
-            if(!empty($_POST['new-department-name-confirmation-btn'])){
-                if($_POST['new-department-name-confirmation-btn'] == 'Создать'
-                    && !empty($_POST['new-Department-Name'])){
+    public function actionCreateDancingDepartments($event_id)
+    {
+        if (!empty($_POST)) {
+            if (!empty($_POST['new-department-name-confirmation-btn'])) {
+                if ($_POST['new-department-name-confirmation-btn'] == 'Создать'
+                    && !empty($_POST['new-Department-Name'])
+                ) {
                     $name = $_POST['new-Department-Name'];
                     $result = AdminModel::departmentsOperation($name, $event_id, 'Создать');
                 } elseif ($_POST['new-department-name-confirmation-btn'] == 'Изменить'
                     && !empty($_POST['new-Department-Name'])
-                    && !empty($_POST['department-id'])){
+                    && !empty($_POST['department-id'])
+                ) {
                     $dep_id = $_POST['department-id'];
                     $name = $_POST['new-Department-Name'];
                     $result = AdminModel::departmentsOperation($name, $event_id, 'Изменить', $dep_id);
                 }
-            } elseif (!empty($_POST['deletion-confirmation-btn']) && !empty($_POST['department-id'])){
-                if(AdminModel::getPermissionForDeletion()){
+            } elseif (!empty($_POST['deletion-confirmation-btn']) && !empty($_POST['department-id'])) {
+                if (AdminModel::getPermissionForDeletion()) {
                     $result = AdminModel::deleteDepartment($_POST['department-id']);
                 }
             }
@@ -466,7 +469,7 @@ class AdminController
         if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
-        $departments = AdminModel::getDepartmentsByEventId( $event_id );
+        $departments = AdminModel::getDepartmentsByEventId($event_id);
         $nav_content = $this->createNavContent(Router::$uri);
         require_once('views/admin/option_event/create_dancing_departments.php');
         unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
