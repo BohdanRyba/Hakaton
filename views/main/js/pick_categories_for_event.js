@@ -64,7 +64,7 @@ jQuery(function($) {
                 data: dataForServer,
                 success: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has worked successfully!');
-                    console.log(dataForServer);
+                    // console.log(dataForServer);
                     console.log(msg);
                     $modalBody.empty();
                     $modalBody.append('<p>Изменения сохраненны успешно!</p>');
@@ -72,7 +72,7 @@ jQuery(function($) {
                 },
                 error: function (msg) {
                     console.log('ajax_sendPickedCategoriesForEvent has failed work!');
-                    console.log(msg);
+                    // console.log(msg);
                     $modalBody.empty();
                     $modalBody.append('<p>Ошибка! Изменения <b>не</b> сохраненны!</p>');
                     $modal.modal();
