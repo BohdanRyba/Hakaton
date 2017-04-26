@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 20 2017 г., 10:20
+-- Время создания: Апр 26 2017 г., 21:04
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -47,10 +47,7 @@ CREATE TABLE `clubs` (
 
 INSERT INTO `clubs` (`id`, `club_name`, `club_image`, `club_country`, `club_city`, `club_shief`, `club_number`, `club_mail`, `password`, `grant`, `active`, `org_id_for_club`) VALUES
 (1, 'admin', '../../../views/main/img/club_img/', 'Ukraine', 'Khmelnytski', 'Roma Slobodeniuk', 380673800836, 'romsl@i.ua', '21232f297a57a5a743894a0e4a801fc3', 4, 1, 0),
-(2, 'LivLegend', '../../../views/main/img/club_img/', 'Ukraine', 'Khmelnytski', 'Гена', 48692600399, 'gena@mail.ua', 'f2f61c2ab367c3a99c9ec7306f222c7f', 4, 1, 0),
-(3, 'YoungLife', '../../../views/main/img/club_img/frontenddeveloper.jpg', 'dwfesgrthfyg', 'пквреноплгдш', 'qwertuki', 156325, 'Mail@MAIL.Mail', '143ded654a348786b74aef170ab4dcb5', 1, 1, 5),
-(6, 'ClubName', '../../../views/main/img/club_img/frontenddeveloper.jpg', 'dawsfvdrbzscdscz', 'asdasdasd', 'asdsadasd', 121231241214124, 'adsdw@i.a', 'b14e6dd681bf2819a5bf6ce8348f7db7', 1, 1, 4),
-(7, '', '../../../views/main/img/club_img/', '', '', '', 0, '', 'd41d8cd98f00b204e9800998ecf8427e', 1, 1, 1);
+(2, 'LivLegend', '../../../views/main/img/club_img/', 'Ukraine', 'Khmelnytski', 'Геннадий', 48692600399, 'gena@i.ua', 'e0a7bf6b3b6eb370828d29888d4805bc', 4, 1, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -71,7 +68,7 @@ ALTER TABLE `clubs`
 -- AUTO_INCREMENT для таблицы `clubs`
 --
 ALTER TABLE `clubs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
