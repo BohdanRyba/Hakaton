@@ -113,7 +113,21 @@ jQuery(function($) {
         nmNumeration();
     }
     //=====FUNCTIONS USED WHEN BTNS ARE ON CLICK==========================
+    $('.dance-group').on('click', function (e) {
+        $('.dance-group').each(function () {
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+        let $target=$(e.target);
 
+        if ($target.hasClass('pseudo-click')) {
+            if (!$target.hasClass('dance-group')) {
+                $target.parents('.dance-group').find('.show-info-about-dance-group').trigger('click');
+            } else {
+                $target.find('.show-info-about-dance-group').trigger('click');
+            }
+        }
+    });
     //IF SHOW BTN IS ON CLICK
     $showInfoBtn.on('click', function () {
         var $btn=$(this),
@@ -651,7 +665,7 @@ jQuery(function($) {
                     newDanceProgramsInfo={},
                     permission= true,
                     $blocksToCheck=$form1.children(),
-                    dpInfo='<div class="dp-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+dpName+'"></label></div>';
+                    dpInfo='<div class="dp-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="dance-program-name" class="input-standard" value="'+dpName+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
                 newDanceProgramsInfo['name']=dpName;
                 if ($blocksToCheck.length>0) {
@@ -686,7 +700,7 @@ jQuery(function($) {
                     newAgeCategoryInfo={},
                     permission= true,
                     $blocksToCheck=$form2.children(),
-                    acInfo='<div class="ag-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+acName+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+acMinAge+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+acMaxAge+'"></label></div>';
+                    acInfo='<div class="ag-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="age-category-name" class="input-standard" value="'+acName+'"></label><label>От:<input disabled type="text" name="age-category-rule-age-min" class="input-standard dancing-group-info-code" value="'+acMinAge+'"></label><label>До:<input disabled type="text" name="age-category-rule-age-max" class="input-standard dancing-group-info-code" value="'+acMaxAge+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
                 newAgeCategoryInfo['name']=acName;
                 newAgeCategoryInfo['minAge']=acMinAge;
@@ -728,7 +742,7 @@ jQuery(function($) {
                     newNominationsInfo={},
                     permission= true,
                     $blocksToCheck=$form3.children(),
-                    nmInfo='<div class="nm-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+nmName+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+nmNumber+'"></label></div>';
+                    nmInfo='<div class="nm-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="nomination-name" class="input-standard" value="'+nmName+'"></label><label>Кол-во учасников:<input disabled type="text" name="nomination-rule-participants-number-min" class="input-standard dancing-group-info-code" value="'+nmNumber+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
                 newNominationsInfo['name']=nmName;
                 newNominationsInfo['number']=nmNumber;
@@ -775,7 +789,7 @@ jQuery(function($) {
                     newLeagueInfo={},
                     permission= true,
                     $blocksToCheck=$form4.children(),
-                    lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label></div>';
+                    lgInfo='<div class="lg-info-wrapper"><span class="text-bold count"></span><label>Название:<input disabled type="text" name="league-name" class="input-standard" value="'+lgName+'"></label><label>Лет выступлений:<input disabled type="text" name="league-rule-participation-years" class="input-standard dancing-group-info-code" value="'+lgNumber+'"></label><div class="btn-group-sm flat" role="group"><button type="button" class="btn btn-success edit-button btn-flat"><i class="fa fa-edit"></i></button><button type="button" class="btn btn-danger delete-button btn-flat"><i class="fa fa-trash"></i></button></div></div>';
 
                 newLeagueInfo['name']=lgName;
                 newLeagueInfo['yearRules']=lgNumber;

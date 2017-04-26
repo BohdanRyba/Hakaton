@@ -6,6 +6,10 @@
   display: none;
 }
 
+.displayNone {
+  display: none;
+}
+
 .separation-line{
   border-bottom: 1px solid @highlight-color;
 }
@@ -35,40 +39,50 @@
   }
 }
 
+.clr {
+  clear: both;
+}
+
 .dancing-group-list-wrapper {
   margin: 0;
   padding: 0;
-  width: 100%;
+  //width: 100%;
   overflow: hidden;
   li {
+    &.active {
+      background: darken(@highlight-color, 20%);
+    }
     &:hover {
       transition: background 150ms linear;
       background: @highlight-color;
+      cursor: pointer;
     }
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 5px;
     transition: background 150ms linear;
     background: white;
     width: 100%;
     list-style: none;
-    padding: 10px 5px;
-    display: table;
     &:not(:last-child) {
       border-bottom: solid 2px @main-color;
     }
     .button-wrapper{
-      display: table-cell;
-      min-width: 80px;
-      padding: 0 5px;
-      vertical-align: middle;
-
+      min-width: 50px;
     }
     p.dance-group-name{
-      cursor: default;
+      align-self: center;
       font-size: 16px;
-      line-height: 20px;
-      display: table-cell;
-      padding: 0;
-      vertical-align: middle;
+      line-height: normal;
       text-align: left;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
   }
 }
