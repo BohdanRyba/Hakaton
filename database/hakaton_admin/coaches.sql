@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 05, 2016 at 06:02 
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Хост: 127.0.0.1
+-- Время создания: Апр 20 2017 г., 10:20
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hakaton_admin`
+-- База данных: `hakaton_admin`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coaches`
+-- Структура таблицы `coaches`
 --
 
 CREATE TABLE `coaches` (
@@ -33,7 +33,7 @@ CREATE TABLE `coaches` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `coaches`
+-- Дамп данных таблицы `coaches`
 --
 
 INSERT INTO `coaches` (`id`, `coach_name`, `club_id`) VALUES
@@ -41,22 +41,22 @@ INSERT INTO `coaches` (`id`, `coach_name`, `club_id`) VALUES
 (2, 'Вася', 2);
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `coaches`
+-- Индексы таблицы `coaches`
 --
 ALTER TABLE `coaches`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `coaches`
+-- AUTO_INCREMENT для таблицы `coaches`
 --
 ALTER TABLE `coaches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

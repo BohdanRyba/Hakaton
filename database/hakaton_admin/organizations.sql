@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 05, 2016 at 06:03 
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Хост: 127.0.0.1
+-- Время создания: Апр 20 2017 г., 10:21
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hakaton_admin`
+-- База данных: `hakaton_admin`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `organizations`
+-- Структура таблицы `organizations`
 --
 
 CREATE TABLE `organizations` (
@@ -39,7 +39,7 @@ CREATE TABLE `organizations` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `organizations`
+-- Дамп данных таблицы `organizations`
 --
 
 INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio`, `org_city`, `org_country`, `org_phone`, `org_email`, `org_pic_path`) VALUES
@@ -47,25 +47,25 @@ INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio
 (3, 'Julia Roberts Organization', 'JROrg', 'Julia Roberts', 'San-Francisko', 'USA', 11111111111111, 'juli_rob@gmail.com', 'views/main/img/org_image/Julia-Roberts-150x150.jpg'),
 (4, 'Оля Корпорейшен', 'ОК', 'Гордова Ольгаadsf', 'Нежин', 'Украина', 51551831, 'olia@gmailcom', 'views/main/img/org_image/Olia.jpg'),
 (5, 'Sixth Organization', 'SEX', 'Avral', 'New York city', 'USA', 2147483647, 'org_6_six@emali.non', 'views/main/img/org_image/sixth_org_img.jpg'),
-(6, 'My own dance organization', 'MOD', 'Roman', 'Kmelnytski', 'Ukraine', 3806735521, 'roma@i.ua', 'views/main/img/org_image/2016-11-08_16-24-15.jpg');
+(6, 'My own dance organization', 'MODO', 'Roman', 'Kmelnytski', 'Ukraine', 38067355215, 'roma@i.ua', 'views/main/img/org_image/2016-11-08_16-24-15.jpg');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `organizations`
+-- Индексы таблицы `organizations`
 --
 ALTER TABLE `organizations`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `org_name` (`org_name`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `organizations`
+-- AUTO_INCREMENT для таблицы `organizations`
 --
 ALTER TABLE `organizations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;

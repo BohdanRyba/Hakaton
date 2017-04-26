@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 05, 2016 at 06:03 
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Хост: 127.0.0.1
+-- Время создания: Апр 20 2017 г., 10:21
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hakaton_base`
+-- База данных: `hakaton_base`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 CREATE TABLE `news` (
@@ -38,7 +38,7 @@ CREATE TABLE `news` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Дамп данных таблицы `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_name`, `preview`, `type`) VALUES
@@ -57,22 +57,22 @@ INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_n
 (13, 'Pakistan cinemas ban Indian movies', '2016-10-03', 'Pakistan''s major cinemas have banned Indian movies in Pakistan''s biggest cities.', 'India and Pakistan do not have very good relations at the moment. The two countries have argued for many years over where the borders should be in Kashmir. There is also the possibility that India could limit the amount of water Pakistan gets from the Indus River. The latest disagreement is over movies and actors. Pakistan''s major cinemas have banned Indian movies in Pakistan''s biggest cities - Lahore, Karachi and Islamabad. The cinema owners say the ban is to show support for Pakistani soldiers who are risking their lives in Kashmir. The ban comes after a group of Indian moviemakers banned Pakistani actors from working in India''s famous Bollywood movie studios in Mumbai.', 'Roma Slobodeniuk', '../../views/main/img/news/161002-indian-movies.jpg', 'article');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `short_content` (`short_content`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
   MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
