@@ -20,7 +20,7 @@
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/pick_categories_for_event.less?11">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/pick_categories_for_event.less?12">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -241,14 +241,14 @@
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <div id="example1_filter" class="dataTables_filter">
-                                                        <label>Искать по названию:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
+                                                        <label>Искать по названию:<input type="search" id="serachForm" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-12">
                                                     <div class="row pick-dancing-groups-parameters-wrapper">
                                                         <ul id="pick-dancing-group-parameter-to-see">
                                                             <?php foreach ($dancing_programs as $program):?>
-                                                                <li class="dancing-group-list-item-to-see" data-name="<?=$program;?>"><span class="numeration"></span><?=$program;?></li>
+                                                                <li class="dancing-group-list-item-to-see true_var" data-name="<?=$program;?>"><?=$program;?></li>
                                                             <?php endforeach;?>
                                                         </ul>
                                                     </div>

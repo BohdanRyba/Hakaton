@@ -32,7 +32,7 @@
     <link rel="stylesheet/less" type="text/less"
           href="<?= Router::$permalink ?>views/main/css/add_dancing_categories.less?11">
     <link rel="stylesheet/less" type="text/less"
-          href="<?= Router::$permalink ?>views/main/css/create_dancing_categories.less?34">
+          href="<?= Router::$permalink ?>views/main/css/create_dancing_categories.less?35">
     <script src="<?= Router::$permalink ?>views/main/js/less.min.js?12" type="text/javascript"></script>
 </head>
 <!--
@@ -259,19 +259,19 @@ desired effect
                             </ul>
                         </div>
                     </div>
-                    <div class="search_wrap search_wrap_category" data-type-search="category">
-                        <div class="list-search event_search_box">
-                            <form method="POST" action="" class="line-search">
-                                <div class="input-group input-group-sm">
-                                    <input id="search_event_inut" class="form-control search_event"
-                                           data-type="option_category" type="search" placeholder="Поиск по категориям">
-                                    <span class="btn-search input-group-btn">
-                                        <button type="button" class="search_event_go btn btn-info btn-flat-event search_event_go">Go!</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+<!--                    <div class="search_wrap search_wrap_category" data-type-search="category">-->
+<!--                        <div class="list-search event_search_box">-->
+<!--                            <form method="POST" action="" class="line-search">-->
+<!--                                <div class="input-group input-group-sm">-->
+<!--                                    <input id="search_event_inut" class="form-control search_event"-->
+<!--                                           data-type="option_category" type="search" placeholder="Поиск по категориям">-->
+<!--                                    <span class="btn-search input-group-btn">-->
+<!--                                        <button type="button" class="search_event_go btn btn-info btn-flat-event search_event_go">Go!</button>-->
+<!--                                    </span>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="search_wrap search_wrap_club" data-type-search="club">
                         <div class="list-search event_search_box">
                             <form method="POST" action="" class="line-search">

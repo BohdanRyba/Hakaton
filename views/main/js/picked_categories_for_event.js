@@ -79,5 +79,84 @@ jQuery(function($) {
             }
         }
     });
-    
+
+
+
+    var $searchInput=$('#searchInput');
+
+    $searchInput.on('keyup', function () {
+        const queryString = $(this).val().toLowerCase().match(/^\s*(.*)/)[1];
+
+        $categoriesBlock.find('.to_remove').each(function () {
+            $(this).remove();
+        });
+
+        if (queryString=='') {
+            $categoriesBlock.find('.true_var').each(function () {
+               $(this).removeClass('displayNone');
+            });
+        } else {
+            let allCategories = [];
+
+            $categoriesBlock.find('.true_var').each(function () {
+                let category = {},
+                    $categoryLi=$(this),
+                    $categoryInput=$categoryLi.find('input');
+
+                $categoryLi.addClass('displayNone');
+                category.name = $categoryInput.attr('name');
+                category['data-checked'] = $categoryLi.attr('data-checked');
+                category.displayNone = $categoryInput.hasClass('displayNone');
+                allCategories.push(category);
+            });
+
+            let filteredCategories = allCategories.filter(function (element) {
+                    return element.name.toLowerCase().includes(queryString);
+                }
+            );
+
+            filteredCategories.forEach(function (item) {
+                let displayNone = (function () {if (item.displayNone) {return 'displayNone';} else {return '';}})();
+                $categoriesBlock.append('<li class="pick_dancing_categories_for_event to_remove" data-checked="'+item['data-checked']+'"><label><input class="'+displayNone+'" type="checkbox" name="'+item.name+'">'+item.name+'</label></li>');
+            });
+
+            let $searchedCategories=$categoriesBlock.find('.to_remove');
+
+            $searchedCategories.each(function () {
+                let parse=$(this).find('label').html().match(/(<.*>)(.*)/),
+                    preText=parse[1],
+                    text=parse[2],
+                    regexp = new RegExp(queryString, 'i'),
+                    regexpGlobal = new RegExp(queryString, 'gi'),
+                    coincidences = text.match(regexpGlobal).length,
+                    categoryFragments = [];
+
+                for (let i=0; i<coincidences; i++) {
+                    let thisCoincidence;
+
+                    if (i==0) {
+                        thisCoincidence = text.match(regexp)[0];
+                        let coincidenceLength = thisCoincidence.length,
+                            pos = text.indexOf(thisCoincidence);
+                        categoryFragments.push(text.slice(0,pos));
+                        thisCoincidence = '<span class="searchedFragment">'+thisCoincidence+'</span>';
+                        categoryFragments.push(thisCoincidence);
+                        categoryFragments.push(text.slice(pos+coincidenceLength));
+                    } else {
+                        let str = categoryFragments[categoryFragments.length-1];
+                        thisCoincidence = str.match(regexp)[0];
+                        let coincidenceLength = thisCoincidence.length,
+                            pos = categoryFragments[categoryFragments.length-1].indexOf(thisCoincidence);
+                        categoryFragments[categoryFragments.length-1]=str.slice(0,pos);
+                        thisCoincidence = '<span class="searchedFragment">'+thisCoincidence+'</span>';
+                        categoryFragments.push(thisCoincidence);
+                        categoryFragments.push(str.slice(pos+coincidenceLength));
+                    }
+                }
+                text=categoryFragments.join('');
+                $(this).find('label').html(preText+text);
+                if ($(this).attr('data-checked')=='checked') {$(this).find('input').prop('checked', true);}
+            });
+        }
+    });
 });
