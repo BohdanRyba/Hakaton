@@ -151,3 +151,9 @@ trait paginationCreation
         return $start_end_pagination_array;
     }
 }
+
+trait sideBars{
+    public function loadSideBar($sidebarName){
+        return require_once (ROOT . "views/layouts/$sidebarName.php");
+    }
+}

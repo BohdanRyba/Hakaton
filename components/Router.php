@@ -13,7 +13,7 @@ class Router
     public $result;
     public static $permalink;
     public static $any_last_path_value;
-    
+
     private function checkSecurity($controllerName){
         if( ($controllerName === 'AdminController' ||
                 $controllerName === 'EventsController' ||
@@ -89,6 +89,7 @@ class Router
                 } elseif (!($controllerName === 'AdminController' ||
                     $controllerName === 'EventsController' ||
                     $controllerName === 'ProfileController')) {
+
                     $controllerObject = new $controllerName;
                     $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
                     if ($this->result !== '') {

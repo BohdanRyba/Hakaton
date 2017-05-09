@@ -7,6 +7,7 @@ class AdminController
 {
     use messagesOperations;
     use navigationFunctional;
+    use sideBars;
 
     public function actionIndex($Cpag)
     {
@@ -473,5 +474,11 @@ class AdminController
         $nav_content = $this->createNavContent(Router::$uri);
         require_once('views/admin/option_event/create_dancing_departments.php');
         unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+    }
+
+    public function actionPickedCategoriesForEvent(){
+        $sidebar = $this->loadSideBar('admin_sidebar_1');
+        $nav_content = $this->createNavContent(Router::$uri);
+        require_once('views/admin/organizations/picked_categories_for_event.php');
     }
 }
