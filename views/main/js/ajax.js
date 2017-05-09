@@ -97,6 +97,9 @@ $(function () {
             beforeSend: funcBefore,
             success: funcSuccess
         });
+        $('body').on('mask_ajax', function () {
+            $('body').trigger('categoriesLoaded');
+        })
     });
 
     // Opens page cabinet club

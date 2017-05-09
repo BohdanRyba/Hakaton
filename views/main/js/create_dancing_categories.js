@@ -179,7 +179,7 @@ jQuery(function($) {
                             for (var i = 0; i<msg.length; i++) {
                                     var name = msg[i];
 //для кожного елементу отриманного масиву виконати наступну дію МОЖЛИВО ПОТРІБНО ДОДАТИ АЙДІШКУ ДЛЯ КОЖНОГО ПАРАМЕТРА
-                                    $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see" data-name="'+name+'"><span class="numeration"></span>' + name + '</li>')
+                                    $chooseCategoriesParameterUl.append('<li class="dancing-group-list-item-to-see true_var" data-name="'+name+'">' + name + '</li>');
                             }
                         }
 
@@ -649,6 +649,92 @@ jQuery(function($) {
         }
 
         ajax_addNewParameters();
-    })
+    });
+
+    $body.on('categoriesLoaded', function () {
+        let $search = $('#dance-group-parameters-list').find('[type="search"]');
+
+        $search.on('keyup', function () {
+            const queryString = $(this).val().toLowerCase().match(/^\s*(.*)/)[1];
+            let $categoriesBlock = $('#pick-dancing-group-parameter-to-see');
+
+            $categoriesBlock.find('.to_remove').each(function () {
+                if ($(this).hasClass('picked-dancing-group')) {
+                    let name = $(this).text();
+                    $categoriesBlock.find('.true_var').each(function () {
+                        if ($(this).text() == name) {
+                            $(this).addClass('picked-dancing-group');
+                        }
+                    });
+                }
+                $(this).remove();
+            });
+
+            if (queryString=='') {
+                $categoriesBlock.find('.true_var').each(function () {
+                    $(this).removeClass('displayNone');
+                });
+            } else {
+                let allCategories = [];
+
+                $categoriesBlock.find('.true_var').each(function () {
+                    let category = {},
+                        $categoryLi=$(this);
+
+                    $categoryLi.addClass('displayNone');
+                    category.name = $categoryLi.attr('data-name');
+                    category['data-checked'] = $categoryLi.hasClass('picked-dancing-group');
+                    allCategories.push(category);
+                });
+
+                let filteredCategories = allCategories.filter(function (element) {
+                        return element.name.toLowerCase().includes(queryString);
+                    }
+                );
+
+                filteredCategories.forEach(function (item) {
+                    let pickedStatus = (function () {if (item['data-checked']) {return 'picked-dancing-group';} else {return '';}})();
+                    $categoriesBlock.append('<li class="'+pickedStatus+' dancing-group-list-item-to-see to_remove" data-name="'+item.name+'">' + item.name + '</li>');
+                });
+
+                let $searchedCategories=$categoriesBlock.find('.to_remove');
+
+                $searchedCategories.each(function () {
+                    let parse=$(this).html().match(/(.*)/),
+                        text=parse[1],
+                        regexp = new RegExp(queryString, 'i'),
+                        regexpGlobal = new RegExp(queryString, 'gi'),
+                        coincidences = text.match(regexpGlobal).length,
+                        categoryFragments = [];
+
+                    for (let i=0; i<coincidences; i++) {
+                        let thisCoincidence;
+
+                        if (i==0) {
+                            thisCoincidence = text.match(regexp)[0];
+                            let coincidenceLength = thisCoincidence.length,
+                                pos = text.indexOf(thisCoincidence);
+                            categoryFragments.push(text.slice(0,pos));
+                            thisCoincidence = '<span class="searchedFragment">'+thisCoincidence+'</span>';
+                            categoryFragments.push(thisCoincidence);
+                            categoryFragments.push(text.slice(pos+coincidenceLength));
+                        } else {
+                            let str = categoryFragments[categoryFragments.length-1];
+                            thisCoincidence = str.match(regexp)[0];
+                            let coincidenceLength = thisCoincidence.length,
+                                pos = categoryFragments[categoryFragments.length-1].indexOf(thisCoincidence);
+                            categoryFragments[categoryFragments.length-1]=str.slice(0,pos);
+                            thisCoincidence = '<span class="searchedFragment">'+thisCoincidence+'</span>';
+                            categoryFragments.push(thisCoincidence);
+                            categoryFragments.push(str.slice(pos+coincidenceLength));
+                        }
+                    }
+                    text=categoryFragments.join('');
+                    $(this).html(text);
+                });
+            }
+        });
+
+    });
 
 });
