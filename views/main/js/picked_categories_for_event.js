@@ -35,16 +35,22 @@ jQuery(function($) {
             $.ajax({
                 type:"POST",
                 url:'ajax_sendRemovedCategories',
-                data: categories,
+                data: {
+                    categories : categories
+                },
                 success: function (msg) {
+                    console.log(msg);
                     console.log('ajax_sendRemovedCategories has worked successfully!');
                     $modalBody.empty().append('<p>Изменения сохраненны успешно!</p>');
                     $modalFooter.empty().append('<button type="button" class="btn btn-primary" data-dismiss="modal">ок</button>');
-                    $resultModal.modal();
+                    // $resultModal.modal();
                     $deleteBtn.attr('data-status', 'initial').text('забрать категории');
                     $denyBtn.addClass('displayNone');
                     $categoriesBlock.children().each(function () {
                         $(this).removeAttr('data-checked').find('input').addClass('displayNone');
+                    });
+                    categories.forEach(function (item) {
+                        $categoriesBlock.find('[name='+item+']').parents('li').remove();
                     });
                 },
                 error: function (msg) {

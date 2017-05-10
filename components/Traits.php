@@ -154,6 +154,6 @@ trait paginationCreation
 
 trait sideBars{
     public function loadSideBar($sidebarName){
-        return require_once (ROOT . "views/layouts/$sidebarName.php");
+        return require_once(ROOT . "views/layouts/$sidebarName.php");
     }
 }

@@ -112,7 +112,7 @@
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <?=$sidebar?>
+    <?php echo $sidebar?>
 
     <div id="deletionModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -186,7 +186,16 @@
                                                 <div class="col-xs-12">
                                                     <form id="picked_dancing_categories_for_event">
                                                         <ul>
-                                                            <li class="pick_dancing_categories_for_event" data-checked=""><label><input class="displayNone" type="checkbox" name="21">Бачата Юніори Краще соло Старша ліга</label></li>
+                                                            <?php if(!empty($picked_categories)):?>
+                                                                <?php foreach ($picked_categories as $category):?>
+                                                                    <li class="pick_dancing_categories_for_event" data-checked="">
+                                                                        <label>
+                                                                            <input class="displayNone" type="checkbox" name="<?= $category['id']?>">
+                                                                            <?= $category['d_c_program']?> <?= $category['d_c_age_category']?> <?= $category['d_c_nomination']?> <?= $category['d_c_league']?>
+                                                                        </label>
+                                                                    </li>
+                                                                <?php endforeach;?>
+                                                            <?php endif;?>
                                                         </ul>
                                                     </form>
                                                 </div>

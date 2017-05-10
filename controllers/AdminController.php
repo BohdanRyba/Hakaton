@@ -414,6 +414,8 @@ class AdminController
 
     public function actionPickCategoriesForEvent($event_id)
     {
+        $_SESSION['event_id'] = $event_id;
+        $sidebar = $this->loadSideBar('admin_sidebar_1');
         $nav_content = $this->createNavContent(Router::$uri);
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
         require_once('views/admin/option_event/pick_categories_for_event.php');
@@ -476,9 +478,20 @@ class AdminController
         unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
     }
 
-    public function actionPickedCategoriesForEvent(){
+    public function actionPickedCategoriesForEvent($event_id){
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $nav_content = $this->createNavContent(Router::$uri);
+        $picked_categories = AdminModel::getPickedCategories($event_id);
         require_once('views/admin/organizations/picked_categories_for_event.php');
+    }
+
+    public function actionAjax_sendRemovedCategories(){
+        if(!empty($_POST['categories'])){
+            $result = AdminModel::uncheckCategories($_POST['categories']);
+        }
+        echo json_encode([
+            'post' => $_POST,
+            '$result' => $result,
+        ]);
     }
 }

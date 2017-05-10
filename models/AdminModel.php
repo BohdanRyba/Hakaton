@@ -379,8 +379,8 @@ class AdminModel
                     $club_info['club_part'][$i]['first_name'] = $row['first_name'];
                     $club_info['club_part'][$i]['second_name'] = $row['second_name'];
                     $club_info['club_part'][$i]['third_name'] = $row['third_name'];
-					$club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
-					$club_info['club_part'][$i]['coach'] = $row['coach'];
+                    $club_info['club_part'][$i]['birth_date'] = $row['birth_date'];
+                    $club_info['club_part'][$i]['coach'] = $row['coach'];
                     $i++;
                 } else {
                     break;
@@ -762,7 +762,7 @@ class AdminModel
                       RIGHT JOIN `category_parameters`
                       ON `dance_groups`.`id`=`category_parameters`.`id_dance_group` AND `category_parameters`.`id_org`={$_COOKIE['get_id']}";
             $result = $db->query($query);
-            if($result){
+            if ($result) {
                 $i = 0;
                 while ($row = $result->fetch_assoc()) {
                     if ($row['dance_group_name'] != NULL) {
@@ -771,7 +771,7 @@ class AdminModel
                     }
                     $i++;
                 }
-            } elseif(!$result || empty($category_parameters)) {
+            } elseif (!$result || empty($category_parameters)) {
                 $message = json_encode([
                     'status' => 'error',
                     'message' => "Танцевальные руппы для данной организации не выбраны."
@@ -1086,7 +1086,7 @@ class AdminModel
         $db->close();
     }
 
-    static function departmentsOperation($name, $event_id, $option = '', $dep_id = null )
+    static function departmentsOperation($name, $event_id, $option = '', $dep_id = null)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $message = '';
@@ -1147,12 +1147,13 @@ class AdminModel
         }
     }
 
-    static function getDepartmentsByEventId($event_id){
+    static function getDepartmentsByEventId($event_id)
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $getting_result = $db->query("SELECT * FROM `departments` WHERE `event_id` = {$event_id}");
-            if($getting_result){
+            if ($getting_result) {
                 $departments = array();
-                while ($row = $getting_result->fetch_assoc()){
+                while ($row = $getting_result->fetch_assoc()) {
                     $departments[] = $row;
                 }
                 $db->close();
@@ -1185,6 +1186,71 @@ class AdminModel
             self::saveMessage($message);
             $db->close();
             return $result;
+        } else {
+            return 'DB connection error';
+        }
+    }
+
+    static function getPickedCategories($event_id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `org_id` = {$_SESSION['organization_id']}");
+            if ($result) {
+                $organizations = array();
+                while ($row = $result->fetch_assoc()) {
+                    $organizations[] = $row;
+                }
+                $checked_categories = array();
+                if (!empty($organizations)) {
+                    foreach ($organizations as $org) {
+                        $tmp_arr = explode('&', $org['event_ids']);
+                        if (in_array($event_id, $tmp_arr)) {
+                            $checked_categories[] = $org;
+                        }
+                    }
+                }
+                return $checked_categories;
+            } else {
+                return false;
+            }
+        } else {
+            return 'DB connection error';
+        }
+    }
+
+    static function uncheckCategories($array_ids)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `org_id` = {$_SESSION['organization_id']}");
+            $resulting_array = array();
+            if ($result) {
+                $dance_categories = array();
+                while ($row = $result->fetch_assoc()) {
+                    $dance_categories[] = $row;
+                }
+                self::$event_id = $_SESSION['event_id'];
+                foreach ($array_ids as $id_to_delete) {
+                    foreach ($dance_categories as $category) {
+                        $event_ids_array = explode("&", $category['event_ids']);
+                        if ($id_to_delete == $category['id']) {
+                            $event_ids_array_mapped = array_map("self::uncheck_event_id", $event_ids_array);
+                            $emptyRemoved = static::remove_empty($event_ids_array_mapped);
+                            $imploded_events_ids = implode("&", $emptyRemoved);
+
+                            $update_result = $db->query("UPDATE `dance_categories`
+                                                                SET `event_ids` = '{$imploded_events_ids}'
+                                                                WHERE `id` = {$category['id']}
+                                                        ");
+                            if ($update_result) {
+                                $resulting_array[] = "SUCCESS! The dancing category with id = \"" . $category['id'] . "\" was updated!\n";
+                            } else {
+                                $resulting_array[] = "The dancing category with id = \"" . $category['id'] . "\" was not updated...\n";
+                            }
+                        }
+                    }
+                }
+            }
+            return $resulting_array;
         } else {
             return 'DB connection error';
         }
