@@ -61,32 +61,8 @@ desired effect
 <div class="wrapper">
 
     <!-- Main Header -->
-    <header class="main-header">
+    <?=$header?>
 
-        <!-- Logo -->
-
-
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="collapsed navbar-toggle" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-9" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar "></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="navbar-brand">Brand</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
-                    <ul class="nav navbar-nav pull-right">
-                        <?php echo $nav_content; ?>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
     <!-- Left side column. contains the logo and sidebar -->
 
     <!-- Content Wrapper. Contains page content -->
@@ -211,14 +187,7 @@ desired effect
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-            Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-    </footer>
+    <?=$footer?>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
