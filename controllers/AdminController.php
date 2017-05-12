@@ -1,13 +1,11 @@
 <?php
+namespace controllers;
+use components\Router;
+use models\AdminModel;
+use components\Helper;
 
-require_once(ROOT . 'models/AdminModel.php');
-require_once(ROOT . 'components/Traits.php');
-
-class AdminController
+class AdminController extends AppController
 {
-    use messagesOperations;
-    use navigationFunctional;
-    use sideBars;
 
     public function actionIndex($Cpag)
     {
@@ -18,7 +16,7 @@ class AdminController
         $nav_content = $this->createNavContent(Router::$uri, $Cpag);
         $organizationsList = AdminModel::getAllOrganizations();
 
-        $start_end_pagination_array = AdminModel::getPaginationContent($Cpag, count($organizationsList));
+        $start_end_pagination_array = $this->getPaginationContent($Cpag, count($organizationsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
@@ -181,9 +179,11 @@ class AdminController
 
     public function actionAjaxClubCabinet($id)
     {
-
         $participant = AdminModel::ShowClubById($id);
         $nav_content = $this->createNavContent(Router::$uri);
+        $header = $this->loadHeader('header_1');
+        $sidebar = $this->loadSideBar('main_admin_sidebar');
+        $footer = $this->loadFooter('footer_1');
 
         require_once('views/admin/SettingsOrg/club-cabinet-for-adm.php');
 
@@ -198,8 +198,10 @@ class AdminController
     public function actionRegClubForEvent($id)
     {
         $list = AdminModel::ShowClubsForReg($id);
-        $json = file_get_contents('categories.json'); // в примере все файлы в корне
+        $sidebar = $this->loadSideBar('admin_sidebar_1');
+//        $json = file_get_contents('categories.json'); // в примере все файлы в корне
 //        echo json_encode($json);
+        $nav_content = $this->createNavContent(Router::$uri);
 
         include 'views/admin/option_event/reg_part_for_event.php';
     }
@@ -474,6 +476,7 @@ class AdminController
         }
         $departments = AdminModel::getDepartmentsByEventId($event_id);
         $nav_content = $this->createNavContent(Router::$uri);
+        $sidebar = $this->loadSideBar('admin_sidebar_1');
         require_once('views/admin/option_event/create_dancing_departments.php');
         unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
     }

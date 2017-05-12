@@ -1,5 +1,5 @@
 <?php
-
+namespace components;
 
 class Db
 {
@@ -12,7 +12,7 @@ class Db
             $params['dbname'] = $dbname;
         }
 
-        $db = new mysqli($params['host'], $params['user'], $params['password'], $params['dbname']);
+        $db = new \mysqli($params['host'], $params['user'], $params['password'], $params['dbname']);
         $db->query("SET NAMES 'utf8'");
 
         return $db;

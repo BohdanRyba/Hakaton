@@ -1,6 +1,9 @@
 <?php
 
-class Addevent
+namespace models;
+use components\Db;
+
+class Addevent extends AppModel
 {
     public static function createEvent()
     {

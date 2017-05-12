@@ -1,12 +1,11 @@
 <?php
+namespace controllers;
 
-include_once(ROOT . 'models/HomeModel.php');
-require_once(ROOT . 'components/Traits.php');
+use components\Router;
+//use models\HomeModel;
 
-class HomeController
+class HomeController extends AppController
 {
-    use messagesOperations;
-    use navigationFunctional;
 
     public function actionIndex()
     {

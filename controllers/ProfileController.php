@@ -1,8 +1,8 @@
 <?php
+namespace controllers;
+//use models\NewsModel;
 
-//include_once(ROOT . 'models/Addevent.php');
-
-class ProfileController
+class ProfileController extends AppController
 {
     public function actionIndex()
     {

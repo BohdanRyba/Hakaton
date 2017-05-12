@@ -1,6 +1,7 @@
 <?php
+namespace controllers;
 
-include_once(ROOT . 'models/Addnews.php');
+use models\Addnews;
 
 class AddnewsController
 {

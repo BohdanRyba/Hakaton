@@ -1,3 +1,6 @@
+<?php
+use components\Router;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

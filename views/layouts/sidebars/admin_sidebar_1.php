@@ -1,4 +1,5 @@
 <?php
+use components\Router;
 return '<aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->

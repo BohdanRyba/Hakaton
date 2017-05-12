@@ -1,9 +1,9 @@
 <?php
-require_once(ROOT . 'components/Traits.php');
+namespace components;
+use controllers\AppController;
+
 class Router
 {
-    use messagesOperations;
-
     const ACCESS_ADMIN = 4;
     const ACCESS_MODERATOR = 3;
     const ACCESS_USER = 1;
@@ -17,7 +17,7 @@ class Router
     private function checkSecurity($controllerName){
         if( ($controllerName === 'AdminController' ||
                 $controllerName === 'EventsController' ||
-                $controllerName === 'ProfileController' ) &&
+                $controllerName === 'ProfileController') &&
             !empty($_SESSION['current_user']) &&
             !empty($_SESSION['accessing']) &&
             (int)$_SESSION['accessing'] === (int)self::ACCESS_ADMIN){
@@ -51,7 +51,6 @@ class Router
      * */
     public function getURI()
     {
-
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/admin
             self::$uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
             self::$uri = trim(self::$uri, '/');// admin
@@ -81,22 +80,25 @@ class Router
                     include_once("$controllerFile");
                 }
                 if($this->checkSecurity($controllerName)){
-                    $controllerObject = new $controllerName;
+                    $newControllerName = 'controllers\\' . $controllerName;
+                    $controllerObject = new $newControllerName();
                     $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
                     if ($this->result !== '') {
                         break;
                     }
                 } elseif (!($controllerName === 'AdminController' ||
                     $controllerName === 'EventsController' ||
-                    $controllerName === 'ProfileController')) {
-
-                    $controllerObject = new $controllerName;
+                    $controllerName === 'ProfileController'
+                )) {
+                    $newControllerName = 'controllers\\' . $controllerName;
+                    $controllerObject = new $newControllerName();
                     $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
                     if ($this->result !== '') {
                         break;
                     }
                 } else {
-                    header('Location: ' . ROOT . '/home');
+
+//                    header('Location: ' . ROOT . '/home');
                 }
             }
         }

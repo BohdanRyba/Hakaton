@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Янв 27 2017 г., 14:57
--- Версия сервера: 10.1.13-MariaDB
--- Версия PHP: 5.6.23
+-- Хост: 127.0.0.1
+-- Время создания: Май 13 2017 г., 00:35
+-- Версия сервера: 10.1.9-MariaDB
+-- Версия PHP: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";

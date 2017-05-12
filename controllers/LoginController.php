@@ -1,14 +1,12 @@
 <?php
+namespace controllers;
+use models\LoginModel;
 
-include_once(ROOT . 'models/LoginModel.php');
-include_once(ROOT . 'components/Traits.php');
-
-class LoginController
+class LoginController extends AppController
 {
-    use messagesOperations;
-
     public function actionIndex()
     {
+        $message = '';
         if (isset($_POST['email']) && isset($_POST['pass_in'])) {
             $user = LoginModel::getUserFromBase($_POST['email']);
             if ($_POST['email'] == $user['club_mail'] && !empty($user)) {
@@ -35,7 +33,7 @@ class LoginController
 
         self::saveMessage($message);
 
-        require_once(ROOT . 'views/login/index.php');
+        require_once(ROOT . 'views/login/index.php'); // CAUTION!!! There is a REDIRECT to home page!!!
 
         return true;
     }

@@ -1,6 +1,9 @@
 <?php
 
-class Addnews
+namespace models;
+use components\Db;
+
+class Addnews extends AppModel
 {
 
     public static function createNews()

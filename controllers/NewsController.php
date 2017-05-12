@@ -1,12 +1,10 @@
 <?php
+namespace controllers;
+use components\Router;
+use models\NewsModel;
 
-include_once(ROOT . 'models/NewsModel.php');
-require_once(ROOT . 'components/Traits.php');
-
-class NewsController
+class NewsController extends AppController
 {
-    use messagesOperations;
-    use navigationFunctional;
 
     public function actionIndex($Cpag)
     {
@@ -15,7 +13,7 @@ class NewsController
         }
         $newsList = NewsModel::getNewsList();
         $nav_content = $this->createNavContent(Router::$uri, $Cpag);
-        $start_end_pagination_array = NewsModel::getPaginationContent($Cpag, count($newsList));
+        $start_end_pagination_array = $this->getPaginationContent($Cpag, count($newsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];

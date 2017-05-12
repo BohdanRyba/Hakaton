@@ -1,5 +1,5 @@
 <?php
-sleep(1);
+@sleep(1);
 ?>
 <!-- Modal -->
 <div id="createCategoryModal" class="modal fade" role="dialog">

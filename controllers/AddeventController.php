@@ -1,8 +1,10 @@
 <?php
 
-include_once(ROOT . 'models/Addevent.php');
+namespace controllers;
 
-class AddeventController
+use models\Addevent;
+
+class AddeventController extends AppController
 {
     public function actionIndex()
     {

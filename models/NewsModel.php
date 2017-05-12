@@ -1,13 +1,10 @@
 <?php
 
-require_once(ROOT . 'components/Traits.php');
+namespace models;
+use components\Db;
 
-class NewsModel
+class NewsModel extends AppModel
 {
-    use paginationCreation;
-
-    const CURRENT_PAGE = 1;
-    const PER_PAGE = 4;
 
     public static function getNewsItemById($id)
     {

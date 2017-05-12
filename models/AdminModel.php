@@ -1,13 +1,12 @@
 <?php
 
-require_once(ROOT . 'components/Traits.php');
+namespace models;
+use components\Db;
 
-class AdminModel
+class AdminModel extends AppModel
 {
-    use messagesOperations;
-    use paginationCreation;
-
     const CURRENT_PAGE = 1;
+
     const PER_PAGE = 4;
 
     static $event_id = '';
@@ -321,6 +320,8 @@ class AdminModel
 
     public static function ShowClubById($id)
     {
+//        self::showArray($id);
+//        die;
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE id = {$id}";
             $result = $db->query($query);
@@ -356,7 +357,7 @@ class AdminModel
 
             $pieces = explode("&", $club_info['coach_name']);
             $new_arr = array_diff($pieces, array('', NULL, false));
-            $club_info['coach_name'] = implode(",", $new_arr);
+            $club_info['coach_name'] = implode(", ", $new_arr);
 
 
             /*

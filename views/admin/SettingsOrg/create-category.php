@@ -1,5 +1,5 @@
 <?php
-sleep(1);
+@sleep(1);
 ?>
 <div class="resize-remove">
     <div class="box-header with-border">
