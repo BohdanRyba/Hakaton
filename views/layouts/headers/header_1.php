@@ -1,19 +1,21 @@
 <?php
 use controllers\AppController;
 use components\Router;
+$user = AppController::getCurrentUserInfo();
+
 return '<header class="main-header">
         <!-- Logo -->
-        <a href="../index.php" class="logo">
+        <a href="' .  Router::$permalink . 'home" title="На главную" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>L</b>IV</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><b>Liv</b>LEGEND</span>
         </a>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a href="' .  Router::$permalink . 'home" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <!-- Navbar Right Menu -->
@@ -30,31 +32,28 @@ return '<header class="main-header">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="' .  Router::$permalink . 'views/main/img/club_img/' .  $user['club_image'] . '" class="user-image" alt="' . $user['club_shief'] . '">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs">' . $user['club_shief'] . '</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="' .  Router::$permalink . 'views/main/img/club_img/' .  $user['club_image'] . '" class="img-circle" alt="' . $user['club_shief'] . '">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    ' . $user['club_shief'] . ' - Глава клуба "' . $user['club_name'] . '"
+                                    <small>' . $user['club_country'] . ', ' . $user['club_city'] . '</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
                             <li class="user-body">
                                 <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
+                                    <div class="col-xs-6 text-center">
+                                        <a href="#">' . $user['club_mail'] . '</a>
                                     </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
+                                    <div class="col-xs-6 text-center">
+                                        <a href="#">' . $user['club_number'] . '</a>
                                     </div>
                                 </div>
                                 <!-- /.row -->
@@ -62,10 +61,10 @@ return '<header class="main-header">
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="' .  Router::$permalink . 'profile" class="btn btn-default btn-flat">Профиль</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="' .  Router::$permalink . 'out" class="btn btn-default btn-flat">Выход</a>
                                 </div>
                             </li>
                         </ul>

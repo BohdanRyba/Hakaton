@@ -1,6 +1,7 @@
 <?php
 
 namespace models;
+
 use components\Db;
 
 class AppModel
@@ -11,5 +12,18 @@ class AppModel
             $_SESSION['messages'] = $data;
         }
         return;
+    }
+
+    public static function getUser($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $query = "SELECT * FROM `clubs` WHERE `id` = '{$id}'";
+            $result = $db->query($query);
+            $row = $result->fetch_assoc();
+            $db->close();
+            return $row;
+        } else {
+            return false;
+        }
     }
 }

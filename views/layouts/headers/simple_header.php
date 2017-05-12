@@ -1,7 +1,7 @@
 <?php
 use controllers\AppController;
 use components\Router;
-
+$user = AppController::getCurrentUserInfo();
 return '<header class="main-header">
 
         <!-- Logo -->
@@ -18,7 +18,7 @@ return '<header class="main-header">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand">Brand</a>
+                    <a href="' .  Router::$permalink . 'admin/organizations/page/1" title="Админ панель" class="navbar-brand">LivLegend</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
                     <ul class="nav navbar-nav pull-right">

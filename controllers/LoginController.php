@@ -12,6 +12,7 @@ class LoginController extends AppController
             if ($_POST['email'] == $user['club_mail'] && !empty($user)) {
                 if (md5($_POST['pass_in']) == $user['password']) {
                     $_SESSION['accessing'] = $user['grant'];
+                    $_SESSION['current_user_id'] = $user['id'];
                     $_SESSION['current_user'] = $user['club_shief'];
                     $message = json_encode([
                         'status' => 'success',

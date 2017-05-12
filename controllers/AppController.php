@@ -2,6 +2,7 @@
 
 namespace controllers;
 use components\Db;
+use models\AppModel;
 
 class AppController
 {
@@ -153,11 +154,21 @@ MESSAGE;
     public function loadSideBar($sidebarName){
         return require_once(ROOT . "views/layouts/sidebars/$sidebarName.php");
     }
+
     public function loadHeader($headerName){
         return require_once(ROOT . "views/layouts/headers/$headerName.php");
     }
+
     public function loadFooter($footerName){
         return require_once(ROOT . "views/layouts/footers/$footerName.php");
     }
 
+    public static function getCurrentUserInfo(){
+        if(!empty($_SESSION['current_user_id'])){
+            $user = AppModel::getUser($_SESSION['current_user_id']);
+            return $user;
+        } else {
+            return false;
+        }
+    }
 }
