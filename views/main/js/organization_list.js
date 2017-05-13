@@ -2,7 +2,25 @@
  * Created by PC1 on 28.09.2016.
  */
 $(function() {
+    $('.log_animate').click(function (e) {
+        e.preventDefault();
+        $('.form_log').show(1000);
+        $('#overlay_log').show(400);
+    });
+    $('#overlay_log').click(function () {
+        $(this).hide(400);
+        $('.form_log').hide(400);
+    });
 
+    $('.connect').click(function (e) {
+        e.preventDefault();
+        $('#overlay_log').show(600);
+        $('.us_info').show(1000);
+    });
+    $('#overlay_log').click(function () {
+        $(this).hide(400);
+        $('.us_info').hide(400);
+    });
     $(window).on('resize', function(){
         var width = window.innerWidth,
             $dl=$('.org-info-wrapper>dl');
