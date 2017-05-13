@@ -58,7 +58,7 @@ use components\Router;
     <div class="box-body">
 
         <div class="col-sm-4 box-avatar-cab">
-            <img src="<?=$participant['club_image']?>">
+            <img src="<?= Router::$permalink ?>views/main/img/club_img/<?=$participant['club_image']?>">
             <p class="telef">Контактный телефон: <span><?=$participant['club_number']?> </span></p>
             <p class="e-mail">Адрес електроной почты: <span><?=$participant['club_mail']?> </span></p>
         </div>

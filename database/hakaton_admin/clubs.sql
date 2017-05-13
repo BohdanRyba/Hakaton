@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 26 2017 г., 21:04
+-- Время создания: Май 13 2017 г., 02:58
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -38,16 +38,17 @@ CREATE TABLE `clubs` (
   `password` varchar(255) NOT NULL,
   `grant` int(11) NOT NULL DEFAULT '1',
   `active` int(11) NOT NULL DEFAULT '1',
-  `org_id_for_club` int(11) NOT NULL
+  `org_id_for_club` int(11) NOT NULL,
+  `coaches` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `clubs`
 --
 
-INSERT INTO `clubs` (`id`, `club_name`, `club_image`, `club_country`, `club_city`, `club_shief`, `club_number`, `club_mail`, `password`, `grant`, `active`, `org_id_for_club`) VALUES
-(1, 'admin', '../../../views/main/img/club_img/', 'Ukraine', 'Khmelnytski', 'Roma Slobodeniuk', 380673800836, 'romsl@i.ua', '21232f297a57a5a743894a0e4a801fc3', 4, 1, 0),
-(2, 'LivLegend', '../../../views/main/img/club_img/', 'Ukraine', 'Khmelnytski', 'Геннадий', 48692600399, 'gena@i.ua', 'e0a7bf6b3b6eb370828d29888d4805bc', 4, 1, 0);
+INSERT INTO `clubs` (`id`, `club_name`, `club_image`, `club_country`, `club_city`, `club_shief`, `club_number`, `club_mail`, `password`, `grant`, `active`, `org_id_for_club`, `coaches`) VALUES
+(1, 'Wither Club', 'roma.jpg', 'Ukraine', 'Khmelnytski', 'Roma Slobodeniuk', 380673800836, 'romsl@i.ua', '21232f297a57a5a743894a0e4a801fc3', 4, 1, 6, ''),
+(2, 'LivLegend', 'gena.jpg', 'Украина', 'Хмельницкий', 'Геннадий Федосов', 380671234567, 'gena@i.ua', 'e0a7bf6b3b6eb370828d29888d4805bc', 4, 1, 6, 'Дима&Саша&Petro&Sergey&Lesya&Kira');
 
 --
 -- Индексы сохранённых таблиц
