@@ -1110,6 +1110,7 @@ class AdminModel extends AppModel
                             'message' => "Отделение \"" . $name . "\" создать не удалось!"
                         ]);
                     }
+                    return $result;
                 } else {
                     $message = json_encode([
                         'status' => 'error',
@@ -1118,7 +1119,7 @@ class AdminModel extends AppModel
                 }
                 self::saveMessage($message);
                 $db->close();
-                return $result;
+                return $departments;
             } elseif ($dep_id != null && $option === 'Изменить') {
                 $update_result = $db->query("UPDATE `departments`
                                                 SET `dep_name` = '{$name}'
