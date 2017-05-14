@@ -269,21 +269,16 @@ use components\Router;
                                                                     <p id="see-department-name"
                                                                        class="text-bold text-center"></p>
                                                                     <ul id="dance-program-to-pick-categories">
-                                                                        <li class="prevent-text-emphasizing dance-program-name"
-                                                                            data-name="111"><span
-                                                                                    class="numeration"></span>department
-                                                                            1
-                                                                        </li>
-                                                                        <li class="prevent-text-emphasizing dance-program-name"
-                                                                            data-name="111"><span
-                                                                                    class="numeration"></span>department
-                                                                            2
-                                                                        </li>
-                                                                        <li class="prevent-text-emphasizing dance-program-name"
-                                                                            data-name="111"><span
-                                                                                    class="numeration"></span>department
-                                                                            3
-                                                                        </li>
+                                                                        <?php if(!empty($d_c_program_names)):?>
+                                                                            <?php foreach($d_c_program_names as $name):?>
+                                                                                <li class="prevent-text-emphasizing dance-program-name"
+                                                                                    data-name="d_c_program">
+                                                                                    <span class="numeration">
+                                                                                        <?=$name;?>
+                                                                                    </span>
+                                                                                </li>
+                                                                            <?php endforeach;?>
+                                                                        <?php endif;?>
                                                                     </ul>
                                                                 </div>
                                                             </div>
