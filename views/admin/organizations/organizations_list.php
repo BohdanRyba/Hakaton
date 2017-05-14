@@ -23,7 +23,7 @@ use components\Router;
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/organization_list.less">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/organization_list.less?0">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -99,9 +99,8 @@ use components\Router;
                                             data-target="#myModal"><i class="fa fa-times"></i></button>
                                 </div>
                                 <div class="row box-body">
-                                    <div class="col-md-4 col-xs-12 ">
+                                    <div class="col-md-4 col-xs-12">
 <!--                                        <div class="org-img">-->
-<!---->
 <!--                                        </div>-->
                                         <img class="org-img"--?>
                                              src="<?php echo Router::$permalink . $organization['org_pic_path'] ?>">
