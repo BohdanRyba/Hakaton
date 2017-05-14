@@ -272,10 +272,8 @@ use components\Router;
                                                                         <?php if(!empty($d_c_program_names)):?>
                                                                             <?php foreach($d_c_program_names as $name):?>
                                                                                 <li class="prevent-text-emphasizing dance-program-name"
-                                                                                    data-name="d_c_program">
-                                                                                    <span class="numeration">
+                                                                                    data-name="<?=$name;?>">
                                                                                         <?=$name;?>
-                                                                                    </span>
                                                                                 </li>
                                                                             <?php endforeach;?>
                                                                         <?php endif;?>
