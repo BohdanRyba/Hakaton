@@ -99,9 +99,12 @@ use components\Router;
                                             data-target="#myModal"><i class="fa fa-times"></i></button>
                                 </div>
                                 <div class="row box-body">
-                                    <div class="col-md-4 col-xs-12">
-                                        <img class="org-img"
-                                             src="<?php echo Router::$permalink . $organization['org_pic_path'] ?>">
+                                    <div class="col-md-4 col-xs-12 lalala">
+                                        <div class="org-img">
+
+                                        </div>
+<!--                                        <img class="org-img"-->
+<!--                                             src="--><?php //echo Router::$permalink . $organization['org_pic_path'] ?><!--">-->
                                     </div>
                                     <div class="col-md-8 col-xs-12 pull-left">
                                         <div class="org-info-wrapper">

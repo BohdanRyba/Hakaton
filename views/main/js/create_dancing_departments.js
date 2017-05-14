@@ -149,9 +149,15 @@ jQuery(function($) {
                 success: function (msg) {
                     console.log(msg);
                     console.log('ajax_sendRemovedCategories has worked successfully!');
+                    $danceProgramsList.empty();
+                    // msg.forEach(function (name) {
+                    //     $danceProgramsList.append('<li class="prevent-text-emphasizing dance-program-name" data-name="">'+name+'</li>');
+                    // });
                 },
                 error: function (msg) {
                     console.log('ajax_sendRemovedCategories has failed to work!');
+                    $danceProgramsList.empty();
+                    $danceProgramsList.append('<p class="prevent-text-emphasizing text-uppercase">ошибка. повторите попытку.</p>');
                 }
             });
         }
