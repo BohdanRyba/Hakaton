@@ -1082,9 +1082,9 @@ class AdminModel extends AppModel
                     }
                 }
             }
+            $db->close();
             return $resulting_array;
         }
-        $db->close();
     }
 
     static function departmentsOperation($name, $event_id, $option = '', $dep_id = null)

@@ -456,8 +456,6 @@ class AdminController extends AppController
 
     public function actionCreateDancingDepartments($event_id)
     {
-//        self::showArray($_POST);
-//        die;
         if (!empty($_POST)) {
             if (!empty($_POST['new-department-name-confirmation-btn'])) {
                 if ($_POST['new-department-name-confirmation-btn'] == 'Создать'
@@ -483,6 +481,7 @@ class AdminController extends AppController
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
         $departments = AdminModel::getDepartmentsByEventId($event_id);
+        $d_c_program_names = AdminModel::getUniqueDanceCategoryPrograms($event_id);
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
