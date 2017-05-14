@@ -69,7 +69,7 @@ jQuery(function($) {
     });
 
     $('[name="new-department-name-confirmation-btn"]').on('click', function (e) {
-        var name=$editDepartmentModal.find('#newDepartmentName').val();
+        var name=$editDepartmentModal.find('#newDepartment').val();
         if (name=='') {
             e.preventDefault();
         }
