@@ -138,6 +138,23 @@ jQuery(function($) {
             toggleVisibility ($departmentsFillingPanelBody,'block');
         }
         toggleVisibility ($departmentsFillingCategoriesList,'none');
+        
+        function ajax_getPossibleDancePrograms() {
+            $.ajax({
+                type:"POST",
+                url:'ajax_sendRemovedCategories',
+                data: {
+                    categories : categories
+                },
+                success: function (msg) {
+                    console.log(msg);
+                    console.log('ajax_sendRemovedCategories has worked successfully!');
+                },
+                error: function (msg) {
+                    console.log('ajax_sendRemovedCategories has failed to work!');
+                }
+            });
+        }
     });
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

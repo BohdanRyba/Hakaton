@@ -54,7 +54,7 @@ jQuery(function($) {
                     });
                 },
                 error: function (msg) {
-                    console.log('ajax_sendRemovedCategories has failed work!');
+                    console.log('ajax_sendRemovedCategories has failed to work!');
                     $modalBody.empty().append('<p>Ошибка! Повторите операцию.</p>');
                     $modalFooter.empty().append('<button type="button" class="btn btn-primary" data-dismiss="modal">ок</button>');
                     $resultModal.modal();
