@@ -1093,8 +1093,12 @@ class AdminModel extends AppModel
             $message = '';
             $name = self::addSlashes($name);
             if ($option === 'Создать' && $dep_id == null) {
-                $departments = $db->query("SELECT * FROM `departments` WHERE `dep_name` = '{$name}' AND `event_id` = {$event_id}");
-                if(!$departments){
+                $departments_query = $db->query("SELECT * FROM `departments` WHERE `dep_name` = '{$name}' AND `event_id` = {$event_id}");
+                $departments = array();
+                while ($row = $departments_query->fetch_assoc()) {
+                    $departments[] = $row;
+                }
+                if(count($departments) == 0){
                     $result = $db->query("INSERT INTO `departments`
                                               SET `id` = '',
                                                   `dep_name` = '{$name}',
@@ -1110,16 +1114,18 @@ class AdminModel extends AppModel
                             'message' => "Отделение \"" . $name . "\" создать не удалось!"
                         ]);
                     }
+                    self::saveMessage($message);
+                    $db->close();
                     return $result;
                 } else {
                     $message = json_encode([
                         'status' => 'error',
                         'message' => "Категория с именем \"" . $name . "\" уже существует!"
                     ]);
+                    self::saveMessage($message);
+                    $db->close();
+                    return false;
                 }
-                self::saveMessage($message);
-                $db->close();
-                return $departments;
             } elseif ($dep_id != null && $option === 'Изменить') {
                 $update_result = $db->query("UPDATE `departments`
                                                 SET `dep_name` = '{$name}'
@@ -1143,10 +1149,10 @@ class AdminModel extends AppModel
                     'status' => 'error',
                     'message' => "Приняты некорректные данные, сохранить или изменить отделение не удалось!"
                 ]);
+                self::saveMessage($message);
+                $db->close();
+                return false;
             }
-            self::saveMessage($message);
-            $db->close();
-            return 'data error';
         } else {
             $message = json_encode([
                 'status' => 'error',
