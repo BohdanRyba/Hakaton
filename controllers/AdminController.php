@@ -456,6 +456,8 @@ class AdminController extends AppController
 
     public function actionCreateDancingDepartments($event_id)
     {
+//        self::showArray($_POST);
+//        die;
         if (!empty($_POST)) {
             if (!empty($_POST['new-department-name-confirmation-btn'])) {
                 if ($_POST['new-department-name-confirmation-btn'] == 'Создать'

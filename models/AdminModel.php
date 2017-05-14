@@ -1093,19 +1093,27 @@ class AdminModel extends AppModel
             $message = '';
             $name = self::addSlashes($name);
             if ($option === 'Создать' && $dep_id == null) {
-                $result = $db->query("INSERT INTO `departments`
+                $departments = $db->query("SELECT * FROM `departments` WHERE `dep_name` = '{$name}' AND `event_id` = {$event_id}");
+                if(!$departments){
+                    $result = $db->query("INSERT INTO `departments`
                                               SET `id` = '',
                                                   `dep_name` = '{$name}',
                                                   `event_id` = {$event_id}");
-                if ($result) {
-                    $message = json_encode([
-                        'status' => 'success',
-                        'message' => "Отделение \"" . $name . "\" было успешно создано!"
-                    ]);
+                    if ($result) {
+                        $message = json_encode([
+                            'status' => 'success',
+                            'message' => "Отделение \"" . $name . "\" было успешно создано!"
+                        ]);
+                    } else {
+                        $message = json_encode([
+                            'status' => 'error',
+                            'message' => "Отделение \"" . $name . "\" создать не удалось!"
+                        ]);
+                    }
                 } else {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Отделение \"" . $name . "\" создать не удалось!"
+                        'message' => "Категория с именем \"" . $name . "\" уже существует!"
                     ]);
                 }
                 self::saveMessage($message);
