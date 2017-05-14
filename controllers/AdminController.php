@@ -506,4 +506,9 @@ class AdminController extends AppController
             '$result' => $result,
         ]);
     }
+
+    public function actionAjax_getCategoriesToPickForDepartment(){
+//        echo json_encode($_POST);
+
+    } // TODO - it should be completed...
 }
