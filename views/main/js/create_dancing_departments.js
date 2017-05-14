@@ -168,6 +168,11 @@ jQuery(function($) {
     $body.on('click', '.dance-program-name', function () {
 
         toggleVisibility($departmentsFillingCategoriesList, 'block');
+
+        function ajax_getCategories() {
+            var $name=$(this).attr('data-name');
+            
+        }
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT SHOWS CATEGORIES $danceProgramsList THAT ARE USED IN THE DANCING PROGRAM)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 
