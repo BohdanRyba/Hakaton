@@ -97,8 +97,7 @@ class Router
                         break;
                     }
                 } else {
-
-//                    header('Location: ' . ROOT . '/home');
+                    header('Location: ' . ROOT . '/home');
                 }
             }
         }
