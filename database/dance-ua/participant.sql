@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Май 13 2017 г., 02:59
--- Версия сервера: 10.1.9-MariaDB
--- Версия PHP: 5.6.15
+-- Хост: 127.0.0.1:3306
+-- Час створення: Трв 31 2017 р., 18:36
+-- Версія сервера: 10.0.30-MariaDB-30
+-- Версія PHP: 7.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `hakaton_admin`
+-- База даних: `livlegends`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `participant`
+-- Структура таблиці `participant`
 --
 
 CREATE TABLE `participant` (
@@ -34,10 +34,10 @@ CREATE TABLE `participant` (
   `birth_date` date NOT NULL,
   `club_id` int(11) NOT NULL,
   `coach` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `participant`
+-- Дамп даних таблиці `participant`
 --
 
 INSERT INTO `participant` (`id_participant`, `first_name`, `second_name`, `third_name`, `birth_date`, `club_id`, `coach`) VALUES
@@ -63,27 +63,29 @@ INSERT INTO `participant` (`id_participant`, `first_name`, `second_name`, `third
 (32, 'Bogdan', 'Boda', 'Oleksandrovych1111111111111111111', '1998-02-11', 2, 'Saniok'),
 (33, 'Eeeee', 'LLL', 'jnfrjlngjkn', '1999-12-02', 2, 'Fucio'),
 (34, 'Last Test', 'Boda', 'Lol', '1998-02-11', 2, 'Cibab'),
-(35, 'Andrey', 'Slotvinskiy', 'Vv', '1998-08-01', 2, 'Oleg');
+(35, 'Andrey', 'Slotvinskiy', 'Vv', '1998-08-01', 2, 'Oleg'),
+(36, 'The_Name', 'surname', 'third name', '1990-12-25', 3, 'Trener1'),
+(37, 'Gosha', 'Tvoiu', 'Mat', '2000-11-23', 5, 'Trener ubijca');
 
 --
--- Индексы сохранённых таблиц
+-- Індекси збережених таблиць
 --
 
 --
--- Индексы таблицы `participant`
+-- Індекси таблиці `participant`
 --
 ALTER TABLE `participant`
   ADD PRIMARY KEY (`id_participant`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT для збережених таблиць
 --
 
 --
--- AUTO_INCREMENT для таблицы `participant`
+-- AUTO_INCREMENT для таблиці `participant`
 --
 ALTER TABLE `participant`
-  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -64,6 +64,8 @@ use components\Router;
                         </div>
                         <div class="modal-footer">
                             <form method="post" action="delOrg">
+                                <label for="confirmation_pass_id" class="form-control">Введите пароль для подтверждения удаления огранизации:</label>
+                                <input id="confirmation_pass_id" name="deletion-confirmation-password" type="password" class="form-control">
                                 <input type="submit" name="delete_org"
                                        class="btn btn-primary text-capitalize deletion-submit" value="удалить!">
                                 <input type="hidden" name="delete_org_id">
@@ -102,8 +104,7 @@ use components\Router;
                                     <div class="col-md-4 col-xs-12">
 <!--                                        <div class="org-img">-->
 <!--                                        </div>-->
-                                        <img class="org-img"--?>
-                                             src="<?php echo Router::$permalink . $organization['org_pic_path'] ?>">
+                                        <img class="org-img" src="<?php echo Router::$permalink . $organization['org_pic_path'] ?>">
                                     </div>
                                     <div class="col-md-8 col-xs-12 pull-left">
                                         <div class="org-info-wrapper">

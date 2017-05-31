@@ -115,13 +115,13 @@ desired effect
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Город</label>
                                 <div class="col-sm-10">
-                                    <input name="org_city" type="tel" class="form-control" id="inputPassword3" placeholder="Город организации">
+                                    <input name="org_city" type="text" class="form-control" id="inputPassword3" placeholder="Город организации">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Страна</label>
                                 <div class="col-sm-10">
-                                    <input name="org_country" type="tel" class="form-control" id="inputPassword3" placeholder="Страна организации">
+                                    <input name="org_country" type="text" class="form-control" id="inputPassword3" placeholder="Страна организации">
                                 </div>
                             </div>
                             <div class="form-group">

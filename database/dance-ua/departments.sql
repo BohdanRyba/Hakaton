@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Апр 20 2017 г., 10:20
--- Версия сервера: 10.1.9-MariaDB
--- Версия PHP: 5.6.15
+-- Хост: 127.0.0.1:3306
+-- Час створення: Трв 31 2017 р., 18:36
+-- Версія сервера: 10.0.30-MariaDB-30
+-- Версія PHP: 7.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `hakaton_admin`
+-- База даних: `livlegends`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `departments`
+-- Структура таблиці `departments`
 --
 
 CREATE TABLE `departments` (
@@ -34,31 +34,33 @@ CREATE TABLE `departments` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `departments`
+-- Дамп даних таблиці `departments`
 --
 
 INSERT INTO `departments` (`id`, `dep_name`, `d_c_ids`, `event_id`) VALUES
-(1, 'Первое отделение', '', 19);
+(3, 'Нищеброды', '', 1),
+(4, 'Нищеброды', '', 1),
+(5, 'Нормас отделение', '', 1);
 
 --
--- Индексы сохранённых таблиц
+-- Індекси збережених таблиць
 --
 
 --
--- Индексы таблицы `departments`
+-- Індекси таблиці `departments`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT для збережених таблиць
 --
 
 --
--- AUTO_INCREMENT для таблицы `departments`
+-- AUTO_INCREMENT для таблиці `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

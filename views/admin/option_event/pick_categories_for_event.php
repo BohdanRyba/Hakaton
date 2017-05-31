@@ -72,6 +72,11 @@ use components\Router;
                     <div id="dance-group-info-wrapper">
                         <div class="col-xs-12">
                             <div class="container box box-primary flat">
+                                <h2 style="color:blue;">
+                                    Выбор категорий для события "<?php echo $event['event_name']?>" в организации <a href="<?php echo Router::$permalink . 'admin/organizations/org_settings/' . $organization['id']?>">
+                                        "<?php echo $organization['org_name']?>"
+                                    </a>
+                                </h2>
                                 <div class="row">
                                     <div id="dance-group-parameters-list" class="col-xs-12 col-md-4 col-lg-3">
                                         <div class="container-fluid">

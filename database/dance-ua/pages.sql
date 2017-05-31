@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Апр 20 2017 г., 10:21
--- Версия сервера: 10.1.9-MariaDB
--- Версия PHP: 5.6.15
+-- Хост: 127.0.0.1:3306
+-- Час створення: Трв 31 2017 р., 18:36
+-- Версія сервера: 10.0.30-MariaDB-30
+-- Версія PHP: 7.1.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `hakaton_base`
+-- База даних: `livlegends`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `pages`
+-- Структура таблиці `pages`
 --
 
 CREATE TABLE `pages` (
@@ -37,7 +37,7 @@ CREATE TABLE `pages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `pages`
+-- Дамп даних таблиці `pages`
 --
 
 INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `class`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (8, 'Создать новость', 'addnews', 'without_popup', 0, 4, 'news_animate'),
 (2, 'Новости', 'news/page/1', 'without_popup', 1, 0, ''),
 (3, 'События', 'events', 'without_popup', 1, 1, ''),
-(4, 'Связь с нами', '#', 'popup', 1, 0, 'connect'),
+(4, 'Связь с нами', '#', 'popup', 1, 2, 'connect'),
 (5, 'Вход', '#', 'popup', 1, 2, 'log_animate'),
 (6, 'Выход', 'out', 'without_popup', 1, 1, ''),
 (10, 'Профиль', 'profile', 'without_popup', 1, 1, ''),
@@ -54,21 +54,21 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (11, 'Админ панель', 'admin/organizations/page/1', 'without_popup', 1, 4, '');
 
 --
--- Индексы сохранённых таблиц
+-- Індекси збережених таблиць
 --
 
 --
--- Индексы таблицы `pages`
+-- Індекси таблиці `pages`
 --
 ALTER TABLE `pages`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT для збережених таблиць
 --
 
 --
--- AUTO_INCREMENT для таблицы `pages`
+-- AUTO_INCREMENT для таблиці `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;

@@ -77,6 +77,8 @@ class AdminModel extends AppModel
 
     public static function recordOrganization()
     {
+        $_POST = array_map(['self','addSlashes'], $_POST);
+
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
 
             if ($_FILES['org_image']['error'] == 0) {
@@ -109,10 +111,11 @@ class AdminModel extends AppModel
 
     public static function updateOrganization()
     {
+        $_POST = array_map(['self','addSlashes'], $_POST);
 
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $organizanization = AdminModel::getOrganizationById($_POST['id']);
-            if ($_POST['org_name'] !== $organizanization['org_name']) {
+            $organization = AdminModel::getOrganizationById($_POST['id']);
+            if ($_POST['org_name'] !== $organization['org_name']) {
                 $result = $db->query("UPDATE `organizations`
                                       SET `org_name` = '{$_POST['org_name']}'
                                       WHERE `id` = {$_POST['id']}");
@@ -144,14 +147,10 @@ class AdminModel extends AppModel
         } else return 'db.connect false';
     }
 
-    public static function deleteOrganization($id)
-    {
-        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $organizanization = AdminModel::getOrganizationById($id);
-
-            $result = $db->query("DELETE FROM `organizations` WHERE `id` = {$id}");
-
-            $tmp_arr_with_pic_path = explode("/", $organizanization['org_pic_path']); // we create temp array for pulling out the picture name;
+    private static function deleteImages($entity, $column_name_with_img){
+        $delete_picture_result = '';
+        foreach ($entity as $row_with_img){
+            $tmp_arr_with_pic_path = explode("/", $row_with_img[$column_name_with_img]); // we create temp array for pulling out the picture name;
             $image_name = array_pop($tmp_arr_with_pic_path); // then we are pulling that picture name;
             $pic_folder = implode("/", $tmp_arr_with_pic_path) . '/'; // after that we glue all the components to create a folder path with pictures;
 
@@ -159,38 +158,84 @@ class AdminModel extends AppModel
             chdir(ROOT . $pic_folder); // change the dir where lays the organization's picture;
             $delete_picture_result = unlink(ROOT . $pic_folder . $image_name); // then delete the picture;
             chdir($old); // Restore the old working directory;
+        }
+        return $delete_picture_result;
+    }
 
-            if ($result == true && $delete_picture_result == true) {
-                $message = json_encode([
-                    'status' => 'success',
-                    'message' => 'ОРГАНИЗАЦИЯ и ЛОГОТИП успешно удалены!'
-                ]);
-            } elseif ($result == true && $delete_picture_result == false) {
-                $message = json_encode([
-                    'status' => 'warning',
-                    'message' => ' ЛОГОТИП организации удалить не удалось ( но сама организация удалена из базы данных успешно)!'
-                ]);
-            } elseif ($result == false && $delete_picture_result == true) {
-                $message = json_encode([
-                    'status' => 'warning',
-                    'message' => 'Не удалось удалить ОРГАНИЗАЦИЮ из базы данных (но сам логотип удален успешно)!'
-                ]);
-            } elseif ($result == false && $delete_picture_result == false) {
-                $message = json_encode([
-                    'status' => 'error',
-                    'message' => 'ОРГАНИЗАЦИЮ и ЛОГОТИП удалить не удалось!'
-                ]);
-            } else {
-                $message = json_encode([
-                    'status' => 'error',
-                    'message' => 'Организацию удалить не удалось!'
-                ]);
+    public static function deleteOrganization($id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+
+            $organization[0] = self::getOrganizationById($id);
+            $organization_del_img_result = self::deleteImages($organization, 'org_pic_path');
+
+            $organization_result = $db->query("DELETE FROM `organizations` WHERE `id` = {$id}");
+
+            $dance_categories_result = $db->query("DELETE FROM `dance_categories` WHERE `org_id` = {$id}");
+            $category_parameters_result = $db->query("DELETE FROM `category_parameters` WHERE `id_org` = {$id}");
+
+            $events = self::ShowEvents($id);
+
+            $departments_result = '';
+            if(!empty($events)){
+                foreach ($events as $event){
+                    $departments_result = $db->query("DELETE FROM `departments` WHERE `event_id` = {$event['id']}");
+                }
             }
 
-            self::saveMessage($message);
+            $events_del_img_result = self::deleteImages($events, 'event_image');
 
-            $db->close();
-            return $result;
+            $events_result = $db->query("DELETE FROM `events` WHERE `org_id_for_event` = {$id}");
+
+            $clubs_result = $db->query("UPDATE `clubs` SET `org_id_for_club` = 0 WHERE `org_id_for_club` = {$id}");
+
+//            self::showArray([
+//                '$organization_del_img_result' => (int)$organization_del_img_result,
+//                '$organization_result' => (int)$organization_result,
+//                '$dance_categories_result' => (int)$dance_categories_result,
+//                '$category_parameters_result' => (int)$category_parameters_result,
+//                '$departments_result' => (int)$departments_result,
+//                '$events_del_img_result' => (int)$events_del_img_result,
+//                '$events_result' => (int)$events_result,
+//                '$clubs_result' => (int)$clubs_result,
+//                '$organization' => $organization,
+//                '$events' => $events
+//            ]);
+//            die;
+
+            if(
+                $organization_del_img_result && $organization_result && $dance_categories_result &&
+                $category_parameters_result && $departments_result && $events_del_img_result &&
+                $events_result && $clubs_result
+            ){
+                $message = json_encode([
+                    'status' => 'success',
+                    'message' => 'ОРГАНИЗАЦИЯ успешно удалена (также были удалены относящиеся к ней данные: танцевальные параметры и категории, события и их отделения)!'
+                ]);
+                self::saveMessage($message);
+                $db->close();
+                return true;
+            } elseif(
+                !$organization_del_img_result && !$organization_result && !$dance_categories_result &&
+                !$category_parameters_result && !$departments_result && !$events_del_img_result &&
+                !$events_result && !$clubs_result
+            ){
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => 'ОРГАНИЗАЦИЮ удалить не удалось, пожалуйста, обратитесь к администратору!'
+                ]);
+                self::saveMessage($message);
+                $db->close();
+                return false;
+            } else {
+                $message = json_encode([
+                    'status' => 'warning',
+                    'message' => 'ОРГАНИЗАЦИЯ была удалена (но не все относящиеся к ней данные удалены, просьба сообщить администратору).'
+                ]);
+                self::saveMessage($message);
+                $db->close();
+                return 'warning';
+            }
         } else return 'db.connect false';
     }
 
@@ -204,6 +249,7 @@ class AdminModel extends AppModel
             while ($row = $result->fetch_assoc()) {
                 $clubsList[$i]['id'] = $row['id'];
                 $clubsList[$i]['club_name'] = $row['club_name'];
+                $clubsList[$i]['club_image'] = $row['club_image'];
                 $clubsList[$i]['club_country'] = $row['club_country'];
                 $clubsList[$i]['club_city'] = $row['club_city'];
                 $clubsList[$i]['club_shief'] = $row['club_shief'];
@@ -257,6 +303,7 @@ class AdminModel extends AppModel
                 $eventsList[$i]['event_country'] = $row['event_country'];
                 $eventsList[$i]['event_referee'] = $row['event_referee'];
                 $eventsList[$i]['event_skutiner'] = $row['event_skutiner'];
+                $eventsList[$i]['org_id_for_event'] = $row['org_id_for_event'];
                 $i++;
             }
             $db->close();
@@ -393,7 +440,7 @@ class AdminModel extends AppModel
         }
     }
 
-    static function club_add($a)
+    static function club_add($club_data)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
 
@@ -401,76 +448,41 @@ class AdminModel extends AppModel
                 $file_destination = ROOT . 'views/main/img/club_img/' . $_FILES['club_image']['name'];
                 move_uploaded_file($_FILES['club_image']['tmp_name'], $file_destination);
             }
-            if (isset($_POST['club_first_trener'])) {
-                $club_trener_0 = $_POST['club_first_trener'];
-            } else {
-                $club_trener_0 = '';
-            }
-            if (isset($_POST['club_trener_1'])) {
-                $club_trener_1 = $_POST['club_trener_1'];
-            } else {
-                $club_trener_1 = '';
-            }
-            if (isset($_POST['club_trener_2'])) {
-                $club_trener_2 = $_POST['club_trener_2'];
-            } else {
-                $club_trener_2 = '';
-            }
-            if (isset($_POST['club_trener_3'])) {
-                $club_trener_3 = $_POST['club_trener_3'];
-            } else {
-                $club_trener_3 = '';
-            }
-            if (isset($_POST['club_trener_4'])) {
-                $club_trener_4 = $_POST['club_trener_4'];
-            } else {
-                $club_trener_4 = '';
-            }
-            if (isset($_POST['club_trener_5'])) {
-                $club_trener_5 = $_POST['club_trener_5'];
-            } else {
-                $club_trener_5 = '';
-            }
-            if (isset($_POST['club_trener_6'])) {
-                $club_trener_6 = $_POST['club_trener_6'];
-            } else {
-                $club_trener_6 = '';
-            }
-            if (isset($_POST['club_trener_7'])) {
-                $club_trener_7 = $_POST['club_trener_7'];
-            } else {
-                $club_trener_7 = '';
-            }
-            $coaches = "$club_trener_0&$club_trener_1&$club_trener_2&$club_trener_3&$club_trener_4&$club_trener_5&$club_trener_6&$club_trener_7";
+            $coaches = [];
+            $club_trener_0 = (!empty($club_data['club_first_trener'])) ? $club_data['club_first_trener'] : '';
+            array_push($coaches, $club_trener_0);
 
+            foreach ($club_data as $key => $value) {
+                if (substr_count($key, 'club_trener_')) {
+                    if(!empty($value)){
+                        array_push($coaches, $value);
+                    }
+                }
+            }
+            $coaches = self::remove_empty($coaches);
+            $coaches = implode('&', $coaches);
 
-            $pass = md5($a['club_number']);
+            $pass = md5($club_data['club_number']);
             $result = $db->query("INSERT INTO `clubs`
                         SET
-                        `club_name`           =   '{$a['club_name']}',
-                        `club_image`          =   '../../../views/main/img/club_img/{$_FILES['club_image']['name']}',
-                        `club_country`        =   '{$a['club_country']}',
-                        `club_city`           =   '{$a['club_city']}',
-                        `club_shief`          =   '{$a['club_shief']}',
-                        `club_number`         =   '{$a['club_number']}',
-                        `club_mail`           =   '{$a['club_mail']}',
-                        `org_id_for_club`     =   '{$a['org_id']}',
+                        `club_name`           =   '{$club_data['club_name']}',
+                        `club_image`          =   'views/main/img/club_img/{$_FILES['club_image']['name']}',
+                        `club_country`        =   '{$club_data['club_country']}',
+                        `club_city`           =   '{$club_data['club_city']}',
+                        `club_shief`          =   '{$club_data['club_shief']}',
+                        `club_number`         =   '{$club_data['club_number']}',
+                        `club_mail`           =   '{$club_data['club_mail']}',
                         `password`            =   '{$pass}',
                         `grant`               =   1,
                         `active`              =   1,
+                        `org_id_for_club`     =   '{$club_data['org_id']}',
                         `coaches`             =   '{$coaches}'
-
                         ");
 
-            if ($result) {
-                return $result;
-            } else {
-                echo 'something else not work';
-            }
+            $db->close();
 
+            return $result;
         }
-        $db->close();
-        return true;
     }
 
     static function event_add($a)
@@ -481,9 +493,17 @@ class AdminModel extends AppModel
                 $file_destination = ROOT . 'views/main/img/event_img/' . $_FILES['event_image']['name'];
                 move_uploaded_file($_FILES['event_image']['tmp_name'], $file_destination);
             }
+
+            $query_name = $db->query("SELECT * FROM `events` WHERE `event_name` = '{$a['event_name']}' AND `org_id_for_event` = {$_SESSION['organization_id']}");
+            $the_event = $query_name->fetch_assoc();
+
+            if($query_name && !empty($the_event)){
+                return 'this name is already exist';
+            }
+
             $result = $db->query("INSERT INTO `events`
                         SET `event_name`       = '{$a['event_name']}',
-                        `event_image`          = '../../../views/main/img/event_img/{$_FILES['event_image']['name']}',
+                        `event_image`          = 'views/main/img/event_img/{$_FILES['event_image']['name']}',
                         `event_status`        = '{$a['event_status']}',
                         `event_start`           = '{$a['data-start']}',
                         `event_end`          = '{$a['data-finish']}',
@@ -496,8 +516,9 @@ class AdminModel extends AppModel
 
             $db->close();
             return $result;
+        } else {
+            return false;
         }
-        return true;
     }
 
     static function events_all($link)
@@ -888,13 +909,13 @@ class AdminModel extends AppModel
                             `second_name` = '{$data['lastName']}',
                             `third_name` = '{$data['patronymic']}',
                             `birth_date` = '{$data['date']}',
-                            `coach` = '{$data['coach']}',
-                            `club_id` = '{$data['id_club']}'
+                            `club_id` = '{$data['id_club']}',
+                            `coach` = '{$data['coach']}'
                             ");
+            $db->close();
             return $result;
         }
-        $db->close();
-
+        return false;
     }
 
     static function editDanceCategories($edit_array)
@@ -1269,6 +1290,15 @@ class AdminModel extends AppModel
             return $resulting_array;
         } else {
             return 'DB connection error';
+        }
+    }
+
+    static function getEventById($id){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT * FROM `events` WHERE `id` = {$id}");
+            return $row = $result->fetch_assoc();
+        } else {
+            return false;
         }
     }
 }

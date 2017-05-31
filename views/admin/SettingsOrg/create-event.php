@@ -73,6 +73,7 @@
                     <input type="text" class="form-control" name="event_skutiner" placeholder="Введите данные">
                 </div>
             </div>
+            <input type="hidden" name="redirect" value="admin/organizations/org_settings/<?php echo $_SESSION['organization_id'];?>">
             <div class="form_in">
                 <label class="" for=""><input name="reg_participant" type="submit" value="Принять"></label>
             </div>

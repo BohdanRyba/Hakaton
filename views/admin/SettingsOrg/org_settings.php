@@ -81,7 +81,10 @@ desired effect
                             <span class="button-reg glyphicon glyphicon-pencil"></span>
                         </li>
                     </div>
-
+                    <?php if (isset($this->message)) {
+                        echo $this->message;
+                    }
+                    ?>
                     <div class="cont-box clear">
                         <div class="button-box clr">
                             <ul class="button-org-add clr">

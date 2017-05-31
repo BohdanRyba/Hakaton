@@ -4,5 +4,5 @@ return array(
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
-    'dbname' => 'hakaton_base'
+    'dbname' => 'hakaton_admin'
 );

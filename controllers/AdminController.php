@@ -45,8 +45,6 @@ class AdminController extends AppController
 
     public function actionOrg_reg()
     {
-        $_POST = array_map("AdminModel::addSlashes", $_POST);
-
         if (isset($_POST)) {
             if (!empty($_POST['org_name']) && !empty($_POST['org_abbreviation']) && !empty($_POST['org_head_fio']) &&
                 !empty($_POST['org_city']) && !empty($_POST['org_country']) && !empty($_POST['org_phone']) &&
@@ -78,21 +76,36 @@ class AdminController extends AppController
 
     public function actionDelOrg()
     {
-        if (isset($_POST)) {
-            if (!empty($_POST['delete_org']) == 'удалить!' && !empty($_POST['delete_org_id'])) {
-                $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
-            } else {
-                echo 'One of the POST\'s components didn\'t pass the checking clause!';
+        if (!empty($_POST)) {
+            $message = '';
+
+            if ($_POST['delete_org'] === 'удалить!' && !empty($_POST['delete_org_id']) && isset($_POST['deletion-confirmation-password'])) {
+//                self::showArray($_POST);
+//                die;
+                if (AdminModel::getPermissionForDeletion()) {
+                    $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
+                    if ($resulting === 'db.connect false') {
+                        $message = json_encode([
+                            'status' => 'error',
+                            'message' => "Ошибка при подключении к базе данных (если вы видите это сообщение уже несколько раз, пожалуйста, обратитесь к администратору)."
+                        ]);
+                        self::saveMessage($message);
+                    }
+                } else {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => "В доступе отказано, организация не удалена."
+                    ]);
+                    self::saveMessage($message);
+                }
             }
+            header('Location: ' . Router::$permalink . $_POST['redirect']);
+            return true;
         }
-        header('Location: ' . Router::$permalink . $_POST['redirect']);
-        return true;
     }
 
     public function actionUpdateOrg()
     {
-        $_POST = array_map("AdminModel::addSlashes", $_POST);
-
         if (isset($_POST)) {
             if (!empty($_POST['org_name']) && !empty($_POST['org_abbreviation']) && !empty($_POST['org_head_fio']) &&
                 !empty($_POST['org_city']) && !empty($_POST['org_country']) && !empty($_POST['org_phone']) &&
@@ -113,15 +126,7 @@ class AdminController extends AppController
         $_SESSION['organization_id'] = $id;
         setcookie("get_id", "$id");
 
-        if (isset($id) && is_numeric($id)) {
-            $current_org_name = AdminModel::getOrganizationById($id);
-            $header = $this->loadHeader('header_1');
-            $sidebar = $this->loadSideBar('main_admin_sidebar');
-            $footer = $this->loadFooter('footer_1');
-            include 'views/admin/SettingsOrg/org_settings.php';
-        }
-
-        if (isset($_POST['action']) || isset($_POST['action'])) {
+        if (!empty($_POST['action'])) {
             if ($_POST['action'] == 'club') {
                 $this->actionAddClub();
             } elseif ($_POST['action'] == 'event') {
@@ -130,21 +135,38 @@ class AdminController extends AppController
                 $this->actionAddCategory();
             }*/
         }
+
+        if (isset($id) && is_numeric($id)) {
+            if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
+                $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+            }
+            $current_org_name = AdminModel::getOrganizationById($id);
+            $header = $this->loadHeader('header_1');
+            $sidebar = $this->loadSideBar('main_admin_sidebar');
+            $footer = $this->loadFooter('footer_1');
+            include 'views/admin/SettingsOrg/org_settings.php';
+            unset($_SESSION['messages']);
+            return true;
+        }
+
+
     }
 
     public function actionAddClub()
     {
+
         if (isset($_POST)) {
             if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
                 !empty($_POST['club_shief']) && !empty($_POST['club_number']) && !empty($_POST['club_mail']) &&
                 !empty($_POST['org_id'])
             ) {
-                AdminModel::club_add($_POST);
+                $result = AdminModel::club_add($_POST);
+//                self::showArray((int)$result);
+//                die;
             } else {
                 echo 'NooooO!';
             }
         }
-        self::showArray($_POST);
     }
 
     public function actionAjaxCategory_create()
@@ -159,16 +181,30 @@ class AdminController extends AppController
 
     public function actionAddEvent()
     {
+        $message = '';
         if (isset($_POST)) {
             if (!empty($_POST['event_name']) && !empty($_POST['event_status']) && !empty($_POST['data-finish']) &&
                 !empty($_POST['event_city']) && !empty($_POST['event_country']) && !empty($_POST['event_referee']) &&
                 !empty($_POST['event_skutiner']) && !empty($_POST['org_id'])
             ) {
-                $message = json_encode([
-                    'status' => 'success',
-                    'message' => 'Организация успешно сохранена в базе данных!'
-                ]);
-                AdminModel::event_add($_POST);
+                $result = AdminModel::event_add($_POST);
+
+                if($result === 'this name is already exist'){
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => 'Имя события "' . $_POST['event_name'] . '" уже существует, пожалуйста, выберите другое!'
+                    ]);
+                } elseif($result){
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => 'Событие "' . $_POST['event_name'] . '" успешно сохранено в базе данных!'
+                    ]);
+                } else {
+                    $message = json_encode([
+                        'status' => 'error',
+                        'message' => 'Обибка при попытке сохранения в базу данных!'
+                    ]);
+                }
             } else {
                 $message = json_encode([
                     'status' => 'error',
@@ -176,7 +212,6 @@ class AdminController extends AppController
                 ]);
             }
         }
-
         self::saveMessage($message);
     }
 
@@ -187,11 +222,15 @@ class AdminController extends AppController
 
     public function actionAjaxClubCabinet($id)
     {
+
+//        self::showArray($_POST);
+//        die;
         $participant = AdminModel::ShowClubById($id);
         $nav_content = $this->createNavContent(Router::$uri);
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('main_admin_sidebar');
         $footer = $this->loadFooter('footer_1');
+        $organization = AdminModel::getOrganizationById($_SESSION['organization_id']);
 
         require_once('views/admin/SettingsOrg/club-cabinet-for-adm.php');
 
@@ -258,15 +297,14 @@ class AdminController extends AppController
     public function actionDancingList()
     {
         if (!empty($_POST)) {
-
+            $message = '';
             if (isset($_POST) && !empty($_POST['redirect'])) {
                 $json = json_decode($_POST['redirect'], true);
                 $result = (integer)AdminModel::saveDanceProgram($json, 'update_list');
             } elseif ($_POST['deletion-confirmation-btn'] == 'Удалить!' &&
                 !empty($_POST['dancing-group-id']) &&
-                !empty($_POST['deletion-confirmation-password'])
+                isset($_POST['deletion-confirmation-password'])
             ) {
-                $message = '';
                 if (AdminModel::getPermissionForDeletion()) {
                     $result = (integer)AdminModel::deleteTheDanceGroup($_POST['dancing-group-id']);
                     if ($result) {
@@ -289,12 +327,6 @@ class AdminController extends AppController
                     ]);
                     self::saveMessage($message);
                 }
-            } else {
-                $message = json_encode([
-                    'status' => 'error',
-                    'message' => "Вы не ввели пароль для подтверждения удаления танцеваной группы!"
-                ]);
-                self::saveMessage($message);
             }
         }
         $list = AdminModel::getAllDanceGroups('list');
@@ -426,6 +458,8 @@ class AdminController extends AppController
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
+        $event = AdminModel::getEventById($event_id);
+        $organization = AdminModel::getOrganizationById($_SESSION['organization_id']);
         require_once('views/admin/option_event/pick_categories_for_event.php');
     }
 
