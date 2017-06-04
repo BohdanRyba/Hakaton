@@ -535,14 +535,12 @@ class AdminController extends AppController
         if(!empty($_POST['categories'])){
             $result = AdminModel::uncheckCategories($_POST['categories']);
         }
-        echo json_encode([
-            'post' => $_POST,
-            '$result' => $result,
-        ]);
+        return json_encode($_POST, JSON_FORCE_OBJECT);
     }
 
     public function actionAjax_getCategoriesToPickForDepartment(){
-//        echo json_encode($_POST);
+
+        echo json_encode($_POST);
 
     } // TODO - it should be completed...
 }
