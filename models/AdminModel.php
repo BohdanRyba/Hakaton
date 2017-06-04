@@ -1304,7 +1304,7 @@ class AdminModel extends AppModel
 
     static function gelFullCategories($d_c_program_name){
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("SELECT * FROM `dance_categories` WHERE `org_id` = {$_SESSION['organization_id']} AND `is_full` = 1");
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `d_c_program` = '{$d_c_program_name}' AND `org_id` = {$_SESSION['organization_id']} AND `is_full` = 1");
             $dance_categories = [];
             if($result){
                 while ($row = $result->fetch_assoc()){
