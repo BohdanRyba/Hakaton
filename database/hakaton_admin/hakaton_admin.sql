@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 04 2017 г., 19:04
+-- Время создания: Июн 04 2017 г., 22:32
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -114,7 +114,6 @@ CREATE TABLE `dance_categories` (
   `org_id` int(11) NOT NULL,
   `extra_id` int(11) DEFAULT NULL,
   `id_dance_group` int(11) NOT NULL,
-  `event_ids` varchar(1000) NOT NULL,
   `is_full` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -122,17 +121,17 @@ CREATE TABLE `dance_categories` (
 -- Дамп данных таблицы `dance_categories`
 --
 
-INSERT INTO `dance_categories` (`id`, `d_c_program`, `d_c_age_category`, `d_c_nomination`, `d_c_league`, `org_id`, `extra_id`, `id_dance_group`, `event_ids`, `is_full`) VALUES
-(1, 'Dance program 1', 'Age category 1', 'Nomination 1', 'League 1', 1, 111, 0, '1&', 0),
-(2, 'Dance 2', 'Age category 1', 'Nomination 1', 'League 1', 1, 222, 0, '1&', 1),
-(3, 'qqqqqqqq', 'wwwwwwwwwwwww', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 1, 333, 0, '1&', 0),
-(4, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Профі', 1, 444, 0, '', 1),
-(5, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 555, 0, '1&', 0),
-(6, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Профі', 1, 666, 0, '1&', 0),
-(7, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 777, 0, '', 1),
-(8, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Профі', 1, 888, 0, '1&', 0),
-(9, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Початківці', 1, 999, 0, '', 1),
-(12, 'Бачата', 'Напівдорослі', 'Лучшие движения', 'Высшая', 1, 77770, 0, '1&', 1);
+INSERT INTO `dance_categories` (`id`, `d_c_program`, `d_c_age_category`, `d_c_nomination`, `d_c_league`, `org_id`, `extra_id`, `id_dance_group`, `is_full`) VALUES
+(1, 'Dance program 1', 'Age category 1', 'Nomination 1', 'League 1', 1, 111, 0, 1),
+(2, 'Dance 2', 'Age category 1', 'Nomination 1', 'League 1', 1, 222, 0, 1),
+(3, 'qqqqqqqq', 'wwwwwwwwwwwww', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 1, 333, 0, 0),
+(4, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Профі', 1, 444, 0, 1),
+(5, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 555, 0, 0),
+(6, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Профі', 1, 666, 0, 0),
+(7, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 777, 0, 1),
+(8, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Профі', 1, 888, 0, 0),
+(9, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Початківці', 1, 999, 0, 1),
+(10, 'Бачата', 'Напівдорослі', 'Лучшие движения', 'Высшая', 1, 77770, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -208,6 +207,32 @@ CREATE TABLE `events` (
 
 INSERT INTO `events` (`id`, `event_name`, `event_image`, `event_status`, `event_start`, `event_end`, `event_city`, `event_country`, `event_referee`, `event_skutiner`, `org_id_for_event`) VALUES
 (1, 'Our event 1', 'views/main/img/event_img/dances.jpg', 'Regional', '2017-06-07', '2017-06-08', 'Khmelnytskyi', 'Ukraine', 'Gordon Bayron', 'Suhishvili', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `events_categories`
+--
+
+CREATE TABLE `events_categories` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `event_id` int(11) UNSIGNED NOT NULL,
+  `category_id` int(11) UNSIGNED NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `events_categories`
+--
+
+INSERT INTO `events_categories` (`id`, `event_id`, `category_id`) VALUES
+(16, 1, 1),
+(20, 1, 9),
+(23, 1, 10),
+(6, 2, 3),
+(7, 2, 5),
+(18, 1, 5),
+(21, 1, 6),
+(24, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -400,6 +425,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `events_categories`
+--
+ALTER TABLE `events_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `news`
 --
 ALTER TABLE `news`
@@ -448,7 +479,7 @@ ALTER TABLE `coaches`
 -- AUTO_INCREMENT для таблицы `dance_categories`
 --
 ALTER TABLE `dance_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT для таблицы `dance_groups`
 --
@@ -464,6 +495,11 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `events`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT для таблицы `events_categories`
+--
+ALTER TABLE `events_categories`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT для таблицы `news`
 --

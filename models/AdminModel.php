@@ -1,6 +1,7 @@
 <?php
 
 namespace models;
+
 use components\Db;
 
 class AdminModel extends AppModel
@@ -77,7 +78,7 @@ class AdminModel extends AppModel
 
     public static function recordOrganization()
     {
-        $_POST = array_map(['self','addSlashes'], $_POST);
+        $_POST = array_map(['self', 'addSlashes'], $_POST);
 
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
 
@@ -111,7 +112,7 @@ class AdminModel extends AppModel
 
     public static function updateOrganization()
     {
-        $_POST = array_map(['self','addSlashes'], $_POST);
+        $_POST = array_map(['self', 'addSlashes'], $_POST);
 
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $organization = AdminModel::getOrganizationById($_POST['id']);
@@ -147,9 +148,10 @@ class AdminModel extends AppModel
         } else return 'db.connect false';
     }
 
-    private static function deleteImages($entity, $column_name_with_img){
+    private static function deleteImages($entity, $column_name_with_img)
+    {
         $delete_picture_result = '';
-        foreach ($entity as $row_with_img){
+        foreach ($entity as $row_with_img) {
             $tmp_arr_with_pic_path = explode("/", $row_with_img[$column_name_with_img]); // we create temp array for pulling out the picture name;
             $image_name = array_pop($tmp_arr_with_pic_path); // then we are pulling that picture name;
             $pic_folder = implode("/", $tmp_arr_with_pic_path) . '/'; // after that we glue all the components to create a folder path with pictures;
@@ -177,8 +179,8 @@ class AdminModel extends AppModel
             $events = self::ShowEvents($id);
 
             $departments_result = '';
-            if(!empty($events)){
-                foreach ($events as $event){
+            if (!empty($events)) {
+                foreach ($events as $event) {
                     $departments_result = $db->query("DELETE FROM `departments` WHERE `event_id` = {$event['id']}");
                 }
             }
@@ -203,11 +205,11 @@ class AdminModel extends AppModel
 //            ]);
 //            die;
 
-            if(
+            if (
                 $organization_del_img_result && $organization_result && $dance_categories_result &&
                 $category_parameters_result && $departments_result && $events_del_img_result &&
                 $events_result && $clubs_result
-            ){
+            ) {
                 $message = json_encode([
                     'status' => 'success',
                     'message' => 'ОРГАНИЗАЦИЯ успешно удалена (также были удалены относящиеся к ней данные: танцевальные параметры и категории, события и их отделения)!'
@@ -215,11 +217,11 @@ class AdminModel extends AppModel
                 self::saveMessage($message);
                 $db->close();
                 return true;
-            } elseif(
+            } elseif (
                 !$organization_del_img_result && !$organization_result && !$dance_categories_result &&
                 !$category_parameters_result && !$departments_result && !$events_del_img_result &&
                 !$events_result && !$clubs_result
-            ){
+            ) {
                 $message = json_encode([
                     'status' => 'error',
                     'message' => 'ОРГАНИЗАЦИЮ удалить не удалось, пожалуйста, обратитесь к администратору!'
@@ -454,7 +456,7 @@ class AdminModel extends AppModel
 
             foreach ($club_data as $key => $value) {
                 if (substr_count($key, 'club_trener_')) {
-                    if(!empty($value)){
+                    if (!empty($value)) {
                         array_push($coaches, $value);
                     }
                 }
@@ -497,7 +499,7 @@ class AdminModel extends AppModel
             $query_name = $db->query("SELECT * FROM `events` WHERE `event_name` = '{$a['event_name']}' AND `org_id_for_event` = {$_SESSION['organization_id']}");
             $the_event = $query_name->fetch_assoc();
 
-            if($query_name && !empty($the_event)){
+            if ($query_name && !empty($the_event)) {
                 return 'this name is already exist';
             }
 
@@ -871,7 +873,7 @@ class AdminModel extends AppModel
 
             $result = $db->query("SELECT * FROM `dance_categories`
                                   WHERE `{$parameter}` = '{$name}'
-                                  AND `org_id` = {$_COOKIE['get_id']}");
+                                  AND `org_id` = {$_SESSION['organization_id']}");
 
             if ($result) {
                 while ($row = $result->fetch_assoc()) {
@@ -879,23 +881,22 @@ class AdminModel extends AppModel
                 }
             }
 
-            if ($event_id == NULL) {
+            if($event_id == NULL){
                 return $array_with_parameters;
-            } elseif ($event_id != NULL) {
+            } else {
                 $array_with_checked_ids = [];
-                foreach ($array_with_parameters as $key => $value) {
-                    if (!empty($value['event_ids'])) {
-                        $exploded_ids = explode("&", $value['event_ids']);
-                        if (in_array($event_id, $exploded_ids)) {
-                            array_push($array_with_checked_ids, $value['id']);
-                        }
+                $result2 = $db->query("SELECT `category_id` FROM `events_categories` WHERE `event_id` = {$event_id}");
+                if ($result2) {
+                    while ($row = $result2->fetch_assoc()) {
+                        $array_with_checked_ids[] = $row['category_id'];
                     }
                 }
-                $array_to_return['all_dancing_categories'] = $array_with_parameters;
-                $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
-
-                return $array_to_return;
             }
+
+            $array_to_return['all_dancing_categories'] = $array_with_parameters;
+            $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
+
+            return $array_to_return;
 
         }
         $db->close();
@@ -963,23 +964,13 @@ class AdminModel extends AppModel
         $db->close();
     }
 
-    static function getUniqueDanceCategoryPrograms($event_id)
+    static function getUniqueDanceCategoryPrograms()
     {
         $dance_category_programs = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result1 = $db->query("SELECT `org_id_for_event` FROM `events`
-                                          WHERE `id` = {$event_id}
-                                          ");
-            $org_id = '';
-            if ($result1) {
-                while ($row = $result1->fetch_assoc()) {
-                    $org_id = $row['org_id_for_event'];
-                }
-            }
-            if ($org_id != '') {
-                setcookie('get_id', $org_id);
+            if (!empty($_SESSION['organization_id'])) {
                 $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories`
-                                          WHERE `org_id` = {$org_id}
+                                          WHERE `org_id` = {$_SESSION['organization_id']}
                                           ");
                 if ($result2) {
                     while ($row = $result2->fetch_assoc()) {
@@ -1042,69 +1033,42 @@ class AdminModel extends AppModel
         }
     }
 
-    static function assignEventIdToDancingCategory($all_ids, $checked_ids, $event_id)
+    static function createEventsCategoriesRelationships($all_ids, $checked_ids, $event_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $resulting_array = [];
             foreach ($all_ids as $key => $id) {
-                $result1 = $db->query("SELECT `event_ids` FROM `dance_categories` WHERE `org_id` = {$_COOKIE['get_id']}
-                                        AND `id` = {$id}
-                                          ");
+                $result1 = $db->query("SELECT * FROM `events_categories` WHERE `category_id` = {$id} AND `event_id` = {$event_id}");
                 if ($result1) {
                     $row = $result1->fetch_assoc();
-                    if (empty($row['event_ids'])) {
+                    if (empty($row)) {
                         if (in_array($id, $checked_ids)) {
-                            $event_ids = $event_id . "&";
-                            $update_result = $db->query("UPDATE `dance_categories`
-                                                                SET `event_ids` = '{$event_ids}'
-                                                                WHERE `id` = {$id}
+                            $update_result = $db->query("INSERT INTO `events_categories`
+                                                                SET `event_id` = {$event_id},
+                                                                    `category_id` = {$id}
                                                         ");
                             if ($update_result) {
-                                $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated SUCCESSFULLY!\n";
+                                $resulting_array[] = "The row with cat_id = \"" . $id . "\" and event_id = id = \"" . $event_id . "\" was inserted SUCCESSFULLY!\n";
                             } else {
-                                $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated!\n";
+                                $resulting_array[] = "The row with cat_id = \"" . $id . "\" and event_id = id = \"" . $event_id . "\" was not inserted!\n";
                             }
                         }
-                    } else {
-                        $event_ids_array = explode("&", $row['event_ids']);
-                        if (in_array($id, $checked_ids)) {
-                            if (!in_array($event_id, $event_ids_array)) {
-                                array_push($event_ids_array, $event_id);
-                                $emptyRemoved = static::remove_empty($event_ids_array);
-                                $imploded_events_ids = implode("&", $emptyRemoved);
-                                $update_result = $db->query("UPDATE `dance_categories`
-                                                                SET `event_ids` = '{$imploded_events_ids}'
-                                                                WHERE `id` = {$id}
-                                                        ");
-                                if ($update_result) {
-                                    $resulting_array[] = "SUCCESS! The dancing category with id = \"" . $id . "\" was updated!\n";
-                                } else {
-                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated...\n";
-                                }
-                            }
-                        } else {
-                            if (in_array($event_id, $event_ids_array)) {
-                                self::$event_id = $event_id;
-                                $event_ids_array_mapped = array_map("self::uncheck_event_id", $event_ids_array);
-                                $emptyRemoved = static::remove_empty($event_ids_array_mapped);
-                                $imploded_events_ids = implode("&", $emptyRemoved) . "&";
-                                $update_result = $db->query("UPDATE `dance_categories`
-                                                                SET `event_ids` = '{$imploded_events_ids}'
-                                                                WHERE `id` = {$id}
-                                                        ");
-                                if ($update_result) {
-                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was updated - the event_id has been deleted!\n";
-                                } else {
-                                    $resulting_array[] = "The dancing category with id = \"" . $id . "\" was not updated, can't be deleted...\n";
-                                }
+                    } elseif (!empty($row)) {
+                        if (!in_array($id, $checked_ids)) {
+                            $result2 = $db->query("DELETE FROM `events_categories` WHERE `event_id` = {$event_id} AND `category_id` = {$id}");
+                            if ($result2) {
+                                $resulting_array[] = "SUCCESS! The row with cat_id = \"" . $id . "\" and event_id = id = \"" . $event_id . "\" was deleted!\n";
+                            } else {
+                                $resulting_array[] = "The row with cat_id = \"" . $id . "\"  and event_id = id = \"" . $event_id . "\" was not deleted...\n";
                             }
                         }
-
                     }
                 }
             }
             $db->close();
             return $resulting_array;
+        } else {
+            return false;
         }
     }
 
@@ -1119,7 +1083,7 @@ class AdminModel extends AppModel
                 while ($row = $departments_query->fetch_assoc()) {
                     $departments[] = $row;
                 }
-                if(count($departments) == 0){
+                if (count($departments) == 0) {
                     $result = $db->query("INSERT INTO `departments`
                                               SET `id` = '',
                                                   `dep_name` = '{$name}',
@@ -1231,20 +1195,11 @@ class AdminModel extends AppModel
     static function getPickedCategories($event_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("SELECT * FROM `dance_categories` WHERE `org_id` = {$_SESSION['organization_id']}");
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `id` IN (SELECT `category_id` FROM `events_categories` WHERE `event_id` = {$event_id})");
             if ($result) {
-                $organizations = array();
-                while ($row = $result->fetch_assoc()) {
-                    $organizations[] = $row;
-                }
                 $checked_categories = array();
-                if (!empty($organizations)) {
-                    foreach ($organizations as $org) {
-                        $tmp_arr = explode('&', $org['event_ids']);
-                        if (in_array($event_id, $tmp_arr)) {
-                            $checked_categories[] = $org;
-                        }
-                    }
+                while ($row = $result->fetch_assoc()) {
+                    $checked_categories[] = $row;
                 }
                 return $checked_categories;
             } else {
@@ -1258,34 +1213,13 @@ class AdminModel extends AppModel
     static function uncheckCategories($array_ids)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("SELECT * FROM `dance_categories` WHERE `org_id` = {$_SESSION['organization_id']}");
-            $resulting_array = array();
+            $array_ids = implode(',', $array_ids);
+            $result = $db->query("DELETE FROM `events_categories` WHERE `event_id` = {$_SESSION['event_id']} AND `category_id` IN ({$array_ids})");
+            $resulting_array = [];
             if ($result) {
-                $dance_categories = array();
-                while ($row = $result->fetch_assoc()) {
-                    $dance_categories[] = $row;
-                }
-                self::$event_id = $_SESSION['event_id'];
-                foreach ($array_ids as $id_to_delete) {
-                    foreach ($dance_categories as $category) {
-                        $event_ids_array = explode("&", $category['event_ids']);
-                        if ($id_to_delete == $category['id']) {
-                            $event_ids_array_mapped = array_map("self::uncheck_event_id", $event_ids_array);
-                            $emptyRemoved = static::remove_empty($event_ids_array_mapped);
-                            $imploded_events_ids = implode("&", $emptyRemoved);
-
-                            $update_result = $db->query("UPDATE `dance_categories`
-                                                                SET `event_ids` = '{$imploded_events_ids}'
-                                                                WHERE `id` = {$category['id']}
-                                                        ");
-                            if ($update_result) {
-                                $resulting_array[] = "SUCCESS! The dancing category with id = \"" . $category['id'] . "\" was updated!\n";
-                            } else {
-                                $resulting_array[] = "The dancing category with id = \"" . $category['id'] . "\" was not updated...\n";
-                            }
-                        }
-                    }
-                }
+                $resulting_array[] = "SUCCESS! The dancing category(-ies) with id(-s) = \"" . $array_ids . "\" was deleted!\n";
+            } else {
+                $resulting_array[] = "The dancing category with id = \"" . $array_ids . "\" was not deleted...\n";
             }
             return $resulting_array;
         } else {
@@ -1293,7 +1227,8 @@ class AdminModel extends AppModel
         }
     }
 
-    static function getEventById($id){
+    static function getEventById($id)
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT * FROM `events` WHERE `id` = {$id}");
             return $row = $result->fetch_assoc();
@@ -1302,12 +1237,13 @@ class AdminModel extends AppModel
         }
     }
 
-    static function gelFullCategories($d_c_program_name){
+    static function gelFullCategories($d_c_program_name)
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT * FROM `dance_categories` WHERE `d_c_program` = '{$d_c_program_name}' AND `org_id` = {$_SESSION['organization_id']} AND `is_full` = 1");
             $dance_categories = [];
-            if($result){
-                while ($row = $result->fetch_assoc()){
+            if ($result) {
+                while ($row = $result->fetch_assoc()) {
                     $dance_categories[] = $row;
                 }
             }

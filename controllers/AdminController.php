@@ -457,7 +457,7 @@ class AdminController extends AppController
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
-        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms($event_id);
+        $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms();
         $event = AdminModel::getEventById($event_id);
         $organization = AdminModel::getOrganizationById($_SESSION['organization_id']);
         require_once('views/admin/option_event/pick_categories_for_event.php');
@@ -470,6 +470,7 @@ class AdminController extends AppController
             $parameter = $_POST['parameter'];
             $event_id = $_POST['event_id'];
             $asked_parameters = AdminModel::getCategoriesByName($name, $parameter, $event_id);
+//            echo json_encode($_POST);
             echo json_encode($asked_parameters);
         }
     }
@@ -483,7 +484,7 @@ class AdminController extends AppController
                 $checked_ids = $_POST['checked'];
             }
             $event_id = $_POST['event_id'];
-            $result = AdminModel::assignEventIdToDancingCategory($all_ids, $checked_ids, $event_id);
+            $result = AdminModel::createEventsCategoriesRelationships($all_ids, $checked_ids, $event_id);
             echo json_encode($result);
         }
     }
@@ -524,6 +525,8 @@ class AdminController extends AppController
     }
 
     public function actionPickedCategoriesForEvent($event_id){
+//        self::showArray($_SESSION);
+//        die;
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
@@ -534,8 +537,10 @@ class AdminController extends AppController
     public function actionAjax_sendRemovedCategories(){
         if(!empty($_POST['categories'])){
             $result = AdminModel::uncheckCategories($_POST['categories']);
+            echo json_encode($result);
+        } else {
+            echo false;
         }
-        return json_encode($_POST, JSON_FORCE_OBJECT);
     }
 
     public function actionAjax_getCategoriesToPickForDepartment(){
