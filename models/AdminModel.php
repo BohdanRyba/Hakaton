@@ -1311,7 +1311,6 @@ class AdminModel extends AppModel
                     $dance_categories[] = $row;
                 }
             }
-
             return $dance_categories;
         } else {
             return false;

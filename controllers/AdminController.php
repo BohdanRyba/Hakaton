@@ -542,7 +542,11 @@ class AdminController extends AppController
 
         if(!empty($_POST['d_c_program'])){
             $result = AdminModel::gelFullCategories($_POST['d_c_program']);
-            echo json_encode($result);
+            $array = [];
+            if($result !== false || !empty($result)){
+                $array['dance_categories'] = $result;
+            }
+            echo json_encode($array);
         }
 
     } // TODO - it should be completed...
