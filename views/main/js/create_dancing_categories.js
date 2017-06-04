@@ -238,13 +238,14 @@ jQuery(function($) {
 
             $.ajax({
                 type:"POST",
-                url:'ajax_showCategoriesAccordingToParameter',
+                    url:'ajax_showCategoriesAccordingToParameter',
                 data: obj,
                 success: function(msg) {
                     $('#update-dancing-categories-info').css('display', 'none');
                     console.log('ajax_THAT_ADDS_CATEGORIES_ACCORDING_TO_PARAMETER (ajax2) has worked successfully!');
-                    // console.log(msg);
+                    console.log(msg);
                     var msg=JSON.parse(msg);
+                    console.log(msg);
                     if (msg[0]==undefined) {$searchedCategoriesForm.append('<div class="dp-info-wrapper"><p class="dance-category-name">таких категорий нет</p></div>');}
                     for (var i=0; i<msg.length; i++) {
                         var category=msg[i],
