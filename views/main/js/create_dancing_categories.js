@@ -264,7 +264,7 @@ jQuery(function($) {
                             '<label>Код:<input disabled disabled type="text" name="dance-program-code" class="input-standard dancing-group-info-code" value="'+code+'"></label>' +
                             '<div class="btn-group-sm flat" role="group">' +
                             '<button type="button" class="btn btn-success edit-button edit-categories-info btn-flat"><i class="fa fa-edit"></i></button>' +
-                            '<button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button> ' +
+                            '<button type="button" class="btn btn-danger delete-button delete-categories-info btn-flat"><i class="fa fa-trash"></i></button>' +
                             '</div>' +
                         '</div>');
 

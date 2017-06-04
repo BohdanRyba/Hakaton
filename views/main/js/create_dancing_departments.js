@@ -143,12 +143,9 @@ jQuery(function($) {
 
 //  view categories according to dance program name
     $body.on('click', '.dance-program-name', function () {
-
+        var name=$(this).attr('data-name');
         toggleVisibility($departmentsFillingCategoriesList, 'block');
-
         function ajax_getCategories() {
-            var name=$(this).attr('data-name');
-
             $.ajax({
                 type:"POST",
                 url:'ajax_getCategoriesToPickForDepartment',
@@ -156,11 +153,14 @@ jQuery(function($) {
                     d_c_program : name
                 },
                 success: function (msg) {
+                    var msg = JSON.parse(msg);
                     console.log(msg);
                     console.log('ajax_sendRemovedCategories has worked successfully!');
-                    // $danceProgramsList.empty();
+                    let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');
+                    $searchedCategoriesBlock.empty();
+                    $searchedCategoriesBlock.append('<li id="check-all-dancing-categories" class="prevent-text-emphasizing"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
                     // msg.forEach(function (name) {
-                    //     $danceProgramsList.append('<li class="prevent-text-emphasizing dance-program-name" data-name="">'+name+'</li>');
+                    //     $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="'+name+'">'+name+'</label></li>');
                     // });
                 },
                 error: function (msg) {
