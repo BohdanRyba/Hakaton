@@ -540,7 +540,7 @@ class AdminController extends AppController
 
     public function actionAjax_getCategoriesToPickForDepartment(){
 
-        echo json_encode($_POST);
+        echo json_encode($_POST['d_c_program']);
 
     } // TODO - it should be completed...
 }
