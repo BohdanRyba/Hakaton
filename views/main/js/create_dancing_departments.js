@@ -153,7 +153,7 @@ jQuery(function($) {
                     d_c_program : name
                 },
                 success: function (msg) {
-                    // var msg = JSON.parse(msg);
+                    var msg = JSON.parse(msg);
                     console.log(msg);
                     console.log('ajax_sendRemovedCategories has worked successfully!');
                     let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');

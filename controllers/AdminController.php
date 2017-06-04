@@ -542,7 +542,7 @@ class AdminController extends AppController
 
         if(!empty($_POST['d_c_program'])){
             $result = AdminModel::gelFullCategories($_POST['d_c_program']);
-            print_r($result);
+            echo json_encode($result);
         }
 
     } // TODO - it should be completed...
