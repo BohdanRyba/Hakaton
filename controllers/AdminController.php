@@ -540,7 +540,10 @@ class AdminController extends AppController
 
     public function actionAjax_getCategoriesToPickForDepartment(){
 
-        echo json_encode($_POST['d_c_program']);
+        if(!empty($_POST['d_c_program'])){
+            $result = AdminModel::gelFullCategories($_POST['d_c_program']);
+            return json_encode($result);
+        }
 
     } // TODO - it should be completed...
 }
