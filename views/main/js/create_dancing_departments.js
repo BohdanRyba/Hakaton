@@ -138,7 +138,22 @@ jQuery(function($) {
             toggleVisibility ($departmentsFillingPanelBody,'block');
         }
         toggleVisibility ($departmentsFillingCategoriesList,'none');
+
+        $danceProgramsList.find('.picked-dancing-program').removeClass('picked-dancing-program');
+        $('#pick-dancing-categories-for-department').find('ul').empty();
     });
+
+    // $('#departments-to-fill-dropdown').on('show.bs.dropdown', function () {
+    //     $(this).find('.caret').removeClass('rotateTop');
+    //     $(this).find('.caret').addClass('rotateTop');
+    // });
+    //
+    // $('#departments-to-fill-dropdown').on('hide.bs.dropdown', function () {
+    //     $(this).find('.caret').addClass('rotateBot');
+    //     $(this).find('.caret').removeClass('rotateTop');
+    //     // $(this).find('.caret').removeClass('rotateBot');
+    // });
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //  view categories according to dance program name
@@ -153,21 +168,37 @@ jQuery(function($) {
                     d_c_program : name
                 },
                 success: function (msg) {
-                    var msg = JSON.parse(msg);
+                    var msg = JSON.parse(msg)['dance_categories'];
                     // var msg = JSON.parse(msg);
                     console.log(msg);
                     console.log('ajax_sendRemovedCategories has worked successfully!');
                     let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');
                     $searchedCategoriesBlock.empty();
-                    $searchedCategoriesBlock.append('<li id="check-all-dancing-categories" class="prevent-text-emphasizing"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
-                    // msg.forEach(function (name) {
-                    //     $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="'+name+'">'+name+'</label></li>');
-                    // });
+
+                    if (msg.length > 0) {
+                        $searchedCategoriesBlock.append('<li id="check-all-dancing-categories" class="prevent-text-emphasizing"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
+
+                        for (var i=0; i<msg.length; i++) {
+                        var category=msg[i],
+                            program=category['d_c_program'],
+                            ageCategory=category['d_c_age_category'],
+                            nomination=category['d_c_nomination'],
+                            league=category['d_c_league'],
+                            id=category['id'],
+                            generalName=program+' '+ageCategory+' '+nomination+' '+league;
+
+                        $searchedCategoriesBlock.append('<li data-id="'+id+'" class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="'+generalName+'">'+generalName+'</label></li>');
+                        }
+                    } else {
+                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-uppercase text-bold">больше нет доступных категорий.</li>');
+                    }
+
                 },
                 error: function (msg) {
                     console.log('ajax_sendRemovedCategories has failed to work!');
-                    // $danceProgramsList.empty();
-                    // $danceProgramsList.append('<p class="prevent-text-emphasizing text-uppercase">ошибка. повторите попытку.</p>');
+                    let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');
+                    $searchedCategoriesBlock.empty();
+                    $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-uppercase">ошибка. повторите попытку.</li>');
                 }
             });
         }
@@ -184,6 +215,43 @@ jQuery(function($) {
     });
 
     $body.on('click', '#update-dancing-department-info', function () {
+        let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');
+        var pickedCategories = [],
+            department = parseInt($('#departments-to-fill').children('.active').attr('data-department-id'));
+
+
+        $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
+            pickedCategories.push(parseInt($(this).attr('data-id')));
+        });
+
+        console.log(department);
+        console.log(pickedCategories);
+
+        function ajax_sendCategories() {
+            $.ajax({
+                type:"POST",
+                url:'ajax_sendCategoriesPickedForDepartment',
+                data: {
+                    department : department,
+                    pickedCategories : pickedCategories
+                },
+                success: function (msg) {
+                    console.log('ajax_sendCategoriesPickedForDepartment has worked successfully!');
+                    $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
+                        $(this).remove();
+                    });
+                    if($searchedCategoriesBlock.children().length == 1) {
+                        $searchedCategoriesBlock.children().eq(0).remove();
+                        toggleVisibility($departmentsFillingSaveBtn, 'none');
+                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-uppercase text-bold">больше нет доступных категорий.</li>');
+                    }
+                },
+                error: function (msg) {
+                    console.log('ajax_sendCategoriesPickedForDepartment has failed to work!');
+                }
+            });
+        }
+        ajax_sendCategories();
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT saves CATEGORIES $danceProgramsList THAT ARE USED IN THE DANCING PROGRAM)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 //DEPARTMENTS FIILLING

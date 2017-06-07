@@ -243,11 +243,11 @@ use components\Router;
                                 <div id="departments_filling">
                                     <div class="panel panel-primary flat">
                                         <div class="panel-heading flat">
-                                            <div class="dropdown">
+                                            <div class="dropdown" id="departments-to-fill-dropdown">
                                                 <button class="btn btn-warning dropdown-toggle text-bold flat"
                                                         type="button" data-toggle="dropdown">Отделение для наполнения
                                                     <span class="caret"></span></button>
-                                                <ul class="dropdown-menu flat">
+                                                <ul id="departments-to-fill" class="dropdown-menu flat">
                                                     <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                                         <?php foreach ($departments as $department): ?>
                                                             <li data-department-id="<?= $department['id']; ?>"
