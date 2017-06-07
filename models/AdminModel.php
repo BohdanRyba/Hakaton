@@ -1077,53 +1077,51 @@ class AdminModel extends AppModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $message = '';
             $name = self::addSlashes($name);
-            if ($option === 'Создать' && $dep_id == null) {
-                $departments_query = $db->query("SELECT * FROM `departments` WHERE `dep_name` = '{$name}' AND `event_id` = {$event_id}");
-                $departments = array();
-                while ($row = $departments_query->fetch_assoc()) {
-                    $departments[] = $row;
-                }
-                if (count($departments) == 0) {
-                    $result = $db->query("INSERT INTO `departments`
+
+            $departments_query = $db->query("SELECT * FROM `departments` WHERE `dep_name` = '{$name}' AND `event_id` = {$event_id}");
+            $departments = array();
+            while ($row = $departments_query->fetch_assoc()) {
+                $departments[] = $row;
+            }
+
+            if (count($departments) > 0) {
+                $message = json_encode([
+                    'status' => 'error',
+                    'message' => "Отделение с именем \"" . $name . "\" уже существует!"
+                ]);
+                self::saveMessage($message);
+                return $db->close();
+            } elseif (count($departments) == 0 && $option === 'Создать' && $dep_id == null) {
+                $result = $db->query("INSERT INTO `departments`
                                               SET `id` = '',
                                                   `dep_name` = '{$name}',
                                                   `event_id` = {$event_id}");
-                    if ($result) {
-                        $message = json_encode([
-                            'status' => 'success',
-                            'message' => "Отделение \"" . $name . "\" было успешно создано!"
-                        ]);
-                    } else {
-                        $message = json_encode([
-                            'status' => 'error',
-                            'message' => "Отделение \"" . $name . "\" создать не удалось!"
-                        ]);
-                    }
-                    self::saveMessage($message);
-                    $db->close();
-                    return $result;
+                if ($result) {
+                    $message = json_encode([
+                        'status' => 'success',
+                        'message' => "Отделение \"" . $name . "\" было успешно создано!"
+                    ]);
                 } else {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Категория с именем \"" . $name . "\" уже существует!"
+                        'message' => "Отделение \"" . $name . "\" создать не удалось!"
                     ]);
-                    self::saveMessage($message);
-                    $db->close();
-                    return false;
                 }
-            } elseif ($dep_id != null && $option === 'Изменить') {
+                self::saveMessage($message);
+                return $db->close();
+            } elseif (count($departments) == 0 && $dep_id != null && $option === 'Изменить') {
                 $update_result = $db->query("UPDATE `departments`
                                                 SET `dep_name` = '{$name}'
                                                 WHERE `id` = {$dep_id}");
                 if ($update_result) {
                     $message = json_encode([
                         'status' => 'success',
-                        'message' => "Отделение было успешно изменено!"
+                        'message' => "Отделение было успешно переименовано!"
                     ]);
                 } else {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Отделение \"" . $name . "\" изменить не удалось!"
+                        'message' => "Отделение \"" . $name . "\" переименовать не удалось!"
                     ]);
                 }
                 self::saveMessage($message);

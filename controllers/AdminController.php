@@ -516,7 +516,7 @@ class AdminController extends AppController
             $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
         }
         $departments = AdminModel::getDepartmentsByEventId($event_id);
-        $d_c_program_names = AdminModel::getUniqueDanceCategoryPrograms($event_id);
+        $d_c_program_names = AdminModel::getUniqueDanceCategoryPrograms();
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
