@@ -1237,7 +1237,7 @@ class AdminModel extends AppModel
         }
     }
 
-    static function gelFullCategories($d_c_program_name)
+    static function getTheFilledCategories($d_c_program_name)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT * FROM `dance_categories` WHERE `id` IN (SELECT `category_id` FROM `events_categories` WHERE `event_id` = {$_SESSION['event_id']})

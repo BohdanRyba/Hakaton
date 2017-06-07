@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 04 2017 г., 22:32
+-- Время создания: Июн 07 2017 г., 20:22
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -124,9 +124,9 @@ CREATE TABLE `dance_categories` (
 INSERT INTO `dance_categories` (`id`, `d_c_program`, `d_c_age_category`, `d_c_nomination`, `d_c_league`, `org_id`, `extra_id`, `id_dance_group`, `is_full`) VALUES
 (1, 'Dance program 1', 'Age category 1', 'Nomination 1', 'League 1', 1, 111, 0, 1),
 (2, 'Dance 2', 'Age category 1', 'Nomination 1', 'League 1', 1, 222, 0, 1),
-(3, 'qqqqqqqq', 'wwwwwwwwwwwww', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 1, 333, 0, 0),
+(3, 'qqqqqqqq', 'wwwwwwwwwwwww', 'rrrrrrrrrrrrrrrrrrrr', 'ttttttttttttttttt', 1, 333, 0, 1),
 (4, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Профі', 1, 444, 0, 1),
-(5, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 555, 0, 0),
+(5, 'Хіп-хоп', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 555, 0, 1),
 (6, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Профі', 1, 666, 0, 0),
 (7, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 777, 0, 1),
 (8, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Профі', 1, 888, 0, 0),
@@ -232,7 +232,8 @@ INSERT INTO `events_categories` (`id`, `event_id`, `category_id`) VALUES
 (7, 2, 5),
 (18, 1, 5),
 (21, 1, 6),
-(24, 1, 2);
+(24, 1, 2),
+(26, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -499,7 +500,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT для таблицы `events_categories`
 --
 ALTER TABLE `events_categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT для таблицы `news`
 --
