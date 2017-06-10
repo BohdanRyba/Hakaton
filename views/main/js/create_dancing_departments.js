@@ -348,6 +348,8 @@ jQuery(function($) {
         }
 
         $to.text('');
+        $to.removeAttr('data-depid');
+        $from.removeAttr('data-depid');
         $departmentsEditionTransferCategory.find('.dropdown-menu-department').each(function () {
             $(this).removeClass('active');
         });
@@ -371,7 +373,8 @@ jQuery(function($) {
         let $modalTrans = $('#transferCategory'),
             from = $modalTrans.find('[data-direction="from"]').attr('data-depid'),
             to = $modalTrans.find('[data-direction="to"]').attr('data-depid');
-        if (to == '') {return false} else {
+        console.log(to);
+        if (to == undefined) {return false} else {
             function transferCategory() {
                 $.ajax({
                     type:"POST",
