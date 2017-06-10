@@ -258,7 +258,6 @@ jQuery(function($) {
         var $departments=$(this).parent().children(),
             $departmentName=$(this).children().text(),
             $seeDepartmentName=$('#see-department-content-name');
-        console.log($departmentsEditionPanelBody.css('display'));
 
         $departments.each(function () {
             $(this).removeClass('active');
@@ -295,6 +294,7 @@ jQuery(function($) {
                 }
             });
         }
+        getDepartmentContent ();
         // $(this).parents('.dropdown').find('.dropdown-toggle').html($departmentName+'<span class="caret"></span>');
 
 
