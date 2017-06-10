@@ -353,7 +353,7 @@ use components\Router;
                                                 <button class="btn btn-warning dropdown-toggle text-bold flat"
                                                         type="button" data-toggle="dropdown">Отделение для просмотра
                                                     <span class="caret"></span></button>
-                                                <ul class="dropdown-menu flat">
+                                                <ul id="dropdownMenuContent" class="dropdown-menu flat">
                                                     <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                                         <?php foreach ($departments as $department): ?>
                                                             <li data-department-id="<?= $department['id']; ?>"
