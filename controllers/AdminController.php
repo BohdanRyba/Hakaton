@@ -545,8 +545,10 @@ class AdminController extends AppController
 
     public function actionAjax_getCategoriesToPickForDepartment(){
 
-        if(!empty($_POST['d_c_program'])){
-            $result = AdminModel::getTheFilledCategories($_POST['d_c_program']);
+        if(!empty($_POST['d_c_program']) && !empty($_POST['department_ids'])){
+            $department_ids = implode(',', $_POST['department_ids']);
+
+            $result = AdminModel::getTheFilledCategories($_POST['d_c_program'], $department_ids);
             $array = [];
             if($result !== false || !empty($result)){
                 $array['dance_categories'] = $result;
@@ -554,5 +556,22 @@ class AdminController extends AppController
             echo json_encode($array);
         }
 
-    } // TODO - it should be completed...
+    }
+
+    public function actionAjax_sendCategoriesPickedForDepartment(){
+
+        if(!empty($_POST['department']) && !empty($_POST['pickedCategories'])){
+            $department_id = $_POST['department'];
+            $picked_categories_ids = $_POST['pickedCategories'];
+            $result = AdminModel::assignCategoriesToDepartment($department_id, $picked_categories_ids);
+//            $array = [];
+//            if($result !== false || !empty($result)){
+//                $array['dance_categories'] = $result;
+//            }
+            echo json_encode($result);
+        }
+
+    }
+
+
 }

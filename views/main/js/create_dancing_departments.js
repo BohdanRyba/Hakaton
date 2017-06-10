@@ -159,13 +159,18 @@ jQuery(function($) {
 //  view categories according to dance program name
     $body.on('click', '.dance-program-name', function () {
         var name=$(this).attr('data-name');
+        var department_ids = [];
+        $('#departments-to-fill').find('li').each(function () {
+            department_ids.push($(this).data('department-id'));
+        });
         toggleVisibility($departmentsFillingCategoriesList, 'block');
         function ajax_getCategories() {
             $.ajax({
                 type:"POST",
                 url:'ajax_getCategoriesToPickForDepartment',
                 data: {
-                    d_c_program : name
+                    d_c_program : name,
+                    department_ids : department_ids
                 },
                 success: function (msg) {
                     var msg = JSON.parse(msg)['dance_categories'];
@@ -236,6 +241,7 @@ jQuery(function($) {
                     pickedCategories : pickedCategories
                 },
                 success: function (msg) {
+                    console.log(JSON.parse(msg));
                     console.log('ajax_sendCategoriesPickedForDepartment has worked successfully!');
                     $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
                         $(this).remove();

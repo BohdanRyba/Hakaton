@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 07 2017 г., 20:22
+-- Время создания: Июн 10 2017 г., 22:09
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -131,7 +131,8 @@ INSERT INTO `dance_categories` (`id`, `d_c_program`, `d_c_age_category`, `d_c_no
 (7, 'B&B', 'Дорослі', 'Краща техніка виконання', 'Початківці', 1, 777, 0, 1),
 (8, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Профі', 1, 888, 0, 0),
 (9, 'Хіп-хоп', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Початківці', 1, 999, 0, 1),
-(10, 'Бачата', 'Напівдорослі', 'Лучшие движения', 'Высшая', 1, 77770, 0, 1);
+(10, 'Бачата', 'Напівдорослі', 'Лучшие движения', 'Высшая', 1, 77770, 0, 1),
+(11, 'B&B', 'Дорослі', 'Кращий виспут за думкою глядачів', 'Початківці', 1, 9099, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,6 @@ INSERT INTO `dance_groups` (`id`, `dance_group_name`, `d_program`, `d_age_catego
 CREATE TABLE `departments` (
   `id` int(11) NOT NULL,
   `dep_name` varchar(255) NOT NULL,
-  `d_c_ids` text NOT NULL,
   `event_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -176,10 +176,34 @@ CREATE TABLE `departments` (
 -- Дамп данных таблицы `departments`
 --
 
-INSERT INTO `departments` (`id`, `dep_name`, `d_c_ids`, `event_id`) VALUES
-(3, 'Нищеброды', '', 1),
-(4, 'Нищеброды', '', 1),
-(5, 'Нормас отделение', '', 1);
+INSERT INTO `departments` (`id`, `dep_name`, `event_id`) VALUES
+(3, 'Нищеброды', 1),
+(4, 'Второе отделение', 1),
+(5, 'Нормас отделение', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `departments_categories`
+--
+
+CREATE TABLE `departments_categories` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `department_id` int(11) UNSIGNED NOT NULL,
+  `category_id` int(11) UNSIGNED NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `departments_categories`
+--
+
+INSERT INTO `departments_categories` (`id`, `department_id`, `category_id`) VALUES
+(1, 4, 5),
+(5, 3, 1),
+(7, 5, 10),
+(6, 4, 3),
+(8, 4, 9),
+(9, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -420,6 +444,12 @@ ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `departments_categories`
+--
+ALTER TABLE `departments_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `events`
 --
 ALTER TABLE `events`
@@ -480,7 +510,7 @@ ALTER TABLE `coaches`
 -- AUTO_INCREMENT для таблицы `dance_categories`
 --
 ALTER TABLE `dance_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT для таблицы `dance_groups`
 --
@@ -490,7 +520,12 @@ ALTER TABLE `dance_groups`
 -- AUTO_INCREMENT для таблицы `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT для таблицы `departments_categories`
+--
+ALTER TABLE `departments_categories`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT для таблицы `events`
 --

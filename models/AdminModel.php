@@ -1235,11 +1235,12 @@ class AdminModel extends AppModel
         }
     }
 
-    static function getTheFilledCategories($d_c_program_name)
+    static function getTheFilledCategories($d_c_program_name, $department_ids)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT * FROM `dance_categories` WHERE `id` IN (SELECT `category_id` FROM `events_categories` WHERE `event_id` = {$_SESSION['event_id']})
                                   AND `d_c_program` = '{$d_c_program_name}' AND `org_id` = {$_SESSION['organization_id']} AND `is_full` = 1 
+                                  AND `id` NOT IN (SELECT `category_id` FROM `departments_categories` WHERE `department_id` IN ({$department_ids}))
                                   ");
             $dance_categories = [];
             if ($result) {
@@ -1248,6 +1249,27 @@ class AdminModel extends AppModel
                 }
             }
             return $dance_categories;
+        } else {
+            return false;
+        }
+    }
+
+    static function assignCategoriesToDepartment($department_id, $picked_categories_ids)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $resulting_array = [];
+            foreach ($picked_categories_ids as $category_id){
+                $result = $db->query("INSERT INTO `departments_categories` SET `id` = '',
+                                                                                      `department_id` = '{$department_id}',
+                                                                                      `category_id` = '{$category_id}'
+                                  ");
+                if($result){
+                    $resulting_array[] = "The row with department_id = \"" . $department_id . "\" and category_id = \"" . $category_id . "\" was created successfully!";
+                } else {
+                    $resulting_array[] = "The row with department_id = \"" . $department_id . "\" and category_id = \"" . $category_id . "\" was not created!!!";
+                }
+            }
+            return $resulting_array;
         } else {
             return false;
         }
