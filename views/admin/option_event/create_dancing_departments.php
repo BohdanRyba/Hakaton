@@ -1,13 +1,22 @@
 <?php
 use components\Router;
 
-$is_active_tab_1 = ($_COOKIE['lastOpenedTab'] === '#departments_list') ? 'active' : '';
-$is_active_tab_2 = ($_COOKIE['lastOpenedTab'] === '#departments_filling') ? 'active' : '';
-$is_active_tab_3 = ($_COOKIE['lastOpenedTab'] === '#departments_content') ? 'active' : '';
+if(!empty($_COOKIE['lastOpenedTab'])){
+    $is_active_tab_1 = ($_COOKIE['lastOpenedTab'] === '#departments_list') ? 'active' : '';
+    $is_active_tab_2 = ($_COOKIE['lastOpenedTab'] === '#departments_filling') ? 'active' : '';
+    $is_active_tab_3 = ($_COOKIE['lastOpenedTab'] === '#departments_content') ? 'active' : '';
+    $style_is_block_tab_1 = ($_COOKIE['lastOpenedTab'] === '#departments_list') ? 'display: block' : 'display: none';
+    $style_is_block_tab_2 = ($_COOKIE['lastOpenedTab'] === '#departments_filling') ? 'display: block' : 'display: none';
+    $style_is_block_tab_3 = ($_COOKIE['lastOpenedTab'] === '#departments_content') ? 'display: block' : 'display: none';
+} elseif(empty($_COOKIE['lastOpenedTab'])) {
+    $is_active_tab_1 = 'active';
+    $is_active_tab_2 = '';
+    $is_active_tab_3 = '';
+    $style_is_block_tab_1 = 'display: block';
+    $style_is_block_tab_2 = 'display: none';
+    $style_is_block_tab_3 = 'display: none';
+}
 
-$style_is_block_tab_1 = ($_COOKIE['lastOpenedTab'] === '#departments_list') ? 'display: block' : 'display: none';
-$style_is_block_tab_2 = ($_COOKIE['lastOpenedTab'] === '#departments_filling') ? 'display: block' : 'display: none';
-$style_is_block_tab_3 = ($_COOKIE['lastOpenedTab'] === '#departments_content') ? 'display: block' : 'display: none';
 
 ?>
 <!DOCTYPE html>
