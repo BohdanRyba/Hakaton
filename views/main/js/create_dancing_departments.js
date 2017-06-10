@@ -373,7 +373,7 @@ jQuery(function($) {
         let $modalTrans = $('#transferCategory'),
             from = $modalTrans.find('[data-direction="from"]').attr('data-depid'),
             to = $modalTrans.find('[data-direction="to"]').attr('data-depid');
-        console.log(to);
+        
         if (to == undefined) {return false} else {
             function transferCategory() {
                 $.ajax({
@@ -387,7 +387,7 @@ jQuery(function($) {
                     success: function (msg) {
                         console.log('ajax_delCategory has worked successfully!');
                         $contentBlock.find('[data-id="'+transferedCategory+'"]').parents('.dp-info-wrapper').remove();
-                        $confirmCategoryDeletion.modal('hide');
+                        $modalTrans.modal('hide');
                         transferedCategory = undefined;
                     },
                     error: function (msg) {
