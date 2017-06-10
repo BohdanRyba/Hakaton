@@ -374,15 +374,15 @@ jQuery(function($) {
         function delCategory() {
             $.ajax({
                 type:"POST",
-                url:'ajax_getDepartmentContent',
+                url:'ajax_delCategory',
                 data: {
                     categoryId : parseInt(categoryToDelete),
                     department : parseInt(activeDepartment)
                 },
                 success: function (msg) {
                     console.log('ajax_delCategory has worked successfully!');
-                    $confirmCategoryDeletion.modal('hide');
 
+                    $confirmCategoryDeletion.modal('hide');
                 },
                 error: function (msg) {
                     console.log('ajax_delCategory has failed to work!');
