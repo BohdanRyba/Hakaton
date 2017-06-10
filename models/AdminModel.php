@@ -1295,11 +1295,11 @@ class AdminModel extends AppModel
         }
     }
 
-    static function unbindCategoryFromDepartment($post)
+    static function unbindCategoryFromDepartment($department_id, $category_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("DELETE FROM `departments_categories` WHERE `department_id` = {$post['department']} 
-                                                                                  AND `category_id` = {$post['categoryId']}
+            $result = $db->query("DELETE FROM `departments_categories` WHERE `department_id` = {$department_id} 
+                                                                                  AND `category_id` = {$category_id}
                                   ");
             return $result;
         } else {
