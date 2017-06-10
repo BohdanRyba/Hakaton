@@ -1279,7 +1279,7 @@ class AdminModel extends AppModel
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $resulting_array = [];
-            $result = $db->query("SELECT * INTO `dance_categories` WHERE `id`  IN 
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `id`  IN 
                                         (SELECT `category_id` FROM `departments_categories` WHERE `department_id` = {$department_id})
                                   ");
             if($result){
