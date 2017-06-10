@@ -1,5 +1,14 @@
 <?php
 use components\Router;
+
+$is_active_tab_1 = ($_COOKIE['lastOpenedTab'] === '#departments_list') ? 'active' : '';
+$is_active_tab_2 = ($_COOKIE['lastOpenedTab'] === '#departments_filling') ? 'active' : '';
+$is_active_tab_3 = ($_COOKIE['lastOpenedTab'] === '#departments_content') ? 'active' : '';
+
+$style_is_block_tab_1 = ($_COOKIE['lastOpenedTab'] === '#departments_list') ? 'display: block' : 'display: none';
+$style_is_block_tab_2 = ($_COOKIE['lastOpenedTab'] === '#departments_filling') ? 'display: block' : 'display: none';
+$style_is_block_tab_3 = ($_COOKIE['lastOpenedTab'] === '#departments_content') ? 'display: block' : 'display: none';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -192,27 +201,27 @@ use components\Router;
                             <div class="row dance-group-menu">
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
-                                        <a href="#departments_list" class="active prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-dance-programs">список</a>
+                                        <a href="#departments_list" class="<?php echo $is_active_tab_1 ?> prevent-text-emphasizing text-center text-uppercase text-bold" id="menu-dance-programs">список</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
                                         <a href="#departments_filling"
-                                           class="prevent-text-emphasizing text-center text-uppercase text-bold"
+                                           class="<?php echo $is_active_tab_2 ?> prevent-text-emphasizing text-center text-uppercase text-bold"
                                            id="menu-age-categories">наполнение</a>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-4">
                                     <div class="dance-group-menu-items">
                                         <a href="#departments_content"
-                                           class="prevent-text-emphasizing text-center text-uppercase text-bold"
+                                           class="<?php echo $is_active_tab_3 ?> prevent-text-emphasizing text-center text-uppercase text-bold"
                                            id="menu-nominations">содержание</a>
                                     </div>
                                 </div>
                             </div>
                             <!--MAIN IFO BLOCK-->
                             <div class="row" id="main_info_wrapper">
-                                <div id="departments_list">
+                                <div id="departments_list" style="<?php echo $style_is_block_tab_1 ?>">
                                     <div class="col-xs-12 col-lg-6">
                                         <div class="container box box-solid box-primary flat">
                                             <div class="row box-header">
@@ -254,7 +263,7 @@ use components\Router;
                                     </div>
                                 </div>
 
-                                <div id="departments_filling">
+                                <div id="departments_filling" style="<?php echo $style_is_block_tab_2 ?>">
                                     <div class="panel panel-primary flat">
                                         <div class="panel-heading flat">
                                             <div class="dropdown" id="departments-to-fill-dropdown">
@@ -346,7 +355,7 @@ use components\Router;
                                     </div>
                                 </div>
 
-                                <div id="departments_content">
+                                <div id="departments_content" style="<?php echo $style_is_block_tab_3 ?>">
                                     <div class="panel panel-primary flat">
                                         <div class="panel-heading flat">
                                             <div class="dropdown">
