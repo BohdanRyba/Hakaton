@@ -178,10 +178,8 @@ if(!empty($_COOKIE['lastOpenedTab'])){
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-success" name="transfer-category-btn"
-                                                   value="Переместить">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
-                                            </button>
+                                            <button id="confirmTransfer" class="btn btn-success">Переместить</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                         </div>
                                     </form>
                                 </div>
