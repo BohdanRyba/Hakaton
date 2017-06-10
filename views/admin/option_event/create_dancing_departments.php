@@ -180,7 +180,7 @@ use components\Router;
                                         <p>Вы действительно хотите удалить <span class="text-bold"></span> ?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger">Удалить!</button>
+                                        <button id="deleteCategory" type="button" class="btn btn-danger">Удалить!</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                     </div>
                                 </div><!-- /.modal-content -->

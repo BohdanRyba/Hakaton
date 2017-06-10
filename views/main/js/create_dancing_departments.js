@@ -17,7 +17,8 @@ jQuery(function($) {
         $departmentsEditionSaveBtn=$('#update-dancing-department-categories-list'),
         $departmentsEditionPanelBody=$('#departments-edition-panel-body'),
         $departmentsEditionTransferCategory=$('#transferCategory'),
-        $confirmCategoryDeletion = $('#confirmCategoryDeletion');
+        $confirmCategoryDeletion = $('#confirmCategoryDeletion'),
+        $confirmCategoryDeletionBtn = $('#deleteCategory');
 
     function toggleVisibility (target, visibility) {
         target.css('display', visibility);
@@ -45,6 +46,7 @@ jQuery(function($) {
         });
         $(this).addClass('active');
         $($(this).attr('href')).show();
+        document.cookie = "lastOpenedTab=" + $('.dance-group-menu').find('.active').attr('href');
     });
 //МЕНЮ
 
@@ -275,16 +277,34 @@ jQuery(function($) {
                 },
                 success: function (msg) {
                     console.log('ajax_getDepartmentContent has worked successfully!');
-                    console.log(msg);
                     $seeDepartmentName.text($departmentName);
-                    //
-                    // $('#department-categories-list').append('<div class="dp-info-wrapper">'+
-                    //     '<p class="dance-category-name prevent-text-emphasizing text-bold">'+categoryName+'</p>'+
-                    //     '<div class="prevent-text-emphasizing btn-group-sm flat" role="group">'+
-                    //         '<button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>'+
-                    //         '<button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
-                    //     '</div>'+
-                    // '</div>');
+                    var msg = JSON.parse(msg)['categories'],
+                        $block = $('#department-categories-list');
+                    $block.empty();
+
+                    console.log(msg);
+
+                    if (msg != undefined) {
+                        for (var i=0; i<msg.length; i++) {
+                            var category=msg[i],
+                                program=category['d_c_program'],
+                                ageCategory=category['d_c_age_category'],
+                                nomination=category['d_c_nomination'],
+                                league=category['d_c_league'],
+                                id=category['id'],
+                                generalName=program+' '+ageCategory+' '+nomination+' '+league;
+
+                            $block.append('<div class="dp-info-wrapper">'+
+                                '<p class="dance-category-name prevent-text-emphasizing text-bold" data-id="'+id+'">'+generalName+'</p>'+
+                                '<div class="prevent-text-emphasizing btn-group-sm flat" role="group">'+
+                                '<button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>'+
+                                '<button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+                                '</div>'+
+                                '</div>');
+                        }
+                    } else {
+                        $block.append('<div class="dp-info-wrapper"><p class="dance-category-name prevent-text-emphasizing text-bold">Отделение пусто.</p></div>');
+                    }
 
                     if ($departmentsEditionPanelBody.css('display')=='none') {
                         toggleVisibility ($departmentsEditionPanelBody,'block');
@@ -339,12 +359,18 @@ jQuery(function($) {
     });
     
     // #confirmCategoryDeletion
+    var categoryToDelete;
     $body.on('click', '.delete-created-categories-info', function () {
-        console.log($(this).parents('.dp-info-wrapper').find('.dance-category-name').text());
-        let name = $(this).parents('.dp-info-wrapper').find('.dance-category-name').text();
-        console.log($confirmCategoryDeletion.find('.modal-body').find('span'));
+        let $categoryBlock = $(this).parents('.dp-info-wrapper').find('.dance-category-name'),
+            name = $categoryBlock.text();
+        
+        categoryToDelete = $categoryBlock.attr('data-id');
         $confirmCategoryDeletion.find('.modal-body').find('span').text(name);
         $confirmCategoryDeletion.modal();
+    });
+
+    $confirmCategoryDeletionBtn.on('click', function () {
+
     });
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //DEPARTMENTS EDITION
