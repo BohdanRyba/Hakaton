@@ -18,6 +18,7 @@ jQuery(function($) {
         $departmentsEditionPanelBody=$('#departments-edition-panel-body'),
         $departmentsEditionTransferCategory=$('#transferCategory'),
         $contentBlock = $('#department-categories-list'),
+        $transferConformation = $('#confirmTransfer'),
         $confirmCategoryDeletion = $('#confirmCategoryDeletion'),
         $confirmCategoryDeletionBtn = $('#deleteCategory');
 
@@ -323,8 +324,11 @@ jQuery(function($) {
 
     });
 
+    var transferedCategory;
     //  click on btn to transfer category
     $body.on('click', '.edit-created-category-info', function () {
+        transferedCategory = $(this).parents('.dp-info-wrapper').find('.dance-category-name').attr('data-id');
+
         var currentDepartment=$departmentsContent.find('.dropdown-menu').children('.active').text(),
             $from=$departmentsEditionTransferCategory.find('[data-direction="from"]'),
             $to=$departmentsEditionTransferCategory.find('[data-direction="to"]'),
@@ -332,7 +336,7 @@ jQuery(function($) {
         let $menu=$departmentsEditionTransferCategory.find('.dropdown-menu');
 
         $departmentsContent.find('.dropdown-menu').children().each(function () {
-            departments[$(this).text()]=$(this).attr('data-dropdown-id');
+            departments[$(this).text()]=$(this).attr('data-department-id');
         });
         delete departments[currentDepartment];
 
@@ -348,17 +352,51 @@ jQuery(function($) {
             $(this).removeClass('active');
         });
         $from.text(currentDepartment);
+        let curId = $departmentsContent.find('.dropdown-menu').children('.active').attr('data-department-id');
+        $from.attr('data-depid', curId);
         $departmentsEditionTransferCategory.modal();
     });
 
     //  choose what department to transfer category in
     $body.on('click', '.transfer-to', function () {
         var $to=$departmentsEditionTransferCategory.find('[data-direction="to"]'),
-            toName=$(this).text();
+            toName=$(this).text(),
+            id = $(this).attr('data-department-id');
 
         $to.text(toName);
+        $to.attr('data-depid', id);
     });
-    
+
+    $transferConformation.on('click', function () {
+        let $modalTrans = $('#transferCategory'),
+            from = $modalTrans.find('[data-direction="from"]').attr('data-depid'),
+            to = $modalTrans.find('[data-direction="to"]').attr('data-depid');
+        if (to == '') {return false} else {
+            function transferCategory() {
+                $.ajax({
+                    type:"POST",
+                    url:'ajax_transferCategory',
+                    data: {
+                        category : parseInt(transferedCategory),
+                        to : parseInt(to),
+                        from : parseInt(from)
+                    },
+                    success: function (msg) {
+                        console.log('ajax_delCategory has worked successfully!');
+                        $contentBlock.find('[data-id="'+transferedCategory+'"]').parents('.dp-info-wrapper').remove();
+                        $confirmCategoryDeletion.modal('hide');
+                        transferedCategory = undefined;
+                    },
+                    error: function (msg) {
+                        console.log('ajax_delCategory has failed to work!');
+                        alert('Ошибка, повторите действие.');
+                    }
+                });
+            }
+            transferCategory();
+        }
+    });
+
     // #confirmCategoryDeletion
     var categoryToDelete;
     $body.on('click', '.delete-created-categories-info', function () {

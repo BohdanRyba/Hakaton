@@ -158,7 +158,6 @@ if(!empty($_COOKIE['lastOpenedTab'])){
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title">Перемещение категории</h4>
                                     </div>
-                                    <form action="" method="POST">
                                         <div class="modal-body">
                                             <!--<div class="form-group">-->
                                             <!--<label for="newDepartment">Название отделения:</label>-->
@@ -178,12 +177,9 @@ if(!empty($_COOKIE['lastOpenedTab'])){
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-success" name="transfer-category-btn"
-                                                   value="Переместить">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена
-                                            </button>
+                                            <button id="confirmTransfer" class="btn btn-success">Переместить</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
