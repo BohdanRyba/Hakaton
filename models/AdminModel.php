@@ -1274,4 +1274,24 @@ class AdminModel extends AppModel
             return false;
         }
     }
+
+    static function getDepartmentCategories($department_id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $resulting_array = [];
+            $result = $db->query("SELECT * INTO `dance_categories` WHERE `id`  IN 
+                                        (SELECT `category_id` FROM `departments_categories` WHERE `department_id` = {$department_id})
+                                  ");
+            if($result){
+                while ($row = $result->fetch_assoc()){
+                    $resulting_array['categories'][] = $row;
+                }
+            } else {
+                return false;
+            }
+            return $resulting_array;
+        } else {
+            return false;
+        }
+    }
 }

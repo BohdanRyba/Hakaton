@@ -559,18 +559,19 @@ class AdminController extends AppController
     }
 
     public function actionAjax_sendCategoriesPickedForDepartment(){
-
         if(!empty($_POST['department']) && !empty($_POST['pickedCategories'])){
             $department_id = $_POST['department'];
             $picked_categories_ids = $_POST['pickedCategories'];
             $result = AdminModel::assignCategoriesToDepartment($department_id, $picked_categories_ids);
-//            $array = [];
-//            if($result !== false || !empty($result)){
-//                $array['dance_categories'] = $result;
-//            }
             echo json_encode($result);
         }
+    }
 
+    public function actionAjax_getDepartmentContent(){
+        if(!empty($_POST['department'])){
+            $result = AdminModel::getDepartmentCategories($_POST['department']);
+            echo json_encode($result);
+        }
     }
 
 
