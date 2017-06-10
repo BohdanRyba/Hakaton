@@ -574,5 +574,12 @@ class AdminController extends AppController
         }
     }
 
+    public function actionAjax_delCategory(){
+        if(!empty($_POST['categoryId']) && !empty($_POST['department'])){
+            $result = AdminModel::unbindCategoryFromDepartment($_POST);
+            echo json_encode($result);
+        }
+    }
+
 
 }

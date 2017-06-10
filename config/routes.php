@@ -26,6 +26,7 @@ return array(
     'admin/organizations/create_dancing_departments/ajax_getCategoriesToPickForDepartment' => 'admin/ajax_getCategoriesToPickForDepartment',
     'admin/organizations/create_dancing_departments/ajax_sendCategoriesPickedForDepartment' => 'admin/ajax_sendCategoriesPickedForDepartment',
     'admin/organizations/create_dancing_departments/ajax_getDepartmentContent' => 'admin/ajax_getDepartmentContent',
+    'admin/organizations/create_dancing_departments/ajax_delCategory' => 'admin/ajax_delCategory',
 	'admin/organizations/org_settings/ajax_club_add' => 'admin/ajaxClub_add',
 	'admin/organizations/org_settings/ajax_create-event' => 'admin/ajaxCreate_event',
 	'admin/organizations/org_settings/ajax_settingUpDancingCategory' => 'admin/ajax_settingUpDancingCategory',
