@@ -590,7 +590,7 @@ class AdminController extends AppController
             $category_id = $_POST['category'];
             $result = AdminModel::unbindCategoryFromDepartment($department_from, $category_id);
             if($result){
-                $result_2 = AdminModel::assignCategoriesToDepartment($department_to, $category_id);
+                $result_2 = AdminModel::assignCategoriesToDepartment($department_to, [$category_id]);
                 echo json_encode($result_2);
             }
             echo json_encode($result);
