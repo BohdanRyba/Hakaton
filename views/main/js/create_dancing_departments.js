@@ -275,6 +275,7 @@ jQuery(function($) {
                 },
                 success: function (msg) {
                     console.log('ajax_getDepartmentContent has worked successfully!');
+                    console.log(msg);
                     $seeDepartmentName.text($departmentName);
                     //
                     // $('#department-categories-list').append('<div class="dp-info-wrapper">'+
@@ -339,10 +340,10 @@ jQuery(function($) {
     
     // #confirmCategoryDeletion
     $body.on('click', '.delete-created-categories-info', function () {
-        console.log($(this).parents('.dp-info-wrapper').find('.dance-category-name').text());
-        
-        $confirmCategoryDeletion.find('.modal-body').find('span').text($(this).parents('dp-info-wrapper').find('.dance-category-name').text());
-        $confirmCategoryDeletion.modal();
+        // console.log($(this).parents('.dp-info-wrapper').find('.dance-category-name').text());
+        //
+        // $confirmCategoryDeletion.find('.modal-body').find('span').text($(this).parents('dp-info-wrapper').find('.dance-category-name').text());
+        // $confirmCategoryDeletion.modal();
     });
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //DEPARTMENTS EDITION
