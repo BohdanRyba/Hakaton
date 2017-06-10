@@ -78,7 +78,6 @@ use components\Router;
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                         <div id="editDepartmentName" class="modal fade" role="dialog">
@@ -106,7 +105,6 @@ use components\Router;
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
                         <div id="createDepartment" class="modal fade" role="dialog">
@@ -169,9 +167,25 @@ use components\Router;
                                         </div>
                                     </form>
                                 </div>
-
                             </div>
                         </div>
+                        <div id="confirmCategoryDeletion" class="modal fade" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>One fine body&hellip;</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
 
                         <div class="container box box-primary flat">
                             <!-- MENU-->
@@ -343,7 +357,7 @@ use components\Router;
                                                     <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                                         <?php foreach ($departments as $department): ?>
                                                             <li data-department-id="<?= $department['id']; ?>"
-                                                                class="dropdown-menu-department prevent-text-emphasizing">
+                                                                class="dropdown-menu-department-content prevent-text-emphasizing">
                                                                 <a href="#"><?= $department['dep_name']; ?></a></li>
                                                         <?php endforeach; ?>
                                                     <?php endif; ?>
@@ -368,8 +382,10 @@ use components\Router;
                                                             <form class="dance-group-show-info"
                                                                   id="department-categories-list">
                                                                 <div class="dp-info-wrapper">
-                                                                    <div class="prevent-text-emphasizing btn-group-sm flat"
-                                                                         role="group">
+                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">
+                                                                        Хіп Дорослі Кращий виспут за думкою глядачів
+                                                                        Початківці</p>
+                                                                    <div class="prevent-text-emphasizing btn-group-sm flat" role="group">
                                                                         <button type="button"
                                                                                 class="btn btn-success edit-created-category-info edit-button btn-flat">
                                                                             <i class="fa fa-exchange"></i></button>
@@ -377,11 +393,11 @@ use components\Router;
                                                                                 class="btn btn-danger delete-created-categories-info delete-button btn-flat">
                                                                             <i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">
-                                                                        Хіп Дорослі Кращий виспут за думкою глядачів
-                                                                        Початківці</p>
                                                                 </div>
                                                                 <div class="dp-info-wrapper">
+                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">
+                                                                        Хіп Дорослі Кращий виспут за думкою глядачів
+                                                                        Початківці</p>
                                                                     <div class="prevent-text-emphasizing btn-group-sm flat"
                                                                          role="group">
                                                                         <button type="button"
@@ -391,9 +407,6 @@ use components\Router;
                                                                                 class="btn btn-danger delete-created-categories-info delete-button btn-flat">
                                                                             <i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    <p class="dance-category-name prevent-text-emphasizing text-bold">
-                                                                        Хіп Дорослі Кращий виспут за думкою глядачів
-                                                                        Початківці</p>
                                                                 </div>
                                                             </form>
                                                             <span id="update-dancing-department-categories-list"
