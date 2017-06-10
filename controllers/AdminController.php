@@ -576,7 +576,23 @@ class AdminController extends AppController
 
     public function actionAjax_delCategory(){
         if(!empty($_POST['categoryId']) && !empty($_POST['department'])){
-            $result = AdminModel::unbindCategoryFromDepartment($_POST);
+            $department_id = $_POST['department'];
+            $category_id = $_POST['categoryId'];
+            $result = AdminModel::unbindCategoryFromDepartment($department_id, $category_id);
+            echo json_encode($result);
+        }
+    }
+
+    public function actionAjax_transferCategory(){
+        if(!empty($_POST['from']) && !empty($_POST['to']) && !empty($_POST['category'])){
+            $department_from = $_POST['from'];
+            $department_to = $_POST['to'];
+            $category_id = $_POST['category'];
+            $result = AdminModel::unbindCategoryFromDepartment($department_from, $category_id);
+            if($result){
+                $result_2 = AdminModel::assignCategoriesToDepartment($department_to, [$category_id]);
+                echo json_encode($result_2);
+            }
             echo json_encode($result);
         }
     }
