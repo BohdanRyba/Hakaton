@@ -16,7 +16,8 @@ jQuery(function($) {
         //DEPARTMENTS EDITION
         $departmentsEditionSaveBtn=$('#update-dancing-department-categories-list'),
         $departmentsEditionPanelBody=$('#departments-edition-panel-body'),
-        $departmentsEditionTransferCategory=$('#transferCategory');
+        $departmentsEditionTransferCategory=$('#transferCategory'),
+        $confirmCategoryDeletion = $('#confirmCategoryDeletion');
 
     function toggleVisibility (target, visibility) {
         target.css('display', visibility);
@@ -334,6 +335,14 @@ jQuery(function($) {
             toName=$(this).text();
 
         $to.text(toName);
+    });
+    
+    // #confirmCategoryDeletion
+    $body.on('click', '.delete-created-categories-info', function () {
+        console.log($(this).parents('.dp-info-wrapper').find('.dance-category-name').text());
+        
+        $confirmCategoryDeletion.find('.modal-body').find('span').text($(this).parents('dp-info-wrapper').find('.dance-category-name').text());
+        $confirmCategoryDeletion.modal();
     });
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //DEPARTMENTS EDITION

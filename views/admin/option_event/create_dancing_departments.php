@@ -177,11 +177,11 @@ use components\Router;
                                         <h4 class="modal-title">Modal title</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <p>One fine body&hellip;</p>
+                                        <p>Вы действительно хотите удалить <span></span> ?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary">Удалить!</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
