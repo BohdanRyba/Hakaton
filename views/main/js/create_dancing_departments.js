@@ -143,17 +143,6 @@ jQuery(function($) {
         $('#pick-dancing-categories-for-department').find('ul').empty();
     });
 
-    // $('#departments-to-fill-dropdown').on('show.bs.dropdown', function () {
-    //     $(this).find('.caret').removeClass('rotateTop');
-    //     $(this).find('.caret').addClass('rotateTop');
-    // });
-    //
-    // $('#departments-to-fill-dropdown').on('hide.bs.dropdown', function () {
-    //     $(this).find('.caret').addClass('rotateBot');
-    //     $(this).find('.caret').removeClass('rotateTop');
-    //     // $(this).find('.caret').removeClass('rotateBot');
-    // });
-
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //  view categories according to dance program name
@@ -275,11 +264,40 @@ jQuery(function($) {
             $(this).removeClass('active');
         });
         $(this).addClass('active');
-        // $(this).parents('.dropdown').find('.dropdown-toggle').html($departmentName+'<span class="caret"></span>');
-        $seeDepartmentName.text($departmentName);
-        if ($departmentsEditionPanelBody.css('display')=='none') {
-            toggleVisibility ($departmentsEditionPanelBody,'block');
+
+        let activeDepartment = $(this).parent().find('.active').attr('data-department-id');
+        function getDepartmentContent () {
+            $.ajax({
+                type:"POST",
+                url:'ajax_getDepartmentContent',
+                data: {
+                    department : activeDepartment
+                },
+                success: function (msg) {
+                    console.log('ajax_getDepartmentContent has worked successfully!');
+                    $seeDepartmentName.text($departmentName);
+                    //
+                    // $('#department-categories-list').append('<div class="dp-info-wrapper">'+
+                    //     '<p class="dance-category-name prevent-text-emphasizing text-bold">'+categoryName+'</p>'+
+                    //     '<div class="prevent-text-emphasizing btn-group-sm flat" role="group">'+
+                    //         '<button type="button" class="btn btn-success edit-created-category-info edit-button btn-flat"><i class="fa fa-exchange"></i></button>'+
+                    //         '<button type="button" class="btn btn-danger delete-created-categories-info delete-button btn-flat"><i class="fa fa-trash"></i></button>'+
+                    //     '</div>'+
+                    // '</div>');
+
+                    if ($departmentsEditionPanelBody.css('display')=='none') {
+                        toggleVisibility ($departmentsEditionPanelBody,'block');
+                    }
+                },
+                error: function (msg) {
+                    console.log('ajax_getDepartmentContent has failed to work!');
+                    alert('Ошибка, повторите действие.');
+                }
+            });
         }
+        // $(this).parents('.dropdown').find('.dropdown-toggle').html($departmentName+'<span class="caret"></span>');
+
+
     });
 
     //  click on btn to transfer category
