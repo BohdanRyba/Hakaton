@@ -244,10 +244,8 @@ if(!empty($_COOKIE['lastOpenedTab'])){
                                                         <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                                             <?php foreach ($departments as $department): ?>
                                                                 <li data-id-department="<?= $department['id']; ?>">
+                                                                    <p class="department-name"><?= $department['dep_name']; ?></p>
                                                                     <div class="btn-group-xs button-wrapper">
-                                                                        <button type="button"
-                                                                                class="show-info-about-dance-group btn btn-info btn-flat">
-                                                                            <i class="fa fa-info"></i></button>
                                                                         <button type="button" data-toggle="modal"
                                                                                 data-target="#editDepartmentName"
                                                                                 class="edit-info-about-department btn btn-success btn-flat">
@@ -257,7 +255,6 @@ if(!empty($_COOKIE['lastOpenedTab'])){
                                                                                 class="delete-department btn btn-danger delete-button btn-flat">
                                                                             <i class="fa fa-trash"></i></button>
                                                                     </div>
-                                                                    <p class="department-name"><?= $department['dep_name']; ?></p>
                                                                 </li>
                                                             <?php endforeach; ?>
                                                         <?php endif; ?>
