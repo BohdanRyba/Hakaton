@@ -36,6 +36,11 @@ jQuery(function($) {
         return eventId;
     }
 
+        setTimeout(function () {
+            $body.find('.alert').slideUp(450, function () {
+                $(this).remove();
+            })}, 5500);
+
 
 //МЕНЮ
     $menuItems.on('click', function (e) {
