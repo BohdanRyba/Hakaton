@@ -85,13 +85,6 @@ jQuery(function($) {
         }
     });
 
-    //create new department
-    // $('#send-created-department').on('click', function (e) {
-    //     var name=$createDepartmentModal.find('#newDepartment').val();
-    //     // if (name=='') {
-    //     //     e.preventDefault();
-    //     // }
-    // });
 //DEPARTMENTS LIST
 //    =========================================================================================================
 //DEPARTMENTS FIILLING
@@ -117,19 +110,53 @@ jQuery(function($) {
     $body.on('click','#check-all-dancing-categories', function () {
         var $checkAllLi=$(this),
             $checkAll=$checkAllLi.find('input'),
-            $li=$('.pick-dancing-categories-for-department');
+            $liRemove=$('.to_remove'),
+            $liTrue = $('.true_var');
 
-        if ($checkAll.prop('checked')==true) {
-            $li.each(function () {
-                $(this).find('[type="checkbox"]').prop('checked', true);
-                $(this).attr('data-checked', 'checked');
-            })
+        if ($liRemove.length == 0) {
+            if ($checkAll.prop('checked')==true) {
+                $liTrue.each(function () {
+                    $(this).find('[type="checkbox"]').prop('checked', true);
+                    $(this).attr('data-checked', 'checked');
+                })
+            } else {
+                $liTrue.each(function () {
+                    $(this).find('[type="checkbox"]').prop('checked', false);
+                    $(this).removeAttr('data-checked');
+                })
+            }
         } else {
-            $li.each(function () {
-                $(this).find('[type="checkbox"]').prop('checked', false);
-                $(this).removeAttr('data-checked');
-            })
+            if ($checkAll.prop('checked')==true) {
+                $liRemove.each(function () {
+                    let id = $(this).attr('data-id');
+
+                    $categoriesBlock.find('.true_var').each(function(){
+                        if ($(this).attr('data-id') == id) {
+                            $(this).attr('data-checked', 'checked');
+                            $(this).find('input').prop('checked', true);
+                        }
+                    });
+
+                    $(this).find('[type="checkbox"]').prop('checked', true);
+                    $(this).attr('data-checked', 'checked');
+                })
+            } else {
+                $liRemove.each(function () {
+                    let id = $(this).attr('data-id');
+
+                    $categoriesBlock.find('.true_var').each(function(){
+                        if ($(this).attr('data-id') == id) {
+                            $(this).removeAttr('data-checked');
+                            $(this).find('input').prop('checked', false);
+                        }
+                    });
+
+                    $(this).find('[type="checkbox"]').prop('checked', false);
+                    $(this).removeAttr('data-checked');
+                })
+            }
         }
+
     });
 
 //   dropdown pick department
@@ -173,11 +200,10 @@ jQuery(function($) {
                 },
                 success: function (msg) {
                     var msg = JSON.parse(msg)['dance_categories'];
-                    // var msg = JSON.parse(msg);
-                    console.log(msg);
                     console.log('ajax_sendRemovedCategories has worked successfully!');
                     let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');
                     $searchedCategoriesBlock.empty();
+                    $fillingSearch.val('');
 
                     if (msg.length > 0) {
                         $searchedCategoriesBlock.append('<li id="check-all-dancing-categories" class="prevent-text-emphasizing"><label><input class="text-capitalize" type="checkbox">выбрать все</label></li>');
@@ -191,10 +217,10 @@ jQuery(function($) {
                             id=category['id'],
                             generalName=program+' '+ageCategory+' '+nomination+' '+league;
 
-                        $searchedCategoriesBlock.append('<li data-id="'+id+'" class="prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="'+generalName+'">'+generalName+'</label></li>');
+                        $searchedCategoriesBlock.append('<li data-id="'+id+'" class="true_var prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" name="'+generalName+'">'+generalName+'</label></li>');
                         }
                     } else {
-                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-uppercase text-bold">больше нет доступных категорий.</li>');
+                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Больше нет доступных категорий.</p></div></li>');
                     }
 
                 },
@@ -210,6 +236,133 @@ jQuery(function($) {
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT SHOWS CATEGORIES $danceProgramsList THAT ARE USED IN THE DANCING PROGRAM)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 
+    var $fillingSearch = $('#departments-search-category'),
+        $categoriesBlock = $('#pick-dancing-categories-for-department').children('ul');
+
+    $fillingSearch.on('keyup', function () {
+        const queryString = $(this).val().toLowerCase().match(/^\s*(.*)/)[1];
+        let $checkAll = $('#check-all-dancing-categories');
+
+        $categoriesBlock.find('.to_remove').each(function () {
+            // if ($(this).attr('data-checked')=='checked') {
+            //     let name = $(this).find('label').text();
+            //     $categoriesBlock.find('.true_var').each(function () {
+            //         if ($(this).find('label').text() == name) {
+            //             $(this).attr('data-checked', 'checked');
+            //         }
+            //     });
+            // }
+            $(this).remove();
+        });
+        $categoriesBlock.find('.callout').parent().remove();
+
+        $checkAll.find('input').prop('checked', false);
+
+        if (queryString=='') {
+            let $liTrue = $categoriesBlock.find('.true_var');
+
+            if ($liTrue.length > 0) {
+                $liTrue.each(function () {
+                    $(this).removeClass('displayNone');
+                });
+                toggleVisibility($checkAll, 'block');
+            } else {
+                $checkAll.remove();
+                $categoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Больше нет доступных категорий.</p></div></li>');
+            }
+        } else {
+            let allCategories = [];
+
+            $categoriesBlock.find('.true_var').each(function () {
+                let category = {},
+                    $categoryLi=$(this);
+
+                $categoryLi.addClass('displayNone');
+                category.id = $categoryLi.attr('data-id');
+                category.name = $categoryLi.find('label').text();
+                category['data-checked'] = $categoryLi.attr('data-checked');
+                allCategories.push(category);
+            });
+
+            let filteredCategories = allCategories.filter(function (element) {
+                    return element.name.toLowerCase().includes(queryString);
+                }
+            );
+
+            if (filteredCategories.length != 0) {
+                toggleVisibility($checkAll, 'block');
+
+                filteredCategories.forEach(function (item) {
+                    let pickedStatus = (function () {if (item['data-checked']) {return 'checked';} else {return '';}})();
+                    $categoriesBlock.append('<li data-id="'+item.id+'" data-checked="'+pickedStatus+'" class="to_remove prevent-text-emphasizing pick-dancing-categories-for-department"><label><input type="checkbox" '+pickedStatus+' name="'+item.name+'">'+item.name+'</label></li>');
+                });
+
+                let $searchedCategories=$categoriesBlock.find('.to_remove');
+
+                $searchedCategories.each(function () {
+                    let parse=$(this).find('label').html().match(/(.*)/),
+                        labelHtml = parse[1].match(/(<input.*>)(.*)/),
+                        input = labelHtml[1],
+                        text = labelHtml[2],
+                        regexp = new RegExp(queryString, 'i'),
+                        regexpGlobal = new RegExp(queryString, 'gi'),
+                        coincidences = text.match(regexpGlobal).length,
+                        categoryFragments = [];
+
+                    for (let i=0; i<coincidences; i++) {
+                        let thisCoincidence;
+
+                        if (i==0) {
+                            thisCoincidence = text.match(regexp)[0];
+                            let coincidenceLength = thisCoincidence.length,
+                                pos = text.indexOf(thisCoincidence);
+                            categoryFragments.push(text.slice(0,pos));
+                            thisCoincidence = '<span class="searchedFragment">'+thisCoincidence+'</span>';
+                            categoryFragments.push(thisCoincidence);
+                            categoryFragments.push(text.slice(pos+coincidenceLength));
+                        } else {
+                            let str = categoryFragments[categoryFragments.length-1];
+                            thisCoincidence = str.match(regexp)[0];
+                            let coincidenceLength = thisCoincidence.length,
+                                pos = categoryFragments[categoryFragments.length-1].indexOf(thisCoincidence);
+                            categoryFragments[categoryFragments.length-1]=str.slice(0,pos);
+                            thisCoincidence = '<span class="searchedFragment">'+thisCoincidence+'</span>';
+                            categoryFragments.push(thisCoincidence);
+                            categoryFragments.push(str.slice(pos+coincidenceLength));
+                        }
+                    }
+                    text=input+categoryFragments.join('');
+                    $(this).find('label').html(text);
+                });
+            } else {
+                toggleVisibility($checkAll, 'none');
+                $categoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Таких категорий нет.</p></div></li>');
+            }
+        }
+    });
+
+    $body.on('click', '.to_remove', function () {
+       let id = $(this).attr('data-id'),
+           checkedStatus = $(this).attr('data-checked');
+
+        if (checkedStatus) {
+            $categoriesBlock.find('.true_var').each(function(){
+                if ($(this).attr('data-id') == id) {
+                    $(this).attr('data-checked', checkedStatus);
+                    $(this).find('input').prop('checked', true);
+                }
+            });
+        } else {
+            $categoriesBlock.find('.true_var').each(function(){
+                if ($(this).attr('data-id') == id) {
+                    $(this).removeAttr('data-checked');
+                    $(this).find('input').prop('checked', false);
+                }
+            });
+        }
+    });
+
+
 //  show save btn
     $body.on('click', '#check-all-dancing-categories', function () {
         toggleVisibility($departmentsFillingSaveBtn, 'block');
@@ -223,13 +376,36 @@ jQuery(function($) {
         var pickedCategories = [],
             department = parseInt($('#departments-to-fill').children('.active').attr('data-department-id'));
 
+        let $liRemove = $searchedCategoriesBlock.find('.to_remove'),
+            $checkAll = $('#check-all-dancing-categories');
 
-        $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
-            pickedCategories.push(parseInt($(this).attr('data-id')));
-        });
+        if ($liRemove.length == 0) {
 
-        console.log(department);
-        console.log(pickedCategories);
+            if ($checkAll.css('display') != 'none') {
+
+                $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
+                    pickedCategories.push(parseInt($(this).attr('data-id')));
+                });
+
+                if (pickedCategories.length > 0) {
+                    ajax_sendCategories();
+                }
+
+            }
+        } else {
+
+            $liRemove.each(function () {
+                if ($(this).attr('data-checked') == 'checked') {pickedCategories.push(parseInt($(this).attr('data-id')));}
+
+                if (pickedCategories.length > 0) {
+                    ajax_sendCategories();
+                }
+            });
+
+        }
+
+        // console.log(department);
+        // console.log(pickedCategories);
 
         function ajax_sendCategories() {
             $.ajax({
@@ -242,21 +418,45 @@ jQuery(function($) {
                 success: function (msg) {
                     console.log(JSON.parse(msg));
                     console.log('ajax_sendCategoriesPickedForDepartment has worked successfully!');
-                    $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
-                        $(this).remove();
-                    });
-                    if($searchedCategoriesBlock.children().length == 1) {
-                        $searchedCategoriesBlock.children().eq(0).remove();
-                        toggleVisibility($departmentsFillingSaveBtn, 'none');
-                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-uppercase text-bold">больше нет доступных категорий.</li>');
+
+                    let $liRemove = $searchedCategoriesBlock.find('.to_remove');
+
+                    if ($liRemove.length == 0 && $checkAll.css('display') != 'none') {
+                        $searchedCategoriesBlock.children('[data-checked="checked"]').each(function () {
+                            $(this).remove();
+                        });
+                    } else if ($liRemove.length == 0 && $checkAll.css('display') == 'none') {
+                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Больше нет доступных категорий.</p></div></li>');
+                    } else if ($liRemove.length > 0) {
+                        $liRemove.each(function () {
+                            if ($(this).attr('data-checked') == 'checked') {
+                                let id = $(this).attr('data-id');
+                                $searchedCategoriesBlock.find('[data-id="'+id+'"]').each(function () {
+                                    $(this).remove();
+                                });
+                            }
+                        });
                     }
+
+                    console.log($liRemove);
+                    let $liTrue = $searchedCategoriesBlock.find('.true_var');
+
+                    if ($searchedCategoriesBlock.find('.to_remove').length == 0 && $checkAll.css('display') != 'none' && $liTrue.length == 0) {
+                        $searchedCategoriesBlock.children().eq(0).remove();
+                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Больше нет доступных категорий.</p></div></li>');
+                    } else if ($searchedCategoriesBlock.find('.to_remove').length == 0 && $checkAll.css('display') != 'none' && $liTrue.length > 0) {
+                        toggleVisibility($checkAll, 'none');
+                        $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Больше нет доступных категорий.</p></div></li>');
+                    }
+
+                    toggleVisibility($departmentsFillingSaveBtn, 'none');
                 },
                 error: function (msg) {
                     console.log('ajax_sendCategoriesPickedForDepartment has failed to work!');
                 }
             });
         }
-        ajax_sendCategories();
+        // ajax_sendCategories();
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT saves CATEGORIES $danceProgramsList THAT ARE USED IN THE DANCING PROGRAM)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     });
 //DEPARTMENTS FIILLING

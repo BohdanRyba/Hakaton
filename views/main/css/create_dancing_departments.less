@@ -13,6 +13,14 @@
 #update-dancing-department-info, #departments-filling-panel-body, #categories-list, #departments_filling, #departments_content, #update-dancing-department-categories-list, #departments-edition-panel-body {display: none;} //#departments-edition-panel-body
 //#departments_filling {display: none;}
 
+.displayNone {
+  display: none;
+}
+
+.searchedFragment {
+  background: orange;
+}
+
 .dance-group-menu {
   margin-bottom: 15px;
   padding: 10px 0;
@@ -50,47 +58,9 @@
   }
 }
 
-//.dancing-department-list-wrapper {
-//  margin: 0;
-//  padding: 0;
-//  width: 100%;
-//  overflow: hidden;
-//  li {
-//    &:hover {
-//      transition: background 150ms linear;
-//      background: @highlight-color;
-//    }
-//    transition: background 150ms linear;
-//    background: white;
-//    width: 100%;
-//    list-style: none;
-//    padding: 10px 5px;
-//    display: table;
-//    &:not(:last-child) {
-//      border-bottom: solid 2px @main-color;
-//    }
-//    .button-wrapper{
-//      display: table-cell;
-//      min-width: 80px;
-//      padding: 0 5px;
-//      vertical-align: middle;
-//
-//    }
-//    p.department-name{
-//      cursor: default;
-//      font-size: 16px;
-//      line-height: 20px;
-//      display: table-cell;
-//      padding: 0;
-//      vertical-align: middle;
-//      text-align: left;
-//    }
-//  }
-//}
 .dancing-department-list-wrapper {
   margin: 0;
   padding: 0;
-  //width: 100%;
   overflow: hidden;
   li {
     &:hover {
@@ -219,6 +189,9 @@
   padding: 10px 0;
   overflow: hidden;
   ul {
+    .callout {
+      margin-bottom: 0;
+    }
     max-height: 425px;
     overflow-y: scroll;
     list-style: none;
