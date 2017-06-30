@@ -228,7 +228,7 @@ jQuery(function($) {
                     console.log('ajax_sendRemovedCategories has failed to work!');
                     let $searchedCategoriesBlock = $('#pick-dancing-categories-for-department').find('ul');
                     $searchedCategoriesBlock.empty();
-                    $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-uppercase">ошибка. повторите попытку.</li>');
+                    $searchedCategoriesBlock.append('<li class="prevent-text-emphasizing text-bold"><div class="flat callout callout-danger"><p>Ошибка. Повторите попытку.</p></div></li>');
                 }
             });
         }
@@ -640,6 +640,9 @@ jQuery(function($) {
         }
         delCategory();
     });
+
+//    search for categories in departments
+    $('#search-category-in-department').mySearch($('#department-categories-list'), '.dp-info-wrapper', 'searchedFragment', '.dance-category-name');
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!AJAX TO BE ADDED HERE (AJAX THAT ADDS DANCING PROGRAMS IN $danceProgramsList THAT ARE USED IN THE DEPARTMENT)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //DEPARTMENTS EDITION
