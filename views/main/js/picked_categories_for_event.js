@@ -121,6 +121,7 @@ jQuery(function($) {
                 }
             );
 
+            console.log(filteredCategories);
             filteredCategories.forEach(function (item) {
                 let displayNone = (function () {if (item.displayNone) {return 'displayNone';} else {return '';}})();
                 $categoriesBlock.append('<li class="pick_dancing_categories_for_event to_remove" data-checked="'+item['data-checked']+'"><label><input class="'+displayNone+'" type="checkbox" name="'+item.name+'">'+item.name+'</label></li>');

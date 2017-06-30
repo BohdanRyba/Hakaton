@@ -529,6 +529,7 @@ if(!empty($_COOKIE['lastOpenedTab'])){
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/js/mySearch.js"></script>
 
 <script src="<?= Router::$permalink ?>views/main/js/create_dancing_departments.js?<?php echo date("Y-m-d_H:i:s"); ?>"></script>
 </body>
