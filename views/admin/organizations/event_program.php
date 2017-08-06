@@ -58,8 +58,8 @@ use components\Router;
                                 <ul class="dropdown-menu flat" aria-labelledby="chooseDepartment">
                                     <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                         <?php foreach ($departments as $department): ?>
-                                            <li data-id-department="<?= $department['id']; ?>">
-                                                <a href="#"><?= $department['dep_name']?></a>
+                                            <li  class="department-item" data-id-department="<?= $department['id']; ?>">
+                                                <a><?= $department['dep_name']?></a>
                                             </li>
                                         <?php endforeach; ?>
                                     <?php endif; ?>

@@ -177,7 +177,7 @@ jQuery(function($) {
                 url: 'ajax_showCategoriesAccordingToDep',
                 data: 'parameter=' + id,
                 success: function (msg) {
-
+                    $('#department-name').text($(this).text());
                 },
                 error: function (msg) {
                     console.log('ajax_showCategoriesAccordingToDep has failed to work!');
