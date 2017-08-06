@@ -169,15 +169,16 @@ jQuery(function($) {
                 $(this).removeClass('shown');
             });
         $(this).addClass('shown');
-        function ajaxShowCategoriesAccordingToDep() {
-            let id = $(this).attr('data-id-department');
+        function ajaxShowCategoriesAccordingToDep($this) {
+            let id = $this.attr('data-id-department');
+            console.log(id);
             $.ajax({
                 type: "POST",
                 url: 'ajax_showCategoriesAccordingToDep',
                 data: 'id=' + id,
                 success: function (msg) {
-                    let msg = JSON.parse(msg);
-                    console(msg);
+                     msg = JSON.parse(msg);
+                    console.log(msg);
                     // let $mainHolder = $('.category-main-holder');
                     // $mainHolder.empty();
 
@@ -236,7 +237,7 @@ jQuery(function($) {
                 }
             });
         }
-        ajaxShowCategoriesAccordingToDep();
+        ajaxShowCategoriesAccordingToDep($(this));
     });
 
 //    category settings
