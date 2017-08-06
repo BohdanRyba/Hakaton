@@ -597,5 +597,12 @@ class AdminController extends AppController
         }
     }
 
+    public function actionEventProgram(){
+        $header = $this->loadHeader('header_1');
+        $sidebar = $this->loadSideBar('admin_sidebar_1');
+        $footer = $this->loadFooter('footer_1');
+        require_once('views/admin/organizations/event_program.php');
+    }
+
 
 }
