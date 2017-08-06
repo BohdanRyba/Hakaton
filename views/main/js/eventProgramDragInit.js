@@ -177,8 +177,8 @@ jQuery(function($) {
                 url: 'ajax_showCategoriesAccordingToDep',
                 data: 'id=' + id,
                 success: function (msg) {
-                     msg = JSON.parse(msg);
-                    console.log(msg);
+                    let hmsg = JSON.parse(msg);
+                    console.log(hmsg);
                     // let $mainHolder = $('.category-main-holder');
                     // $mainHolder.empty();
 
