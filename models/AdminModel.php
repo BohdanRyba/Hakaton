@@ -1306,4 +1306,28 @@ class AdminModel extends AppModel
             return false;
         }
     }
+
+    static function getCategoriesAccordingToDepartment($department_id, $categories){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id}");
+            $resulting_array = [];
+            if ($result) {
+                while ($row = $result->fetch_assoc()) {
+                    $resulting_array[] = $row;
+                }
+                foreach ($resulting_array as $category_from_db) {
+                    foreach ($categories as &$category_from_post) {
+                        if ((int)$category_from_db['category_id'] === (int)$category_from_post['id']) {
+                            $category_from_post['sort_order'] = $category_from_db['sort_order'];
+                        }
+                    }
+                }
+            } else {
+                return false;
+            }
+            return $categories;
+        } else {
+            return false;
+        }
+    }
 }

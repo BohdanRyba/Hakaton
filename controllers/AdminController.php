@@ -605,5 +605,14 @@ class AdminController extends AppController
         require_once('views/admin/organizations/event_program.php');
     }
 
+    public function actionAjax_showCategoriesAccordingToDep(){
+        if(!empty($_POST['id'])){
+            $department_id = (int)$_POST['id'];
+            $categories_in_department = AdminModel::getDepartmentCategories($department_id);
+            $result = AdminModel::getCategoriesAccordingToDepartment($department_id, $categories_in_department['categories']);
+            echo json_encode($result);
+        }
+    }
+
 
 }
