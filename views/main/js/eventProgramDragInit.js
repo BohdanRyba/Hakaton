@@ -165,6 +165,17 @@ jQuery(function($) {
 
 //    category settings
 
+    function checkCategoryStatus($category) {
+        let spr = $category.find('.count-system-wrapper').attr('data-checkstatus'),
+            round = $category.find('.round-wrapper').attr('data-checkstatus'),
+            number = $category.find('.participants-in-round-input').attr('data-checkstatus'),
+            entrane = $category.find('.entrance-number-input').attr('data-checkstatus');
+
+        if (spr  == "checked" && round == "checked" && number == "checked" && entrane == "checked") {
+            $category.attr('data-checkstatus', 'completed');
+        }
+    }
+
     //count system
     $b.on('click', '.count-system-variant', function () {
         let spr = $(this).find('a').text(),
@@ -178,6 +189,7 @@ jQuery(function($) {
         $wrapper.attr('data-checkstatus', 'checked');
     //   !! ajax to be added here that sends the checked spr
     //   !! add function that checks whether all required parameters are checked
+        checkCategoryStatus($(this).parents('.category'));
     });
 
     // round
@@ -202,6 +214,7 @@ jQuery(function($) {
         $wrapper.attr('data-checkstatus', 'checked');
     //     !!ajax to be added here that sends the checked round
         //    !!add function that checks whether all required parameters are checked
+        checkCategoryStatus($(this).parents('.category'));
     });
 
     //participants number
@@ -221,6 +234,7 @@ jQuery(function($) {
             $(this).attr('data-checkstatus', 'unchecked');
         //    !! add ajax here
         }
+        checkCategoryStatus($(this).parents('.category'));
     //    !!add a refresher of this handler each time the categories number changes
     //    !! for this .off('blur') snd again bind .blur();
     });
@@ -243,8 +257,23 @@ jQuery(function($) {
             $(this).attr('data-checkstatus', 'unchecked');
             //    !! add ajax here
         }
+        checkCategoryStatus($(this).parents('.category'));
         //    !!add a refresher of this handler each time the categories number changes
         //    !! for this .off('blur') snd again bind .blur();
+    });
+
+    $b.on('click', '.show-dancers-btn', function () {
+       $(this).toggleClass('shown');
+        let $categoryHolder = $(this).parents('.category').find('.participants-holder');
+
+        if ($(this).hasClass('shown')) {
+        //    add ajax that shows participants
+            $categoryHolder.slideDown();
+        } else {
+
+
+            $categoryHolder.slideUp().empty();
+        }
     });
 
 

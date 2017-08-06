@@ -306,6 +306,23 @@
         }
       }
 
+      .show-dancers {
+        display: table-cell;
+        vertical-align: middle;
+        button {
+          i {
+            transform: rotate(0deg);
+            .transition(transform);
+          }
+        }
+        button.shown {
+          i {
+            transform: rotate(180deg);
+            .transition(transform);
+          }
+        }
+      }
+
     }
 
     .participants-holder {
