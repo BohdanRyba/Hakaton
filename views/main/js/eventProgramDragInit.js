@@ -98,7 +98,7 @@ jQuery(function($) {
                         $d.scrollTop($b[0].getBoundingClientRect().height);
                     }
                 }
-
+                setPosition();
             }
 
 
@@ -134,7 +134,7 @@ jQuery(function($) {
                         $d.scrollTop(0);
                     }
                 }
-
+                setPosition();
             }
 
 
@@ -163,6 +163,29 @@ jQuery(function($) {
         }
     });
 
+//    pick department
+    $b.on('click', '.department-item', function () {
+        $(this).parents('.dropdown-menu').children().each(function () {
+                $(this).removeClass('shown');
+            }
+        );
+        $(this).addClass('shown');
+        function ajaxShowCategoriesAccordingToDep() {
+            let id = $(this).attr('data-id-department');
+            $.ajax({
+                type: "POST",
+                url: 'ajax_showCategoriesAccordingToDep',
+                data: 'parameter=' + id,
+                success: function (msg) {
+
+                },
+                error: function (msg) {
+                    console.log('ajax_showCategoriesAccordingToDep has failed to work!');
+                }
+            });
+        }
+    });
+
 //    category settings
 
     function checkCategoryStatus($category) {
@@ -176,6 +199,11 @@ jQuery(function($) {
         } else {
             $category.attr('data-checkstatus', 'unchecked');
         }
+    }
+    function setPosition() {
+        $('.category').each(function () {
+            $(this).find('.count-number').text($(this).index()+1 + '.');
+        });
     }
 
     //count system

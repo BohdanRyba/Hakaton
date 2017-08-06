@@ -191,7 +191,7 @@ jQuery(function($) {
                     error: function (msg) {
                         console.log('ajax_addNewParameters (ajax1) has failed to work!');
                     }
-                })
+                });
             }
 
             ajax_addNewParameters();
