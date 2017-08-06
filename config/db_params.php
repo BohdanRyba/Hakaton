@@ -3,6 +3,6 @@
 return array(
     'host' => 'localhost',
     'user' => 'root',
-    'password' => 'root',
+    'password' => '',
     'dbname' => 'hakaton_admin'
 );
