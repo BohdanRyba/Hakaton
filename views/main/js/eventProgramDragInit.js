@@ -173,6 +173,8 @@ jQuery(function($) {
 
         if (spr  == "checked" && round == "checked" && number == "checked" && entrane == "checked") {
             $category.attr('data-checkstatus', 'completed');
+        } else {
+            $category.attr('data-checkstatus', 'unchecked');
         }
     }
 
@@ -213,7 +215,6 @@ jQuery(function($) {
         $wrapper.find('.round-selected').text($(this).text());
         $wrapper.attr('data-checkstatus', 'checked');
     //     !!ajax to be added here that sends the checked round
-        //    !!add function that checks whether all required parameters are checked
         checkCategoryStatus($(this).parents('.category'));
     });
 
