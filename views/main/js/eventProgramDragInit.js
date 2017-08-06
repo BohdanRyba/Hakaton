@@ -25,7 +25,7 @@ jQuery(function($) {
        let $t = $(e.target);
         // console.log(t.parents('.level-2').length);
         if ($t.parents('.level-2').length == 0) {
-            $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200);
+            $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200, setPosition);
         } else {
             let $h = $t.parents('.level-2');
             if ($h.length > 0) {
@@ -167,23 +167,76 @@ jQuery(function($) {
     $b.on('click', '.department-item', function () {
         $(this).parents('.dropdown-menu').children().each(function () {
                 $(this).removeClass('shown');
-            }
-        );
+            });
         $(this).addClass('shown');
         function ajaxShowCategoriesAccordingToDep() {
             let id = $(this).attr('data-id-department');
             $.ajax({
                 type: "POST",
                 url: 'ajax_showCategoriesAccordingToDep',
-                data: 'parameter=' + id,
+                data: 'id=' + id,
                 success: function (msg) {
+                    let msg = JSON.parse(msg);
+                    console(msg);
+                    // let $mainHolder = $('.category-main-holder');
+                    // $mainHolder.empty();
 
+                    // $mainHolder.append('<li class="draggable category" data-id="01" data-checkstatus="unchecked">' +
+                    //     +'<div class="highlighter highlighterTop"></div>'+
+                    //         +'<div class="category-settings clearfix">'+
+                    //     +'<span class="count-number">1.</span>
+                    //     <div class="count-system-wrapper clearfix" data-checkstatus='unchecked'>
+                    //     <span class="count-system">СПР</span>
+                    //     <div class="dropdown count-system-dropdown">
+                    //     <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseCountSystem" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    //     <span class="caret"></span>
+                    //     </button>
+                    //     <ul class="dropdown-menu flat" aria-labelledby="chooseCountSystem">
+                    //     <li class="count-system-variant"><a>SPR 1</a></li>
+                    // <li class="count-system-variant"><a>SPR 2</a></li>
+                    // <li class="count-system-variant"><a>SPR 3</a></li>
+                    // </ul>
+                    // </div>
+                    // </div>
+                    // <p class="category-name main-content">Hip-hop dance pro style Cool&Brutal mix.</p>
+                    // <span class="participants-number"><span class="the-participants-number">173</span>чел.</span>
+                    //     <div class="round-wrapper clearfix" data-checkstatus='unchecked'>
+                    //     <span class="round-selected">ТУР</span>
+                    //     <div class="dropdown round-dropdown">
+                    //     <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    //     <span class="caret"></span>
+                    //     </button>
+                    //     <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
+                    //     <li class="round-variant"><a>1/16</a></li>
+                    //     <li class="round-variant"><a>1/8</a></li>
+                    //     <li class="round-variant"><a>1/4</a></li>
+                    //     <li class="round-variant"><a>1/2</a></li>
+                    //     <li role="separator" class="divider"></li>
+                    //     <li class="new-round"><a>создать новое...</a></li>
+                    // </ul>
+                    // </div>
+                    // </div>
+                    // <div class="input-wrapper">
+                    //     <label class="participants-in-round">К-во <input class="participants-in-round-input" data-checkstatus='unchecked' type="text"></label>
+                    //     <label class="entrance-number">Заходы <input class="entrance-number-input" data-checkstatus='unchecked' type="text"></label>
+                    //     </div>
+                    //     <div class="show-dancers">
+                    //     <button type="button" title="показать участников" class="btn show-dancers-btn flat btn-default" aria-label="Left Align">
+                    //     <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                    //     </button>
+                    //     </div>
+                    //     </div>'+
+                    //     '</li>');
+
+
+                    $('#department-name').text($(this).text());
                 },
                 error: function (msg) {
                     console.log('ajax_showCategoriesAccordingToDep has failed to work!');
                 }
             });
         }
+        ajaxShowCategoriesAccordingToDep();
     });
 
 //    category settings

@@ -298,7 +298,9 @@ jQuery(function($) {
                 // console.log(document.getElementsByClassName('highlighter'));
                 // clearHighlightClasses();
                 draggedObj = {};
-                // successDropFunc();
+                if (successDropFunc) {
+                    successDropFunc();
+                }
             }
     }
 });

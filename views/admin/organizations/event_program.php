@@ -23,7 +23,7 @@ use components\Router;
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/event_program.less">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/event_program.less?0">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -58,8 +58,8 @@ use components\Router;
                                 <ul class="dropdown-menu flat" aria-labelledby="chooseDepartment">
                                     <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                         <?php foreach ($departments as $department): ?>
-                                            <li class="department-item" data-id-department="<?= $department['id']; ?>">
-                                                <a href="#"><?= $department['dep_name']?></a>
+                                            <li  class="department-item" data-id-department="<?= $department['id']; ?>">
+                                                <a><?= $department['dep_name']?></a>
                                             </li>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
@@ -496,7 +496,7 @@ use components\Router;
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?0"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramDragInit.js?2"></script>
+<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?1"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramDragInit.js?4"></script>
 </body>
 </html>
