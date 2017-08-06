@@ -597,7 +597,8 @@ class AdminController extends AppController
         }
     }
 
-    public function actionEventProgram(){
+    public function actionEventProgram($event_id){
+        $departments = AdminModel::getDepartmentsByEventId($event_id);
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');

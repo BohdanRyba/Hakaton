@@ -51,7 +51,7 @@ return array(
     'admin/organizations/page/ajax_showOrgInf' => 'admin/ajax_showOrgInf',
     'admin/organizations/page/delOrg' => 'admin/delOrg',
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
-    'admin/organizations/event_program' => 'admin/eventProgram',
+    'admin/organizations/event_program/([0-9]+)' => 'admin/eventProgram/$1',
     'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
     'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
    'admin/option_event/reg_part_for_event/ajax_test_json' => 'admin/testAjax',//--------------SLOT
