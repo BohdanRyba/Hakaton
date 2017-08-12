@@ -315,7 +315,7 @@ jQuery(function($) {
         $.ajax({
             type: "POST",
             url: 'ajax_getNewCategoriesOrder',
-            data: 'order=' + obj,
+            data: obj,
             success: function (msg) {
                 console.log('ajax_getNewCategoriesOrder has worked successfully!');
             },
