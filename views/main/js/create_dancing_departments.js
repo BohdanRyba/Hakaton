@@ -627,6 +627,7 @@ jQuery(function($) {
                     department : parseInt(activeDepartment)
                 },
                 success: function (msg) {
+                    console.log(msg);
                     console.log('ajax_delCategory has worked successfully!');
                     $contentBlock.find('[data-id="'+categoryToDelete+'"]').parents('.dp-info-wrapper').remove();
                     $confirmCategoryDeletion.modal('hide');

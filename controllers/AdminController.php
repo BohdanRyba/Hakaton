@@ -497,14 +497,16 @@ class AdminController extends AppController
                     && !empty($_POST['new-Department-Name'])
                 ) {
                     $name = $_POST['new-Department-Name'];
-                    $result = AdminModel::departmentsOperation($name, $event_id, 'Создать');
+                    $option_name = $_POST['new-department-name-confirmation-btn'];
+                    $result = AdminModel::departmentsOperation($name, $event_id, $option_name);
                 } elseif ($_POST['new-department-name-confirmation-btn'] == 'Изменить'
                     && !empty($_POST['new-Department-Name'])
                     && !empty($_POST['department-id'])
                 ) {
                     $dep_id = $_POST['department-id'];
                     $name = $_POST['new-Department-Name'];
-                    $result = AdminModel::departmentsOperation($name, $event_id, 'Изменить', $dep_id);
+                    $option_name = $_POST['new-department-name-confirmation-btn'];
+                    $result = AdminModel::departmentsOperation($name, $event_id, $option_name, $dep_id);
                 }
             } elseif (!empty($_POST['deletion-confirmation-btn']) && !empty($_POST['department-id'])) {
                 if (AdminModel::getPermissionForDeletion()) {
@@ -608,9 +610,11 @@ class AdminController extends AppController
     public function actionAjax_showCategoriesAccordingToDep(){
         if(!empty($_POST['id'])){
             $department_id = (int)$_POST['id'];
+//            $department_id = 3;
             $categories_in_department = AdminModel::getDepartmentCategories($department_id);
             $result = AdminModel::getCategoriesAccordingToDepartment($department_id, $categories_in_department['categories']);
             echo json_encode($result);
+//            self::showArray($result);
         }
     }
 

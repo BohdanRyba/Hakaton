@@ -1093,7 +1093,7 @@ class AdminModel extends AppModel
                 return $db->close();
             } elseif (count($departments) == 0 && $option === 'Создать' && $dep_id == null) {
                 $result = $db->query("INSERT INTO `departments`
-                                              SET `id` = '',
+                                              SET `id` = NULL,
                                                   `dep_name` = '{$name}',
                                                   `event_id` = {$event_id}");
                 if ($result) {
@@ -1259,9 +1259,10 @@ class AdminModel extends AppModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $resulting_array = [];
             foreach ($picked_categories_ids as $category_id){
-                $result = $db->query("INSERT INTO `departments_categories` SET `id` = '',
+                $result = $db->query("INSERT INTO `departments_categories` SET  `id` = NULL,
                                                                                       `department_id` = '{$department_id}',
-                                                                                      `category_id` = '{$category_id}'
+                                                                                      `category_id` = '{$category_id}',
+                                                                                      `sort_order` = 0
                                   ");
                 if($result){
                     $resulting_array[] = "The row with department_id = \"" . $department_id . "\" and category_id = \"" . $category_id . "\" was created successfully!";
@@ -1298,16 +1299,55 @@ class AdminModel extends AppModel
     static function unbindCategoryFromDepartment($department_id, $category_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $result = $db->query("DELETE FROM `departments_categories` WHERE `department_id` = {$department_id} 
-                                                                                  AND `category_id` = {$category_id}
-                                  ");
-            return $result;
+            //TODO save the object data before delete it!!!
+            $result_category_to_del = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id} 
+                                                                                  AND `category_id` = {$category_id}");
+            if ((int)$result_category_to_del->num_rows === 1){
+                $category_to_del = $result_category_to_del->fetch_assoc();
+                $result = $db->query("DELETE FROM `departments_categories` WHERE `department_id` = {$department_id} 
+                                                                                  AND `category_id` = {$category_id}");
+                if($result){
+                    $result2 = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id}");
+                    $array_with_rest_categories = [];
+                    if($result2){
+                        while ($row = $result2->fetch_assoc()) {
+                            $array_with_rest_categories[] = $row;
+                        }
+                        $result = self::setNewSortOrder($db, $array_with_rest_categories, $category_to_del, $department_id);
+                    }
+                }
+                $db->close();
+                return $result;
+            } else {
+                $db->close();
+                return false;
+            }
         } else {
             return false;
         }
     }
 
-    static function getCategoriesAccordingToDepartment($department_id, $categories){
+    public static function setNewSortOrder($db, $array_with_rest_categories, $category_to_del, $department_id){
+        $resulting_array = [];
+        foreach ($array_with_rest_categories as $category){
+            if((int)$category['sort_order'] > (int)$category_to_del['sort_order']){
+                $new_sort_order = (int)$category['sort_order'] - 1;
+                $update_result = $db->query("UPDATE `departments_categories`
+                                             SET `sort_order` = '{$new_sort_order}'
+                                             WHERE `department_id` = {$department_id} AND `category_id` = {$category['category_id']}
+                                             ");
+                if($update_result){
+                    $resulting_array[] = "Sort_order of category with 'department_id'=" . $department_id . " and 'category_id'=" . $category['category_id'] . " has been successfully updated!";
+                } else {
+                    $resulting_array[] = "Sort_order of category with 'department_id'=" . $department_id . " and 'category_id'=" . $category['category_id'] . " has NOT been updated!!!";
+                }
+            }
+        }
+        return $resulting_array;
+    }
+
+    static function getCategoriesAccordingToDepartment($department_id, $categories)
+    {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id}");
             $resulting_array = [];
@@ -1315,13 +1355,18 @@ class AdminModel extends AppModel
                 while ($row = $result->fetch_assoc()) {
                     $resulting_array[] = $row;
                 }
-                foreach ($resulting_array as $category_from_db) {
-                    foreach ($categories as &$category_from_post) {
-                        if ((int)$category_from_db['category_id'] === (int)$category_from_post['id']) {
-                            $category_from_post['sort_order'] = $category_from_db['sort_order'];
-                        }
+                $is_there_is_zero = false;
+                $is_not_all_zeros = false;
+                foreach ($resulting_array as $checking_array) {
+                    if ((int)$checking_array['sort_order'] === 0) {
+                        $is_there_is_zero = true;
+                    } elseif ((int)$checking_array['sort_order'] > 0) {
+                        $is_not_all_zeros = true;
                     }
                 }
+
+                self::processTheCategories($resulting_array, $categories, $is_there_is_zero, $is_not_all_zeros);
+
             } else {
                 return false;
             }
@@ -1330,4 +1375,47 @@ class AdminModel extends AppModel
             return false;
         }
     }
+
+    static function processTheCategories($resulting_array, &$categories, $is_there_is_zero, $is_not_all_zeros){
+        if($is_there_is_zero && $is_not_all_zeros){
+            $array_with_sort_order_values = [];
+            foreach ($resulting_array as $item){
+                $array_with_sort_order_values[] = (int)$item['sort_order'];
+            }
+            $max_value = max($array_with_sort_order_values);
+            foreach ($resulting_array as $category_from_db) {
+                if((int)$category_from_db['sort_order'] === 0){
+                    foreach ($categories as &$category_from_post) {
+                        if ((int)$category_from_db['category_id'] === (int)$category_from_post['id']) {
+                            $category_from_post['sort_order'] = (int)$max_value + 1;
+                            $max_value++;
+                        }
+                    }
+                } elseif ((int)$category_from_db['sort_order'] !== 0){
+                    foreach ($categories as &$category_from_post) {
+                        if ((int)$category_from_db['category_id'] === (int)$category_from_post['id']) {
+                            $category_from_post['sort_order'] = (int)$category_from_db['sort_order'];
+                        }
+                    }
+                }
+            }
+        } elseif ($is_there_is_zero && !$is_not_all_zeros){
+            $sort_order = 1;
+            foreach ($categories as &$category_from_post) {
+                $category_from_post['sort_order'] = $sort_order;
+                $sort_order++;
+            }
+        } elseif (!$is_there_is_zero && $is_not_all_zeros){
+            foreach ($resulting_array as $category_from_db) {
+                if((int)$category_from_db['sort_order'] !== 0){
+                    foreach ($categories as &$category_from_post) {
+                        if ((int)$category_from_db['category_id'] === (int)$category_from_post['id']) {
+                            $category_from_post['sort_order'] = $category_from_db['sort_order'];
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
