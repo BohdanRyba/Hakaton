@@ -5,12 +5,18 @@ use models\Addnews;
 
 class AddnewsController
 {
+    public function __construct()
+    {
+        $login = new LoginController();
+        $result = $login->checkUserTTL();
+        if(!$result){
+            header('Location: ' . CORE_PATH . 'home');
+        }
+    }
 
     public function actionIndex()
     {
-
         require_once(ROOT . 'views/addnews/index.php');
-
         return true;
     }
 
