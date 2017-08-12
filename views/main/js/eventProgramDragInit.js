@@ -312,8 +312,20 @@ jQuery(function($) {
             obj[parseInt($(this).index()+1)] = $(this).attr('data-id');
         });
 
+        $.ajax({
+            type: "POST",
+            url: 'ajax_getNewCategoriesOrder',
+            data: 'order=' + obj,
+            success: function (msg) {
+                console.log('ajax_getNewCategoriesOrder has worked successfully!');
+            },
+            error: function (msg) {
+                console.log('ajax_getNewCategoriesOrder has failed to work!');
+            }
+        });
+
         console.log(obj);
-        return obj;
+        // return obj;
     }
 
     //count system
