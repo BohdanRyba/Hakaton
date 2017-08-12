@@ -23,7 +23,7 @@ use components\Router;
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
-    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/event_program.less?0">
+    <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/event_program.less?1">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,7 +32,7 @@ use components\Router;
     <![endif]-->
     <script src="<?= Router::$permalink ?>views/main/js/less.min.js" type="text/javascript"></script>
 </head>
-<body class="hold-transition skin-blue">
+<body class="hold-transition skin-blue select-none">
 <div class="wrapper">
     <!-- Main Header -->
 
@@ -49,7 +49,7 @@ use components\Router;
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="flat callout callout-success event-menu clearfix">
+                        <div class="flat select-none callout callout-success event-menu clearfix">
                             <div class="dropdown">
                                 <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseDepartment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Выбор отделения
@@ -74,7 +74,7 @@ use components\Router;
                 </div>
                 <div class="row">
                     <div class="col-xs-12 box box-success flat">
-                        <ul class="category-main-holder">
+                        <ul class="category-main-holder select-none">
                             <li class="draggable category" data-id="01" data-checkstatus='unchecked'>
                                 <div class="highlighter highlighterTop"></div>
                                 <div class="category-settings clearfix">
@@ -496,7 +496,7 @@ use components\Router;
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?1"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramDragInit.js?5"></script>
+<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?2"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramDragInit.js?7"></script>
 </body>
 </html>

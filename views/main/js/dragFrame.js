@@ -278,6 +278,10 @@ jQuery(function($) {
                     } else {
                         holder.append(draggedObj.elem);
                     }
+                    if (successDropFunc) {
+                        for (let i = 0; i < successDropFunc.length; i++)
+                            successDropFunc[i]();
+                    }
                 } else {
                     // failure
                     document.body.removeChild(draggedObj.avatar);
@@ -298,9 +302,6 @@ jQuery(function($) {
                 // console.log(document.getElementsByClassName('highlighter'));
                 // clearHighlightClasses();
                 draggedObj = {};
-                if (successDropFunc) {
-                    successDropFunc();
-                }
             }
     }
 });

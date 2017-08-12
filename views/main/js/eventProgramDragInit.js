@@ -25,7 +25,7 @@ jQuery(function($) {
        let $t = $(e.target);
         // console.log(t.parents('.level-2').length);
         if ($t.parents('.level-2').length == 0) {
-            $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200, setPosition);
+            $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200, [setPosition, getNewCategoriesOrder]);
         } else {
             let $h = $t.parents('.level-2');
             if ($h.length > 0) {
@@ -99,6 +99,9 @@ jQuery(function($) {
                     }
                 }
                 setPosition();
+                if ($active.hasClass('category')) {
+                    getNewCategoriesOrder();
+                }
             }
 
 
@@ -135,6 +138,9 @@ jQuery(function($) {
                     }
                 }
                 setPosition();
+                if ($active.hasClass('category')) {
+                    getNewCategoriesOrder();
+                }
             }
 
 
@@ -171,66 +177,90 @@ jQuery(function($) {
         $(this).addClass('shown');
         function ajaxShowCategoriesAccordingToDep($this) {
             let id = $this.attr('data-id-department');
-            console.log(id);
             $.ajax({
                 type: "POST",
                 url: 'ajax_showCategoriesAccordingToDep',
                 data: 'id=' + id,
                 success: function (msg) {
-                    let hmsg = JSON.parse(msg);
-                    console.log(hmsg);
-                    // let $mainHolder = $('.category-main-holder');
-                    // $mainHolder.empty();
+                    let categories = JSON.parse(msg);
+                    console.log(categories);
+                    let $mainHolder = $('.category-main-holder');
+                    $mainHolder.empty();
 
-                    // $mainHolder.append('<li class="draggable category" data-id="01" data-checkstatus="unchecked">' +
-                    //     +'<div class="highlighter highlighterTop"></div>'+
-                    //         +'<div class="category-settings clearfix">'+
-                    //     +'<span class="count-number">1.</span>
-                    //     <div class="count-system-wrapper clearfix" data-checkstatus='unchecked'>
-                    //     <span class="count-system">СПР</span>
-                    //     <div class="dropdown count-system-dropdown">
-                    //     <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseCountSystem" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    //     <span class="caret"></span>
-                    //     </button>
-                    //     <ul class="dropdown-menu flat" aria-labelledby="chooseCountSystem">
-                    //     <li class="count-system-variant"><a>SPR 1</a></li>
-                    // <li class="count-system-variant"><a>SPR 2</a></li>
-                    // <li class="count-system-variant"><a>SPR 3</a></li>
-                    // </ul>
-                    // </div>
-                    // </div>
-                    // <p class="category-name main-content">Hip-hop dance pro style Cool&Brutal mix.</p>
-                    // <span class="participants-number"><span class="the-participants-number">173</span>чел.</span>
-                    //     <div class="round-wrapper clearfix" data-checkstatus='unchecked'>
-                    //     <span class="round-selected">ТУР</span>
-                    //     <div class="dropdown round-dropdown">
-                    //     <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    //     <span class="caret"></span>
-                    //     </button>
-                    //     <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
-                    //     <li class="round-variant"><a>1/16</a></li>
-                    //     <li class="round-variant"><a>1/8</a></li>
-                    //     <li class="round-variant"><a>1/4</a></li>
-                    //     <li class="round-variant"><a>1/2</a></li>
-                    //     <li role="separator" class="divider"></li>
-                    //     <li class="new-round"><a>создать новое...</a></li>
-                    // </ul>
-                    // </div>
-                    // </div>
-                    // <div class="input-wrapper">
-                    //     <label class="participants-in-round">К-во <input class="participants-in-round-input" data-checkstatus='unchecked' type="text"></label>
-                    //     <label class="entrance-number">Заходы <input class="entrance-number-input" data-checkstatus='unchecked' type="text"></label>
-                    //     </div>
-                    //     <div class="show-dancers">
-                    //     <button type="button" title="показать участников" class="btn show-dancers-btn flat btn-default" aria-label="Left Align">
-                    //     <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                    //     </button>
-                    //     </div>
-                    //     </div>'+
-                    //     '</li>');
+                    let categoriesToPush = {};
+                    categoriesToPush["length"] = categories.length;
 
+                    for (let i = 0; i < categories.length; i++) {
+                        let category = {};
+                        category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_program"];
+                        category["id"] = categories[i]["id"];
+                        categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
+                    }
 
-                    $('#department-name').text($(this).text());
+                    console.log(categoriesToPush);
+
+                    for (let i = 1; i <= categoriesToPush["length"]; i++) {
+                        $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="unchecked">' +
+                            '<div class="highlighter highlighterTop"></div>'+
+                                '<div class="category-settings clearfix">'+
+                            '<span class="count-number">'+ i +'.</span>'+
+                            '<div class="count-system-wrapper clearfix" data-checkstatus="unchecked">'+
+                            '<span class="count-system">СПР</span>'+
+                            '<div class="dropdown count-system-dropdown">'+
+                            '<button class="btn flat btn-default dropdown-toggle" type="button" id="chooseCountSystem" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">'+
+                            '<span class="caret"></span>'+
+                            '</button>'+
+                            '<ul class="dropdown-menu flat" aria-labelledby="chooseCountSystem">'+
+                            '<li class="count-system-variant"><a>SPR 1</a></li>'+
+                        '<li class="count-system-variant"><a>SPR 2</a></li>'+
+                        '<li class="count-system-variant"><a>SPR 3</a></li>'+
+                        '</ul>'+
+                        '</div>'+
+                        '</div>'+
+                        '<p class="category-name main-content">'+ categoriesToPush[i]["category"] +'</p>'+
+                        '<span class="participants-number"><span class="the-participants-number">173</span>чел.</span>'+
+                            '<div class="round-wrapper clearfix" data-checkstatus="unchecked">'+
+                            '<span class="round-selected">ТУР</span>'+
+                            '<div class="dropdown round-dropdown">'+
+                            '<button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">'+
+                            '<span class="caret"></span>'+
+                            '</button>'+
+                            '<ul class="dropdown-menu flat" aria-labelledby="chooseRound">'+
+                            '<li class="round-variant"><a>1/16</a></li>'+
+                            '<li class="round-variant"><a>1/8</a></li>'+
+                            '<li class="round-variant"><a>1/4</a></li>'+
+                            '<li class="round-variant"><a>1/2</a></li>'+
+                            '<li role="separator" class="divider"></li>'+
+                            '<li class="new-round"><a>создать новое...</a></li>'+
+                        '</ul>'+
+                        '</div>'+
+                        '</div>'+
+                        '<div class="input-wrapper">'+
+                            '<label class="participants-in-round">К-во <input class="participants-in-round-input" data-checkstatus="unchecked" type="text"></label>'+
+                            '<label class="entrance-number">Заходы <input class="entrance-number-input" data-checkstatus="unchecked" type="text"></label>'+
+                            '</div>'+
+                            '<div class="show-dancers">'+
+                            '<button type="button" title="показать участников" class="btn show-dancers-btn flat btn-default" aria-label="Left Align">'+
+                            '<i class="fa fa-chevron-down" aria-hidden="true"></i>'+
+                            '</button>'+
+                            '</div>'+
+                            '</div>'+
+                            '<div class="highlighter highlighterBot"></div>'+
+                            '<ul class="participants-holder level-2" data-searchClass="draggable4"></ul>'+
+                            '</li>');
+                    }
+
+                    //refreshers
+                    $('.participants-in-round-input').off("change keyup input click");
+                    $('.participants-in-round-input').on("change keyup input click", permitNumbersOnly);
+                    $('.participants-in-round-input').off('blur');
+                    $('.participants-in-round-input').blur(participantsInputBlur);
+                    $('.entrance-number-input').off("change keyup input click");
+                    $('.entrance-number-input').on("change keyup input click", permitNumbersOnly);
+                    $('.entrance-number-input').off('blur');
+                    $('.entrance-number-input').blur(participantsInputBlur);
+
+                    $('#department-name').text($this.text());
                 },
                 error: function (msg) {
                     console.log('ajax_showCategoriesAccordingToDep has failed to work!');
@@ -260,6 +290,31 @@ jQuery(function($) {
             $(this).find('.count-number').text($(this).index()+1 + '.');
         });
     }
+    function permitNumbersOnly() {
+        if (this.value.match(/[^0-9]/g)) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        }
+    }
+    function participantsInputBlur() {
+        if ($(this).val() != '') {
+            $(this).attr('data-checkstatus', 'checked');
+            //    !! add ajax here
+        } else {
+            $(this).attr('data-checkstatus', 'unchecked');
+            //    !! add ajax here
+        }
+        checkCategoryStatus($(this).parents('.category'));
+    }
+    function getNewCategoriesOrder() {
+        let obj = {};
+
+        $('.category').each(function () {
+            obj[parseInt($(this).index()+1)] = $(this).attr('data-id');
+        });
+
+        console.log(obj);
+        return obj;
+    }
 
     //count system
     $b.on('click', '.count-system-variant', function () {
@@ -273,7 +328,6 @@ jQuery(function($) {
         $wrapper.find('.count-system').text(spr);
         $wrapper.attr('data-checkstatus', 'checked');
     //   !! ajax to be added here that sends the checked spr
-    //   !! add function that checks whether all required parameters are checked
         checkCategoryStatus($(this).parents('.category'));
     });
 
@@ -302,49 +356,25 @@ jQuery(function($) {
     });
 
     //participants number
-    $('.participants-in-round-input').on("change keyup input click", function() {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
-    });
+    $('.participants-in-round-input').on("change keyup input click", permitNumbersOnly);
     //    !!add a refresher of this handler each time the categories number changes
     //    !! for this .off('change keyup input click') snd again bind .on("change keyup input click", function() {....;
 
-    $('.participants-in-round-input').blur(function () {
-        if ($(this).val() != '') {
-            $(this).attr('data-checkstatus', 'checked');
-        //    !! add ajax here
-        } else {
-            $(this).attr('data-checkstatus', 'unchecked');
-        //    !! add ajax here
-        }
-        checkCategoryStatus($(this).parents('.category'));
+    $('.participants-in-round-input').blur(participantsInputBlur);
     //    !!add a refresher of this handler each time the categories number changes
     //    !! for this .off('blur') snd again bind .blur();
-    });
+
 
     //entrance number
-    $('.entrance-number-input').on("change keyup input click", function() {
-        if (this.value.match(/[^0-9]/g)) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        }
+    $('.entrance-number-input').on("change keyup input click", permitNumbersOnly
         //    !!add a refresher of this handler each time the categories number changes
         //    !! for this .off('change keyup input click') snd again bind .on("change keyup input click", function() {....;
+    );
 
-    });
-
-    $('.entrance-number-input').blur(function () {
-        if ($(this).val() != '') {
-            $(this).attr('data-checkstatus', 'checked');
-            //    !! add ajax here
-        } else {
-            $(this).attr('data-checkstatus', 'unchecked');
-            //    !! add ajax here
-        }
-        checkCategoryStatus($(this).parents('.category'));
+    $('.entrance-number-input').blur( participantsInputBlur
         //    !!add a refresher of this handler each time the categories number changes
         //    !! for this .off('blur') snd again bind .blur();
-    });
+    );
 
     $b.on('click', '.show-dancers-btn', function () {
        $(this).toggleClass('shown');
