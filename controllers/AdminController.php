@@ -623,7 +623,7 @@ class AdminController extends AppController
     }
 
     public function actionAjax_getNewCategoriesOrder(){
-        if(!empty($_POST['categories'] && $_POST['department_id'])){
+        if(!empty($_POST['categories']) && !empty($_POST['department_id'])){
             $categories = $_POST['categories'];
             $department_id = $_POST['department_id'];
             $result = AdminModel::changeCategoriesSortOrder($categories, $department_id);
