@@ -6,11 +6,14 @@ use models\Addevent;
 
 class AddeventController extends AppController
 {
+    public function __construct()
+    {
+        $this->checkUserSessionTTL();
+    }
+
     public function actionIndex()
     {
-
         require_once(ROOT . 'views/addevent/index.php');
-
         return true;
     }
 

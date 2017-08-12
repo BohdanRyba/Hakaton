@@ -5,14 +5,9 @@ namespace controllers;
 
 class HomeController extends AppController
 {
-
     public function __construct()
     {
-        $login = new LoginController();
-        $result = $login->checkUserTTL();
-        if(!$result){
-            header('Location: ' . CORE_PATH . 'home');
-        }
+        $this->checkUserSessionTTL();
     }
 
     public function actionIndex()

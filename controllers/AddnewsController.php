@@ -3,15 +3,11 @@ namespace controllers;
 
 use models\Addnews;
 
-class AddnewsController
+class AddnewsController extends AppController
 {
     public function __construct()
     {
-        $login = new LoginController();
-        $result = $login->checkUserTTL();
-        if(!$result){
-            header('Location: ' . CORE_PATH . 'home');
-        }
+        $this->checkUserSessionTTL();
     }
 
     public function actionIndex()
