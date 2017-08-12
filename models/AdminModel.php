@@ -1366,10 +1366,10 @@ class AdminModel extends AppModel
                 }
 
                 self::processTheCategories($resulting_array, $categories, $is_there_is_zero, $is_not_all_zeros);
-
             } else {
                 return false;
             }
+            $db->close();
             return $categories;
         } else {
             return false;
@@ -1418,4 +1418,24 @@ class AdminModel extends AppModel
         }
     }
 
+    public static function changeCategoriesSortOrder($categories_info, $department_id){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $resulting_array = [];
+            foreach ($categories_info as $sortOrder => $category_id){
+                $update_result = $db->query("UPDATE `departments_categories`
+                                             SET `sort_order` = '{$sortOrder}'
+                                             WHERE `department_id` = {$department_id} AND `category_id` = {$category_id}
+                                             ");
+                if($update_result){
+                    $resulting_array[] = "Sort_order of category with 'department_id'=" . $department_id . " and 'category_id'=" . $category_id . " has been successfully updated!";
+                } else {
+                    $resulting_array[] = "Sort_order of category with 'department_id'=" . $department_id . " and 'category_id'=" . $category_id . " has NOT been updated!!!";
+                }
+            }
+            $db->close();
+            return $resulting_array;
+        } else {
+            return false;
+        }
+    }
 }

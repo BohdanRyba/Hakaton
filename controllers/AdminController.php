@@ -627,7 +627,12 @@ class AdminController extends AppController
     }
 
     public function actionAjax_getNewCategoriesOrder(){
-        echo json_encode($_POST);
+        if(!empty($_POST['categories'] && $_POST['department_id'])){
+            $categories = $_POST['categories'];
+            $department_id = $_POST['department_id'];
+            $result = AdminModel::changeCategoriesSortOrder($categories, $department_id);
+            echo json_encode($result);
+        }
     }
 
 
