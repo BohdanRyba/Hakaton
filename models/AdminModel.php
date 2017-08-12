@@ -1421,9 +1421,9 @@ class AdminModel extends AppModel
     public static function changeCategoriesSortOrder($categories_info, $department_id){
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $resulting_array = [];
-            foreach ($categories_info as $sortOrder => $category_id){
+            foreach ($categories_info as $sort_order => $category_id){
                 $update_result = $db->query("UPDATE `departments_categories`
-                                             SET `sort_order` = '{$sortOrder}'
+                                             SET `sort_order` = '{$sort_order}'
                                              WHERE `department_id` = {$department_id} AND `category_id` = {$category_id}
                                              ");
                 if($update_result){
