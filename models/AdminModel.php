@@ -7,9 +7,7 @@ use components\Db;
 class AdminModel extends AppModel
 {
     const CURRENT_PAGE = 1;
-
     const PER_PAGE = 4;
-
     static $event_id = '';
 
     static function remove_empty($array)
@@ -43,7 +41,7 @@ class AdminModel extends AppModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `organizations` ORDER BY id DESC";
             $result = $db->query($query);
-
+            $organizationsList = [];
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $organizationsList[$i]['id'] = $row['id'];
@@ -58,10 +56,10 @@ class AdminModel extends AppModel
                 $i++;
             }
             $db->close();
-
-        };
-
-        return $organizationsList;
+            return $organizationsList;
+        } else {
+            return false;
+        }
     }
 
     static function getOrganizationById($id)
@@ -71,9 +69,12 @@ class AdminModel extends AppModel
             $result = $db->query($query);
 
             $row = $result->fetch_assoc();
+            $db->close();
+
             return $row;
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     public static function recordOrganization()
@@ -96,10 +97,11 @@ class AdminModel extends AppModel
                             `org_phone` = '{$_POST['org_phone']}',
                             `org_email` = '{$_POST['org_email']}',
                             `org_pic_path` = 'views/main/img/org_image/{$_FILES['org_image']['name']}'");
-
+            $db->close();
             return $result;
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     public static function addSlashes($element)
@@ -247,6 +249,7 @@ class AdminModel extends AppModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
+            $clubsList = [];
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $clubsList[$i]['id'] = $row['id'];
@@ -263,6 +266,8 @@ class AdminModel extends AppModel
             }
             $db->close();
             return $clubsList;
+        } else {
+            return false;
         }
     }
 
@@ -271,28 +276,27 @@ class AdminModel extends AppModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE org_id_for_club = {$id} ORDER BY id DESC";
             $result = $db->query($query);
-            $clubsList = array();
+            $clubsList = [];
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $clubsList[$i]['id'] = $row['id'];
                 $clubsList[$i]['club_name'] = $row['club_name'];
-
                 $i++;
             }
-            return $clubsList;
-
             $db->close();
+            return $clubsList;
+        } else {
+            return false;
         }
 
     }
 
     public static function ShowEvents($id)
     {
-        $eventsList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `events` WHERE org_id_for_event = {$id} ORDER BY id DESC";
             $result = $db->query($query);
-
+            $eventsList = [];
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $eventsList[$i]['id'] = $row['id'];
@@ -309,18 +313,18 @@ class AdminModel extends AppModel
                 $i++;
             }
             $db->close();
-
-        };
-
-        return $eventsList;
+            return $eventsList;
+        } else {
+            return false;
+        }
     }
 
     public static function GetCoachesById()
     {
-        $coachList = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `coaches` WHERE club_id = {$_SESSION['id']}";
             $result = $db->query($query);
+            $coachList = [];
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $coachList[$i]['id'] = $row['id'];
@@ -328,10 +332,11 @@ class AdminModel extends AppModel
                 $coachList[$i]['club_id'] = $row['club_id'];
                 $i++;
             }
-
             $db->close();
+            return $coachList;
+        } else {
+            return false;
         }
-        return $coachList;
     }
 
     /*
@@ -342,9 +347,9 @@ class AdminModel extends AppModel
     public static function ShowAllParticipantByClubId($id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $participantList = array();
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
+            $participantList = [];
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 if (!is_null($row)) {
@@ -362,25 +367,21 @@ class AdminModel extends AppModel
             }
             $db->close();
             return $participantList;
-
+        } else {
+            return false;
         }
     }
 
-
     public static function ShowClubById($id)
     {
-//        self::showArray($id);
-//        die;
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `clubs` WHERE id = {$id}";
             $result = $db->query($query);
-            $club_info = array();
+            $club_info = [];
 
-
-            /*
-             *TODO SELECT ALL INFO ABOUT CLUB FROM DB TO THE CLUB INFO
-             * */
-
+            /**
+             * TODO SELECT ALL INFO ABOUT CLUB FROM DB TO THE CLUB INFO
+             */
 
             while ($row = $result->fetch_assoc()) {
                 $club_info['id'] = $row['id'];
@@ -394,30 +395,26 @@ class AdminModel extends AppModel
                 $club_info['coach_name'] = $row['coaches'];
             }
 
-
-            /*
+            /**
              * TODO разбить строку с судьями на массив
              *
              * UPDATE: TODO - SUCCESS
              *
              *
-             * **/
-
+             */
 
             $pieces = explode("&", $club_info['coach_name']);
             $new_arr = array_diff($pieces, array('', NULL, false));
             $club_info['coach_name'] = implode(", ", $new_arr);
 
-
-            /*
+            /**
              * UPDATE: TODO - SUCCESS
-             * **/
+             */
 
-
-            /*
+            /**
              * TODO SELECT ALL PARTICIPANTS FROM DB TO THE CLUB INFO
-             * */
-
+             *
+             */
 
             $query = "SELECT * FROM `participant` WHERE club_id = {$id}";
             $result = $db->query($query);
@@ -438,7 +435,8 @@ class AdminModel extends AppModel
             }
             $db->close();
             return $club_info;
-
+        } else {
+            return false;
         }
     }
 
@@ -482,8 +480,9 @@ class AdminModel extends AppModel
                         ");
 
             $db->close();
-
             return $result;
+        } else {
+            return false;
         }
     }
 
@@ -546,7 +545,6 @@ class AdminModel extends AppModel
     {
         $query = sprintf("SELECT * FROM events WHERE id=%d", (int)$event_id);
         $result = mysqli_query($link, $query);
-        $event = array();
         if (!$result) {
             die(mysqli_error($link));
         }
@@ -615,7 +613,6 @@ class AdminModel extends AppModel
     {
         $result = '';
         $message = '';
-        $array_for_record = array();
         $action = '';
         $action_verbs = [];
         $where = '';
@@ -623,13 +620,13 @@ class AdminModel extends AppModel
             if ($db = Db::getConnection(Db::ADMIN_BASE)) {
                 if ($list == 'update_list') {
                     $action = 'UPDATE';
-                    $action_verb[0] = 'обновлена';
-                    $action_verb[1] = 'обновить';
+                    $action_verbs[0] = 'обновлена';
+                    $action_verbs[1] = 'обновить';
                     $where = 'WHERE `id` = ' . $json['dg-id'];
                 } elseif ($list == '') {
                     $action = 'INSERT INTO';
-                    $action_verb[0] = 'сохранена';
-                    $action_verb[1] = 'сохранить';
+                    $action_verbs[0] = 'сохранена';
+                    $action_verbs[1] = 'сохранить';
                 }
                 $result = $db->query("{$action} `dance_groups`
                         SET `dance_group_name` = '{$json['dance-group-name']}',
@@ -641,12 +638,12 @@ class AdminModel extends AppModel
                 if ($result === true) {
                     $message = json_encode([
                         'status' => 'success',
-                        'message' => "Танцевальная группа \"{$json['dance-group-name']}\" успешно {$action_verb[0]}!"
+                        'message' => "Танцевальная группа \"{$json['dance-group-name']}\" успешно {$action_verbs[0]}!"
                     ]);
                 } elseif ($result === false) {
                     $message = json_encode([
                         'status' => 'error',
-                        'message' => "Танцевальную группу \"{$json['dance-group-name']}\" {$action_verb[1]} не удалось!"
+                        'message' => "Танцевальную группу \"{$json['dance-group-name']}\" {$action_verbs[1]} не удалось!"
                     ]);
                 }
             } else {
@@ -663,12 +660,11 @@ class AdminModel extends AppModel
 
     static function getAllDanceGroups($list = '')
     {
-        $danceProgramList = array();
+        $danceProgramList = [];
         if ($list == 'list') {
             $db = Db::getConnection(Db::ADMIN_BASE);
             $query = "SELECT * FROM `dance_groups` ORDER BY id DESC";
             $result = $db->query($query);
-
             $i = 0;
             while ($row = $result->fetch_assoc()) {
                 $danceProgramList[$i]['id'] = $row['id'];
@@ -679,12 +675,11 @@ class AdminModel extends AppModel
                 $danceProgramList[$i]['d_league'] = $row['d_league'];
                 $i++;
             }
-
+            $db->close();
         } elseif ($list == '') {
             if ($db = Db::getConnection(Db::ADMIN_BASE)) {
                 $query = "SELECT * FROM `dance_groups` ORDER BY `dance_group_name` ASC";
                 $result = $db->query($query);
-
                 $i = 0;
                 while ($row = $result->fetch_assoc()) {
                     $danceProgramList[$i]['id'] = $row['id'];
@@ -695,11 +690,11 @@ class AdminModel extends AppModel
                     $danceProgramList[$i]['d_league'] = $row['d_league'];
                     $i++;
                 }
-
-            };
+                $db->close();
+            } else {
+                return false;
+            }
         }
-        $db->close();
-
         return $danceProgramList;
     }
 
@@ -708,7 +703,6 @@ class AdminModel extends AppModel
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `dance_groups` WHERE `id` = {$id}";
             $result = $db->query($query);
-
             $row = $result->fetch_assoc();
             $danceProgram['id'] = $row['id'];
             $danceProgram['dance_group_name'] = $row['dance_group_name'];
@@ -716,21 +710,18 @@ class AdminModel extends AppModel
             $danceProgram['d_age_category'] = unserialize($row['d_age_category']);
             $danceProgram['d_nomination'] = unserialize($row['d_nomination']);
             $danceProgram['d_league'] = unserialize($row['d_league']);
-
             $db->close();
-
-        };
-
-        return $danceProgram;
+            return $danceProgram;
+        } else {
+            return false;
+        }
     }
 
     static function saveCategoryParameters($json, $org_id)
     {
-        $result = FALSE;
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $check = $db->query("SELECT `id_dance_group`, `id_org` FROM `category_parameters` WHERE `id_dance_group` = {$json[4]} AND `id_org` = $org_id");
             $row = $check->fetch_assoc();
-//            $_SESSION['for_check'] = $row;
             if ($row['id_dance_group'] == $json[4] && $row['id_org'] == $org_id) {
                 $result = $db->query("UPDATE `category_parameters`
                                   SET `c_p_programs` = '" . serialize($json[0]) . "',
@@ -755,16 +746,18 @@ class AdminModel extends AppModel
                 }
             }
             $db->close();
+            return $result;
+        } else {
+            return false;
         }
-        return $result;
     }
 
     static function getCategoryParametersById($id)
     {
-        $returning_array = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT * FROM `category_parameters` WHERE `id_dance_group` = {$id} AND `id_org` = {$_COOKIE['get_id']}";
             $result = $db->query($query);
+            $returning_array = [];
             while ($row = $result->fetch_assoc()) {
                 $returning_array['id'] = $row['id'];
                 $returning_array['c_p_programs'] = unserialize($row['c_p_programs']);
@@ -773,19 +766,21 @@ class AdminModel extends AppModel
                 $returning_array['c_p_leagues'] = unserialize($row['c_p_leagues']);
             }
             $db->close();
-        };
-        return $returning_array;
+            return $returning_array;
+        } else {
+            return false;
+        }
     }
 
     static function getCategoryParametersForCreating()
     {
-        $category_parameters = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $query = "SELECT `dance_groups`.`dance_group_name`, `category_parameters`.`id_dance_group`
                       FROM `dance_groups`
                       RIGHT JOIN `category_parameters`
                       ON `dance_groups`.`id`=`category_parameters`.`id_dance_group` AND `category_parameters`.`id_org`={$_COOKIE['get_id']}";
             $result = $db->query($query);
+            $category_parameters = [];
             if ($result) {
                 $i = 0;
                 while ($row = $result->fetch_assoc()) {
@@ -803,8 +798,10 @@ class AdminModel extends AppModel
                 self::saveMessage($message);
             }
             $db->close();
-        };
-        return $category_parameters;
+            return $category_parameters;
+        } else {
+            return false;
+        }
     }
 
     static function saveCreatedCategory($category_parts)
@@ -833,17 +830,19 @@ class AdminModel extends AppModel
                             `extra_id` = '{$category_parts[4]}',
                             `id_dance_group` = '{$category_parts[5]}'");
                 if ($result) {
+                    $db->close();
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" успешно создана!';
                 } else {
+                    $db->close();
                     return 'Категория "' . $category_parts[0] . ' ' . $category_parts[1] . ' ' . $category_parts[2] . ' ' . $category_parts[3] . '" не создана, что-то пошло не так...';
                 }
             }
+        } else {
+            return false;
         }
-        $db->close();
     }
 
-    public
-    static function getCategoryParametersByParameter($parameter)
+    public static function getCategoryParametersByParameter($parameter)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $array_with_parameters = [];
@@ -861,9 +860,11 @@ class AdminModel extends AppModel
                     }
                 }
             }
+            $db->close();
             return $tmp_array;
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     static function getCategoriesByName($name, $parameter, $event_id = NULL)
@@ -895,11 +896,11 @@ class AdminModel extends AppModel
 
             $array_to_return['all_dancing_categories'] = $array_with_parameters;
             $array_to_return['checked_dancing_categories'] = $array_with_checked_ids;
-
+            $db->close();
             return $array_to_return;
-
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     static function SaveParticipant($data)
@@ -921,8 +922,8 @@ class AdminModel extends AppModel
 
     static function editDanceCategories($edit_array)
     {
-        $information_array = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $information_array = [];
             if (!empty($edit_array['editedCategories'])) {
                 foreach ($edit_array['editedCategories'] as $arr_to_edit) {
                     $result = $db->query("UPDATE `dance_categories`
@@ -948,9 +949,11 @@ class AdminModel extends AppModel
                     }
                 }
             }
+            $db->close();
             return $information_array;
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     static function deleteTheDanceGroup($id)
@@ -959,15 +962,17 @@ class AdminModel extends AppModel
             $result = $db->query("DELETE FROM `dance_groups`
                                           WHERE `id` = {$id}
                                           ");
+            $db->close();
             return $result;
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     static function getUniqueDanceCategoryPrograms()
     {
-        $dance_category_programs = [];
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $dance_category_programs = [];
             if (!empty($_SESSION['organization_id'])) {
                 $result2 = $db->query("SELECT `d_c_program` FROM `dance_categories`
                                           WHERE `org_id` = {$_SESSION['organization_id']}
@@ -986,18 +991,20 @@ class AdminModel extends AppModel
                             }
                         }
                     }
+                    $db->close();
                     return $tmp_array;
                 } else {
+                    $db->close();
                     return ["result" => "FALSE..."];
                 }
             }
+        } else {
+            return false;
         }
-        $db->close();
     }
 
     static function getPermissionForDeletion()
     {
-        $message = '';
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT `password` FROM `clubs`
                                           WHERE `club_shief` = '{$_SESSION['current_user']}'
@@ -1075,7 +1082,6 @@ class AdminModel extends AppModel
     static function departmentsOperation($name, $event_id, $option = '', $dep_id = null)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            $message = '';
             $name = self::addSlashes($name);
 
             $departments_query = $db->query("SELECT * FROM `departments` WHERE `dep_name` = '{$name}' AND `event_id` = {$event_id}");
