@@ -53,9 +53,10 @@ return array(
     'admin/organizations/page/updateOrg' => 'admin/updateOrg',
     'admin/organizations/event_program/([0-9]+)' => 'admin/eventProgram/$1',
     'admin/organizations/event_program/ajax_showCategoriesAccordingToDep' => 'admin/ajax_showCategoriesAccordingToDep',
+    'admin/organizations/event_program/ajax_getNewCategoriesOrder' => 'admin/ajax_getNewCategoriesOrder',
     'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
     'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
-   'admin/option_event/reg_part_for_event/ajax_test_json' => 'admin/testAjax',//--------------SLOT
+    'admin/option_event/reg_part_for_event/ajax_test_json' => 'admin/testAjax',//--------------SLOT
     'admin/dancing_groups/dance_list' => 'admin/dancingList',
     'admin/dancing_groups/add_dancing_groups' => 'admin/addDancingGroups',
     'admin/dancing_groups/add_dance_program' => 'admin/addDanceProgram',

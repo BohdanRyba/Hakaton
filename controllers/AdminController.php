@@ -2,10 +2,20 @@
 namespace controllers;
 use components\Router;
 use models\AdminModel;
+use controllers\LoginController;
 use components\Helper;
 
 class AdminController extends AppController
 {
+
+    public function __construct()
+    {
+        $login = new LoginController();
+        $result = $login->checkUserTTL();
+        if(!$result){
+            header('Location: ' . CORE_PATH . 'home');
+        }
+    }
 
     public function actionIndex($Cpag)
     {
@@ -610,11 +620,18 @@ class AdminController extends AppController
     public function actionAjax_showCategoriesAccordingToDep(){
         if(!empty($_POST['id'])){
             $department_id = (int)$_POST['id'];
-//            $department_id = 3;
             $categories_in_department = AdminModel::getDepartmentCategories($department_id);
             $result = AdminModel::getCategoriesAccordingToDepartment($department_id, $categories_in_department['categories']);
             echo json_encode($result);
-//            self::showArray($result);
+        }
+    }
+
+    public function actionAjax_getNewCategoriesOrder(){
+        if(!empty($_POST['categories'] && $_POST['department_id'])){
+            $categories = $_POST['categories'];
+            $department_id = $_POST['department_id'];
+            $result = AdminModel::changeCategoriesSortOrder($categories, $department_id);
+            echo json_encode($result);
         }
     }
 
