@@ -306,25 +306,27 @@ jQuery(function($) {
         checkCategoryStatus($(this).parents('.category'));
     }
     function getNewCategoriesOrder() {
-        let obj = {};
+        let order = {},
+            dep = parseInt($('#pick-department').find('.shown').attr('data-id-department'));
 
         $('.category').each(function () {
-            obj[parseInt($(this).index()+1)] = $(this).attr('data-id');
+            order[parseInt($(this).index()+1)] = $(this).attr('data-id');
         });
 
-        $.ajax({
-            type: "POST",
-            url: 'ajax_getNewCategoriesOrder',
-            data: obj,
-            success: function (msg) {
-                console.log('ajax_getNewCategoriesOrder has worked successfully!');
-            },
-            error: function (msg) {
-                console.log('ajax_getNewCategoriesOrder has failed to work!');
-            }
-        });
+        // $.ajax({
+        //     type: "POST",
+        //     url: 'ajax_getNewCategoriesOrder',
+        //     data: obj,
+        //     success: function (msg) {
+        //         console.log('ajax_getNewCategoriesOrder has worked successfully!');
+        //     },
+        //     error: function (msg) {
+        //         console.log('ajax_getNewCategoriesOrder has failed to work!');
+        //     }
+        // });
 
-        console.log(obj);
+        console.log(JSON.stringify(order));
+        // console.log(order.toJSON());
         // return obj;
     }
 

@@ -55,7 +55,7 @@ use components\Router;
                                     Выбор отделения
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu flat" aria-labelledby="chooseDepartment">
+                                <ul id="pick-department" class="dropdown-menu flat" aria-labelledby="chooseDepartment">
                                     <?php if (!empty($departments) && $departments != false && $departments != 'DB connection error'): ?>
                                         <?php foreach ($departments as $department): ?>
                                             <li  class="department-item" data-id-department="<?= $department['id']; ?>">
@@ -497,6 +497,6 @@ use components\Router;
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?2"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramDragInit.js?7"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramDragInit.js?8"></script>
 </body>
 </html>
