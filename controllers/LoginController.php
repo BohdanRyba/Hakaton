@@ -18,7 +18,7 @@ class LoginController extends AppController
                     if(!empty($_POST['remember_me'])){
                         $_SESSION['session_ttl'] = 31536000;
                     } else {
-                        $_SESSION['session_ttl'] = 30;
+                        $_SESSION['session_ttl'] = 120;
                     }
                     $this->setUserSessionTTL($_SESSION['session_ttl']);
                     $message = json_encode([
