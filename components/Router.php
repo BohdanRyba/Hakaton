@@ -1,6 +1,9 @@
 <?php
 namespace components;
 use controllers\AppController;
+use controllers\HomeController;
+use controllers\LoginController;
+use models\LoginModel;
 
 class Router
 {
