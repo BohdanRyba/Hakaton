@@ -620,12 +620,14 @@ class AdminController extends AppController
     public function actionAjax_showCategoriesAccordingToDep(){
         if(!empty($_POST['id'])){
             $department_id = (int)$_POST['id'];
-//            $department_id = 3;
             $categories_in_department = AdminModel::getDepartmentCategories($department_id);
             $result = AdminModel::getCategoriesAccordingToDepartment($department_id, $categories_in_department['categories']);
             echo json_encode($result);
-//            self::showArray($result);
         }
+    }
+
+    public function actionAjax_getNewCategoriesOrder(){
+        echo json_encode($_POST);
     }
 
 
