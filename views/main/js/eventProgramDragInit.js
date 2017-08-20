@@ -313,17 +313,18 @@ jQuery(function($) {
             order[parseInt($(this).index()+1)] = $(this).attr('data-id');
         });
 
-        // $.ajax({
-        //     type: "POST",
-        //     url: 'ajax_getNewCategoriesOrder',
-        //     data: obj,
-        //     success: function (msg) {
-        //         console.log('ajax_getNewCategoriesOrder has worked successfully!');
-        //     },
-        //     error: function (msg) {
-        //         console.log('ajax_getNewCategoriesOrder has failed to work!');
-        //     }
-        // });
+        $.ajax({
+            type: "POST",
+            url: 'ajax_getNewCategoriesOrder',
+            data: {'categories' : order, 'department_id' : dep},
+            success: function (msg) {
+                console.log(msg);
+                console.log('ajax_getNewCategoriesOrder has worked successfully!');
+            },
+            error: function (msg) {
+                console.log('ajax_getNewCategoriesOrder has failed to work!');
+            }
+        });
 
         console.log(JSON.stringify(order));
         // console.log(order.toJSON());
