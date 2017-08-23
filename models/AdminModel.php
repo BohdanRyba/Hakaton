@@ -1372,6 +1372,10 @@ class AdminModel extends AppModel
                 }
 
                 self::processTheCategories($resulting_array, $categories, $is_there_is_zero, $is_not_all_zeros);
+
+                foreach ($categories as &$category){
+                    $category['data-category'] = "7-00";
+                }
             } else {
                 return false;
             }
