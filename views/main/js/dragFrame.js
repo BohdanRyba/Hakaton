@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-    jQuery.fn.myDrag = function (dragedSelector, hoveredClass, timeSuspension, successDropFunc) {
+    jQuery.fn.myDrag = function (dragedSelector, hoveredClass, timeSuspension, successDropFunc, checkCorrectnessFun) {
 
         let holder = this[0];
         // console.log(holder);
@@ -278,6 +278,7 @@ jQuery(function($) {
                     } else {
                         holder.append(draggedObj.elem);
                     }
+                    checkCorrectnessFun();
                     if (successDropFunc) {
                         for (let i = 0; i < successDropFunc.length; i++)
                             successDropFunc[i]();

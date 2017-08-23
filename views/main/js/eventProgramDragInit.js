@@ -316,13 +316,10 @@ jQuery(function($) {
         $.ajax({
             type: "POST",
             url: 'ajax_getNewCategoriesOrder',
-            data: {
-                department_id: dep,
-                categories: order
-            },
+            data: {'categories' : order, 'department_id' : dep},
             success: function (msg) {
                 console.log(msg);
-                // console.log('ajax_getNewCategoriesOrder has worked successfully!');
+                console.log('ajax_getNewCategoriesOrder has worked successfully!');
             },
             error: function (msg) {
                 console.log('ajax_getNewCategoriesOrder has failed to work!');
