@@ -631,5 +631,11 @@ class AdminController extends AppController
         }
     }
 
-
+    public function actionEventProgramPrint($event_id){
+        $departments = AdminModel::getDepartmentsByEventId($event_id);
+        $header = $this->loadHeader('header_1');
+        $sidebar = $this->loadSideBar('admin_sidebar_1');
+        $footer = $this->loadFooter('footer_1');
+        require_once('views/admin/organizations/event_program_print.php');
+    }
 }
