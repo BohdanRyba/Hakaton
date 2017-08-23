@@ -278,7 +278,9 @@ jQuery(function($) {
                     } else {
                         holder.append(draggedObj.elem);
                     }
-                    checkCorrectnessFun();
+                    if (checkCorrectnessFun) {
+                        checkCorrectnessFun();
+                    }
                     if (successDropFunc) {
                         for (let i = 0; i < successDropFunc.length; i++)
                             successDropFunc[i]();
