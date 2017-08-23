@@ -192,7 +192,7 @@ jQuery(function($) {
 
                     for (let i = 0; i < categories.length; i++) {
                         let category = {};
-                        category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_program"];
+                        category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_league"];
                         category["id"] = categories[i]["id"];
                         categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
                     }
