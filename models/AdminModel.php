@@ -1352,7 +1352,7 @@ class AdminModel extends AppModel
         return $resulting_array;
     }
 
-    static function getCategoriesAccordingToDepartment($department_id, $categories)
+    static function getCategoriesAccordingToDepartment($department_id, $categories, $is_print)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $result = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id}");
@@ -1373,9 +1373,22 @@ class AdminModel extends AppModel
 
                 self::processTheCategories($resulting_array, $categories, $is_there_is_zero, $is_not_all_zeros);
 
-                foreach ($categories as &$category){
-                    $category['data-category'] = "7-00";
+                if($is_print === 'true') {
+                    $result = $db->query("SELECT * FROM `rounds` WHERE `department_id` = {$department_id}");
+                    $resulting_array = [];
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $resulting_array[] = $row;
+                        }
+                    //TODO: end this case!!!
+                    } else {
+                        foreach ($categories as &$category){
+                            $category['data-category'] = $category['id'] . "-00";
+                        }
+                    }
                 }
+
+
             } else {
                 return false;
             }
