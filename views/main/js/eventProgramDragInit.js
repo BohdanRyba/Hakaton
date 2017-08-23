@@ -180,7 +180,7 @@ jQuery(function($) {
             $.ajax({
                 type: "POST",
                 url: 'ajax_showCategoriesAccordingToDep',
-                data: 'id=' + id,
+                data: {'id': id, 'print': false},
                 success: function (msg) {
                     let categories = JSON.parse(msg);
                     console.log(categories);

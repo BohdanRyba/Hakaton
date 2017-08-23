@@ -49,7 +49,7 @@ jQuery(function($) {
             $categories = $('.category');
 
         $categories.each(function () {
-            order[parseInt($(this).index()+1)] = $(this).attr('data-id');
+            order[parseInt($(this).index()+1)] = $(this).attr('data-category');
         });
 
         $.ajax({
@@ -201,7 +201,7 @@ jQuery(function($) {
             $.ajax({
                 type: "POST",
                 url: 'ajax_showCategoriesAccordingToDep',
-                data: 'id=' + id,
+                data: {'id': id, 'print': true},
                 success: function (msg) {
                     let categories = JSON.parse(msg);
                     console.log(categories);
