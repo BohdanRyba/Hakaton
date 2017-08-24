@@ -22,6 +22,7 @@ use components\Router;
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.css">
     <link rel="stylesheet" href="<?= Router::$permalink ?>views/main/css/fixis_admin_page.css">
     <link rel="stylesheet/less" type="text/less" href="<?= Router::$permalink ?>views/main/css/event_program_print.less?11">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -320,6 +321,7 @@ use components\Router;
 
 <!-- jQuery 2.2.3 -->
 <script src="<?= Router::$permalink ?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->

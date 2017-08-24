@@ -1,7 +1,7 @@
 jQuery(function($) {
     var $b = $('body'),
         $d = $(document);
-
+    $d.ajaxStart(function() { Pace.restart(); });
     function setPosition() {
         let $categories = $('.category'),
             categoryIndex = 0,
