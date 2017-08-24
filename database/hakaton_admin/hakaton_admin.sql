@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 24 2017 г., 17:46
+-- Время создания: Авг 24 2017 г., 18:52
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -414,8 +414,19 @@ CREATE TABLE `rounds` (
   `id` int(11) UNSIGNED NOT NULL,
   `department_id` int(11) UNSIGNED NOT NULL,
   `category_id` int(11) UNSIGNED NOT NULL,
-  `round_type` int(5) UNSIGNED NOT NULL
+  `round_type` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `sort_order` int(11) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `rounds`
+--
+
+INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_order`) VALUES
+(1, 3, 9, 1, 0),
+(2, 3, 9, 2, 0),
+(3, 3, 9, 8, 0),
+(4, 3, 9, 4, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -582,7 +593,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT для таблицы `rounds`
 --
 ALTER TABLE `rounds`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

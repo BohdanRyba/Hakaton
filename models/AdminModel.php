@@ -1305,7 +1305,6 @@ class AdminModel extends AppModel
     static function unbindCategoryFromDepartment($department_id, $category_id)
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
-            //TODO save the object data before delete it!!!
             $result_category_to_del = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id} 
                                                                                   AND `category_id` = {$category_id}");
             if ((int)$result_category_to_del->num_rows === 1){
@@ -1375,12 +1374,33 @@ class AdminModel extends AppModel
 
                 if($is_print === 'true') {
                     $result = $db->query("SELECT * FROM `rounds` WHERE `department_id` = {$department_id}");
-                    $resulting_array = [];
+                    $rounds = [];
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            $resulting_array[] = $row;
+                            $rounds[] = $row;
                         }
-                    //TODO: end this case!!!
+                        foreach ($rounds as &$round){
+                            $round['data-category'] = $round['category_id'] . "-" . $round['round_type'];
+                        }
+                        $is_there_is_zero = false;
+                        $is_not_all_zeros = false;
+                        foreach ($rounds as $checking_array) {
+                            if ((int)$checking_array['sort_order'] === 0) {
+                                $is_there_is_zero = true;
+                            } elseif ((int)$checking_array['sort_order'] > 0) {
+                                $is_not_all_zeros = true;
+                            }
+                        }
+                        self::processTheCategories($rounds, $rounds, $is_there_is_zero, $is_not_all_zeros);
+                        foreach ( $rounds as &$round){
+                            $category = self::getCategoryById($round['category_id']);
+                            foreach ($category as $key => $value) {
+                                if($key !== 'id'){
+                                    $round[$key] = $value;
+                                }
+                            }
+                        }
+                        return $rounds;
                     } else {
                         foreach ($categories as &$category){
                             $category['data-category'] = $category['id'] . "-00";
@@ -1394,6 +1414,21 @@ class AdminModel extends AppModel
             }
             $db->close();
             return $categories;
+        } else {
+            return false;
+        }
+    }
+
+    static function getCategoryById($category_id){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT * FROM `dance_categories` WHERE `id` = {$category_id}");
+            if($result->num_rows === 1){
+                $category = $result->fetch_assoc();
+            } else {
+                return false;
+            }
+            $db->close();
+            return $category;
         } else {
             return false;
         }
