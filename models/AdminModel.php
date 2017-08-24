@@ -1372,46 +1372,32 @@ class AdminModel extends AppModel
 
                 self::processTheCategories($resulting_array, $categories, $is_there_is_zero, $is_not_all_zeros);
 
-                if($is_print === 'true') {
+                foreach ($categories as &$category) {
+                    $category['data-category'] = $category['id'] . "-00";
+                }
+
+                if ($is_print === 'true') {
                     $result = $db->query("SELECT * FROM `rounds` WHERE `department_id` = {$department_id}");
                     $rounds = [];
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $rounds[] = $row;
                         }
-                        foreach ($rounds as &$round){
+                        foreach ($rounds as &$round) {
                             $round['data-category'] = $round['category_id'] . "-" . $round['round_type'];
-                        }
-                        $is_there_is_zero = false;
-                        $is_not_all_zeros = false;
-                        foreach ($rounds as $checking_array) {
-                            if ((int)$checking_array['sort_order'] === 0) {
-                                $is_there_is_zero = true;
-                            } elseif ((int)$checking_array['sort_order'] > 0) {
-                                $is_not_all_zeros = true;
-                            }
-                        }
-                        self::processTheCategories($rounds, $rounds, $is_there_is_zero, $is_not_all_zeros);
-                        foreach ( $rounds as &$round){
                             $category = self::getCategoryById($round['category_id']);
                             foreach ($category as $key => $value) {
-                                if($key !== 'id'){
+                                if ($key !== 'id') {
                                     $round[$key] = $value;
                                 }
                             }
                         }
-                        $result = $db->query("SELECT `category_id` FROM `rounds` GROUP BY `category_id`");
-                        
+                        $db->close();
                         return $rounds;
-                    } else {
-                        foreach ($categories as &$category){
-                            $category['data-category'] = $category['id'] . "-00";
-                        }
                     }
                 }
-
-
             } else {
+                $db->close();
                 return false;
             }
             $db->close();
