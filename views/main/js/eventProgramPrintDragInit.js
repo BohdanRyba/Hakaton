@@ -231,7 +231,7 @@ jQuery(function($) {
                         categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
                     }
 
-                    console.log(categoriesToPush);
+                    // console.log(categoriesToPush);
 
                     for (let i = 1; i <= categoriesToPush["length"]; i++) {
                         if (parseInt(categoriesToPush[i]["data-category"].split('-')[1]) == 0) {
