@@ -1484,4 +1484,29 @@ class AdminModel extends AppModel
             return false;
         }
     }
+
+    public static function changeRoundsSortOrder($categories, $department_id)
+    {
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $del_result = $db->query("DELETE FROM `rounds` WHERE `department_id` = {$department_id}");
+
+                foreach ($categories as $key => $category) {
+                    $category_id = (int)explode('-', $category['data-category'])[0];
+                    $round_type = (int)explode('-', $category['data-category'])[1];
+                    $is_max = $category['isMax'] === 'true' ? 1 : 0;
+                    $result = $db->query("INSERT INTO `rounds`
+                                                         SET `id` = NULL,
+                                                             `department_id` = '{$department_id}',
+                                                             `category_id` = '{$category_id}',
+                                                             `round_type` = '{$round_type}',
+                                                             `sort_order` = '{$key}',
+                                                             `is_max` = '{$is_max}'
+                                             ");
+                }
+                $db->close();
+                return $del_result;
+            } else {
+                return false;
+            }
+    }
 }

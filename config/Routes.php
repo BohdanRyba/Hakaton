@@ -64,7 +64,7 @@ Class Routes
         'admin/organizations/event_program/([0-9]+)' => 'admin/eventProgram/$1',
         'admin/organizations/event_program_print/([0-9]+)' => 'admin/eventProgramPrint/$1',
         'admin/organizations/event_program_print/ajax_showCategoriesAccordingToDep' => 'admin/ajax_showCategoriesAccordingToDep',
-        'admin/organizations/event_program_print/ajax_getNewCategoriesPrintOrder' => 'admin/ajax_getNewCategoriesPrintOrder',
+        'admin/organizations/event_program_print/ajax_setNewCategoriesPrintOrder' => 'admin/ajax_setNewCategoriesPrintOrder',
         'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
         'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
         'admin/option_event/reg_part_for_event/ajax_test_json' => 'admin/testAjax',//--------------SLOT

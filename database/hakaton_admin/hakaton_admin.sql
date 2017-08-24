@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 24 2017 г., 20:11
+-- Время создания: Авг 24 2017 г., 20:57
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -424,12 +424,30 @@ CREATE TABLE `rounds` (
 --
 
 INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_order`, `is_max`) VALUES
-(1, 3, 9, 1, 4, 0),
-(2, 3, 9, 2, 3, 0),
-(3, 3, 9, 8, 1, 1),
-(4, 3, 9, 4, 2, 0),
-(8, 3, 1, 2, 6, 1),
-(7, 3, 1, 1, 5, 0);
+(60, 3, 1, 1, 6, 1),
+(59, 3, 9, 1, 5, 1),
+(58, 3, 9, 2, 4, 1),
+(57, 3, 1, 2, 3, 1),
+(56, 3, 9, 4, 2, 1),
+(55, 3, 9, 8, 1, 1),
+(61, 4, 5, 16, 1, 1),
+(62, 4, 5, 8, 2, 0),
+(63, 4, 5, 4, 3, 0),
+(64, 4, 5, 2, 4, 0),
+(65, 4, 5, 1, 5, 0),
+(66, 4, 10, 0, 6, 0),
+(67, 4, 4, 0, 7, 0),
+(81, 5, 3, 16, 7, 1),
+(80, 5, 2, 1, 6, 0),
+(79, 5, 2, 2, 5, 0),
+(78, 5, 2, 4, 4, 0),
+(77, 5, 2, 8, 3, 0),
+(76, 5, 2, 16, 2, 0),
+(75, 5, 2, 32, 1, 1),
+(82, 5, 3, 8, 8, 0),
+(83, 5, 3, 4, 9, 0),
+(84, 5, 3, 2, 10, 0),
+(85, 5, 3, 1, 11, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -596,7 +614,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT для таблицы `rounds`
 --
 ALTER TABLE `rounds`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
