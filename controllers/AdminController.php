@@ -86,8 +86,6 @@ class AdminController extends AppController
             $message = '';
 
             if ($_POST['delete_org'] === 'удалить!' && !empty($_POST['delete_org_id']) && isset($_POST['deletion-confirmation-password'])) {
-//                self::showArray($_POST);
-//                die;
                 if (AdminModel::getPermissionForDeletion()) {
                     $resulting = (integer)AdminModel::deleteOrganization($_POST['delete_org_id']);
                     if ($resulting === 'db.connect false') {
@@ -106,8 +104,8 @@ class AdminController extends AppController
                 }
             }
             header('Location: ' . Router::$permalink . $_POST['redirect']);
-            return true;
         }
+        return true;
     }
 
     public function actionUpdateOrg()
@@ -152,27 +150,23 @@ class AdminController extends AppController
             $footer = $this->loadFooter('footer_1');
             include 'views/admin/SettingsOrg/org_settings.php';
             unset($_SESSION['messages']);
-            return true;
         }
-
-
+        return true;
     }
 
     public function actionAddClub()
     {
-
         if (isset($_POST)) {
             if (!empty($_POST['club_name']) && !empty($_POST['club_country']) && !empty($_POST['club_city']) &&
                 !empty($_POST['club_shief']) && !empty($_POST['club_number']) && !empty($_POST['club_mail']) &&
                 !empty($_POST['org_id'])
             ) {
                 $result = AdminModel::club_add($_POST);
-//                self::showArray((int)$result);
-//                die;
             } else {
                 echo 'NooooO!';
             }
         }
+        return true;
     }
 
     public function actionAjaxCategory_create()
@@ -183,6 +177,7 @@ class AdminController extends AppController
         }
         include 'views/admin/SettingsOrg/option_category.php';
         unset($_SESSION['messages']);
+        return true;
     }
 
     public function actionAddEvent()
@@ -219,6 +214,7 @@ class AdminController extends AppController
             }
         }
         self::saveMessage($message);
+        return true;
     }
 
     public function actionAjaxClub_add()
@@ -228,9 +224,6 @@ class AdminController extends AppController
 
     public function actionAjaxClubCabinet($id)
     {
-
-//        self::showArray($_POST);
-//        die;
         $participant = AdminModel::ShowClubById($id);
         $nav_content = $this->createNavContent(Router::$uri);
         $header = $this->loadHeader('header_1');
@@ -246,6 +239,7 @@ class AdminController extends AppController
          *
          *         return $participant;
          */
+        return true;
     }
 
     public function actionRegClubForEvent($id)
@@ -258,6 +252,7 @@ class AdminController extends AppController
         $footer = $this->loadFooter('footer_1');
 
         include 'views/admin/option_event/reg_part_for_event.php';
+        return true;
     }
 
     public function actionRegParticipantForEvent($id)
@@ -275,6 +270,7 @@ class AdminController extends AppController
     {
         $list = AdminModel::ShowClubsForReg($id);
         include 'views/admin/SettingsOrg/view_add_part.php';
+        return true;
     }
 
     public function actionAjax_clubShow($id)
@@ -290,14 +286,14 @@ class AdminController extends AppController
     public function actionAjaxCategory_add()
     {
         $dance_programs_list = AdminModel::getAllDanceGroups();
-//        self::showArray($list);
-//        echo json_encode(AdminModel::ShowClubs());
         include 'views/admin/SettingsOrg/create-category.php';
+        return true;
     }
 
     public function actionAjaxCreate_event($id = '')
     {
         include 'views/admin/SettingsOrg/create-event.php';
+        return true;
     }
 
     public function actionDancingList()
@@ -359,6 +355,7 @@ class AdminController extends AppController
         $footer = $this->loadFooter('footer_1');
         include 'views/admin/dancing_groups/add_dancing_groups.php';
         unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        return true;
     }
 
     public function actionAddDanceProgram()
@@ -368,6 +365,7 @@ class AdminController extends AppController
             $result = (integer)AdminModel::saveDanceProgram($json);
             header('Location: ' . Router::$permalink . $json['redirect']);
         }
+        return true;
     }
 
     public function actionAjax_settingUpDancingCategory()
@@ -379,6 +377,7 @@ class AdminController extends AppController
             $array['category_parameters'] = $category_parameters;
             echo json_encode($array);
         }
+        return true;
     }
 
     public function actionAjax_saveDanceCategoryParameters($org_id)
@@ -396,6 +395,7 @@ class AdminController extends AppController
             setcookie("A_result", "Empty_POST");
             echo 'Данные для сохранения отсутствуют';
         }
+        return true;
     }
 
     public function actionAjaxSaveDancingCategories()
@@ -414,11 +414,13 @@ class AdminController extends AppController
         }
         $show_results = implode("\n", $tmp);
         echo $show_results;
+        return true;
     }
 
     public function actionAjax_NewInfo()
     {
         AdminModel::SaveParticipant($_POST);
+        return true;
     }
 
     public function actionAjaxShowAllCategoryParameters()
@@ -427,6 +429,7 @@ class AdminController extends AppController
             $array_with_asked_parameters = AdminModel::getCategoryParametersByParameter($_POST['parameter']);
             echo json_encode($array_with_asked_parameters);
         }
+        return true;
     }
 
     public function actionAjaxShowCategoriesAccordingToParameter()
@@ -437,6 +440,7 @@ class AdminController extends AppController
             $asked_parameters = AdminModel::getCategoriesByName($name, $parameter);
             echo json_encode($asked_parameters);
         }
+        return true;
     }
 
     public function actionAjaxUpdatingCreatedDancingCategory()
@@ -446,6 +450,7 @@ class AdminController extends AppController
             $show_results = implode("\n", $array_with_asked_categories);
             echo $show_results;
         }
+        return true;
     }
 
     public function actionAjaxGetNewInfoAboutDancingGroup()
@@ -467,6 +472,7 @@ class AdminController extends AppController
         $event = AdminModel::getEventById($event_id);
         $organization = AdminModel::getOrganizationById($_SESSION['organization_id']);
         require_once('views/admin/option_event/pick_categories_for_event.php');
+        return true;
     }
 
     public function actionAjaxShowCategoriesToPickForEvent()
@@ -476,9 +482,9 @@ class AdminController extends AppController
             $parameter = $_POST['parameter'];
             $event_id = $_POST['event_id'];
             $asked_parameters = AdminModel::getCategoriesByName($name, $parameter, $event_id);
-//            echo json_encode($_POST);
             echo json_encode($asked_parameters);
         }
+        return true;
     }
 
     public function actionAjaxSendPickedCategoriesForEvent()
@@ -493,6 +499,7 @@ class AdminController extends AppController
             $result = AdminModel::createEventsCategoriesRelationships($all_ids, $checked_ids, $event_id);
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionCreateDancingDepartments($event_id)
@@ -530,16 +537,16 @@ class AdminController extends AppController
         $footer = $this->loadFooter('footer_1');
         require_once('views/admin/option_event/create_dancing_departments.php');
         unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        return true;
     }
 
     public function actionPickedCategoriesForEvent($event_id){
-//        self::showArray($_SESSION);
-//        die;
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
         $picked_categories = AdminModel::getPickedCategories($event_id);
         require_once('views/admin/organizations/picked_categories_for_event.php');
+        return true;
     }
 
     public function actionAjax_sendRemovedCategories(){
@@ -549,6 +556,7 @@ class AdminController extends AppController
         } else {
             echo false;
         }
+        return true;
     }
 
     public function actionAjax_getCategoriesToPickForDepartment(){
@@ -563,7 +571,7 @@ class AdminController extends AppController
             }
             echo json_encode($array);
         }
-
+        return true;
     }
 
     public function actionAjax_sendCategoriesPickedForDepartment(){
@@ -573,6 +581,7 @@ class AdminController extends AppController
             $result = AdminModel::assignCategoriesToDepartment($department_id, $picked_categories_ids);
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionAjax_getDepartmentContent(){
@@ -580,6 +589,7 @@ class AdminController extends AppController
             $result = AdminModel::getDepartmentCategories($_POST['department']);
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionAjax_delCategory(){
@@ -589,6 +599,7 @@ class AdminController extends AppController
             $result = AdminModel::unbindCategoryFromDepartment($department_id, $category_id);
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionAjax_transferCategory(){
@@ -603,6 +614,7 @@ class AdminController extends AppController
             }
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionEventProgram($event_id){
@@ -611,6 +623,7 @@ class AdminController extends AppController
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
         require_once('views/admin/organizations/event_program.php');
+        return true;
     }
 
     public function actionAjax_showCategoriesAccordingToDep(){
@@ -621,6 +634,7 @@ class AdminController extends AppController
             $result = AdminModel::getCategoriesAccordingToDepartment($department_id, $categories_in_department['categories'], $is_print);
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionAjax_getNewCategoriesOrder(){
@@ -630,6 +644,7 @@ class AdminController extends AppController
             $result = AdminModel::changeCategoriesSortOrder($categories, $department_id);
             echo json_encode($result);
         }
+        return true;
     }
 
     public function actionEventProgramPrint($event_id){
@@ -640,6 +655,7 @@ class AdminController extends AppController
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
         require_once('views/admin/organizations/event_program_print.php');
+        return true;
     }
 
     public function actionAjax_setNewCategoriesPrintOrder(){
@@ -649,5 +665,6 @@ class AdminController extends AppController
             $result = AdminModel::changeRoundsSortOrder($categories, $department_id);
             echo json_encode($result);
         }
+        return true;
     }
 }
