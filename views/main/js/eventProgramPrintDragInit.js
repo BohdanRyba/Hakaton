@@ -214,12 +214,14 @@ jQuery(function($) {
                         let category = {};
                         category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_program"];
                         category["id"] = categories[i]["id"];
+                        category["data-category"] = categories[i]["data-category"];
                         categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
                     }
 
                     console.log(categoriesToPush);
 
                     for (let i = 1; i <= categoriesToPush["length"]; i++) {
+                        //if (parseInt(categoriesToPush[i]["data-category"].split(-)[1]) == 0)
                         $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="unchecked" data-category="">' +
                             '<div class="highlighter highlighterTop"></div>'+
                             '<div class="category-settings clearfix">'+
