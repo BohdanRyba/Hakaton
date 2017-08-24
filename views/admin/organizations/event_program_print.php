@@ -325,6 +325,6 @@ use components\Router;
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?7"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?9"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?11"></script>
 </body>
 </html>
