@@ -1400,6 +1400,8 @@ class AdminModel extends AppModel
                                 }
                             }
                         }
+                        $result = $db->query("SELECT `category_id` FROM `rounds` GROUP BY `category_id`");
+                        
                         return $rounds;
                     } else {
                         foreach ($categories as &$category){
