@@ -1,7 +1,7 @@
 jQuery(function($) {
     var $b = $('body'),
         $d = $(document);
-
+    $d.ajaxStart(function() { Pace.restart(); });
     function setPosition() {
         let $categories = $('.category'),
             categoryIndex = 0,
@@ -263,37 +263,50 @@ jQuery(function($) {
                                 '<div class="highlighter highlighterBot"></div>'+
                                 '</li>');
                         } else {
-                            // if () {
-                            //
-                            // }
-                            $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
-                                '<div class="highlighter highlighterTop"></div>'+
-                                '<div class="category-settings clearfix">'+
-                                '<span class="count-number">'+ i +'.</span>'+
-                                '<span class="count-number-print"></span>'+
-                                '<div class="round-wrapper clearfix" data-checkstatus="checked">'+
-                                '<span class="round-selected">1/'+categoriesToPush[i]["data-category"].split('-')[1]+'</span>'+
-                                '<div class="dropdown round-dropdown">'+
-                                '<button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">'+
-                                '<span class="caret"></span>'+
-                                '</button>'+
-                                '<ul class="dropdown-menu flat" aria-labelledby="chooseRound">'+
-                                '<li class="round-variant"><a>1/32</a></li>'+
-                                '<li class="round-variant"><a>1/16</a></li>'+
-                                '<li class="round-variant"><a>1/8</a></li>'+
-                                '<li class="round-variant"><a>1/4</a></li>'+
-                                '<li class="round-variant"><a>1/2</a></li>'+
-                                '<li class="round-variant"><a>1/1</a></li>'+
-                                '<li role="separator" class="divider"></li>'+
-                                '<li class="new-round"><a>создать новое...</a></li>'+
-                                '</ul>'+
-                                '</div>'+
-                                '</div>'+
-                                '<span class="participants-number"><span class="the-participants-number">173</span>чел.</span>'+
-                                '<p class="category-name main-content">'+ categoriesToPush[i]["category"] +'</p>'+
-                                '</div>'+
-                                '<div class="highlighter highlighterBot"></div>'+
-                                '</li>');
+                            if (!categoriesToPush[i]["isMax"]) {
+                                $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
+                                    '<div class="highlighter highlighterTop"></div>'+
+                                    '<div class="category-settings clearfix">'+
+                                    '<span class="count-number">'+ i +'.</span>'+
+                                    '<span class="count-number-print"></span>'+
+                                    '<div class="round-wrapper clearfix" data-checkstatus="checked">'+
+                                    '<span class="round-selected">1/'+categoriesToPush[i]["data-category"].split('-')[1]+'</span>'+
+                                    '</div>'+
+                                    '<span class="participants-number"><span class="the-participants-number">173</span>чел.</span>'+
+                                    '<p class="category-name main-content">'+ categoriesToPush[i]["category"] +'</p>'+
+                                    '</div>'+
+                                    '<div class="highlighter highlighterBot"></div>'+
+                                    '</li>');
+                            } else {
+                                $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
+                                    '<div class="highlighter highlighterTop"></div>'+
+                                    '<div class="category-settings clearfix">'+
+                                    '<span class="count-number">'+ i +'.</span>'+
+                                    '<span class="count-number-print"></span>'+
+                                    '<div class="round-wrapper clearfix" data-checkstatus="checked">'+
+                                    '<span class="round-selected">1/'+categoriesToPush[i]["data-category"].split('-')[1]+'</span>'+
+                                    '<div class="dropdown round-dropdown">'+
+                                    '<button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">'+
+                                    '<span class="caret"></span>'+
+                                    '</button>'+
+                                    '<ul class="dropdown-menu flat" aria-labelledby="chooseRound">'+
+                                    '<li class="round-variant"><a>1/32</a></li>'+
+                                    '<li class="round-variant"><a>1/16</a></li>'+
+                                    '<li class="round-variant"><a>1/8</a></li>'+
+                                    '<li class="round-variant"><a>1/4</a></li>'+
+                                    '<li class="round-variant"><a>1/2</a></li>'+
+                                    '<li class="round-variant"><a>1/1</a></li>'+
+                                    '<li role="separator" class="divider"></li>'+
+                                    '<li class="new-round"><a>создать новое...</a></li>'+
+                                    '</ul>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '<span class="participants-number"><span class="the-participants-number">173</span>чел.</span>'+
+                                    '<p class="category-name main-content">'+ categoriesToPush[i]["category"] +'</p>'+
+                                    '</div>'+
+                                    '<div class="highlighter highlighterBot"></div>'+
+                                    '</li>');
+                            }
                         }
                     }
 
