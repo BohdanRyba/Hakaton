@@ -641,4 +641,13 @@ class AdminController extends AppController
         $footer = $this->loadFooter('footer_1');
         require_once('views/admin/organizations/event_program_print.php');
     }
+
+    public function actionAjax_getNewCategoriesPrintOrder(){
+        if(!empty($_POST['categories']) && !empty($_POST['department_id'])){
+            $categories = $_POST['categories'];
+            $department_id = $_POST['department_id'];
+            $result = AdminModel::changeCategoriesSortOrder($categories, $department_id);
+            echo json_encode($result);
+        }
+    }
 }
