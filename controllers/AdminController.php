@@ -634,6 +634,8 @@ class AdminController extends AppController
 
     public function actionEventProgramPrint($event_id){
         $departments = AdminModel::getDepartmentsByEventId($event_id);
+        $current_event = AdminModel::getEventById($event_id);
+        $organization = AdminModel::getOrganizationById($current_event['org_id_for_event']);
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');

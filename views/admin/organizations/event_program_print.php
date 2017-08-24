@@ -49,11 +49,15 @@ use components\Router;
                 <div class="row">
                     <div class="col-xs-12 print-header">
                         <h1>Бланк события</h1>
-                        <p id="org-name">org long and strange name</p>
-                        <p id="event-title">rating championship</p>
-                        <p id="event-name">@dance legends 2017@</p>
-                        <p id="event-info"><span id="date">17.17.2017</span> <span id="location">Khmelnitsky Ukraine</span></p>
-                        <p id="event-department">dep 1</p>
+                        <?php if(!empty($current_event) && !empty($organization)):?>
+                            <p id="org-name"><?= $organization['org_name']?></p>
+                            <p id="event-title"><?= $current_event['event_status']?></p>
+                            <p id="event-name"><?= $current_event['event_name']?></p>
+                            <p id="event-info">
+                                <span id="date"><?= $current_event['event_start']?> - <?= $current_event['event_end']?>, </span>
+                                <span id="location"><?= $current_event['event_country']?>, <?= $current_event['event_city']?></span></p>
+                            <p id="event-department"></p>
+                        <?php endif; ?>
                     </div>
                     <div class="col-xs-12">
                         <div class="flat callout callout-success event-menu clearfix">

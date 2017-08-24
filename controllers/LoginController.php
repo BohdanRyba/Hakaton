@@ -16,11 +16,12 @@ class LoginController extends AppController
                     $_SESSION['current_user_id'] = $user['id'];
                     $_SESSION['current_user'] = $user['club_shief'];
                     if(!empty($_POST['remember_me'])){
-                        $_SESSION['session_ttl'] = 31536000;
+                        $this->setUserSessionTTL($ttl = 31536000);
+
                     } else {
-                        $_SESSION['session_ttl'] = 120;
+                        $this->setUserSessionTTL($ttl = 120);
+
                     }
-                    $this->setUserSessionTTL($_SESSION['session_ttl']);
                     $message = json_encode([
                         'status' => 'success',
                         'message' => "Вы успешно авторизированы, {$_SESSION['current_user']}"
@@ -47,18 +48,15 @@ class LoginController extends AppController
     }
 
     public function setUserSessionTTL($ttl){
-        $user = $this->getCurrentUserInfo();
         $userLoginTimestamp = time();
         $userSessionLogoutTimestamp = $userLoginTimestamp + $ttl;
-        $userLoginDate = date('Y-m-d H:i:s', $userLoginTimestamp);
-        $userSessionLogoutDate = date('Y-m-d H:i:s', $userSessionLogoutTimestamp);
-        $result = LoginModel::setUserSessionTTL($user, $userLoginDate, $ttl, $userSessionLogoutDate);
-        return $result;
+        $_SESSION['session_login_timestamp'] = $userLoginTimestamp;
+        $_SESSION['session_logout_timestamp'] = $userSessionLogoutTimestamp;
+        return;
     }
 
     public function actionOut($ttl_is_out = false)
     {
-        $user = $this->getCurrentUserInfo();
         unset($_SESSION['accessing']);
         unset($_SESSION['user_access']);
         unset($_SESSION['org_id']);
@@ -66,7 +64,8 @@ class LoginController extends AppController
         unset($_SESSION['current_user']);
         unset($_SESSION['current_user_id']);
         unset($_SESSION['event_id']);
-        unset($_SESSION['session_ttl']);
+        unset($_SESSION['session_login_timestamp']);
+        unset($_SESSION['session_logout_timestamp']);
         if($ttl_is_out){
             $message = json_encode([
                 'status' => 'info',
@@ -79,7 +78,6 @@ class LoginController extends AppController
             ]);
         }
         self::saveMessage($message);
-        LoginModel::clearUserSessionInfo($user);
         if($ttl_is_out){
             return false;
         }
@@ -89,10 +87,8 @@ class LoginController extends AppController
     }
 
     public function checkUserTTL(){
-        $user = $this->getCurrentUserInfo();
         $currentTimestamp = time();
-        $userLogoutTimestamp = strtotime($user['logout_date']);
-        if( $currentTimestamp > $userLogoutTimestamp){
+        if( $currentTimestamp > $_SESSION['session_logout_timestamp']){
             return $this->actionOut($ttl_is_out = true);
         }
         return true;

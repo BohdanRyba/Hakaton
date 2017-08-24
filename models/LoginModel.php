@@ -16,32 +16,4 @@ class LoginModel extends AppModel
         return $get_user;
     }
 
-    public static function setUserSessionTTL($user, $userLoginDate, $ttl, $userSessionLogoutDate){
-        if($db = Db::getConnection(Db::ADMIN_BASE)){
-            $result = $db->query("UPDATE `clubs`
-                                        SET `login_date` = '{$userLoginDate}',
-                                            `session_ttl` = '{$ttl}',
-                                            `logout_date` = '{$userSessionLogoutDate}'
-                                        WHERE `id` = '{$user['id']}'
-                                        ");
-            return $result;
-        } else {
-            return false;
-        }
-    }
-
-    public static function clearUserSessionInfo($user){
-        if($db = Db::getConnection(Db::ADMIN_BASE)){
-            $result = $db->query("UPDATE `clubs`
-                                         SET `login_date` = NULL,
-                                             `session_ttl` = 120,
-                                             `logout_date` = NULL
-                                         WHERE `id` = '{$user['id']}'
-                                        ");
-            return $result;
-        } else {
-            return false;
-        }
-    }
-
 }
