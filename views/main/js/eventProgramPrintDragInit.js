@@ -269,7 +269,7 @@ jQuery(function($) {
                                 '<div class="category-settings clearfix">'+
                                 '<span class="count-number">'+ i +'.</span>'+
                                 '<span class="count-number-print"></span>'+
-                                '<div class="round-wrapper clearfix" data-checkstatus="unchecked">'+
+                                '<div class="round-wrapper clearfix" data-checkstatus="checked">'+
                                 '<span class="round-selected">1/'+categoriesToPush[i]["data-category"].split('-')[1]+'</span>'+
                                 '<div class="dropdown round-dropdown">'+
                                 '<button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">'+
