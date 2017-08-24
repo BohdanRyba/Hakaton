@@ -321,11 +321,12 @@ use components\Router;
 
 <!-- jQuery 2.2.3 -->
 <script src="<?= Router::$permalink ?>views/main/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.js"></script>
+<script src="<?= Router::$permalink ?>views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?7"></script>
 <script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?11"></script>
 </body>
