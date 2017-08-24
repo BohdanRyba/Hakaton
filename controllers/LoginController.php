@@ -66,6 +66,7 @@ class LoginController extends AppController
         unset($_SESSION['event_id']);
         unset($_SESSION['session_login_timestamp']);
         unset($_SESSION['session_logout_timestamp']);
+        unset($_SESSION['session_ttl']);
         if($ttl_is_out){
             $message = json_encode([
                 'status' => 'info',

@@ -1,9 +1,6 @@
 <?php
 namespace components;
-use controllers\AppController;
-use controllers\HomeController;
-use controllers\LoginController;
-use models\LoginModel;
+use config\Routes;
 
 class Router
 {
@@ -37,21 +34,20 @@ class Router
 
     /**
      * include file "routes.php" from folder "config" with array inside
-     * */
+     **/
     public function __construct()
     {
         $project = pathinfo($_SERVER['PHP_SELF']);
         $root_path = rtrim( '//' . $_SERVER['HTTP_HOST'] . $project['dirname'], '/' ) . '/';
         self::$permalink = $root_path;
         self::set_last_path_value();
-
-        $routesPath = ROOT . 'config/routes.php';
-        $this->routes = include($routesPath);
+        $routes = new Routes();
+        $this->routes = $routes->getRoutesMap();
     }
 
     /**
      * return String from request field
-     * */
+     **/
     public function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/admin
@@ -59,6 +55,7 @@ class Router
             self::$uri = trim(self::$uri, '/');// admin
             return self::$uri;
         }
+        return false;
     }
 
     public function run()
