@@ -66,14 +66,14 @@ jQuery(function($) {
 
         $.ajax({
             type: "POST",
-            url: 'ajax_getNewCategoriesOrder',
+            url: 'ajax_setNewCategoriesPrintOrder',
             data: {'categories' : order, 'department_id' : dep},
             success: function (msg) {
                 console.log(order);
-                console.log('ajax_getNewCategoriesOrder has worked successfully!');
+                console.log('ajax_setNewCategoriesPrintOrder has worked successfully!');
             },
             error: function (msg) {
-                console.log('ajax_getNewCategoriesOrder has failed to work!');
+                console.log('ajax_setNewCategoriesPrintOrder has failed to work!');
             }
         });
 
@@ -89,7 +89,6 @@ jQuery(function($) {
     });
 
     $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200, [setPosition, getNewCategoriesOrder], checkPositionCorrectness);
-
     //drag by keys
     function myScroll(elem, direction) {
         let distance = 1.05*(elem[0].getBoundingClientRect().height);
@@ -201,7 +200,6 @@ jQuery(function($) {
 
         }
     });
-
     //    pick department
     $b.on('click', '.department-item', function () {
         $(this).parents('.dropdown-menu').children().each(function () {
@@ -228,6 +226,7 @@ jQuery(function($) {
                         category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_league"];
                         category["id"] = categories[i]["id"];
                         category["data-category"] = categories[i]["data-category"];
+                        category["is_max"] = categories[i]["isMax"];
                         categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
                     }
 
@@ -264,6 +263,9 @@ jQuery(function($) {
                                 '<div class="highlighter highlighterBot"></div>'+
                                 '</li>');
                         } else {
+                            // if () {
+                            //
+                            // }
                             $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
                                 '<div class="highlighter highlighterTop"></div>'+
                                 '<div class="category-settings clearfix">'+
