@@ -79,7 +79,7 @@ use components\Router;
                                     <li><a href="<?=Router::$permalink?>admin/organizations/create_dancing_departments/<?=$_SESSION['event_id']?>">Создать новое</a></li>
                                 </ul>
                             </div>
-                            <span class="text-bold" id="department-name">Department 1</span>
+                            <span class="text-bold" id="department-name"></span>
                             <button type="button" id="print-event" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i></button>
                         </div>
                     </div>
@@ -87,147 +87,6 @@ use components\Router;
                 <div class="row">
                     <div class="col-xs-12 box box-success flat">
                         <ul class="category-main-holder">
-                            <li class="draggable category" data-id="01" data-checkstatus='unchecked' data-category="01-00">
-                                <div class="highlighter highlighterTop"></div>
-                                <div class="category-settings clearfix">
-                                    <span class="count-number" title="порядок">119.</span>
-                                    <span class="count-number-print"></span>
-                                    <div class="round-wrapper clearfix" title="выбор тура" data-checkstatus='unchecked'>
-                                        <span class="round-selected">ТУР</span>
-                                        <div class="dropdown round-dropdown">
-                                            <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
-                                                <li class="round-variant"><a>1/32</a></li>
-                                                <li class="round-variant"><a>1/16</a></li>
-                                                <li class="round-variant"><a>1/8</a></li>
-                                                <li class="round-variant"><a>1/4</a></li>
-                                                <li class="round-variant"><a>1/2</a></li>
-                                                <li class="round-variant"><a>1/1</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li class="new-round"><a>создать новое...</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <span class="participants-number" title="кол-во участников"><span class="the-participants-number">173</span>чел.</span>
-                                    <p class="category-name main-content" title="название категории">Hip-hop dance pro style Cool&Brutal mix.</p>
-                                </div>
-                                <div class="highlighter highlighterBot"></div>
-                            </li>
-                            <li class="draggable category" data-id="02" data-checkstatus='unchecked' data-category="02-00">
-                                <div class="highlighter highlighterTop"></div>
-                                <div class="category-settings clearfix">
-                                    <span class="count-number" title="порядок">11.</span>
-                                    <span class="count-number-print"></span>
-                                    <div class="round-wrapper clearfix" title="выбор тура" data-checkstatus='unchecked'>
-                                        <span class="round-selected">ТУР</span>
-                                        <div class="dropdown round-dropdown">
-                                            <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
-                                                <li class="round-variant"><a>1/32</a></li>
-                                                <li class="round-variant"><a>1/16</a></li>
-                                                <li class="round-variant"><a>1/8</a></li>
-                                                <li class="round-variant"><a>1/4</a></li>
-                                                <li class="round-variant"><a>1/2</a></li>
-                                                <li class="round-variant"><a>1/1</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li class="new-round"><a>создать новое...</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <span class="participants-number" title="кол-во участников"><span class="the-participants-number">888</span>чел.</span>
-                                    <p class="category-name main-content" title="название категории">pro mix.</p>
-                                </div>
-                                <div class="highlighter highlighterBot"></div>
-                            </li>
-                            <li class="draggable category" data-id="03" data-checkstatus='unchecked' data-category="03-00">
-                                <div class="highlighter highlighterTop"></div>
-                                <div class="category-settings clearfix">
-                                    <span class="count-number" title="порядок">1.</span>
-                                    <span class="count-number-print"></span>
-                                    <div class="round-wrapper clearfix" title="выбор тура" data-checkstatus='unchecked'>
-                                        <span class="round-selected">ТУР</span>
-                                        <div class="dropdown round-dropdown">
-                                            <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
-                                                <li class="round-variant"><a>1/32</a></li>
-                                                <li class="round-variant"><a>1/16</a></li>
-                                                <li class="round-variant"><a>1/8</a></li>
-                                                <li class="round-variant"><a>1/4</a></li>
-                                                <li class="round-variant"><a>1/2</a></li>
-                                                <li class="round-variant"><a>1/1</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li class="new-round"><a>создать новое...</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <span class="participants-number" title="кол-во участников"><span class="the-participants-number">1</span>чел.</span>
-                                    <p class="category-name main-content" title="название категории">Cool&Brutal mix.</p>
-                                </div>
-                                <div class="highlighter highlighterBot"></div>
-                            </li>
-                            <li class="draggable category" data-id="05" data-checkstatus='unchecked' data-category="05-00">
-                                <div class="highlighter highlighterTop"></div>
-                                <div class="category-settings clearfix">
-                                    <span class="count-number" title="порядок">1.</span>
-                                    <span class="count-number-print"></span>
-                                    <div class="round-wrapper clearfix" title="выбор тура" data-checkstatus='unchecked'>
-                                        <span class="round-selected">ТУР</span>
-                                        <div class="dropdown round-dropdown">
-                                            <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
-                                                <li class="round-variant"><a>1/32</a></li>
-                                                <li class="round-variant"><a>1/16</a></li>
-                                                <li class="round-variant"><a>1/8</a></li>
-                                                <li class="round-variant"><a>1/4</a></li>
-                                                <li class="round-variant"><a>1/2</a></li>
-                                                <li class="round-variant"><a>1/1</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li class="new-round"><a>создать новое...</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <span class="participants-number" title="кол-во участников"><span class="the-participants-number">17</span>чел.</span>
-                                    <p class="category-name main-content" title="название категории">dance pro</p>
-                                </div>
-                                <div class="highlighter highlighterBot"></div>
-                            </li>
-                            <li class="draggable category" data-id="07" data-checkstatus='unchecked' data-category="07-00">
-                                <div class="highlighter highlighterTop"></div>
-                                <div class="category-settings clearfix">
-                                    <span class="count-number" title="порядок">1.</span>
-                                    <span class="count-number-print"></span>
-                                    <div class="round-wrapper clearfix" title="выбор тура" data-checkstatus='unchecked'>
-                                        <span class="round-selected">ТУР</span>
-                                        <div class="dropdown round-dropdown">
-                                            <button class="btn flat btn-default dropdown-toggle" type="button" id="chooseRound" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu flat" aria-labelledby="chooseRound">
-                                                <li class="round-variant"><a>1/32</a></li>
-                                                <li class="round-variant"><a>1/16</a></li>
-                                                <li class="round-variant"><a>1/8</a></li>
-                                                <li class="round-variant"><a>1/4</a></li>
-                                                <li class="round-variant"><a>1/2</a></li>
-                                                <li class="round-variant"><a>1/1</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li class="new-round"><a>создать новое...</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <span class="participants-number" title="кол-во участников"><span class="the-participants-number">13</span>чел.</span>
-                                    <p class="category-name main-content" title="название категории">Hip-hop mix.</p>
-                                </div>
-                                <div class="highlighter highlighterBot"></div>
-                            </li>
-
                         </ul>
                     </div>
                 </div>
@@ -327,7 +186,7 @@ use components\Router;
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?7"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?12"></script>
+<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?8"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?13"></script>
 </body>
 </html>
