@@ -79,7 +79,7 @@ use components\Router;
                                     <li><a href="<?=Router::$permalink?>admin/organizations/create_dancing_departments/<?=$_SESSION['event_id']?>">Создать новое</a></li>
                                 </ul>
                             </div>
-                            <span class="text-bold" id="department-name">Department 1</span>
+                            <span class="text-bold" id="department-name"></span>
                             <button type="button" id="print-event" class="btn btn-default"><i class="fa fa-print" aria-hidden="true"></i></button>
                         </div>
                     </div>
@@ -186,7 +186,7 @@ use components\Router;
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?7"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?12"></script>
+<script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?8"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?13"></script>
 </body>
 </html>

@@ -89,7 +89,7 @@ jQuery(function($) {
         if ($li.length > 0) {$li.addClass('active');} else if ($t.hasClass('draggable')) {$t.addClass('active');}
     });
 
-    $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200, [setPosition, getNewCategoriesOrder], checkPositionCorrectness);
+    $('.category-main-holder').myDrag('.draggable', 'just-hovered', 200, [checkPositionCorrectness, setPosition, getNewCategoriesOrder]);
     //drag by keys
     function myScroll(elem, direction) {
         let distance = 1.05*(elem[0].getBoundingClientRect().height);
