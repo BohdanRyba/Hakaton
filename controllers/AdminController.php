@@ -78,6 +78,7 @@ class AdminController extends AppController
     {
         $org_info = AdminModel::getOrganizationById($_POST['id']);
         echo json_encode($org_info);
+        return true;
     }
 
     public function actionDelOrg()
@@ -220,6 +221,7 @@ class AdminController extends AppController
     public function actionAjaxClub_add()
     {
         include 'views/admin/SettingsOrg/create-club.php';
+        return true;
     }
 
     public function actionAjaxClubCabinet($id)
@@ -245,12 +247,9 @@ class AdminController extends AppController
     public function actionRegClubForEvent($id)
     {
         $list = AdminModel::ShowClubsForReg($id);
-//        $json = file_get_contents('categories.json'); // в примере все файлы в корне
-//        echo json_encode($json);
         $header = $this->loadHeader('header_1');
         $sidebar = $this->loadSideBar('admin_sidebar_1');
         $footer = $this->loadFooter('footer_1');
-
         include 'views/admin/option_event/reg_part_for_event.php';
         return true;
     }
@@ -258,12 +257,14 @@ class AdminController extends AppController
     public function actionRegParticipantForEvent($id)
     {
         echo json_encode(AdminModel::ShowAllParticipantByClubId($id));
+        return true;
     }
 
     public function actionTestAjax()
     {
         $json = file_get_contents('categories.json'); // в примере все файлы в корне
         echo json_encode($json);
+        return true;
     }
 
     public function actionAjaxAddpart($id = '')
@@ -276,11 +277,13 @@ class AdminController extends AppController
     public function actionAjax_clubShow($id)
     {
         echo json_encode(AdminModel::ShowClubs($id));
+        return true;
     }
 
     public function actionAjax_eventShow($id)
     {
         echo json_encode(AdminModel::ShowEvents($id));
+        return true;
     }
 
     public function actionAjaxCategory_add()

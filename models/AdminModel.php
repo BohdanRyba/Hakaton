@@ -243,7 +243,6 @@ class AdminModel extends AppModel
         } else return 'db.connect false';
     }
 
-
     public static function ShowClubs($id = '')
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
