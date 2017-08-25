@@ -265,7 +265,7 @@ jQuery(function($) {
                                 '</li>');
                         } else {
                             if (!categoriesToPush[i]["isMax"]) {
-                                $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
+                                $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["data-category"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
                                     '<div class="highlighter highlighterTop"></div>'+
                                     '<div class="category-settings clearfix">'+
                                     '<span class="count-number">'+ i +'.</span>'+
@@ -279,7 +279,7 @@ jQuery(function($) {
                                     '<div class="highlighter highlighterBot"></div>'+
                                     '</li>');
                             } else {
-                                $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["data-category"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
+                                $mainHolder.append('<li class="draggable category" data-id="'+ categoriesToPush[i]["id"] +'" data-checkstatus="completed" data-category="'+categoriesToPush[i]["data-category"]+'">' +
                                     '<div class="highlighter highlighterTop"></div>'+
                                     '<div class="category-settings clearfix">'+
                                     '<span class="count-number">'+ i +'.</span>'+
