@@ -226,7 +226,7 @@ jQuery(function($) {
                         category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_league"];
                         category["id"] = categories[i]["id"];
                         category["data-category"] = categories[i]["data-category"];
-                        category["isMax"] = categories[i]["is_max"];
+                        category["isMax"] = parseInt(categories[i]["is_max"]);
                         categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
                     }
 
