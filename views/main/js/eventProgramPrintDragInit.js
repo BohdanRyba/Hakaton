@@ -63,14 +63,15 @@ jQuery(function($) {
                 })();
             };
         });
+        console.log(order);
 
         $.ajax({
             type: "POST",
             url: 'ajax_setNewCategoriesPrintOrder',
             data: {'categories' : order, 'department_id' : dep},
             success: function (msg) {
+                console.log('ajax_setNewCategoriesPrintOrder has worked successfully! Order:');
                 console.log(order);
-                console.log('ajax_setNewCategoriesPrintOrder has worked successfully!');
             },
             error: function (msg) {
                 console.log('ajax_setNewCategoriesPrintOrder has failed to work!');
@@ -224,7 +225,7 @@ jQuery(function($) {
                     for (let i = 0; i < categories.length; i++) {
                         let category = {};
                         category["category"] = categories[i]["d_c_program"] + ' ' + categories[i]["d_c_age_category"] + ' ' + categories[i]["d_c_nomination"] + ' ' + categories[i]["d_c_league"];
-                        category["id"] = categories[i]["id"];
+                        category["id"] = categories[i]["data-category"].split('-')[0];
                         category["data-category"] = categories[i]["data-category"];
                         category["isMax"] = parseInt(categories[i]["is_max"]);
                         categoriesToPush[parseInt(categories[i]["sort_order"])] = category;
@@ -272,7 +273,7 @@ jQuery(function($) {
                                     '<div class="round-wrapper clearfix" data-checkstatus="checked">'+
                                     '<span class="round-selected">1/'+categoriesToPush[i]["data-category"].split('-')[1]+'</span>'+
                                     '</div>'+
-                                    '<span class="participants-number"><span class="the-participants-number">173</span>чел.</span>'+
+                                    // '<span class="participants-number"><span class="the-participants-number">173</span>чел.</span>'+
                                     '<p class="category-name main-content">'+ categoriesToPush[i]["category"] +'</p>'+
                                     '</div>'+
                                     '<div class="highlighter highlighterBot"></div>'+
