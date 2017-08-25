@@ -92,12 +92,17 @@ class Router
                 )) {
                     $newControllerName = 'controllers\\' . $controllerName;
                     $controllerObject = new $newControllerName();
-                    $this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                    @$this->result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                    if($this->result === null){
+                        header('Location: ' . ROOT . '/home');
+                        break;
+                    }
                     if ($this->result !== '') {
                         break;
                     }
                 } else {
                     header('Location: ' . ROOT . '/home');
+                    break;
                 }
             }
         }

@@ -1489,7 +1489,7 @@ class AdminModel extends AppModel
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $del_result = $db->query("DELETE FROM `rounds` WHERE `department_id` = {$department_id}");
-
+                //TODO: change the logic which deletes the rounds!!!
                 foreach ($categories as $key => $category) {
                     $category_id = (int)explode('-', $category['data-category'])[0];
                     $round_type = (int)explode('-', $category['data-category'])[1];
