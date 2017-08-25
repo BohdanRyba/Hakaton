@@ -15,16 +15,19 @@ class LoginController extends AppController
                     $_SESSION['accessing'] = $user['grant'];
                     $_SESSION['current_user_id'] = $user['id'];
                     $_SESSION['current_user'] = $user['club_shief'];
+                    $time_message = '';
                     if(!empty($_POST['remember_me'])){
-                        $this->setUserSessionTTL($ttl = 31536000);
-
+                        $ttl = 31536000;
+                        $this->setUserSessionTTL($ttl);
+                        $time_message = '1 год';
                     } else {
-                        $this->setUserSessionTTL($ttl = 120);
-
+                        $ttl = 120;
+                        $this->setUserSessionTTL($ttl);
+                        $time_message = '2 минуты';
                     }
                     $message = json_encode([
                         'status' => 'success',
-                        'message' => "Вы успешно авторизированы, {$_SESSION['current_user']}"
+                        'message' => "Вы успешно авторизированы, {$_SESSION['current_user']} (Ваше время сессии: {$time_message})"
                     ]);
                 } else {
                     $message = json_encode([
