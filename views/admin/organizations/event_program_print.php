@@ -328,6 +328,6 @@ use components\Router;
 <script src="<?= Router::$permalink ?>views/main/plugins/pace/pace.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <script src="<?= Router::$permalink ?>views/main/js/dragFrame.js?7"></script>
-<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?11"></script>
+<script src="<?= Router::$permalink ?>views/main/js/eventProgramPrintDragInit.js?12"></script>
 </body>
 </html>
