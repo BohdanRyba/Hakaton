@@ -193,7 +193,7 @@ $user = AppController::getCurrentUserInfo();
                         <li><a href="<?= Router::$permalink; ?>admin/organizations/create_dancing_departments/<?= $_SESSION['event_id']; ?>">Отделения</a></li>
                         <li><a href="<?= Router::$permalink; ?>admin/organizations/event_program_print/<?= $_SESSION['event_id']; ?>">Программа для печати</a></li>
                         <li><a href="<?= Router::$permalink; ?>admin/organizations/event_program/<?= $_SESSION['event_id']; ?>">Программа и оценивание</a></li>
-                        <li><a href="#">Суддьи</a></li>
+                        <li><a href="<?= Router::$permalink; ?>admin/organizations/judges/<?= $_SESSION['event_id']; ?>">Суддьи</a></li>
                     </ul>
                 </li>
             </ul>

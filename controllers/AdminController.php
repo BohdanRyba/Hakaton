@@ -642,4 +642,13 @@ class AdminController extends AppController
         }
         return true;
     }
+
+    //TODO: this page is now created yet!
+    public function actionJudges($event_id){
+        $referrer = $_SERVER['HTTP_REFERER'];
+//        $this->getHeader('header_admin_complex');
+        require_once(ROOT . 'views/admin/organizations/judges.php');
+//        $this->getFooter('footer_admin');
+        return true;
+    }
 }

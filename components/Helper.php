@@ -23,34 +23,34 @@ class Helper
     }
 
     private static $stylesArray = [
-        'index.php' => ['style.css'],
-        'home' => ['style.css'],
-        'news/page/([0-9]+)' => ['style.css'],
-        'news/single/([0-9]+)' => ['style.css'],
+        'index.php' => ['views/main/css/style.css'],
+        'home' => ['views/main/css/style.css'],
+        'news/page/([0-9]+)' => ['views/main/css/style.css'],
+        'news/single/([0-9]+)' => ['views/main/css/style.css'],
         'test' => [
-            'style.css',
-            'event_program_print.less',
+            'views/main/css/style.css',
+            'views/main/css/event_program_print.less',
         ],
-        'admin/organizations/pick_categories_for_event/([0-9]+)' => ['pick_categories_for_event.less'],
-        'admin/organizations/picked_categories_for_event/([0-9]+)' => ['pick_categories_for_event.less'],
-        'admin/organizations/create_dancing_departments/([0-9]+)' => ['create_dancing_departments.less'],
+        'admin/organizations/pick_categories_for_event/([0-9]+)' => ['views/main/css/pick_categories_for_event.less'],
+        'admin/organizations/picked_categories_for_event/([0-9]+)' => ['views/main/css/pick_categories_for_event.less'],
+        'admin/organizations/create_dancing_departments/([0-9]+)' => ['views/main/css/create_dancing_departments.less'],
         'admin/organizations/cabinet_club/([0-9]+)'=> [
-            'style.css',
-            'pick_categories_for_event.less'
+            'views/main/css/style.css',
+            'views/main/css/pick_categories_for_event.less'
         ],
         'admin/organizations/org_settings/([0-9]+)' => [
-            'style.css',
-            'add_dancing_categories.less',
-            'create_dancing_categories.less'
+            'views/main/css/style.css',
+            'views/main/css/add_dancing_categories.less',
+            'views/main/css/create_dancing_categories.less'
         ],
-        'admin/organizations/org_add' => ['style.css'],
-        'admin/organizations/page/([0-9]+)' => ['organization_list.less'],
-        'admin/organizations/event_program/([0-9]+)' => ['event_program.less'],
-        'admin/organizations/event_program_print/([0-9]+)' => ['event_program_print.less'],
-        'admin/option_event/reg_part_for_event/([0-9]+)' => ['style.css'],
-        'admin/dancing_groups/dance_list' => ['dance_groups_list.less'],
-        'admin/dancing_groups/add_dancing_groups' => ['add_dancing_groups.less'],
-        '' => ['style.css'],
+        'admin/organizations/org_add' => ['views/main/css/style.css'],
+        'admin/organizations/page/([0-9]+)' => ['views/main/css/organization_list.less'],
+        'admin/organizations/event_program/([0-9]+)' => ['views/main/css/event_program.less'],
+        'admin/organizations/event_program_print/([0-9]+)' => ['views/main/css/event_program_print.less'],
+        'admin/option_event/reg_part_for_event/([0-9]+)' => ['views/main/css/style.css'],
+        'admin/dancing_groups/dance_list' => ['views/main/css/dance_groups_list.less'],
+        'admin/dancing_groups/add_dancing_groups' => ['views/main/css/add_dancing_groups.less'],
+        '' => ['views/main/css/style.css'],
     ];
 
     private static $scriptsArray = [

@@ -64,6 +64,7 @@ Class Routes
         'admin/organizations/event_program_print/([0-9]+)' => 'admin/eventProgramPrint/$1',
         'admin/organizations/event_program_print/ajax_showCategoriesAccordingToDep' => 'admin/ajax_showCategoriesAccordingToDep',
         'admin/organizations/event_program_print/ajax_setNewCategoriesPrintOrder' => 'admin/ajax_setNewCategoriesPrintOrder',
+        'admin/organizations/judges/([0-9]+)' => 'admin/judges/$1',
         'admin/option_event/reg_part_for_event/([0-9]+)' => 'admin/regClubForEvent/$1',
         'admin/option_event/reg_part_for_event/regParticipantForEvent/([0-9]+)' => 'admin/regParticipantForEvent/$1',
         'admin/dancing_groups/dance_list' => 'admin/dancingList',
