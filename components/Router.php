@@ -7,11 +7,14 @@ class Router
     const ACCESS_ADMIN = 4;
     const ACCESS_MODERATOR = 3;
     const ACCESS_USER = 1;
+
     private $routes;
-    public static $uri;
     public $result;
+
+    public static $uri;
     public static $permalink;
     public static $any_last_path_value;
+
     private function checkSecurity($controllerName){
         if( ($controllerName === 'AdminController' ||
                 $controllerName === 'EventsController' ||
@@ -45,9 +48,9 @@ class Router
      **/
     public function getURI()
     {
-        if (!empty($_SERVER['REQUEST_URI'])) { // /php/students/Slobodeniuk/Hakaton/admin
-            self::$uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']); // /admin
-            self::$uri = trim(self::$uri, '/');// admin
+        if (!empty($_SERVER['REQUEST_URI'])) {
+            self::$uri = preg_replace("/(.*)Hakaton\//", '', $_SERVER['REQUEST_URI']);
+            self::$uri = trim(self::$uri, '/');
             return self::$uri;
         }
         return false;

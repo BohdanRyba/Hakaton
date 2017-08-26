@@ -1,4 +1,3 @@
-
 <form class="form-horizontal" action method="POST" enctype="multipart/form-data">
   <div class="box-body">
     <label for="" class="lb_part">Добавить нового участник</label>
@@ -48,5 +47,4 @@
       <label class="" for=""><input name="reg_participant" type="submit" value="Принять" id="save_part_club"></label>
     </div>
   </div>
-</div>
 </form>

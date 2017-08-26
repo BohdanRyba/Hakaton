@@ -15,7 +15,6 @@ class LoginController extends AppController
                     $_SESSION['accessing'] = $user['grant'];
                     $_SESSION['current_user_id'] = $user['id'];
                     $_SESSION['current_user'] = $user['club_shief'];
-                    $time_message = '';
                     if(!empty($_POST['remember_me'])){
                         $ttl = 31536000;
                         $this->setUserSessionTTL($ttl);

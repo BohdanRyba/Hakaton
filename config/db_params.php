@@ -1,8 +1,8 @@
 <?php
 
-return array(
+return [
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
     'dbname' => 'hakaton_admin'
-);
+];

@@ -2,8 +2,6 @@
 namespace controllers;
 use components\Router;
 use models\AdminModel;
-use controllers\LoginController;
-use components\Helper;
 
 class AdminController extends AppController
 {
@@ -15,37 +13,31 @@ class AdminController extends AppController
 
     public function actionIndex($Cpag)
     {
-        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
-            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        if (isset($_SESSION['messages'])) {
+            $this->message = $this->parseMessages($_SESSION['messages']);
         }
-
         $organizationsList = AdminModel::getAllOrganizations();
-
         $start_end_pagination_array = $this->getPaginationContent($Cpag, count($organizationsList));
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('main_admin_sidebar');
-        $footer = $this->loadFooter('footer_1');
+        $this->getHeader('header_admin_simple');
+        require_once(ROOT . 'views/admin/organizations/organizations_list.php');
+        $this->getFooter('footer_admin');
 
-        require_once('views/admin/organizations/organizations_list.php'); // here in view file we show the message;
-        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        unset($_SESSION['messages']);
         return true;
     }
 
     public function actionOrg_add()
     {
-        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
-            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        if (isset($_SESSION['messages'])) {
+            $this->message = $this->parseMessages($_SESSION['messages']);
         }
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('main_admin_sidebar');
-        $footer = $this->loadFooter('footer_1');
-
-        require_once('views/admin/organizations/reg_org.php'); // here in view file we show the message;
-
-        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        $this->getHeader('header_admin_simple');
+        require_once(ROOT . 'views/admin/organizations/reg_org.php');
+        $this->getFooter('footer_admin');
+        unset($_SESSION['messages']);
         return true;
     }
 
@@ -142,14 +134,13 @@ class AdminController extends AppController
         }
 
         if (isset($id) && is_numeric($id)) {
-            if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
-                $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+            if (isset($_SESSION['messages'])) {
+                $this->message = $this->parseMessages($_SESSION['messages']);
             }
             $current_org_name = AdminModel::getOrganizationById($id);
-            $header = $this->loadHeader('header_1');
-            $sidebar = $this->loadSideBar('main_admin_sidebar');
-            $footer = $this->loadFooter('footer_1');
-            include 'views/admin/SettingsOrg/org_settings.php';
+            $this->getHeader('header_admin_simple');
+            require_once (ROOT . 'views/admin/SettingsOrg/org_settings.php');
+            $this->getFooter('footer_admin');
             unset($_SESSION['messages']);
         }
         return true;
@@ -228,13 +219,10 @@ class AdminController extends AppController
     {
         $participant = AdminModel::ShowClubById($id);
         $nav_content = $this->createNavContent(Router::$uri);
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('main_admin_sidebar');
-        $footer = $this->loadFooter('footer_1');
         $organization = AdminModel::getOrganizationById($_SESSION['organization_id']);
-
-        require_once('views/admin/SettingsOrg/club-cabinet-for-adm.php');
-
+        $this->getHeader('header_admin_simple');
+        require_once (ROOT . 'views/admin/SettingsOrg/club-cabinet-for-adm.php');
+        $this->getFooter('footer_admin');
         /**
          *
          * TODO: В будущем,если нужны будут какие нибудь данные раскоментировать
@@ -247,23 +235,15 @@ class AdminController extends AppController
     public function actionRegClubForEvent($id)
     {
         $list = AdminModel::ShowClubsForReg($id);
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('admin_sidebar_1');
-        $footer = $this->loadFooter('footer_1');
-        include 'views/admin/option_event/reg_part_for_event.php';
+        $this->getHeader('header_admin_complex');
+        require_once (ROOT . 'views/admin/option_event/reg_part_for_event.php');
+        $this->getFooter('footer_admin');
         return true;
     }
 
     public function actionRegParticipantForEvent($id)
     {
         echo json_encode(AdminModel::ShowAllParticipantByClubId($id));
-        return true;
-    }
-
-    public function actionTestAjax()
-    {
-        $json = file_get_contents('categories.json'); // в примере все файлы в корне
-        echo json_encode($json);
         return true;
     }
 
@@ -336,28 +316,25 @@ class AdminController extends AppController
         }
         $list = AdminModel::getAllDanceGroups('list');
 
-        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
-            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        if (isset($_SESSION['messages'])) {
+            $this->message = $this->parseMessages($_SESSION['messages']);
         }
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('main_admin_sidebar');
-        $footer = $this->loadFooter('footer_1');
-
-        require_once 'views/admin/dancing_groups/dance_list.php';
-        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        $this->getHeader('header_admin_simple');
+        require_once(ROOT . 'views/admin/dancing_groups/dance_list.php');
+        $this->getFooter('footer_admin');
+        unset($_SESSION['messages']);
         return true;
     }
 
     public function actionAddDancingGroups()
     {
-        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
-            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        if (isset($_SESSION['messages'])) {
+            $this->message = $this->parseMessages($_SESSION['messages']);
         }
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('main_admin_sidebar');
-        $footer = $this->loadFooter('footer_1');
-        include 'views/admin/dancing_groups/add_dancing_groups.php';
-        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        $this->getHeader('header_admin_simple');
+        require_once(ROOT . 'views/admin/dancing_groups/add_dancing_groups.php');
+        $this->getFooter('footer_admin');
+        unset($_SESSION['messages']);
         return true;
     }
 
@@ -468,13 +445,12 @@ class AdminController extends AppController
     public function actionPickCategoriesForEvent($event_id)
     {
         $_SESSION['event_id'] = $event_id;
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('admin_sidebar_1');
-        $footer = $this->loadFooter('footer_1');
         $dancing_programs = AdminModel::getUniqueDanceCategoryPrograms();
         $event = AdminModel::getEventById($event_id);
         $organization = AdminModel::getOrganizationById($_SESSION['organization_id']);
-        require_once('views/admin/option_event/pick_categories_for_event.php');
+        $this->getHeader('header_admin_complex');
+        require_once(ROOT . 'views/admin/option_event/pick_categories_for_event.php');
+        $this->getFooter('footer_admin');
         return true;
     }
 
@@ -530,25 +506,23 @@ class AdminController extends AppController
                 }
             }
         }
-        if (isset($_SESSION['messages'])) { //if there are messages in $_SESSION;
-            $this->message = $this->parseMessages($_SESSION['messages']); //then we parse them: decode and convert an array to string;
+        if (isset($_SESSION['messages'])) {
+            $this->message = $this->parseMessages($_SESSION['messages']);
         }
         $departments = AdminModel::getDepartmentsByEventId($event_id);
         $d_c_program_names = AdminModel::getUniqueDanceCategoryPrograms();
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('admin_sidebar_1');
-        $footer = $this->loadFooter('footer_1');
-        require_once('views/admin/option_event/create_dancing_departments.php');
-        unset($_SESSION['messages']); // we should unset this variable to show correct messages when you reload a page;
+        $this->getHeader('header_admin_complex');
+        require_once(ROOT . 'views/admin/option_event/create_dancing_departments.php');
+        $this->getFooter('footer_admin');
+        unset($_SESSION['messages']);
         return true;
     }
 
     public function actionPickedCategoriesForEvent($event_id){
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('admin_sidebar_1');
-        $footer = $this->loadFooter('footer_1');
         $picked_categories = AdminModel::getPickedCategories($event_id);
-        require_once('views/admin/organizations/picked_categories_for_event.php');
+        $this->getHeader('header_admin_complex');
+        require_once(ROOT . 'views/admin/organizations/picked_categories_for_event.php');
+        $this->getFooter('footer_admin');
         return true;
     }
 
@@ -622,10 +596,9 @@ class AdminController extends AppController
 
     public function actionEventProgram($event_id){
         $departments = AdminModel::getDepartmentsByEventId($event_id);
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('admin_sidebar_1');
-        $footer = $this->loadFooter('footer_1');
-        require_once('views/admin/organizations/event_program.php');
+        $this->getHeader('header_admin_complex');
+        require_once(ROOT . 'views/admin/organizations/event_program.php');
+        $this->getFooter('footer_admin');
         return true;
     }
 
@@ -654,10 +627,9 @@ class AdminController extends AppController
         $departments = AdminModel::getDepartmentsByEventId($event_id);
         $current_event = AdminModel::getEventById($event_id);
         $organization = AdminModel::getOrganizationById($current_event['org_id_for_event']);
-        $header = $this->loadHeader('header_1');
-        $sidebar = $this->loadSideBar('admin_sidebar_1');
-        $footer = $this->loadFooter('footer_1');
-        require_once('views/admin/organizations/event_program_print.php');
+        $this->getHeader('header_admin_complex');
+        require_once(ROOT . 'views/admin/organizations/event_program_print.php');
+        $this->getFooter('footer_admin');
         return true;
     }
 
