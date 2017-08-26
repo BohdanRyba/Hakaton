@@ -1,6 +1,5 @@
 <?php
 use components\Router;
-
 ?>
 <div class="content-wrapper">
     <section class="content-header"></section>
