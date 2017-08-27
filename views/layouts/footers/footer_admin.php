@@ -99,6 +99,8 @@ use controllers\AppController;
 <!-- Bootstrap 3.3.6 -->
 <script src="<?= Router::$permalink ?>views/main/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
+<script src="<?= Router::$permalink ?>views/main/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
 <script src="<?= Router::$permalink ?>views/main/js/app.min.js"></script>
 
 <?= AppController::getCustomScripts(Router::$uri)?>

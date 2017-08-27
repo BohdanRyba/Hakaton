@@ -77,7 +77,6 @@ class Helper
             'views/main/plugins/input-mask/jquery.inputmask.extensions.js',
             'views/main/plugins/datepicker/bootstrap-datepicker.js',
             'views/main/plugins/timepicker/bootstrap-timepicker.min.js',
-            'views/main/plugins/slimScroll/jquery.slimscroll.min.js',
             'views/main/plugins/iCheck/icheck.min.js',
             'views/main/plugins/fastclick/fastclick.js',
             'views/main/js/jquery-ui.js',
@@ -97,7 +96,6 @@ class Helper
         ],
         'admin/organizations/event_program_print/([0-9]+)' => [
             'views/main/plugins/pace/pace.min.js',
-            'views/main/plugins/slimScroll/jquery.slimscroll.min.js',
             'views/main/js/dragFrame.js',
             'views/main/js/eventProgramPrintDragInit.js'
         ],
@@ -108,7 +106,6 @@ class Helper
             'views/main/plugins/input-mask/jquery.inputmask.extensions.js',
             'views/main/plugins/datepicker/bootstrap-datepicker.js',
             'views/main/plugins/timepicker/bootstrap-timepicker.min.js',
-            'views/main/plugins/slimScroll/jquery.slimscroll.min.js',
             'views/main/plugins/iCheck/icheck.min.js',
             'views/main/plugins/fastclick/fastclick.js',
             'views/main/js/jquery-ui.js',
