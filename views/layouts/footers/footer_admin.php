@@ -105,6 +105,8 @@ use controllers\AppController;
 
 <?= AppController::getCustomScripts(Router::$uri)?>
 
+<script src="<?= Router::$permalink ?>views/main/js/min-height.js"></script>
+
 
 </body>
 </html>
