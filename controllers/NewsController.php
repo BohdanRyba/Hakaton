@@ -45,9 +45,10 @@ class NewsController extends AppController
     //TODO: this page should be created in future
     public function actionAdd()
     {
-        $this->getHeader('header_base');
+        $referrer = '/home';
+//        $this->getHeader('header_base');
         require_once(ROOT . 'views/news/add.php');
-        $this->getFooter('footer_base');
+//        $this->getFooter('footer_base');
         return true;
     }
 
@@ -73,10 +74,11 @@ class NewsController extends AppController
                 $resulting = (integer)NewsModel::createNews();
                 echo $resulting . ' is the result';
             } else {
-                echo 'NooooO!';
+                echo 'There is no needed data to create the news!';
             }
         }
-        header('Location: '. CORE_PATH. $_POST['redirect']);
+//        header('Location: '. CORE_PATH. $_POST['redirect']);
+        header('Location: /home');
         return true;
     }
 }
