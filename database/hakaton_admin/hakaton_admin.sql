@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 27 2017 г., 04:07
+-- Время создания: Авг 27 2017 г., 17:43
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -199,13 +199,13 @@ CREATE TABLE `departments_categories` (
 --
 
 INSERT INTO `departments_categories` (`id`, `department_id`, `category_id`, `sort_order`) VALUES
-(49, 5, 2, 1),
-(38, 4, 5, 1),
-(46, 5, 3, 2),
-(50, 4, 10, 3),
-(47, 3, 1, 1),
-(37, 3, 9, 2),
-(45, 4, 4, 2);
+(1, 3, 1, 0),
+(12, 4, 4, 0),
+(4, 4, 5, 0),
+(16, 5, 3, 0),
+(17, 5, 9, 0),
+(7, 5, 7, 0),
+(8, 5, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,9 @@ INSERT INTO `events_categories` (`id`, `event_id`, `category_id`) VALUES
 (24, 1, 2),
 (26, 1, 3),
 (27, 1, 4),
-(31, 1, 8);
+(31, 1, 8),
+(32, 1, 7),
+(33, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -425,39 +427,26 @@ CREATE TABLE `rounds` (
 --
 
 INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_order`, `is_max`) VALUES
-(121, 4, 5, 4, 12, 1),
-(66, 3, 9, 1, 10, 0),
-(65, 3, 9, 2, 9, 0),
-(64, 3, 9, 4, 8, 0),
-(63, 3, 9, 8, 7, 0),
-(62, 3, 9, 16, 6, 0),
-(61, 3, 9, 32, 5, 1),
-(60, 3, 1, 1, 4, 0),
-(59, 3, 1, 2, 3, 0),
-(58, 3, 1, 4, 2, 0),
-(57, 3, 1, 8, 1, 1),
-(120, 4, 10, 1, 11, 0),
-(119, 4, 10, 2, 10, 0),
-(86, 5, 2, 8, 6, 1),
-(85, 5, 3, 1, 5, 0),
-(84, 5, 3, 2, 4, 0),
-(83, 5, 3, 4, 3, 0),
-(82, 5, 3, 8, 2, 0),
-(81, 5, 3, 16, 1, 1),
-(87, 5, 2, 4, 7, 0),
-(88, 5, 2, 2, 8, 0),
-(89, 5, 2, 1, 9, 0),
-(118, 4, 10, 4, 9, 0),
-(117, 4, 10, 8, 8, 0),
-(116, 4, 10, 16, 7, 1),
-(115, 4, 4, 1, 6, 0),
-(114, 4, 4, 2, 5, 0),
-(113, 4, 4, 4, 4, 0),
-(112, 4, 4, 8, 3, 0),
-(111, 4, 4, 16, 2, 0),
-(110, 4, 4, 32, 1, 1),
-(122, 4, 5, 2, 13, 0),
-(123, 4, 5, 1, 14, 0);
+(94, 5, 10, 1, 3, 0),
+(93, 5, 10, 2, 2, 0),
+(92, 5, 10, 4, 1, 1),
+(91, 5, 7, 1, 8, 0),
+(47, 4, 5, 1, 5, 0),
+(46, 4, 5, 2, 4, 0),
+(45, 4, 5, 4, 3, 0),
+(44, 4, 5, 8, 2, 0),
+(43, 4, 5, 16, 1, 1),
+(42, 4, 4, 1, 10, 0),
+(41, 4, 4, 2, 9, 0),
+(40, 4, 4, 4, 8, 0),
+(39, 4, 4, 8, 7, 0),
+(38, 4, 4, 16, 6, 1),
+(96, 3, 1, 1, 2, 0),
+(95, 3, 1, 2, 1, 1),
+(90, 5, 7, 2, 7, 0),
+(89, 5, 7, 4, 6, 0),
+(88, 5, 7, 8, 5, 0),
+(87, 5, 7, 16, 4, 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -589,7 +578,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT для таблицы `departments_categories`
 --
 ALTER TABLE `departments_categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT для таблицы `events`
 --
@@ -599,7 +588,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT для таблицы `events_categories`
 --
 ALTER TABLE `events_categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT для таблицы `news`
 --
@@ -624,7 +613,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT для таблицы `rounds`
 --
 ALTER TABLE `rounds`
-  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
