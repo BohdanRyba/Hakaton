@@ -1310,6 +1310,10 @@ class AdminModel extends AppModel
                 $category_to_del = $result_category_to_del->fetch_assoc();
                 $result = $db->query("DELETE FROM `departments_categories` WHERE `department_id` = {$department_id} 
                                                                                   AND `category_id` = {$category_id}");
+                $del_from_rounds_result = self::deleteCategoryRecordsFromRounds($department_id, $category_id);
+                if($del_from_rounds_result){
+                    $new_sort_order_result = self::setNewRoundsOrder($department_id);
+                }
                 if($result){
                     $result2 = $db->query("SELECT * FROM `departments_categories` WHERE `department_id` = {$department_id}");
                     $array_with_rest_categories = [];
@@ -1317,7 +1321,7 @@ class AdminModel extends AppModel
                         while ($row = $result2->fetch_assoc()) {
                             $array_with_rest_categories[] = $row;
                         }
-                        $result = self::setNewSortOrder($db, $array_with_rest_categories, $category_to_del, $department_id);
+                        $result_set_new_sort_order = self::setNewSortOrder($db, $array_with_rest_categories, $category_to_del, $department_id);
                     }
                 }
                 $db->close();
@@ -1326,6 +1330,74 @@ class AdminModel extends AppModel
                 $db->close();
                 return false;
             }
+        } else {
+            return false;
+        }
+    }
+
+    public static function setNewRoundsOrder($department_id){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT DISTINCT `category_id` FROM `rounds` WHERE `department_id` = {$department_id}");
+            $unique_category_ids = [];
+            if($result->num_rows > 0){
+                while ($row = $result->fetch_assoc()){
+                    $unique_category_ids[] = $row['category_id'];
+                }
+                $sort_order = 1;
+                foreach ($unique_category_ids as $unique_category_id){
+                    $result_unique = $db->query("SELECT * FROM `rounds` WHERE `department_id` = {$department_id} AND `category_id` = {$unique_category_id}");
+                    if($result_unique->num_rows > 0){
+                        $rounds_of_category = [];
+                        while ($row = $result_unique->fetch_assoc()){
+                            $rounds_of_category[] = $row;
+                        }
+                        $round_type = 0;
+                        foreach ($rounds_of_category as $single_round){
+                            if((int)$single_round['is_max'] === 1){
+                                $round_type = (int)$single_round['round_type'];
+                                $update_result = $db->query("UPDATE `rounds` SET `sort_order` = {$sort_order}
+                                                                    WHERE `id` = {$single_round['id']}");
+                                if($update_result){
+                                    $sort_order++;
+                                    $round_type = $round_type / 2;
+                                }
+                            }
+                        }
+                        while ($round_type >= 1){
+                            $update_result = $db->query("UPDATE `rounds` SET `sort_order` = {$sort_order}
+                                                                    WHERE `department_id` = {$department_id}
+                                                                    AND `category_id` = {$unique_category_id}
+                                                                    AND `round_type` = {$round_type}
+                                                                    AND `is_max` = 0
+                                                                    ");
+                            if($update_result){
+                                $sort_order++;
+                                $round_type = $round_type / 2;
+                            }
+                        }
+                    }
+
+                }
+            }
+            $db->close();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function deleteCategoryRecordsFromRounds($department_id, $category_id){
+        if ($db = Db::getConnection(Db::ADMIN_BASE)) {
+            $result = $db->query("SELECT * FROM `rounds` WHERE `department_id` = {$department_id} 
+                                                                                  AND `category_id` = {$category_id}");
+            if($result->num_rows > 0){
+                $result_del_from_rounds = $db->query("DELETE FROM `rounds` WHERE `department_id` = {$department_id} 
+                                                                                  AND `category_id` = {$category_id}");
+                $db->close();
+                return $result_del_from_rounds;
+            }
+            $db->close();
+            return false;
         } else {
             return false;
         }
@@ -1384,13 +1456,39 @@ class AdminModel extends AppModel
                         }
                         foreach ($rounds as &$round) {
                             $round['data-category'] = $round['category_id'] . "-" . $round['round_type'];
-                            $category = self::getCategoryById($round['category_id']);
-                            foreach ($category as $key => $value) {
+                            $categoryById = self::getCategoryById($round['category_id']);
+                            foreach ($categoryById as $key => $value) {
                                 if ($key !== 'id') {
                                     $round[$key] = $value;
                                 }
                             }
                         }
+                        $unique_ids_result = $db->query("SELECT DISTINCT `category_id` FROM `rounds` WHERE `department_id` = {$department_id}");
+                        $unique_ids = [];
+                        if($unique_ids_result->num_rows > 0){
+                            while ($row = $unique_ids_result->fetch_assoc()){
+                                $unique_ids[] = $row['category_id'];
+                            }
+                        }
+                        $new_categories = $categories;
+                        $sort_orders = $db->query("SELECT `sort_order` FROM `rounds` WHERE `department_id` = {$department_id}");
+                        $sorting_array = [];
+                        if($sort_orders->num_rows > 0){
+                            while ($row = $sort_orders->fetch_assoc()){
+                                $sorting_array[] = $row['sort_order'];
+                            }
+                        }
+                        $max_sort_order = max($sorting_array);
+                        foreach ($new_categories as $new_category){
+                            if(!in_array($new_category['id'], $unique_ids)){
+                                $new_category['sort_order'] = $max_sort_order + 1;
+                                $new_category['is_max'] = 0;
+                                $new_category['category_id'] = $new_category['id'];
+                                $rounds[] = $new_category;
+                                $max_sort_order++;
+                            }
+                        }
+
                         $db->close();
                         return $rounds;
                     }
@@ -1488,11 +1586,11 @@ class AdminModel extends AppModel
     {
         if ($db = Db::getConnection(Db::ADMIN_BASE)) {
             $del_result = $db->query("DELETE FROM `rounds` WHERE `department_id` = {$department_id}");
-                foreach ($categories as $key => $category) {
-                    $category_id = (int)explode('-', $category['data-category'])[0];
-                    $round_type = (int)explode('-', $category['data-category'])[1];
-                    $is_max = $category['isMax'] === 'true' ? 1 : 0;
-                    $result = $db->query("INSERT INTO `rounds`
+            foreach ($categories as $key => $category) {
+                $category_id = (int)explode('-', $category['data-category'])[0];
+                $round_type = (int)explode('-', $category['data-category'])[1];
+                $is_max = $category['isMax'] === 'true' ? 1 : 0;
+                $result = $db->query("INSERT INTO `rounds`
                                                          SET `id` = NULL,
                                                              `department_id` = '{$department_id}',
                                                              `category_id` = '{$category_id}',
@@ -1500,11 +1598,11 @@ class AdminModel extends AppModel
                                                              `sort_order` = '{$key}',
                                                              `is_max` = '{$is_max}'
                                              ");
-                }
-                $db->close();
-                return $del_result;
-            } else {
-                return false;
             }
+            $db->close();
+            return $del_result;
+        } else {
+            return false;
+        }
     }
 }
