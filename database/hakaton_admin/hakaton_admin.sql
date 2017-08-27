@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 25 2017 г., 21:00
+-- Время создания: Авг 27 2017 г., 04:07
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -199,9 +199,9 @@ CREATE TABLE `departments_categories` (
 --
 
 INSERT INTO `departments_categories` (`id`, `department_id`, `category_id`, `sort_order`) VALUES
-(49, 5, 2, 0),
+(49, 5, 2, 1),
 (38, 4, 5, 1),
-(46, 5, 3, 0),
+(46, 5, 3, 2),
 (50, 4, 10, 3),
 (47, 3, 1, 1),
 (37, 3, 9, 2),
@@ -322,7 +322,7 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `org_name`, `org_abbreviation`, `org_head_fio`, `org_city`, `org_country`, `org_phone`, `org_email`, `org_pic_path`) VALUES
-(1, 'DreamTeam', 'DT', 'I\'m not the one, bu we all Are', 'Khmelnytskyi', 'Ukraine', '+38 (097) 097-97-97', 'dt@gmail.com', 'views/main/img/org_image/dreamTeam.jpg');
+(1, 'DreamTeam', 'DT', 'I\'m not the one, bu we all are', 'Khmelnytskyi', 'Ukraine', '+38 (097) 097-97-97', 'dt@gmail.com', 'views/main/img/org_image/dreamTeam.jpg');
 
 -- --------------------------------------------------------
 
@@ -402,7 +402,8 @@ INSERT INTO `participant` (`id_participant`, `first_name`, `second_name`, `third
 (34, 'Last Test', 'Boda', 'Lol', '1998-02-11', 2, 'Cibab'),
 (35, 'Andrey', 'Slotvinskiy', 'Vv', '1998-08-01', 2, 'Oleg'),
 (36, 'The_Name', 'surname', 'third name', '1990-12-25', 3, 'Trener1'),
-(37, 'Gosha', 'Tvoiu', 'Mat', '2000-11-23', 5, 'Trener ubijca');
+(37, 'Gosha', 'Tvoiu', 'Mat', '2000-11-23', 5, 'Trener ubijca'),
+(38, 'Roma', 'Slobodeniuk', 'Yaroslavovych', '0000-00-00', 1, 'Trener youpta');
 
 -- --------------------------------------------------------
 
@@ -424,7 +425,7 @@ CREATE TABLE `rounds` (
 --
 
 INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_order`, `is_max`) VALUES
-(72, 4, 5, 0, 3, 0),
+(121, 4, 5, 4, 12, 1),
 (66, 3, 9, 1, 10, 0),
 (65, 3, 9, 2, 9, 0),
 (64, 3, 9, 4, 8, 0),
@@ -435,8 +436,8 @@ INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_
 (59, 3, 1, 2, 3, 0),
 (58, 3, 1, 4, 2, 0),
 (57, 3, 1, 8, 1, 1),
-(71, 4, 10, 0, 2, 0),
-(70, 4, 4, 0, 1, 0),
+(120, 4, 10, 1, 11, 0),
+(119, 4, 10, 2, 10, 0),
 (86, 5, 2, 8, 6, 1),
 (85, 5, 3, 1, 5, 0),
 (84, 5, 3, 2, 4, 0),
@@ -445,7 +446,18 @@ INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_
 (81, 5, 3, 16, 1, 1),
 (87, 5, 2, 4, 7, 0),
 (88, 5, 2, 2, 8, 0),
-(89, 5, 2, 1, 9, 0);
+(89, 5, 2, 1, 9, 0),
+(118, 4, 10, 4, 9, 0),
+(117, 4, 10, 8, 8, 0),
+(116, 4, 10, 16, 7, 1),
+(115, 4, 4, 1, 6, 0),
+(114, 4, 4, 2, 5, 0),
+(113, 4, 4, 4, 4, 0),
+(112, 4, 4, 8, 3, 0),
+(111, 4, 4, 16, 2, 0),
+(110, 4, 4, 32, 1, 1),
+(122, 4, 5, 2, 13, 0),
+(123, 4, 5, 1, 14, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -607,12 +619,12 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT для таблицы `participant`
 --
 ALTER TABLE `participant`
-  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_participant` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT для таблицы `rounds`
 --
 ALTER TABLE `rounds`
-  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
