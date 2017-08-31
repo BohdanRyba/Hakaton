@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 31 2017 г., 21:31
+-- Время создания: Авг 31 2017 г., 21:48
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -358,7 +358,7 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (6, 'Выход', 'out', 'without_popup', 1, 1, ''),
 (10, 'Профиль', 'profile', 'without_popup', 1, 1, ''),
 (9, 'Регистрация', 'home#registration_form', 'without_popup', 0, 1, ''),
-(11, 'Админ панель - Организации', 'admin/organizations/page/$1', 'without_popup', 1, 4, ''),
+(11, 'Админ панель', 'admin/organizations/page/1', 'without_popup', 1, 4, ''),
 (13, 'Добавить организацию', 'admin/organizations/org_add', NULL, 0, 0, ''),
 (14, 'Танцевальные группы', 'admin/dancing_groups/dance_list', NULL, 0, 0, ''),
 (15, 'Добавить группу', 'admin/dancing_groups/add_dancing_groups', NULL, 0, 0, ''),
@@ -367,10 +367,13 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (18, 'Выбор категорий для события', 'admin/organizations/pick_categories_for_event/$1', NULL, 0, 0, ''),
 (19, 'Выбранные категории', 'admin/organizations/picked_categories_for_event/$1', NULL, 0, 0, ''),
 (20, 'Регистрация участников', 'admin/option_event/reg_part_for_event/$1', NULL, 0, 0, ''),
-(21, 'Настройка отделений', 'admin/organizations/create_dancing_departments/$1', NULL, 1, 0, ''),
+(21, 'Настройка отделений', 'admin/organizations/create_dancing_departments/$1', NULL, 0, 0, ''),
 (22, 'Программа для печати', 'admin/organizations/event_program_print/$1', NULL, 0, 0, ''),
 (23, 'Программа и оценивание', 'admin/organizations/event_program/$1', NULL, 0, 0, ''),
-(24, 'Судьи', 'admin/organizations/judges/$1', NULL, 0, 0, '');
+(24, 'Судьи', 'admin/organizations/judges/$1', NULL, 0, 0, ''),
+(25, 'Организации', 'admin/organizations/page/$1', NULL, 0, 0, ''),
+(26, 'Все новости', 'news/page/$1', NULL, 0, 0, ''),
+(27, 'Страница новости', 'news/single/$1', NULL, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -629,7 +632,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT для таблицы `participant`
 --
