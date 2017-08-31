@@ -19,6 +19,7 @@ class NewsController extends AppController
         $start = $start_end_pagination_array[0];
         $end = $start_end_pagination_array[1];
         $pagination = $start_end_pagination_array[2];
+        $_SESSION['current_page_id'] = $Cpag;
         $this->getHeader('header_base');
         require_once(ROOT . 'views/news/index.php');
         $this->getFooter('footer_base');

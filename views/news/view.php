@@ -27,8 +27,11 @@
                                 <p><?php echo $newsItem['content'] ?></p>
                                 <p>Автор: <?php echo $newsItem['author_name'] ?></p>
                                 <h4>Дата: <?php echo $newsItem['date'] ?></h4>
-                                <p><a href="<?php echo CORE_PATH . 'news/page/1' ?>"
+                                <p>
+                                    <a href="<?php echo CORE_PATH . 'news/page/' . $_SESSION['current_page_id'] ?>"
                                       class="btn btn-primary" role="button">Вернуться ко всем новостям...</a>
+                                    <?php unset($_SESSION['current_page_id']);?>
+                                </p>
                             </div>
                         </div>
                     </div>
