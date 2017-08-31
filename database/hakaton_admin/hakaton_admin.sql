@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 27 2017 г., 17:43
+-- Время создания: Авг 31 2017 г., 21:31
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -201,6 +201,7 @@ CREATE TABLE `departments_categories` (
 INSERT INTO `departments_categories` (`id`, `department_id`, `category_id`, `sort_order`) VALUES
 (1, 3, 1, 0),
 (12, 4, 4, 0),
+(18, 3, 2, 0),
 (4, 4, 5, 0),
 (16, 5, 3, 0),
 (17, 5, 9, 0),
@@ -357,7 +358,19 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (6, 'Выход', 'out', 'without_popup', 1, 1, ''),
 (10, 'Профиль', 'profile', 'without_popup', 1, 1, ''),
 (9, 'Регистрация', 'home#registration_form', 'without_popup', 0, 1, ''),
-(11, 'Админ панель', 'admin/organizations/page/1', 'without_popup', 1, 4, '');
+(11, 'Админ панель - Организации', 'admin/organizations/page/$1', 'without_popup', 1, 4, ''),
+(13, 'Добавить организацию', 'admin/organizations/org_add', NULL, 0, 0, ''),
+(14, 'Танцевальные группы', 'admin/dancing_groups/dance_list', NULL, 0, 0, ''),
+(15, 'Добавить группу', 'admin/dancing_groups/add_dancing_groups', NULL, 0, 0, ''),
+(16, 'Настройка организации', 'admin/organizations/org_settings/$1', NULL, 0, 0, ''),
+(17, 'Страница клуба', 'admin/organizations/cabinet_club/$1', NULL, 0, 0, ''),
+(18, 'Выбор категорий для события', 'admin/organizations/pick_categories_for_event/$1', NULL, 0, 0, ''),
+(19, 'Выбранные категории', 'admin/organizations/picked_categories_for_event/$1', NULL, 0, 0, ''),
+(20, 'Регистрация участников', 'admin/option_event/reg_part_for_event/$1', NULL, 0, 0, ''),
+(21, 'Настройка отделений', 'admin/organizations/create_dancing_departments/$1', NULL, 1, 0, ''),
+(22, 'Программа для печати', 'admin/organizations/event_program_print/$1', NULL, 0, 0, ''),
+(23, 'Программа и оценивание', 'admin/organizations/event_program/$1', NULL, 0, 0, ''),
+(24, 'Судьи', 'admin/organizations/judges/$1', NULL, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -427,10 +440,12 @@ CREATE TABLE `rounds` (
 --
 
 INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_order`, `is_max`) VALUES
-(94, 5, 10, 1, 3, 0),
-(93, 5, 10, 2, 2, 0),
-(92, 5, 10, 4, 1, 1),
-(91, 5, 7, 1, 8, 0),
+(134, 5, 9, 16, 11, 1),
+(138, 5, 9, 1, 15, 0),
+(133, 5, 3, 1, 10, 0),
+(132, 5, 3, 2, 9, 1),
+(131, 5, 7, 1, 8, 0),
+(130, 5, 7, 2, 7, 0),
 (47, 4, 5, 1, 5, 0),
 (46, 4, 5, 2, 4, 0),
 (45, 4, 5, 4, 3, 0),
@@ -441,12 +456,23 @@ INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_
 (40, 4, 4, 4, 8, 0),
 (39, 4, 4, 8, 7, 0),
 (38, 4, 4, 16, 6, 1),
-(96, 3, 1, 1, 2, 0),
-(95, 3, 1, 2, 1, 1),
-(90, 5, 7, 2, 7, 0),
-(89, 5, 7, 4, 6, 0),
-(88, 5, 7, 8, 5, 0),
-(87, 5, 7, 16, 4, 1);
+(112, 3, 2, 1, 8, 0),
+(111, 3, 2, 2, 7, 0),
+(110, 3, 2, 4, 6, 0),
+(109, 3, 2, 8, 5, 0),
+(108, 3, 2, 16, 4, 0),
+(107, 3, 2, 32, 3, 1),
+(106, 3, 1, 1, 2, 0),
+(105, 3, 1, 2, 1, 1),
+(129, 5, 7, 4, 6, 0),
+(128, 5, 7, 8, 5, 0),
+(127, 5, 7, 16, 4, 1),
+(126, 5, 10, 1, 3, 0),
+(137, 5, 9, 2, 14, 0),
+(136, 5, 9, 4, 13, 0),
+(135, 5, 9, 8, 12, 0),
+(125, 5, 10, 2, 2, 0),
+(124, 5, 10, 4, 1, 1);
 
 --
 -- Индексы сохранённых таблиц
@@ -578,7 +604,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT для таблицы `departments_categories`
 --
 ALTER TABLE `departments_categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `events`
 --
@@ -603,7 +629,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT для таблицы `participant`
 --
@@ -613,7 +639,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT для таблицы `rounds`
 --
 ALTER TABLE `rounds`
-  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
