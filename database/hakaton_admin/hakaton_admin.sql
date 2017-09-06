@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Авг 31 2017 г., 21:48
+-- Время создания: Сен 06 2017 г., 20:35
 -- Версия сервера: 5.7.19-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -373,7 +373,8 @@ INSERT INTO `pages` (`id`, `title`, `link`, `description`, `active`, `grant`, `c
 (24, 'Судьи', 'admin/organizations/judges/$1', NULL, 0, 0, ''),
 (25, 'Организации', 'admin/organizations/page/$1', NULL, 0, 0, ''),
 (26, 'Все новости', 'news/page/$1', NULL, 0, 0, ''),
-(27, 'Страница новости', 'news/single/$1', NULL, 0, 0, '');
+(27, 'Страница новости', 'news/single/$1', NULL, 0, 0, ''),
+(28, 'Главная', '', NULL, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -443,12 +444,13 @@ CREATE TABLE `rounds` (
 --
 
 INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_order`, `is_max`) VALUES
-(134, 5, 9, 16, 11, 1),
-(138, 5, 9, 1, 15, 0),
-(133, 5, 3, 1, 10, 0),
-(132, 5, 3, 2, 9, 1),
-(131, 5, 7, 1, 8, 0),
-(130, 5, 7, 2, 7, 0),
+(153, 5, 9, 16, 15, 1),
+(154, 5, 9, 8, 16, 0),
+(152, 5, 3, 1, 14, 0),
+(151, 5, 3, 2, 13, 0),
+(150, 5, 3, 4, 12, 0),
+(149, 5, 3, 8, 11, 0),
+(148, 5, 3, 16, 10, 0),
 (47, 4, 5, 1, 5, 0),
 (46, 4, 5, 2, 4, 0),
 (45, 4, 5, 4, 3, 0),
@@ -467,15 +469,18 @@ INSERT INTO `rounds` (`id`, `department_id`, `category_id`, `round_type`, `sort_
 (107, 3, 2, 32, 3, 1),
 (106, 3, 1, 1, 2, 0),
 (105, 3, 1, 2, 1, 1),
-(129, 5, 7, 4, 6, 0),
-(128, 5, 7, 8, 5, 0),
-(127, 5, 7, 16, 4, 1),
-(126, 5, 10, 1, 3, 0),
-(137, 5, 9, 2, 14, 0),
-(136, 5, 9, 4, 13, 0),
-(135, 5, 9, 8, 12, 0),
-(125, 5, 10, 2, 2, 0),
-(124, 5, 10, 4, 1, 1);
+(147, 5, 3, 32, 9, 1),
+(146, 5, 7, 1, 8, 0),
+(145, 5, 7, 2, 7, 0),
+(144, 5, 7, 4, 6, 0),
+(143, 5, 7, 8, 5, 0),
+(142, 5, 7, 16, 4, 1),
+(141, 5, 10, 1, 3, 0),
+(140, 5, 10, 2, 2, 0),
+(139, 5, 10, 4, 1, 1),
+(155, 5, 9, 4, 17, 0),
+(156, 5, 9, 2, 18, 0),
+(157, 5, 9, 1, 19, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -632,7 +637,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT для таблицы `participant`
 --
@@ -642,7 +647,7 @@ ALTER TABLE `participant`
 -- AUTO_INCREMENT для таблицы `rounds`
 --
 ALTER TABLE `rounds`
-  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id` bigint(99) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
